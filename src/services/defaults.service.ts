@@ -1,0 +1,36 @@
+import { Injectable } from '@angular/core';
+
+@Injectable()
+export class JsonFormDefaultsService {
+  private defaultTypes: { [type: string]: any };
+
+  constructor() {
+    this.defaultTypes = this.defaultTypes || {};
+  }
+
+  public get(prop, schema, data) {
+    let defaultValue = schema.properties[prop].default || '';
+    if (this.has(schema.properties[prop].default)) {
+      defaultValue = this.eval(schema.properties[prop].default)();
+    }
+
+    // data override defaults
+    if (data && data.hasOwnProperty(prop)) {
+      defaultValue = data[prop];
+    }
+
+    return defaultValue;
+  }
+
+  private eval(str) {
+    return this.defaultTypes[str];
+  }
+
+  public has(str) {
+    return this.defaultTypes.hasOwnProperty(str);
+  }
+
+  public register(str: string, callback: Function) {
+    this.defaultTypes[str] = callback;
+  }
+}

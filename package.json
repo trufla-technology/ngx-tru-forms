@@ -1,14 +1,19 @@
 {
   "name": "angular-json-form",
-  "version": "0.0.0",
+  "version": "0.1.2",
   "license": "MIT",
+  "main": "./dist/angular-json-form.js",
+  "typings": "./dist/angular-json-form.d.ts",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build --prod",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "clean": "rm -fr dist/",
+    "build:aot": "ngc -p ./src/tsconfig.json",
+    "build:jit": "tsc -p ./src/tsconfig.json",
+    "build": "yarn run clean && yarn build:aot"
   },
   "private": true,
   "dependencies": {
@@ -22,6 +27,7 @@
     "@angular/platform-browser-dynamic": "^5.2.0",
     "@angular/router": "^5.2.0",
     "core-js": "^2.4.1",
+    "randexp": "^0.4.8",
     "rxjs": "^5.5.6",
     "zone.js": "^0.8.19"
   },
