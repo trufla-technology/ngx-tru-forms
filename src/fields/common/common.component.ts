@@ -1,9 +1,10 @@
-import { FormControl } from '@angular/forms';
 import { Schema } from '../../models/schema';
+import { SchemaFormControl } from '../../models/schema-form-control';
 
 export class CommonComponent {
-  public control: FormControl;
+  public control: SchemaFormControl;
   public schema: Schema;
+  public style: {};
 
   public isRequired() {
     return this.control.validator !== null;
@@ -20,19 +21,7 @@ export class CommonComponent {
   }
 
   placeholder() {
-    switch (this.schema.type) {
-      case 'string':
-        switch (this.schema.format) {
-          case 'email':
-            return 'Email address';
-          default:
-            return 'Text value';
-        }
-      case 'number':
-        return 'Numeric value';
-      default:
-        return 'Text value';
-    }
+    return this.schema.title || this.strToUpperCase(this.schema.key);
   }
 
   type() {
@@ -50,5 +39,15 @@ export class CommonComponent {
     }
 
     return format;
+  }
+
+  id(i?) {
+    return this.schema.key + '_' +
+      (i ? this.schema.enum[i].replace(/\W+/g, '') : '');
+  }
+
+  getClass(defaultClass?) {
+    return this.style.hasOwnProperty('default') ?
+      this.style['default'] : (defaultClass || '');
   }
 }

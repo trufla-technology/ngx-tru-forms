@@ -3,22 +3,20 @@ import { CommonComponent } from '../common/common.component';
 
 @Component({
   template: `
-    <div class="radiogroup">
-      <div>
-        <label [attr.class]="schema.key" [ngClass]="{required: isRequired()}">
-          {{title()}}<sup *ngIf="isRequired()">*</sup></label>
-      </div>
-      <div>
+    <label [attr.class]="schema.key" [ngClass]="{'margin-bottom--half': true, required: isRequired()}">
+      {{title()}}<sup *ngIf="isRequired()">*</sup></label>
+    <div [class]="getClass('radio-group')">
+      <div *ngFor="let enum of this.schema.enum; let i = index" class="radio-container">
+        <input type="radio"
+           [id]="id(i)"
+           [checked]="control.value === enum"
+           [name]="schema.key"
+           [formControl]="control"
+           [value]="enum" />
         <label
-          [attr.class]="schema.key"
-          *ngFor="let enum of this.schema.enum; let i = index">
-          <input type="radio"
-            [checked]="control.value === enum"
-            [name]="schema.key"
-            [formControl]="control"
-            [value]="enum" />
-            {{enumNames(i)}}
-          <sup *ngIf="isRequired()">*</sup>
+          [attr.for]="id(i)"
+          [attr.class]="schema.key">
+           {{enumNames(i)}}
         </label>
       </div>
     </div>
@@ -31,3 +29,4 @@ export class RadiogroupComponent extends CommonComponent {
       : this.schema.enumNames[index];
   }
 }
+

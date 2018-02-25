@@ -1,16 +1,18 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FormArray, FormGroup } from '@angular/forms';
+import { SchemaFormGroup } from '../../models/schema-form-group';
 
 @Component({
-  selector: 'jf-component-chooser',
+  selector: 'jf-component-chooser, [jf-component-chooser]',
   template: `
-    <section>
-      <div *ngFor="let control of keys(form.controls)" jf-field [control]="form.get(control)"></div>
-    </section>
+    <div
+      *ngFor="let control of keys(form.controls)"
+      jf-field
+      [control]="form.get(control)"
+    ></div>
   `
 })
 export class ChooserComponent {
-  @Input() form: FormGroup;
+  @Input() form: SchemaFormGroup;
   @Input() schema: Object;
   keys = Object.keys;
 }

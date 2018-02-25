@@ -40,6 +40,7 @@ export class JsonFormFieldsService {
     const componentRef = this.rootViewContainer.createComponent(componentFactory);
     componentRef.instance.control = control;
     componentRef.instance.schema = control.schema;
+    componentRef.instance.style = control.style;
   }
 
   has(type: string) {

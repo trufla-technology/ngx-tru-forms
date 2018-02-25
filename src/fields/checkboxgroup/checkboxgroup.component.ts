@@ -3,7 +3,7 @@ import { CommonComponent } from '../common/common.component';
 
 @Component({
   template: `
-    <div class="checkboxgroup">
+    <div class="checkbox-group form-group">
       <label
         [attr.class]="schema.key"
         [ngClass]="{required: isRequired()}"

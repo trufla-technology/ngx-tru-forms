@@ -7,7 +7,7 @@ import { Schema } from '../../models/schema';
 @Component({
   selector: 'jf-field, [jf-field]',
   template: `
-    <ng-template #container></ng-template>
+    <ng-container #container></ng-container>
     <div *ngIf="control.invalid && (control.dirty || control.touched)" class="has-danger">
       <div *ngIf="control.errors && control.errors['required']">
         This field is required.
@@ -35,7 +35,6 @@ export class FieldComponent implements OnInit {
   container: ViewContainerRef;
   @Input()
   public control: SchemaFormControl;
-  public schema: Schema;
   public patterns;
 
   constructor(public jsonFormFieldsService: JsonFormFieldsService, public el: ElementRef) {
@@ -43,10 +42,9 @@ export class FieldComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.schema = this.control.schema;
     this.jsonFormFieldsService.setRootViewContainerRef(this.container);
     this.jsonFormFieldsService.addDynamicComponent(this.control);
-    this.el.nativeElement.className = `jf-field ${this.schema.key}`;
+    this.el.nativeElement.className = `field margin-bottom ${this.control.schema.key} ${this.getClass()}`;
   }
 
   patternHelp(pattern) {
@@ -57,5 +55,17 @@ export class FieldComponent implements OnInit {
     }
 
     return this.patterns[pattern];
+  }
+
+  getClass(defaultClass?) {
+    // if the format is present do not assign class top level style. enums like radio and checkbox may
+    // have their own
+    if (this.control.schema.hasOwnProperty('enum') === true
+        && this.control.schema.hasOwnProperty('format') === true) {
+      return defaultClass;
+    }
+
+    return this.control.style.hasOwnProperty('default')
+        ? this.control.style.default : (defaultClass || '');
   }
 }

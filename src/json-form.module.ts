@@ -51,7 +51,7 @@ import { RadiogroupComponent } from './fields/radiogroup/radiogroup.component';
     ObjectComponent,
     ArrayComponent,
     RadiogroupComponent,
-    CheckboxgroupComponent
+    CheckboxgroupComponent,
   ],
   providers: [
     JsonFormDefaultsService,
