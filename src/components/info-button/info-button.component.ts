@@ -3,9 +3,10 @@ import {Component, Input, OnInit} from '@angular/core';
 @Component({
   selector: 'jf-info-button',
   template: `
-    <button
+    <a
+      href="javascript:void(0)"
       *ngIf="title"
-      class="btn btn-light" [attr.title]="title">Info</button>
+      class="btn btn-link" [attr.title]="title">Info</a>
   `
 })
 export class InfoButtonComponent {

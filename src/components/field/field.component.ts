@@ -42,9 +42,14 @@ export class FieldComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.jsonFormFieldsService.setRootViewContainerRef(this.container);
-    this.jsonFormFieldsService.addDynamicComponent(this.control);
-    this.el.nativeElement.className = `field margin-bottom ${this.control.schema.key} ${this.getClass()}`;
+    if (
+      this.control.schema.hasOwnProperty('visible') === false ||
+      (this.control.schema.hasOwnProperty('visible') && this.control.schema['visible'] === true)
+    ) {
+      this.jsonFormFieldsService.setRootViewContainerRef(this.container);
+      this.jsonFormFieldsService.addDynamicComponent(this.control);
+      this.el.nativeElement.className = `field margin-bottom ${this.control.schema.key} ${this.getClass()}`;
+    }
   }
 
   patternHelp(pattern) {

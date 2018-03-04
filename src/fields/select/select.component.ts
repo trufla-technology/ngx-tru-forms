@@ -20,6 +20,7 @@ import { CommonComponent } from '../common/common.component';
         {{enumNames(i)}}
       </option>
     </select>
+    <jf-info-button [title]="schema.description"></jf-info-button>
   `
 })
 export class SelectComponent extends CommonComponent {

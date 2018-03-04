@@ -15,9 +15,7 @@ import { CommonComponent } from '../common/common.component';
       [attr.minLength]="schema.minLength || null"
       [attr.placeholder]="placeholder()"
     />
-    <jf-info-button
-      *ngIf="type() !== 'hidden'"
-      [title]="schema.description"></jf-info-button>
+    <jf-info-button [title]="schema.description"></jf-info-button>
   `
 })
 export class StringComponent extends CommonComponent { }

@@ -13,9 +13,7 @@ import { CommonComponent } from '../common/common.component';
       [formControl]="control"
       [attr.placeholder]="placeholder()"
     />
-    <jf-info-button
-      *ngIf="type() !== 'hidden'"
-      [title]="schema.description"></jf-info-button>
+    <jf-info-button [title]="schema.description"></jf-info-button>
   `
 })
 export class NumberComponent extends CommonComponent { }
