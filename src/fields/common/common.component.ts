@@ -43,7 +43,7 @@ export class CommonComponent {
 
   id(i?) {
     return this.schema.key + '_' +
-      (i ? this.schema.enum[i].replace(/\W+/g, '') : '');
+      (i ? this.schema.enum[i].toString().replace(/\W+/g, '') : '');
   }
 
   getClass(defaultClass?) {

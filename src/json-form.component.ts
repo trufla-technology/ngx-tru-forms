@@ -17,7 +17,7 @@ import { SchemaFormArray } from './models/schema-form-array';
       <div jf-component-chooser [form]="form" [schema]="schema"></div>
       <div class="grid margin-top--triple">
         <div class="smart--one-half grid__item margin-bottom" *ngIf="cancel">
-          <button class="btn btn-default button">{{cancel}}</button>
+          <button type="button" class="btn btn-default button" (click)="handleOnCancel()">{{cancel}}</button>
         </div>
         <div class="smart--one-half grid__item margin-bottom" *ngIf="submit">
           <button type="submit" class="btn btn-primary button button--accept" [disabled]="form.invalid">
@@ -43,6 +43,8 @@ export class JsonFormComponent implements OnInit {
   handleSubmit = new EventEmitter();
   @Output()
   handleChange = new EventEmitter();
+  @Output()
+  handleCancel = new EventEmitter();
 
   public form;
   public model;
@@ -90,12 +92,12 @@ export class JsonFormComponent implements OnInit {
         });
         group[prop] = new SchemaFormArray(fbArray);
         group[prop].schema = schema.properties[prop];
-        group[prop].stt = schema.properties[prop];
+        group[prop].style = arrayStyle;
       } else {
         const control = new SchemaFormControl(this.df.get(prop, schema, data), this.vl.get(prop, schema));
         // tslint:disable-next-line
         control.schema = { ...schema.properties[prop], key: prop };
-        control.style = style[prop];
+        control.style = style[prop] || {};
         control.valueChanges.subscribe((event) => this.handleOnChange(prop, event));
         group[prop] = control;
       }
@@ -110,5 +112,9 @@ export class JsonFormComponent implements OnInit {
 
   handleOnChange(key, value) {
     this.control = { key, value };
+  }
+
+  handleOnCancel() {
+    this.handleCancel.emit(this.form.value);
   }
 }

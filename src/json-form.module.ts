@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { BrowserModule } from '@angular/platform-browser';
 import { JsonFormComponent } from './json-form.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ChooserComponent } from './components/chooser/chooser.component';
@@ -20,6 +21,7 @@ import { RadiogroupComponent } from './fields/radiogroup/radiogroup.component';
 
 @NgModule({
   imports: [
+    BrowserModule,
     CommonModule,
     ReactiveFormsModule
   ],
@@ -52,6 +54,7 @@ import { RadiogroupComponent } from './fields/radiogroup/radiogroup.component';
     ArrayComponent,
     RadiogroupComponent,
     CheckboxgroupComponent,
+    JsonFormComponent
   ],
   providers: [
     JsonFormDefaultsService,
