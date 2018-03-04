@@ -15,6 +15,7 @@ import { CommonComponent } from '../common/common.component';
         [attr.minLength]="schema.minLength || null"
         [attr.placeholder]="placeholder()"
       ></textarea>
+      <jf-info-button [title]="schema.description"></jf-info-button>
     </div>
   `
 })

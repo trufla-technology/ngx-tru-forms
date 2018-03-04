@@ -1,4 +1,7 @@
-import { Component, EventEmitter, Inject, Input, OnInit, Output } from '@angular/core';
+import {
+  ChangeDetectorRef, Component, DoCheck, EventEmitter, Inject, Input, KeyValueDiffers, OnChanges, OnInit,
+  Output
+} from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { JsonFormValidatorsService } from './services/validators.service';
 import { SchemaFormControl } from './models/schema-form-control';
@@ -54,12 +57,17 @@ export class JsonFormComponent implements OnInit {
   constructor(
     @Inject(FormBuilder) fb: FormBuilder,
     public vl: JsonFormValidatorsService,
-    public df: JsonFormDefaultsService
+    public df: JsonFormDefaultsService,
+    public cd: ChangeDetectorRef
   ) {
     this.fb = fb;
   }
 
   ngOnInit() {
+    this.constructForm();
+  }
+
+  public constructForm() {
     this.model = {};
     if (this.isValidSchema()) {
       this.model = this.generateForm(this.schema, {}, this.data, this.style);

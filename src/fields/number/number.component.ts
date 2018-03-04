@@ -3,7 +3,7 @@ import { CommonComponent } from '../common/common.component';
 
 @Component({
   template: `
-    <label [ngClass]="['jf-label', schema.key, (isRequired() ? 'required' : '')]">
+    <label [ngClass]="['jf-label', schema.key, (isRequired() ? 'required' : '')]" *ngIf="type() !== 'hidden'">
       {{title()}}<sup *ngIf="isRequired()">*</sup>
     </label>
     <input
@@ -13,6 +13,9 @@ import { CommonComponent } from '../common/common.component';
       [formControl]="control"
       [attr.placeholder]="placeholder()"
     />
+    <jf-info-button
+      *ngIf="type() !== 'hidden'"
+      [title]="schema.description"></jf-info-button>
   `
 })
 export class NumberComponent extends CommonComponent { }

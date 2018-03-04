@@ -27,12 +27,6 @@ export class CommonComponent {
   type() {
     let format = this.schema.format || 'text';
 
-    switch (this.schema.type) {
-      case 'number':
-        format = 'number';
-        break;
-    }
-
     switch (format) {
       case 'photo':
         format = 'file';
