@@ -28,4 +28,10 @@ export interface Schema {
 
   // required
   required: Array<any>;
+
+  // show tooltip
+  description: string;
+
+  // display or not
+  visible: boolean;
 }
