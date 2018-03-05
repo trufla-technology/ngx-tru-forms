@@ -1,11 +1,3 @@
-var __assign = (this && this.__assign) || Object.assign || function(t) {
-    for (var s, i = 1, n = arguments.length; i < n; i++) {
-        s = arguments[i];
-        for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
-            t[p] = s[p];
-    }
-    return t;
-};
 import { ChangeDetectorRef, Component, EventEmitter, Inject, Input, Output } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { JsonFormValidatorsService } from './services/validators.service';
@@ -43,6 +35,9 @@ var JsonFormComponent = /** @class */ (function () {
     };
     JsonFormComponent.prototype.generateForm = function (schema, group, data, style) {
         var _this = this;
+        if (!this.isVisible(schema)) {
+            return group;
+        }
         Object.keys(schema.properties).forEach(function (prop) {
             if (schema.properties[prop].type === 'object') {
                 var groupData = data && data.hasOwnProperty(prop) ? data[prop] : {};
@@ -63,16 +58,19 @@ var JsonFormComponent = /** @class */ (function () {
                 group[prop].schema = schema.properties[prop];
                 group[prop].style = arrayStyle;
             }
-            else {
+            else if (_this.isVisible(schema.properties[prop])) {
                 var control = new SchemaFormControl(_this.df.get(prop, schema, data), _this.vl.get(prop, schema));
-                // tslint:disable-next-line
-                control.schema = __assign({}, schema.properties[prop], { key: prop });
+                control.schema = Object.assign({}, schema.properties[prop]);
+                control.schema.key = prop;
                 control.style = style[prop] || {};
                 control.valueChanges.subscribe(function (event) { return _this.handleOnChange(prop, event); });
                 group[prop] = control;
             }
         });
         return group;
+    };
+    JsonFormComponent.prototype.isVisible = function (prop) {
+        return prop.hasOwnProperty('visible') === false || (prop.hasOwnProperty('visible') && prop.visible === true);
     };
     JsonFormComponent.prototype.handleOnSubmit = function () {
         this.handleSubmit.emit(this.form.value);

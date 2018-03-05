@@ -8,6 +8,7 @@ import { SchemaFormControl } from './models/schema-form-control';
 import { JsonFormDefaultsService } from './services/defaults.service';
 import { SchemaFormGroup } from './models/schema-form-group';
 import { SchemaFormArray } from './models/schema-form-array';
+import {Schema} from './models/schema';
 
 @Component({
   selector: 'jf-form',
@@ -83,6 +84,10 @@ export class JsonFormComponent implements OnInit {
   }
 
   private generateForm (schema, group?: {}, data?: {}, style?: {}) {
+    if (!this.isVisible(schema)) {
+      return group;
+    }
+
     Object.keys(schema.properties).forEach((prop) => {
       if (schema.properties[prop].type === 'object') {
         const groupData = data && data.hasOwnProperty(prop) ? data[prop] : {};
@@ -101,10 +106,10 @@ export class JsonFormComponent implements OnInit {
         group[prop] = new SchemaFormArray(fbArray);
         group[prop].schema = schema.properties[prop];
         group[prop].style = arrayStyle;
-      } else {
+      } else if (this.isVisible(schema.properties[prop]))  {
         const control = new SchemaFormControl(this.df.get(prop, schema, data), this.vl.get(prop, schema));
-        // tslint:disable-next-line
-        control.schema = { ...schema.properties[prop], key: prop };
+        control.schema = Object.assign({}, schema.properties[prop]);
+        control.schema.key = prop;
         control.style = style[prop] || {};
         control.valueChanges.subscribe((event) => this.handleOnChange(prop, event));
         group[prop] = control;
@@ -112,6 +117,10 @@ export class JsonFormComponent implements OnInit {
     });
 
     return group;
+  }
+
+  isVisible (prop) {
+    return prop.hasOwnProperty('visible') === false || (prop.hasOwnProperty('visible') && prop.visible === true);
   }
 
   handleOnSubmit() {

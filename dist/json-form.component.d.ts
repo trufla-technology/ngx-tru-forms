@@ -26,6 +26,7 @@ export declare class JsonFormComponent implements OnInit {
     constructForm(): void;
     isValidSchema(): boolean;
     private generateForm(schema, group?, data?, style?);
+    isVisible(prop: any): boolean;
     handleOnSubmit(): void;
     handleOnChange(key: any, value: any): void;
     handleOnCancel(): void;
