@@ -6,7 +6,7 @@ import {Component, Input, OnInit} from '@angular/core';
     <a
       href="javascript:void(0)"
       *ngIf="title"
-      class="btn btn-link" [attr.title]="title">Info</a>
+      class="btn btn-link info" [attr.title]="title">Info</a>
   `
 })
 export class InfoButtonComponent {

@@ -10,6 +10,10 @@ export class JsonFormValidatorsService {
   }
 
   public get(prop, schema) {
+    if (schema.properties[prop].type === 'boolean') {
+      return Validators.pattern('true');
+    }
+
     const required = schema.required || [];
     const field = schema.properties[prop];
     return Validators.compose(this.validators.concat([
