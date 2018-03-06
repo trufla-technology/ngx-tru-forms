@@ -12,7 +12,9 @@ import { CommonComponent } from '../common/common.component';
       type="text"
       [formControl]="control"
     >
-      <option value="" [selected]="control.value === ''" [disabled]="true"></option>
+      <option value="" [selected]="control.value === ''" [disabled]="true">
+        Select {{title()}}
+      </option>
       <option
         [selected]="control.value === enum"
         *ngFor="let enum of this.schema.enum; let i = index"

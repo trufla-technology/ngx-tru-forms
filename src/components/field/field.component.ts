@@ -57,7 +57,11 @@ export class FieldComponent implements OnInit {
     return this.patterns[pattern];
   }
 
-  getClass(defaultClass?) {
+  getClass(defaultClass = '') {
+    if (this.control.schema.hasOwnProperty('description')) {
+      defaultClass = defaultClass + ' has-info';
+    }
+
     // if the format is present do not assign class top level style. enums like radio and checkbox may
     // have their own
     if (this.control.schema.hasOwnProperty('enum') === true

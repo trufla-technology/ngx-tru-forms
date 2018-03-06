@@ -23,6 +23,10 @@ var FieldComponent = /** @class */ (function () {
         return this.patterns[pattern];
     };
     FieldComponent.prototype.getClass = function (defaultClass) {
+        if (defaultClass === void 0) { defaultClass = ''; }
+        if (this.control.schema.hasOwnProperty('description')) {
+            defaultClass = defaultClass + ' has-info';
+        }
         // if the format is present do not assign class top level style. enums like radio and checkbox may
         // have their own
         if (this.control.schema.hasOwnProperty('enum') === true
