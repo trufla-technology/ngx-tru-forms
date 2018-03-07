@@ -22,7 +22,7 @@ var SelectComponent = /** @class */ (function (_super) {
     };
     SelectComponent.decorators = [
         { type: Component, args: [{
-                    template: "\n    <label [attr.class]=\"schema.key\" [ngClass]=\"{required: isRequired()}\">\n      {{title()}}<sup *ngIf=\"isRequired()\">*</sup>\n    </label>\n    <select\n      class=\"form-control\"\n      name=\"name\"\n      type=\"text\"\n      [formControl]=\"control\"\n    >\n      <option value=\"\" [selected]=\"control.value === ''\" [disabled]=\"true\">\n        Select {{title()}}\n      </option>\n      <option\n        [selected]=\"control.value === enum\"\n        *ngFor=\"let enum of this.schema.enum; let i = index\"\n        [ngValue]=\"enum\">\n        {{enumNames(i)}}\n      </option>\n    </select>\n    <jf-info-button [title]=\"schema.description\"></jf-info-button>\n  "
+                    template: "\n    <label [attr.class]=\"schema.key\" [ngClass]=\"{required: isRequired()}\">\n      {{title()}}<sup *ngIf=\"isRequired()\">*</sup>\n    </label>\n    <a [attr.href]=\"'javascript:void(0)'\"\n       *ngIf=\"title\" [attr.class]=\"'info'\" [attr.title]=\"this.schema.description\">Info</a>\n    <select\n      class=\"form-control\"\n      name=\"name\"\n      type=\"text\"\n      [formControl]=\"control\"\n    >\n      <option value=\"\" [selected]=\"control.value === ''\" [disabled]=\"true\">\n        Select {{title()}}\n      </option>\n      <option\n        [selected]=\"control.value === enum\"\n        *ngFor=\"let enum of this.schema.enum; let i = index\"\n        [ngValue]=\"enum\">\n        {{enumNames(i)}}\n      </option>\n    </select>\n  "
                 },] },
     ];
     /** @nocollapse */

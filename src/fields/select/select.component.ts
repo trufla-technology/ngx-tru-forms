@@ -6,6 +6,8 @@ import { CommonComponent } from '../common/common.component';
     <label [attr.class]="schema.key" [ngClass]="{required: isRequired()}">
       {{title()}}<sup *ngIf="isRequired()">*</sup>
     </label>
+    <a [attr.href]="'javascript:void(0)'"
+       *ngIf="title" [attr.class]="'info'" [attr.title]="this.schema.description">Info</a>
     <select
       class="form-control"
       name="name"
@@ -22,7 +24,6 @@ import { CommonComponent } from '../common/common.component';
         {{enumNames(i)}}
       </option>
     </select>
-    <jf-info-button [title]="schema.description"></jf-info-button>
   `
 })
 export class SelectComponent extends CommonComponent {

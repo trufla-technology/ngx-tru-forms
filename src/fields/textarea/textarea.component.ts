@@ -7,6 +7,8 @@ import { CommonComponent } from '../common/common.component';
       <label ngClass="{required: isRequired()}">
         {{title()}}<sup *ngIf="isRequired()">*</sup>
       </label>
+      <a [attr.href]="'javascript:void(0)'" *ngIf="this.schema.description" [attr.class]="'info'"
+         [attr.title]="this.schema.description">Info</a>
       <textarea
         class="form-control"
         [name]="schema.key"
@@ -15,7 +17,6 @@ import { CommonComponent } from '../common/common.component';
         [attr.minLength]="schema.minLength || null"
         [attr.placeholder]="placeholder()"
       ></textarea>
-      <jf-info-button [title]="schema.description"></jf-info-button>
     </div>
   `
 })

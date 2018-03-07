@@ -5,7 +5,7 @@ var InfoButtonComponent = /** @class */ (function () {
     InfoButtonComponent.decorators = [
         { type: Component, args: [{
                     selector: 'jf-info-button',
-                    template: "\n    <a\n      href=\"javascript:void(0)\"\n      *ngIf=\"title\"\n      class=\"btn btn-link info\" [attr.title]=\"title\">Info</a>\n  "
+                    template: "\n    <a\n      [attr.href]=\"'javascript:void(0)'\"\n      *ngIf=\"title\"\n      [attr.class]=\"'btn btn-link info'\" [attr.title]=\"title\">Info</a>\n  "
                 },] },
     ];
     /** @nocollapse */

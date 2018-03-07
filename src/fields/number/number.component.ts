@@ -6,6 +6,8 @@ import { CommonComponent } from '../common/common.component';
     <label [ngClass]="['jf-label', schema.key, (isRequired() ? 'required' : '')]" *ngIf="type() !== 'hidden'">
       {{title()}}<sup *ngIf="isRequired()">*</sup>
     </label>
+    <a [attr.href]="'javascript:void(0)'" *ngIf="this.schema.description" [attr.class]="'info'"
+       [attr.title]="this.schema.description">Info</a>
     <input
       class="form-control"
       [name]="schema.key"
@@ -13,7 +15,6 @@ import { CommonComponent } from '../common/common.component';
       [formControl]="control"
       [attr.placeholder]="placeholder()"
     />
-    <jf-info-button [title]="schema.description"></jf-info-button>
   `
 })
 export class NumberComponent extends CommonComponent { }
