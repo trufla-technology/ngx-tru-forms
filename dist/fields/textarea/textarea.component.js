@@ -17,7 +17,7 @@ var TextareaComponent = /** @class */ (function (_super) {
     }
     TextareaComponent.decorators = [
         { type: Component, args: [{
-                    template: "\n    <div [class]=\"getClass()\">\n      <label ngClass=\"{required: isRequired()}\">\n        {{title()}}<sup *ngIf=\"isRequired()\">*</sup>\n      </label>\n      <a [attr.href]=\"'javascript:void(0)'\" *ngIf=\"this.schema.description\" [attr.class]=\"'info'\"\n         [attr.title]=\"this.schema.description\">Info</a>\n      <textarea\n        class=\"form-control\"\n        [name]=\"schema.key\"\n        [formControl]=\"control\"\n        [attr.maxLength]=\"schema.maxLength || null\"\n        [attr.minLength]=\"schema.minLength || null\"\n        [attr.placeholder]=\"placeholder()\"\n      ></textarea>\n    </div>\n  "
+                    template: "\n    <div [class]=\"getClass()\">\n      <label ngClass=\"{required: isRequired()}\">\n        {{title()}}<sup *ngIf=\"isRequired()\">*</sup>\n      </label>\n      <a *ngIf=\"this.schema.description\" [attr.class]=\"'info'\" [attr.title]=\"this.schema.description\">Info</a>\n      <textarea\n        class=\"form-control\"\n        [name]=\"schema.key\"\n        [formControl]=\"control\"\n        [attr.maxLength]=\"schema.maxLength || null\"\n        [attr.minLength]=\"schema.minLength || null\"\n        [attr.placeholder]=\"placeholder()\"\n      ></textarea>\n    </div>\n  "
                 },] },
     ];
     /** @nocollapse */

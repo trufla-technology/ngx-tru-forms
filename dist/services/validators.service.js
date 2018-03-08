@@ -5,11 +5,11 @@ var JsonFormValidatorsService = /** @class */ (function () {
         this.validators = [];
     }
     JsonFormValidatorsService.prototype.get = function (prop, schema) {
-        if (schema.properties[prop].type === 'boolean') {
-            return Validators.pattern('true');
-        }
         var required = schema.required || [];
         var field = schema.properties[prop];
+        if (schema.properties[prop].type === 'boolean' && required.indexOf(prop) > -1) {
+            return Validators.pattern('true');
+        }
         return Validators.compose(this.validators.concat([
             (required.indexOf(prop) > -1 ? Validators.required : null),
             (field.hasOwnProperty('minLength') ? Validators.minLength(field.minLength) : null),

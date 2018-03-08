@@ -10,12 +10,14 @@ export class JsonFormValidatorsService {
   }
 
   public get(prop, schema) {
-    if (schema.properties[prop].type === 'boolean') {
+    const required = schema.required || [];
+    const field = schema.properties[prop];
+
+
+    if (schema.properties[prop].type === 'boolean' && required.indexOf(prop) > -1) {
       return Validators.pattern('true');
     }
 
-    const required = schema.required || [];
-    const field = schema.properties[prop];
     return Validators.compose(this.validators.concat([
       (required.indexOf(prop) > -1 ? Validators.required : null),
       (field.hasOwnProperty('minLength') ? Validators.minLength(field.minLength) : null),
