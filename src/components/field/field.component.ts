@@ -1,8 +1,7 @@
 import {Component, ElementRef, Input, OnInit, ViewChild, ViewContainerRef} from '@angular/core';
 import { SchemaFormControl } from '../../models/schema-form-control';
 import * as RandExp from 'randexp';
-import { JsonFormFieldsService } from '../../services/fields.service';
-import { Schema } from '../../models/schema';
+import { JsonFormFieldsService } from '../../';
 
 @Component({
   selector: 'jf-field, [jf-field]',
@@ -44,7 +43,7 @@ export class FieldComponent implements OnInit {
   ngOnInit() {
     this.jsonFormFieldsService.setRootViewContainerRef(this.container);
     this.jsonFormFieldsService.addDynamicComponent(this.control);
-    this.el.nativeElement.className = `field margin-bottom ${this.control.schema.key} ${this.getClass()}`;
+    this.el.nativeElement.className = `field margin-bottom ${this.getClass()}`;
   }
 
   patternHelp(pattern) {
@@ -58,18 +57,14 @@ export class FieldComponent implements OnInit {
   }
 
   getClass(defaultClass = '') {
+    const fieldClass = [defaultClass];
+    fieldClass.push(this.control.schema.type);
+    fieldClass.push(this.control.schema.key);
+
     if (this.control.schema.hasOwnProperty('description')) {
-      defaultClass = defaultClass + ' has-info';
+      fieldClass.push('has-info');
     }
 
-    // if the format is present do not assign class top level style. enums like radio and checkbox may
-    // have their own
-    if (this.control.schema.hasOwnProperty('enum') === true
-        && this.control.schema.hasOwnProperty('format') === true) {
-      return defaultClass;
-    }
-
-    return this.control.style.hasOwnProperty('default')
-        ? this.control.style.default : (defaultClass || '');
+    return fieldClass.filter((d) => d).join(' ');
   }
 }

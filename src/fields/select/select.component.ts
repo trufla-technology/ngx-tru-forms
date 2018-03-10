@@ -10,7 +10,6 @@ import { CommonComponent } from '../common/common.component';
     <select
       class="form-control"
       name="name"
-      type="text"
       [formControl]="control"
     >
       <option value="" [selected]="control.value === ''" [disabled]="true">

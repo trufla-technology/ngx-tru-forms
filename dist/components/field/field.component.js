@@ -1,7 +1,7 @@
 import { Component, ElementRef, Input, ViewChild, ViewContainerRef } from '@angular/core';
 import { SchemaFormControl } from '../../models/schema-form-control';
 import * as RandExp from 'randexp';
-import { JsonFormFieldsService } from '../../services/fields.service';
+import { JsonFormFieldsService } from '../../';
 var FieldComponent = /** @class */ (function () {
     function FieldComponent(jsonFormFieldsService, el) {
         this.jsonFormFieldsService = jsonFormFieldsService;
@@ -11,7 +11,7 @@ var FieldComponent = /** @class */ (function () {
     FieldComponent.prototype.ngOnInit = function () {
         this.jsonFormFieldsService.setRootViewContainerRef(this.container);
         this.jsonFormFieldsService.addDynamicComponent(this.control);
-        this.el.nativeElement.className = "field margin-bottom " + this.control.schema.key + " " + this.getClass();
+        this.el.nativeElement.className = "field margin-bottom " + this.getClass();
     };
     FieldComponent.prototype.patternHelp = function (pattern) {
         if (this.patterns[pattern]) {
@@ -24,17 +24,13 @@ var FieldComponent = /** @class */ (function () {
     };
     FieldComponent.prototype.getClass = function (defaultClass) {
         if (defaultClass === void 0) { defaultClass = ''; }
+        var fieldClass = [defaultClass];
+        fieldClass.push(this.control.schema.type);
+        fieldClass.push(this.control.schema.key);
         if (this.control.schema.hasOwnProperty('description')) {
-            defaultClass = defaultClass + ' has-info';
+            fieldClass.push('has-info');
         }
-        // if the format is present do not assign class top level style. enums like radio and checkbox may
-        // have their own
-        if (this.control.schema.hasOwnProperty('enum') === true
-            && this.control.schema.hasOwnProperty('format') === true) {
-            return defaultClass;
-        }
-        return this.control.style.hasOwnProperty('default')
-            ? this.control.style.default : (defaultClass || '');
+        return fieldClass.filter(function (d) { return d; }).join(' ');
     };
     FieldComponent.decorators = [
         { type: Component, args: [{
