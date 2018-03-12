@@ -1,14 +1,10 @@
-import {
-  ChangeDetectorRef, Component, DoCheck, EventEmitter, Inject, Input, KeyValueDiffers, OnChanges, OnInit,
-  Output
-} from '@angular/core';
+import { ChangeDetectorRef, Component, EventEmitter, Inject, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { JsonFormValidatorsService } from './services/validators.service';
 import { SchemaFormControl } from './models/schema-form-control';
 import { JsonFormDefaultsService } from './services/defaults.service';
 import { SchemaFormGroup } from './models/schema-form-group';
 import { SchemaFormArray } from './models/schema-form-array';
-import {Schema} from './models/schema';
 
 @Component({
   selector: 'jf-form',

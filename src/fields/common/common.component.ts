@@ -1,6 +1,11 @@
 import { Schema } from '../../models/schema';
 import { SchemaFormControl } from '../../models/schema-form-control';
+import { Component } from '@angular/core';
 
+@Component({
+  selector: 'jf-component',
+  template: ''
+})
 export class CommonComponent {
   public control: SchemaFormControl;
   public schema: Schema;

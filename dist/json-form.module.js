@@ -42,7 +42,8 @@ var JsonFormModule = /** @class */ (function () {
                         ObjectComponent,
                         ArrayComponent,
                         CheckboxgroupComponent,
-                        RadiogroupComponent
+                        RadiogroupComponent,
+                        CommonComponent
                     ],
                     exports: [
                         JsonFormComponent,

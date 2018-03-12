@@ -1,3 +1,4 @@
+import { Component } from '@angular/core';
 var CommonComponent = /** @class */ (function () {
     function CommonComponent() {
     }
@@ -31,6 +32,14 @@ var CommonComponent = /** @class */ (function () {
         return this.style.hasOwnProperty('default') ?
             this.style['default'] : (defaultClass || '');
     };
+    CommonComponent.decorators = [
+        { type: Component, args: [{
+                    selector: 'jf-component',
+                    template: ''
+                },] },
+    ];
+    /** @nocollapse */
+    CommonComponent.ctorParameters = function () { return []; };
     return CommonComponent;
 }());
 export { CommonComponent };
