@@ -18,6 +18,7 @@ import { ObjectComponent } from './fields/object/object.component';
 import { ArrayComponent } from './fields/array/array.component';
 import { CheckboxgroupComponent } from './fields/checkboxgroup/checkboxgroup.component';
 import { RadiogroupComponent } from './fields/radiogroup/radiogroup.component';
+import {CommonComponent} from './fields/common/common.component';
 
 @NgModule({
   imports: [
@@ -41,7 +42,8 @@ import { RadiogroupComponent } from './fields/radiogroup/radiogroup.component';
     RadiogroupComponent
   ],
   exports: [
-    JsonFormComponent
+    JsonFormComponent,
+    CommonComponent
   ],
   entryComponents: [
     StringComponent,
