@@ -9,6 +9,5 @@ export declare class FieldComponent implements OnInit {
     patterns: any;
     constructor(jsonFormFieldsService: JsonFormFieldsService, el: ElementRef);
     ngOnInit(): void;
-    patternHelp(pattern: any): any;
     getClass(defaultClass?: string): string;
 }

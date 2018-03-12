@@ -1,6 +1,5 @@
 import {Component, ElementRef, Input, OnInit, ViewChild, ViewContainerRef} from '@angular/core';
 import { SchemaFormControl } from '../../models/schema-form-control';
-// import * as RandExp from 'randexp';
 import { JsonFormFieldsService } from '../../';
 
 @Component({
@@ -12,7 +11,7 @@ import { JsonFormFieldsService } from '../../';
         This field is required.
       </div>
       <div *ngIf="control.errors && control.errors['pattern']">
-        Please enter a valid value, for example {{patternHelp(control.errors['pattern']['requiredPattern'])}}.
+        Input pattern is invalid.
       </div>
       <div *ngIf="control.errors && control.errors['minlength']">
         Input has to be a minimum of {{control.errors['minlength']['requiredLength']}} characters.
@@ -44,16 +43,6 @@ export class FieldComponent implements OnInit {
     this.jsonFormFieldsService.setRootViewContainerRef(this.container);
     this.jsonFormFieldsService.addDynamicComponent(this.control);
     this.el.nativeElement.className = `field margin-bottom ${this.getClass()}`;
-  }
-
-  patternHelp(pattern) {
-    // if (this.patterns[pattern]) {
-      return this.patterns[pattern];
-    // } else {
-    //   this.patterns[pattern] = new RandExp(pattern).gen();
-    // }
-
-    // return this.patterns[pattern];
   }
 
   getClass(defaultClass = '') {
