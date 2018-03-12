@@ -1,6 +1,6 @@
 import {Component, ElementRef, Input, OnInit, ViewChild, ViewContainerRef} from '@angular/core';
 import { SchemaFormControl } from '../../models/schema-form-control';
-import * as RandExp from 'randexp';
+// import * as RandExp from 'randexp';
 import { JsonFormFieldsService } from '../../';
 
 @Component({
@@ -47,13 +47,13 @@ export class FieldComponent implements OnInit {
   }
 
   patternHelp(pattern) {
-    if (this.patterns[pattern]) {
+    // if (this.patterns[pattern]) {
       return this.patterns[pattern];
-    } else {
-      this.patterns[pattern] = new RandExp(pattern).gen();
-    }
+    // } else {
+    //   this.patterns[pattern] = new RandExp(pattern).gen();
+    // }
 
-    return this.patterns[pattern];
+    // return this.patterns[pattern];
   }
 
   getClass(defaultClass = '') {

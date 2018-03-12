@@ -1,6 +1,5 @@
 import { Component, ElementRef, Input, ViewChild, ViewContainerRef } from '@angular/core';
 import { SchemaFormControl } from '../../models/schema-form-control';
-import * as RandExp from 'randexp';
 import { JsonFormFieldsService } from '../../';
 var FieldComponent = /** @class */ (function () {
     function FieldComponent(jsonFormFieldsService, el) {
@@ -14,13 +13,12 @@ var FieldComponent = /** @class */ (function () {
         this.el.nativeElement.className = "field margin-bottom " + this.getClass();
     };
     FieldComponent.prototype.patternHelp = function (pattern) {
-        if (this.patterns[pattern]) {
-            return this.patterns[pattern];
-        }
-        else {
-            this.patterns[pattern] = new RandExp(pattern).gen();
-        }
+        // if (this.patterns[pattern]) {
         return this.patterns[pattern];
+        // } else {
+        //   this.patterns[pattern] = new RandExp(pattern).gen();
+        // }
+        // return this.patterns[pattern];
     };
     FieldComponent.prototype.getClass = function (defaultClass) {
         if (defaultClass === void 0) { defaultClass = ''; }
