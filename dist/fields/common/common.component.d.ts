@@ -11,4 +11,5 @@ export declare class CommonComponent {
     type(): string;
     id(i?: any): string;
     getClass(defaultClass?: any): any;
+    getMask(): false | (string | RegExp)[];
 }

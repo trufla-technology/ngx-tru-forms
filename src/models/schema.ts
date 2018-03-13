@@ -34,4 +34,7 @@ export interface Schema {
 
   // display or not
   visible: boolean;
+
+  // add masking
+  mask: Array<any>;
 }

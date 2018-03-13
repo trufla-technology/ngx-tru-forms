@@ -32,6 +32,17 @@ var CommonComponent = /** @class */ (function () {
         return this.style.hasOwnProperty('default') ?
             this.style['default'] : (defaultClass || '');
     };
+    CommonComponent.prototype.getMask = function () {
+        if (this.schema.hasOwnProperty('mask')) {
+            var mask_1 = [];
+            this.schema.mask.forEach(function (el) {
+                mask_1.push(/^\/.*\/$/.test(el) ? new RegExp(el.replace(/^\/|\/$/g, '')) : el);
+            });
+            console.log(mask_1);
+            return mask_1;
+        }
+        return false;
+    };
     CommonComponent.decorators = [
         { type: Component, args: [{
                     selector: 'jf-component',

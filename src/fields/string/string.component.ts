@@ -15,6 +15,7 @@ import { CommonComponent } from '../common/common.component';
       [attr.maxLength]="schema.maxLength || null"
       [attr.minLength]="schema.minLength || null"
       [attr.placeholder]="placeholder()"
+      [textMask]="{ mask: getMask() }"
     />
   `
 })

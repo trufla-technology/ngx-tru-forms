@@ -49,4 +49,19 @@ export class CommonComponent {
     return this.style.hasOwnProperty('default') ?
       this.style['default'] : (defaultClass || '');
   }
+
+  getMask() {
+    if (this.schema.hasOwnProperty('mask')) {
+      const mask: Array<string | RegExp> = [];
+      this.schema.mask.forEach((el) => {
+        mask.push(/^\/.*\/$/.test(el) ? new RegExp(el.replace(/^\/|\/$/g, '')) : el);
+      });
+
+      console.log(mask);
+      return mask;
+    }
+
+
+    return false;
+  }
 }

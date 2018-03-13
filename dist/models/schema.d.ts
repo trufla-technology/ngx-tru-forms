@@ -11,4 +11,5 @@ export interface Schema {
     required: Array<any>;
     description: string;
     visible: boolean;
+    mask: Array<any>;
 }

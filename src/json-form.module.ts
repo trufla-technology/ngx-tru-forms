@@ -19,11 +19,13 @@ import { ArrayComponent } from './fields/array/array.component';
 import { CheckboxgroupComponent } from './fields/checkboxgroup/checkboxgroup.component';
 import { RadiogroupComponent } from './fields/radiogroup/radiogroup.component';
 import { CommonComponent } from './fields/common/common.component';
+import {TextMaskModule} from 'angular2-text-mask';
 
 @NgModule({
   imports: [
     BrowserModule,
     CommonModule,
+    TextMaskModule,
     ReactiveFormsModule
   ],
   declarations: [
