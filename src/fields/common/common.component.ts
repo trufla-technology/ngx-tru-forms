@@ -57,10 +57,8 @@ export class CommonComponent {
         mask.push(/^\/.*\/$/.test(el) ? new RegExp(el.replace(/^\/|\/$/g, '')) : el);
       });
 
-      console.log(mask);
       return mask;
     }
-
 
     return false;
   }

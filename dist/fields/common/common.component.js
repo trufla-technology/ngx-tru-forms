@@ -38,7 +38,6 @@ var CommonComponent = /** @class */ (function () {
             this.schema.mask.forEach(function (el) {
                 mask_1.push(/^\/.*\/$/.test(el) ? new RegExp(el.replace(/^\/|\/$/g, '')) : el);
             });
-            console.log(mask_1);
             return mask_1;
         }
         return false;

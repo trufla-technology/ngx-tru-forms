@@ -20,4 +20,3 @@ import { CommonComponent } from '../common/common.component';
   `
 })
 export class StringComponent extends CommonComponent { }
-

@@ -7,7 +7,8 @@ import { CommonComponent } from '../common/common.component';
       {{title()}}<sup *ngIf="isRequired()">*</sup></label>
     <a *ngIf="this.schema.description" [attr.class]="'info'" [attr.title]="this.schema.description">Info</a>
     <div [class]="getClass('radio-group')">
-      <div *ngFor="let enum of this.schema.enum; let i = index" class="radio-container">
+      <div *ngFor="let enum of this.schema.enum; let i = index"
+           [ngClass]="{'radio-container': true, 'checked': control.value === enum}">
         <input type="radio"
            [id]="id(i)"
            [checked]="control.value === enum"
