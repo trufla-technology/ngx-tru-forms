@@ -11,7 +11,7 @@ import { JsonFormFieldsService } from '../../';
         This field is required.
       </div>
       <div *ngIf="control.errors && control.errors['pattern']">
-        Input pattern is invalid.
+        Input value is invalid.
       </div>
       <div *ngIf="control.errors && control.errors['minlength']">
         Input has to be a minimum of {{control.errors['minlength']['requiredLength']}} characters.
@@ -24,6 +24,9 @@ import { JsonFormFieldsService } from '../../';
       </div>
       <div *ngIf="control.errors && control.errors['max']">
         Enter a value less then {{control.errors['max']['max']}}.
+      </div>
+      <div *ngIf="control.errors && control.errors['customError']">
+        {{control.errors['customError']}}
       </div>
     </div>
   `

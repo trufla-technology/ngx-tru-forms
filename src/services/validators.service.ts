@@ -9,16 +9,17 @@ export class JsonFormValidatorsService {
     this.validators = [];
   }
 
-  public get(prop, schema) {
+  public get(prop, schema, path) {
     const required = schema.required || [];
     const field = schema.properties[prop];
-
+    const varPath = [].concat(path, prop).join('.');
 
     if (schema.properties[prop].type === 'boolean' && required.indexOf(prop) > -1) {
       return Validators.pattern('true');
     }
 
     return Validators.compose(this.validators.concat([
+      (this.has(varPath) ? this.validators[varPath] : null),
       (required.indexOf(prop) > -1 ? Validators.required : null),
       (field.hasOwnProperty('minLength') ? Validators.minLength(field.minLength) : null),
       (field.hasOwnProperty('maxLength') ? Validators.maxLength(field.maxLength) : null),
@@ -29,7 +30,11 @@ export class JsonFormValidatorsService {
     ]));
   }
 
-  public register(validator: ValidatorFn) {
-    this.validators.push(validator);
+  public register(field: any, validator: ValidatorFn) {
+    this.validators[field] = validator;
+  }
+
+  public has(str) {
+    return this.validators.hasOwnProperty(str);
   }
 }

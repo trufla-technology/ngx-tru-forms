@@ -102,11 +102,36 @@ const ValidatorJSON = (control: AbstractControl) => {
     JSON.parse(control.value);
     return null;
   } catch (err) {
-    return { invalidJSON: err.message };
+    return { customError: err.message };
   }
 };
-this.jfValidatorsService.register(ValidatorJSON);
+this.jfValidatorsService.register('field_name', ValidatorJSON);
 ```
+
+`field_name` has to be valid field including any nesting (as it is display on data and without properties)
+```js
+const schema = {
+	"type": "object",
+	"properties": {
+		"first_name": {
+			"type": "string"
+		},
+		"last_name": {
+    	"type": "string",
+    	"prefix": {
+    	  "type": "object",
+        "properties": {
+          "custom": {
+            "type": "string"
+          }
+        }
+    	}
+    }
+	},
+	"required": ["make"]
+};
+```
+Fields would be `first_name`, `last_name`, `last_name.prefix.custom`.
 
 ### jfFieldsService
 

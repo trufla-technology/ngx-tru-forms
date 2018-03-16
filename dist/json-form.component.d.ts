@@ -25,7 +25,7 @@ export declare class JsonFormComponent implements OnInit {
     ngOnInit(): void;
     constructForm(): void;
     isValidSchema(): boolean;
-    private generateForm(schema, group?, data?, style?);
+    private generateForm(schema, group?, data?, style?, path?);
     isVisible(prop: any): boolean;
     handleOnSubmit(): void;
     handleOnChange(key: any, value: any): void;

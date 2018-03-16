@@ -79,23 +79,29 @@ export class JsonFormComponent implements OnInit {
     return typeof (this.schema) === 'object' && Object.keys(this.schema).length > 0;
   }
 
-  private generateForm (schema, group?: {}, data?: {}, style?: {}) {
+  private generateForm (schema, group?: {}, data?: {}, style?: {}, path?: Array<any>) {
     if (!this.isVisible(schema)) {
       return group;
     }
 
+    if (!path) {
+      path = [];
+    }
+
     Object.keys(schema.properties).forEach((prop) => {
+
       if (schema.properties[prop].type === 'object') {
         const groupData = data && data.hasOwnProperty(prop) ? data[prop] : {};
         const groupStyle = style && style.hasOwnProperty(prop) ? style[prop] : {};
-        group[prop] = new SchemaFormGroup(this.generateForm(schema.properties[prop], {}, groupData, groupStyle));
+        group[prop] = new SchemaFormGroup(this.generateForm(schema.properties[prop], {}, groupData, groupStyle, [].concat(path, prop)));
         group[prop].schema = schema.properties[prop];
         group[prop].style = groupStyle;
       } else if (schema.properties[prop].type === 'array') {
+        path.push(prop);
         const arrayData = data && data.hasOwnProperty(prop) ? data[prop] : [{}];
         const arrayStyle = style && style.hasOwnProperty(prop) ? style[prop] : {};
         const fbArray = arrayData.map((dataAtIndex) => {
-          const g = new SchemaFormGroup(this.generateForm(schema.properties[prop].items, {}, dataAtIndex, {}));
+          const g = new SchemaFormGroup(this.generateForm(schema.properties[prop].items, {}, dataAtIndex, {}, [].concat(path, prop)));
           g.schema = schema.properties[prop];
           return g;
         });
@@ -103,7 +109,7 @@ export class JsonFormComponent implements OnInit {
         group[prop].schema = schema.properties[prop];
         group[prop].style = arrayStyle;
       } else if (this.isVisible(schema.properties[prop]))  {
-        const control = new SchemaFormControl(this.df.get(prop, schema, data), this.vl.get(prop, schema));
+        const control = new SchemaFormControl(this.df.get(prop, schema, data), this.vl.get(prop, schema, path));
         control.schema = Object.assign({}, schema.properties[prop]);
         control.schema.key = prop;
         control.style = style[prop] || {};

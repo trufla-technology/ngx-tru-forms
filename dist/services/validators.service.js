@@ -4,13 +4,15 @@ var JsonFormValidatorsService = /** @class */ (function () {
     function JsonFormValidatorsService() {
         this.validators = [];
     }
-    JsonFormValidatorsService.prototype.get = function (prop, schema) {
+    JsonFormValidatorsService.prototype.get = function (prop, schema, path) {
         var required = schema.required || [];
         var field = schema.properties[prop];
+        var varPath = [].concat(path, prop).join('.');
         if (schema.properties[prop].type === 'boolean' && required.indexOf(prop) > -1) {
             return Validators.pattern('true');
         }
         return Validators.compose(this.validators.concat([
+            (this.has(varPath) ? this.validators[varPath] : null),
             (required.indexOf(prop) > -1 ? Validators.required : null),
             (field.hasOwnProperty('minLength') ? Validators.minLength(field.minLength) : null),
             (field.hasOwnProperty('maxLength') ? Validators.maxLength(field.maxLength) : null),
@@ -20,8 +22,11 @@ var JsonFormValidatorsService = /** @class */ (function () {
             (field.pattern ? Validators.pattern(field.pattern) : null)
         ]));
     };
-    JsonFormValidatorsService.prototype.register = function (validator) {
-        this.validators.push(validator);
+    JsonFormValidatorsService.prototype.register = function (field, validator) {
+        this.validators[field] = validator;
+    };
+    JsonFormValidatorsService.prototype.has = function (str) {
+        return this.validators.hasOwnProperty(str);
     };
     JsonFormValidatorsService.decorators = [
         { type: Injectable },

@@ -33,24 +33,28 @@ var JsonFormComponent = /** @class */ (function () {
     JsonFormComponent.prototype.isValidSchema = function () {
         return typeof (this.schema) === 'object' && Object.keys(this.schema).length > 0;
     };
-    JsonFormComponent.prototype.generateForm = function (schema, group, data, style) {
+    JsonFormComponent.prototype.generateForm = function (schema, group, data, style, path) {
         var _this = this;
         if (!this.isVisible(schema)) {
             return group;
+        }
+        if (!path) {
+            path = [];
         }
         Object.keys(schema.properties).forEach(function (prop) {
             if (schema.properties[prop].type === 'object') {
                 var groupData = data && data.hasOwnProperty(prop) ? data[prop] : {};
                 var groupStyle = style && style.hasOwnProperty(prop) ? style[prop] : {};
-                group[prop] = new SchemaFormGroup(_this.generateForm(schema.properties[prop], {}, groupData, groupStyle));
+                group[prop] = new SchemaFormGroup(_this.generateForm(schema.properties[prop], {}, groupData, groupStyle, [].concat(path, prop)));
                 group[prop].schema = schema.properties[prop];
                 group[prop].style = groupStyle;
             }
             else if (schema.properties[prop].type === 'array') {
+                path.push(prop);
                 var arrayData = data && data.hasOwnProperty(prop) ? data[prop] : [{}];
                 var arrayStyle = style && style.hasOwnProperty(prop) ? style[prop] : {};
                 var fbArray = arrayData.map(function (dataAtIndex) {
-                    var g = new SchemaFormGroup(_this.generateForm(schema.properties[prop].items, {}, dataAtIndex, {}));
+                    var g = new SchemaFormGroup(_this.generateForm(schema.properties[prop].items, {}, dataAtIndex, {}, [].concat(path, prop)));
                     g.schema = schema.properties[prop];
                     return g;
                 });
@@ -59,7 +63,7 @@ var JsonFormComponent = /** @class */ (function () {
                 group[prop].style = arrayStyle;
             }
             else if (_this.isVisible(schema.properties[prop])) {
-                var control = new SchemaFormControl(_this.df.get(prop, schema, data), _this.vl.get(prop, schema));
+                var control = new SchemaFormControl(_this.df.get(prop, schema, data), _this.vl.get(prop, schema, path));
                 control.schema = Object.assign({}, schema.properties[prop]);
                 control.schema.key = prop;
                 control.style = style[prop] || {};

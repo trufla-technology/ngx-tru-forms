@@ -10,7 +10,7 @@ import { CommonComponent } from '../common/common.component';
     <input
       class="form-control"
       [name]="schema.key"
-      [attr.type]="type()"
+      [attr.type]="'number'"
       [formControl]="control"
       [attr.placeholder]="placeholder()"
     />
