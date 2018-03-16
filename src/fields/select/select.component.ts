@@ -31,4 +31,3 @@ export class SelectComponent extends CommonComponent {
       : this.schema.enumNames[index];
   }
 }
-
