@@ -31,6 +31,7 @@ import { JsonFormFieldsService } from '../../';
     </div>
   `
 })
+
 export class FieldComponent implements OnInit {
   @ViewChild('container', {read: ViewContainerRef})
   container: ViewContainerRef;
