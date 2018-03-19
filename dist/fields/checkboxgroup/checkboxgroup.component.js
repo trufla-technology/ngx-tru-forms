@@ -22,7 +22,7 @@ var CheckboxgroupComponent = /** @class */ (function (_super) {
     };
     CheckboxgroupComponent.decorators = [
         { type: Component, args: [{
-                    template: "\n    <div class=\"checkbox-group form-group\">\n      <label\n        [attr.class]=\"schema.key\"\n        [ngClass]=\"{required: isRequired()}\"\n        *ngFor=\"let enum of this.schema.enum; let i = index\">\n        <button *ngIf=\"this.schema.description\" [attr.class]=\"'info'\" [attr.title]=\"this.schema.description\">Info</button>\n        <input type=\"checkbox\"\n          [checked]=\"control.value === enum\"\n          [name]=\"schema.key\"\n          [formControl]=\"control\"\n          [value]=\"enum\" />\n          {{enumNames(i)}}\n        <sup *ngIf=\"isRequired()\">*</sup>\n      </label>\n    </div>\n  "
+                    template: "\n    <div class=\"checkbox-group form-group\">\n      <label\n        [attr.class]=\"schema.key\"\n        [ngClass]=\"{required: isRequired()}\"\n        *ngFor=\"let enum of this.schema.enum; let i = index\">\n        <button type=\"button\" *ngIf=\"this.schema.description\" [attr.class]=\"'info'\" [attr.title]=\"this.schema.description\">Info</button>\n        <input type=\"checkbox\"\n          [checked]=\"control.value === enum\"\n          [name]=\"schema.key\"\n          [formControl]=\"control\"\n          [value]=\"enum\" />\n          {{enumNames(i)}}\n        <sup *ngIf=\"isRequired()\">*</sup>\n      </label>\n    </div>\n  "
                 },] },
     ];
     /** @nocollapse */
