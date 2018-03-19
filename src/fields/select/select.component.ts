@@ -6,7 +6,7 @@ import { CommonComponent } from '../common/common.component';
     <label [attr.class]="schema.key" [ngClass]="{required: isRequired()}">
       {{title()}}<sup *ngIf="isRequired()">*</sup>
     </label>
-    <button *ngIf="this.schema.description" [attr.class]="'info'" [attr.title]="this.schema.description">Info</button>
+    <button type="button" *ngIf="this.schema.description" [attr.class]="'info'" [attr.title]="this.schema.description">Info</button>
     <select
       class="form-control"
       name="name"

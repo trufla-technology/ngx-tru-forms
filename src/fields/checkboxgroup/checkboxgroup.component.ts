@@ -8,7 +8,7 @@ import { CommonComponent } from '../common/common.component';
         [attr.class]="schema.key"
         [ngClass]="{required: isRequired()}"
         *ngFor="let enum of this.schema.enum; let i = index">
-        <button *ngIf="this.schema.description" [attr.class]="'info'" [attr.title]="this.schema.description">Info</button>
+        <button type="button" *ngIf="this.schema.description" [attr.class]="'info'" [attr.title]="this.schema.description">Info</button>
         <input type="checkbox"
           [checked]="control.value === enum"
           [name]="schema.key"
