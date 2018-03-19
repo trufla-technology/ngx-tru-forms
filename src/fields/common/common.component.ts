@@ -16,7 +16,7 @@ export class CommonComponent {
   }
 
   title() {
-    return this.strToUpperCase(typeof this.schema.title === 'undefined' ? this.schema.key : this.schema.title);
+    return typeof this.schema.title === 'undefined' ? this.strToUpperCase(this.schema.key) : this.schema.title;
   }
 
   strToUpperCase(str: string) {
