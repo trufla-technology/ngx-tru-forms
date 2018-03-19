@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { CommonComponent } from '../common/common.component';
+import { CommonComponent } from '../../';
 
 @Component({
   template: `
@@ -17,8 +17,8 @@ import { CommonComponent } from '../common/common.component';
       </option>
       <option
         [selected]="control.value === enum"
-        *ngFor="let enum of this.schema.enum; let i = index"
-        [ngValue]="enum">
+        *ngFor="let en of this.schema.enum; let i = index"
+        [ngValue]="en">
         {{enumNames(i)}}
       </option>
     </select>
