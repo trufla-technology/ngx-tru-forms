@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { CommonComponent } from '../../';
+import { CommonComponent } from '../common/common.component';
 
 @Component({
   template: `
