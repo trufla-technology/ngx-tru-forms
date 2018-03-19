@@ -13,7 +13,7 @@ import { CommonComponent } from '../common/common.component';
       [formControl]="control"
     >
       <option value="" [selected]="control.value === ''" [disabled]="true">
-        Select {{title()}}
+        Select {{emptyOption()}}
       </option>
       <option
         [selected]="control.value === enum"
@@ -29,5 +29,9 @@ export class SelectComponent extends CommonComponent {
     return typeof(this.schema.enumNames) === 'undefined'
       ? this.schema.enum[index]
       : this.schema.enumNames[index];
+  }
+
+  emptyOption() {
+    return super.title().replace(/[^A-Z0-9]+$/ig, '');
   }
 }

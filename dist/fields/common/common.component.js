@@ -6,7 +6,8 @@ var CommonComponent = /** @class */ (function () {
         return this.control.validator !== null;
     };
     CommonComponent.prototype.title = function () {
-        return typeof this.schema.title === 'undefined' ? this.strToUpperCase(this.schema.key) : this.schema.title;
+        return typeof this.schema.title === 'undefined'
+            ? this.strToUpperCase(this.schema.key) : this.schema.title;
     };
     CommonComponent.prototype.strToUpperCase = function (str) {
         return str.toLowerCase().replace(/_/g, ' ').split(' ').map(function (word) {
