@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, EventEmitter, Inject, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Inject, Input, Output } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { JsonFormValidatorsService } from './services/validators.service';
 import { SchemaFormControl } from './models/schema-form-control';
@@ -6,10 +6,9 @@ import { JsonFormDefaultsService } from './services/defaults.service';
 import { SchemaFormGroup } from './models/schema-form-group';
 import { SchemaFormArray } from './models/schema-form-array';
 var JsonFormComponent = /** @class */ (function () {
-    function JsonFormComponent(fb, vl, df, cd) {
+    function JsonFormComponent(fb, vl, df) {
         this.vl = vl;
         this.df = df;
-        this.cd = cd;
         this.handleSubmit = new EventEmitter();
         this.handleChange = new EventEmitter();
         this.handleCancel = new EventEmitter();
@@ -18,6 +17,12 @@ var JsonFormComponent = /** @class */ (function () {
     }
     JsonFormComponent.prototype.ngOnInit = function () {
         this.constructForm();
+    };
+    JsonFormComponent.prototype.ngOnChanges = function (changes) {
+        if (changes.schema) {
+            this.schema = changes.schema.currentValue;
+            this.constructForm();
+        }
     };
     JsonFormComponent.prototype.constructForm = function () {
         var _this = this;
@@ -53,20 +58,33 @@ var JsonFormComponent = /** @class */ (function () {
                 path.push(prop);
                 var arrayData = data && data.hasOwnProperty(prop) ? data[prop] : [{}];
                 var arrayStyle = style && style.hasOwnProperty(prop) ? style[prop] : {};
-                var fbArray = arrayData.map(function (dataAtIndex) {
-                    var g = new SchemaFormGroup(_this.generateForm(schema.properties[prop].items, {}, dataAtIndex, {}, [].concat(path, prop)));
-                    g.schema = schema.properties[prop];
-                    return g;
-                });
+                var fbArray = [];
+                if (schema.properties[prop].enum) {
+                    fbArray = schema.properties[prop].enum.map(function (e) {
+                        var control = new SchemaFormControl(e);
+                        control.schema = Object.assign({}, schema.properties[prop]);
+                        control.schema.key = prop;
+                        control.valueChanges.subscribe(function (event) { return _this.handleOnChange(prop, event); });
+                        return control;
+                    });
+                }
+                else {
+                    fbArray = arrayData.map(function (dataAtIndex) {
+                        var g = new SchemaFormGroup(_this.generateForm(schema.properties[prop].items, {}, dataAtIndex, {}, [].concat(path, prop)));
+                        g.schema = schema.properties[prop];
+                        return g;
+                    });
+                }
                 group[prop] = new SchemaFormArray(fbArray);
                 group[prop].schema = schema.properties[prop];
+                group[prop].schema.key = prop;
                 group[prop].style = arrayStyle;
             }
             else if (_this.isVisible(schema.properties[prop])) {
                 var control = new SchemaFormControl(_this.df.get(prop, schema, data), _this.vl.get(prop, schema, path));
                 control.schema = Object.assign({}, schema.properties[prop]);
                 control.schema.key = prop;
-                control.style = style[prop] || {};
+                control.style = (style && style.hasOwnProperty(prop)) ? style[prop] : {};
                 control.valueChanges.subscribe(function (event) { return _this.handleOnChange(prop, event); });
                 group[prop] = control;
             }
@@ -96,7 +114,6 @@ var JsonFormComponent = /** @class */ (function () {
         { type: FormBuilder, decorators: [{ type: Inject, args: [FormBuilder,] },] },
         { type: JsonFormValidatorsService, },
         { type: JsonFormDefaultsService, },
-        { type: ChangeDetectorRef, },
     ]; };
     JsonFormComponent.propDecorators = {
         "schema": [{ type: Input },],

@@ -7,12 +7,13 @@ var ChooserComponent = /** @class */ (function () {
     ChooserComponent.decorators = [
         { type: Component, args: [{
                     selector: 'jf-component-chooser, [jf-component-chooser]',
-                    template: "\n    <div\n      *ngFor=\"let control of keys(form.controls)\"\n      jf-field\n      [control]=\"form.get(control)\"\n    ></div>\n  "
+                    template: "\n    <div\n      *ngFor=\"let control of keys(form.controls)\"\n      jf-field\n      [control]=\"form.get(control)\"\n      [index]=\"index\"\n    ></div>\n  "
                 },] },
     ];
     /** @nocollapse */
     ChooserComponent.ctorParameters = function () { return []; };
     ChooserComponent.propDecorators = {
+        "index": [{ type: Input },],
         "form": [{ type: Input },],
         "schema": [{ type: Input },],
     };

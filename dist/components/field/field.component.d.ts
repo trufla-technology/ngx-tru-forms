@@ -6,6 +6,7 @@ export declare class FieldComponent implements OnInit {
     el: ElementRef;
     container: ViewContainerRef;
     control: SchemaFormControl;
+    index: number;
     patterns: any;
     constructor(jsonFormFieldsService: JsonFormFieldsService, el: ElementRef);
     ngOnInit(): void;

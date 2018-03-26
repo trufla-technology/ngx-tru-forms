@@ -26,11 +26,10 @@ var CommonComponent = /** @class */ (function () {
         return format;
     };
     CommonComponent.prototype.id = function (i) {
-        return this.schema.key + '_' +
-            (i ? this.schema.enum[i].toString().replace(/\W+/g, '') : '');
+        return this.schema.key + '_' + this.index + '_' + i;
     };
     CommonComponent.prototype.getClass = function (defaultClass) {
-        return this.style.hasOwnProperty('default') ?
+        return this.style && this.style.hasOwnProperty('default') ?
             this.style['default'] : (defaultClass || '');
     };
     CommonComponent.prototype.getMask = function () {

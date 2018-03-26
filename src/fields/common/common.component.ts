@@ -10,6 +10,7 @@ export class CommonComponent {
   public control: SchemaFormControl;
   public schema: Schema;
   public style: {};
+  public index: number;
 
   public isRequired() {
     return this.control.validator !== null;
@@ -42,12 +43,11 @@ export class CommonComponent {
   }
 
   id(i?) {
-    return this.schema.key + '_' +
-      (i ? this.schema.enum[i].toString().replace(/\W+/g, '') : '');
+    return this.schema.key + '_' + this.index + '_' + i;
   }
 
   getClass(defaultClass?) {
-    return this.style.hasOwnProperty('default') ?
+    return this.style && this.style.hasOwnProperty('default') ?
       this.style['default'] : (defaultClass || '');
   }
 

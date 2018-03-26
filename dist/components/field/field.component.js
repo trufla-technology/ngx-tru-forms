@@ -9,7 +9,7 @@ var FieldComponent = /** @class */ (function () {
     }
     FieldComponent.prototype.ngOnInit = function () {
         this.jsonFormFieldsService.setRootViewContainerRef(this.container);
-        this.jsonFormFieldsService.addDynamicComponent(this.control);
+        this.jsonFormFieldsService.addDynamicComponent(this.control, this.index);
         this.el.nativeElement.className = "field margin-bottom " + this.getClass();
     };
     FieldComponent.prototype.getClass = function (defaultClass) {
@@ -36,6 +36,7 @@ var FieldComponent = /** @class */ (function () {
     FieldComponent.propDecorators = {
         "container": [{ type: ViewChild, args: ['container', { read: ViewContainerRef },] },],
         "control": [{ type: Input },],
+        "index": [{ type: Input },],
     };
     return FieldComponent;
 }());

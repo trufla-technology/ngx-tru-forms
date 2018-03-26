@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { BrowserModule } from '@angular/platform-browser';
 import { JsonFormComponent } from './json-form.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ChooserComponent } from './components/chooser/chooser.component';
@@ -26,7 +25,6 @@ var JsonFormModule = /** @class */ (function () {
     JsonFormModule.decorators = [
         { type: NgModule, args: [{
                     imports: [
-                        BrowserModule,
                         CommonModule,
                         TextMaskModule,
                         ReactiveFormsModule

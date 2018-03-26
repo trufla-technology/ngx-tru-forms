@@ -9,7 +9,7 @@ import {SchemaFormArray} from '../../models/schema-form-array';
       <h6 *ngIf="getLegend(control).length">{{getLegend(control)}}</h6>
       <div *ngFor="let arrControl of getEnabledControls(control); let i = index;">
         <div class="row">
-          <div class="col-11" jf-component-chooser [form]="arrControl"></div>
+          <div class="col-11" jf-component-chooser [form]="arrControl" [index]="i"></div>
           <div class="col-1">
             <span href="#" style="cursor: pointer;" (click)="removeControl(control, i)">
               <i class="la la-close"></i>
@@ -30,7 +30,7 @@ export class ArrayComponent {
 
   getLegend(control) {
     return (control && control.schema && control.schema.key) ?
-      this.strToUpperCase(control) : '';
+      this.strToUpperCase(control.schema.key) : '';
   }
 
   strToUpperCase(str: string) {
@@ -50,8 +50,16 @@ export class ArrayComponent {
   addControl(formArray: FormArray) {
     const newRow = Object.keys(formArray.controls[0]['controls']).reduce((prev, next) => {
       const formGroup = formArray.controls[0]['controls'];
-      const newControl = new SchemaFormControl('', formGroup[next].validator);
+      let newControl = null;
+
+      if (formGroup[next].controls) {
+        newControl = new SchemaFormArray(formGroup[next].controls);
+      } else {
+        newControl = new SchemaFormControl('', formGroup[next].validator);
+      }
+
       newControl.schema = formGroup[next].schema;
+      newControl.key = formGroup[next].key;
       prev[next] = newControl;
       return prev;
     }, {});

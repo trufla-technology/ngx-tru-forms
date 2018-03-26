@@ -7,7 +7,7 @@ export declare class JsonFormFieldsService {
     private defaultFieldType;
     constructor(componentFactoryResolver: ComponentFactoryResolver);
     setRootViewContainerRef(viewContainerRef: any): void;
-    addDynamicComponent(control: SchemaFormControl): void;
+    addDynamicComponent(control: SchemaFormControl, index: number): void;
     has(type: string): boolean;
     register(type: string, field: any): void;
     get(control: any): any;

@@ -37,6 +37,8 @@ export class FieldComponent implements OnInit {
   container: ViewContainerRef;
   @Input()
   public control: SchemaFormControl;
+  @Input()
+  public index: number;
   public patterns;
 
   constructor(public jsonFormFieldsService: JsonFormFieldsService, public el: ElementRef) {
@@ -45,7 +47,7 @@ export class FieldComponent implements OnInit {
 
   ngOnInit() {
     this.jsonFormFieldsService.setRootViewContainerRef(this.container);
-    this.jsonFormFieldsService.addDynamicComponent(this.control);
+    this.jsonFormFieldsService.addDynamicComponent(this.control, this.index);
     this.el.nativeElement.className = `field margin-bottom ${this.getClass()}`;
   }
 

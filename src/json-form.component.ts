@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, EventEmitter, Inject, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Inject, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { JsonFormValidatorsService } from './services/validators.service';
 import { SchemaFormControl } from './models/schema-form-control';
@@ -28,7 +28,7 @@ import { SchemaFormArray } from './models/schema-form-array';
     </form>
   `
 })
-export class JsonFormComponent implements OnInit {
+export class JsonFormComponent implements OnInit, OnChanges {
   @Input()
   public schema;
   @Input()
@@ -54,14 +54,20 @@ export class JsonFormComponent implements OnInit {
   constructor(
     @Inject(FormBuilder) fb: FormBuilder,
     public vl: JsonFormValidatorsService,
-    public df: JsonFormDefaultsService,
-    public cd: ChangeDetectorRef
+    public df: JsonFormDefaultsService
   ) {
     this.fb = fb;
   }
 
   ngOnInit() {
     this.constructForm();
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes.schema) {
+      this.schema = changes.schema.currentValue;
+      this.constructForm();
+    }
   }
 
   public constructForm() {
@@ -89,7 +95,6 @@ export class JsonFormComponent implements OnInit {
     }
 
     Object.keys(schema.properties).forEach((prop) => {
-
       if (schema.properties[prop].type === 'object') {
         const groupData = data && data.hasOwnProperty(prop) ? data[prop] : {};
         const groupStyle = style && style.hasOwnProperty(prop) ? style[prop] : {};
@@ -100,19 +105,33 @@ export class JsonFormComponent implements OnInit {
         path.push(prop);
         const arrayData = data && data.hasOwnProperty(prop) ? data[prop] : [{}];
         const arrayStyle = style && style.hasOwnProperty(prop) ? style[prop] : {};
-        const fbArray = arrayData.map((dataAtIndex) => {
-          const g = new SchemaFormGroup(this.generateForm(schema.properties[prop].items, {}, dataAtIndex, {}, [].concat(path, prop)));
-          g.schema = schema.properties[prop];
-          return g;
-        });
+        let fbArray = [];
+
+        if (schema.properties[prop].enum) {
+          fbArray = schema.properties[prop].enum.map((e) => {
+            const control = new SchemaFormControl(e);
+            control.schema = Object.assign({}, schema.properties[prop]);
+            control.schema.key = prop;
+            control.valueChanges.subscribe((event) => this.handleOnChange(prop, event));
+            return control;
+          });
+        } else {
+          fbArray = arrayData.map((dataAtIndex) => {
+            const g = new SchemaFormGroup(this.generateForm(schema.properties[prop].items, {}, dataAtIndex, {}, [].concat(path, prop)));
+            g.schema = schema.properties[prop];
+            return g;
+          });
+        }
+
         group[prop] = new SchemaFormArray(fbArray);
         group[prop].schema = schema.properties[prop];
+        group[prop].schema.key = prop;
         group[prop].style = arrayStyle;
-      } else if (this.isVisible(schema.properties[prop]))  {
+      } else if (this.isVisible(schema.properties[prop])) {
         const control = new SchemaFormControl(this.df.get(prop, schema, data), this.vl.get(prop, schema, path));
         control.schema = Object.assign({}, schema.properties[prop]);
         control.schema.key = prop;
-        control.style = style[prop] || {};
+        control.style = (style && style.hasOwnProperty(prop)) ? style[prop] : {};
         control.valueChanges.subscribe((event) => this.handleOnChange(prop, event));
         group[prop] = control;
       }

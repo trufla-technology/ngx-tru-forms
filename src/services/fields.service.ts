@@ -35,12 +35,13 @@ export class JsonFormFieldsService {
     this.rootViewContainer = viewContainerRef;
   }
 
-  addDynamicComponent(control: SchemaFormControl) {
+  addDynamicComponent(control: SchemaFormControl, index: number) {
     const componentFactory = this.componentFactoryResolver.resolveComponentFactory(this.get(control));
     const componentRef = this.rootViewContainer.createComponent(componentFactory);
     componentRef.instance.control = control;
     componentRef.instance.schema = control.schema;
     componentRef.instance.style = control.style;
+    componentRef.instance.index = index;
   }
 
   has(type: string) {
@@ -57,7 +58,9 @@ export class JsonFormFieldsService {
       return this.fieldTypes[control.schema.format];
     }
 
-    if (typeof(control.schema.enum) !== 'undefined') {
+    if (typeof(control.schema.enum) !== 'undefined' && control.schema.type === 'array') {
+      return this.fieldTypes['checkboxgroup'];
+    } else if (typeof(control.schema.enum) !== 'undefined') {
       return this.fieldTypes['select'];
     } else if (this.has(control.schema.format)) {
       return this.fieldTypes[control.schema.format];

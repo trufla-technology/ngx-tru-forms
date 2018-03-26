@@ -28,12 +28,13 @@ var JsonFormFieldsService = /** @class */ (function () {
     JsonFormFieldsService.prototype.setRootViewContainerRef = function (viewContainerRef) {
         this.rootViewContainer = viewContainerRef;
     };
-    JsonFormFieldsService.prototype.addDynamicComponent = function (control) {
+    JsonFormFieldsService.prototype.addDynamicComponent = function (control, index) {
         var componentFactory = this.componentFactoryResolver.resolveComponentFactory(this.get(control));
         var componentRef = this.rootViewContainer.createComponent(componentFactory);
         componentRef.instance.control = control;
         componentRef.instance.schema = control.schema;
         componentRef.instance.style = control.style;
+        componentRef.instance.index = index;
     };
     JsonFormFieldsService.prototype.has = function (type) {
         return this.fieldTypes.hasOwnProperty(type);
@@ -46,7 +47,10 @@ var JsonFormFieldsService = /** @class */ (function () {
         if (typeof (control.schema.format) !== 'undefined' && this.has(control.schema.format)) {
             return this.fieldTypes[control.schema.format];
         }
-        if (typeof (control.schema.enum) !== 'undefined') {
+        if (typeof (control.schema.enum) !== 'undefined' && control.schema.type === 'array') {
+            return this.fieldTypes['checkboxgroup'];
+        }
+        else if (typeof (control.schema.enum) !== 'undefined') {
             return this.fieldTypes['select'];
         }
         else if (this.has(control.schema.format)) {
