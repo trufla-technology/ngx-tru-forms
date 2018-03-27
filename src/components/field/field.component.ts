@@ -1,4 +1,4 @@
-import {Component, ElementRef, Input, OnInit, ViewChild, ViewContainerRef} from '@angular/core';
+import {Component, ElementRef, Input, OnChanges, OnInit, SimpleChanges, ViewChild, ViewContainerRef} from '@angular/core';
 import { SchemaFormControl } from '../../models/schema-form-control';
 import { JsonFormFieldsService } from '../../';
 
@@ -32,7 +32,7 @@ import { JsonFormFieldsService } from '../../';
   `
 })
 
-export class FieldComponent implements OnInit {
+export class FieldComponent implements OnInit, OnChanges {
   @ViewChild('container', {read: ViewContainerRef})
   container: ViewContainerRef;
   @Input()
@@ -46,6 +46,15 @@ export class FieldComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.generateField();
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    this.generateField();
+  }
+
+  generateField() {
+    this.container.clear();
     this.jsonFormFieldsService.setRootViewContainerRef(this.container);
     this.jsonFormFieldsService.addDynamicComponent(this.control, this.index);
     this.el.nativeElement.className = `field margin-bottom ${this.getClass()}`;

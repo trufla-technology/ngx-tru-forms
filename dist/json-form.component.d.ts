@@ -27,6 +27,7 @@ export declare class JsonFormComponent implements OnInit, OnChanges {
     isValidSchema(): boolean;
     private generateForm(schema, group?, data?, style?, path?);
     isVisible(prop: any): boolean;
+    isFormat(prop: any, format: any): boolean;
     handleOnSubmit(): void;
     handleOnChange(key: any, value: any): void;
     handleOnCancel(): void;

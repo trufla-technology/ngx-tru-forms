@@ -4,7 +4,8 @@ var JsonFormDefaultsService = /** @class */ (function () {
         this.defaultTypes = this.defaultTypes || {};
     }
     JsonFormDefaultsService.prototype.get = function (prop, schema, data) {
-        var defaultValue = schema.properties[prop].default || '';
+        var defaultString = (prop.hasOwnProperty('format') && prop.format === 'multiselect') ? [] : '';
+        var defaultValue = schema.properties[prop].default || defaultString;
         if (this.has(schema.properties[prop].default)) {
             defaultValue = this.eval(schema.properties[prop].default)();
         }

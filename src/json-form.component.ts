@@ -14,7 +14,10 @@ import { SchemaFormArray } from './models/schema-form-array';
       (ngSubmit)="handleOnSubmit()"
       *ngIf="isValidSchema()"
     >
-      <div jf-component-chooser [form]="form" [schema]="schema"></div>
+      <div jf-component-chooser
+           [form]="form"
+           [schema]="schema">
+      </div>
       <div class="grid margin-top--triple">
         <div class="smart--one-half grid__item margin-bottom" *ngIf="cancel">
           <button type="button" class="btn btn-default button" (click)="handleOnCancel()">{{cancel}}</button>
@@ -72,6 +75,7 @@ export class JsonFormComponent implements OnInit, OnChanges {
 
   public constructForm() {
     this.model = {};
+
     if (this.isValidSchema()) {
       this.model = this.generateForm(this.schema, {}, this.data, this.style);
       this.form = this.fb.group(this.model);
@@ -101,7 +105,7 @@ export class JsonFormComponent implements OnInit, OnChanges {
         group[prop] = new SchemaFormGroup(this.generateForm(schema.properties[prop], {}, groupData, groupStyle, [].concat(path, prop)));
         group[prop].schema = schema.properties[prop];
         group[prop].style = groupStyle;
-      } else if (schema.properties[prop].type === 'array') {
+      } else if (schema.properties[prop].type === 'array' && !this.isFormat(schema.properties[prop], 'multiselect')) {
         path.push(prop);
         const arrayData = data && data.hasOwnProperty(prop) ? data[prop] : [{}];
         const arrayStyle = style && style.hasOwnProperty(prop) ? style[prop] : {};
@@ -109,7 +113,7 @@ export class JsonFormComponent implements OnInit, OnChanges {
 
         if (schema.properties[prop].enum) {
           fbArray = schema.properties[prop].enum.map((e) => {
-            const control = new SchemaFormControl(e);
+            const control = new SchemaFormControl();
             control.schema = Object.assign({}, schema.properties[prop]);
             control.schema.key = prop;
             control.valueChanges.subscribe((event) => this.handleOnChange(prop, event));
@@ -142,6 +146,10 @@ export class JsonFormComponent implements OnInit, OnChanges {
 
   isVisible (prop) {
     return prop.hasOwnProperty('visible') === false || (prop.hasOwnProperty('visible') && prop.visible === true);
+  }
+
+  isFormat(prop, format) {
+    return prop.hasOwnProperty('format') && prop.format === format;
   }
 
   handleOnSubmit() {

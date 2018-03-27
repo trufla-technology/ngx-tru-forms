@@ -8,8 +8,9 @@ import { PhotoComponent } from '../fields/photo/photo.component';
 import { TextareaComponent } from '../fields/textarea/textarea.component';
 import { ObjectComponent } from '../fields/object/object.component';
 import { ArrayComponent } from '../fields/array/array.component';
-import { RadiogroupComponent } from "../fields/radiogroup/radiogroup.component";
-import { CheckboxgroupComponent } from "../fields/checkboxgroup/checkboxgroup.component";
+import { RadiogroupComponent } from '../fields/radiogroup/radiogroup.component';
+import { CheckboxgroupComponent } from '../fields/checkboxgroup/checkboxgroup.component';
+import {MultiselectComponent} from '../fields/multiselect/multiselect.component';
 
 @Injectable()
 export class JsonFormFieldsService {
@@ -29,6 +30,7 @@ export class JsonFormFieldsService {
     this.register('array', ArrayComponent);
     this.register('radiogroup', RadiogroupComponent);
     this.register('checkboxgroup', CheckboxgroupComponent);
+    this.register('multiselect', MultiselectComponent);
   }
 
   setRootViewContainerRef(viewContainerRef) {

@@ -54,14 +54,14 @@ var JsonFormComponent = /** @class */ (function () {
                 group[prop].schema = schema.properties[prop];
                 group[prop].style = groupStyle;
             }
-            else if (schema.properties[prop].type === 'array') {
+            else if (schema.properties[prop].type === 'array' && !_this.isFormat(schema.properties[prop], 'multiselect')) {
                 path.push(prop);
                 var arrayData = data && data.hasOwnProperty(prop) ? data[prop] : [{}];
                 var arrayStyle = style && style.hasOwnProperty(prop) ? style[prop] : {};
                 var fbArray = [];
                 if (schema.properties[prop].enum) {
                     fbArray = schema.properties[prop].enum.map(function (e) {
-                        var control = new SchemaFormControl(e);
+                        var control = new SchemaFormControl();
                         control.schema = Object.assign({}, schema.properties[prop]);
                         control.schema.key = prop;
                         control.valueChanges.subscribe(function (event) { return _this.handleOnChange(prop, event); });
@@ -94,6 +94,9 @@ var JsonFormComponent = /** @class */ (function () {
     JsonFormComponent.prototype.isVisible = function (prop) {
         return prop.hasOwnProperty('visible') === false || (prop.hasOwnProperty('visible') && prop.visible === true);
     };
+    JsonFormComponent.prototype.isFormat = function (prop, format) {
+        return prop.hasOwnProperty('format') && prop.format === format;
+    };
     JsonFormComponent.prototype.handleOnSubmit = function () {
         this.handleSubmit.emit(this.form.value);
     };
@@ -106,7 +109,7 @@ var JsonFormComponent = /** @class */ (function () {
     JsonFormComponent.decorators = [
         { type: Component, args: [{
                     selector: 'jf-form',
-                    template: "\n    <form\n      [formGroup]=\"form\"\n      (ngSubmit)=\"handleOnSubmit()\"\n      *ngIf=\"isValidSchema()\"\n    >\n      <div jf-component-chooser [form]=\"form\" [schema]=\"schema\"></div>\n      <div class=\"grid margin-top--triple\">\n        <div class=\"smart--one-half grid__item margin-bottom\" *ngIf=\"cancel\">\n          <button type=\"button\" class=\"btn btn-default button\" (click)=\"handleOnCancel()\">{{cancel}}</button>\n        </div>\n        <div class=\"smart--one-half grid__item margin-bottom\" *ngIf=\"submit\">\n          <button type=\"submit\" class=\"btn btn-primary button button--accept\" [disabled]=\"form.invalid\">\n            {{submit}}\n          </button>\n        </div>\n      </div>\n    </form>\n  "
+                    template: "\n    <form\n      [formGroup]=\"form\"\n      (ngSubmit)=\"handleOnSubmit()\"\n      *ngIf=\"isValidSchema()\"\n    >\n      <div jf-component-chooser\n           [form]=\"form\"\n           [schema]=\"schema\">\n      </div>\n      <div class=\"grid margin-top--triple\">\n        <div class=\"smart--one-half grid__item margin-bottom\" *ngIf=\"cancel\">\n          <button type=\"button\" class=\"btn btn-default button\" (click)=\"handleOnCancel()\">{{cancel}}</button>\n        </div>\n        <div class=\"smart--one-half grid__item margin-bottom\" *ngIf=\"submit\">\n          <button type=\"submit\" class=\"btn btn-primary button button--accept\" [disabled]=\"form.invalid\">\n            {{submit}}\n          </button>\n        </div>\n      </div>\n    </form>\n  "
                 },] },
     ];
     /** @nocollapse */

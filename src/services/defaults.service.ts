@@ -9,7 +9,8 @@ export class JsonFormDefaultsService {
   }
 
   public get(prop, schema, data) {
-    let defaultValue = schema.properties[prop].default || '';
+    const defaultString = (prop.hasOwnProperty('format') && prop.format === 'multiselect') ? [] : '';
+    let defaultValue = schema.properties[prop].default || defaultString;
     if (this.has(schema.properties[prop].default)) {
       defaultValue = this.eval(schema.properties[prop].default)();
     }

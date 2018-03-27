@@ -19,6 +19,7 @@ import { CheckboxgroupComponent } from './fields/checkboxgroup/checkboxgroup.com
 import { RadiogroupComponent } from './fields/radiogroup/radiogroup.component';
 import { CommonComponent } from './fields/common/common.component';
 import { TextMaskModule } from 'angular2-text-mask';
+import { MultiselectComponent } from './fields/multiselect/multiselect.component';
 var JsonFormModule = /** @class */ (function () {
     function JsonFormModule() {
     }
@@ -43,7 +44,8 @@ var JsonFormModule = /** @class */ (function () {
                         ArrayComponent,
                         CheckboxgroupComponent,
                         RadiogroupComponent,
-                        CommonComponent
+                        CommonComponent,
+                        MultiselectComponent
                     ],
                     exports: [
                         JsonFormComponent,
@@ -60,7 +62,8 @@ var JsonFormModule = /** @class */ (function () {
                         ArrayComponent,
                         RadiogroupComponent,
                         CheckboxgroupComponent,
-                        JsonFormComponent
+                        JsonFormComponent,
+                        MultiselectComponent
                     ],
                     providers: [
                         JsonFormDefaultsService,
