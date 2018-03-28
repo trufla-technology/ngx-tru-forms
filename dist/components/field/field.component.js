@@ -8,6 +8,13 @@ var FieldComponent = /** @class */ (function () {
         this.patterns = {};
     }
     FieldComponent.prototype.ngOnInit = function () {
+        this.generateField();
+    };
+    FieldComponent.prototype.ngOnChanges = function (changes) {
+        this.generateField();
+    };
+    FieldComponent.prototype.generateField = function () {
+        this.container.clear();
         this.jsonFormFieldsService.setRootViewContainerRef(this.container);
         this.jsonFormFieldsService.addDynamicComponent(this.control, this.index);
         this.el.nativeElement.className = "field margin-bottom " + this.getClass();

@@ -1,7 +1,7 @@
-import { ElementRef, OnInit, ViewContainerRef } from '@angular/core';
+import { ElementRef, OnChanges, OnInit, SimpleChanges, ViewContainerRef } from '@angular/core';
 import { SchemaFormControl } from '../../models/schema-form-control';
 import { JsonFormFieldsService } from '../../';
-export declare class FieldComponent implements OnInit {
+export declare class FieldComponent implements OnInit, OnChanges {
     jsonFormFieldsService: JsonFormFieldsService;
     el: ElementRef;
     container: ViewContainerRef;
@@ -10,5 +10,7 @@ export declare class FieldComponent implements OnInit {
     patterns: any;
     constructor(jsonFormFieldsService: JsonFormFieldsService, el: ElementRef);
     ngOnInit(): void;
+    ngOnChanges(changes: SimpleChanges): void;
+    generateField(): void;
     getClass(defaultClass?: string): string;
 }

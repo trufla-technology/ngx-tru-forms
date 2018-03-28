@@ -7,7 +7,7 @@ import { CommonComponent } from '../common/common.component';
       {{title()}}<sup *ngIf="isRequired()">*</sup></label>
     <button type="button" *ngIf="this.schema.description" [attr.class]="'info'" [attr.title]="this.schema.description">Info</button>
     <div [class]="getClass('checkbox-group')">
-      <div *ngFor="let child of this.control.controls; let i = index"
+      <div *ngFor="let child of this.control['controls']; let i = index"
            [ngClass]="{'checkbox-container': true, 'checked': child.value === schema.enum[i]}">
         <input type="checkbox"
            [id]="id(i)"
