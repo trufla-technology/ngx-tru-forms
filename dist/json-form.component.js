@@ -13,14 +13,23 @@ var JsonFormComponent = /** @class */ (function () {
         this.handleChange = new EventEmitter();
         this.handleCancel = new EventEmitter();
         this.control = { key: '', value: '' };
+        this.changeDetected = false;
         this.fb = fb;
     }
     JsonFormComponent.prototype.ngOnInit = function () {
         this.constructForm();
     };
-    JsonFormComponent.prototype.ngOnChanges = function (changes) {
-        if (changes.schema) {
-            this.schema = changes.schema.currentValue;
+    JsonFormComponent.prototype.ngDoCheck = function () {
+        this.changeDetected = false;
+        if (this.oldSchema !== JSON.stringify(this.schema)) {
+            this.oldSchema = JSON.stringify(this.schema);
+            this.changeDetected = true;
+        }
+        if (this.oldData !== JSON.stringify(this.data)) {
+            this.oldData = JSON.stringify(this.data);
+            this.changeDetected = true;
+        }
+        if (this.changeDetected) {
             this.constructForm();
         }
     };

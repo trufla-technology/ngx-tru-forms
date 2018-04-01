@@ -1,8 +1,8 @@
-import { EventEmitter, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { DoCheck, EventEmitter, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { JsonFormValidatorsService } from './services/validators.service';
 import { JsonFormDefaultsService } from './services/defaults.service';
-export declare class JsonFormComponent implements OnInit, OnChanges {
+export declare class JsonFormComponent implements OnInit, DoCheck {
     vl: JsonFormValidatorsService;
     df: JsonFormDefaultsService;
     schema: any;
@@ -20,9 +20,12 @@ export declare class JsonFormComponent implements OnInit, OnChanges {
         key: string;
         value: string;
     };
+    oldSchema: string;
+    oldData: string;
+    changeDetected: boolean;
     constructor(fb: FormBuilder, vl: JsonFormValidatorsService, df: JsonFormDefaultsService);
     ngOnInit(): void;
-    ngOnChanges(changes: SimpleChanges): void;
+    ngDoCheck(): void;
     constructForm(): void;
     isValidSchema(): boolean;
     private generateForm(schema, group?, data?, style?, path?);

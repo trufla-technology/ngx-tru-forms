@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Inject, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
+import {Component, DoCheck, EventEmitter, Inject, Input, OnChanges, OnInit, Output, SimpleChanges} from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { JsonFormValidatorsService } from './services/validators.service';
 import { SchemaFormControl } from './models/schema-form-control';
@@ -31,7 +31,7 @@ import { SchemaFormArray } from './models/schema-form-array';
     </form>
   `
 })
-export class JsonFormComponent implements OnInit, OnChanges {
+export class JsonFormComponent implements OnInit, DoCheck {
   @Input()
   public schema;
   @Input()
@@ -53,6 +53,9 @@ export class JsonFormComponent implements OnInit, OnChanges {
   public model;
   public fb;
   public control = { key: '', value: '' };
+  public oldSchema: string;
+  public oldData: string;
+  public changeDetected = false;
 
   constructor(
     @Inject(FormBuilder) fb: FormBuilder,
@@ -66,9 +69,20 @@ export class JsonFormComponent implements OnInit, OnChanges {
     this.constructForm();
   }
 
-  ngOnChanges(changes: SimpleChanges): void {
-    if (changes.schema) {
-      this.schema = changes.schema.currentValue;
+  ngDoCheck(): void {
+    this.changeDetected = false;
+
+    if (this.oldSchema !== JSON.stringify(this.schema)) {
+      this.oldSchema = JSON.stringify(this.schema);
+      this.changeDetected = true;
+    }
+
+    if (this.oldData !== JSON.stringify(this.data)) {
+      this.oldData = JSON.stringify(this.data);
+      this.changeDetected = true;
+    }
+
+    if (this.changeDetected) {
       this.constructForm();
     }
   }

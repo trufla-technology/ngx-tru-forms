@@ -69,4 +69,3 @@ import { MultiselectComponent } from './fields/multiselect/multiselect.component
   ]
 })
 export class JsonFormModule { }
-
