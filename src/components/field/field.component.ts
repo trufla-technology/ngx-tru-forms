@@ -20,10 +20,10 @@ import { JsonFormFieldsService } from '../../';
         Input can contain a maximum of {{control.errors['maxlength']['requiredLength']}} characters.
       </div>
       <div *ngIf="control.errors && control.errors['min']">
-        Enter a value greater than {{control.errors['min']['min']}}.
+        Enter a value greater than or equal to {{control.errors['min']['min']}}.
       </div>
       <div *ngIf="control.errors && control.errors['max']">
-        Enter a value less than {{control.errors['max']['max']}}.
+        Enter a value less than or equal to {{control.errors['max']['max']}}.
       </div>
       <div *ngIf="control.errors && control.errors['customError']">
         {{control.errors['customError']}}
