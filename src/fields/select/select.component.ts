@@ -16,8 +16,8 @@ import { CommonComponent } from '../common/common.component';
         Select {{emptyOption()}}
       </option>
       <option
-        [selected]="control.value === enum"
         *ngFor="let en of this.schema.enum; let i = index"
+        [selected]="control.value === en"
         [ngValue]="en">
         {{enumNames(i)}}
       </option>
