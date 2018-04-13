@@ -1,4 +1,4 @@
-import {Component, DoCheck, EventEmitter, Inject, Input, OnChanges, OnInit, Output, SimpleChanges} from '@angular/core';
+import { Component, DoCheck, EventEmitter, Inject, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { JsonFormValidatorsService } from './services/validators.service';
 import { SchemaFormControl } from './models/schema-form-control';
@@ -15,18 +15,51 @@ import { SchemaFormArray } from './models/schema-form-array';
       *ngIf="isValidSchema()"
     >
       <div jf-component-chooser
+           [class]="outerClass"
            [form]="form"
+           [submitted]="submitted"
            [schema]="schema">
       </div>
-      <div class="grid margin-top--triple">
-        <div class="smart--one-half grid__item margin-bottom" *ngIf="cancel">
-          <button type="button" class="btn btn-default button" (click)="handleOnCancel()">{{cancel}}</button>
-        </div>
-        <div class="smart--one-half grid__item margin-bottom" *ngIf="submit">
-          <button type="submit" class="btn btn-primary button button--accept" [disabled]="form.invalid">
+      <div #ref>
+        <ng-content></ng-content>
+      </div>
+      <div
+        *ngIf="ref.children.length == 0"
+        [ngClass]="{
+             'margin-top--double': true,
+             'page-actions--edges': (cancel && submit),
+             'page-actions--center': (!cancel || !submit)
+           }">
+        <button
+          type="button"
+          [ngClass]="['btn btn-default button', cancelClass]"
+          *ngIf="cancel"
+          [disabled]="isWorking"
+          (click)="handleOnCancel()">{{cancel}}</button>
+        <button
+          type="submit"
+          [ngClass]="['btn btn-primary button button--accept', submitClass]"
+          *ngIf="submit"
+          [disabled]="isWorking"
+        >
+            <svg *ngIf="isWorking" width="38" height="38" viewBox="0 0 38 38" xmlns="http://www.w3.org/2000/svg" stroke="#fff">
+              <g fill="none" fill-rule="evenodd">
+                <g transform="translate(1 1)" stroke-width="2">
+                  <circle stroke-opacity=".5" cx="18" cy="18" r="18"/>
+                  <path d="M36 18c0-9.94-8.06-18-18-18">
+                    <animateTransform
+                      attributeName="transform"
+                      type="rotate"
+                      from="0 18 18"
+                      to="360 18 18"
+                      dur="1s"
+                      repeatCount="indefinite"/>
+                  </path>
+                </g>
+              </g>
+            </svg>
             {{submit}}
-          </button>
-        </div>
+        </button>
       </div>
     </form>
   `
@@ -42,6 +75,14 @@ export class JsonFormComponent implements OnInit, DoCheck {
   public submit: string;
   @Input()
   public cancel: string;
+  @Input()
+  public outerClass: string;
+  @Input()
+  public submitClass: string;
+  @Input()
+  public cancelClass: string;
+  @Input()
+  public isWorking: boolean;
   @Output()
   handleSubmit = new EventEmitter();
   @Output()
@@ -56,6 +97,7 @@ export class JsonFormComponent implements OnInit, DoCheck {
   public oldSchema: string;
   public oldData: string;
   public changeDetected = false;
+  public submitted = false;
 
   constructor(
     @Inject(FormBuilder) fb: FormBuilder,
@@ -66,6 +108,7 @@ export class JsonFormComponent implements OnInit, DoCheck {
   }
 
   ngOnInit() {
+    this.isWorking = false;
     this.constructForm();
   }
 
@@ -83,6 +126,7 @@ export class JsonFormComponent implements OnInit, DoCheck {
     }
 
     if (this.changeDetected) {
+      this.submitted = false;
       this.constructForm();
     }
   }
@@ -167,7 +211,10 @@ export class JsonFormComponent implements OnInit, DoCheck {
   }
 
   handleOnSubmit() {
-    this.handleSubmit.emit(this.form.value);
+    this.submitted = true;
+    if (this.form.valid) {
+      this.handleSubmit.emit(this.form.value);
+    }
   }
 
   handleOnChange(key, value) {

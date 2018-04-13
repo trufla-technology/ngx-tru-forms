@@ -7,6 +7,7 @@ export declare class FieldComponent implements OnInit, OnChanges {
     container: ViewContainerRef;
     control: SchemaFormControl;
     index: number;
+    submitted: boolean;
     patterns: any;
     constructor(jsonFormFieldsService: JsonFormFieldsService, el: ElementRef);
     ngOnInit(): void;

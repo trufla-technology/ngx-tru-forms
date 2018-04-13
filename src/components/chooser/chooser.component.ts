@@ -8,6 +8,7 @@ import { SchemaFormGroup } from '../../models/schema-form-group';
       *ngFor="let control of keys(form.controls)"
       jf-field
       [control]="form.get(control)"
+      [submitted]="submitted"
       [index]="index"
     ></div>
   `
@@ -16,5 +17,6 @@ export class ChooserComponent {
   @Input() index: number;
   @Input() form: SchemaFormGroup;
   @Input() schema: Object;
+  @Input() submitted: boolean;
   keys = Object.keys;
 }

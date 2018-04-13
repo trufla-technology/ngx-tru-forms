@@ -10,6 +10,10 @@ export declare class JsonFormComponent implements OnInit, DoCheck {
     style: any;
     submit: string;
     cancel: string;
+    outerClass: string;
+    submitClass: string;
+    cancelClass: string;
+    isWorking: boolean;
     handleSubmit: EventEmitter<{}>;
     handleChange: EventEmitter<{}>;
     handleCancel: EventEmitter<{}>;
@@ -23,6 +27,7 @@ export declare class JsonFormComponent implements OnInit, DoCheck {
     oldSchema: string;
     oldData: string;
     changeDetected: boolean;
+    submitted: boolean;
     constructor(fb: FormBuilder, vl: JsonFormValidatorsService, df: JsonFormDefaultsService);
     ngOnInit(): void;
     ngDoCheck(): void;

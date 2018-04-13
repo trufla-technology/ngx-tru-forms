@@ -14,9 +14,11 @@ var JsonFormComponent = /** @class */ (function () {
         this.handleCancel = new EventEmitter();
         this.control = { key: '', value: '' };
         this.changeDetected = false;
+        this.submitted = false;
         this.fb = fb;
     }
     JsonFormComponent.prototype.ngOnInit = function () {
+        this.isWorking = false;
         this.constructForm();
     };
     JsonFormComponent.prototype.ngDoCheck = function () {
@@ -30,6 +32,7 @@ var JsonFormComponent = /** @class */ (function () {
             this.changeDetected = true;
         }
         if (this.changeDetected) {
+            this.submitted = false;
             this.constructForm();
         }
     };
@@ -107,7 +110,10 @@ var JsonFormComponent = /** @class */ (function () {
         return prop.hasOwnProperty('format') && prop.format === format;
     };
     JsonFormComponent.prototype.handleOnSubmit = function () {
-        this.handleSubmit.emit(this.form.value);
+        this.submitted = true;
+        if (this.form.valid) {
+            this.handleSubmit.emit(this.form.value);
+        }
     };
     JsonFormComponent.prototype.handleOnChange = function (key, value) {
         this.control = { key: key, value: value };
@@ -118,7 +124,7 @@ var JsonFormComponent = /** @class */ (function () {
     JsonFormComponent.decorators = [
         { type: Component, args: [{
                     selector: 'jf-form',
-                    template: "\n    <form\n      [formGroup]=\"form\"\n      (ngSubmit)=\"handleOnSubmit()\"\n      *ngIf=\"isValidSchema()\"\n    >\n      <div jf-component-chooser\n           [form]=\"form\"\n           [schema]=\"schema\">\n      </div>\n      <div class=\"grid margin-top--triple\">\n        <div class=\"smart--one-half grid__item margin-bottom\" *ngIf=\"cancel\">\n          <button type=\"button\" class=\"btn btn-default button\" (click)=\"handleOnCancel()\">{{cancel}}</button>\n        </div>\n        <div class=\"smart--one-half grid__item margin-bottom\" *ngIf=\"submit\">\n          <button type=\"submit\" class=\"btn btn-primary button button--accept\" [disabled]=\"form.invalid\">\n            {{submit}}\n          </button>\n        </div>\n      </div>\n    </form>\n  "
+                    template: "\n    <form\n      [formGroup]=\"form\"\n      (ngSubmit)=\"handleOnSubmit()\"\n      *ngIf=\"isValidSchema()\"\n    >\n      <div jf-component-chooser\n           [class]=\"outerClass\"\n           [form]=\"form\"\n           [submitted]=\"submitted\"\n           [schema]=\"schema\">\n      </div>\n      <div #ref>\n        <ng-content></ng-content>\n      </div>\n      <div\n        *ngIf=\"ref.children.length == 0\"\n        [ngClass]=\"{\n             'margin-top--double': true,\n             'page-actions--edges': (cancel && submit),\n             'page-actions--center': (!cancel || !submit)\n           }\">\n        <button\n          type=\"button\"\n          [ngClass]=\"['btn btn-default button', cancelClass]\"\n          *ngIf=\"cancel\"\n          [disabled]=\"isWorking\"\n          (click)=\"handleOnCancel()\">{{cancel}}</button>\n        <button\n          type=\"submit\"\n          [ngClass]=\"['btn btn-primary button button--accept', submitClass]\"\n          *ngIf=\"submit\"\n          [disabled]=\"isWorking\"\n        >\n            <svg *ngIf=\"isWorking\" width=\"38\" height=\"38\" viewBox=\"0 0 38 38\" xmlns=\"http://www.w3.org/2000/svg\" stroke=\"#fff\">\n              <g fill=\"none\" fill-rule=\"evenodd\">\n                <g transform=\"translate(1 1)\" stroke-width=\"2\">\n                  <circle stroke-opacity=\".5\" cx=\"18\" cy=\"18\" r=\"18\"/>\n                  <path d=\"M36 18c0-9.94-8.06-18-18-18\">\n                    <animateTransform\n                      attributeName=\"transform\"\n                      type=\"rotate\"\n                      from=\"0 18 18\"\n                      to=\"360 18 18\"\n                      dur=\"1s\"\n                      repeatCount=\"indefinite\"/>\n                  </path>\n                </g>\n              </g>\n            </svg>\n            {{submit}}\n        </button>\n      </div>\n    </form>\n  "
                 },] },
     ];
     /** @nocollapse */
@@ -133,6 +139,10 @@ var JsonFormComponent = /** @class */ (function () {
         "style": [{ type: Input },],
         "submit": [{ type: Input },],
         "cancel": [{ type: Input },],
+        "outerClass": [{ type: Input },],
+        "submitClass": [{ type: Input },],
+        "cancelClass": [{ type: Input },],
+        "isWorking": [{ type: Input },],
         "handleSubmit": [{ type: Output },],
         "handleChange": [{ type: Output },],
         "handleCancel": [{ type: Output },],
