@@ -1,21 +1,33 @@
-#json-form
-Angular 5 module for generating forms from JSON schema. Refer to documentation for structure of JSON Schema [PDF](https://spacetelescope.github.io/understanding-json-schema/UnderstandingJSONSchema.pdf)/[HTML](https://spacetelescope.github.io/understanding-json-schema/index.html).
-This component was developed with Angular 5 features in mind, it integrates Angular validation and use FormBuilder instead of models.
+## Tru Form
 
-## Quick Reference
+Angular 5+ module for generating forms from JSON schema. Refer to documentation for structure of JSON Schema [PDF](https://spacetelescope.github.io/understanding-json-schema/UnderstandingJSONSchema.pdf)/[HTML](https://spacetelescope.github.io/understanding-json-schema/index.html).
+This component utilizes [Reactive Forms](https://angular.io/guide/reactive-forms) for most of its functionality.
 
-| Key | Description | Required |
-| ----- | ----- | ----- |
-| type | One of basic json schema types | Yes |
-| title | Title of the type, appears as placeholder and label |  |
-| description | Attaches tooltip to field | |
-| visible | Boolean (true|false) for visibility of object | |
-| mask | Regex for masking the input field | |
+### Table of Contents
 
-## Usage
+* [Installation](#installation)
+* [Usage](#usage)
+* [Options](#options)
+* [Example](#example)
+* [Quick Reference](#quick-reference)
+* [Extending](#extending)
+  * [Defaults](#defaults)
+  * [Validations](#validations)
+  * [Fields](#fields)
+* [Styling](#styling)
 
-Import `json-forms` module:
+### Installation
+
+```bash
+npm install -g @trufla/ngx-tru-forms
 ```
+
+### Usage
+
+In module add following:
+```
+import { JsonFormModule } from '@trufla/ngx-tru-forms';
+
 @NgModule({
   imports: [
     JsonFormModule
@@ -23,22 +35,30 @@ Import `json-forms` module:
 })
 ```
 
-In the component use following to generate form:
+In component add following:
 ```
 <jf-form></jf-form>
 ```
 
-## Inputs
+### Options
 
-`schema`: JSON Schema object.  
-`submit`: String for submit button. If left empty hides the button.  
-`data`: JSON Schema response data.  
+| Key | Description | Required |
+| ----- | ----- | ----- |
+| [schema] | JSON Schema object | Yes |
+| [data] | JSON Schema default values | |
+| [data] | JSON Schema default values | |
+| [style] | Extra classes and style overrides | |
+| [submit] | Text label for submit button | |
+| [cancel] | Text label for cancel button | |
+| [outerClass] | Wrapper class for the form component | |
+| [submitClass] | Class for submit button | |
+| [cancelClass] | Class for cancel button | | 
+| [isWorking] | Toggle form state if using async data process | |
+| (handleSubmit) | Watch for form submission. Return JSON Schema response data| |
+| (handleChange) | Watch for form changes | |
+| (handleCancel) | Watch for cancel click | |
 
-## Ouputs
-`handleSubmit`: Watch for form submission. Return JSON Schema response data.
-`handleChange`: Watch for form changes.
-
-## Example
+### Example
 
 ```js
 const schema = {
@@ -70,11 +90,11 @@ const onFormSubmit = (form) => console.log(form);
 ></jf-form> 
 ```
 
-## Quick Reference
+### Quick Reference
 `type`: string, number, object, array, boolean  
 `format (optional)`: date, photo, textarea
 
-## Extending
+### Extending
 
 This module allows for extension via injectors.
 
@@ -86,14 +106,14 @@ constructor(
 )
 ```
 
-### jfDefaultsService
+#### Defaults
 
 Extend values in `default` tag. 
 ```
 this.jfDefaultsService.register('now', () => new Date());
 ```
 
-### jfValidatorsService
+#### Validations
 
 Add JSON validator. 
 ```
@@ -133,11 +153,13 @@ const schema = {
 ```
 Fields would be `first_name`, `last_name`, `last_name.prefix.custom`.
 
-### jfFieldsService
+#### Fields
 
 Add new field type. Create a component that extends CommonComponent. Add the following as a starting 
 template (or copy from string field).
 ```
+import { CommonComponent } from '@trufla/ngx-tru-forms';
+
 @Component({
   template: `
     <label [ngClass]="['jf-label', schema.key, (isRequired() ? 'required' : '')]">
@@ -163,14 +185,16 @@ export class CustomComponent extends CommonComponent {
     this.control.setValue(val);
   }
 }
+
 ```
 Add it to your module:
 ```
 entryComponents: [
-  JsonFormComponent,
   ColourPickerComponent
 ]
 ```
+
+Register it inside your component:
 ```
 this.jfFieldsService.register('new_format', CustomComponent);
 ```
@@ -178,9 +202,16 @@ Now objects of format `new_format` will show the CustomComponent.
 
 ## Styling
 
-Use flex to align and order fields. Form, groups and labels are assigned classes which can be utilized globally or per form.
+We prefer [csswizardry-grids](https://github.com/csswizardry/csswizardry-grids) to align and order fields. Form, groups and labels are assigned classes which can be utilized globally or per form.
+Certain forms fields can be assigned classes on top of current defaults.
 
-```css
-section { display: flex; flex-wrap: wrap; }
-section jf-field { flex: 0 0 100%; }
+```
+{
+  first_name: {
+    default: 'one-half grid__item'
+  },
+  last_name: {
+    default: 'one-half grid__item'
+  }
+}
 ```
