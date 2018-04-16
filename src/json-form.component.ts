@@ -1,4 +1,4 @@
-import { Component, DoCheck, EventEmitter, Inject, Input, OnInit, Output } from '@angular/core';
+import {Component, DoCheck, EventEmitter, Inject, Input, OnDestroy, OnInit, Output} from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { JsonFormValidatorsService } from './services/validators.service';
 import { SchemaFormControl } from './models/schema-form-control';
@@ -64,11 +64,11 @@ import { SchemaFormArray } from './models/schema-form-array';
     </form>
   `
 })
-export class JsonFormComponent implements OnInit, DoCheck {
+export class JsonFormComponent implements OnInit, DoCheck, OnDestroy {
   @Input()
   public schema;
   @Input()
-  public data;
+  public data = {};
   @Input()
   public style;
   @Input()
@@ -93,7 +93,7 @@ export class JsonFormComponent implements OnInit, DoCheck {
   public form;
   public model;
   public fb;
-  public control = { key: '', value: '' };
+  public control = { key: '', value: '', isPartOf: false };
   public oldSchema: string;
   public oldData: string;
   public changeDetected = false;
@@ -131,13 +131,23 @@ export class JsonFormComponent implements OnInit, DoCheck {
     }
   }
 
+  ngOnDestroy(): void {
+    this.form.valueChanges.unsubscribe();
+  }
+
   public constructForm() {
     this.model = {};
 
     if (this.isValidSchema()) {
+      this.schema = this.subRefs(this.schema);
       this.model = this.generateForm(this.schema, {}, this.data, this.style);
       this.form = this.fb.group(this.model);
       this.form.valueChanges.subscribe((data) => {
+        if (this.control.isPartOf) {
+          this.data = data;
+          this.constructForm();
+        }
+
         this.handleChange.emit({ control: this.control, data });
       });
     }
@@ -190,16 +200,46 @@ export class JsonFormComponent implements OnInit, DoCheck {
         group[prop].schema.key = prop;
         group[prop].style = arrayStyle;
       } else if (this.isVisible(schema.properties[prop])) {
+        if (this.isOneOf(schema, prop)) {
+          return;
+        }
+
         const control = new SchemaFormControl(this.df.get(prop, schema, data), this.vl.get(prop, schema, path));
         control.schema = Object.assign({}, schema.properties[prop]);
         control.schema.key = prop;
         control.style = (style && style.hasOwnProperty(prop)) ? style[prop] : {};
-        control.valueChanges.subscribe((event) => this.handleOnChange(prop, event));
+        control.valueChanges.subscribe((event) => this.handleOnChange(prop, event, this.inOneOf(schema, prop)));
         group[prop] = control;
       }
     });
 
     return group;
+  }
+
+  isOneOf(schema, prop) {
+    if (typeof (schema.oneOf) !== 'undefined') {
+      return schema.oneOf.filter((p) => {
+        const key = Object.keys(p.properties)[0];
+        if (p.properties[key].required.indexOf(prop) > -1) {
+          return this.data.hasOwnProperty(key) === false || p.properties[key].enum.indexOf(this.data[key]) === -1;
+        }
+
+        return false;
+      }).length > 0;
+    }
+
+    return false;
+  }
+
+  inOneOf(schema, prop) {
+    if (typeof (schema.oneOf) !== 'undefined') {
+      return schema.oneOf.filter((p) => {
+        const key = Object.keys(p.properties)[0];
+        return key === prop;
+      }).length > 0;
+    }
+
+    return false;
   }
 
   isVisible (prop) {
@@ -217,11 +257,21 @@ export class JsonFormComponent implements OnInit, DoCheck {
     }
   }
 
-  handleOnChange(key, value) {
-    this.control = { key, value };
+  handleOnChange(key, value, isPartOf = false) {
+    this.control = { key, value, isPartOf };
   }
 
   handleOnCancel() {
     this.handleCancel.emit(this.form.value);
+  }
+
+  subRefs(schema) {
+    Object.keys(schema.properties).forEach((prop) => {
+      if (schema.properties[prop].hasOwnProperty('$ref')) {
+        schema.properties[prop] = this.schema.definitions[schema.properties[prop]['$ref'].replace('#/definitions/', '')];
+      }
+    });
+
+    return schema;
   }
 }

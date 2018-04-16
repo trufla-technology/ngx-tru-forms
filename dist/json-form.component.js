@@ -9,10 +9,14 @@ var JsonFormComponent = /** @class */ (function () {
     function JsonFormComponent(fb, vl, df) {
         this.vl = vl;
         this.df = df;
+        this.data = {};
+        this.submitClass = '';
+        this.cancelClass = '';
+        this.isWorking = false;
         this.handleSubmit = new EventEmitter();
         this.handleChange = new EventEmitter();
         this.handleCancel = new EventEmitter();
-        this.control = { key: '', value: '' };
+        this.control = { key: '', value: '', isPartOf: false };
         this.changeDetected = false;
         this.submitted = false;
         this.fb = fb;
@@ -36,13 +40,21 @@ var JsonFormComponent = /** @class */ (function () {
             this.constructForm();
         }
     };
+    JsonFormComponent.prototype.ngOnDestroy = function () {
+        this.form.valueChanges.unsubscribe();
+    };
     JsonFormComponent.prototype.constructForm = function () {
         var _this = this;
         this.model = {};
         if (this.isValidSchema()) {
+            this.schema = this.subRefs(this.schema);
             this.model = this.generateForm(this.schema, {}, this.data, this.style);
             this.form = this.fb.group(this.model);
             this.form.valueChanges.subscribe(function (data) {
+                if (_this.control.isPartOf) {
+                    _this.data = data;
+                    _this.constructForm();
+                }
                 _this.handleChange.emit({ control: _this.control, data: data });
             });
         }
@@ -93,15 +105,40 @@ var JsonFormComponent = /** @class */ (function () {
                 group[prop].style = arrayStyle;
             }
             else if (_this.isVisible(schema.properties[prop])) {
+                if (_this.isOneOf(schema, prop)) {
+                    return;
+                }
                 var control = new SchemaFormControl(_this.df.get(prop, schema, data), _this.vl.get(prop, schema, path));
                 control.schema = Object.assign({}, schema.properties[prop]);
                 control.schema.key = prop;
                 control.style = (style && style.hasOwnProperty(prop)) ? style[prop] : {};
-                control.valueChanges.subscribe(function (event) { return _this.handleOnChange(prop, event); });
+                control.valueChanges.subscribe(function (event) { return _this.handleOnChange(prop, event, _this.inOneOf(schema, prop)); });
                 group[prop] = control;
             }
         });
         return group;
+    };
+    JsonFormComponent.prototype.isOneOf = function (schema, prop) {
+        var _this = this;
+        if (typeof (schema.oneOf) !== 'undefined') {
+            return schema.oneOf.filter(function (p) {
+                var key = Object.keys(p.properties)[0];
+                if (p.properties[key].required.indexOf(prop) > -1) {
+                    return _this.data.hasOwnProperty(key) === false || p.properties[key].enum.indexOf(_this.data[key]) === -1;
+                }
+                return false;
+            }).length > 0;
+        }
+        return false;
+    };
+    JsonFormComponent.prototype.inOneOf = function (schema, prop) {
+        if (typeof (schema.oneOf) !== 'undefined') {
+            return schema.oneOf.filter(function (p) {
+                var key = Object.keys(p.properties)[0];
+                return key === prop;
+            }).length > 0;
+        }
+        return false;
     };
     JsonFormComponent.prototype.isVisible = function (prop) {
         return prop.hasOwnProperty('visible') === false || (prop.hasOwnProperty('visible') && prop.visible === true);
@@ -115,11 +152,21 @@ var JsonFormComponent = /** @class */ (function () {
             this.handleSubmit.emit(this.form.value);
         }
     };
-    JsonFormComponent.prototype.handleOnChange = function (key, value) {
-        this.control = { key: key, value: value };
+    JsonFormComponent.prototype.handleOnChange = function (key, value, isPartOf) {
+        if (isPartOf === void 0) { isPartOf = false; }
+        this.control = { key: key, value: value, isPartOf: isPartOf };
     };
     JsonFormComponent.prototype.handleOnCancel = function () {
         this.handleCancel.emit(this.form.value);
+    };
+    JsonFormComponent.prototype.subRefs = function (schema) {
+        var _this = this;
+        Object.keys(schema.properties).forEach(function (prop) {
+            if (schema.properties[prop].hasOwnProperty('$ref')) {
+                schema.properties[prop] = _this.schema.definitions[schema.properties[prop]['$ref'].replace('#/definitions/', '')];
+            }
+        });
+        return schema;
     };
     JsonFormComponent.decorators = [
         { type: Component, args: [{

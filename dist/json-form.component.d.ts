@@ -1,12 +1,12 @@
-import { DoCheck, EventEmitter, OnInit } from '@angular/core';
+import { DoCheck, EventEmitter, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { JsonFormValidatorsService } from './services/validators.service';
 import { JsonFormDefaultsService } from './services/defaults.service';
-export declare class JsonFormComponent implements OnInit, DoCheck {
+export declare class JsonFormComponent implements OnInit, DoCheck, OnDestroy {
     vl: JsonFormValidatorsService;
     df: JsonFormDefaultsService;
     schema: any;
-    data: any;
+    data: {};
     style: any;
     submit: string;
     cancel: string;
@@ -23,6 +23,7 @@ export declare class JsonFormComponent implements OnInit, DoCheck {
     control: {
         key: string;
         value: string;
+        isPartOf: boolean;
     };
     oldSchema: string;
     oldData: string;
@@ -31,12 +32,16 @@ export declare class JsonFormComponent implements OnInit, DoCheck {
     constructor(fb: FormBuilder, vl: JsonFormValidatorsService, df: JsonFormDefaultsService);
     ngOnInit(): void;
     ngDoCheck(): void;
+    ngOnDestroy(): void;
     constructForm(): void;
     isValidSchema(): boolean;
     private generateForm(schema, group?, data?, style?, path?);
+    isOneOf(schema: any, prop: any): boolean;
+    inOneOf(schema: any, prop: any): boolean;
     isVisible(prop: any): boolean;
     isFormat(prop: any, format: any): boolean;
     handleOnSubmit(): void;
-    handleOnChange(key: any, value: any): void;
+    handleOnChange(key: any, value: any, isPartOf?: boolean): void;
     handleOnCancel(): void;
+    subRefs(schema: any): any;
 }
