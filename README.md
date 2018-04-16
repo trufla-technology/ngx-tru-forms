@@ -80,9 +80,9 @@ This module allows for extension via injectors.
 
 ```
 constructor(
-  public jfDefaultsService: JfDefaultsService,
-  public jfFieldsService: JfFieldsService
-  public jfValidatorsService: JfValidatorsService
+  public jfDefaultsService: JsonFormDefaultsService,
+  public jfFieldsService: JsonFormFieldsService
+  public jfValidatorsService: JsonFormValidatorsService
 )
 ```
 

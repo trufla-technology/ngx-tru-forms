@@ -78,11 +78,11 @@ export class JsonFormComponent implements OnInit, DoCheck {
   @Input()
   public outerClass: string;
   @Input()
-  public submitClass: string;
+  public submitClass = '';
   @Input()
-  public cancelClass: string;
+  public cancelClass = '';
   @Input()
-  public isWorking: boolean;
+  public isWorking = false;
   @Output()
   handleSubmit = new EventEmitter();
   @Output()
