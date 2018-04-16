@@ -1,20 +1,28 @@
 {
-  "name": "@trufla-technology/ngx-tru-forms",
-  "author": "Boris Cosic <boris.c@trufla.com>",
-  "version": "0.1.3",
+  "name": "ngx-tru-forms-example",
+  "version": "0.0.0",
   "license": "MIT",
-  "main": "./dist/index.js",
-  "typings": "./dist/index.d.ts",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
+    "build": "ng build --prod",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e",
-    "clean": "rm -fr dist/",
-    "build": "yarn run clean && ngc -p src/tsconfig.json"
+    "e2e": "ng e2e"
   },
-  "private": true,
+  "config": {
+    "deployToGit": {
+      "repository": "git@github.com:trufla-technology/ngx-tru-forms.git",
+      "branch": "gh-pages",
+      "folder": "dist",
+      "script": "npm run build",
+      "commit": "Publishing $npm_package_version",
+      "user": {
+        "name": "Boris Cosic",
+        "email": "boris.c@trufla.com"
+      }
+    }
+  },
   "dependencies": {
     "@angular/animations": "^5.2.0",
     "@angular/common": "^5.2.0",
@@ -25,19 +33,21 @@
     "@angular/platform-browser": "^5.2.0",
     "@angular/platform-browser-dynamic": "^5.2.0",
     "@angular/router": "^5.2.0",
-    "angular2-text-mask": "^8.0.4",
+    "@trufla-technology/ngx-tru-forms": "file:///Users/boris/Documents/projects/angular-json-form",
     "core-js": "^2.4.1",
+    "ngx-color-picker": "^5.3.8",
     "rxjs": "^5.5.6",
-    "text-mask-addons": "^3.7.2",
     "zone.js": "^0.8.19"
   },
   "devDependencies": {
-    "@angular/compiler-cli": "^5.2.6",
+    "@angular/cli": "1.6.8",
+    "@angular/compiler-cli": "^5.2.0",
     "@angular/language-service": "^5.2.0",
     "@types/jasmine": "~2.8.3",
     "@types/jasminewd2": "~2.0.2",
     "@types/node": "~6.0.60",
     "codelyzer": "^4.0.1",
+    "deploy-to-git": "^0.1.5",
     "jasmine-core": "~2.8.0",
     "jasmine-spec-reporter": "~4.2.1",
     "karma": "~2.0.0",
@@ -45,7 +55,6 @@
     "karma-coverage-istanbul-reporter": "^1.2.1",
     "karma-jasmine": "~1.1.0",
     "karma-jasmine-html-reporter": "^0.2.2",
-    "ng-packagr": "^2.1.0",
     "protractor": "~5.1.2",
     "ts-node": "~4.1.0",
     "tslint": "~5.9.1",

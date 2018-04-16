@@ -1,0 +1,11 @@
+.*
+
+src/
+example/
+
+package/
+npm-debug.log
+node_modules/
+
+tslint.json
+tsconfig.json

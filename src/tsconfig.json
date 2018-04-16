@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "baseUrl": ".",
+    "baseUrl": "..",
     "target": "es5",
     "module": "es2015",
     "moduleResolution": "node",
@@ -10,11 +10,13 @@
     "sourceMap": false,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "outDir": "./dist",
-    "rootDir": "./src",
+    "outDir": "../dist",
+    "rootDir": ".",
     "skipLibCheck": true,
     "stripInternal": true,
-    "typeRoots": ["./node_modules/@types"],
+    "typeRoots": [
+      "../node_modules/@types"
+    ],
     "types": [
         "node"
     ],
@@ -23,13 +25,13 @@
         "es2015"
     ],
     "paths": {
-        "rxjs/*": ["node_modules/rxjs/*"]
+        "rxjs/*": ["../node_modules/rxjs/*"]
     }
   },
   "compileOnSave": false,
   "buildOnSave": false,
   "exclude": [
-      "node_modules",
+    "../node_modules",
       "dist",
       "tests",
       "**/*.ngfactory.ts",
