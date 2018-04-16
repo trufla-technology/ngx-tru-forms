@@ -46,7 +46,6 @@ In component add following:
 | ----- | ----- | ----- |
 | [schema] | JSON Schema object | Yes |
 | [data] | JSON Schema default values | |
-| [data] | JSON Schema default values | |
 | [style] | Extra classes and style overrides | |
 | [submit] | Text label for submit button | |
 | [cancel] | Text label for cancel button | |
@@ -100,9 +99,9 @@ This module allows for extension via injectors.
 
 ```
 constructor(
-  public jfDefaultsService: JsonFormDefaultsService,
-  public jfFieldsService: JsonFormFieldsService
-  public jfValidatorsService: JsonFormValidatorsService
+  jfDefaultsService: JsonFormDefaultsService,
+  jfFieldsService: JsonFormFieldsService
+  jfValidatorsService: JsonFormValidatorsService
 )
 ```
 
