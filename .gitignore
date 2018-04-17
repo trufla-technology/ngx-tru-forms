@@ -42,8 +42,7 @@ testem.log
 Thumbs.db
 build.sh
 yarn.lock
-dist
+dist/
 
-example/dist/
 example/npm-debug.log
 example/node_modules/
