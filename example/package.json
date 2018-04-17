@@ -5,7 +5,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build --prod --output-hashing none --base-href /ngx-tru-forms",
+    "build": "ng build --prod --output-hashing none --deploy-url /ngx-tru-forms",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
