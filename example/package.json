@@ -5,7 +5,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build --prod",
+    "build": "ng build --prod --output-hashing none",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
@@ -16,7 +16,7 @@
     "deployToGit": {
       "repository": "git@github.com:trufla-technology/ngx-tru-forms.git",
       "branch": "gh-pages",
-      "folder": "dist",
+      "folder": ".",
       "script": "npm run build",
       "commit": "Publishing $npm_package_version",
       "user": {
