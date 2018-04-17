@@ -1,7 +1,7 @@
 import {Component, ElementRef, OnInit, ViewChild, ViewContainerRef} from '@angular/core';
 import {JsonSchemaExamplesSamples} from './json-schema-examples.samples';
 import {AbstractControl, FormControl, FormGroup} from '@angular/forms';
-import {JsonFormComponent, JsonFormFieldsService} from 'angular-json-form';
+import {JsonFormComponent, JsonFormFieldsService} from '@trufla-technology/ngx-tru-forms';
 import {InputColourComponent} from './input-colour/input-colour.component';
 
 @Component({

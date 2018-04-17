@@ -35,7 +35,6 @@
     "@angular/platform-browser": "^5.2.0",
     "@angular/platform-browser-dynamic": "^5.2.0",
     "@angular/router": "^5.2.0",
-    "@trufla-technology/ngx-tru-forms": "git+https://github.com/trufla-technology/ngx-tru-forms.git",
     "core-js": "^2.4.1",
     "ngx-color-picker": "^5.3.8",
     "rxjs": "^5.5.6",

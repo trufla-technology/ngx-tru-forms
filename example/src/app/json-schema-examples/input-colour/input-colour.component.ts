@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { CommonComponent } from 'angular-json-form';
+import { CommonComponent } from '@trufla-technology/ngx-tru-forms';
 
 @Component({
   template: `
