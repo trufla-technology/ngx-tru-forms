@@ -1,4 +1,4 @@
-## Tru Form
+## Tru Forms
 
 Angular 5+ module for generating forms from JSON schema. Refer to documentation for structure of JSON Schema [PDF](https://spacetelescope.github.io/understanding-json-schema/UnderstandingJSONSchema.pdf)/[HTML](https://spacetelescope.github.io/understanding-json-schema/index.html).
 This component utilizes [Reactive Forms](https://angular.io/guide/reactive-forms) for most of its functionality.
