@@ -9,15 +9,15 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "clean": "rm -rf dist",
+    "clean": "rm -rf dist build",
     "deploy": "npm run clean && deploy-to-git"
   },
   "config": {
     "deployToGit": {
       "repository": "git@github.com:trufla-technology/ngx-tru-forms.git",
       "branch": "gh-pages",
-      "folder": "dist",
-      "script": "npm run build",
+      "folder": "build",
+      "script": "npm run build && cp dist/* build",
       "commit": "Publishing $npm_package_version",
       "user": {
         "name": "Boris Cosic",

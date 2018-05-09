@@ -92,6 +92,7 @@ const onFormSubmit = (form) => console.log(form);
 ### Quick Reference
 `type`: string, number, object, array, boolean  
 `format (optional)`: date, photo, textarea
+`description (optional)`: hover text to describe purpose of field
 
 ### Extending
 
