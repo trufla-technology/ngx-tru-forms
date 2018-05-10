@@ -68,16 +68,20 @@ export class JsonSchemaExamplesSamples {
       description: 'Form with nested data types',
       type: 'object',
       properties: {
-        address: {
+        employee_information: {
           type: 'object',
           properties: {
-            email: {
-              title: 'New Email',
+            first_name: {
               type: 'string'
             },
-            effective_date: {
-              type: 'string',
-              format: 'date'
+            last_name: {
+              type: 'string'
+            },
+            phone_number: {
+              type: 'string'
+            },
+            email: {
+              type: 'string'
             }
           }
         }
@@ -96,6 +100,43 @@ export class JsonSchemaExamplesSamples {
         }
       },
       required: ['first_name', 'last_name']
+    },
+    multistep: {
+      title: 'Multi Step',
+      description: 'Form composed of nested schemas and displayed as steps',
+      type: 'object',
+      properties: {
+        employee_information: {
+          type: 'object',
+          properties: {
+            first_name: {
+              type: 'string'
+            },
+            last_name: {
+              type: 'string'
+            },
+            phone_number: {
+              type: 'string'
+            },
+            email: {
+              type: 'string'
+            }
+          },
+          required: ['first_name', 'last_name']
+        },
+        bank_information: {
+          type: 'object',
+          properties: {
+            bank_name: {
+              type: 'string'
+            },
+            account_number: {
+              type: 'string'
+            }
+          },
+          required: ['bank_name', 'account_number']
+        }
+      }
     },
     payment_change_billing_date: {
       title: 'Payment - Change Billing Date',

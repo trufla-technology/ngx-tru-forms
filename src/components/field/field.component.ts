@@ -1,13 +1,12 @@
 import {Component, ElementRef, Input, OnChanges, OnInit, SimpleChanges, ViewChild, ViewContainerRef} from '@angular/core';
 import { SchemaFormControl } from '../../models/schema-form-control';
 import { JsonFormFieldsService } from '../../';
-import {SchemaFormGroup} from '../../models/schema-form-group';
 
 @Component({
   selector: 'jf-field, [jf-field]',
   template: `
     <ng-container #container></ng-container>
-    <div *ngIf="control.invalid && (control.dirty || control.touched || submitted)" class="has-danger">
+    <div *ngIf="control.invalid && (control.dirty || control.touched)" class="has-danger">
       <div *ngIf="control.errors && control.errors['required']">
         This field is required.
       </div>

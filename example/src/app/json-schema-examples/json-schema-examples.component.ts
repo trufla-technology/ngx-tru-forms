@@ -1,7 +1,7 @@
 import {Component, ElementRef, OnInit, ViewChild, ViewContainerRef} from '@angular/core';
 import {JsonSchemaExamplesSamples} from './json-schema-examples.samples';
 import {AbstractControl, FormControl, FormGroup} from '@angular/forms';
-import {JsonFormComponent, JsonFormFieldsService} from '@trufla-technology/ngx-tru-forms';
+import {JsonFormComponent, JsonFormFieldsService} from '@trufla/ngx-tru-forms';
 import {InputColourComponent} from './input-colour/input-colour.component';
 
 @Component({
@@ -36,7 +36,7 @@ export class JsonSchemaExamplesComponent implements OnInit {
       }
     };
 
-    this.schema = this.jsonSchemaExamplesSamples.json.simple_input;
+    this.schema = this.jsonSchemaExamplesSamples.json.multistep;
     this.schemaControl = new FormControl('', ValidatorJSON);
     this.form = new FormGroup({ schema: this.schemaControl });
     this.schemaControl.setValue(JSON.stringify(this.schema, null, '\t'));

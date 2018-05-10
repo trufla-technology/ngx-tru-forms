@@ -1,4 +1,4 @@
-import {Component, DoCheck, EventEmitter, Inject, Input, OnDestroy, OnInit, Output} from '@angular/core';
+import { Component, DoCheck, EventEmitter, Inject, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { JsonFormValidatorsService } from './services/validators.service';
 import { SchemaFormControl } from './models/schema-form-control';
@@ -83,6 +83,8 @@ export class JsonFormComponent implements OnInit, DoCheck, OnDestroy {
   public cancelClass = '';
   @Input()
   public isWorking = false;
+  @Input()
+  public isMultiStep = true;
   @Output()
   handleSubmit = new EventEmitter();
   @Output()
@@ -98,6 +100,7 @@ export class JsonFormComponent implements OnInit, DoCheck, OnDestroy {
   public oldData: string;
   public changeDetected = false;
   public submitted = false;
+  public steps = [];
 
   constructor(
     @Inject(FormBuilder) fb: FormBuilder,
@@ -139,8 +142,11 @@ export class JsonFormComponent implements OnInit, DoCheck, OnDestroy {
     this.model = {};
 
     if (this.isValidSchema()) {
-      this.schema = this.subRefs(this.schema);
-      this.model = this.generateForm(this.schema, {}, this.data, this.style);
+      this.steps = this.getSteps(this.schema);
+      let schema = this.isMultiStep ? this.schema.properties[this.steps.find((s) => s.visible).step] : this.schema;
+      schema = this.subRefs(schema);
+
+      this.model = this.generateForm(schema, {}, this.data, this.style);
       this.form = this.fb.group(this.model);
       this.form.valueChanges.subscribe((data) => {
         if (this.control.isPartOf) {
@@ -151,6 +157,13 @@ export class JsonFormComponent implements OnInit, DoCheck, OnDestroy {
         this.handleChange.emit({ control: this.control, data });
       });
     }
+  }
+
+  public getSteps(schema): Array<any> {
+    return Object.keys(schema.properties).map((step, index) => ({
+      step,
+      visible: index === 0
+    }));
   }
 
   public isValidSchema() {
@@ -251,7 +264,7 @@ export class JsonFormComponent implements OnInit, DoCheck, OnDestroy {
   }
 
   handleOnSubmit() {
-    this.submitted = true;
+    this.touchAll(this.form.controls);
     if (this.form.valid) {
       this.handleSubmit.emit(this.form.value);
     }
@@ -263,6 +276,15 @@ export class JsonFormComponent implements OnInit, DoCheck, OnDestroy {
 
   handleOnCancel() {
     this.handleCancel.emit(this.form.value);
+  }
+
+  touchAll(controls) {
+    Object.keys(controls).forEach((key) => {
+      if (controls[key].hasOwnProperty('controls')) {
+        this.touchAll(controls[key].controls);
+      }
+      controls[key].markAsTouched();
+    });
   }
 
   subRefs(schema) {
