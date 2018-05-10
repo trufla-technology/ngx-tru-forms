@@ -36,7 +36,7 @@ export class JsonSchemaExamplesComponent implements OnInit {
       }
     };
 
-    this.schema = this.jsonSchemaExamplesSamples.json.conditional_control;
+    this.schema = this.jsonSchemaExamplesSamples.json.simple_input;
     this.schemaControl = new FormControl('', ValidatorJSON);
     this.form = new FormGroup({ schema: this.schemaControl });
     this.schemaControl.setValue(JSON.stringify(this.schema, null, '\t'));
