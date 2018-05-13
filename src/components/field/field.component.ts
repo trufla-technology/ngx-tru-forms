@@ -1,13 +1,13 @@
 import {Component, ElementRef, Input, OnChanges, OnInit, SimpleChanges, ViewChild, ViewContainerRef} from '@angular/core';
 import { SchemaFormControl } from '../../models/schema-form-control';
 import { JsonFormFieldsService } from '../../';
-import {SchemaFormGroup} from '../../models/schema-form-group';
 
 @Component({
   selector: 'jf-field, [jf-field]',
   template: `
+    <ng-content></ng-content>
     <ng-container #container></ng-container>
-    <div *ngIf="control.invalid && (control.dirty || control.touched || submitted)" class="has-danger">
+    <div *ngIf="control.invalid && (control.dirty || control.touched)" class="has-danger">
       <div *ngIf="control.errors && control.errors['required']">
         This field is required.
       </div>
@@ -34,14 +34,9 @@ import {SchemaFormGroup} from '../../models/schema-form-group';
 })
 
 export class FieldComponent implements OnInit, OnChanges {
-  @ViewChild('container', {read: ViewContainerRef})
-  container: ViewContainerRef;
-  @Input()
-  public control: SchemaFormControl;
-  @Input()
-  public index: number;
-  @Input()
-  public submitted: boolean;
+  @ViewChild('container', {read: ViewContainerRef}) container: ViewContainerRef;
+  @Input() control: SchemaFormControl;
+  @Input() index: number;
   public patterns;
 
   constructor(public jsonFormFieldsService: JsonFormFieldsService, public el: ElementRef) {
@@ -60,7 +55,7 @@ export class FieldComponent implements OnInit, OnChanges {
     this.container.clear();
     this.jsonFormFieldsService.setRootViewContainerRef(this.container);
     this.jsonFormFieldsService.addDynamicComponent(this.control, this.index);
-    this.el.nativeElement.className = `field margin-bottom ${this.getClass()}`;
+    this.el.nativeElement.className = `field margin-bottom ${this.getClass()} form-group`;
   }
 
   getClass(defaultClass = '') {

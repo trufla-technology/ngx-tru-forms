@@ -1,7 +1,7 @@
 import {Component, ElementRef, OnInit, ViewChild, ViewContainerRef} from '@angular/core';
 import {JsonSchemaExamplesSamples} from './json-schema-examples.samples';
 import {AbstractControl, FormControl, FormGroup} from '@angular/forms';
-import {JsonFormComponent, JsonFormFieldsService} from '@trufla-technology/ngx-tru-forms';
+import {JsonFormComponent, JsonFormFieldsService} from '@trufla/ngx-tru-forms';
 import {InputColourComponent} from './input-colour/input-colour.component';
 
 @Component({
@@ -13,6 +13,7 @@ import {InputColourComponent} from './input-colour/input-colour.component';
 })
 export class JsonSchemaExamplesComponent implements OnInit {
   public schema: {};
+  public isMultiStep = false;
   public schemaControl: FormControl;
   public form: FormGroup;
   @ViewChild('jfForm', { read: ViewContainerRef }) jfForm: JsonFormComponent;
@@ -36,7 +37,7 @@ export class JsonSchemaExamplesComponent implements OnInit {
       }
     };
 
-    this.schema = this.jsonSchemaExamplesSamples.json.conditional_control;
+    this.schema = this.jsonSchemaExamplesSamples.json.simple_input;
     this.schemaControl = new FormControl('', ValidatorJSON);
     this.form = new FormGroup({ schema: this.schemaControl });
     this.schemaControl.setValue(JSON.stringify(this.schema, null, '\t'));
@@ -47,8 +48,14 @@ export class JsonSchemaExamplesComponent implements OnInit {
   }
 
   handleChange(value?: string) {
+    this.isMultiStep = false;
+
     if (typeof (value) !== 'undefined') {
       this.schemaControl.setValue(JSON.stringify(this.jsonSchemaExamplesSamples.json[value], null, '\t'));
+
+      if (value === 'multistep' || value === 'multi_nested') {
+        this.isMultiStep = true;
+      }
     }
 
     try {

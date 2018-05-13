@@ -3,48 +3,9 @@ import {Injectable} from '@angular/core';
 @Injectable()
 export class JsonSchemaExamplesSamples {
   public json = {
-    add_vehicle: {
-      title: 'Add Vehicle',
-      description: 'Simple form with all the required fields and pattern validation',
-      type: 'object',
-      properties: {
-        multi_check_box: {
-          type: 'array',
-          enum: ['one', 'two', 'three'],
-          format: 'multiselect'
-        },
-        year: {
-          type: 'number',
-          pattern: '[1-2][0-9]{3}'
-        },
-        make: {
-          type: 'string'
-        },
-        model: {
-          type: 'string'
-        },
-        vin_number: {
-          type: 'string'
-        },
-        description: {
-          type: 'string'
-        },
-        effective_date: {
-          type: 'string',
-          format: 'date'
-        },
-        gender: {
-          type: 'string',
-          enum: ['male', 'female'],
-          enumNames: ['Male', 'Female'],
-          format: 'radiogroup'
-        }
-      },
-      required: ['year', 'make', 'model', 'vin_number', 'description', 'effective_date']
-    },
-    add_driver: {
-      title: 'Add Driver',
-      description: 'Simple form with enums',
+    simple_input: {
+      title: 'Simple',
+      description: 'Simple form with input fields',
       type: 'object',
       properties: {
         first_name: {
@@ -53,8 +14,38 @@ export class JsonSchemaExamplesSamples {
         last_name: {
           type: 'string'
         },
-        driver_license_no: {
+        email: {
           type: 'string'
+        },
+        phone_number: {
+          type: 'string'
+        },
+        year: {
+          type: 'number',
+          pattern: '[1-2][0-9]{3}'
+        },
+        effective_date: {
+          type: 'string',
+          format: 'date'
+        }
+      },
+      required: ['year', 'make', 'model', 'vin_number', 'description', 'effective_date']
+    },
+    multiple: {
+      title: 'Multiple',
+      description: 'Form allowing for single and multiple item selections',
+      type: 'object',
+      properties: {
+        multi_check_box: {
+          type: 'array',
+          enum: ['one', 'two', 'three'],
+          format: 'multiselect'
+        },
+        gender: {
+          type: 'string',
+          enum: ['male', 'female'],
+          enumNames: ['Male', 'Female'],
+          format: 'radiogroup'
         },
         insurance_duration: {
           type: 'number',
@@ -67,43 +58,136 @@ export class JsonSchemaExamplesSamples {
         number_of_accidents: {
           type: 'number',
           enum: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-        },
-        effective_date: {
-          type: 'string',
-          format: 'date'
         }
       },
       required: ['first_name', 'last_name', 'driver_license_no', 'insurance_duration', 'number_of_conviction', 'number_of_accidents',
         'effective_date']
     },
-    personal_info_email_change: {
-      title: 'Personal Info - Email Change',
-      description: 'Form with date type',
+    nested: {
+      title: 'Nested',
+      description: 'Form with nested data types',
       type: 'object',
       properties: {
-        email: {
-          title: 'New Email',
-          type: 'string'
-        },
-        effective_date: {
-          type: 'string',
-          format: 'date'
+        employee_information: {
+          title: 'Employee Information',
+          type: 'object',
+          properties: {
+            first_name: {
+              type: 'string'
+            },
+            last_name: {
+              type: 'string'
+            },
+            phone_number: {
+              type: 'string'
+            },
+            email: {
+              type: 'string'
+            }
+          }
         }
-      },
-      required: ['email', 'effective_date']
+      }
     },
-    payment_missed_payment: {
-      title: 'Payment - Missed Payment',
-      description: 'Form with custom format',
-    type: 'object',
+    multi_nested: {
+      title: 'Multi Nested',
+      description: 'Nesting can go as far as needed to achieve structure',
+      type: 'object',
       properties: {
-        missed_payment: {
-          title: 'Please explain why you missed a payment',
+        employee_information: {
+          type: 'object',
+          title: 'Employee Information',
+          description: 'Test',
+          properties: {
+            personal: {
+              type: 'object',
+              title: 'Personal Information',
+              properties: {
+                first_name: {
+                  type: 'string'
+                },
+                last_name: {
+                  type: 'string'
+                }
+              }
+            },
+            location: {
+              type: 'object',
+              title: 'Location',
+              properties: {
+                phone_number: {
+                  type: 'string'
+                },
+                email: {
+                  type: 'string'
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    required: {
+      title: 'Required',
+      description: 'Require first and last name',
+      type: 'object',
+      properties: {
+        first_name: {
           type: 'string',
-          format: 'textarea'
+        },
+        last_name: {
+          type: 'string',
         }
       },
-      required: ['missed_payment']
+      required: ['first_name', 'last_name']
+    },
+    multistep: {
+      title: 'Multi Step',
+      description: 'Form composed of nested schemas and displayed as steps',
+      type: 'object',
+      properties: {
+        employee_information: {
+          type: 'object',
+          properties: {
+            first_name: {
+              type: 'string'
+            },
+            last_name: {
+              type: 'string'
+            },
+            phone_number: {
+              type: 'string'
+            },
+            email: {
+              type: 'string'
+            }
+          },
+          required: ['first_name', 'last_name']
+        },
+        bank_information: {
+          type: 'object',
+          properties: {
+            bank_name: {
+              type: 'string'
+            },
+            account_number: {
+              type: 'string'
+            }
+          },
+          required: ['bank_name', 'account_number']
+        }
+      }
+    },
+    checkbox_group: {
+      title: 'Checkbox Group',
+      type: 'object',
+      properties: {
+        skills: {
+          title: 'Select skills with some experience',
+          type: 'array',
+          enum: ['js', 'sql', 'api'],
+          enumNames: ['NodeJS/ES6', 'MySQL/Postgres', 'REST/SOAP']
+        }
+      }
     },
     payment_change_billing_date: {
       title: 'Payment - Change Billing Date',

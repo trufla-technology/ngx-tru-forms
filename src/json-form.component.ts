@@ -1,4 +1,4 @@
-import {Component, DoCheck, EventEmitter, Inject, Input, OnDestroy, OnInit, Output} from '@angular/core';
+import { Component, DoCheck, EventEmitter, Inject, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { JsonFormValidatorsService } from './services/validators.service';
 import { SchemaFormControl } from './models/schema-form-control';
@@ -15,10 +15,9 @@ import { SchemaFormArray } from './models/schema-form-array';
       *ngIf="isValidSchema()"
     >
       <div jf-component-chooser
-           [class]="outerClass"
+           [ngClass]="[outerClass, this.activeStyle.hasOwnProperty('default') ? this.activeStyle.default : '']"
            [form]="form"
-           [submitted]="submitted"
-           [schema]="schema">
+           [schema]="activeSchema">
       </div>
       <div #ref>
         <ng-content></ng-content>
@@ -38,7 +37,7 @@ import { SchemaFormArray } from './models/schema-form-array';
           (click)="handleOnCancel()">{{cancel}}</button>
         <button
           type="submit"
-          [ngClass]="['btn btn-primary button button--accept', submitClass]"
+          [ngClass]="['btn btn-primary button button--accept', submitClass, this.form.valid ? 'valid':  'invalid']"
           *ngIf="submit"
           [disabled]="isWorking"
         >
@@ -58,37 +57,29 @@ import { SchemaFormArray } from './models/schema-form-array';
                 </g>
               </g>
             </svg>
-            {{submit}}
+            {{getSubmitLabel()}}
         </button>
       </div>
     </form>
   `
 })
 export class JsonFormComponent implements OnInit, DoCheck, OnDestroy {
-  @Input()
-  public schema;
-  @Input()
-  public data = {};
-  @Input()
-  public style;
-  @Input()
-  public submit: string;
-  @Input()
-  public cancel: string;
-  @Input()
-  public outerClass: string;
-  @Input()
-  public submitClass = '';
-  @Input()
-  public cancelClass = '';
-  @Input()
-  public isWorking = false;
-  @Output()
-  handleSubmit = new EventEmitter();
-  @Output()
-  handleChange = new EventEmitter();
-  @Output()
-  handleCancel = new EventEmitter();
+  @Input() schema;
+  @Input() data = {};
+  @Input() style;
+  @Input() continue = 'Continue';
+  @Input() submit: string;
+  @Input() cancel: string;
+  @Input() outerClass = '';
+  @Input() submitClass = '';
+  @Input() cancelClass = '';
+  @Input() isWorking = false;
+  @Input() isMultiStep = false;
+  @Input() activeStep = '';
+  @Output() handleStep = new EventEmitter();
+  @Output() handleSubmit = new EventEmitter();
+  @Output() handleChange = new EventEmitter();
+  @Output() handleCancel = new EventEmitter();
 
   public form;
   public model;
@@ -97,7 +88,11 @@ export class JsonFormComponent implements OnInit, DoCheck, OnDestroy {
   public oldSchema: string;
   public oldData: string;
   public changeDetected = false;
-  public submitted = false;
+  public oldActiveStep = '';
+  public steps = [];
+  public multiStepData = {};
+  public activeSchema = {};
+  public activeStyle = {};
 
   constructor(
     @Inject(FormBuilder) fb: FormBuilder,
@@ -125,8 +120,12 @@ export class JsonFormComponent implements OnInit, DoCheck, OnDestroy {
       this.changeDetected = true;
     }
 
+    if (this.oldActiveStep !== this.activeStep) {
+      this.oldActiveStep = this.activeStep;
+      this.changeDetected = true;
+    }
+
     if (this.changeDetected) {
-      this.submitted = false;
       this.constructForm();
     }
   }
@@ -139,9 +138,20 @@ export class JsonFormComponent implements OnInit, DoCheck, OnDestroy {
     this.model = {};
 
     if (this.isValidSchema()) {
-      this.schema = this.subRefs(this.schema);
-      this.model = this.generateForm(this.schema, {}, this.data, this.style);
+      if (this.steps.length === 0 && this.isMultiStep) {
+        this.steps = this.getSteps(this.schema, this.activeStep);
+        this.handleStep.emit({ data: null, steps: this.steps });
+      }
+
+      const visibleStepName = this.activeStep.length > 0 ? this.activeStep : this.steps.find((s) => s.visible).name;
+      this.activeSchema = this.isMultiStep ? this.schema.properties[visibleStepName] : this.schema;
+      this.activeStyle = this.isMultiStep && this.style && this.style.hasOwnProperty(visibleStepName)
+        ? this.style[visibleStepName] : this.style;
+      this.activeSchema = this.subRefs(this.activeSchema);
+
+      this.model = this.generateForm(this.activeSchema, {}, this.data, this.activeStyle);
       this.form = this.fb.group(this.model);
+
       this.form.valueChanges.subscribe((data) => {
         if (this.control.isPartOf) {
           this.data = data;
@@ -151,6 +161,25 @@ export class JsonFormComponent implements OnInit, DoCheck, OnDestroy {
         this.handleChange.emit({ control: this.control, data });
       });
     }
+  }
+
+  public getSteps(schema, activeStep): Array<any> {
+    return Object.keys(schema.properties).map((name, index) => {
+      let type = 'step';
+      if (index === 0) {
+        type = 'first';
+      } else if (index === Object.keys(schema.properties).length - 1) {
+        type = 'last';
+      }
+
+      return {
+        index,
+        name,
+        visible: activeStep.length > 0 ? activeStep === name : index === 0,
+        type,
+        title: schema.properties[name].hasOwnProperty('title') ? schema.properties[name].title : name
+      };
+    });
   }
 
   public isValidSchema() {
@@ -251,8 +280,24 @@ export class JsonFormComponent implements OnInit, DoCheck, OnDestroy {
   }
 
   handleOnSubmit() {
-    this.submitted = true;
-    if (this.form.valid) {
+    this.touchAll(this.form.controls);
+
+    if (this.form.valid && this.isMultiStep) {
+      const prev = this.steps.findIndex((s) => s.visible);
+      this.steps[prev].visible = false;
+      this.multiStepData[this.steps[prev].name] = this.form.value;
+      const index = prev + 1;
+
+      const next = this.steps.findIndex((s) => s.index === index);
+      if (typeof (this.steps[next]) !== 'undefined') {
+        this.steps[next].visible = true;
+        this.handleStep.emit({ data: { [this.steps[prev].name]: this.multiStepData[this.steps[prev].name] }, steps: this.steps });
+        this.constructForm();
+      } else {
+        this.handleSubmit.emit(this.multiStepData);
+      }
+
+    } else if (this.form.valid) {
       this.handleSubmit.emit(this.form.value);
     }
   }
@@ -265,6 +310,15 @@ export class JsonFormComponent implements OnInit, DoCheck, OnDestroy {
     this.handleCancel.emit(this.form.value);
   }
 
+  touchAll(controls) {
+    Object.keys(controls).forEach((key) => {
+      if (controls[key].hasOwnProperty('controls')) {
+        this.touchAll(controls[key].controls);
+      }
+      controls[key].markAsTouched();
+    });
+  }
+
   subRefs(schema) {
     Object.keys(schema.properties).forEach((prop) => {
       if (schema.properties[prop].hasOwnProperty('$ref')) {
@@ -273,5 +327,16 @@ export class JsonFormComponent implements OnInit, DoCheck, OnDestroy {
     });
 
     return schema;
+  }
+
+  getSubmitLabel() {
+    if (this.isMultiStep) {
+      const step = this.steps.findIndex((s) => s.visible);
+      if (this.steps[step] && this.steps[step].type !== 'last') {
+        return this.continue;
+      }
+    }
+
+    return this.submit;
   }
 }

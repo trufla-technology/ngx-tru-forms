@@ -1,8 +1,14 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {SchemaFormControl} from '../../models/schema-form-control';
 
 @Component({
-  template: '<div jf-component-chooser [form]="control"></div>'
+  template: `
+    <div
+      jf-component-chooser
+      [form]="control"
+      [schema]="control.schema"
+      [nested]="true">
+    </div>`
 })
 export class ObjectComponent {
   @Input() control: SchemaFormControl;
