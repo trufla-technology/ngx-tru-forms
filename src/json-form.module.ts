@@ -20,6 +20,7 @@ import { RadiogroupComponent } from './fields/radiogroup/radiogroup.component';
 import { CommonComponent } from './fields/common/common.component';
 import { TextMaskModule } from 'angular2-text-mask';
 import { MultiselectComponent } from './fields/multiselect/multiselect.component';
+import { MoneyComponent } from './fields/money/money.component';
 
 @NgModule({
   imports: [
@@ -42,7 +43,8 @@ import { MultiselectComponent } from './fields/multiselect/multiselect.component
     CheckboxgroupComponent,
     RadiogroupComponent,
     CommonComponent,
-    MultiselectComponent
+    MultiselectComponent,
+    MoneyComponent
   ],
   exports: [
     JsonFormComponent,
@@ -60,7 +62,8 @@ import { MultiselectComponent } from './fields/multiselect/multiselect.component
     RadiogroupComponent,
     CheckboxgroupComponent,
     JsonFormComponent,
-    MultiselectComponent
+    MultiselectComponent,
+    MoneyComponent
   ],
   providers: [
     JsonFormDefaultsService,

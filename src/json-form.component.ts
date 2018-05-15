@@ -66,7 +66,7 @@ import { SchemaFormArray } from './models/schema-form-array';
 export class JsonFormComponent implements OnInit, DoCheck, OnDestroy {
   @Input() schema;
   @Input() data = {};
-  @Input() style;
+  @Input() style = {};
   @Input() continue = 'Continue';
   @Input() submit: string;
   @Input() cancel: string;
@@ -138,17 +138,19 @@ export class JsonFormComponent implements OnInit, DoCheck, OnDestroy {
     this.model = {};
 
     if (this.isValidSchema()) {
+      this.activeSchema = this.schema;
+      this.activeStyle = this.style;
+
       if (this.steps.length === 0 && this.isMultiStep) {
         this.steps = this.getSteps(this.schema, this.activeStep);
         this.handleStep.emit({ data: null, steps: this.steps });
+
+        const visibleStepName = this.activeStep.length > 0 ? this.activeStep : this.steps.find((s) => s.visible).name;
+        this.activeSchema = this.schema.properties[visibleStepName];
+        this.activeStyle = this.style.hasOwnProperty(visibleStepName) ? this.style[visibleStepName] : {};
       }
 
-      const visibleStepName = this.activeStep.length > 0 ? this.activeStep : this.steps.find((s) => s.visible).name;
-      this.activeSchema = this.isMultiStep ? this.schema.properties[visibleStepName] : this.schema;
-      this.activeStyle = this.isMultiStep && this.style && this.style.hasOwnProperty(visibleStepName)
-        ? this.style[visibleStepName] : this.style;
       this.activeSchema = this.subRefs(this.activeSchema);
-
       this.model = this.generateForm(this.activeSchema, {}, this.data, this.activeStyle);
       this.form = this.fb.group(this.model);
 
