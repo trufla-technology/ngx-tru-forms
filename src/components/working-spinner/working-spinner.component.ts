@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'jf-working-spinner',
@@ -21,4 +21,6 @@ import { Component } from '@angular/core';
     </svg>
   `
 })
-export class WorkingSpinnerComponent {}
+export class WorkingSpinnerComponent {
+  @Input() isWorking = false;
+}
