@@ -31,8 +31,8 @@ export class JsonSchemaExamplesSamples {
       },
       required: ['year', 'make', 'model', 'vin_number', 'description', 'effective_date']
     },
-    multiple: {
-      title: 'Multiple',
+    multi_select: {
+      title: 'Multiple Select',
       description: 'Form allowing for single and multiple item selections',
       type: 'object',
       properties: {
@@ -209,7 +209,7 @@ export class JsonSchemaExamplesSamples {
       }
     },
     multistep_back_with_state: {
-      title: 'Multi Step With Back and preserved state',
+      title: 'Multi Step With Back With State',
       description: 'Form composed of nested schemas and displayed as steps that can go back with state preserved',
       type: 'object',
       properties: {
@@ -251,8 +251,8 @@ export class JsonSchemaExamplesSamples {
         }
       }
     },
-    payment_change_billing_date: {
-      title: 'Payment - Change Billing Date',
+    pattern_validation: {
+      title: 'Pattern Validation',
       description: 'Form with pattern validation',
       type: 'object',
       properties: {
