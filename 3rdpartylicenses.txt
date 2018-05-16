@@ -83,7 +83,7 @@ MIT
 MIT
 MIT
 
-@trufla-technology/ngx-tru-forms@0.1.3
+@trufla/ngx-tru-forms@0.1.3
 MIT
 (The MIT License)
 
