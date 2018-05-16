@@ -21,6 +21,8 @@ import { CommonComponent } from './fields/common/common.component';
 import { TextMaskModule } from 'angular2-text-mask';
 import { MultiselectComponent } from './fields/multiselect/multiselect.component';
 import { MoneyComponent } from './fields/money/money.component';
+import { FormButtonComponent } from './components/form-button/formButton.component';
+import { WorkingSpinnerComponent } from './components/working-spinner/workingSpinner.component';
 
 @NgModule({
   imports: [
@@ -44,7 +46,9 @@ import { MoneyComponent } from './fields/money/money.component';
     RadiogroupComponent,
     CommonComponent,
     MultiselectComponent,
-    MoneyComponent
+    MoneyComponent,
+    FormButtonComponent,
+    WorkingSpinnerComponent
   ],
   exports: [
     JsonFormComponent,

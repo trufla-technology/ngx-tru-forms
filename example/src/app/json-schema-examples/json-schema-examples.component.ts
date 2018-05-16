@@ -14,6 +14,7 @@ import {InputColourComponent} from './input-colour/input-colour.component';
 export class JsonSchemaExamplesComponent implements OnInit {
   public schema: {};
   public isMultiStep = false;
+  public cancel = '';
   public schemaControl: FormControl;
   public form: FormGroup;
   @ViewChild('jfForm', { read: ViewContainerRef }) jfForm: JsonFormComponent;
@@ -53,8 +54,9 @@ export class JsonSchemaExamplesComponent implements OnInit {
     if (typeof (value) !== 'undefined') {
       this.schemaControl.setValue(JSON.stringify(this.jsonSchemaExamplesSamples.json[value], null, '\t'));
 
-      if (value === 'multistep' || value === 'multi_nested') {
+      if (value === 'multistep') {
         this.isMultiStep = true;
+        this.cancel = 'Go Back';
       }
     }
 

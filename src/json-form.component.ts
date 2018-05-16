@@ -15,7 +15,7 @@ import { SchemaFormArray } from './models/schema-form-array';
       *ngIf="isValidSchema()"
     >
       <div jf-component-chooser
-           [ngClass]="[outerClass, this.activeStyle.hasOwnProperty('default') ? this.activeStyle.default : '']"
+           [ngClass]="[classes.outer || '', this.activeStyle.hasOwnProperty('default') ? this.activeStyle.default : '']"
            [form]="form"
            [schema]="activeSchema">
       </div>
@@ -24,41 +24,24 @@ import { SchemaFormArray } from './models/schema-form-array';
       </div>
       <div
         *ngIf="ref.children.length == 0"
-        [ngClass]="{
-             'margin-top--double': true,
-             'page-actions--edges': (cancel && submit),
-             'page-actions--center': (!cancel || !submit)
-           }">
-        <button
-          type="button"
-          [ngClass]="['btn btn-default button', cancelClass]"
+        [ngClass]="{ 'margin-top--double': true, 'page-actions--edges': (cancel && submit), 'page-actions--center': (!cancel || !submit)}">
+        <jf-form-button
           *ngIf="cancel"
-          [disabled]="isWorking"
-          (click)="handleOnCancel()">{{cancel}}</button>
-        <button
-          type="submit"
-          [ngClass]="['btn btn-primary button button--accept', submitClass, this.form.valid ? 'valid':  'invalid']"
+          [cancel]="cancel"
+          [steps]="steps"
+          [isMultiStep]="isMultiStep"
+          [isWorking]="isWorking"
+          (handleClick)="handleOnCancel()"
+          [classes]="classes"></jf-form-button>
+        <jf-form-button
           *ngIf="submit"
-          [disabled]="isWorking"
-        >
-            <svg *ngIf="isWorking" width="38" height="38" viewBox="0 0 38 38" xmlns="http://www.w3.org/2000/svg" stroke="#fff">
-              <g fill="none" fill-rule="evenodd">
-                <g transform="translate(1 1)" stroke-width="2">
-                  <circle stroke-opacity=".5" cx="18" cy="18" r="18"/>
-                  <path d="M36 18c0-9.94-8.06-18-18-18">
-                    <animateTransform
-                      attributeName="transform"
-                      type="rotate"
-                      from="0 18 18"
-                      to="360 18 18"
-                      dur="1s"
-                      repeatCount="indefinite"/>
-                  </path>
-                </g>
-              </g>
-            </svg>
-            {{getSubmitLabel()}}
-        </button>
+          [classes]="classes"
+          [submit]="submit"
+          [steps]="steps"
+          [continue]="continue"
+          [isMultiStep]="isMultiStep"
+          [isWorking]="isWorking"
+          [isFormValid]="this.form.valid"></jf-form-button>
       </div>
     </form>
   `
@@ -70,9 +53,7 @@ export class JsonFormComponent implements OnInit, DoCheck, OnDestroy {
   @Input() continue = 'Continue';
   @Input() submit: string;
   @Input() cancel: string;
-  @Input() outerClass = '';
-  @Input() submitClass = '';
-  @Input() cancelClass = '';
+  @Input() classes = { submit: '', cancel: '', outer: '' };
   @Input() isWorking = false;
   @Input() isMultiStep = false;
   @Input() activeStep = '';
@@ -143,6 +124,9 @@ export class JsonFormComponent implements OnInit, DoCheck, OnDestroy {
 
       if (this.steps.length === 0 && this.isMultiStep) {
         this.steps = this.getSteps(this.schema, this.activeStep);
+      }
+
+      if (this.steps.length > 0 && this.isMultiStep) {
         this.handleStep.emit({ data: null, steps: this.steps });
 
         const visibleStepName = this.activeStep.length > 0 ? this.activeStep : this.steps.find((s) => s.visible).name;
@@ -286,14 +270,17 @@ export class JsonFormComponent implements OnInit, DoCheck, OnDestroy {
 
     if (this.form.valid && this.isMultiStep) {
       const prev = this.steps.findIndex((s) => s.visible);
-      this.steps[prev].visible = false;
       this.multiStepData[this.steps[prev].name] = this.form.value;
       const index = prev + 1;
-
       const next = this.steps.findIndex((s) => s.index === index);
       if (typeof (this.steps[next]) !== 'undefined') {
+        this.steps[prev].visible = false;
         this.steps[next].visible = true;
-        this.handleStep.emit({ data: { [this.steps[prev].name]: this.multiStepData[this.steps[prev].name] }, steps: this.steps });
+        this.handleStep.emit({
+          dir: 'prev',
+          data: { [this.steps[prev].name]: this.multiStepData[this.steps[prev].name] },
+          steps: this.steps
+        });
         this.constructForm();
       } else {
         this.handleSubmit.emit(this.multiStepData);
@@ -309,7 +296,28 @@ export class JsonFormComponent implements OnInit, DoCheck, OnDestroy {
   }
 
   handleOnCancel() {
-    this.handleCancel.emit(this.form.value);
+    if (this.isMultiStep) {
+      const prev = this.steps.findIndex((s) => s.visible);
+      this.steps[prev].visible = false;
+      this.multiStepData[this.steps[prev].name] = this.form.value;
+      const index = prev - 1;
+
+      const next = this.steps.findIndex((s) => s.index === index);
+      if (typeof (this.steps[next]) !== 'undefined') {
+        this.steps[next].visible = true;
+        this.handleStep.emit({
+          dir: 'prev',
+          data: { [this.steps[prev].name]: this.multiStepData[this.steps[prev].name] },
+          steps: this.steps
+        });
+        this.constructForm();
+      } else {
+        this.handleCancel.emit(this.form.value);
+      }
+
+    } else if (this.form.valid) {
+      this.handleCancel.emit(this.form.value);
+    }
   }
 
   touchAll(controls) {
@@ -329,16 +337,5 @@ export class JsonFormComponent implements OnInit, DoCheck, OnDestroy {
     });
 
     return schema;
-  }
-
-  getSubmitLabel() {
-    if (this.isMultiStep) {
-      const step = this.steps.findIndex((s) => s.visible);
-      if (this.steps[step] && this.steps[step].type !== 'last') {
-        return this.continue;
-      }
-    }
-
-    return this.submit;
   }
 }
