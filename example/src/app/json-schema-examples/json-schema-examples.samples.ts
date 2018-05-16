@@ -177,6 +177,68 @@ export class JsonSchemaExamplesSamples {
         }
       }
     },
+    multistep_back: {
+      title: 'Multi Step With Back',
+      description: 'Form composed of nested schemas and displayed as steps that can go back',
+      type: 'object',
+      properties: {
+        employee_information: {
+          type: 'object',
+          properties: {
+            first_name: {
+              type: 'string'
+            },
+            last_name: {
+              type: 'string'
+            }
+          },
+          required: ['first_name', 'last_name']
+        },
+        contact_information: {
+          type: 'object',
+          properties: {
+            phone: {
+              type: 'string'
+            },
+            email: {
+              type: 'string'
+            }
+          },
+          required: ['phone', 'email']
+        }
+      }
+    },
+    multistep_back_with_state: {
+      title: 'Multi Step With Back and preserved state',
+      description: 'Form composed of nested schemas and displayed as steps that can go back with state preserved',
+      type: 'object',
+      properties: {
+        employee_information: {
+          type: 'object',
+          properties: {
+            first_name: {
+              type: 'string'
+            },
+            last_name: {
+              type: 'string'
+            }
+          },
+          required: ['first_name', 'last_name']
+        },
+        contact_information: {
+          type: 'object',
+          properties: {
+            phone: {
+              type: 'string'
+            },
+            email: {
+              type: 'string'
+            }
+          },
+          required: ['phone', 'email']
+        }
+      }
+    },
     checkbox_group: {
       title: 'Checkbox Group',
       type: 'object',

@@ -34,11 +34,13 @@
     </div>
     <div class="col-md-6">
       <h6>Form:</h6>
-      <jf-form #jfForm
+      <jf-form
+        #jfForm
         [cancel]="cancel"
         [submit]="'Submit'"
         [schema]="schema"
         [isMultiStep]="isMultiStep"
+        [state]="state"
         (handleSubmit)="handleSubmit($event)">
       </jf-form>
       <p></p>

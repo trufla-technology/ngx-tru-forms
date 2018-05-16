@@ -17,6 +17,7 @@ export class JsonSchemaExamplesComponent implements OnInit {
   public cancel = '';
   public schemaControl: FormControl;
   public form: FormGroup;
+  public state = false;
   @ViewChild('jfForm', { read: ViewContainerRef }) jfForm: JsonFormComponent;
   @ViewChild('jsonSchema') jsonSchema: ElementRef;
   @ViewChild('formResponse') formResponse: ElementRef;
@@ -56,7 +57,13 @@ export class JsonSchemaExamplesComponent implements OnInit {
 
       if (value === 'multistep') {
         this.isMultiStep = true;
+      } else if (value === 'multistep_back') {
+        this.isMultiStep = true;
         this.cancel = 'Go Back';
+      } else if (value === 'multistep_back_with_state') {
+        this.isMultiStep = true;
+        this.cancel = 'Go Back';
+        this.state = true;
       }
     }
 

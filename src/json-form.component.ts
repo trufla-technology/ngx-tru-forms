@@ -57,6 +57,7 @@ export class JsonFormComponent implements OnInit, DoCheck, OnDestroy {
   @Input() isWorking = false;
   @Input() isMultiStep = false;
   @Input() activeStep = '';
+  @Input() state = false;
   @Output() handleStep = new EventEmitter();
   @Output() handleSubmit = new EventEmitter();
   @Output() handleChange = new EventEmitter();
@@ -132,6 +133,8 @@ export class JsonFormComponent implements OnInit, DoCheck, OnDestroy {
         const visibleStepName = this.activeStep.length > 0 ? this.activeStep : this.steps.find((s) => s.visible).name;
         this.activeSchema = this.schema.properties[visibleStepName];
         this.activeStyle = this.style.hasOwnProperty(visibleStepName) ? this.style[visibleStepName] : {};
+        this.data = this.state && this.multiStepData.hasOwnProperty(visibleStepName)
+          ? this.multiStepData[visibleStepName] : this.data;
       }
 
       this.activeSchema = this.subRefs(this.activeSchema);
