@@ -9,14 +9,15 @@ import { CommonComponent } from '../common/common.component';
     <div [class]="getClass('radio-group')">
       <div *ngFor="let enum of this.schema.enum; let i = index"
            [ngClass]="{'radio-container': true, 'checked': control.value === enum}">
-        <input type="radio"
-           [id]="id(i)"
-           [checked]="control.value === enum"
-           [name]="schema.key"
-           [formControl]="control"
-           [value]="enum" />
+        <input
+          type="radio"
+          [attr.id]="getId(i, enum)"
+          [checked]="control.value === enum"
+          [name]="getName(schema.key)"
+          [formControl]="control"
+          [value]="enum" />
         <label
-          [attr.for]="id(i)"
+          [attr.for]="getId(i, enum)"
           [attr.class]="schema.key">
            {{enumNames(i)}}
         </label>
@@ -25,10 +26,20 @@ import { CommonComponent } from '../common/common.component';
   `
 })
 export class RadiogroupComponent extends CommonComponent {
+  randomSuffix = Math.random().toString(36).substring(7);
+  labelId = null;
+
   enumNames(index) {
     return typeof(this.schema.enumNames) === 'undefined'
       ? this.schema.enum[index]
       : this.schema.enumNames[index];
   }
-}
 
+  getId(i, val) {
+      return `${i}-${val.replace(/[\W_]+/g, '')}+${this.randomSuffix}`;
+  }
+
+  getName(key) {
+    return `${key}-${this.randomSuffix}`;
+  }
+}

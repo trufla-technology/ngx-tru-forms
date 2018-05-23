@@ -14,10 +14,14 @@ import { SchemaFormArray } from './models/schema-form-array';
       (ngSubmit)="handleOnSubmit()"
       *ngIf="isValidSchema()"
     >
-      <div jf-component-chooser
-           [ngClass]="[classes.outer || '', this.activeStyle.hasOwnProperty('default') ? this.activeStyle.default : '']"
-           [form]="form"
-           [schema]="activeSchema">
+      <div
+        jf-component-chooser
+        [ngClass]="[
+          classes.outer || '',
+          this.activeStyle['default'] ? this.activeStyle['default'] : ''
+          ]"
+        [form]="form"
+        [schema]="activeSchema">
       </div>
       <div #ref>
         <ng-content></ng-content>
@@ -46,7 +50,7 @@ import { SchemaFormArray } from './models/schema-form-array';
     </form>
   `
 })
-export class JsonFormComponent implements OnInit, DoCheck, OnDestroy {
+export class JsonFormComponent implements DoCheck, OnDestroy {
   @Input() schema;
   @Input() data = {};
   @Input() style = {};
@@ -65,7 +69,6 @@ export class JsonFormComponent implements OnInit, DoCheck, OnDestroy {
 
   public form;
   public model;
-  public fb;
   public control = { key: '', value: '', isPartOf: false };
   public oldSchema: string;
   public oldData: string;
@@ -77,17 +80,10 @@ export class JsonFormComponent implements OnInit, DoCheck, OnDestroy {
   public activeStyle = {};
 
   constructor(
-    @Inject(FormBuilder) fb: FormBuilder,
-    public vl: JsonFormValidatorsService,
-    public df: JsonFormDefaultsService
-  ) {
-    this.fb = fb;
-  }
-
-  ngOnInit() {
-    this.isWorking = false;
-    this.constructForm();
-  }
+    private fb: FormBuilder,
+    private vl: JsonFormValidatorsService,
+    private df: JsonFormDefaultsService
+  ) {}
 
   ngDoCheck(): void {
     this.changeDetected = false;
@@ -123,13 +119,13 @@ export class JsonFormComponent implements OnInit, DoCheck, OnDestroy {
       this.activeSchema = this.schema;
       this.activeStyle = this.style;
 
+      // emit the initial step for the event
       if (this.steps.length === 0 && this.isMultiStep) {
         this.steps = this.getSteps(this.schema, this.activeStep);
+        this.handleStep.emit({ data: null, steps: this.steps });
       }
 
       if (this.steps.length > 0 && this.isMultiStep) {
-        this.handleStep.emit({ data: null, steps: this.steps });
-
         const visibleStepName = this.activeStep.length > 0 ? this.activeStep : this.steps.find((s) => s.visible).name;
         this.activeSchema = this.schema.properties[visibleStepName];
         this.activeStyle = this.style.hasOwnProperty(visibleStepName) ? this.style[visibleStepName] : {};
@@ -273,14 +269,16 @@ export class JsonFormComponent implements OnInit, DoCheck, OnDestroy {
 
     if (this.form.valid && this.isMultiStep) {
       const prev = this.steps.findIndex((s) => s.visible);
-      this.multiStepData[this.steps[prev].name] = this.form.value;
-      const index = prev + 1;
-      const next = this.steps.findIndex((s) => s.index === index);
+      this.multiStepData[this.activeStep] = this.form.value;
+      const current = this.steps.findIndex((s) => s.name === this.activeStep);
+      const next = current + 1;
+
       if (typeof (this.steps[next]) !== 'undefined') {
         this.steps[prev].visible = false;
         this.steps[next].visible = true;
+        this.activeStep = this.steps[next].name;
         this.handleStep.emit({
-          dir: 'prev',
+          dir: 'next',
           data: { [this.steps[prev].name]: this.multiStepData[this.steps[prev].name] },
           steps: this.steps
         });
@@ -302,15 +300,15 @@ export class JsonFormComponent implements OnInit, DoCheck, OnDestroy {
     if (this.isMultiStep) {
       const prev = this.steps.findIndex((s) => s.visible);
       this.steps[prev].visible = false;
-      this.multiStepData[this.steps[prev].name] = this.form.value;
-      const index = prev - 1;
+      const current = this.steps.findIndex((s) => s.name === this.activeStep);
+      const next = current - 1;
 
-      const next = this.steps.findIndex((s) => s.index === index);
       if (typeof (this.steps[next]) !== 'undefined') {
         this.steps[next].visible = true;
+        this.activeStep = this.steps[next].name;
         this.handleStep.emit({
           dir: 'prev',
-          data: { [this.steps[prev].name]: this.multiStepData[this.steps[prev].name] },
+          data: { [this.steps[current].name]: this.multiStepData[this.steps[prev].name] },
           steps: this.steps
         });
         this.constructForm();

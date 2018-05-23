@@ -272,19 +272,19 @@ export class JsonSchemaExamplesSamples {
       description: 'Complex form with variable inputs',
       'type': 'object',
       'properties': {
-        'photo': { 'type': 'string', 'format': 'photo' },
+        'photo': {'type': 'string', 'format': 'photo'},
         'accident_photos': {
           'type': 'array',
           'items': {
             'type': 'object',
             'properties': {
-              'photo': { 'type': 'string', 'format': 'photo' }
+              'photo': {'type': 'string', 'format': 'photo'}
             }
           }
         },
-        'billing_address': { 'type': 'boolean' },
-        'full_name': { 'type': 'string', 'default': 'now' },
-        'dob': { 'type': 'string', 'format': 'date' },
+        'billing_address': {'type': 'boolean'},
+        'full_name': {'type': 'string', 'default': 'now'},
+        'dob': {'type': 'string', 'format': 'date'},
         'email': {
           'type': 'string',
           'format': 'email'
@@ -292,36 +292,36 @@ export class JsonSchemaExamplesSamples {
         'address': {
           'type': 'object',
           'properties': {
-            'street_1': { 'type': 'string' },
-            'street_2': { 'type': 'string' },
-            'city': { 'type': 'string' },
+            'street_1': {'type': 'string'},
+            'street_2': {'type': 'string'},
+            'city': {'type': 'string'},
             'state': {
               'type': 'string',
-              'enum': [ 'AL', 'AK', 'AS', 'AZ', 'AR', 'CA', 'CO', 'CT', 'DE',
+              'enum': ['AL', 'AK', 'AS', 'AZ', 'AR', 'CA', 'CO', 'CT', 'DE',
                 'DC', 'FM', 'FL', 'GA', 'GU', 'HI', 'ID', 'IL', 'IN', 'IA',
                 'KS', 'KY', 'LA', 'ME', 'MH', 'MD', 'MA', 'MI', 'MN', 'MS',
                 'MO', 'MT', 'NE', 'NV', 'NH', 'NJ', 'NM', 'NY', 'NC', 'ND',
                 'MP', 'OH', 'OK', 'OR', 'PW', 'PA', 'PR', 'RI', 'SC', 'SD',
-                'TN', 'TX', 'UT', 'VT', 'VI', 'VA', 'WA', 'WV', 'WI', 'WY' ]
+                'TN', 'TX', 'UT', 'VT', 'VI', 'VA', 'WA', 'WV', 'WI', 'WY']
             },
-            'zip_code': { 'type': 'string' }
+            'zip_code': {'type': 'string'}
           }
         },
-        'birthday': { 'type': 'string' },
-        'notes': { 'type': 'string' },
+        'birthday': {'type': 'string'},
+        'notes': {'type': 'string'},
         'phone_numbers': {
           'type': 'array',
           'items': {
             'type': 'object',
             'properties': {
-              'type': { 'type': 'string', 'enum': [ 'cell', 'home', 'work' ], 'enumNames': [ 'Cell', 'Home', 'Work' ]  },
-              'number': { 'type': 'string' }
+              'type': {'type': 'string', 'enum': ['cell', 'home', 'work'], 'enumNames': ['Cell', 'Home', 'Work']},
+              'number': {'type': 'string'}
             },
-            'required': [ 'type', 'number' ]
+            'required': ['type', 'number']
           }
         }
       },
-      'required': [ 'full_name' ]
+      'required': ['full_name']
     },
     custom_control: {
       title: 'Custom Control',
@@ -373,6 +373,62 @@ export class JsonSchemaExamplesSamples {
         }
       ]
     },
+    multiple_conditional_control: {
+      title: 'Multiple Conditional Control',
+      description: 'Add multiple conditional controls',
+      type: 'object',
+      properties: {
+        food_like: {
+          type: 'string',
+          enum: ['Hot Dog', 'Pizza', 'Hamburger']
+        },
+        pizza_type: {
+          type: 'string',
+          enum: ['Marinara', 'Margherita', 'Vegetarian']
+        },
+        hamburger_meat: {
+          type: 'string',
+          enum: ['Chicken', 'Beef', 'Lamb', 'Vegetarian']
+        },
+        vegetable_choice: {
+          type: 'string',
+          enum: ['yes', 'no'],
+          enumNames: ['Yes', 'No'],
+          format: 'radiogroup'
+        },
+        vegetables: {
+          type: 'string',
+          enum: ['Mushrooms', 'Tomatoes', 'Lettuce'],
+        }
+      },
+      required: ['food_like', 'vegetable_choice'],
+      oneOf: [
+        {
+          properties: {
+            food_like: {
+              enum: ['Pizza'],
+              required: ['pizza_type']
+            }
+          }
+        },
+        {
+          properties: {
+            food_like: {
+              enum: ['Hamburger'],
+              required: ['hamburger_meat']
+            }
+          }
+        },
+        {
+          properties: {
+            vegetable_choice: {
+              enum: ['yes'],
+              required: ['vegetables']
+            }
+          }
+        }
+      ]
+    },
     definitions: {
       definitions: {
         person: {
@@ -392,6 +448,19 @@ export class JsonSchemaExamplesSamples {
           $ref: '#/definitions/person'
         }
       }
+    },
+    multiple_forms: {
+      title: 'Multiple Forms',
+      description: 'Multiple forms on a single page',
+      type: 'object',
+      properties: {
+        favorite_number: {
+          type: 'string',
+          enum: ['one', 'two', 'three'],
+          format: 'radiogroup'
+        }
+      },
+      required: ['favorite_number']
     }
   };
 }

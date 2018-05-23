@@ -46,3 +46,4 @@ dist/
 
 example/npm-debug.log
 example/node_modules/
+example/build/

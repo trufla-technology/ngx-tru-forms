@@ -35,7 +35,16 @@
     <div class="col-md-6">
       <h6>Form:</h6>
       <jf-form
-        #jfForm
+        [cancel]="cancel"
+        [submit]="'Submit'"
+        [schema]="schema"
+        [isMultiStep]="isMultiStep"
+        [state]="state"
+        (handleSubmit)="handleSubmit($event)">
+      </jf-form>
+
+      <jf-form
+        *ngIf="this.selectedSchema === 'multiple_forms'"
         [cancel]="cancel"
         [submit]="'Submit'"
         [schema]="schema"

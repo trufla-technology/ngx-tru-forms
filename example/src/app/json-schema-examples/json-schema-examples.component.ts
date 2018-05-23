@@ -18,7 +18,7 @@ export class JsonSchemaExamplesComponent implements OnInit {
   public schemaControl: FormControl;
   public form: FormGroup;
   public state = false;
-  @ViewChild('jfForm', { read: ViewContainerRef }) jfForm: JsonFormComponent;
+  public selectedSchema = 'multiple_forms';
   @ViewChild('jsonSchema') jsonSchema: ElementRef;
   @ViewChild('formResponse') formResponse: ElementRef;
 
@@ -39,7 +39,7 @@ export class JsonSchemaExamplesComponent implements OnInit {
       }
     };
 
-    this.schema = this.jsonSchemaExamplesSamples.json.simple_input;
+    this.schema = this.jsonSchemaExamplesSamples.json[this.selectedSchema];
     this.schemaControl = new FormControl('', ValidatorJSON);
     this.form = new FormGroup({ schema: this.schemaControl });
     this.schemaControl.setValue(JSON.stringify(this.schema, null, '\t'));
@@ -51,16 +51,17 @@ export class JsonSchemaExamplesComponent implements OnInit {
 
   handleChange(value?: string) {
     this.isMultiStep = false;
+    this.selectedSchema = value;
 
-    if (typeof (value) !== 'undefined') {
-      this.schemaControl.setValue(JSON.stringify(this.jsonSchemaExamplesSamples.json[value], null, '\t'));
+    if (typeof (this.selectedSchema) !== 'undefined') {
+      this.schemaControl.setValue(JSON.stringify(this.jsonSchemaExamplesSamples.json[this.selectedSchema], null, '\t'));
 
-      if (value === 'multistep') {
+      if (this.selectedSchema === 'multistep') {
         this.isMultiStep = true;
-      } else if (value === 'multistep_back') {
+      } else if (this.selectedSchema === 'multistep_back') {
         this.isMultiStep = true;
         this.cancel = 'Go Back';
-      } else if (value === 'multistep_back_with_state') {
+      } else if (this.selectedSchema === 'multistep_back_with_state') {
         this.isMultiStep = true;
         this.cancel = 'Go Back';
         this.state = true;
