@@ -19,7 +19,7 @@ This component utilizes [Reactive Forms](https://angular.io/guide/reactive-forms
 ### Installation
 
 ```bash
-npm install -g @trufla/ngx-tru-forms
+npm install @trufla/ngx-tru-forms --save
 ```
 
 ### Usage
