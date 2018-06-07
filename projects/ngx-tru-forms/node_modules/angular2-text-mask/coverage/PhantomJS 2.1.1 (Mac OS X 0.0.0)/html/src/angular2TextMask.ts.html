@@ -1,0 +1,398 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for src/angular2TextMask.ts</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../prettify.css" />
+    <link rel="stylesheet" href="../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../index.html">all files</a> / <a href="index.html">src/</a> angular2TextMask.ts
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">50.94% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>27/53</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>0/20</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">21.43% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>3/14</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">45.24% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>19/42</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line medium'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112</td><td class="line-coverage quiet"><span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { Directive, ElementRef, forwardRef, Input, Inject, NgModule, OnChanges, Provider, Renderer, SimpleChanges } from '@angular/core'
+import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms'
+import { createTextMaskInputElement } from 'text-mask-core/dist/textMaskCore'
+&nbsp;
+export const MASKEDINPUT_VALUE_ACCESSOR: Provider = {
+  provide: NG_VALUE_ACCESSOR,
+  useExisting: forwardRef(<span class="fstat-no" title="function not covered" >() =&gt; <span class="cstat-no" title="statement not covered" ></span>MaskedInputDirective)</span>,
+  multi: true
+}
+&nbsp;
+@Directive({
+  host: {
+    '(input)': 'onInput($event.target.value)',
+    '(blur)': '_onTouched()'
+  },
+  selector: '[textMask]',
+  exportAs: 'textMask',
+  providers: [MASKEDINPUT_VALUE_ACCESSOR]
+})
+export class MaskedInputDirective implements ControlValueAccessor, OnChanges {
+  private textMaskInputElement: any
+  private inputElement: HTMLInputElement
+&nbsp;
+  // stores the last value for comparison
+  private lastValue: any
+&nbsp;
+  @Input('textMask')
+  textMaskConfig = {
+    mask: [],
+    guide: true,
+    placeholderChar: '_',
+    pipe: undefined,
+    keepCharPositions: false,
+  }
+&nbsp;
+  _onTouched = <span class="fstat-no" title="function not covered" >() =&gt; {</span>}
+  _onChange = <span class="fstat-no" title="function not covered" >(_: any)</span> =&gt; {}
+&nbsp;
+  constructor(@Inject(Renderer) private renderer: Renderer, @Inject(ElementRef) private element: ElementRef) {}
+&nbsp;
+<span class="fstat-no" title="function not covered" >  ngOnChanges(changes: SimpleChanges)</span> {
+<span class="cstat-no" title="statement not covered" >    this.setupMask(true)</span>
+<span class="cstat-no" title="statement not covered" >    if (this.textMaskInputElement !== undefined) {</span>
+<span class="cstat-no" title="statement not covered" >      this.textMaskInputElement.update(this.inputElement.value)</span>
+    }
+  }
+&nbsp;
+<span class="fstat-no" title="function not covered" >  writeValue(value: any)</span> {
+<span class="cstat-no" title="statement not covered" >    this.setupMask()</span>
+&nbsp;
+    // set the initial value for cases where the mask is disabled
+<span class="cstat-no" title="statement not covered" >    const normalizedValue = value == null ? '' : value</span>
+<span class="cstat-no" title="statement not covered" >    this.renderer.setElementProperty(this.inputElement, 'value', normalizedValue)</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    if (this.textMaskInputElement !== undefined) {</span>
+<span class="cstat-no" title="statement not covered" >      this.textMaskInputElement.update(value)</span>
+    }
+  }
+&nbsp;
+<span class="fstat-no" title="function not covered" >  registerOnChange(fn: (value: any) =&gt; any)</span>: void { <span class="cstat-no" title="statement not covered" >this._onChange = fn </span>}
+&nbsp;
+<span class="fstat-no" title="function not covered" >  registerOnTouched(fn: () =&gt; any)</span>: void { <span class="cstat-no" title="statement not covered" >this._onTouched = fn </span>}
+&nbsp;
+<span class="fstat-no" title="function not covered" >  setDisabledState(isDisabled: boolean)</span> {
+<span class="cstat-no" title="statement not covered" >    this.renderer.setElementProperty(this.element.nativeElement, 'disabled', isDisabled)</span>
+  }
+  
+<span class="fstat-no" title="function not covered" >  onInput(value)</span> {
+<span class="cstat-no" title="statement not covered" >    this.setupMask()</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    if (this.textMaskInputElement !== undefined) {</span>
+<span class="cstat-no" title="statement not covered" >      this.textMaskInputElement.update(value)</span>
+      
+      // get the updated value
+<span class="cstat-no" title="statement not covered" >      value = this.inputElement.value</span>
+&nbsp;
+      // check against the last value to prevent firing ngModelChange despite no changes
+<span class="cstat-no" title="statement not covered" >      if (this.lastValue !== value) {</span>
+<span class="cstat-no" title="statement not covered" >        this.lastValue = value</span>
+<span class="cstat-no" title="statement not covered" >        this._onChange(value)</span>
+      }
+    }
+  }
+&nbsp;
+<span class="fstat-no" title="function not covered" >  private setupMask(<span class="cstat-no" title="statement not covered" >create = false)</span></span> {
+<span class="cstat-no" title="statement not covered" >    if (!this.inputElement) {</span>
+<span class="cstat-no" title="statement not covered" >      if (this.element.nativeElement.tagName.toUpperCase() === 'INPUT') {</span>
+        // `textMask` directive is used directly on an input element
+<span class="cstat-no" title="statement not covered" >        this.inputElement = this.element.nativeElement</span>
+      } else {
+        // `textMask` directive is used on an abstracted input element, `md-input-container`, etc
+<span class="cstat-no" title="statement not covered" >        this.inputElement = this.element.nativeElement.getElementsByTagName('INPUT')[0]</span>
+      }
+    }
+    
+<span class="cstat-no" title="statement not covered" >    if (this.inputElement &amp;&amp; create) {</span>
+<span class="cstat-no" title="statement not covered" >      this.textMaskInputElement = createTextMaskInputElement(</span>
+        Object.assign({inputElement: this.inputElement}, this.textMaskConfig)
+      )
+    }
+    
+  }
+}
+&nbsp;
+@NgModule({
+  declarations: [MaskedInputDirective],
+  exports: [MaskedInputDirective]
+})
+<span class="fstat-no" title="function not covered" >export class TextMaskModule {}</span>
+&nbsp;
+export { conformToMask } from 'text-mask-core/dist/textMaskCore'
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Fri Apr 20 2018 19:52:09 GMT+0100 (BST)
+</div>
+</div>
+<script src="../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../sorter.js"></script>
+</body>
+</html>

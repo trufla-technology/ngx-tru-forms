@@ -1,0 +1,63 @@
+<div class="container-fluid">
+  <br />
+  <div class="row form-builder">
+    <div class="col-md-6">
+      <h6>Schema Samples:</h6>
+      <div class="form-group">
+        <select class="form-control" (change)="handleSchemaUpdate($event.target.value)">
+          <option *ngFor="let schema of getSchemaSamples()" [value]="schema">
+            {{jsonSchemaExamplesSamples.json[schema].title}}
+          </option>
+        </select>
+      </div>
+      <h6>JSON Schema:
+        <span class="text-danger" *ngIf="(schemaControl.touched || schemaControl.dirty) && schemaControl.invalid">
+          {{schemaControl.errors['invalidJSON']}}
+        </span>
+        <a href="javascript:void(0)" class="text-danger"
+           *ngIf="(schemaControl.touched || schemaControl.dirty) && schemaControl.invalid"
+           (click)="goToError(schemaControl.errors['invalidJSON'])">
+          <i class="fa fa-exclamation-triangle"></i>
+        </a>
+      </h6>
+      <form [formGroup]="form">
+        <div class="form-group" [ngClass]="{
+          'has-danger': schemaControl.invalid && (schemaControl.dirty || schemaControl.touched)
+          }">
+          <textarea class="form-control" style="height: 100%" [formControl]="schemaControl" (keyup)="handleSchemaUpdate()"
+                    (keydown.Enter)="onEnterKey($event)" (keydown.Tab)="onTabKey($event)" #jsonSchema
+                    [ngClass]="{
+              'has-danger': schemaControl.invalid && (schemaControl.dirty || schemaControl.touched)
+            }"></textarea>
+        </div>
+      </form>
+    </div>
+    <div class="col-md-6">
+      <h6>Form:</h6>
+      <jf-form
+        [id]="'exampleform'"
+        [cancel]="cancel"
+        [submit]="'Submit'"
+        [schema]="schema"
+        [isMultiStep]="isMultiStep"
+        [state]="state"
+        (handleChange)="handleChange($event)"
+        (handleSubmit)="handleSubmit($event)">
+      </jf-form>
+
+      <jf-form
+        *ngIf="this.selectedSchema === 'multiple_forms'"
+        [id]="'exampleform'"
+        [cancel]="cancel"
+        [submit]="'Submit'"
+        [schema]="schema"
+        [isMultiStep]="isMultiStep"
+        [state]="state"
+        (handleSubmit)="handleSubmit($event)">
+      </jf-form>
+      <p></p>
+      <h6>Data: (click Submit to preview form data)</h6>
+      <pre #formResponse>&#123;&#125;</pre>
+    </div>
+  </div>
+</div>

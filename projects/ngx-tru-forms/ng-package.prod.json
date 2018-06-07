@@ -1,0 +1,7 @@
+{
+  "$schema": "../../node_modules/ng-packagr/ng-package.schema.json",
+  "dest": "../../dist/ngx-tru-forms",
+  "lib": {
+    "entryFile": "src/public_api.ts"
+  }
+}
