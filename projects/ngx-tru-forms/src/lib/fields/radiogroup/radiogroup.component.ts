@@ -27,7 +27,6 @@ import { CommonComponent } from '../common/common.component';
 })
 export class RadiogroupComponent extends CommonComponent {
   randomSuffix = Math.random().toString(36).substring(7);
-  labelId = null;
 
   enumNames(index) {
     return typeof(this.schema.enumNames) === 'undefined'

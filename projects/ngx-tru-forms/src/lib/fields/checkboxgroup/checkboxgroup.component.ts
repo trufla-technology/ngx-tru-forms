@@ -9,15 +9,16 @@ import { CommonComponent } from '../common/common.component';
     <div [class]="getClass('checkbox-group')">
       <div *ngFor="let child of this.control['controls']; let i = index"
            [ngClass]="{'checkbox-container': true, 'checked': child.value === schema.enum[i]}">
-        <input type="checkbox"
-          [id]="id(i)"
+        <input
+          type="checkbox"
+          [attr.id]="getId(i, schema.enum[i])"
           [checked]="child.value === schema.enum[i]"
           [name]="schema.key"
           [formControl]="child"
           (change)="setValue($event, i)"
           [value]="schema.enum[i]" />
         <label
-          [attr.for]="id(i)"
+          [attr.for]="getId(i, schema.enum[i])"
           [attr.class]="schema.key">
           {{enumNames(i)}}
         </label>
@@ -27,6 +28,8 @@ import { CommonComponent } from '../common/common.component';
 })
 export class CheckboxgroupComponent extends CommonComponent {
   checkboxGroupValues = [];
+  randomSuffix = Math.random().toString(36).substring(7);
+
   enumNames(index) {
     return typeof(this.schema.enumNames) === 'undefined'
       ? this.schema.enum[index]
@@ -46,5 +49,9 @@ export class CheckboxgroupComponent extends CommonComponent {
     }
 
     this.control.setValue(this.checkboxGroupValues);
+  }
+
+  getId(i, val) {
+    return `${i}-${val.replace(/[\W_]+/g, '')}+${this.randomSuffix}`;
   }
 }
