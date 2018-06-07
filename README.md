@@ -44,6 +44,7 @@ In component add following:
 
 | Key | Description | Required |
 | ----- | ----- | ----- |
+| [id] | Uniquely identify forms if there are multiples on the page | |
 | [schema] | JSON Schema object | Yes |
 | [data] | JSON Schema default values | |
 | [style] | Extra classes and style overrides | |
@@ -53,6 +54,7 @@ In component add following:
 | [submitClass] | Class for submit button | |
 | [cancelClass] | Class for cancel button | | 
 | [isWorking] | Toggle form state if using async data process | |
+| [isMultiStep] | Treat schema as multi step. See example. | |
 | (handleSubmit) | Watch for form submission. Return JSON Schema response data| |
 | (handleChange) | Watch for form changes | |
 | (handleCancel) | Watch for cancel click | |
