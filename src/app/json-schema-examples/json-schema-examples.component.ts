@@ -1,7 +1,7 @@
 import {Component, ElementRef, OnInit, ViewChild, ViewContainerRef} from '@angular/core';
 import {JsonSchemaExamplesSamples} from './json-schema-examples.samples';
 import {AbstractControl, FormControl, FormGroup} from '@angular/forms';
-import {JsonFormComponent, JsonFormFieldsService} from '@trufla/ngx-tru-forms';
+import { JsonFormFieldsService } from '@trufla/ngx-tru-forms';
 import {InputColourComponent} from './input-colour/input-colour.component';
 
 @Component({
@@ -13,12 +13,12 @@ import {InputColourComponent} from './input-colour/input-colour.component';
 })
 export class JsonSchemaExamplesComponent implements OnInit {
   public schema: {};
-  public isMultiStep = false;
+  public isMultiStep = true;
   public cancel = '';
   public schemaControl: FormControl;
   public form: FormGroup;
   public state = false;
-  public selectedSchema = 'simple_input';
+  public selectedSchema = 'multistep_back';
   @ViewChild('jsonSchema') jsonSchema: ElementRef;
   @ViewChild('formResponse') formResponse: ElementRef;
 

@@ -14,6 +14,9 @@ This component utilizes [Reactive Forms](https://angular.io/guide/reactive-forms
   * [Defaults](#defaults)
   * [Validations](#validations)
   * [Fields](#fields)
+* [External Methods](#external-methods)
+  * isValid(#isValid)
+  * submitForm(#submitForm)
 * [Styling](#styling)
 
 ### Installation
@@ -201,6 +204,15 @@ Register it inside your component:
 this.jfFieldsService.register('new_format', CustomComponent);
 ```
 Now objects of format `new_format` will show the CustomComponent.
+
+## External Methods
+When referencing the form as a dom element `@ViewChild(myForm) myForm`, there are certain external functions that can be useful, for example, handling submit of multiple forms manually.
+
+### isValid
+Check if the form is valid.
+
+### submitForm
+Trigger submission of the form. Useful for trigger validation.
 
 ## Styling
 

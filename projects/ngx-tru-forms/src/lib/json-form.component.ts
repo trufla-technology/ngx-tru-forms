@@ -1,5 +1,5 @@
-import { Component, DoCheck, EventEmitter, Input, OnDestroy, Output } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { Component, DoCheck, EventEmitter, Input, OnDestroy, Output, ViewChild } from '@angular/core';
+import { FormBuilder, NgForm} from '@angular/forms';
 import { JsonFormValidatorsService } from './services/validators.service';
 import { SchemaFormControl } from './models/schema-form-control';
 import { JsonFormDefaultsService } from './services/defaults.service';
@@ -10,6 +10,7 @@ import { SchemaFormArray } from './models/schema-form-array';
   selector: 'jf-form',
   template: `
     <form
+      #userForm="ngForm"
       [formGroup]="form"
       (ngSubmit)="handleOnSubmit()"
       *ngIf="isValidSchema()"
@@ -67,6 +68,7 @@ export class JsonFormComponent implements DoCheck, OnDestroy {
   @Output() handleSubmit = new EventEmitter();
   @Output() handleChange = new EventEmitter();
   @Output() handleCancel = new EventEmitter();
+  @ViewChild('userForm') userForm: NgForm;
 
   public form;
   public model;
@@ -153,6 +155,7 @@ export class JsonFormComponent implements DoCheck, OnDestroy {
     return Object.keys(schema.properties).map((name, index) => {
       let type = 'step';
       if (index === 0) {
+        this.activeStep = name;
         type = 'first';
       } else if (index === Object.keys(schema.properties).length - 1) {
         type = 'last';
@@ -263,6 +266,20 @@ export class JsonFormComponent implements DoCheck, OnDestroy {
 
   isFormat(prop, format) {
     return prop.hasOwnProperty('format') && prop.format === format;
+  }
+
+  /**
+   * External method for ensuring the form is valid
+   */
+  isValid(): boolean {
+    return this.form.valid;
+  }
+
+  /**
+   * Trigger external submission
+   */
+  submitForm() {
+    this.userForm.ngSubmit.emit();
   }
 
   handleOnSubmit() {

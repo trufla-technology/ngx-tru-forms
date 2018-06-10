@@ -6,6 +6,7 @@
     "start": "ng serve",
     "build": "ng build --prod ngx-tru-forms",
     "build-dev": "ng build ngx-tru-forms",
+    "publish": "npm run build && cd dist/ngx-tru-forms && npm publish",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
