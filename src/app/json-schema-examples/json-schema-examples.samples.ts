@@ -239,6 +239,53 @@ export class JsonSchemaExamplesSamples {
         }
       }
     },
+    conditional_multistep: {
+      title: 'Conditional Multi Step',
+      description: 'Add conditional multistep control',
+      type: 'object',
+      properties: {
+        foods: {
+          type: 'object',
+          properties: {
+            food_like: {
+              type: 'string',
+              enum: [
+                'Hot Dog',
+                'Pizza',
+                'Hamburger'
+              ]
+            }
+          }
+        },
+        drinks: {
+          type: 'object',
+          properties: {
+            drink: {
+              type: 'string',
+              enum: [
+                'Pepsi',
+                'Coke',
+                'Sprite'
+              ]
+            }
+          }
+        }
+      },
+      oneOf: [
+        {
+          properties: {
+            'foods.food_like': {
+              enum: [
+                'Hamburger'
+              ],
+              required: [
+                'drinks'
+              ]
+            }
+          }
+        }
+      ]
+    },
     checkbox_group: {
       title: 'Checkbox Group',
       type: 'object',

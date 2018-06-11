@@ -61,7 +61,7 @@ export class JsonFormComponent implements DoCheck, OnDestroy {
   @Input() classes = { submit: '', cancel: '', outer: '' };
   @Input() isWorking = false;
   @Input() isMultiStep = false;
-  @Input() activeStep = '';
+  @Input() activeStep = null;
   @Input() state = false;
   @Input() id = '';
   @Output() handleStep = new EventEmitter();
@@ -129,7 +129,7 @@ export class JsonFormComponent implements DoCheck, OnDestroy {
       }
 
       if (this.steps.length > 0 && this.isMultiStep) {
-        const visibleStepName = this.activeStep.length > 0 ? this.activeStep : this.steps.find((s) => s.visible).name;
+        const visibleStepName = this.activeStep > 0 ? this.activeStep : this.steps.find((s) => s.visible).name;
         this.activeSchema = this.schema.properties[visibleStepName];
         this.activeStyle = this.style.hasOwnProperty(visibleStepName) ? this.style[visibleStepName] : {};
         this.data = this.state && this.multiStepData.hasOwnProperty(visibleStepName)
@@ -155,7 +155,7 @@ export class JsonFormComponent implements DoCheck, OnDestroy {
     return Object.keys(schema.properties).map((name, index) => {
       let type = 'step';
       if (index === 0) {
-        this.activeStep = name;
+        this.activeStep = this.activeStep || name;
         type = 'first';
       } else if (index === Object.keys(schema.properties).length - 1) {
         type = 'last';
@@ -164,7 +164,7 @@ export class JsonFormComponent implements DoCheck, OnDestroy {
       return {
         index,
         name,
-        visible: activeStep.length > 0 ? activeStep === name : index === 0,
+        visible: activeStep ? activeStep === name : index === 0,
         type,
         title: schema.properties[name].hasOwnProperty('title') ? schema.properties[name].title : name
       };

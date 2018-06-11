@@ -18,7 +18,7 @@ export class JsonSchemaExamplesComponent implements OnInit {
   public schemaControl: FormControl;
   public form: FormGroup;
   public state = false;
-  public selectedSchema = 'multistep_back';
+  public selectedSchema = 'conditional_multistep';
   @ViewChild('jsonSchema') jsonSchema: ElementRef;
   @ViewChild('formResponse') formResponse: ElementRef;
 
