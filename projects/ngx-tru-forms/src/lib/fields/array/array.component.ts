@@ -11,9 +11,7 @@ import {SchemaFormArray} from '../../models/schema-form-array';
         <div class="row">
           <div class="col-11" jf-component-chooser [form]="arrControl" [index]="i"></div>
           <div class="col-1">
-            <span href="#" style="cursor: pointer;" (click)="removeControl(control, i)">
-              <i class="la la-close"></i>
-            </span>
+            <span href="#" style="cursor: pointer;" (click)="removeControl(control, i)">x</span>
           </div>
         </div>
       </div>

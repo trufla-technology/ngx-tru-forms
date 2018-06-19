@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "ngx-tru-forms-demo": {
+    "ngx-tru-forms-app": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/ngx-tru-forms-demo",
+            "outputPath": "dist/ngx-tru-forms-app",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -50,18 +50,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "ngx-tru-forms-demo:build"
+            "browserTarget": "ngx-tru-forms-app:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "ngx-tru-forms-demo:build:production"
+              "browserTarget": "ngx-tru-forms-app:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "ngx-tru-forms-demo:build"
+            "browserTarget": "ngx-tru-forms-app:build"
           }
         },
         "test": {
@@ -95,7 +95,7 @@
         }
       }
     },
-    "ngx-tru-forms-demo-e2e": {
+    "ngx-tru-forms-app-e2e": {
       "root": "e2e/",
       "projectType": "application",
       "architect": {
@@ -103,11 +103,11 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "ngx-tru-forms-demo:serve"
+            "devServerTarget": "ngx-tru-forms-app:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "ngx-tru-forms-demo:serve:production"
+              "devServerTarget": "ngx-tru-forms-app:serve:production"
             }
           }
         },
@@ -163,5 +163,5 @@
       }
     }
   },
-  "defaultProject": "ngx-tru-forms-demo"
+  "defaultProject": "ngx-tru-forms-app"
 }

@@ -9,7 +9,22 @@
     "publish": "npm run build && cd dist/ngx-tru-forms && npm publish",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "publish-git": "npm run clean && npm run build && deploy-to-git",
+    "clean": "rm -fr build dist"
+  },
+  "config": {
+    "deployToGit": {
+      "repository": "git@github.com:trufla-technology/ngx-tru-forms.git",
+      "branch": "gh-pages",
+      "folder": "build",
+      "script": "ng build --base-href=/ngx-tru-forms/ --deploy-url=/ngx-tru-forms/ && cp -R dist/ngx-tru-forms-app/* build",
+      "commit": "Publishing $npm_package_version",
+      "user": {
+        "name": "Boris Cosic",
+        "email": "boris.c@trufla.com"
+      }
+    }
   },
   "private": true,
   "dependencies": {
@@ -24,6 +39,7 @@
     "@angular/router": "^6.0.3",
     "angular2-text-mask": "^9.0.0",
     "core-js": "^2.5.4",
+    "deploy-to-git": "^0.1.5",
     "ngx-color-picker": "^6.3.3",
     "rxjs": "^6.0.0",
     "text-mask-addons": "^3.7.2",
