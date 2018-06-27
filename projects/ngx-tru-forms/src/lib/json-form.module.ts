@@ -23,12 +23,14 @@ import { MultiselectComponent } from './fields/multiselect/multiselect.component
 import { MoneyComponent } from './fields/money/money.component';
 import { FormButtonComponent } from './components/form-button/form-button.component';
 import { WorkingSpinnerComponent } from './components/working-spinner/working-spinner.component';
+import { AppMaterialModule } from './app-material/app-material.module';
 
 @NgModule({
   imports: [
     CommonModule,
     TextMaskModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AppMaterialModule
   ],
   declarations: [
     JsonFormComponent,
