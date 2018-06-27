@@ -10,7 +10,7 @@ export class CommonComponent {
   public control: SchemaFormControl;
   public schema: Schema;
   public style: {};
-
+  public design: string = 'material';
   public isRequired() {
     return this.control.validator !== null;
   }
