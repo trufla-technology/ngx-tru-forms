@@ -12,6 +12,8 @@ import { RadiogroupComponent } from '../fields/radiogroup/radiogroup.component';
 import { CheckboxgroupComponent } from '../fields/checkboxgroup/checkboxgroup.component';
 import { MultiselectComponent } from '../fields/multiselect/multiselect.component';
 import { MoneyComponent } from '../fields/money/money.component';
+import { StringMaterialComponent } from '../fields/string/string.material.component';
+import {Framework} from "../framework/framework";
 
 @Injectable()
 export class JsonFormFieldsService {
@@ -19,9 +21,14 @@ export class JsonFormFieldsService {
   private fieldTypes: { [type: string]: any };
   private defaultFieldType = StringComponent;
 
-  constructor(private componentFactoryResolver: ComponentFactoryResolver) {
+  constructor(
+    private componentFactoryResolver: ComponentFactoryResolver,
+    private framework: Framework
+  ) {
+    console.log(this.framework);
+    
     this.fieldTypes = {};
-    this.register('string', StringComponent);
+    this.register('string', StringMaterialComponent);
     this.register('select', SelectComponent);
     this.register('number', NumberComponent);
     this.register('boolean', BooleanComponent);

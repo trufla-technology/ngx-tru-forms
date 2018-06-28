@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import {ModuleWithProviders, NgModule} from "@angular/core";
 import { CommonModule } from '@angular/common';
 import { JsonFormComponent } from './json-form.component';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -24,6 +24,8 @@ import { MoneyComponent } from './fields/money/money.component';
 import { FormButtonComponent } from './components/form-button/form-button.component';
 import { WorkingSpinnerComponent } from './components/working-spinner/working-spinner.component';
 import { AppMaterialModule } from './app-material/app-material.module';
+import {Framework} from "./framework/framework";
+import {JsonFormBootstrap} from "./framework/bootstrap/json-form-bootstrap";
 
 @NgModule({
   imports: [
@@ -36,7 +38,6 @@ import { AppMaterialModule } from './app-material/app-material.module';
     JsonFormComponent,
     SelectComponent,
     ChooserComponent,
-    StringComponent,
     FieldComponent,
     NumberComponent,
     BooleanComponent,
@@ -57,7 +58,6 @@ import { AppMaterialModule } from './app-material/app-material.module';
     CommonComponent
   ],
   entryComponents: [
-    StringComponent,
     SelectComponent,
     NumberComponent,
     BooleanComponent,
@@ -78,4 +78,20 @@ import { AppMaterialModule } from './app-material/app-material.module';
   ]
 })
 
-export class JsonFormModule { }
+export class JsonFormModule {
+  static forRoot(...frameworks): ModuleWithProviders {
+    const loadFrameworks = frameworks.length ?
+      frameworks.map(framework => framework.forRoot().providers[0]) :
+      [{ provide: Framework, useClass: JsonFormBootstrap, multi: true }];
+
+    return {
+      ngModule: JsonFormModule,
+      providers: [
+        JsonFormDefaultsService,
+        JsonFormFieldsService,
+        JsonFormValidatorsService,
+        ...loadFrameworks
+      ]
+    };
+  }
+}

@@ -1,6 +1,7 @@
 import {Component, ElementRef, Input, OnChanges, OnInit, SimpleChanges, ViewChild, ViewContainerRef} from '@angular/core';
 import { SchemaFormControl } from '../../models/schema-form-control';
 import { JsonFormFieldsService } from '../../services/fields.service';
+import {Framework} from "../../framework/framework";
 
 @Component({
   selector: 'jf-field, [jf-field]',
@@ -39,7 +40,10 @@ export class FieldComponent implements OnInit, OnChanges {
   @Input() index: number;
   public patterns;
 
-  constructor(public jsonFormFieldsService: JsonFormFieldsService, public el: ElementRef) {
+  constructor(
+    public jsonFormFieldsService: JsonFormFieldsService,
+    public el: ElementRef
+  ) {
     this.patterns = {};
   }
 

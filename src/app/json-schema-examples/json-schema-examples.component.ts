@@ -13,12 +13,12 @@ import {InputColourComponent} from './input-colour/input-colour.component';
 })
 export class JsonSchemaExamplesComponent implements OnInit {
   public schema: {};
-  public isMultiStep = true;
+  public isMultiStep = false;
   public cancel = '';
   public schemaControl: FormControl;
   public form: FormGroup;
   public state = false;
-  public selectedSchema = 'conditional_multistep';
+  public selectedSchema = 'simple_input';
   @ViewChild('jsonSchema') jsonSchema: ElementRef;
   @ViewChild('formResponse') formResponse: ElementRef;
 
