@@ -1,10 +1,9 @@
-import {ModuleWithProviders, NgModule} from "@angular/core";
+import { ModuleWithProviders, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { JsonFormComponent } from './json-form.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ChooserComponent } from './components/chooser/chooser.component';
 import { SelectComponent } from './fields/select/select.component';
-import { StringComponent } from './fields/string/string.component';
 import { NumberComponent } from './fields/number/number.component';
 import { BooleanComponent } from './fields/boolean/boolean.component';
 import { FieldComponent } from './components/field/field.component';
@@ -24,8 +23,8 @@ import { MoneyComponent } from './fields/money/money.component';
 import { FormButtonComponent } from './components/form-button/form-button.component';
 import { WorkingSpinnerComponent } from './components/working-spinner/working-spinner.component';
 import { AppMaterialModule } from './app-material/app-material.module';
-import {Framework} from "./framework/framework";
-import {JsonFormBootstrap} from "./framework/bootstrap/json-form-bootstrap";
+import { Framework } from './framework/framework';
+import { JsonFormBootstrap4 } from './framework/bootstrap4/json-form-bootstrap4';
 
 @NgModule({
   imports: [
@@ -82,7 +81,7 @@ export class JsonFormModule {
   static forRoot(...frameworks): ModuleWithProviders {
     const loadFrameworks = frameworks.length ?
       frameworks.map(framework => framework.forRoot().providers[0]) :
-      [{ provide: Framework, useClass: JsonFormBootstrap, multi: true }];
+      [{ provide: Framework, useClass: JsonFormBootstrap4, multi: true }];
 
     return {
       ngModule: JsonFormModule,

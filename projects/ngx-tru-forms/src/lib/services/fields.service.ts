@@ -25,21 +25,37 @@ export class JsonFormFieldsService {
     private componentFactoryResolver: ComponentFactoryResolver,
     private framework: Framework
   ) {
-    console.log(this.framework);
-    
     this.fieldTypes = {};
-    this.register('string', StringMaterialComponent);
-    this.register('select', SelectComponent);
-    this.register('number', NumberComponent);
-    this.register('boolean', BooleanComponent);
-    this.register('photo', PhotoComponent);
-    this.register('textarea', TextareaComponent);
-    this.register('object', ObjectComponent);
-    this.register('array', ArrayComponent);
-    this.register('radiogroup', RadiogroupComponent);
-    this.register('checkboxgroup', CheckboxgroupComponent);
-    this.register('multiselect', MultiselectComponent);
-    this.register('money', MoneyComponent);
+
+    switch (this.framework[0].name) {
+      case 'material':
+        this.register('string', StringMaterialComponent);
+        this.register('select', SelectComponent);
+        this.register('number', NumberComponent);
+        this.register('boolean', BooleanComponent);
+        this.register('photo', PhotoComponent);
+        this.register('textarea', TextareaComponent);
+        this.register('object', ObjectComponent);
+        this.register('array', ArrayComponent);
+        this.register('radiogroup', RadiogroupComponent);
+        this.register('checkboxgroup', CheckboxgroupComponent);
+        this.register('multiselect', MultiselectComponent);
+        this.register('money', MoneyComponent);
+        break;
+      default:
+        this.register('string', StringComponent);
+        this.register('select', SelectComponent);
+        this.register('number', NumberComponent);
+        this.register('boolean', BooleanComponent);
+        this.register('photo', PhotoComponent);
+        this.register('textarea', TextareaComponent);
+        this.register('object', ObjectComponent);
+        this.register('array', ArrayComponent);
+        this.register('radiogroup', RadiogroupComponent);
+        this.register('checkboxgroup', CheckboxgroupComponent);
+        this.register('multiselect', MultiselectComponent);
+        this.register('money', MoneyComponent);
+    }
   }
 
   setRootViewContainerRef(viewContainerRef) {
