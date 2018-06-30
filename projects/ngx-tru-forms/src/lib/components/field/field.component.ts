@@ -1,6 +1,6 @@
 import {Component, ElementRef, Input, OnChanges, OnInit, SimpleChanges, ViewChild, ViewContainerRef} from '@angular/core';
 import { SchemaFormControl } from '../../models/schema-form-control';
-import { JsonFormFieldsService } from '../../services/fields.service';
+import {JsonFormFieldsService} from '../../framework/json-form-fields.service';
 
 @Component({
   selector: 'jf-field, [jf-field]',
@@ -36,7 +36,6 @@ import { JsonFormFieldsService } from '../../services/fields.service';
 export class FieldComponent implements OnInit, OnChanges {
   @ViewChild('container', {read: ViewContainerRef}) container: ViewContainerRef;
   @Input() control: SchemaFormControl;
-  @Input() index: number;
   public patterns;
 
   constructor(
@@ -56,8 +55,8 @@ export class FieldComponent implements OnInit, OnChanges {
 
   generateField() {
     this.container.clear();
-    this.jsonFormFieldsService.setRootViewContainerRef(this.container);
-    this.jsonFormFieldsService.addDynamicComponent(this.control, this.index);
+    this.jsonFormFieldsService[0].setRootViewContainerRef(this.container);
+    this.jsonFormFieldsService[0].addDynamicComponent(this.control);
     this.el.nativeElement.className = `field margin-bottom ${this.getClass()} form-group`;
   }
 

@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { JsonSchemaExamplesComponent } from './json-schema-examples.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { JsonFormFieldsService, JsonFormModule, JsonFormBootstrap4Module, JsonFormMaterialModule } from '@trufla/ngx-tru-forms';
+import { JsonFormModule, JsonFormBootstrap4Module, JsonFormMaterialModule, JsonFormMaterial } from '@trufla/ngx-tru-forms';
 import { JsonSchemaExamplesSamples } from './json-schema-examples.samples';
 import { InputColourComponent } from './input-colour/input-colour.component';
 import { ColorPickerModule } from 'ngx-color-picker';
@@ -13,7 +13,7 @@ import { ColorPickerModule } from 'ngx-color-picker';
     ReactiveFormsModule,
     JsonFormBootstrap4Module,
     JsonFormMaterialModule,
-    JsonFormModule.forRoot(JsonFormBootstrap4Module),
+    JsonFormModule.forRoot(JsonFormMaterialModule),
     ColorPickerModule
   ],
   declarations: [
@@ -22,7 +22,7 @@ import { ColorPickerModule } from 'ngx-color-picker';
   ],
   providers: [
     JsonSchemaExamplesSamples,
-    JsonFormFieldsService
+    JsonFormMaterial
   ],
   exports: [
     JsonSchemaExamplesComponent
@@ -32,3 +32,4 @@ import { ColorPickerModule } from 'ngx-color-picker';
   ]
 })
 export class JsonSchemaExamplesModule { }
+

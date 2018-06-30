@@ -4,7 +4,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { StringComponent } from '../../fields/string/string.component';
 import { TextMaskModule } from 'angular2-text-mask';
 import { JsonFormBootstrap4 } from './json-form-bootstrap4';
-import { Framework } from '../framework';
+import { JsonFormFieldsService } from '../json-form-fields.service';
 
 @NgModule({
   imports: [
@@ -26,7 +26,7 @@ export class JsonFormBootstrap4Module {
       ngModule: JsonFormBootstrap4Module,
       providers: [
         {
-          provide: Framework,
+          provide: JsonFormFieldsService,
           useClass: JsonFormBootstrap4,
           multi: true
         }

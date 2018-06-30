@@ -9,7 +9,6 @@ import { BooleanComponent } from './fields/boolean/boolean.component';
 import { FieldComponent } from './components/field/field.component';
 import { PhotoComponent } from './fields/photo/photo.component';
 import { JsonFormDefaultsService } from './services/defaults.service';
-import { JsonFormFieldsService } from './services/fields.service';
 import { JsonFormValidatorsService } from './services/validators.service';
 import { TextareaComponent } from './fields/textarea/textarea.component';
 import { ObjectComponent } from './fields/object/object.component';
@@ -22,16 +21,14 @@ import { MultiselectComponent } from './fields/multiselect/multiselect.component
 import { MoneyComponent } from './fields/money/money.component';
 import { FormButtonComponent } from './components/form-button/form-button.component';
 import { WorkingSpinnerComponent } from './components/working-spinner/working-spinner.component';
-import { AppMaterialModule } from './app-material/app-material.module';
-import { Framework } from './framework/framework';
 import { JsonFormBootstrap4 } from './framework/bootstrap4/json-form-bootstrap4';
+import { JsonFormFieldsService } from './framework/json-form-fields.service';
 
 @NgModule({
   imports: [
     CommonModule,
     TextMaskModule,
-    ReactiveFormsModule,
-    AppMaterialModule
+    ReactiveFormsModule
   ],
   declarations: [
     JsonFormComponent,
@@ -72,24 +69,22 @@ import { JsonFormBootstrap4 } from './framework/bootstrap4/json-form-bootstrap4'
   ],
   providers: [
     JsonFormDefaultsService,
-    JsonFormFieldsService,
     JsonFormValidatorsService
   ]
 })
 
 export class JsonFormModule {
   static forRoot(...frameworks): ModuleWithProviders {
-    const loadFrameworks = frameworks.length ?
-      frameworks.map(framework => framework.forRoot().providers[0]) :
-      [{ provide: Framework, useClass: JsonFormBootstrap4, multi: true }];
+    const loadFramework = frameworks.length
+      ? frameworks.map(framework => framework.forRoot().providers[0])
+      : [{ provide: JsonFormFieldsService, useClass: JsonFormBootstrap4, multi: true }];
 
     return {
       ngModule: JsonFormModule,
       providers: [
         JsonFormDefaultsService,
-        JsonFormFieldsService,
         JsonFormValidatorsService,
-        ...loadFrameworks
+        ...loadFramework
       ]
     };
   }

@@ -13,12 +13,7 @@ import { Schema } from '../../models/schema';
     </h4>
     <div class="form-container">
       <div class="description" *ngIf="schema && schema.hasOwnProperty('description')" [innerHTML]="schema.description"></div>
-      <div
-        *ngFor="let control of keys(form.controls)"
-        jf-field
-        [control]="form.get(control)"
-        [index]="index"
-      ></div>
+      <div *ngFor="let control of keys(form.controls)" jf-field [control]="form.get(control)"></div>
     </div>
   `
 })

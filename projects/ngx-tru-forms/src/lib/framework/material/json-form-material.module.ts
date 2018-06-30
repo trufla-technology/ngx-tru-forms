@@ -6,7 +6,7 @@ import { MatButtonModule, MatFormFieldModule, MatInputModule } from '@angular/ma
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { StringMaterialComponent } from '../../fields/string/string.material.component';
 import { JsonFormMaterial} from './json-form-material';
-import { Framework } from '../framework';
+import { JsonFormFieldsService } from '../json-form-fields.service';
 
 @NgModule({
   imports: [
@@ -34,7 +34,11 @@ export class JsonFormMaterialModule {
     return {
       ngModule: JsonFormMaterialModule,
       providers: [
-        { provide: Framework, useClass: JsonFormMaterial, multi: true }
+        {
+          provide: JsonFormFieldsService,
+          useClass: JsonFormMaterial,
+          multi: true
+        }
       ]
     };
   }

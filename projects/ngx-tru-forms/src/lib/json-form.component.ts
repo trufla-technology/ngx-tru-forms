@@ -5,6 +5,7 @@ import { SchemaFormControl } from './models/schema-form-control';
 import { JsonFormDefaultsService } from './services/defaults.service';
 import { SchemaFormGroup } from './models/schema-form-group';
 import { SchemaFormArray } from './models/schema-form-array';
+import {JsonFormFieldsService} from "./framework/json-form-fields.service";
 
 @Component({
   selector: 'jf-form',
@@ -64,6 +65,7 @@ export class JsonFormComponent implements DoCheck, OnDestroy {
   @Input() activeStep = null;
   @Input() state = false;
   @Input() id = '';
+  @Input() fields = {};
   @Output() handleStep = new EventEmitter();
   @Output() handleSubmit = new EventEmitter();
   @Output() handleChange = new EventEmitter();
@@ -85,7 +87,8 @@ export class JsonFormComponent implements DoCheck, OnDestroy {
   constructor(
     private fb: FormBuilder,
     private vl: JsonFormValidatorsService,
-    private df: JsonFormDefaultsService
+    private df: JsonFormDefaultsService,
+    private jf: JsonFormFieldsService
   ) {}
 
   ngDoCheck(): void {
@@ -108,6 +111,7 @@ export class JsonFormComponent implements DoCheck, OnDestroy {
 
     if (this.changeDetected) {
       this.constructForm();
+      this.appendFields();
     }
   }
 
@@ -115,7 +119,13 @@ export class JsonFormComponent implements DoCheck, OnDestroy {
     this.form.valueChanges.unsubscribe();
   }
 
-  public constructForm() {
+  appendFields() {
+    Object.keys(this.fields).forEach((f) => {
+      this.jf[0].register(f, this.fields[f]);
+    });
+  }
+
+  constructForm() {
     this.model = {};
 
     if (this.isValidSchema()) {
@@ -151,7 +161,7 @@ export class JsonFormComponent implements DoCheck, OnDestroy {
     }
   }
 
-  public getSteps(schema, activeStep): Array<any> {
+  getSteps(schema, activeStep): Array<any> {
     return Object.keys(schema.properties).map((name, index) => {
       let type = 'step';
       if (index === 0) {
@@ -171,7 +181,7 @@ export class JsonFormComponent implements DoCheck, OnDestroy {
     });
   }
 
-  public isValidSchema() {
+  isValidSchema() {
     return typeof (this.schema) === 'object' && Object.keys(this.schema).length > 0;
   }
 
