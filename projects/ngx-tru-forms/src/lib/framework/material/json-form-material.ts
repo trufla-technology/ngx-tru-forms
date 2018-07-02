@@ -12,6 +12,7 @@ import {StringMaterialComponent} from '../../fields/string/string.material.compo
 import {JsonFormFieldsService} from '../json-form-fields.service';
 import { TextareaMaterialComponent } from '../../fields/textarea/textarea.material.component';
 import { SelectMaterialComponent } from '../../fields/select/select.material.component';
+import { RadiogroupMaterialComponent } from '../../fields/radiogroup/radiogroup.material.component';
 
 @Injectable()
 export class JsonFormMaterial extends JsonFormFieldsService {
@@ -24,7 +25,7 @@ export class JsonFormMaterial extends JsonFormFieldsService {
     textarea: TextareaMaterialComponent,
     object: ObjectComponent,
     array: ArrayComponent,
-    radiogroup: RadiogroupComponent,
+    radiogroup: RadiogroupMaterialComponent,
     checkboxgroup: CheckboxgroupComponent,
     multiselect: MultiselectComponent,
     money: MoneyComponent
