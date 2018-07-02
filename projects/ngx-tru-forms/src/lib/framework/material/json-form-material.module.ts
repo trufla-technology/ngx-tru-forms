@@ -2,7 +2,7 @@ import { ModuleWithProviders, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { TextMaskModule } from 'angular2-text-mask';
-import { MatButtonModule, MatFormFieldModule, MatInputModule, MatSelectModule, MatRadioModule, MatCheckboxModule } from '@angular/material';
+import { MatButtonModule, MatFormFieldModule, MatInputModule, MatSelectModule, MatRadioModule, MatCheckboxModule, MatIconModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { StringMaterialComponent } from '../../fields/string/string.material.component';
 import { JsonFormMaterial} from './json-form-material';
@@ -10,6 +10,7 @@ import { JsonFormFieldsService } from '../json-form-fields.service';
 import { TextareaMaterialComponent } from '../../fields/textarea/textarea.material.component';
 import { SelectMaterialComponent } from '../../fields/select/select.material.component';
 import { RadiogroupMaterialComponent } from '../../fields/radiogroup/radiogroup.material.component';
+import { PhotoMaterialComponent } from '../../fields/photo/photo.material.component';
 import { CheckboxgroupMaterialComponent } from '../../fields/checkboxgroup/checkboxgroup.material.component';
 
 @NgModule({
@@ -23,13 +24,15 @@ import { CheckboxgroupMaterialComponent } from '../../fields/checkboxgroup/check
     MatButtonModule,
     MatSelectModule,
     MatRadioModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatIconModule
   ],
   declarations: [
     StringMaterialComponent,
     TextareaMaterialComponent,
     SelectMaterialComponent,
     RadiogroupMaterialComponent,
+    PhotoMaterialComponent,
     CheckboxgroupMaterialComponent
   ],
   entryComponents: [
@@ -37,6 +40,7 @@ import { CheckboxgroupMaterialComponent } from '../../fields/checkboxgroup/check
     TextareaMaterialComponent,
     SelectMaterialComponent,
     RadiogroupMaterialComponent,
+    PhotoMaterialComponent,
     CheckboxgroupMaterialComponent
   ],
   exports: [
@@ -44,6 +48,7 @@ import { CheckboxgroupMaterialComponent } from '../../fields/checkboxgroup/check
     TextareaMaterialComponent,
     SelectMaterialComponent,
     RadiogroupMaterialComponent,
+    PhotoMaterialComponent,
     CheckboxgroupMaterialComponent
   ]
 })
