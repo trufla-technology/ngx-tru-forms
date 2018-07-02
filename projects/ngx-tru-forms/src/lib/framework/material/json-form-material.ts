@@ -11,6 +11,8 @@ import { TextareaMaterialComponent } from '../../fields/textarea/textarea.materi
 import { SelectMaterialComponent } from '../../fields/select/select.material.component';
 import { RadiogroupMaterialComponent } from '../../fields/radiogroup/radiogroup.material.component';
 import { PhotoMaterialComponent } from '../../fields/photo/photo.material.component';
+import { NumberMaterialComponent } from '../../fields/number/number.material.component';
+import { MultiselectMaterialComponent } from '../../fields/multiselect/multiselect.material.component';
 import { CheckboxgroupMaterialComponent } from '../../fields/checkboxgroup/checkboxgroup.material.component';
 
 @Injectable()
@@ -18,7 +20,7 @@ export class JsonFormMaterial extends JsonFormFieldsService {
   fieldTypes = {
     string: StringMaterialComponent,
     select: SelectMaterialComponent,
-    number: NumberComponent,
+    number: NumberMaterialComponent,
     boolean: BooleanComponent,
     photo: PhotoMaterialComponent,
     textarea: TextareaMaterialComponent,
@@ -26,7 +28,7 @@ export class JsonFormMaterial extends JsonFormFieldsService {
     array: ArrayComponent,
     radiogroup: RadiogroupMaterialComponent,
     checkboxgroup: CheckboxgroupMaterialComponent,
-    multiselect: MultiselectComponent,
+    multiselect: MultiselectMaterialComponent,
     money: MoneyComponent
   };
 }

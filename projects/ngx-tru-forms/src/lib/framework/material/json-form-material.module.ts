@@ -12,6 +12,8 @@ import { SelectMaterialComponent } from '../../fields/select/select.material.com
 import { RadiogroupMaterialComponent } from '../../fields/radiogroup/radiogroup.material.component';
 import { PhotoMaterialComponent } from '../../fields/photo/photo.material.component';
 import { CheckboxgroupMaterialComponent } from '../../fields/checkboxgroup/checkboxgroup.material.component';
+import { NumberMaterialComponent } from '../../fields/number/number.material.component';
+import { MultiselectMaterialComponent } from '../../fields/multiselect/multiselect.material.component';
 
 @NgModule({
   imports: [
@@ -33,6 +35,8 @@ import { CheckboxgroupMaterialComponent } from '../../fields/checkboxgroup/check
     SelectMaterialComponent,
     RadiogroupMaterialComponent,
     PhotoMaterialComponent,
+    NumberMaterialComponent,
+    MultiselectMaterialComponent,
     CheckboxgroupMaterialComponent
   ],
   entryComponents: [
@@ -41,6 +45,8 @@ import { CheckboxgroupMaterialComponent } from '../../fields/checkboxgroup/check
     SelectMaterialComponent,
     RadiogroupMaterialComponent,
     PhotoMaterialComponent,
+    NumberMaterialComponent,
+    MultiselectMaterialComponent,
     CheckboxgroupMaterialComponent
   ],
   exports: [
@@ -49,6 +55,8 @@ import { CheckboxgroupMaterialComponent } from '../../fields/checkboxgroup/check
     SelectMaterialComponent,
     RadiogroupMaterialComponent,
     PhotoMaterialComponent,
+    NumberMaterialComponent,
+    MultiselectMaterialComponent,
     CheckboxgroupMaterialComponent
   ]
 })
