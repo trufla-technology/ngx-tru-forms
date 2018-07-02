@@ -2,7 +2,7 @@ import { ModuleWithProviders, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { TextMaskModule } from 'angular2-text-mask';
-import { MatButtonModule, MatFormFieldModule, MatInputModule, MatSelectModule, MatRadioModule, MatCheckboxModule, MatIconModule } from '@angular/material';
+import { MatButtonModule, MatFormFieldModule, MatInputModule, MatSelectModule, MatRadioModule, MatCheckboxModule, MatIconModule, MatSlideToggleModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { StringMaterialComponent } from '../../fields/string/string.material.component';
 import { JsonFormMaterial} from './json-form-material';
@@ -14,6 +14,7 @@ import { PhotoMaterialComponent } from '../../fields/photo/photo.material.compon
 import { CheckboxgroupMaterialComponent } from '../../fields/checkboxgroup/checkboxgroup.material.component';
 import { NumberMaterialComponent } from '../../fields/number/number.material.component';
 import { MultiselectMaterialComponent } from '../../fields/multiselect/multiselect.material.component';
+import { BooleanMaterialComponent } from '../../fields/boolean/boolean.material.component';
 
 @NgModule({
   imports: [
@@ -27,6 +28,7 @@ import { MultiselectMaterialComponent } from '../../fields/multiselect/multisele
     MatSelectModule,
     MatRadioModule,
     MatCheckboxModule,
+    MatSlideToggleModule,
     MatIconModule
   ],
   declarations: [
@@ -37,7 +39,8 @@ import { MultiselectMaterialComponent } from '../../fields/multiselect/multisele
     PhotoMaterialComponent,
     NumberMaterialComponent,
     MultiselectMaterialComponent,
-    CheckboxgroupMaterialComponent
+    CheckboxgroupMaterialComponent,
+    BooleanMaterialComponent
   ],
   entryComponents: [
     StringMaterialComponent,
@@ -47,7 +50,8 @@ import { MultiselectMaterialComponent } from '../../fields/multiselect/multisele
     PhotoMaterialComponent,
     NumberMaterialComponent,
     MultiselectMaterialComponent,
-    CheckboxgroupMaterialComponent
+    CheckboxgroupMaterialComponent,
+    BooleanMaterialComponent
   ],
   exports: [
     StringMaterialComponent,
@@ -57,7 +61,8 @@ import { MultiselectMaterialComponent } from '../../fields/multiselect/multisele
     PhotoMaterialComponent,
     NumberMaterialComponent,
     MultiselectMaterialComponent,
-    CheckboxgroupMaterialComponent
+    CheckboxgroupMaterialComponent,
+    BooleanMaterialComponent
   ]
 })
 
