@@ -2,12 +2,13 @@ import { ModuleWithProviders, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { TextMaskModule } from 'angular2-text-mask';
-import { MatButtonModule, MatFormFieldModule, MatInputModule } from '@angular/material';
+import { MatButtonModule, MatFormFieldModule, MatInputModule, MatSelectModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { StringMaterialComponent } from '../../fields/string/string.material.component';
 import { JsonFormMaterial} from './json-form-material';
 import { JsonFormFieldsService } from '../json-form-fields.service';
 import { TextareaMaterialComponent } from '../../fields/textarea/textarea.material.component';
+import { SelectMaterialComponent } from '../../fields/select/select.material.component';
 
 @NgModule({
   imports: [
@@ -17,19 +18,23 @@ import { TextareaMaterialComponent } from '../../fields/textarea/textarea.materi
     BrowserAnimationsModule,
     MatFormFieldModule,
     MatInputModule,
-    MatButtonModule
+    MatButtonModule,
+    MatSelectModule
   ],
   declarations: [
     StringMaterialComponent,
-    TextareaMaterialComponent
+    TextareaMaterialComponent,
+    SelectMaterialComponent,
   ],
   entryComponents: [
     StringMaterialComponent,
-    TextareaMaterialComponent
+    TextareaMaterialComponent,
+    SelectMaterialComponent
   ],
   exports: [
     StringMaterialComponent,
-    TextareaMaterialComponent
+    TextareaMaterialComponent,
+    SelectMaterialComponent
   ]
 })
 
