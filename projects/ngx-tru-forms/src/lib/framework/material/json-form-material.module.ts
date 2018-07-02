@@ -7,6 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { StringMaterialComponent } from '../../fields/string/string.material.component';
 import { JsonFormMaterial} from './json-form-material';
 import { JsonFormFieldsService } from '../json-form-fields.service';
+import { TextareaMaterialComponent } from '../../fields/textarea/textarea.material.component';
 
 @NgModule({
   imports: [
@@ -19,13 +20,16 @@ import { JsonFormFieldsService } from '../json-form-fields.service';
     MatButtonModule
   ],
   declarations: [
-    StringMaterialComponent
+    StringMaterialComponent,
+    TextareaMaterialComponent
   ],
   entryComponents: [
-    StringMaterialComponent
+    StringMaterialComponent,
+    TextareaMaterialComponent
   ],
   exports: [
-    StringMaterialComponent
+    StringMaterialComponent,
+    TextareaMaterialComponent
   ]
 })
 
