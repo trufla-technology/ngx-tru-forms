@@ -2,7 +2,17 @@ import { ModuleWithProviders, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { TextMaskModule } from 'angular2-text-mask';
-import { MatButtonModule, MatFormFieldModule, MatInputModule, MatSelectModule, MatRadioModule, MatCheckboxModule, MatIconModule, MatSlideToggleModule } from '@angular/material';
+import {
+  MatButtonModule,
+  MatFormFieldModule,
+  MatInputModule,
+  MatSelectModule,
+  MatRadioModule,
+  MatCheckboxModule,
+  MatIconModule,
+  MatSlideToggleModule,
+  MatDatepickerModule, MatNativeDateModule
+} from "@angular/material";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { StringMaterialComponent } from '../../fields/string/string.material.component';
 import { JsonFormMaterial} from './json-form-material';
@@ -15,6 +25,8 @@ import { CheckboxgroupMaterialComponent } from '../../fields/checkboxgroup/check
 import { NumberMaterialComponent } from '../../fields/number/number.material.component';
 import { MultiselectMaterialComponent } from '../../fields/multiselect/multiselect.material.component';
 import { BooleanMaterialComponent } from '../../fields/boolean/boolean.material.component';
+import {DateMaterialComponent} from "../../fields/date/date.material.component";
+import {ErrorMaterialComponent} from "../../fields/error/error.material.component";
 
 @NgModule({
   imports: [
@@ -29,7 +41,9 @@ import { BooleanMaterialComponent } from '../../fields/boolean/boolean.material.
     MatRadioModule,
     MatCheckboxModule,
     MatSlideToggleModule,
-    MatIconModule
+    MatIconModule,
+    MatNativeDateModule,
+    MatDatepickerModule
   ],
   declarations: [
     StringMaterialComponent,
@@ -40,7 +54,9 @@ import { BooleanMaterialComponent } from '../../fields/boolean/boolean.material.
     NumberMaterialComponent,
     MultiselectMaterialComponent,
     CheckboxgroupMaterialComponent,
-    BooleanMaterialComponent
+    BooleanMaterialComponent,
+    DateMaterialComponent,
+    ErrorMaterialComponent
   ],
   entryComponents: [
     StringMaterialComponent,
@@ -51,7 +67,9 @@ import { BooleanMaterialComponent } from '../../fields/boolean/boolean.material.
     NumberMaterialComponent,
     MultiselectMaterialComponent,
     CheckboxgroupMaterialComponent,
-    BooleanMaterialComponent
+    BooleanMaterialComponent,
+    DateMaterialComponent,
+    ErrorMaterialComponent
   ],
   exports: [
     StringMaterialComponent,
@@ -62,7 +80,9 @@ import { BooleanMaterialComponent } from '../../fields/boolean/boolean.material.
     NumberMaterialComponent,
     MultiselectMaterialComponent,
     CheckboxgroupMaterialComponent,
-    BooleanMaterialComponent
+    BooleanMaterialComponent,
+    DateMaterialComponent,
+    ErrorMaterialComponent
   ]
 })
 

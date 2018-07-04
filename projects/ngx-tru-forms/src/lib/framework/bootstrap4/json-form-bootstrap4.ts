@@ -12,6 +12,7 @@ import {PhotoComponent} from '../../fields/photo/photo.component';
 import {RadiogroupComponent} from '../../fields/radiogroup/radiogroup.component';
 import {MoneyComponent} from '../../fields/money/money.component';
 import {StringComponent} from '../../fields/string/string.component';
+import {DateComponent} from '../../fields/date/date.component';
 
 @Injectable()
 export class JsonFormBootstrap4 extends JsonFormFieldsService {
@@ -24,6 +25,7 @@ export class JsonFormBootstrap4 extends JsonFormFieldsService {
     textarea: TextareaComponent,
     object: ObjectComponent,
     array: ArrayComponent,
+    date: DateComponent,
     radiogroup: RadiogroupComponent,
     checkboxgroup: CheckboxgroupComponent,
     multiselect: MultiselectComponent,

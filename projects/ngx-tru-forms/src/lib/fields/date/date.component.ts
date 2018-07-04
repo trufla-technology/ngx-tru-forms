@@ -10,7 +10,7 @@ import createNumberMask from 'text-mask-addons/dist/createNumberMask';
     <input
       class="form-control"
       [name]="schema.key"
-      [attr.type]="'text'"
+      [attr.type]="'date'"
       [formControl]="control"
       [placeholder]="placeholder()"
       [textMask]="{ mask: numberMask}"

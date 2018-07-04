@@ -106,7 +106,6 @@ This module allows for extension via injectors.
 ```
 constructor(
   jfDefaultsService: JsonFormDefaultsService,
-  jfFieldsService: JsonFormFieldsService
   jfValidatorsService: JsonFormValidatorsService
 )
 ```
@@ -199,9 +198,9 @@ entryComponents: [
 ]
 ```
 
-Register it inside your component:
+Add it via the component:
 ```
-this.jfFieldsService.register('new_format', CustomComponent);
+[fields]="{'colour': ColourPickerComponent}"
 ```
 Now objects of format `new_format` will show the CustomComponent.
 

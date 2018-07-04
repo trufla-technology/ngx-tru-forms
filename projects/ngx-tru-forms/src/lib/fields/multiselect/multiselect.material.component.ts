@@ -7,6 +7,7 @@ import { CommonComponent } from '../common/common.component';
     <mat-select [formControl]="control" name="name" multiple>
       <mat-option *ngFor="let en of schema.enum; let i = index" [value]="en">{{enumNames(i)}}</mat-option>
     </mat-select>
+    <mat-error jf-error [control]="control"></mat-error>
   </mat-form-field>
   `
 })

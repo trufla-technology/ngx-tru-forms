@@ -24,7 +24,7 @@
         <div class="form-group" [ngClass]="{
           'has-danger': schemaControl.invalid && (schemaControl.dirty || schemaControl.touched)
           }">
-          <textarea class="form-control" style="height: 100%" [formControl]="schemaControl" (keyup)="handleSchemaUpdate()"
+          <textarea class="form-control schema" style="height: 100%" [formControl]="schemaControl" (keyup)="handleSchemaUpdate()"
                     (keydown.Enter)="onEnterKey($event)" (keydown.Tab)="onTabKey($event)" #jsonSchema
                     [ngClass]="{
               'has-danger': schemaControl.invalid && (schemaControl.dirty || schemaControl.touched)

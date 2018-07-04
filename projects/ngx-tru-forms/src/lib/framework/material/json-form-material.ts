@@ -15,6 +15,7 @@ import { NumberMaterialComponent } from '../../fields/number/number.material.com
 import { MultiselectMaterialComponent } from '../../fields/multiselect/multiselect.material.component';
 import { CheckboxgroupMaterialComponent } from '../../fields/checkboxgroup/checkboxgroup.material.component';
 import { BooleanMaterialComponent } from '../../fields/boolean/boolean.material.component';
+import { DateMaterialComponent } from '../../fields/date/date.material.component';
 
 @Injectable()
 export class JsonFormMaterial extends JsonFormFieldsService {
@@ -27,6 +28,7 @@ export class JsonFormMaterial extends JsonFormFieldsService {
     textarea: TextareaMaterialComponent,
     object: ObjectComponent,
     array: ArrayComponent,
+    date: DateMaterialComponent,
     radiogroup: RadiogroupMaterialComponent,
     checkboxgroup: CheckboxgroupMaterialComponent,
     multiselect: MultiselectMaterialComponent,

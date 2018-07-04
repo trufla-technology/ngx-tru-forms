@@ -15,6 +15,7 @@ import { CommonComponent } from '../common/common.component';
         [textMask]="{ mask: getMask() }"
         [placeholder]="title()"
       />
+      <mat-error jf-error [control]="control"></mat-error>
     </mat-form-field>
   `
 })

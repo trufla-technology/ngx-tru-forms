@@ -10,7 +10,9 @@ import { CommonComponent } from '../common/common.component';
         [attr.type]="'number'"
         [formControl]="control"
         [attr.placeholder]="placeholder()"
+        [placeholder]="title()"
       />
+      <mat-error jf-error [control]="control"></mat-error>
     </mat-form-field>
   `
 })

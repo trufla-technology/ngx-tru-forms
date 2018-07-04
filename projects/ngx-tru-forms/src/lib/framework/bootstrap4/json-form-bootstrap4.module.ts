@@ -5,18 +5,24 @@ import { StringComponent } from '../../fields/string/string.component';
 import { TextMaskModule } from 'angular2-text-mask';
 import { JsonFormBootstrap4 } from './json-form-bootstrap4';
 import { JsonFormFieldsService } from '../json-form-fields.service';
+import {DateComponent} from '../../fields/date/date.component';
+import {ErrorComponent} from '../../fields/error/error.component';
 
 @NgModule({
   imports: [
     CommonModule,
     ReactiveFormsModule,
-    TextMaskModule
+    TextMaskModule,
   ],
   declarations: [
-    StringComponent
+    StringComponent,
+    DateComponent,
+    ErrorComponent
   ],
   entryComponents: [
-    StringComponent
+    StringComponent,
+    DateComponent,
+    ErrorComponent
   ]
 })
 
