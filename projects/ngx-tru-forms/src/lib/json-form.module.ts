@@ -5,7 +5,6 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { ChooserComponent } from './components/chooser/chooser.component';
 import { SelectComponent } from './fields/select/select.component';
 import { NumberComponent } from './fields/number/number.component';
-import { BooleanComponent } from './fields/boolean/boolean.component';
 import { FieldComponent } from './components/field/field.component';
 import { PhotoComponent } from './fields/photo/photo.component';
 import { JsonFormDefaultsService } from './services/defaults.service';
@@ -32,20 +31,15 @@ import { JsonFormFieldsService } from './framework/json-form-fields.service';
   ],
   declarations: [
     JsonFormComponent,
-    SelectComponent,
     ChooserComponent,
     FieldComponent,
-    NumberComponent,
-    BooleanComponent,
     PhotoComponent,
-    TextareaComponent,
     ObjectComponent,
     ArrayComponent,
     CheckboxgroupComponent,
     RadiogroupComponent,
     CommonComponent,
     MultiselectComponent,
-    MoneyComponent,
     FormButtonComponent,
     WorkingSpinnerComponent
   ],
@@ -54,18 +48,13 @@ import { JsonFormFieldsService } from './framework/json-form-fields.service';
     CommonComponent
   ],
   entryComponents: [
-    SelectComponent,
-    NumberComponent,
-    BooleanComponent,
     PhotoComponent,
-    TextareaComponent,
     ObjectComponent,
     ArrayComponent,
     RadiogroupComponent,
     CheckboxgroupComponent,
     JsonFormComponent,
-    MultiselectComponent,
-    MoneyComponent
+    MultiselectComponent
   ],
   providers: [
     JsonFormDefaultsService,
