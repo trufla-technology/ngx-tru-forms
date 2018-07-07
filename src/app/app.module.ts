@@ -8,7 +8,7 @@ import { JsonSchemaExamplesModule } from './json-schema-examples/json-schema-exa
     AppComponent
   ],
   imports: [
-    BrowserModule,
+    BrowserAnimationsModule,
     JsonSchemaExamplesModule
   ],
   providers: [],
