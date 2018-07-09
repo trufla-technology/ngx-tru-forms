@@ -7,12 +7,10 @@ import { CommonComponent } from '../common/common.component';
       <textarea
           matInput
           [name]="schema.key"
-          [attr.type]="type()"
           [formControl]="control"
           [attr.maxLength]="schema.maxLength || null"
           [attr.minLength]="schema.minLength || null"
           [attr.placeholder]="placeholder()"
-          [textMask]="{ mask: getMask() }"
           [placeholder]="title()">
       </textarea>
       <mat-error jf-error [control]="control"></mat-error>
@@ -20,4 +18,3 @@ import { CommonComponent } from '../common/common.component';
   `
 })
 export class TextareaMaterialComponent extends CommonComponent { }
-

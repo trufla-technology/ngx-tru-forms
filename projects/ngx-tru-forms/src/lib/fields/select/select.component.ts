@@ -24,6 +24,7 @@ import { CommonComponent } from '../common/common.component';
         </option>
       </select>
     </div>
+    <jf-error [control]="control"></jf-error>
   `
 })
 export class SelectComponent extends CommonComponent {

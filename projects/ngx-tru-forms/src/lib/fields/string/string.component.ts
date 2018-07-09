@@ -17,6 +17,7 @@ import { CommonComponent } from '../common/common.component';
       [attr.placeholder]="placeholder()"
       [textMask]="{ mask: getMask() }"
     />
+    <jf-error [control]="control"></jf-error>
   `
 })
 export class StringComponent extends CommonComponent { }
