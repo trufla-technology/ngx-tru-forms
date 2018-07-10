@@ -26,6 +26,7 @@ import { MultiselectMaterialComponent } from '../../fields/multiselect/multisele
 import { BooleanMaterialComponent } from '../../fields/boolean/boolean.material.component';
 import {DateMaterialComponent} from '../../fields/date/date.material.component';
 import {ErrorMaterialComponent} from '../../fields/error/error.material.component';
+import {ButtonMaterialComponent} from '../../fields/button/button.material.component';
 
 @NgModule({
   imports: [
@@ -54,7 +55,8 @@ import {ErrorMaterialComponent} from '../../fields/error/error.material.componen
     CheckboxgroupMaterialComponent,
     BooleanMaterialComponent,
     DateMaterialComponent,
-    ErrorMaterialComponent
+    ErrorMaterialComponent,
+    ButtonMaterialComponent
   ],
   entryComponents: [
     StringMaterialComponent,
@@ -67,7 +69,8 @@ import {ErrorMaterialComponent} from '../../fields/error/error.material.componen
     CheckboxgroupMaterialComponent,
     BooleanMaterialComponent,
     DateMaterialComponent,
-    ErrorMaterialComponent
+    ErrorMaterialComponent,
+    ButtonMaterialComponent
   ],
   exports: [
     StringMaterialComponent,

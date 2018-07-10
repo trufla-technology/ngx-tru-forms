@@ -34,6 +34,10 @@ export class JsonFormFieldsService {
   }
 
   get(control): any {
+    if (typeof(control) === 'string' && this.has(control)) {
+      return this.fieldTypes[control];
+    }
+
     // check if a field is getting overridden by format
     if (typeof(control.schema.format) !== 'undefined' && this.has(control.schema.format)) {
       return this.fieldTypes[control.schema.format];

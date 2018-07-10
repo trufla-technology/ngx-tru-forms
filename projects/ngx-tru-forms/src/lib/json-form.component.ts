@@ -1,11 +1,11 @@
-import { Component, DoCheck, EventEmitter, Input, OnDestroy, Output, ViewChild } from '@angular/core';
+import {Component, DoCheck, EventEmitter, Input, OnDestroy, Output, ViewChild, ViewContainerRef} from "@angular/core";
 import { FormBuilder, NgForm} from '@angular/forms';
 import { JsonFormValidatorsService } from './services/validators.service';
 import { SchemaFormControl } from './models/schema-form-control';
 import { JsonFormDefaultsService } from './services/defaults.service';
 import { SchemaFormGroup } from './models/schema-form-group';
 import { SchemaFormArray } from './models/schema-form-array';
-import {JsonFormFieldsService} from "./framework/json-form-fields.service";
+import { JsonFormFieldsService } from './framework/json-form-fields.service';
 
 @Component({
   selector: 'jf-form',
@@ -18,10 +18,7 @@ import {JsonFormFieldsService} from "./framework/json-form-fields.service";
     >
       <div
         jf-component-chooser
-        [ngClass]="[
-          classes.outer || '',
-          this.activeStyle['default'] ? this.activeStyle['default'] : ''
-          ]"
+        [ngClass]="[classes.outer || '', this.activeStyle['default'] ? this.activeStyle['default'] : '']"
         [form]="form"
         [schema]="activeSchema">
       </div>
@@ -29,6 +26,7 @@ import {JsonFormFieldsService} from "./framework/json-form-fields.service";
         <ng-content></ng-content>
       </div>
       <div
+        #buttons
         *ngIf="ref.children.length == 0"
         [ngClass]="{ 'margin-top--double': true, 'page-actions--edges': (cancel && submit), 'page-actions--center': (!cancel || !submit)}">
         <jf-form-button
@@ -38,7 +36,8 @@ import {JsonFormFieldsService} from "./framework/json-form-fields.service";
           [isMultiStep]="isMultiStep"
           [isWorking]="isWorking"
           (handleClick)="handleOnCancel()"
-          [classes]="classes"></jf-form-button>
+          [classes]="classes">
+        </jf-form-button>
         <jf-form-button
           *ngIf="submit"
           [classes]="classes"
@@ -47,7 +46,8 @@ import {JsonFormFieldsService} from "./framework/json-form-fields.service";
           [continue]="continue"
           [isMultiStep]="isMultiStep"
           [isWorking]="isWorking"
-          [isFormValid]="this.form.valid"></jf-form-button>
+          [isFormValid]="this.form.valid">
+        </jf-form-button>
       </div>
     </form>
   `
@@ -66,7 +66,7 @@ export class JsonFormComponent implements DoCheck, OnDestroy {
   @Input() state = false;
   @Input() id = '';
   @Input() fields = {};
-  @Input() viewOnly: boolean = false;
+  @Input() viewOnly = false;
   @Output() handleStep = new EventEmitter();
   @Output() handleSubmit = new EventEmitter();
   @Output() handleChange = new EventEmitter();
@@ -111,8 +111,8 @@ export class JsonFormComponent implements DoCheck, OnDestroy {
     }
 
     if (this.changeDetected) {
-      this.constructForm();
       this.appendFields();
+      this.constructForm();
     }
   }
 

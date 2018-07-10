@@ -7,11 +7,12 @@ import { JsonFormBootstrap4 } from './json-form-bootstrap4';
 import { JsonFormFieldsService } from '../json-form-fields.service';
 import {DateComponent} from '../../fields/date/date.component';
 import {ErrorComponent} from '../../fields/error/error.component';
-import {BooleanComponent} from "../../fields/boolean/boolean.component";
-import {MoneyComponent} from "../../fields/money/money.component";
-import {NumberComponent} from "../../fields/number/number.component";
-import {SelectComponent} from "../../fields/select/select.component";
-import {TextareaComponent} from "../../fields/textarea/textarea.component";
+import {BooleanComponent} from '../../fields/boolean/boolean.component';
+import {MoneyComponent} from '../../fields/money/money.component';
+import {NumberComponent} from '../../fields/number/number.component';
+import {SelectComponent} from '../../fields/select/select.component';
+import {TextareaComponent} from '../../fields/textarea/textarea.component';
+import {ButtonComponent} from '../../fields/button/button.component';
 
 @NgModule({
   imports: [
@@ -27,7 +28,8 @@ import {TextareaComponent} from "../../fields/textarea/textarea.component";
     ErrorComponent,
     MoneyComponent,
     NumberComponent,
-    BooleanComponent
+    BooleanComponent,
+    ButtonComponent
   ],
   entryComponents: [
     StringComponent,
@@ -37,7 +39,8 @@ import {TextareaComponent} from "../../fields/textarea/textarea.component";
     ErrorComponent,
     MoneyComponent,
     NumberComponent,
-    BooleanComponent
+    BooleanComponent,
+    ButtonComponent
   ]
 })
 

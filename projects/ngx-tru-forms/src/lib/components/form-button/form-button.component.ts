@@ -1,20 +1,14 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import {Component, Input, Output, EventEmitter, ViewChild, ViewContainerRef, ComponentFactoryResolver, OnInit} from '@angular/core';
+import {JsonFormFieldsService} from '../../framework/json-form-fields.service';
+import {ButtonComponent} from '../../fields/button/button.component';
 
 @Component({
   selector: 'jf-form-button',
   template: `
-    <button
-      *ngIf="isVisible()"
-      [type]="getType()"
-      [ngClass]="getClass()"
-      [disabled]="isWorking"
-      (click)="handleButtonClick()">
-        <jf-working-spinner *ngIf="isWorking && submit"></jf-working-spinner>
-        {{getLabel()}}
-    </button>
+    <ng-container #button></ng-container>
   `
 })
-export class FormButtonComponent {
+export class FormButtonComponent implements OnInit {
   @Input() isFormValid = true;
   @Input() label = '';
   @Input() isMultiStep = false;
@@ -25,6 +19,26 @@ export class FormButtonComponent {
   @Input() classes = <any>{};
   @Input() isWorking = false;
   @Output() handleClick = new EventEmitter();
+  @ViewChild('button', {read: ViewContainerRef}) button: ViewContainerRef;
+
+  constructor(
+    private componentFactoryResolver: ComponentFactoryResolver,
+    private jsonFormFieldsService: JsonFormFieldsService
+  ) {}
+
+  ngOnInit(): void {
+    this.button.clear();
+    const componentFactory = this.componentFactoryResolver.resolveComponentFactory(this.jsonFormFieldsService[0].get('button'));
+    const componentRef = this.button.createComponent(componentFactory);
+    (<ButtonComponent> componentRef.instance).type = this.getType();
+    (<ButtonComponent> componentRef.instance).isVisible = this.isVisible();
+    (<ButtonComponent> componentRef.instance).class = this.getClass();
+    (<ButtonComponent> componentRef.instance).disabled = this.isWorking;
+    (<ButtonComponent> componentRef.instance).isWorking = this.isWorking;
+    (<ButtonComponent> componentRef.instance).label = this.getLabel();
+    (<ButtonComponent> componentRef.instance).handleButtonClick = this.handleClick;
+    (<ButtonComponent> componentRef.instance).color = this.submit ? 'primary' : '';
+  }
 
   getClass() {
     return (this.cancel.length > 0)

@@ -22,6 +22,7 @@ import { FormButtonComponent } from './components/form-button/form-button.compon
 import { WorkingSpinnerComponent } from './components/working-spinner/working-spinner.component';
 import { JsonFormBootstrap4 } from './framework/bootstrap4/json-form-bootstrap4';
 import { JsonFormFieldsService } from './framework/json-form-fields.service';
+import { ButtonComponent } from './fields/button/button.component';
 
 @NgModule({
   imports: [
