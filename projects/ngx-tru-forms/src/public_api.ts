@@ -1,3 +1,4 @@
+export { JsonFormFieldsService } from './lib/framework/json-form-fields.service';
 export { JsonFormModule } from './lib/json-form.module';
 export { JsonFormBootstrap4Module } from './lib/framework/bootstrap4/json-form-bootstrap4.module';
 export { JsonFormMaterialModule } from './lib/framework/material/json-form-material.module';
