@@ -113,6 +113,7 @@ export class JsonFormComponent implements DoCheck, OnDestroy {
     if (this.changeDetected) {
       this.appendFields();
       this.constructForm();
+      this.jf[0].viewOnly = this.viewOnly;
     }
   }
 

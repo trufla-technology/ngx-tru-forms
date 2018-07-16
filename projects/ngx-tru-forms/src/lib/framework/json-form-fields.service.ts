@@ -8,6 +8,8 @@ export class JsonFormFieldsService {
   rootViewContainer;
   public fieldTypes: { [type: string]: any } = {};
   private defaultFieldType = StringComponent;
+  private viewOnly = false;
+  // TODO: Create variable public viewTypes = { string: StringViewComponet, ...all other components };
 
   constructor(
     private componentFactoryResolver: ComponentFactoryResolver
@@ -34,9 +36,10 @@ export class JsonFormFieldsService {
   }
 
   get(control): any {
-    if (typeof(control) === 'string' && this.has(control)) {
-      return this.fieldTypes[control];
-    }
+    /*
+    TODO: create a new local variable for fields. If this.viewOnly is true assign fieldTypes to fields
+    otherwise use viewTypes. Then the rest of the logic will work on it's own.
+     */
 
     // check if a field is getting overridden by format
     if (typeof(control.schema.format) !== 'undefined' && this.has(control.schema.format)) {
