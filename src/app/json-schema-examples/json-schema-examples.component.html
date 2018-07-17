@@ -57,6 +57,19 @@
         [fields]="fields"
         (handleSubmit)="handleSubmit($event)">
       </jf-form>
+
+      <jf-form
+        *ngIf="this.selectedSchema === 'viewOnly'"
+        [id]="'exampleform'"
+        [cancel]="cancel"
+        [submit]="'Submit'"
+        [schema]="schema"
+        [isMultiStep]="isMultiStep"
+        [state]="state"
+        [fields]="fields"
+        [viewOnly]=true
+        (handleSubmit)="handleSubmit($event)">
+      </jf-form>
       <p></p>
       <h6>Data: (click Submit to preview form data)</h6>
       <pre #formResponse>&#123;&#125;</pre>

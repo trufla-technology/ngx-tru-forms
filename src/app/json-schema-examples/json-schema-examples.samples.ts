@@ -522,5 +522,18 @@ export class JsonSchemaExamplesSamples {
         }
       }
     },
+    viewOnly: {
+      title: 'View Only',
+      description: 'Display inputs value in view mode',
+      type: 'object',
+      properties: {
+        first_name: {
+          type: 'string'
+        },
+        last_name: {
+          type: 'string'
+        }
+      }
+    },
   };
 }

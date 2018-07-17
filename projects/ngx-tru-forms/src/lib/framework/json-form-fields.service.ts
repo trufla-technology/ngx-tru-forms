@@ -22,7 +22,7 @@ export class JsonFormFieldsService {
   rootViewContainer;
   public fieldTypes: { [type: string]: any } = {};
   private defaultFieldType = StringComponent;
-  private viewOnly = false;
+  public viewOnly: boolean = false;
   public viewTypes: Object = {
     string: StringViewoComponent,
     select: SelectViewComponent,
