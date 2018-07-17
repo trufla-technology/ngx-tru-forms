@@ -6,7 +6,7 @@ import { CommonComponent } from '../common/common.component';
     <p>{{title()}}: {{control.value}}</p>
   `
 })
-export class RadiogroupComponent extends CommonComponent {
+export class RadiogroupViewComponent extends CommonComponent {
   randomSuffix = Math.random().toString(36).substring(7);
 
   enumNames(index) {

@@ -4,10 +4,10 @@ import createNumberMask from 'text-mask-addons/dist/createNumberMask';
 
 @Component({
   template: `
-    <p>{{title()}}: {{control.value}}</p>
+    <p>{{title()}} <span>{{control.value}}</span></p>
   `
 })
-export class DateViewComponent extends CommonComponent {
+export class MoneyViewComponent extends CommonComponent {
   numberMask = createNumberMask({ allowDecimal: false, prefix: '' });
 
   cleanMask(value) {

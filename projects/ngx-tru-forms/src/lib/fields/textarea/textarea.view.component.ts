@@ -6,5 +6,5 @@ import { CommonComponent } from '../common/common.component';
     <p>{{title()}}: {{control.value}}</p>
   `
 })
-export class TextareaComponent extends CommonComponent { }
+export class TextareaViewComponent extends CommonComponent { }
 

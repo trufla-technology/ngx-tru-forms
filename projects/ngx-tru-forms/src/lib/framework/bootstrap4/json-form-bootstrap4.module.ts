@@ -8,11 +8,11 @@ import { JsonFormFieldsService } from '../json-form-fields.service';
 import {DateComponent} from '../../fields/date/date.component';
 import {ErrorComponent} from '../../fields/error/error.component';
 import {BooleanComponent} from '../../fields/boolean/boolean.component';
-import {MoneyComponent} from '../../fields/money/money.component';
 import {NumberComponent} from '../../fields/number/number.component';
 import {SelectComponent} from '../../fields/select/select.component';
 import {TextareaComponent} from '../../fields/textarea/textarea.component';
 import {ButtonComponent} from '../../fields/button/button.component';
+import { MoneyComponent } from '../../fields/money/money.component.1';
 
 @NgModule({
   imports: [

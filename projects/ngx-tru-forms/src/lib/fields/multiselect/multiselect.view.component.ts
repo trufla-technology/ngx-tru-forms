@@ -10,7 +10,7 @@ import { CommonComponent } from '../common/common.component';
     </ul>
   `
 })
-export class MultiselectComponent extends CommonComponent {
+export class MultiselectViewComponent extends CommonComponent {
   enumNames(index) {
     return typeof(this.schema.enumNames) === 'undefined'
       ? this.schema.enum[index]

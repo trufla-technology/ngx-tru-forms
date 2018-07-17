@@ -7,7 +7,7 @@ import { CommonComponent } from '../common/common.component';
     <img [attr.src]="{{control.value}}" style="width: 200px; float: left;" class="img-thumbnail" />
   `
 })
-export class PhotoComponent extends CommonComponent {
+export class PhotoViewComponent extends CommonComponent {
   public photoData: string;
 
   onChange(event) {

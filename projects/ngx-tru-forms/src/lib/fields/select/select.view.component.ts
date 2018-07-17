@@ -6,7 +6,7 @@ import { CommonComponent } from '../common/common.component';
     <p>{{title()}}: {{control.value}}</p>
   `
 })
-export class SelectComponent extends CommonComponent {
+export class SelectViewComponent extends CommonComponent {
   enumNames(index) {
     return typeof(this.schema.enumNames) === 'undefined'
       ? this.schema.enum[index]

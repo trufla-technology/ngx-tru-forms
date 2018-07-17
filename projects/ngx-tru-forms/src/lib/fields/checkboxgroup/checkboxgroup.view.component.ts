@@ -9,7 +9,7 @@ import { CommonComponent } from '../common/common.component';
     </ul>
   `
 })
-export class CheckboxgroupComponent extends CommonComponent {
+export class CheckboxgroupViewComponent extends CommonComponent {
   checkboxGroupValues = [];
   randomSuffix = Math.random().toString(36).substring(7);
 

@@ -1,6 +1,20 @@
 import { ComponentFactoryResolver, Injectable } from '@angular/core';
 import { SchemaFormControl } from '../models/schema-form-control';
 import { StringComponent } from '../fields/string/string.component';
+import { StringViewoComponent } from '../fields/string/string.view.component';
+import { SelectViewComponent } from '../fields/select/select.view.component';
+import { NumberViewComponent } from '../fields/number/number.view.component';
+import { BooleanViewComponent } from '../fields/boolean/boolean.view.component';
+import { PhotoViewComponent } from '../fields/photo/photo.view.component';
+import { TextareaViewComponent } from '../fields/textarea/textarea.view.component';
+import { ObjectComponent } from '@trufla/ngx-tru-forms/lib/fields/object/object.component';
+import { ArrayComponent } from '../fields/array/array.component';
+import { DateViewComponent } from '../fields/date/date.view.component';
+import { RadiogroupViewComponent } from '../fields/radiogroup/radiogroup.view.component';
+import { CheckboxgroupViewComponent } from '../fields/checkboxgroup/checkboxgroup.view.component';
+import { MultiselectViewComponent } from '../fields/multiselect/multiselect.view.component';
+import { MoneyViewComponent } from '../fields/money/money.view.component';
+import { ButtonComponent } from '../fields/button/button.component';
 
 @Injectable()
 export class JsonFormFieldsService {
@@ -9,7 +23,22 @@ export class JsonFormFieldsService {
   public fieldTypes: { [type: string]: any } = {};
   private defaultFieldType = StringComponent;
   private viewOnly = false;
-  // TODO: Create variable public viewTypes = { string: StringViewComponet, ...all other components };
+  public viewTypes: Object = {
+    string: StringViewoComponent,
+    select: SelectViewComponent,
+    number: NumberViewComponent,
+    boolean: BooleanViewComponent,
+    photo: PhotoViewComponent,
+    textarea: TextareaViewComponent,
+    object: ObjectComponent,
+    array: ArrayComponent,
+    date: DateViewComponent,
+    radiogroup: RadiogroupViewComponent,
+    checkboxgroup: CheckboxgroupViewComponent,
+    multiselect: MultiselectViewComponent,
+    money: MoneyViewComponent,
+    button: ButtonComponent
+  }
 
   constructor(
     private componentFactoryResolver: ComponentFactoryResolver
@@ -36,6 +65,11 @@ export class JsonFormFieldsService {
   }
 
   get(control): any {
+    //check if the field is viewonly
+    if(this.viewOnly){
+      this.fieldTypes = this.viewTypes;
+    }
+    
     /*
     TODO: create a new local variable for fields. If this.viewOnly is true assign fieldTypes to fields
     otherwise use viewTypes. Then the rest of the logic will work on it's own.

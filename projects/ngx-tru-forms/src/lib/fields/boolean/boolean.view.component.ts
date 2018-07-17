@@ -6,4 +6,4 @@ import { CommonComponent } from '../common/common.component';
     <p>{{title()}}: {{control.value}}</p>
   `
 })
-export class BooleanComponent extends CommonComponent {}
+export class BooleanViewComponent extends CommonComponent {}
