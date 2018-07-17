@@ -4,7 +4,7 @@ import createNumberMask from 'text-mask-addons/dist/createNumberMask';
 
 @Component({
   template: `
-    <p>{{title()}} <span>{{control.value}}</span></p>
+  <p><span>{{title()}}</span> <span>{{control.value}}</span></p>
   `
 })
 export class MoneyViewComponent extends CommonComponent {

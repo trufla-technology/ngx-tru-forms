@@ -10,10 +10,10 @@ import {BooleanComponent} from '../../fields/boolean/boolean.component';
 import {NumberComponent} from '../../fields/number/number.component';
 import {PhotoComponent} from '../../fields/photo/photo.component';
 import {RadiogroupComponent} from '../../fields/radiogroup/radiogroup.component';
-import {MoneyComponent} from '../../fields/money/money.component';
 import {StringComponent} from '../../fields/string/string.component';
 import {DateComponent} from '../../fields/date/date.component';
 import {ButtonComponent} from '../../fields/button/button.component';
+import { MoneyComponent } from '../../fields/money/money.component.1';
 
 @Injectable()
 export class JsonFormBootstrap4 extends JsonFormFieldsService {
