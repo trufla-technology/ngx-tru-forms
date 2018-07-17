@@ -4,8 +4,8 @@ import { CommonComponent } from '../common/common.component';
 @Component({
   template: `
     <mat-form-field>
-      <input 
-        matInput 
+      <input
+        matInput
         [matDatepicker]="myDatepicker"
         [formControl]="control"
         [placeholder]="title()"

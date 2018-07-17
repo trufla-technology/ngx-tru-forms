@@ -1,4 +1,4 @@
-import {Component, DoCheck, EventEmitter, Input, OnDestroy, Output, ViewChild, ViewContainerRef} from "@angular/core";
+import {Component, DoCheck, EventEmitter, Input, OnDestroy, Output, ViewChild, ViewContainerRef} from '@angular/core';
 import { FormBuilder, NgForm} from '@angular/forms';
 import { JsonFormValidatorsService } from './services/validators.service';
 import { SchemaFormControl } from './models/schema-form-control';

@@ -42,6 +42,8 @@
         [isMultiStep]="isMultiStep"
         [state]="state"
         [fields]="fields"
+        [viewOnly]="viewOnly"
+        [data]="data"
         (handleChange)="handleChange($event)"
         (handleSubmit)="handleSubmit($event)">
       </jf-form>
@@ -55,19 +57,6 @@
         [isMultiStep]="isMultiStep"
         [state]="state"
         [fields]="fields"
-        (handleSubmit)="handleSubmit($event)">
-      </jf-form>
-
-      <jf-form
-        *ngIf="this.selectedSchema === 'viewOnly'"
-        [id]="'exampleform'"
-        [cancel]="cancel"
-        [submit]="'Submit'"
-        [schema]="schema"
-        [isMultiStep]="isMultiStep"
-        [state]="state"
-        [fields]="fields"
-        [viewOnly]=true
         (handleSubmit)="handleSubmit($event)">
       </jf-form>
       <p></p>

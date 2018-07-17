@@ -22,8 +22,8 @@ export class JsonFormFieldsService {
   rootViewContainer;
   public fieldTypes: { [type: string]: any } = {};
   private defaultFieldType = StringComponent;
-  public viewOnly: boolean = false;
-  public viewTypes: Object = {
+  private viewOnly = false;
+  private viewTypes: Object = {
     string: StringViewoComponent,
     select: SelectViewComponent,
     number: NumberViewComponent,
@@ -38,7 +38,7 @@ export class JsonFormFieldsService {
     multiselect: MultiselectViewComponent,
     money: MoneyViewComponent,
     button: ButtonComponent
-  }
+  };
 
   constructor(
     private componentFactoryResolver: ComponentFactoryResolver
@@ -65,33 +65,25 @@ export class JsonFormFieldsService {
   }
 
   get(control): any {
-    //check if the field is viewonly
-    if(this.viewOnly){
-      this.fieldTypes = this.viewTypes;
-    }
+    const types: Object = this.viewOnly ? this.viewTypes : this.fieldTypes;
 
     if (typeof(control) === 'string' && this.has(control)) {
       return this.fieldTypes[control];
     }
 
-    /*
-    TODO: create a new local variable for fields. If this.viewOnly is true assign fieldTypes to fields
-    otherwise use viewTypes. Then the rest of the logic will work on it's own.
-     */
-
     // check if a field is getting overridden by format
     if (typeof(control.schema.format) !== 'undefined' && this.has(control.schema.format)) {
-      return this.fieldTypes[control.schema.format];
+      return types[control.schema.format];
     }
 
     if (typeof(control.schema.enum) !== 'undefined' && control.schema.type === 'array') {
-      return this.fieldTypes['checkboxgroup'];
+      return types['checkboxgroup'];
     } else if (typeof(control.schema.enum) !== 'undefined') {
-      return this.fieldTypes['select'];
+      return types['select'];
     } else if (this.has(control.schema.format)) {
-      return this.fieldTypes[control.schema.format];
+      return types[control.schema.format];
     } else if (this.has(control.schema.type)) {
-      return this.fieldTypes[control.schema.type];
+      return types[control.schema.type];
     }
     return this.defaultFieldType;
   }

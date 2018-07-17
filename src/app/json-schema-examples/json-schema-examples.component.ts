@@ -19,6 +19,8 @@ export class JsonSchemaExamplesComponent implements OnInit {
   state = false;
   fields = {};
   selectedSchema = 'simple_input';
+  viewOnly = false;
+  data: Object = {};
   @ViewChild('jsonSchema') jsonSchema: ElementRef;
   @ViewChild('formResponse') formResponse: ElementRef;
 
@@ -73,7 +75,22 @@ export class JsonSchemaExamplesComponent implements OnInit {
         this.cancel = 'Go Back';
         this.state = true;
       }
+
+
+      if (this.selectedSchema === 'viewOnly') {
+        this.viewOnly = true;
+        this.data = {
+          first_name: 'John',
+          last_name: 'Doe'
+        };
+      } else {
+        this.viewOnly = false;
+        this.data = {};
+      }
     }
+
+
+
 
     try {
       this.schema = JSON.parse(this.schemaControl.value);
