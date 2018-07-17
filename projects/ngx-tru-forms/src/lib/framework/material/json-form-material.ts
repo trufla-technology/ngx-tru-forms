@@ -13,7 +13,7 @@ import { CheckboxgroupMaterialComponent } from '../../fields/checkboxgroup/check
 import { BooleanMaterialComponent } from '../../fields/boolean/boolean.material.component';
 import { DateMaterialComponent } from '../../fields/date/date.material.component';
 import {ButtonMaterialComponent} from '../../fields/button/button.material.component';
-import { MoneyComponent } from '../../fields/money/money.component.1';
+import { MoneyComponent } from '../../fields/money/money.component';
 
 @Injectable()
 export class JsonFormMaterial extends JsonFormFieldsService {

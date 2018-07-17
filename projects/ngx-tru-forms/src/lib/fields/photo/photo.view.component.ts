@@ -4,7 +4,8 @@ import { CommonComponent } from '../common/common.component';
 @Component({
   template: `
     <p>{{title()}}</p>
-    <img [attr.src]="{{control.value}}" style="width: 200px; float: left;" class="img-thumbnail" />
+
+    <img src="{{control.value}}" style="width: 200px; float: left;" class="img-thumbnail" />
   `
 })
 export class PhotoViewComponent extends CommonComponent {

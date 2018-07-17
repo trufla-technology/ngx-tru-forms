@@ -23,6 +23,17 @@ import { WorkingSpinnerComponent } from './components/working-spinner/working-sp
 import { JsonFormBootstrap4 } from './framework/bootstrap4/json-form-bootstrap4';
 import { JsonFormFieldsService } from './framework/json-form-fields.service';
 import { ButtonComponent } from './fields/button/button.component';
+import { StringViewoComponent } from './fields/string/string.view.component';
+import { NumberViewComponent } from './fields/number/number.view.component';
+import { SelectViewComponent } from './fields/select/select.view.component';
+import { BooleanViewComponent } from './fields/boolean/boolean.view.component';
+import { PhotoViewComponent } from './fields/photo/photo.view.component';
+import { TextareaViewComponent } from './fields/textarea/textarea.view.component';
+import { DateViewComponent } from './fields/date/date.view.component';
+import { CheckboxgroupViewComponent } from './fields/checkboxgroup/checkboxgroup.view.component';
+import { RadiogroupViewComponent } from './fields/radiogroup/radiogroup.view.component';
+import { MoneyViewComponent } from './fields/money/money.view.component';
+import { MultiselectViewComponent } from './fields/multiselect/multiselect.view.component';
 
 @NgModule({
   imports: [
@@ -42,7 +53,19 @@ import { ButtonComponent } from './fields/button/button.component';
     CommonComponent,
     MultiselectComponent,
     FormButtonComponent,
-    WorkingSpinnerComponent
+    WorkingSpinnerComponent,
+    StringViewoComponent,
+    NumberViewComponent,
+    SelectViewComponent,
+    BooleanViewComponent,
+    PhotoViewComponent,
+    TextareaViewComponent,
+    DateViewComponent,
+    CheckboxgroupViewComponent,
+    RadiogroupViewComponent,
+    MoneyViewComponent,
+    MultiselectViewComponent,
+    MoneyViewComponent
   ],
   exports: [
     JsonFormComponent,
@@ -55,7 +78,19 @@ import { ButtonComponent } from './fields/button/button.component';
     RadiogroupComponent,
     CheckboxgroupComponent,
     JsonFormComponent,
-    MultiselectComponent
+    MultiselectComponent,
+    StringViewoComponent,
+    NumberViewComponent,
+    SelectViewComponent,
+    BooleanViewComponent,
+    PhotoViewComponent,
+    TextareaViewComponent,
+    DateViewComponent,
+    CheckboxgroupViewComponent,
+    RadiogroupViewComponent,
+    MoneyViewComponent,
+    MultiselectViewComponent,
+    MoneyViewComponent
   ],
   providers: [
     JsonFormDefaultsService,

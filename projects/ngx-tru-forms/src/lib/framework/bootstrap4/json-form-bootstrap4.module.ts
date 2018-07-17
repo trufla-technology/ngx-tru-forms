@@ -12,7 +12,7 @@ import {NumberComponent} from '../../fields/number/number.component';
 import {SelectComponent} from '../../fields/select/select.component';
 import {TextareaComponent} from '../../fields/textarea/textarea.component';
 import {ButtonComponent} from '../../fields/button/button.component';
-import { MoneyComponent } from '../../fields/money/money.component.1';
+import { MoneyComponent } from '../../fields/money/money.component';
 
 @NgModule({
   imports: [
