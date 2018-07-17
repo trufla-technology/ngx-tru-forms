@@ -69,7 +69,11 @@ export class JsonFormFieldsService {
     if(this.viewOnly){
       this.fieldTypes = this.viewTypes;
     }
-    
+
+    if (typeof(control) === 'string' && this.has(control)) {
+      return this.fieldTypes[control];
+    }
+
     /*
     TODO: create a new local variable for fields. If this.viewOnly is true assign fieldTypes to fields
     otherwise use viewTypes. Then the rest of the logic will work on it's own.
