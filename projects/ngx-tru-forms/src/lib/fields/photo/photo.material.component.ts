@@ -11,9 +11,7 @@ import { CommonComponent } from '../common/common.component';
       </button>
     </div>
 
-    <button mat-fab (click)="fileInput.click()">
-      <mat-icon>add</mat-icon>
-    </button>
+    <button mat-button color="primary" (click)="fileInput.click()"><mat-icon>add</mat-icon></button>
     <input #fileInput type="file" [name]="schema.key" [formControl]="control" (change)="onChange($event)" style="display:none;"/>
 
   `
