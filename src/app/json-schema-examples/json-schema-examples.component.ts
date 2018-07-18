@@ -142,4 +142,8 @@ export class JsonSchemaExamplesComponent implements OnInit {
     this.jsonSchema.nativeElement.selectionStart = col;
     this.jsonSchema.nativeElement.focus();
   }
+
+  formattedData(data) {
+    return JSON.stringify(data, null, 2);
+  }
 }

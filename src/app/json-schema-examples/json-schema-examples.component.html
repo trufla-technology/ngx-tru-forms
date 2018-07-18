@@ -60,8 +60,9 @@
         (handleSubmit)="handleSubmit($event)">
       </jf-form>
       <p></p>
-      <h6>Data: (click Submit to preview form data)</h6>
-      <pre #formResponse>&#123;&#125;</pre>
+      <h6 *ngIf="!this.viewOnly">Data: (click Submit to preview form data)</h6>
+      <h6 *ngIf="this.viewOnly">Data: <pre>{{formattedData(data)}}</pre></h6>
+      <pre *ngIf="!this.viewOnly" #formResponse>&#123;&#125;</pre>
     </div>
   </div>
 </div>

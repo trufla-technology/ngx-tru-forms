@@ -114,6 +114,8 @@ export class JsonFormComponent implements DoCheck, OnDestroy {
       this.appendFields();
       this.constructForm();
       this.jf[0].viewOnly = this.viewOnly;
+      this.cancel = this.viewOnly ? '' : this.cancel;
+      this.submit = this.viewOnly ? '' : this.submit;
     }
   }
 
