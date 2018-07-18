@@ -1,5 +1,4 @@
 import {Injectable} from '@angular/core';
-import {ArrayComponent} from '../../fields/array/array.component';
 import {ObjectComponent} from '../../fields/object/object.component';
 import {StringMaterialComponent} from '../../fields/string/string.material.component';
 import {JsonFormFieldsService} from '../json-form-fields.service';
@@ -14,6 +13,7 @@ import { BooleanMaterialComponent } from '../../fields/boolean/boolean.material.
 import { DateMaterialComponent } from '../../fields/date/date.material.component';
 import {ButtonMaterialComponent} from '../../fields/button/button.material.component';
 import { MoneyComponent } from '../../fields/money/money.component';
+import { ArrayMaterialComponent } from '../../fields/array/array.material.component';
 
 @Injectable()
 export class JsonFormMaterial extends JsonFormFieldsService {
@@ -25,7 +25,7 @@ export class JsonFormMaterial extends JsonFormFieldsService {
     photo: PhotoMaterialComponent,
     textarea: TextareaMaterialComponent,
     object: ObjectComponent,
-    array: ArrayComponent,
+    array: ArrayMaterialComponent,
     date: DateMaterialComponent,
     radiogroup: RadiogroupMaterialComponent,
     checkboxgroup: CheckboxgroupMaterialComponent,

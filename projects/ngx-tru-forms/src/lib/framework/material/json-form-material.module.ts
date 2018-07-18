@@ -27,6 +27,7 @@ import { BooleanMaterialComponent } from '../../fields/boolean/boolean.material.
 import {DateMaterialComponent} from '../../fields/date/date.material.component';
 import {ErrorMaterialComponent} from '../../fields/error/error.material.component';
 import {ButtonMaterialComponent} from '../../fields/button/button.material.component';
+import { ArrayMaterialComponent } from '../../fields/array/array.material.component';
 
 @NgModule({
   imports: [
@@ -56,7 +57,8 @@ import {ButtonMaterialComponent} from '../../fields/button/button.material.compo
     BooleanMaterialComponent,
     DateMaterialComponent,
     ErrorMaterialComponent,
-    ButtonMaterialComponent
+    ButtonMaterialComponent,
+    ArrayMaterialComponent
   ],
   entryComponents: [
     StringMaterialComponent,
@@ -70,7 +72,8 @@ import {ButtonMaterialComponent} from '../../fields/button/button.material.compo
     BooleanMaterialComponent,
     DateMaterialComponent,
     ErrorMaterialComponent,
-    ButtonMaterialComponent
+    ButtonMaterialComponent,
+    ArrayMaterialComponent
   ],
   exports: [
     StringMaterialComponent,
@@ -83,7 +86,8 @@ import {ButtonMaterialComponent} from '../../fields/button/button.material.compo
     CheckboxgroupMaterialComponent,
     BooleanMaterialComponent,
     DateMaterialComponent,
-    ErrorMaterialComponent
+    ErrorMaterialComponent,
+    ArrayMaterialComponent
   ]
 })
 

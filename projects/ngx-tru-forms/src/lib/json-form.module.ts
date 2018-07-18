@@ -64,8 +64,7 @@ import { MultiselectViewComponent } from './fields/multiselect/multiselect.view.
     CheckboxgroupViewComponent,
     RadiogroupViewComponent,
     MoneyViewComponent,
-    MultiselectViewComponent,
-    MoneyViewComponent
+    MultiselectViewComponent
   ],
   exports: [
     JsonFormComponent,
@@ -89,8 +88,7 @@ import { MultiselectViewComponent } from './fields/multiselect/multiselect.view.
     CheckboxgroupViewComponent,
     RadiogroupViewComponent,
     MoneyViewComponent,
-    MultiselectViewComponent,
-    MoneyViewComponent
+    MultiselectViewComponent
   ],
   providers: [
     JsonFormDefaultsService,
