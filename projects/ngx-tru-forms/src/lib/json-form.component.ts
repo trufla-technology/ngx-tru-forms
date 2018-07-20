@@ -120,7 +120,9 @@ export class JsonFormComponent implements DoCheck, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.form.valueChanges.unsubscribe();
+    if (this.form) {
+      this.form.valueChanges.unsubscribe();
+    }
   }
 
   appendFields() {
