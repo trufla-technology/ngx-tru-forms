@@ -28,6 +28,7 @@ import {DateMaterialComponent} from '../../fields/date/date.material.component';
 import {ErrorMaterialComponent} from '../../fields/error/error.material.component';
 import {ButtonMaterialComponent} from '../../fields/button/button.material.component';
 import { ArrayMaterialComponent } from '../../fields/array/array.material.component';
+import { SharedModule} from '../shared/shared.module';
 
 @NgModule({
   imports: [
@@ -43,7 +44,8 @@ import { ArrayMaterialComponent } from '../../fields/array/array.material.compon
     MatSlideToggleModule,
     MatIconModule,
     MatNativeDateModule,
-    MatDatepickerModule
+    MatDatepickerModule,
+    SharedModule
   ],
   declarations: [
     StringMaterialComponent,
@@ -73,20 +75,6 @@ import { ArrayMaterialComponent } from '../../fields/array/array.material.compon
     DateMaterialComponent,
     ErrorMaterialComponent,
     ButtonMaterialComponent,
-    ArrayMaterialComponent
-  ],
-  exports: [
-    StringMaterialComponent,
-    TextareaMaterialComponent,
-    SelectMaterialComponent,
-    RadiogroupMaterialComponent,
-    PhotoMaterialComponent,
-    NumberMaterialComponent,
-    MultiselectMaterialComponent,
-    CheckboxgroupMaterialComponent,
-    BooleanMaterialComponent,
-    DateMaterialComponent,
-    ErrorMaterialComponent,
     ArrayMaterialComponent
   ]
 })

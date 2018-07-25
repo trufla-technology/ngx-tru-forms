@@ -13,12 +13,19 @@ import {SelectComponent} from '../../fields/select/select.component';
 import {TextareaComponent} from '../../fields/textarea/textarea.component';
 import {ButtonComponent} from '../../fields/button/button.component';
 import { MoneyComponent } from '../../fields/money/money.component';
+import {ArrayComponent} from '../../fields/array/array.component';
+import { SharedModule} from '../shared/shared.module';
+import {CheckboxgroupComponent} from '../../fields/checkboxgroup/checkboxgroup.component';
+import {MultiselectComponent} from '../../fields/multiselect/multiselect.component';
+import {PhotoComponent} from '../../fields/photo/photo.component';
+import {RadiogroupComponent} from '../../fields/radiogroup/radiogroup.component';
 
 @NgModule({
   imports: [
     CommonModule,
     ReactiveFormsModule,
     TextMaskModule,
+    SharedModule
   ],
   declarations: [
     StringComponent,
@@ -29,7 +36,12 @@ import { MoneyComponent } from '../../fields/money/money.component';
     MoneyComponent,
     NumberComponent,
     BooleanComponent,
-    ButtonComponent
+    ButtonComponent,
+    ArrayComponent,
+    CheckboxgroupComponent,
+    MultiselectComponent,
+    PhotoComponent,
+    RadiogroupComponent
   ],
   entryComponents: [
     StringComponent,
@@ -40,7 +52,12 @@ import { MoneyComponent } from '../../fields/money/money.component';
     MoneyComponent,
     NumberComponent,
     BooleanComponent,
-    ButtonComponent
+    ButtonComponent,
+    ArrayComponent,
+    CheckboxgroupComponent,
+    MultiselectComponent,
+    PhotoComponent,
+    RadiogroupComponent
   ]
 })
 

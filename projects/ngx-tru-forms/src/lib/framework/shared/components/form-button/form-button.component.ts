@@ -1,6 +1,6 @@
 import {Component, Input, Output, EventEmitter, ViewChild, ViewContainerRef, ComponentFactoryResolver, OnInit} from '@angular/core';
-import {JsonFormFieldsService} from '../../framework/json-form-fields.service';
-import {ButtonComponent} from '../../fields/button/button.component';
+import {JsonFormFieldsService} from '../../../json-form-fields.service';
+import {ButtonComponent} from '../../../../fields/button/button.component';
 
 @Component({
   selector: 'jf-form-button',

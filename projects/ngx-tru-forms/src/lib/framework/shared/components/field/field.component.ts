@@ -1,6 +1,6 @@
 import {Component, ElementRef, Input, OnChanges, OnInit, SimpleChanges, ViewChild, ViewContainerRef} from '@angular/core';
-import { SchemaFormControl } from '../../models/schema-form-control';
-import {JsonFormFieldsService} from '../../framework/json-form-fields.service';
+import { SchemaFormControl } from '../../../../models/schema-form-control';
+import {JsonFormFieldsService} from '../../../json-form-fields.service';
 
 @Component({
   selector: 'jf-field, [jf-field]',

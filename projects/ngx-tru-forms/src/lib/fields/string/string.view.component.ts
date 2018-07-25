@@ -6,4 +6,4 @@ import { CommonComponent } from '../common/common.component';
   <p><span>{{title()}}</span> <span>{{control.value}}</span></p>
   `
 })
-export class StringViewoComponent extends CommonComponent { }
+export class StringViewComponent extends CommonComponent { }

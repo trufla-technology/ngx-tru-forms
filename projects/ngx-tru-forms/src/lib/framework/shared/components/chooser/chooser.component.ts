@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
-import { SchemaFormGroup } from '../../models/schema-form-group';
-import { Schema } from '../../models/schema';
+import { SchemaFormGroup } from '../../../../models/schema-form-group';
+import { Schema } from '../../../../models/schema';
 
 @Component({
   selector: 'jf-component-chooser, [jf-component-chooser]',
@@ -18,7 +18,6 @@ import { Schema } from '../../models/schema';
   `
 })
 export class ChooserComponent {
-  @Input() index: number;
   @Input() form: SchemaFormGroup;
   @Input() schema: Schema;
   @Input() nested = false;

@@ -1,7 +1,7 @@
 import { ComponentFactoryResolver, Injectable } from '@angular/core';
 import { SchemaFormControl } from '../models/schema-form-control';
 import { StringComponent } from '../fields/string/string.component';
-import { StringViewoComponent } from '../fields/string/string.view.component';
+import { StringViewComponent } from '../fields/string/string.view.component';
 import { SelectViewComponent } from '../fields/select/select.view.component';
 import { NumberViewComponent } from '../fields/number/number.view.component';
 import { BooleanViewComponent } from '../fields/boolean/boolean.view.component';
@@ -24,7 +24,7 @@ export class JsonFormFieldsService {
   private defaultFieldType = StringComponent;
   private viewOnly = false;
   private viewTypes: Object = {
-    string: StringViewoComponent,
+    string: StringViewComponent,
     select: SelectViewComponent,
     number: NumberViewComponent,
     boolean: BooleanViewComponent,

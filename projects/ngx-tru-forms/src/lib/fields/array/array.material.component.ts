@@ -9,7 +9,7 @@ import {SchemaFormArray} from '../../models/schema-form-array';
         <h6 *ngIf="getLegend(control).length">{{getLegend(control)}}</h6>
         <div *ngFor="let arrControl of getEnabledControls(control); let i = index;">
             <div>
-            <div jf-component-chooser [index]="i"></div>
+            <div jf-component-chooser></div>
             <button mat-icon-button color="warn" (click)="removeControl(control, i)">
               <mat-icon>close</mat-icon>
             </button>
