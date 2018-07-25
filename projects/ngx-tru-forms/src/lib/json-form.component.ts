@@ -8,7 +8,7 @@ import { SchemaFormArray } from './models/schema-form-array';
 import { JsonFormFieldsService } from './framework/json-form-fields.service';
 
 @Component({
-  selector: 'jf-form',
+  selector: 'jf-form, tru-form',
   template: `
     <form
       #userForm="ngForm"

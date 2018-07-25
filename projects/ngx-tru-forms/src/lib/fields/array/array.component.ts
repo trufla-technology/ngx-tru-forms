@@ -9,15 +9,15 @@ import {SchemaFormArray} from '../../models/schema-form-array';
       <h6 *ngIf="getLegend(control).length">{{getLegend(control)}}</h6>
       <div *ngFor="let arrControl of getEnabledControls(control); let i = index;">
         <div class="row">
-          <div class="col-11" jf-component-chooser [form]="arrControl"></div>
-          <div class="col-1">
-            <span href="#" style="cursor: pointer;" (click)="removeControl(control, i)">x</span>
+          <div class="control" jf-component-chooser [form]="arrControl"></div>
+          <div class="remove">
+            <input type="button" (click)="removeControl(control, i)" class="btn btn-success btn-sm" value="Remove"/>
           </div>
         </div>
       </div>
-      <div class="row">
+      <div class="row add">
         <div class="col-12">
-          <input type="button" (click)="addControl(control)" class="btn btn-success btn-sm" value="Add" />
+          <input type="button" (click)="addControl(control)" class="btn btn-success btn-sm" value="Add"/>
         </div>
       </div>
     </div>

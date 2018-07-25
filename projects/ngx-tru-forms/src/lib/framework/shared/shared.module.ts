@@ -49,6 +49,27 @@ import {TextMaskModule} from 'angular2-text-mask';
     MoneyViewComponent,
     ObjectComponent
   ],
+  entryComponents: [
+    JsonFormComponent,
+    CommonComponent,
+    ChooserComponent,
+    FieldComponent,
+    FormButtonComponent,
+    InfoButtonComponent,
+    WorkingSpinnerComponent,
+    StringViewComponent,
+    SelectViewComponent,
+    NumberViewComponent,
+    BooleanViewComponent,
+    PhotoViewComponent,
+    TextareaViewComponent,
+    DateViewComponent,
+    RadiogroupViewComponent,
+    CheckboxgroupViewComponent,
+    MultiselectViewComponent,
+    MoneyViewComponent,
+    ObjectComponent
+  ],
   exports: [
     ChooserComponent,
     FieldComponent,

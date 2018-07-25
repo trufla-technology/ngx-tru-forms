@@ -3,16 +3,21 @@ import { CommonComponent } from '../common/common.component';
 
 @Component({
   template: `
-  <mat-radio-group [formControl]="control" *ngFor="let enum of this.schema.enum; let i = index">
-    <mat-radio-button
-        [attr.id]="getId(i, enum)"
-        [checked]="control.value === enum"
-        [name]="getName(schema.key)"
-        [value]="enum"
-    >
-        {{enumNames(i)}}
-    </mat-radio-button>
-  </mat-radio-group>
+    <div>
+      <label [attr.class]="schema.key" [ngClass]="{'margin-bottom--half': true, required: isRequired()}">
+        {{title()}}<sup *ngIf="isRequired()">*</sup></label>
+
+      <mat-radio-group [formControl]="control" *ngFor="let enum of this.schema.enum; let i = index">
+        <mat-radio-button
+          [attr.id]="getId(i, enum)"
+          [checked]="control.value === enum"
+          [name]="getName(schema.key)"
+          [value]="enum"
+        >
+          {{enumNames(i)}}
+        </mat-radio-button>
+      </mat-radio-group>
+    </div>
   `
 })
 export class RadiogroupMaterialComponent extends CommonComponent {

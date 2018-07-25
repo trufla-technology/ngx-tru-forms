@@ -31,6 +31,28 @@ export class JsonSchemaExamplesSamples {
       },
       required: ['year', 'make', 'model', 'vin_number', 'description', 'effective_date']
     },
+    array_sample: {
+      title: 'Array',
+      description: 'Array of fields',
+      type: 'object',
+      properties: {
+        employee: {
+          type: 'array',
+          items: {
+            type: 'object',
+            properties: {
+              first_name: {
+                type: 'string'
+              },
+              last_name: {
+                type: 'string'
+              }
+            }
+          },
+          required: ['year', 'make', 'model', 'vin_number', 'description', 'effective_date']
+        }
+      }
+    },
     multi_select: {
       title: 'Multiple Select',
       description: 'Form allowing for single and multiple item selections',
