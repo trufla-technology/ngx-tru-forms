@@ -9,10 +9,10 @@ import { CommonComponent } from '../common/common.component';
       class="form-control"
       name="name"
       [formControl]="control"
-      placeholder="Select {{emptyOption()}}"
+      placeholder="{{emptyOption()}}"
     >
       <mat-option [disabled]="true">
-          Select {{emptyOption()}}
+          {{emptyOption()}}
       </mat-option>
       <mat-option *ngFor="let en of this.schema.enum; let i = index" [value]="en">
           {{enumNames(i)}}

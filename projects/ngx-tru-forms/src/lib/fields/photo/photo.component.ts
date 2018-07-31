@@ -6,8 +6,8 @@ import { CommonComponent } from '../common/common.component';
     <label [attr.class]="schema.key" [ngClass]="{required: isRequired()}">
       {{title()}}<sup *ngIf="isRequired()">*</sup>
     </label>
-    <div *ngIf="previewSrcExists()" class="clearfix">
-      <img [attr.src]="photoData" style="width: 200px; float: left;" class="img-thumbnail" />
+    <div *ngIf="previewSrcExists()" class="photo-preview">
+      <img [attr.src]="photoData" />
       <span href="#" style="cursor: pointer;" (click)="clearPhoto()">
         <i class="la la-close"></i>
       </span>

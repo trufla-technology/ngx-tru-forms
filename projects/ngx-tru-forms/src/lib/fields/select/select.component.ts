@@ -14,7 +14,7 @@ import { CommonComponent } from '../common/common.component';
         [formControl]="control"
       >
         <option value="" [selected]="control.value === ''" [disabled]="true">
-          Select {{emptyOption()}}
+          {{emptyOption()}}
         </option>
         <option
           *ngFor="let en of this.schema.enum; let i = index"

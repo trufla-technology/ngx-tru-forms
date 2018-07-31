@@ -3,17 +3,18 @@ import { CommonComponent } from '../common/common.component';
 
 @Component({
   template: `
-
-    <div *ngIf="previewSrcExists()">
-      <img [attr.src]="photoData" style="width: 200px; float: left;" class="img-thumbnail" />
+    <label [attr.class]="schema.key" [ngClass]="{required: isRequired()}">
+      {{title()}}<sup *ngIf="isRequired()">*</sup>
+    </label>
+    <div *ngIf="previewSrcExists()" class="photo-preview">
+      <img [attr.src]="photoData" />
       <button mat-icon-button color="warn" (click)="clearPhoto()">
         <mat-icon>close</mat-icon>
       </button>
     </div>
-
     <button mat-button color="primary" (click)="fileInput.click()"><mat-icon>add</mat-icon></button>
-    <input #fileInput type="file" [name]="schema.key" [formControl]="control" (change)="onChange($event)" style="display:none;"/>
-
+    <input #fileInput type="file" [name]="schema.key" (change)="onChange($event)" style="display:none;"/>
+    <input type="hidden" [name]="schema.key" [formControl]="control" />
   `
 })
 export class PhotoMaterialComponent extends CommonComponent {
