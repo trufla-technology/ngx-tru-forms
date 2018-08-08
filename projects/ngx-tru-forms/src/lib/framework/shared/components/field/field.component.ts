@@ -46,6 +46,10 @@ export class FieldComponent implements OnInit, OnChanges {
       fieldClass.push('has-info');
     }
 
+    if (this.control.schema.hasOwnProperty('format')) {
+      fieldClass.push(this.control.schema.format);
+    }
+
     if (this.control.style && this.control.style.default && ['radiogroup', 'checkboxgroup'].indexOf(this.control.schema.format) === -1) {
       fieldClass.push(this.control.style.default);
     }
