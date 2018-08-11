@@ -5,7 +5,8 @@ import { JsonFormValidatorsService } from './services/validators.service';
 import { CommonComponent } from './fields/common/common.component';
 import { JsonFormBootstrap4 } from './framework/bootstrap4/json-form-bootstrap4';
 import { JsonFormFieldsService } from './framework/json-form-fields.service';
-import {SharedModule} from './framework/shared/shared.module';
+import { SharedModule } from './framework/shared/shared.module';
+import { DepthService } from './services/depth.service';
 
 @NgModule({
   imports: [
@@ -19,6 +20,7 @@ import {SharedModule} from './framework/shared/shared.module';
     JsonFormComponent,
   ],
   providers: [
+    DepthService,
     JsonFormDefaultsService,
     JsonFormValidatorsService
   ]

@@ -206,6 +206,7 @@ export class JsonFormComponent implements DoCheck, OnDestroy {
         const groupStyle = style && style.hasOwnProperty(prop) ? style[prop] : {};
         group[prop] = new SchemaFormGroup(this.generateForm(schema.properties[prop], {}, groupData, groupStyle, [].concat(path, prop)));
         group[prop].schema = schema.properties[prop];
+        group[prop].schema.key = prop;
         group[prop].style = groupStyle;
       } else if (schema.properties[prop].type === 'array' && !this.isFormat(schema.properties[prop], 'multiselect')) {
         path.push(prop);

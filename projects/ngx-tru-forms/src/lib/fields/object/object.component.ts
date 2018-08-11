@@ -4,6 +4,7 @@ import {SchemaFormControl} from '../../models/schema-form-control';
 @Component({
   template: `
     <div
+      [ngClass]="['object', control.schema.key]"
       jf-component-chooser
       [form]="control"
       [schema]="control.schema"
