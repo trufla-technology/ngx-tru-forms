@@ -6,7 +6,6 @@ import { JsonFormDefaultsService } from './services/defaults.service';
 import { SchemaFormGroup } from './models/schema-form-group';
 import { SchemaFormArray } from './models/schema-form-array';
 import { JsonFormFieldsService } from './framework/json-form-fields.service';
-import { DepthService } from './services/depth.service';
 
 @Component({
   selector: 'jf-form, tru-form',
@@ -90,8 +89,7 @@ export class JsonFormComponent implements DoCheck, OnDestroy {
     private fb: FormBuilder,
     private vl: JsonFormValidatorsService,
     private df: JsonFormDefaultsService,
-    private jf: JsonFormFieldsService,
-    private depthService: DepthService
+    private jf: JsonFormFieldsService
   ) {}
 
   ngDoCheck(): void {
@@ -118,7 +116,6 @@ export class JsonFormComponent implements DoCheck, OnDestroy {
       this.jf[0].viewOnly = this.viewOnly;
       this.cancel = this.viewOnly ? '' : this.cancel;
       this.submit = this.viewOnly ? '' : this.submit;
-      this.depthService.reset();
     }
   }
 

@@ -1,6 +1,7 @@
 import { Schema } from '../../models/schema';
 import { SchemaFormControl } from '../../models/schema-form-control';
 import { Component } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'jf-component',
@@ -10,7 +11,12 @@ export class CommonComponent {
   public control: SchemaFormControl;
   public schema: Schema;
   public style: {};
-  public isRequired() {
+
+  constructor(
+    public sanitizer: DomSanitizer
+  ) {}
+
+  isRequired() {
     return this.control.validator !== null;
   }
 
@@ -60,5 +66,11 @@ export class CommonComponent {
     }
 
     return false;
+  }
+
+  makeTrustedImage(image): any {
+    const imageString =  JSON.stringify(image).replace(/\\n/g, '');
+    const style = 'url(' + imageString + ')';
+    return this.sanitizer.bypassSecurityTrustStyle(style);
   }
 }

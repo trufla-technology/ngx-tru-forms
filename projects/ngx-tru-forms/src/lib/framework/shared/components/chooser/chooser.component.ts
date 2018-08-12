@@ -1,7 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { SchemaFormGroup } from '../../../../models/schema-form-group';
 import { Schema } from '../../../../models/schema';
-import { DepthService } from '../../../../services/depth.service';
 
 @Component({
   selector: 'jf-component-chooser, [jf-component-chooser]',
@@ -12,7 +11,7 @@ import { DepthService } from '../../../../services/depth.service';
     <h4 *ngIf="schema && schema.hasOwnProperty('title') && nested">
       {{schema.title}}
     </h4>
-    <div [ngClass]="['form-container', 'depth-' + depth]">
+    <div [ngClass]="['form-container']">
       <div class="description" *ngIf="schema && schema.hasOwnProperty('description')" [innerHTML]="schema.description"></div>
       <div *ngFor="let control of keys(form.controls)" jf-field [control]="form.get(control)"></div>
     </div>
@@ -23,12 +22,4 @@ export class ChooserComponent {
   @Input() schema: Schema;
   @Input() nested = false;
   keys = Object.keys;
-  depth = 1;
-
-  constructor(
-    private depthService: DepthService
-  ) {
-    this.depth = this.depthService.depth;
-    this.depthService.increment();
-  }
 }

@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
+import { Component } from '@angular/core';
 import { CommonComponent } from '../common/common.component';
 
 @Component({
@@ -6,19 +6,43 @@ import { CommonComponent } from '../common/common.component';
     <label [attr.class]="schema.key" [ngClass]="{required: isRequired()}">
       {{title()}}<sup *ngIf="isRequired()">*</sup>
     </label>
-    <div *ngIf="previewSrcExists()" class="photo-preview">
-      <img [attr.src]="photoData" />
-      <button mat-icon-button color="warn" (click)="clearPhoto()">
+    <div *ngIf="previewSrcExists(); else addImage" class="photo-preview">
+      <button
+        class="photo-add"
+        mat-button
+        color="primary"
+        [style.background-image]="makeTrustedImage(photoData)"
+        [style.background-size]="'cover'"
+        [style.background-repeat]="'no-repeat'"
+        (click)="$event.preventDefault(); fileInput.click();"
+      >
+        <mat-icon>add</mat-icon>
+      </button>
+      <button
+        class="photo-remove"
+        mat-mini-fab
+        color="warn"
+        (click)="clearPhoto()"
+      >
         <mat-icon>close</mat-icon>
       </button>
     </div>
-    <button mat-button color="primary" (click)="fileInput.click()"><mat-icon>add</mat-icon></button>
+    <ng-template #addImage>
+      <button
+        class="photo-add"
+        mat-button
+        color="primary"
+        (click)="$event.preventDefault(); fileInput.click();"
+      >
+        <mat-icon>add</mat-icon>
+      </button>
+    </ng-template>
     <input #fileInput type="file" [name]="schema.key" (change)="onChange($event)" style="display:none;"/>
     <input type="hidden" [name]="schema.key" [formControl]="control" />
   `
 })
 export class PhotoMaterialComponent extends CommonComponent {
-  public photoData: string;
+  photoData: string;
 
   onChange(event) {
     const file = event.target.files[0];
