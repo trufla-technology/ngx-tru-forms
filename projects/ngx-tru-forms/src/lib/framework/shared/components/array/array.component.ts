@@ -83,8 +83,6 @@ export class ArrayComponent {
   }
 
   addControl(formArray: FormArray) {
-    console.log('org', formArray.controls[0]);
-    console.log('new', this.cloneControl(formArray.controls[0]));
     formArray.push(this.cloneControl(formArray.controls[0]));
   }
 
