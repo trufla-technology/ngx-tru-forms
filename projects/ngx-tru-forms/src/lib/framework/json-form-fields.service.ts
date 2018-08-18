@@ -7,14 +7,14 @@ import { NumberViewComponent } from '../fields/number/number.view.component';
 import { BooleanViewComponent } from '../fields/boolean/boolean.view.component';
 import { PhotoViewComponent } from '../fields/photo/photo.view.component';
 import { TextareaViewComponent } from '../fields/textarea/textarea.view.component';
-import { ArrayComponent } from '../fields/array/array.component';
 import { DateViewComponent } from '../fields/date/date.view.component';
 import { RadiogroupViewComponent } from '../fields/radiogroup/radiogroup.view.component';
 import { CheckboxgroupViewComponent } from '../fields/checkboxgroup/checkboxgroup.view.component';
 import { MultiselectViewComponent } from '../fields/multiselect/multiselect.view.component';
 import { MoneyViewComponent } from '../fields/money/money.view.component';
 import { ButtonComponent } from '../fields/button/button.component';
-import { ObjectComponent } from '../fields/object/object.component';
+import { ArrayComponent } from './shared/components/array/array.component';
+import { ObjectComponent } from './shared/components/object/object.component';
 
 @Injectable()
 export class JsonFormFieldsService {

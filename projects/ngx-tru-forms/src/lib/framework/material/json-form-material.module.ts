@@ -11,7 +11,7 @@ import {
   MatCheckboxModule,
   MatIconModule,
   MatSlideToggleModule,
-  MatDatepickerModule, MatNativeDateModule
+  MatDatepickerModule, MatNativeDateModule, MatCardModule
 } from '@angular/material';
 import { StringMaterialComponent } from '../../fields/string/string.material.component';
 import { JsonFormMaterial} from './json-form-material';
@@ -24,11 +24,11 @@ import { CheckboxgroupMaterialComponent } from '../../fields/checkboxgroup/check
 import { NumberMaterialComponent } from '../../fields/number/number.material.component';
 import { MultiselectMaterialComponent } from '../../fields/multiselect/multiselect.material.component';
 import { BooleanMaterialComponent } from '../../fields/boolean/boolean.material.component';
-import {DateMaterialComponent} from '../../fields/date/date.material.component';
-import {ErrorMaterialComponent} from '../../fields/error/error.material.component';
-import {ButtonMaterialComponent} from '../../fields/button/button.material.component';
-import { ArrayMaterialComponent } from '../../fields/array/array.material.component';
+import { DateMaterialComponent } from '../../fields/date/date.material.component';
+import { ErrorMaterialComponent } from '../../fields/error/error.material.component';
+import { ButtonMaterialComponent } from '../../fields/button/button.material.component';
 import { SharedModule} from '../shared/shared.module';
+import { ArrayMaterialComponent } from '../../fields/array/array.material.component';
 
 @NgModule({
   imports: [
@@ -45,6 +45,7 @@ import { SharedModule} from '../shared/shared.module';
     MatIconModule,
     MatNativeDateModule,
     MatDatepickerModule,
+    MatCardModule,
     SharedModule
   ],
   declarations: [

@@ -1,5 +1,5 @@
 import {Component, Input} from '@angular/core';
-import {SchemaFormControl} from '../../models/schema-form-control';
+import {SchemaFormControl} from '../../../../models/schema-form-control';
 
 @Component({
   template: `

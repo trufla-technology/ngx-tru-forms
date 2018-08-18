@@ -1,5 +1,4 @@
 import {Injectable} from '@angular/core';
-import {ObjectComponent} from '../../fields/object/object.component';
 import {StringMaterialComponent} from '../../fields/string/string.material.component';
 import {JsonFormFieldsService} from '../json-form-fields.service';
 import { TextareaMaterialComponent } from '../../fields/textarea/textarea.material.component';
@@ -13,6 +12,7 @@ import { BooleanMaterialComponent } from '../../fields/boolean/boolean.material.
 import { DateMaterialComponent } from '../../fields/date/date.material.component';
 import {ButtonMaterialComponent} from '../../fields/button/button.material.component';
 import { MoneyComponent } from '../../fields/money/money.component';
+import { ObjectComponent } from '../shared/components/object/object.component';
 import { ArrayMaterialComponent } from '../../fields/array/array.material.component';
 
 @Injectable()

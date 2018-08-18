@@ -18,7 +18,7 @@ import { JsonFormFieldsService } from './framework/json-form-fields.service';
     >
       <div
         jf-component-chooser
-        [ngClass]="[classes.outer || '', this.activeStyle['default'] ? this.activeStyle['default'] : '']"
+        [ngClass]="[outerClass || '', this.activeStyle['default'] ? this.activeStyle['default'] : '']"
         [form]="form"
         [schema]="activeSchema">
       </div>
@@ -36,11 +36,13 @@ import { JsonFormFieldsService } from './framework/json-form-fields.service';
           [isMultiStep]="isMultiStep"
           [isWorking]="isWorking"
           (handleClick)="handleOnCancel()"
-          [classes]="classes">
+          [submitClass]="submitClass"
+          [cancelClass]="cancelClass">
         </jf-form-button>
         <jf-form-button
           *ngIf="submit"
-          [classes]="classes"
+          [submitClass]="submitClass"
+          [cancelClass]="cancelClass"
           [submit]="submit"
           [steps]="steps"
           [continue]="continue"
@@ -59,7 +61,9 @@ export class JsonFormComponent implements DoCheck, OnDestroy {
   @Input() continue = 'Continue';
   @Input() submit: string;
   @Input() cancel: string;
-  @Input() classes = { submit: '', cancel: '', outer: '' };
+  @Input() submitClass: string;
+  @Input() cancelClass: string;
+  @Input() outerClass: string;
   @Input() isWorking = false;
   @Input() isMultiStep = false;
   @Input() activeStep = null;

@@ -14,13 +14,14 @@ import {PhotoViewComponent} from '../../fields/photo/photo.view.component';
 import {StringViewComponent} from '../../fields/string/string.view.component';
 import {NumberViewComponent} from '../../fields/number/number.view.component';
 import {CheckboxgroupViewComponent} from '../../fields/checkboxgroup/checkboxgroup.view.component';
-import {ObjectComponent} from '../../fields/object/object.component';
+import { ObjectComponent } from './components/object/object.component';
 import {MoneyViewComponent} from '../../fields/money/money.view.component';
 import {MultiselectViewComponent} from '../../fields/multiselect/multiselect.view.component';
 import {JsonFormComponent} from '../../json-form.component';
 import {CommonComponent} from '../../fields/common/common.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import {TextMaskModule} from 'angular2-text-mask';
+import { ArrayComponent } from './components/array/array.component';
 
 @NgModule({
   imports: [
@@ -47,7 +48,8 @@ import {TextMaskModule} from 'angular2-text-mask';
     CheckboxgroupViewComponent,
     MultiselectViewComponent,
     MoneyViewComponent,
-    ObjectComponent
+    ObjectComponent,
+    ArrayComponent
   ],
   entryComponents: [
     JsonFormComponent,
@@ -68,7 +70,8 @@ import {TextMaskModule} from 'angular2-text-mask';
     CheckboxgroupViewComponent,
     MultiselectViewComponent,
     MoneyViewComponent,
-    ObjectComponent
+    ObjectComponent,
+    ArrayComponent
   ],
   exports: [
     ChooserComponent,
@@ -77,7 +80,9 @@ import {TextMaskModule} from 'angular2-text-mask';
     InfoButtonComponent,
     WorkingSpinnerComponent,
     JsonFormComponent,
-    CommonComponent
+    CommonComponent,
+    ArrayComponent,
+    ObjectComponent
   ]
 })
 

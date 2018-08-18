@@ -16,7 +16,8 @@ export class FormButtonComponent implements OnInit {
   @Input() submit = '';
   @Input() continue = '';
   @Input() cancel = '';
-  @Input() classes = <any>{};
+  @Input() submitClass: string;
+  @Input() cancelClass: string;
   @Input() isWorking = false;
   @Output() handleClick = new EventEmitter();
   @ViewChild('button', {read: ViewContainerRef}) button: ViewContainerRef;
@@ -42,8 +43,8 @@ export class FormButtonComponent implements OnInit {
 
   getClass() {
     return (this.cancel.length > 0)
-      ? ['btn btn-default button', this.classes.cancel || '']
-      : ['btn btn-primary button button--accept', this.classes.submit || '', (this.isFormValid ? 'valid' : 'invalid')];
+      ? ['btn btn-default button', this.cancelClass || '']
+      : ['btn btn-primary button button--accept', this.submitClass || '', (this.isFormValid ? 'valid' : 'invalid')];
   }
 
   isVisible() {
