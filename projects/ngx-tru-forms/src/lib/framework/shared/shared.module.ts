@@ -22,6 +22,7 @@ import {CommonComponent} from '../../fields/common/common.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import {TextMaskModule} from 'angular2-text-mask';
 import { ArrayComponent } from './components/array/array.component';
+import { ArrayViewComponent } from './components/array/array.view.component';
 
 @NgModule({
   imports: [
@@ -49,7 +50,8 @@ import { ArrayComponent } from './components/array/array.component';
     MultiselectViewComponent,
     MoneyViewComponent,
     ObjectComponent,
-    ArrayComponent
+    ArrayComponent,
+    ArrayViewComponent
   ],
   entryComponents: [
     JsonFormComponent,
@@ -71,7 +73,8 @@ import { ArrayComponent } from './components/array/array.component';
     MultiselectViewComponent,
     MoneyViewComponent,
     ObjectComponent,
-    ArrayComponent
+    ArrayComponent,
+    ArrayViewComponent
   ],
   exports: [
     ChooserComponent,

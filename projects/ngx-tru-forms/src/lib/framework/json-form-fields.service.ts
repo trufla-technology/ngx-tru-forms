@@ -13,8 +13,8 @@ import { CheckboxgroupViewComponent } from '../fields/checkboxgroup/checkboxgrou
 import { MultiselectViewComponent } from '../fields/multiselect/multiselect.view.component';
 import { MoneyViewComponent } from '../fields/money/money.view.component';
 import { ButtonComponent } from '../fields/button/button.component';
-import { ArrayComponent } from './shared/components/array/array.component';
 import { ObjectComponent } from './shared/components/object/object.component';
+import { ArrayViewComponent } from './shared/components/array/array.view.component';
 
 @Injectable()
 export class JsonFormFieldsService {
@@ -31,7 +31,7 @@ export class JsonFormFieldsService {
     photo: PhotoViewComponent,
     textarea: TextareaViewComponent,
     object: ObjectComponent,
-    array: ArrayComponent,
+    array: ArrayViewComponent,
     date: DateViewComponent,
     radiogroup: RadiogroupViewComponent,
     checkboxgroup: CheckboxgroupViewComponent,
