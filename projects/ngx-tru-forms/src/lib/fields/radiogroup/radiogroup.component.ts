@@ -35,7 +35,7 @@ export class RadiogroupComponent extends CommonComponent {
   }
 
   getId(i, val) {
-      return `${i}-${val.replace(/[\W_]+/g, '')}+${this.randomSuffix}`;
+      return `${i}-${val.toString().replace(/[\W_]+/g, '')}+${this.randomSuffix}`;
   }
 
   getName(key) {
