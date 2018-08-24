@@ -2,6 +2,7 @@ import { Schema } from '../../models/schema';
 import { SchemaFormControl } from '../../models/schema-form-control';
 import { Component } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
+import startCase from 'lodash.startcase';
 
 @Component({
   selector: 'jf-component',
@@ -26,9 +27,7 @@ export class CommonComponent {
   }
 
   strToUpperCase(str: string) {
-    return str.toLowerCase().replace(/_/g, ' ').split(' ').map((word) =>
-      (word.charAt(0).toUpperCase() + word.slice(1))
-    ).join(' ');
+    return startCase(str);
   }
 
   placeholder() {

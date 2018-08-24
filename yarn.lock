@@ -172,12 +172,6 @@
   version "6.0.6"
   resolved "https://registry.yarnpkg.com/@angular/language-service/-/language-service-6.0.6.tgz#270db3e6ff3eda2c1e828af7ea2fe2e16a8e17cb"
 
-"@angular/material-moment-adapter@^6.4.0":
-  version "6.4.0"
-  resolved "https://registry.yarnpkg.com/@angular/material-moment-adapter/-/material-moment-adapter-6.4.0.tgz#2b848fbb2714463c03f2bc8842b2f6d940791dd8"
-  dependencies:
-    tslib "^1.7.1"
-
 "@angular/material@^6.3.1":
   version "6.3.1"
   resolved "https://registry.yarnpkg.com/@angular/material/-/material-6.3.1.tgz#d1da2bc6d20a710a9affc36132e872206e67d698"
@@ -3890,6 +3884,10 @@ lodash.debounce@^4.0.8:
 lodash.mergewith@^4.6.0:
   version "4.6.1"
   resolved "https://registry.yarnpkg.com/lodash.mergewith/-/lodash.mergewith-4.6.1.tgz#639057e726c3afbdb3e7d42741caa8d6e4335927"
+
+lodash.startcase@^4.4.0:
+  version "4.4.0"
+  resolved "https://registry.yarnpkg.com/lodash.startcase/-/lodash.startcase-4.4.0.tgz#9436e34ed26093ed7ffae1936144350915d9add8"
 
 lodash.tail@^4.1.1:
   version "4.1.1"

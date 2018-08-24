@@ -42,6 +42,7 @@
     "angular2-text-mask": "^9.0.0",
     "core-js": "^2.5.4",
     "deploy-to-git": "^0.1.5",
+    "lodash.startcase": "^4.4.0",
     "moment": "^2.22.2",
     "ngx-color-picker": "^6.3.3",
     "rxjs": "^6.0.0",

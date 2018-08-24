@@ -28,7 +28,7 @@ import { JsonFormFieldsService } from './framework/json-form-fields.service';
       </div>
       <div
         #buttons
-        *ngIf="ref.children.length == 0"
+        *ngIf="ref.children.length == 0 && (submit || cancel)"
         [ngClass]="{ 'margin-top--double': true, 'page-actions--edges': (cancel && submit), 'page-actions--center': (!cancel || !submit)}">
         <jf-form-button
           *ngIf="cancel"
