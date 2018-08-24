@@ -260,8 +260,16 @@ export class JsonFormComponent implements DoCheck, OnDestroy {
     if (typeof (schema.oneOf) !== 'undefined') {
       return schema.oneOf.filter((p) => {
         const key = Object.keys(p.properties)[0];
+
         if (p.properties[key].required.indexOf(prop) > -1) {
-          return this.data.hasOwnProperty(key) === false || p.properties[key].enum.indexOf(this.data[key]) === -1;
+          let value = this.data[key];
+          if (schema.properties[key].type === 'boolean') {
+            value = this.data[key] === 'true';
+          } else if (schema.properties[key].type === 'number') {
+            value = +this.data[key];
+          }
+
+          return this.data.hasOwnProperty(key) === false || p.properties[key].enum.indexOf(value) === -1;
         }
 
         return false;
