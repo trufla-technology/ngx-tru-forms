@@ -20,12 +20,6 @@ export class CheckboxgroupMaterialComponent extends CommonComponent {
   checkboxGroupValues = [];
   randomSuffix = Math.random().toString(36).substring(7);
 
-  enumNames(index) {
-    return typeof(this.schema.enumNames) === 'undefined'
-      ? this.schema.enum[index]
-      : this.schema.enumNames[index];
-  }
-
   setValue(event, index) {
     if (this.checkboxGroupValues.length === 0) {
       this.checkboxGroupValues = new Array(this.control['controls'].length).fill(null);

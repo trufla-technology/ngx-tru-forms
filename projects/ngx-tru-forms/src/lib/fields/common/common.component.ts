@@ -72,4 +72,10 @@ export class CommonComponent {
     const style = 'url(' + imageString + ')';
     return this.sanitizer.bypassSecurityTrustStyle(style);
   }
+
+  enumNames(index) {
+    return typeof(this.schema.enumNames) === 'undefined'
+      ? this.schema.enum[index]
+      : this.schema.enumNames[index];
+  }
 }
