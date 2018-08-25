@@ -264,7 +264,7 @@ export class JsonFormComponent implements DoCheck, OnDestroy {
         if (p.properties[key].required.indexOf(prop) > -1) {
           let value = this.data[key];
           if (schema.properties[key].type === 'boolean') {
-            value = this.data[key] === 'true';
+            value = String(this.data[key]) === 'true'; // material preserves string & bootstrap doesn't
           } else if (schema.properties[key].type === 'number') {
             value = +this.data[key];
           }
