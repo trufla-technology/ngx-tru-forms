@@ -1,6 +1,8 @@
 import { Schema } from '../../models/schema';
 import { SchemaFormControl } from '../../models/schema-form-control';
 import { Component } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
+import startCase from 'lodash.startcase';
 
 @Component({
   selector: 'jf-component',
@@ -11,7 +13,11 @@ export class CommonComponent {
   public schema: Schema;
   public style: {};
 
-  public isRequired() {
+  constructor(
+    public sanitizer: DomSanitizer
+  ) {}
+
+  isRequired() {
     return this.control.validator !== null;
   }
 
@@ -21,9 +27,7 @@ export class CommonComponent {
   }
 
   strToUpperCase(str: string) {
-    return str.toLowerCase().replace(/_/g, ' ').split(' ').map((word) =>
-      (word.charAt(0).toUpperCase() + word.slice(1))
-    ).join(' ');
+    return startCase(str);
   }
 
   placeholder() {
@@ -61,5 +65,17 @@ export class CommonComponent {
     }
 
     return false;
+  }
+
+  makeTrustedImage(image): any {
+    const imageString =  JSON.stringify(image).replace(/\\n/g, '');
+    const style = 'url(' + imageString + ')';
+    return this.sanitizer.bypassSecurityTrustStyle(style);
+  }
+
+  enumNames(index) {
+    return typeof(this.schema.enumNames) === 'undefined'
+      ? this.schema.enum[index]
+      : this.schema.enumNames[index];
   }
 }

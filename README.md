@@ -27,13 +27,14 @@ npm install @trufla/ngx-tru-forms --save
 
 ### Usage
 
-In module add following:
+Module can be used with [Angular Material](https://material.angular.io/) or [Bootstrap](https://getbootstrap.com/).
+Import either `JsonFormBootstrap4Module` or `JsonFormMaterialModule` and use it with `JsonFormModule`. For example: 
 ```
-import { JsonFormModule } from '@trufla/ngx-tru-forms';
+import { JsonFormModule, JsonFormMaterialModule } from '@trufla/ngx-tru-forms';
 
 @NgModule({
   imports: [
-    JsonFormModule
+    JsonFormModule.forRoot(JsonFormMaterialModule)
   ]
 })
 ```
@@ -106,7 +107,6 @@ This module allows for extension via injectors.
 ```
 constructor(
   jfDefaultsService: JsonFormDefaultsService,
-  jfFieldsService: JsonFormFieldsService
   jfValidatorsService: JsonFormValidatorsService
 )
 ```
@@ -199,9 +199,9 @@ entryComponents: [
 ]
 ```
 
-Register it inside your component:
+Add it via the component:
 ```
-this.jfFieldsService.register('new_format', CustomComponent);
+[fields]="{'colour': ColourPickerComponent}"
 ```
 Now objects of format `new_format` will show the CustomComponent.
 

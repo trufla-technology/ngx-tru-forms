@@ -14,6 +14,7 @@ import { CommonComponent } from '../common/common.component';
       [formControl]="control"
       [attr.placeholder]="placeholder()"
     />
+    <jf-error [control]="control"></jf-error>
   `
 })
 export class NumberComponent extends CommonComponent { }

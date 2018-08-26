@@ -28,14 +28,8 @@ import { CommonComponent } from '../common/common.component';
 export class RadiogroupComponent extends CommonComponent {
   randomSuffix = Math.random().toString(36).substring(7);
 
-  enumNames(index) {
-    return typeof(this.schema.enumNames) === 'undefined'
-      ? this.schema.enum[index]
-      : this.schema.enumNames[index];
-  }
-
   getId(i, val) {
-      return `${i}-${val.replace(/[\W_]+/g, '')}+${this.randomSuffix}`;
+      return `${i}-${val.toString().replace(/[\W_]+/g, '')}+${this.randomSuffix}`;
   }
 
   getName(key) {

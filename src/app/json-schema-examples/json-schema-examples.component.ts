@@ -1,7 +1,6 @@
 import {Component, ElementRef, OnInit, ViewChild, ViewContainerRef} from '@angular/core';
 import {JsonSchemaExamplesSamples} from './json-schema-examples.samples';
 import {AbstractControl, FormControl, FormGroup} from '@angular/forms';
-import { JsonFormFieldsService } from '@trufla/ngx-tru-forms';
 import {InputColourComponent} from './input-colour/input-colour.component';
 
 @Component({
@@ -12,23 +11,27 @@ import {InputColourComponent} from './input-colour/input-colour.component';
   ]
 })
 export class JsonSchemaExamplesComponent implements OnInit {
-  public schema: {};
-  public isMultiStep = true;
-  public cancel = '';
-  public schemaControl: FormControl;
-  public form: FormGroup;
-  public state = false;
-  public selectedSchema = 'conditional_multistep';
+  schema: {};
+  isMultiStep = false;
+  cancel = '';
+  schemaControl: FormControl;
+  form: FormGroup;
+  state = false;
+  fields = {};
+  selectedSchema = 'simple_input';
+  viewOnly = false;
+  data: Object = {};
   @ViewChild('jsonSchema') jsonSchema: ElementRef;
   @ViewChild('formResponse') formResponse: ElementRef;
 
   constructor(
-    public jsonSchemaExamplesSamples: JsonSchemaExamplesSamples,
-    public jsonFormFieldsService: JsonFormFieldsService
+    public jsonSchemaExamplesSamples: JsonSchemaExamplesSamples
   ) { }
 
   ngOnInit() {
-    this.jsonFormFieldsService.register('colour', InputColourComponent);
+    this.fields = {
+      'colour': InputColourComponent
+    };
 
     const ValidatorJSON = (control: AbstractControl) => {
       try {
@@ -72,7 +75,22 @@ export class JsonSchemaExamplesComponent implements OnInit {
         this.cancel = 'Go Back';
         this.state = true;
       }
+
+
+      if (this.selectedSchema === 'viewOnly') {
+        this.viewOnly = true;
+        this.data = {
+          first_name: 'John',
+          last_name: 'Doe'
+        };
+      } else {
+        this.viewOnly = false;
+        this.data = {};
+      }
     }
+
+
+
 
     try {
       this.schema = JSON.parse(this.schemaControl.value);
@@ -123,5 +141,9 @@ export class JsonSchemaExamplesComponent implements OnInit {
     const col = +position[position.length - 1];
     this.jsonSchema.nativeElement.selectionStart = col;
     this.jsonSchema.nativeElement.focus();
+  }
+
+  formattedData(data) {
+    return JSON.stringify(data, null, 2);
   }
 }

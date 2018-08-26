@@ -1,26 +1,25 @@
-import { Component, DoCheck, EventEmitter, Input, OnDestroy, Output, ViewChild } from '@angular/core';
+import {Component, DoCheck, EventEmitter, Input, OnDestroy, Output, ViewChild, ViewContainerRef} from '@angular/core';
 import { FormBuilder, NgForm} from '@angular/forms';
 import { JsonFormValidatorsService } from './services/validators.service';
 import { SchemaFormControl } from './models/schema-form-control';
 import { JsonFormDefaultsService } from './services/defaults.service';
 import { SchemaFormGroup } from './models/schema-form-group';
 import { SchemaFormArray } from './models/schema-form-array';
+import { JsonFormFieldsService } from './framework/json-form-fields.service';
 
 @Component({
-  selector: 'jf-form',
+  selector: 'jf-form, tru-form',
   template: `
     <form
       #userForm="ngForm"
       [formGroup]="form"
       (ngSubmit)="handleOnSubmit()"
       *ngIf="isValidSchema()"
+      [ngClass]="{ 'view-only': viewOnly }"
     >
       <div
         jf-component-chooser
-        [ngClass]="[
-          classes.outer || '',
-          this.activeStyle['default'] ? this.activeStyle['default'] : ''
-          ]"
+        [ngClass]="[outerClass || '', this.activeStyle['default'] ? this.activeStyle['default'] : '']"
         [form]="form"
         [schema]="activeSchema">
       </div>
@@ -28,7 +27,8 @@ import { SchemaFormArray } from './models/schema-form-array';
         <ng-content></ng-content>
       </div>
       <div
-        *ngIf="ref.children.length == 0"
+        #buttons
+        *ngIf="ref.children.length == 0 && (submit || cancel)"
         [ngClass]="{ 'margin-top--double': true, 'page-actions--edges': (cancel && submit), 'page-actions--center': (!cancel || !submit)}">
         <jf-form-button
           *ngIf="cancel"
@@ -37,16 +37,20 @@ import { SchemaFormArray } from './models/schema-form-array';
           [isMultiStep]="isMultiStep"
           [isWorking]="isWorking"
           (handleClick)="handleOnCancel()"
-          [classes]="classes"></jf-form-button>
+          [submitClass]="submitClass"
+          [cancelClass]="cancelClass">
+        </jf-form-button>
         <jf-form-button
           *ngIf="submit"
-          [classes]="classes"
+          [submitClass]="submitClass"
+          [cancelClass]="cancelClass"
           [submit]="submit"
           [steps]="steps"
           [continue]="continue"
           [isMultiStep]="isMultiStep"
           [isWorking]="isWorking"
-          [isFormValid]="this.form.valid"></jf-form-button>
+          [isFormValid]="this.form.valid">
+        </jf-form-button>
       </div>
     </form>
   `
@@ -58,12 +62,16 @@ export class JsonFormComponent implements DoCheck, OnDestroy {
   @Input() continue = 'Continue';
   @Input() submit: string;
   @Input() cancel: string;
-  @Input() classes = { submit: '', cancel: '', outer: '' };
+  @Input() submitClass: string;
+  @Input() cancelClass: string;
+  @Input() outerClass: string;
   @Input() isWorking = false;
   @Input() isMultiStep = false;
   @Input() activeStep = null;
   @Input() state = false;
   @Input() id = '';
+  @Input() fields = {};
+  @Input() viewOnly = false;
   @Output() handleStep = new EventEmitter();
   @Output() handleSubmit = new EventEmitter();
   @Output() handleChange = new EventEmitter();
@@ -85,7 +93,8 @@ export class JsonFormComponent implements DoCheck, OnDestroy {
   constructor(
     private fb: FormBuilder,
     private vl: JsonFormValidatorsService,
-    private df: JsonFormDefaultsService
+    private df: JsonFormDefaultsService,
+    private jf: JsonFormFieldsService
   ) {}
 
   ngDoCheck(): void {
@@ -107,15 +116,27 @@ export class JsonFormComponent implements DoCheck, OnDestroy {
     }
 
     if (this.changeDetected) {
+      this.appendFields();
       this.constructForm();
+      this.jf[0].viewOnly = this.viewOnly;
+      this.cancel = this.viewOnly ? '' : this.cancel;
+      this.submit = this.viewOnly ? '' : this.submit;
     }
   }
 
   ngOnDestroy(): void {
-    this.form.valueChanges.unsubscribe();
+    if (this.form) {
+      this.form.valueChanges.unsubscribe();
+    }
   }
 
-  public constructForm() {
+  appendFields() {
+    Object.keys(this.fields).forEach((f) => {
+      this.jf[0].register(f, this.fields[f]);
+    });
+  }
+
+  constructForm() {
     this.model = {};
 
     if (this.isValidSchema()) {
@@ -151,7 +172,7 @@ export class JsonFormComponent implements DoCheck, OnDestroy {
     }
   }
 
-  public getSteps(schema, activeStep): Array<any> {
+  getSteps(schema, activeStep): Array<any> {
     return Object.keys(schema.properties).map((name, index) => {
       let type = 'step';
       if (index === 0) {
@@ -171,7 +192,7 @@ export class JsonFormComponent implements DoCheck, OnDestroy {
     });
   }
 
-  public isValidSchema() {
+  isValidSchema() {
     return typeof (this.schema) === 'object' && Object.keys(this.schema).length > 0;
   }
 
@@ -190,6 +211,7 @@ export class JsonFormComponent implements DoCheck, OnDestroy {
         const groupStyle = style && style.hasOwnProperty(prop) ? style[prop] : {};
         group[prop] = new SchemaFormGroup(this.generateForm(schema.properties[prop], {}, groupData, groupStyle, [].concat(path, prop)));
         group[prop].schema = schema.properties[prop];
+        group[prop].schema.key = prop;
         group[prop].style = groupStyle;
       } else if (schema.properties[prop].type === 'array' && !this.isFormat(schema.properties[prop], 'multiselect')) {
         path.push(prop);
@@ -238,8 +260,16 @@ export class JsonFormComponent implements DoCheck, OnDestroy {
     if (typeof (schema.oneOf) !== 'undefined') {
       return schema.oneOf.filter((p) => {
         const key = Object.keys(p.properties)[0];
+
         if (p.properties[key].required.indexOf(prop) > -1) {
-          return this.data.hasOwnProperty(key) === false || p.properties[key].enum.indexOf(this.data[key]) === -1;
+          let value = this.data[key];
+          if (schema.properties[key].type === 'boolean') {
+            value = String(this.data[key]) === 'true'; // material preserves string & bootstrap doesn't
+          } else if (schema.properties[key].type === 'number') {
+            value = +this.data[key];
+          }
+
+          return this.data.hasOwnProperty(key) === false || p.properties[key].enum.indexOf(value) === -1;
         }
 
         return false;

@@ -10,12 +10,13 @@ import createNumberMask from 'text-mask-addons/dist/createNumberMask';
     <input
       class="form-control"
       [name]="schema.key"
-      [attr.type]="'text'"
+      [attr.type]="'date'"
       [formControl]="control"
       [placeholder]="placeholder()"
       [textMask]="{ mask: numberMask}"
       (input)=cleanMask($event.target.value)
     />
+    <jf-error [control]="control"></jf-error>
   `
 })
 export class DateComponent extends CommonComponent {
