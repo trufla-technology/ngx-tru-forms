@@ -9,6 +9,10 @@
             {{jsonSchemaExamplesSamples.json[schema].title}}
           </option>
         </select>
+        <select class="form-control" (change)="handleFrameworkUpdate($event.target.value)" >
+          <option value="material">Material Design</option>
+          <option value="bootstrap">Bootstrap 4</option>
+        </select>
       </div>
       <h6>JSON Schema:
         <span class="text-danger" *ngIf="(schemaControl.touched || schemaControl.dirty) && schemaControl.invalid">

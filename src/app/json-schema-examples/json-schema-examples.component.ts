@@ -2,7 +2,7 @@ import {Component, ElementRef, OnInit, ViewChild, ViewContainerRef} from '@angul
 import {JsonSchemaExamplesSamples} from './json-schema-examples.samples';
 import {AbstractControl, FormControl, FormGroup} from '@angular/forms';
 import {InputColourComponent} from './input-colour/input-colour.component';
-
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-json-schema-examples',
   templateUrl: './json-schema-examples.component.html',
@@ -25,7 +25,8 @@ export class JsonSchemaExamplesComponent implements OnInit {
   @ViewChild('formResponse') formResponse: ElementRef;
 
   constructor(
-    public jsonSchemaExamplesSamples: JsonSchemaExamplesSamples
+    public jsonSchemaExamplesSamples: JsonSchemaExamplesSamples,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -145,5 +146,14 @@ export class JsonSchemaExamplesComponent implements OnInit {
 
   formattedData(data) {
     return JSON.stringify(data, null, 2);
+  }
+
+  handleFrameworkUpdate(framework) {
+    if (framework === 'material') {
+      console.log('Material Design');
+      window.location.href = 'https://trufla-technology.github.io/ngx-tru-forms/material/';
+    } else if (framework === 'bootstrap') {
+      window.location.href = 'https://trufla-technology.github.io/ngx-tru-forms/bootstrap4/';
+    }
   }
 }
