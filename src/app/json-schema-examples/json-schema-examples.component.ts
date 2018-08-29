@@ -2,7 +2,7 @@ import {Component, ElementRef, OnInit, ViewChild, ViewContainerRef} from '@angul
 import {JsonSchemaExamplesSamples} from './json-schema-examples.samples';
 import {AbstractControl, FormControl, FormGroup} from '@angular/forms';
 import {InputColourComponent} from './input-colour/input-colour.component';
-import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-json-schema-examples',
   templateUrl: './json-schema-examples.component.html',
@@ -26,7 +26,6 @@ export class JsonSchemaExamplesComponent implements OnInit {
 
   constructor(
     public jsonSchemaExamplesSamples: JsonSchemaExamplesSamples,
-    private router: Router
   ) { }
 
   ngOnInit() {
