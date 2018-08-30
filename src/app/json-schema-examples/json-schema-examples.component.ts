@@ -25,7 +25,7 @@ export class JsonSchemaExamplesComponent implements OnInit {
   @ViewChild('formResponse') formResponse: ElementRef;
 
   constructor(
-    public jsonSchemaExamplesSamples: JsonSchemaExamplesSamples
+    public jsonSchemaExamplesSamples: JsonSchemaExamplesSamples,
   ) { }
 
   ngOnInit() {
@@ -145,5 +145,14 @@ export class JsonSchemaExamplesComponent implements OnInit {
 
   formattedData(data) {
     return JSON.stringify(data, null, 2);
+  }
+
+  handleFrameworkUpdate(framework) {
+    if (framework === 'material') {
+      console.log('Material Design');
+      window.location.href = 'https://trufla-technology.github.io/ngx-tru-forms/material/';
+    } else if (framework === 'bootstrap') {
+      window.location.href = 'https://trufla-technology.github.io/ngx-tru-forms/bootstrap4/';
+    }
   }
 }

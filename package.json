@@ -39,6 +39,7 @@
     "@angular/platform-browser": "^6.0.3",
     "@angular/platform-browser-dynamic": "^6.0.3",
     "@angular/router": "^6.0.3",
+    "@trufla/ngx-tru-forms": "^0.3.9",
     "angular2-text-mask": "^9.0.0",
     "core-js": "^2.5.4",
     "deploy-to-git": "^0.1.5",
