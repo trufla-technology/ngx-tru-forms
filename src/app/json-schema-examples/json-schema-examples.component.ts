@@ -2,6 +2,7 @@ import {Component, ElementRef, OnInit, ViewChild, ViewContainerRef} from '@angul
 import {JsonSchemaExamplesSamples} from './json-schema-examples.samples';
 import {AbstractControl, FormControl, FormGroup} from '@angular/forms';
 import {InputColourComponent} from './input-colour/input-colour.component';
+import { PastebinService } from '../services/pastebin.service';
 
 @Component({
   selector: 'app-json-schema-examples',
@@ -26,6 +27,7 @@ export class JsonSchemaExamplesComponent implements OnInit {
 
   constructor(
     public jsonSchemaExamplesSamples: JsonSchemaExamplesSamples,
+    private pastebin: PastebinService
   ) { }
 
   ngOnInit() {
@@ -46,6 +48,21 @@ export class JsonSchemaExamplesComponent implements OnInit {
     this.schemaControl = new FormControl('', ValidatorJSON);
     this.form = new FormGroup({ schema: this.schemaControl });
     this.schemaControl.setValue(JSON.stringify(this.schema, null, '\t'));
+
+    if (this.getQueryParam('id')) {
+      this.pastebin.getSchema(this.getQueryParam('id'))
+      .toPromise()
+      .then(data => {
+        console.log(JSON.stringify(data));
+        this.schema = data;
+        this.schemaControl.setValue(JSON.stringify(this.schema, null, '\t'));
+      });
+    } else {
+      this.schema = this.jsonSchemaExamplesSamples.json[this.selectedSchema];
+      this.schemaControl = new FormControl('', ValidatorJSON);
+      this.form = new FormGroup({ schema: this.schemaControl });
+      this.schemaControl.setValue(JSON.stringify(this.schema, null, '\t'));
+    }
   }
 
   handleSubmit(data) {
@@ -154,5 +171,30 @@ export class JsonSchemaExamplesComponent implements OnInit {
     } else if (framework === 'bootstrap') {
       window.location.href = 'https://trufla-technology.github.io/ngx-tru-forms/bootstrap4/';
     }
+  }
+
+  savePastebin() {
+    this.pastebin.postSchema(this.jsonSchema.nativeElement.value)
+    .toPromise()
+    .then((data) => {
+      console.log(data);
+    });
+    // dummy uri ...
+    const s = 'https://pastebin.com/xpAXAMYh';
+    const pastebinId = s.split('/').pop();
+    const shareUri = `0.0.0.0:4200?id=${pastebinId}`;
+    console.log(shareUri);
+  }
+
+  getQueryParam(param) {
+    const query = window.location.search.substring(1);
+    const vars = query.split('&');
+    for (let i = 0; i < vars.length; i++) {
+      const pair = vars[i].split('=');
+      if (pair[0] === param) {
+        return pair[1];
+      }
+    }
+    return(false);
   }
 }
