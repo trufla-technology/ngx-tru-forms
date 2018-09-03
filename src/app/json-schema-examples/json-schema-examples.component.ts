@@ -24,6 +24,8 @@ export class JsonSchemaExamplesComponent implements OnInit {
   data: Object = {};
   @ViewChild('jsonSchema') jsonSchema: ElementRef;
   @ViewChild('formResponse') formResponse: ElementRef;
+  isShared: Boolean = false;
+  pastebinId: String;
 
   constructor(
     public jsonSchemaExamplesSamples: JsonSchemaExamplesSamples,
@@ -67,6 +69,9 @@ export class JsonSchemaExamplesComponent implements OnInit {
 
   handleSubmit(data) {
     this.formResponse.nativeElement.innerHTML = JSON.stringify(data, null, 2);
+  }
+  handleCancel(s) {
+    console.log('cancel');
   }
 
   handleChange(data) {
@@ -177,13 +182,10 @@ export class JsonSchemaExamplesComponent implements OnInit {
     this.pastebin.postSchema(this.jsonSchema.nativeElement.value)
     .toPromise()
     .then((data) => {
-      console.log(data);
+      const s = data;
+      this.pastebinId = s.split('/').pop();
+      this.isShared = true;
     });
-    // dummy uri ...
-    const s = 'https://pastebin.com/xpAXAMYh';
-    const pastebinId = s.split('/').pop();
-    const shareUri = `0.0.0.0:4200?id=${pastebinId}`;
-    console.log(shareUri);
   }
 
   getQueryParam(param) {

@@ -10,3 +10,9 @@ textarea.has-danger {
 .form-builder form div {
   height: 95%;
 }
+
+::ng-deep .page-actions--edges {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+}

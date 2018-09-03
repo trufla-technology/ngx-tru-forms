@@ -42,7 +42,7 @@
       <h6>Form:</h6>
       <jf-form
         [id]="'exampleform'"
-        [cancel]="cancel"
+        [cancel]="'Cancel'"
         [submit]="'Submit'"
         [schema]="schema"
         [isMultiStep]="isMultiStep"
@@ -50,6 +50,7 @@
         [fields]="fields"
         [viewOnly]="viewOnly"
         [data]="data"
+        (handleCancel)="handleCancel($event)"
         (handleChange)="handleChange($event)"
         (handleSubmit)="handleSubmit($event)">
       </jf-form>
@@ -57,18 +58,29 @@
       <jf-form
         *ngIf="this.selectedSchema === 'multiple_forms'"
         [id]="'exampleform'"
-        [cancel]="cancel"
+        [cancel]="'Cancel'"
         [submit]="'Submit'"
         [schema]="schema"
         [isMultiStep]="isMultiStep"
         [state]="state"
         [fields]="fields"
+        (handleCancel)="handleCancel($event)"
         (handleSubmit)="handleSubmit($event)">
       </jf-form>
       <p></p>
       <h6 *ngIf="!this.viewOnly">Data: (click Submit to preview form data)</h6>
       <h6 *ngIf="this.viewOnly">Data: <pre>{{formattedData(data)}}</pre></h6>
       <pre *ngIf="!this.viewOnly" #formResponse>&#123;&#125;</pre>
+      <div *ngIf="isShared">
+        <p>
+          <strong>Material share link</strong><br>
+          https://trufla-technology.github.io/ngx-tru-forms/material?id={{pastebinId}}
+        </p>
+        <p>
+          <strong>Bootstrap 4 share link</strong><br>
+          https://trufla-technology.github.io/ngx-tru-forms/bootstrap4?id={{pastebinId}}
+        </p>
+      </div>
     </div>
   </div>
 </div>
