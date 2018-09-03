@@ -31,6 +31,20 @@ export class JsonSchemaExamplesSamples {
       },
       required: ['year', 'make', 'model', 'vin_number', 'description', 'effective_date']
     },
+    cancel_test: {
+      title: 'Cancel',
+      description: 'Simple form with cancel and submit buttons. Cancel also contains form data.',
+      type: 'object',
+      properties: {
+        first_name: {
+          type: 'string'
+        },
+        last_name: {
+          type: 'string'
+        }
+      },
+      required: ['year', 'make', 'model', 'vin_number', 'description', 'effective_date']
+    },
     array_sample: {
       title: 'Array',
       description: 'Array of fields',

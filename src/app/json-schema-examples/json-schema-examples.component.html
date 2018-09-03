@@ -48,6 +48,7 @@
         [fields]="fields"
         [viewOnly]="viewOnly"
         [data]="data"
+        (handleCancel)="handleCancel($event)"
         (handleChange)="handleChange($event)"
         (handleSubmit)="handleSubmit($event)">
       </jf-form>

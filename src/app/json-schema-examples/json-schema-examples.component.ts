@@ -52,6 +52,11 @@ export class JsonSchemaExamplesComponent implements OnInit {
     this.formResponse.nativeElement.innerHTML = JSON.stringify(data, null, 2);
   }
 
+  handleCancel(data) {
+    this.formResponse.nativeElement.innerHTML = JSON.stringify(data, null, 2);
+    window.alert('Cancel also has data');
+  }
+
   handleChange(data) {
     if (this.selectedSchema === 'onchange') {
       this.formResponse.nativeElement.innerHTML = JSON.stringify(data, null, 2);
@@ -65,7 +70,9 @@ export class JsonSchemaExamplesComponent implements OnInit {
     if (typeof (this.selectedSchema) !== 'undefined') {
       this.schemaControl.setValue(JSON.stringify(this.jsonSchemaExamplesSamples.json[this.selectedSchema], null, '\t'));
 
-      if (this.selectedSchema === 'multistep') {
+      if (this.selectedSchema === 'cancel_test') {
+        this.cancel = 'Cancel';
+      } else if (this.selectedSchema === 'multistep') {
         this.isMultiStep = true;
       } else if (this.selectedSchema === 'multistep_back') {
         this.isMultiStep = true;
