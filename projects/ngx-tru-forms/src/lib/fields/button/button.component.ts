@@ -8,7 +8,7 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
       [type]="type"
       [ngClass]="class"
       [disabled]="disabled"
-      (click)="handleButtonClick">
+      (click)="handleClick($event)">
       {{label}}
     </button>
   `
@@ -23,4 +23,8 @@ export class ButtonComponent {
   @Input() label;
   @Input() color = '';
   @Output() handleButtonClick = new EventEmitter();
+
+  handleClick(event) {
+    this.handleButtonClick.emit(event);
+  }
 }

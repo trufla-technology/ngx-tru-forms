@@ -23,6 +23,7 @@ import { CommonComponent } from '../common/common.component';
         </label>
       </div>
     </div>
+    <jf-error [control]="control"></jf-error>
   `
 })
 export class RadiogroupComponent extends CommonComponent {

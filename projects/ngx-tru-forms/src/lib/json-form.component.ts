@@ -16,6 +16,7 @@ import { JsonFormFieldsService } from './framework/json-form-fields.service';
       (ngSubmit)="handleOnSubmit()"
       *ngIf="isValidSchema()"
       [ngClass]="{ 'view-only': viewOnly }"
+      [id]="id"
     >
       <div
         jf-component-chooser
