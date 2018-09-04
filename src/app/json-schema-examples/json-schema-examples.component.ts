@@ -72,8 +72,9 @@ export class JsonSchemaExamplesComponent implements OnInit {
   }
 
   handleCancel(data) {
-    this.formResponse.nativeElement.innerHTML = JSON.stringify(data, null, 2);
-    window.alert('Cancel also has data');
+    // this.formResponse.nativeElement.innerHTML = JSON.stringify(data, null, 2);
+    // window.alert('Cancel also has data');
+    console.log('cancel working');
   }
 
   handleChange(data) {
