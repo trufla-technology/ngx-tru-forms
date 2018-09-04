@@ -16,6 +16,7 @@ import { HttpClientModule } from '@angular/common/http';
     JsonFormBootstrap4Module,
     JsonFormMaterialModule,
     JsonFormModule.forRoot(JsonFormMaterialModule),
+    JsonFormModule.forRoot(JsonFormBootstrap4Module),
     ColorPickerModule,
     HttpClientModule
   ],

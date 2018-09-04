@@ -37,7 +37,11 @@ export class FormButtonComponent implements OnInit {
     (<ButtonComponent> componentRef.instance).disabled = this.isWorking;
     (<ButtonComponent> componentRef.instance).isWorking = this.isWorking;
     (<ButtonComponent> componentRef.instance).label = this.getLabel();
-    (<ButtonComponent> componentRef.instance).handleButtonClick = this.handleClick;
+    (<ButtonComponent> componentRef.instance).handleButtonClick.subscribe((event) => {
+      if (this.cancel.length > 0) {
+        this.handleClick.emit(event);
+      }
+    });
     (<ButtonComponent> componentRef.instance).color = this.submit ? 'primary' : '';
   }
 
@@ -82,11 +86,5 @@ export class FormButtonComponent implements OnInit {
     }
 
     return 'submit';
-  }
-
-  handleButtonClick() {
-    if (this.cancel.length > 0) {
-      this.handleClick.emit();
-    }
   }
 }

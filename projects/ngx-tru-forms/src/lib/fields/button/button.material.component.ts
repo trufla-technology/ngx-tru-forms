@@ -11,7 +11,7 @@ import {ButtonComponent} from './button.component';
       [type]="type"
       [ngClass]="class"
       [disabled]="disabled"
-      (click)="handleButtonClick">
+      (click)="handleClick($event)">
       {{label}}
     </button>
   `
