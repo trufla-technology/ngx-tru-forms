@@ -34,7 +34,6 @@
               'has-danger': schemaControl.invalid && (schemaControl.dirty || schemaControl.touched)
             }"></textarea>
 
-          <button (click)=savePastebin()>Share your schema!</button>
         </div>
       </form>
     </div>
@@ -42,8 +41,8 @@
       <h6>Form:</h6>
       <jf-form
         [id]="'exampleform'"
-        [cancel]="'Cancel'"
-        [submit]="'Submit'"
+        [cancel]="'Submit'"
+        [submit]="'Submit and Share Schema!'"
         [schema]="schema"
         [isMultiStep]="isMultiStep"
         [state]="state"

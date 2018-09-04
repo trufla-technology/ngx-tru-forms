@@ -69,12 +69,11 @@ export class JsonSchemaExamplesComponent implements OnInit {
 
   handleSubmit(data) {
     this.formResponse.nativeElement.innerHTML = JSON.stringify(data, null, 2);
+    this.savePastebin();
   }
 
   handleCancel(data) {
-    // this.formResponse.nativeElement.innerHTML = JSON.stringify(data, null, 2);
-    // window.alert('Cancel also has data');
-    console.log('cancel working');
+    this.formResponse.nativeElement.innerHTML = JSON.stringify(data, null, 2);
   }
 
   handleChange(data) {
