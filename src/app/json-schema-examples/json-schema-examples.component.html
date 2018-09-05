@@ -33,7 +33,6 @@
                     [ngClass]="{
               'has-danger': schemaControl.invalid && (schemaControl.dirty || schemaControl.touched)
             }"></textarea>
-
         </div>
       </form>
     </div>
@@ -41,8 +40,8 @@
       <h6>Form:</h6>
       <jf-form
         [id]="'exampleform'"
-        [cancel]="'Submit'"
-        [submit]="'Submit and Share Schema!'"
+        [cancel]="'Share Schema'"
+        [submit]="'Submit'"
         [schema]="schema"
         [isMultiStep]="isMultiStep"
         [state]="state"

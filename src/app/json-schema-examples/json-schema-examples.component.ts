@@ -69,11 +69,10 @@ export class JsonSchemaExamplesComponent implements OnInit {
 
   handleSubmit(data) {
     this.formResponse.nativeElement.innerHTML = JSON.stringify(data, null, 2);
-    this.savePastebin();
   }
 
-  handleCancel(data) {
-    this.formResponse.nativeElement.innerHTML = JSON.stringify(data, null, 2);
+  handleCancel() {
+    this.savePastebin();
   }
 
   handleChange(data) {
