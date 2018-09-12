@@ -248,6 +248,7 @@ export class JsonFormComponent implements DoCheck, OnDestroy {
         const control = new SchemaFormControl(this.df.get(prop, schema, data), this.vl.get(prop, schema, path));
         control.schema = Object.assign({}, schema.properties[prop]);
         control.schema.key = prop;
+        control.data = this.df.get(prop, schema, data);
         control.style = (style && style.hasOwnProperty(prop)) ? style[prop] : {};
         control.valueChanges.subscribe((event) => this.handleOnChange(prop, event, this.inOneOf(schema, prop)));
         group[prop] = control;
