@@ -9,9 +9,10 @@ import { CommonComponent } from '../common/common.component';
     <input
       class="form-control"
       [name]="schema.key"
-      [attr.type]="'date'"
       [formControl]="control"
       [placeholder]="placeholder()"
+      [bsConfig]="{ dateInputFormat: 'MM/DD/YYYY' }"
+      bsDatepicker
     />
     <jf-error [control]="control"></jf-error>
   `
