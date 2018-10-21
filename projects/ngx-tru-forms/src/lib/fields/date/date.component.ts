@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonComponent } from '../common/common.component';
+import { BsDatepickerConfig } from 'ngx-bootstrap';
 
 @Component({
   template: `
@@ -11,10 +12,15 @@ import { CommonComponent } from '../common/common.component';
       [name]="schema.key"
       [formControl]="control"
       [placeholder]="placeholder()"
-      [bsConfig]="{ dateInputFormat: 'MM/DD/YYYY' }"
+      [bsConfig]="bsConfig"
       bsDatepicker
     />
     <jf-error [control]="control"></jf-error>
   `
 })
-export class DateComponent extends CommonComponent {}
+export class DateComponent extends CommonComponent {
+  bsConfig: Partial<BsDatepickerConfig> = {
+    containerClass: 'theme-default',
+    dateInputFormat: 'MM/DD/YYYY'
+  };
+}
