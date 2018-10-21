@@ -1,6 +1,6 @@
 import { Schema } from '../../models/schema';
 import { SchemaFormControl } from '../../models/schema-form-control';
-import { Component } from '@angular/core';
+import { Component, ChangeDetectorRef, AfterViewInit } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import startCase from 'lodash.startcase';
 
@@ -8,14 +8,19 @@ import startCase from 'lodash.startcase';
   selector: 'jf-component',
   template: ''
 })
-export class CommonComponent {
+export class CommonComponent implements AfterViewInit{
   public control: SchemaFormControl;
   public schema: Schema;
   public style: {};
 
   constructor(
-    public sanitizer: DomSanitizer
+    public sanitizer: DomSanitizer,
+    private cd: ChangeDetectorRef
   ) {}
+
+  ngAfterViewInit() {
+    this.cd.detectChanges();
+  }
 
   isRequired() {
     return this.control.validator !== null;
