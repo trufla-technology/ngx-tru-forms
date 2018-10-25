@@ -207,6 +207,10 @@ export class JsonFormComponent implements DoCheck, OnDestroy {
     }
 
     Object.keys(schema.properties).forEach((prop) => {
+      if (this.isOneOf(schema, prop)) {
+        return;
+      }
+
       if (schema.properties[prop].type === 'object') {
         const groupData = data && data.hasOwnProperty(prop) ? data[prop] : {};
         const groupStyle = style && style.hasOwnProperty(prop) ? style[prop] : {};
@@ -241,9 +245,6 @@ export class JsonFormComponent implements DoCheck, OnDestroy {
         group[prop].schema.key = prop;
         group[prop].style = arrayStyle;
       } else if (this.isVisible(schema.properties[prop])) {
-        if (this.isOneOf(schema, prop)) {
-          return;
-        }
 
         const control = new SchemaFormControl(this.df.get(prop, schema, data), this.vl.get(prop, schema, path));
         control.schema = Object.assign({}, schema.properties[prop]);

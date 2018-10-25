@@ -3,6 +3,7 @@ import { SchemaFormControl } from '../../../../models/schema-form-control';
 import { AbstractControl, FormArray } from '@angular/forms';
 import { SchemaFormArray } from '../../../../models/schema-form-array';
 import { SchemaFormGroup } from '../../../../models/schema-form-group';
+import startCase from 'lodash.startcase';
 
 @Component({
   template: `
@@ -28,8 +29,7 @@ export class ArrayComponent {
   @Input() control: SchemaFormArray;
 
   getLegend(control) {
-    return (control && control.schema && control.schema.key) ?
-      this.strToUpperCase(control.schema.key) : '';
+    return (control && control.schema && control.schema.key) ? startCase(control.schema.key) : '';
   }
 
   strToUpperCase(str: string) {
