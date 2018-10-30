@@ -20,6 +20,10 @@ export class JsonFormDefaultsService {
       defaultValue = data[prop];
     }
 
+    if (prop.hasOwnProperty('format') && prop.format === 'date' && defaultValue.length > 0) {
+      defaultValue = new Date(defaultValue);
+    }
+
     return defaultValue;
   }
 
