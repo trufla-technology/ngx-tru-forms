@@ -31,6 +31,42 @@ export class JsonSchemaExamplesSamples {
       },
       required: ['year', 'make', 'model', 'vin_number', 'description', 'effective_date']
     },
+    cancel_test: {
+      title: 'Cancel',
+      description: 'Simple form with cancel and submit buttons. Cancel also contains form data.',
+      type: 'object',
+      properties: {
+        first_name: {
+          type: 'string'
+        },
+        last_name: {
+          type: 'string'
+        }
+      },
+      required: ['year', 'make', 'model', 'vin_number', 'description', 'effective_date']
+    },
+    array_sample: {
+      title: 'Array',
+      description: 'Array of fields',
+      type: 'object',
+      properties: {
+        employee: {
+          type: 'array',
+          items: {
+            type: 'object',
+            properties: {
+              first_name: {
+                type: 'string'
+              },
+              last_name: {
+                type: 'string'
+              }
+            }
+          },
+          required: ['year', 'make', 'model', 'vin_number', 'description', 'effective_date']
+        }
+      }
+    },
     multi_select: {
       title: 'Multiple Select',
       description: 'Form allowing for single and multiple item selections',
@@ -512,6 +548,19 @@ export class JsonSchemaExamplesSamples {
     onchange: {
       title: 'On Change',
       description: 'Watch for on change in forms and fields',
+      type: 'object',
+      properties: {
+        first_name: {
+          type: 'string'
+        },
+        last_name: {
+          type: 'string'
+        }
+      }
+    },
+    viewOnly: {
+      title: 'View Only',
+      description: 'Display inputs value in view mode',
       type: 'object',
       properties: {
         first_name: {

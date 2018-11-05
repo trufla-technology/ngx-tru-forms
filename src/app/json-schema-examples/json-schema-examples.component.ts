@@ -1,7 +1,6 @@
 import {Component, ElementRef, OnInit, ViewChild, ViewContainerRef} from '@angular/core';
 import {JsonSchemaExamplesSamples} from './json-schema-examples.samples';
 import {AbstractControl, FormControl, FormGroup} from '@angular/forms';
-import { JsonFormFieldsService } from '@trufla/ngx-tru-forms';
 import {InputColourComponent} from './input-colour/input-colour.component';
 
 @Component({
@@ -12,23 +11,27 @@ import {InputColourComponent} from './input-colour/input-colour.component';
   ]
 })
 export class JsonSchemaExamplesComponent implements OnInit {
-  public schema: {};
-  public isMultiStep = true;
-  public cancel = '';
-  public schemaControl: FormControl;
-  public form: FormGroup;
-  public state = false;
-  public selectedSchema = 'conditional_multistep';
+  schema: {};
+  isMultiStep = false;
+  cancel = '';
+  schemaControl: FormControl;
+  form: FormGroup;
+  state = false;
+  fields = {};
+  selectedSchema = 'simple_input';
+  viewOnly = false;
+  data: Object = {};
   @ViewChild('jsonSchema') jsonSchema: ElementRef;
   @ViewChild('formResponse') formResponse: ElementRef;
 
   constructor(
     public jsonSchemaExamplesSamples: JsonSchemaExamplesSamples,
-    public jsonFormFieldsService: JsonFormFieldsService
   ) { }
 
   ngOnInit() {
-    this.jsonFormFieldsService.register('colour', InputColourComponent);
+    this.fields = {
+      'colour': InputColourComponent
+    };
 
     const ValidatorJSON = (control: AbstractControl) => {
       try {
@@ -49,6 +52,11 @@ export class JsonSchemaExamplesComponent implements OnInit {
     this.formResponse.nativeElement.innerHTML = JSON.stringify(data, null, 2);
   }
 
+  handleCancel(data) {
+    this.formResponse.nativeElement.innerHTML = JSON.stringify(data, null, 2);
+    window.alert('Cancel also has data');
+  }
+
   handleChange(data) {
     if (this.selectedSchema === 'onchange') {
       this.formResponse.nativeElement.innerHTML = JSON.stringify(data, null, 2);
@@ -62,7 +70,9 @@ export class JsonSchemaExamplesComponent implements OnInit {
     if (typeof (this.selectedSchema) !== 'undefined') {
       this.schemaControl.setValue(JSON.stringify(this.jsonSchemaExamplesSamples.json[this.selectedSchema], null, '\t'));
 
-      if (this.selectedSchema === 'multistep') {
+      if (this.selectedSchema === 'cancel_test') {
+        this.cancel = 'Cancel';
+      } else if (this.selectedSchema === 'multistep') {
         this.isMultiStep = true;
       } else if (this.selectedSchema === 'multistep_back') {
         this.isMultiStep = true;
@@ -72,7 +82,22 @@ export class JsonSchemaExamplesComponent implements OnInit {
         this.cancel = 'Go Back';
         this.state = true;
       }
+
+
+      if (this.selectedSchema === 'viewOnly') {
+        this.viewOnly = true;
+        this.data = {
+          first_name: 'John',
+          last_name: 'Doe'
+        };
+      } else {
+        this.viewOnly = false;
+        this.data = {};
+      }
     }
+
+
+
 
     try {
       this.schema = JSON.parse(this.schemaControl.value);
@@ -123,5 +148,18 @@ export class JsonSchemaExamplesComponent implements OnInit {
     const col = +position[position.length - 1];
     this.jsonSchema.nativeElement.selectionStart = col;
     this.jsonSchema.nativeElement.focus();
+  }
+
+  formattedData(data) {
+    return JSON.stringify(data, null, 2);
+  }
+
+  handleFrameworkUpdate(framework) {
+    if (framework === 'material') {
+      console.log('Material Design');
+      window.location.href = 'https://trufla-technology.github.io/ngx-tru-forms/material/';
+    } else if (framework === 'bootstrap') {
+      window.location.href = 'https://trufla-technology.github.io/ngx-tru-forms/bootstrap4/';
+    }
   }
 }

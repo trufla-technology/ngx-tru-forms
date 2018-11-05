@@ -16,6 +16,7 @@ import createNumberMask from 'text-mask-addons/dist/createNumberMask';
       [textMask]="{ mask: numberMask}"
       (input)=cleanMask($event.target.value)
     />
+    <jf-error [control]="control"></jf-error>
   `
 })
 export class MoneyComponent extends CommonComponent {

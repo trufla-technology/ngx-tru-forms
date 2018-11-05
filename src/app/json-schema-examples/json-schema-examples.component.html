@@ -9,6 +9,10 @@
             {{jsonSchemaExamplesSamples.json[schema].title}}
           </option>
         </select>
+        <select class="form-control" (change)="handleFrameworkUpdate($event.target.value)" >
+          <option value="material">Material Design</option>
+          <option value="bootstrap">Bootstrap 4</option>
+        </select>
       </div>
       <h6>JSON Schema:
         <span class="text-danger" *ngIf="(schemaControl.touched || schemaControl.dirty) && schemaControl.invalid">
@@ -24,7 +28,7 @@
         <div class="form-group" [ngClass]="{
           'has-danger': schemaControl.invalid && (schemaControl.dirty || schemaControl.touched)
           }">
-          <textarea class="form-control" style="height: 100%" [formControl]="schemaControl" (keyup)="handleSchemaUpdate()"
+          <textarea class="form-control schema" style="height: 100%" [formControl]="schemaControl" (keyup)="handleSchemaUpdate()"
                     (keydown.Enter)="onEnterKey($event)" (keydown.Tab)="onTabKey($event)" #jsonSchema
                     [ngClass]="{
               'has-danger': schemaControl.invalid && (schemaControl.dirty || schemaControl.touched)
@@ -41,6 +45,10 @@
         [schema]="schema"
         [isMultiStep]="isMultiStep"
         [state]="state"
+        [fields]="fields"
+        [viewOnly]="viewOnly"
+        [data]="data"
+        (handleCancel)="handleCancel($event)"
         (handleChange)="handleChange($event)"
         (handleSubmit)="handleSubmit($event)">
       </jf-form>
@@ -53,11 +61,13 @@
         [schema]="schema"
         [isMultiStep]="isMultiStep"
         [state]="state"
+        [fields]="fields"
         (handleSubmit)="handleSubmit($event)">
       </jf-form>
       <p></p>
-      <h6>Data: (click Submit to preview form data)</h6>
-      <pre #formResponse>&#123;&#125;</pre>
+      <h6 *ngIf="!this.viewOnly">Data: (click Submit to preview form data)</h6>
+      <h6 *ngIf="this.viewOnly">Data: <pre>{{formattedData(data)}}</pre></h6>
+      <pre *ngIf="!this.viewOnly" #formResponse>&#123;&#125;</pre>
     </div>
   </div>
 </div>
