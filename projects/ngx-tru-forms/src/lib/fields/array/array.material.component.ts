@@ -10,14 +10,12 @@ import { ArrayComponent } from '../../framework/shared/components/array/array.co
           <div class="row">
             <div jf-component-chooser [form]="arrControl"></div>
             <button
+              mat-button
               *ngIf="control.controls.length > 1"
-              mat-icon-button
               (click)="$event.preventDefault(); removeControl(control, i)"
               color="warn"
               class="remove"
-            >
-              <mat-icon>remove_circle_outline</mat-icon>
-            </button>
+            >Remove</button>
           </div>
         </div>
       </div>

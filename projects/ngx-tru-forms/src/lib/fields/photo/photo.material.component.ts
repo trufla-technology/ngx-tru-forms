@@ -16,7 +16,7 @@ import { CommonComponent } from '../common/common.component';
         [style.background-repeat]="'no-repeat'"
         (click)="$event.preventDefault(); fileInput.click();"
       >
-        <mat-icon>add</mat-icon>
+        <mat-icon>add_a_photo</mat-icon>
       </button>
       <button
         class="photo-remove"
@@ -34,7 +34,7 @@ import { CommonComponent } from '../common/common.component';
         color="primary"
         (click)="$event.preventDefault(); fileInput.click();"
       >
-        <mat-icon>add</mat-icon>
+        <mat-icon>add_a_photo</mat-icon>
       </button>
     </ng-template>
     <input #fileInput type="file" [name]="schema.key" (change)="onChange($event)" style="display:none;"/>
