@@ -8,14 +8,14 @@ import startCase from 'lodash.startcase';
   selector: 'jf-component',
   template: ''
 })
-export class CommonComponent implements AfterViewInit{
+export class CommonComponent implements AfterViewInit {
   public control: SchemaFormControl;
   public schema: Schema;
   public style: {};
 
   constructor(
     public sanitizer: DomSanitizer,
-    private cd: ChangeDetectorRef
+    public cd: ChangeDetectorRef
   ) {}
 
   ngAfterViewInit() {
