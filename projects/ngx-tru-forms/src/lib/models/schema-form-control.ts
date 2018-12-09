@@ -6,4 +6,5 @@ export class SchemaFormControl extends FormControl {
   public style: any;
   public viewOnly: boolean;
   public data: any;
+  public isRequired: boolean;
 }

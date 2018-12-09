@@ -23,7 +23,8 @@ export class CommonComponent implements AfterViewInit {
   }
 
   isRequired() {
-    return this.control.validator !== null;
+    // some controls like datepicker add validator without being required
+    return this.control.validator !== null && this.control.isRequired;
   }
 
   title() {

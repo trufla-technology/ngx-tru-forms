@@ -1,4 +1,4 @@
-import {Component, DoCheck, EventEmitter, Input, OnDestroy, Output, ViewChild, ViewContainerRef} from '@angular/core';
+import { Component, DoCheck, EventEmitter, Input, OnDestroy, Output, ViewChild } from '@angular/core';
 import { FormBuilder, NgForm} from '@angular/forms';
 import { JsonFormValidatorsService } from './services/validators.service';
 import { SchemaFormControl } from './models/schema-form-control';
@@ -230,6 +230,7 @@ export class JsonFormComponent implements DoCheck, OnDestroy {
             control.schema = Object.assign({}, schema.properties[prop]);
             control.schema.key = prop;
             control.valueChanges.subscribe((event) => this.handleOnChange(prop, event));
+            control.isRequired = schema.hasOwnProperty('required') && schema.required.indexOf(prop) > -1;
             return control;
           });
         } else {
@@ -252,6 +253,8 @@ export class JsonFormComponent implements DoCheck, OnDestroy {
         control.data = this.df.get(prop, schema, data);
         control.style = (style && style.hasOwnProperty(prop)) ? style[prop] : {};
         control.valueChanges.subscribe((event) => this.handleOnChange(prop, event, this.inOneOf(schema, prop)));
+        control.isRequired = schema.hasOwnProperty('required') && schema.required.indexOf(prop) > -1;
+
         group[prop] = control;
       }
     });
