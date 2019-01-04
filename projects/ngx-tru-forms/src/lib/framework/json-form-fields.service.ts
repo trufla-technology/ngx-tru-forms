@@ -57,11 +57,12 @@ export class JsonFormFieldsService {
   }
 
   has(type: string) {
-    return this.fieldTypes.hasOwnProperty(type);
+    return this.fieldTypes.hasOwnProperty(type) || this.viewTypes.hasOwnProperty(type);
   }
 
   register(type: string, field: any) {
     this.fieldTypes[type] = field;
+    this.viewTypes[type] = field;
   }
 
   get(control): any {
