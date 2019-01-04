@@ -1,6 +1,5 @@
 import { ComponentFactoryResolver, Injectable } from '@angular/core';
 import { SchemaFormControl } from '../models/schema-form-control';
-import { StringComponent } from '../fields/string/string.component';
 import { StringViewComponent } from '../fields/string/string.view.component';
 import { SelectViewComponent } from '../fields/select/select.view.component';
 import { NumberViewComponent } from '../fields/number/number.view.component';
@@ -12,7 +11,6 @@ import { RadiogroupViewComponent } from '../fields/radiogroup/radiogroup.view.co
 import { CheckboxgroupViewComponent } from '../fields/checkboxgroup/checkboxgroup.view.component';
 import { MultiselectViewComponent } from '../fields/multiselect/multiselect.view.component';
 import { MoneyViewComponent } from '../fields/money/money.view.component';
-import { ButtonComponent } from '../fields/button/button.component';
 import { ObjectComponent } from './shared/components/object/object.component';
 import { ArrayViewComponent } from './shared/components/array/array.view.component';
 
@@ -21,7 +19,6 @@ export class JsonFormFieldsService {
   name: string;
   rootViewContainer;
   public fieldTypes: { [type: string]: any } = {};
-  private defaultFieldType = StringComponent;
   private viewOnly = false;
   private viewTypes: Object = {
     string: StringViewComponent,
@@ -36,8 +33,7 @@ export class JsonFormFieldsService {
     radiogroup: RadiogroupViewComponent,
     checkboxgroup: CheckboxgroupViewComponent,
     multiselect: MultiselectViewComponent,
-    money: MoneyViewComponent,
-    button: ButtonComponent
+    money: MoneyViewComponent
   };
 
   constructor(
@@ -86,6 +82,7 @@ export class JsonFormFieldsService {
     } else if (this.has(control.schema.type)) {
       return types[control.schema.type];
     }
-    return this.defaultFieldType;
+
+    return types['string'];
   }
 }

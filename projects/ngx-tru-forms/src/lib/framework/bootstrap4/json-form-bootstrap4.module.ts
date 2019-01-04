@@ -18,7 +18,7 @@ import { CheckboxgroupComponent } from '../../fields/checkboxgroup/checkboxgroup
 import { MultiselectComponent } from '../../fields/multiselect/multiselect.component';
 import { PhotoComponent } from '../../fields/photo/photo.component';
 import { RadiogroupComponent } from '../../fields/radiogroup/radiogroup.component';
-import { BsDatepickerModule } from 'ngx-bootstrap';
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 
 @NgModule({
   imports: [
