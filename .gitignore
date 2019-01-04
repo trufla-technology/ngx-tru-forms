@@ -41,3 +41,4 @@ package-lock.json
 build.sh
 build
 yarn.lock
+src/index.html.org
