@@ -25,6 +25,6 @@ import { CommonComponent } from '../common/common.component';
 })
 export class SelectMaterialComponent extends CommonComponent {
   emptyOption() {
-    return super.title().replace(/[^A-Z0-9]+$/ig, '');
+    return super.title().replace(/[^A-Z0-9*]+$/ig, '');
   }
 }
