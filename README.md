@@ -17,6 +17,9 @@ This component utilizes [Reactive Forms](https://angular.io/guide/reactive-forms
 * [External Methods](#external-methods)
   * isValid(#isValid)
   * submitForm(#submitForm)
+  * setHeader(#setHeader)
+  * setFooter(#setFooter)
+  * getRequiredFieldCount(#getRequiredFieldCount)
 * [Styling](#styling)
 
 ### Installation
@@ -221,6 +224,9 @@ Set header of the form in ngAfterViewInit or after events.
 
 ### setFooter
 Set footer of the form in ngAfterViewInit or after events.
+
+## getRequiredFieldCount
+Get number of required fields.
 
 
 ## Styling
