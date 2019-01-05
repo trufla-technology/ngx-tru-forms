@@ -4,7 +4,7 @@ import { CommonComponent } from '../common/common.component';
 @Component({
   template: `
     <label [attr.class]="schema.key" [ngClass]="{required: isRequired()}">
-      {{title()}}<sup *ngIf="isRequired()">*</sup>
+      {{title()}}
     </label>
     <div *ngIf="previewSrcExists(); else addImage" class="photo-preview">
       <button
