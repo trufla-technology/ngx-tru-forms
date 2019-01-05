@@ -39,10 +39,15 @@ import { CommonComponent } from '../common/common.component';
     </ng-template>
     <input #fileInput type="file" [name]="schema.key" (change)="onChange($event)" style="display:none;"/>
     <input type="hidden" [name]="schema.key" [formControl]="control" />
+    <div class="mat-form-field-subscript-wrapper" *ngIf="error" style="position: relative;">
+      <mat-error class="mat-error">Please upload a valid photo format (JPG, PNG)</mat-error>
+    </div>
+
   `
 })
 export class PhotoMaterialComponent extends CommonComponent {
   photoData: string;
+  error = false;
 
   onChange(event) {
     const file = event.target.files[0];
@@ -51,13 +56,17 @@ export class PhotoMaterialComponent extends CommonComponent {
     reader.onloadend = () => {
       this.processFile(reader.result, file.type)
         .then((data) => {
+          this.error = false;
           this.photoData = data.toString();
           this.control.setValue(this.photoData);
+        })
+        .catch((err) => {
+          this.error = true;
         });
     };
 
-    reader.onerror = function () {
-      console.log('There was an error reading the file!');
+    reader.onerror = () => {
+      this.error = true;
     };
 
     if (typeof(file) !== 'undefined') {
