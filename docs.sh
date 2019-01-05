@@ -1,5 +1,5 @@
 #!/bin/bash
-BASE_HREF=/
+BASE_HREF=/ngx-tru-forms/
 rm -fr docs/*
 cp src/index.html src/index.html.org
 sed -i 's/forRoot(.*),/forRoot(JsonFormMaterialModule),/' src/app/json-schema-examples/json-schema-examples.module.ts
