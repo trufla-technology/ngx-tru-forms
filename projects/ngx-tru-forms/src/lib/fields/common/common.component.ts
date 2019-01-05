@@ -28,8 +28,9 @@ export class CommonComponent implements AfterViewInit {
   }
 
   title() {
-    return typeof this.schema.title === 'undefined'
-      ? this.strToUpperCase(this.schema.key) : this.schema.title;
+    const required = this.isRequired() ? '*' : '';
+    return (typeof this.schema.title === 'undefined'
+      ? this.strToUpperCase(this.schema.key) : this.schema.title) + required;
   }
 
   strToUpperCase(str: string) {

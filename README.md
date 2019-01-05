@@ -27,7 +27,7 @@ npm install @trufla/ngx-tru-forms --save
 
 ### Usage
 
-Module can be used with [Angular Material](https://material.angular.io/) or [Bootstrap](https://getbootstrap.com/).
+Module can be used with [Angular Material](https://material.angular.io/) or [Bootstrap 4](https://getbootstrap.com/).
 Import either `JsonFormBootstrap4Module` or `JsonFormMaterialModule` and use it with `JsonFormModule`. For example: 
 ```
 import { JsonFormModule, JsonFormMaterialModule } from '@trufla/ngx-tru-forms';
@@ -62,6 +62,8 @@ In component add following:
 | (handleSubmit) | Watch for form submission. Return JSON Schema response data| |
 | (handleChange) | Watch for form changes | |
 | (handleCancel) | Watch for cancel click | |
+
+For additional ways to modify and access the form see [External Methods](#external-methods).
 
 ### Example
 
@@ -213,6 +215,13 @@ Check if the form is valid.
 
 ### submitForm
 Trigger submission of the form. Useful for trigger validation.
+
+### setHeader
+Set header of the form in ngAfterViewInit or after events
+
+### setFooter
+Set footer of the form in ngAfterViewInit or after events
+
 
 ## Styling
 

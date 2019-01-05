@@ -10,3 +10,7 @@ textarea.has-danger {
 .form-builder form div {
   height: 95%;
 }
+
+.form-builder > .col-md-6 textarea {
+  width: 95%;
+}

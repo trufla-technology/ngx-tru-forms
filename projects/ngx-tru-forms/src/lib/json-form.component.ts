@@ -1,4 +1,4 @@
-import { Component, DoCheck, EventEmitter, Input, OnDestroy, Output, ViewChild } from '@angular/core';
+import { Component, DoCheck, ElementRef, EventEmitter, Input, OnDestroy, Output, ViewChild } from '@angular/core';
 import { FormBuilder, NgForm} from '@angular/forms';
 import { JsonFormValidatorsService } from './services/validators.service';
 import { SchemaFormControl } from './models/schema-form-control';
@@ -9,52 +9,7 @@ import { JsonFormFieldsService } from './framework/json-form-fields.service';
 
 @Component({
   selector: 'jf-form, tru-form',
-  template: `
-    <form
-      #userForm="ngForm"
-      [formGroup]="form"
-      (ngSubmit)="handleOnSubmit()"
-      *ngIf="isValidSchema()"
-      [ngClass]="{ 'view-only': viewOnly }"
-      [id]="id"
-    >
-      <div
-        jf-component-chooser
-        [ngClass]="[outerClass || '', this.activeStyle['default'] ? this.activeStyle['default'] : '']"
-        [form]="form"
-        [schema]="activeSchema">
-      </div>
-      <div #ref>
-        <ng-content></ng-content>
-      </div>
-      <div
-        #buttons
-        *ngIf="ref.children.length == 0 && (submit || cancel)"
-        [ngClass]="{ 'margin-top--double': true, 'page-actions--edges': (cancel && submit), 'page-actions--center': (!cancel || !submit)}">
-        <jf-form-button
-          *ngIf="cancel"
-          [cancel]="cancel"
-          [steps]="steps"
-          [isMultiStep]="isMultiStep"
-          [isWorking]="isWorking"
-          (handleClick)="handleOnCancel()"
-          [submitClass]="submitClass"
-          [cancelClass]="cancelClass">
-        </jf-form-button>
-        <jf-form-button
-          *ngIf="submit"
-          [submitClass]="submitClass"
-          [cancelClass]="cancelClass"
-          [submit]="submit"
-          [steps]="steps"
-          [continue]="continue"
-          [isMultiStep]="isMultiStep"
-          [isWorking]="isWorking"
-          [isFormValid]="this.form.valid">
-        </jf-form-button>
-      </div>
-    </form>
-  `
+  templateUrl: './json-form.component.html'
 })
 export class JsonFormComponent implements DoCheck, OnDestroy {
   @Input() schema;
@@ -78,6 +33,8 @@ export class JsonFormComponent implements DoCheck, OnDestroy {
   @Output() handleChange = new EventEmitter();
   @Output() handleCancel = new EventEmitter();
   @ViewChild('userForm') userForm: NgForm;
+  @ViewChild('header') header: ElementRef;
+  @ViewChild('footer') footer: ElementRef;
 
   public form;
   public model;
@@ -304,20 +261,6 @@ export class JsonFormComponent implements DoCheck, OnDestroy {
     return prop.hasOwnProperty('format') && prop.format === format;
   }
 
-  /**
-   * External method for ensuring the form is valid
-   */
-  isValid(): boolean {
-    return this.form.valid;
-  }
-
-  /**
-   * Trigger external submission
-   */
-  submitForm() {
-    this.userForm.ngSubmit.emit();
-  }
-
   handleOnSubmit() {
     this.touchAll(this.form.controls);
 
@@ -394,5 +337,33 @@ export class JsonFormComponent implements DoCheck, OnDestroy {
     });
 
     return schema;
+  }
+
+  /**
+   * API: external method for ensuring the form is valid
+   */
+  isValid(): boolean {
+    return this.form.valid;
+  }
+
+  /**
+   * API: trigger external submission
+   */
+  submitForm() {
+    this.userForm.ngSubmit.emit();
+  }
+
+  /**
+   * API: set header of the form
+   */
+  setHeader(val) {
+    this.header.nativeElement.innerHTML = val;
+  }
+
+  /**
+   * API: set footer of the form
+   */
+  setFooter(val) {
+    this.footer.nativeElement.innerHTML = val;
   }
 }

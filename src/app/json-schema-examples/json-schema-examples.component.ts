@@ -1,7 +1,8 @@
-import {Component, ElementRef, OnInit, ViewChild, ViewContainerRef} from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
 import {JsonSchemaExamplesSamples} from './json-schema-examples.samples';
 import {AbstractControl, FormControl, FormGroup} from '@angular/forms';
 import {InputColourComponent} from './input-colour/input-colour.component';
+import { JsonFormComponent } from '@trufla/ngx-tru-forms';
 
 @Component({
   selector: 'app-json-schema-examples',
@@ -10,7 +11,7 @@ import {InputColourComponent} from './input-colour/input-colour.component';
     './json-schema-examples.component.css',
   ]
 })
-export class JsonSchemaExamplesComponent implements OnInit {
+export class JsonSchemaExamplesComponent implements OnInit, AfterViewInit {
   schema: {};
   isMultiStep = false;
   cancel = '';
@@ -23,6 +24,7 @@ export class JsonSchemaExamplesComponent implements OnInit {
   data: Object = {};
   @ViewChild('jsonSchema') jsonSchema: ElementRef;
   @ViewChild('formResponse') formResponse: ElementRef;
+  @ViewChild('jfForm') jfForm: JsonFormComponent;
 
   constructor(
     public jsonSchemaExamplesSamples: JsonSchemaExamplesSamples,
@@ -46,6 +48,11 @@ export class JsonSchemaExamplesComponent implements OnInit {
     this.schemaControl = new FormControl('', ValidatorJSON);
     this.form = new FormGroup({ schema: this.schemaControl });
     this.schemaControl.setValue(JSON.stringify(this.schema, null, '\t'));
+  }
+
+  ngAfterViewInit(): void {
+    this.jfForm.setHeader('<p>hello</p>');
+    this.jfForm.setFooter('<strong>world</strong>');
   }
 
   handleSubmit(data) {
@@ -156,7 +163,6 @@ export class JsonSchemaExamplesComponent implements OnInit {
 
   handleFrameworkUpdate(framework) {
     if (framework === 'material') {
-      console.log('Material Design');
       window.location.href = 'https://trufla-technology.github.io/ngx-tru-forms/material/';
     } else if (framework === 'bootstrap') {
       window.location.href = 'https://trufla-technology.github.io/ngx-tru-forms/bootstrap4/';

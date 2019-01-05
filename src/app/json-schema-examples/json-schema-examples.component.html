@@ -4,19 +4,15 @@
     <div class="col-md-6">
       <h6>Schema Samples:</h6>
       <div class="form-group">
-        <div style="float:left; width: 49%;">
-          <select class="form-control" (change)="handleSchemaUpdate($event.target.value)">
-            <option *ngFor="let schema of getSchemaSamples()" [value]="schema">
-              {{jsonSchemaExamplesSamples.json[schema].title}}
-            </option>
-          </select>
-        </div>
-        <div style="float:right; width: 49%;">
-          <select class="form-control" (change)="handleFrameworkUpdate($event.target.value)" >
-            <option value="material">Material Design</option>
-            <option value="bootstrap">Bootstrap 4</option>
-          </select>
-        </div>
+        <select style="float:left;" class="form-control" (change)="handleSchemaUpdate($event.target.value)">
+          <option *ngFor="let schema of getSchemaSamples()" [value]="schema">
+            {{jsonSchemaExamplesSamples.json[schema].title}}
+          </option>
+        </select>
+        <select style="float:left; margin-left: 10px;" class="form-control" (change)="handleFrameworkUpdate($event.target.value)" >
+          <option value="material">Material Design</option>
+          <option value="bootstrap">Bootstrap 4</option>
+        </select>
         <div style="clear:both;"></div>
       </div>
       <h6>JSON Schema:
@@ -44,6 +40,7 @@
     <div class="col-md-6">
       <h6>Form:</h6>
       <jf-form
+        #jfForm
         [id]="'exampleform'"
         [cancel]="cancel"
         [submit]="'Submit'"
