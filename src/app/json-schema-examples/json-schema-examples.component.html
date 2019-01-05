@@ -4,15 +4,20 @@
     <div class="col-md-6">
       <h6>Schema Samples:</h6>
       <div class="form-group">
-        <select class="form-control" (change)="handleSchemaUpdate($event.target.value)">
-          <option *ngFor="let schema of getSchemaSamples()" [value]="schema">
-            {{jsonSchemaExamplesSamples.json[schema].title}}
-          </option>
-        </select>
-        <select class="form-control" (change)="handleFrameworkUpdate($event.target.value)" >
-          <option value="material">Material Design</option>
-          <option value="bootstrap">Bootstrap 4</option>
-        </select>
+        <div style="float:left; width: 49%;">
+          <select class="form-control" (change)="handleSchemaUpdate($event.target.value)">
+            <option *ngFor="let schema of getSchemaSamples()" [value]="schema">
+              {{jsonSchemaExamplesSamples.json[schema].title}}
+            </option>
+          </select>
+        </div>
+        <div style="float:right; width: 49%;">
+          <select class="form-control" (change)="handleFrameworkUpdate($event.target.value)" >
+            <option value="material">Material Design</option>
+            <option value="bootstrap">Bootstrap 4</option>
+          </select>
+        </div>
+        <div style="clear:both;"></div>
       </div>
       <h6>JSON Schema:
         <span class="text-danger" *ngIf="(schemaControl.touched || schemaControl.dirty) && schemaControl.invalid">

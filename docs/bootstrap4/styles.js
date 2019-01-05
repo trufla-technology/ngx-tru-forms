@@ -130,7 +130,7 @@ module.exports = "/* .bs-datepicker */\n.bs-datepicker {\n  display: flex;\n  al
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "/* You can add global styles to this file, and also import other style files */\nbody, html {\n  width: 100%;\n  height: 100%;\n}\nbody, h1, h2, h3, h4, h5, h6 {\n  font-family: sans-serif;\n  font-size: 16px;\n  line-height: 1em;\n  margin: 0;\n}\n.row:after {\n  content: \".\";\n  visibility: hidden;\n  display: block;\n  height: 0;\n  clear: both;\n}\n.col-md-6 {\n  float: left;\n  height: 100vh;\n  width: 50%;\n}\ntextarea.schema {\n  width: 95%;\n}\nlabel {\n  display: block;\n}\n"
+module.exports = "/* You can add global styles to this file, and also import other style files */\nbody, html {\n  width: 100%;\n  height: 100%;\n}\nbody, h1, h2, h3, h4, h5, h6 {\n  font-family: sans-serif;\n  font-size: 16px;\n  line-height: 1em;\n  margin: 0;\n}\n.row:after {\n  content: \".\";\n  visibility: hidden;\n  display: block;\n  height: 0;\n  clear: both;\n}\n.col-md-6 {\n  float: left;\n  height: 100vh;\n  width: 50%;\n}\nlabel {\n  display: block;\n}\n"
 
 /***/ }),
 
