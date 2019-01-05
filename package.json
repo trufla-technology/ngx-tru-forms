@@ -6,11 +6,11 @@
     "start": "ng serve",
     "build": "ng build --prod ngx-tru-forms",
     "build-dev": "ng build ngx-tru-forms",
+    "build-docs": "./docs.sh",
     "publish": "npm run build && cd dist/ngx-tru-forms && npm publish",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "publish-git": "npm run clean && npm run build && deploy-to-git",
     "clean": "rm -fr build dist"
   },
   "config": {
@@ -18,7 +18,6 @@
       "repository": "git@github.com:trufla-technology/ngx-tru-forms.git",
       "branch": "gh-pages",
       "folder": "build",
-      "script": "sh publish-git.sh",
       "commit": "Publishing $npm_package_version",
       "user": {
         "name": "Boris Cosic",
