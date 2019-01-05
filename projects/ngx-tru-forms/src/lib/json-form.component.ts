@@ -47,6 +47,7 @@ export class JsonFormComponent implements DoCheck, OnDestroy {
   public multiStepData = {};
   public activeSchema = {};
   public activeStyle = {};
+  public requiredFields = 0;
 
   constructor(
     private fb: FormBuilder,
@@ -74,6 +75,7 @@ export class JsonFormComponent implements DoCheck, OnDestroy {
     }
 
     if (this.changeDetected) {
+      this.requiredFields = 0;
       this.appendFields();
       this.constructForm();
       this.jf[0].viewOnly = this.viewOnly;
@@ -188,6 +190,10 @@ export class JsonFormComponent implements DoCheck, OnDestroy {
             control.schema.key = prop;
             control.valueChanges.subscribe((event) => this.handleOnChange(prop, event));
             control.isRequired = schema.hasOwnProperty('required') && schema.required.indexOf(prop) > -1;
+
+            if (control.isRequired) {
+              this.requiredFields++;
+            }
             return control;
           });
         } else {
@@ -211,6 +217,9 @@ export class JsonFormComponent implements DoCheck, OnDestroy {
         control.style = (style && style.hasOwnProperty(prop)) ? style[prop] : {};
         control.valueChanges.subscribe((event) => this.handleOnChange(prop, event, this.inOneOf(schema, prop)));
         control.isRequired = schema.hasOwnProperty('required') && schema.required.indexOf(prop) > -1;
+        if (control.isRequired) {
+          this.requiredFields++;
+        }
 
         group[prop] = control;
       }
@@ -365,5 +374,12 @@ export class JsonFormComponent implements DoCheck, OnDestroy {
    */
   setFooter(val) {
     this.footer.nativeElement.innerHTML = val;
+  }
+
+  /**
+   * API: get required fields count
+   */
+  getRequiredFieldCount() {
+    return this.requiredFields;
   }
 }

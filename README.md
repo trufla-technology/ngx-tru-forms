@@ -217,10 +217,10 @@ Check if the form is valid.
 Trigger submission of the form. Useful for trigger validation.
 
 ### setHeader
-Set header of the form in ngAfterViewInit or after events
+Set header of the form in ngAfterViewInit or after events. 
 
 ### setFooter
-Set footer of the form in ngAfterViewInit or after events
+Set footer of the form in ngAfterViewInit or after events.
 
 
 ## Styling

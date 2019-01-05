@@ -51,8 +51,8 @@ export class JsonSchemaExamplesComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    this.jfForm.setHeader('<p>hello</p>');
-    this.jfForm.setFooter('<strong>world</strong>');
+    this.jfForm.setHeader('<p>Please complete the following form.</p>');
+    this.jfForm.setFooter('<p><small>* indicates required fields</small></p>');
   }
 
   handleSubmit(data) {
@@ -103,12 +103,18 @@ export class JsonSchemaExamplesComponent implements OnInit, AfterViewInit {
       }
     }
 
-
-
-
     try {
       this.schema = JSON.parse(this.schemaControl.value);
     } catch {}
+
+    setTimeout(() => {
+      let footerText = '';
+      if (this.jfForm.getRequiredFieldCount() > 0) {
+        footerText = '<p><small>* indicates required fields</small></p>';
+      }
+
+      this.jfForm.setFooter(footerText);
+    }, 50);
   }
 
   getSchemaSamples() {
