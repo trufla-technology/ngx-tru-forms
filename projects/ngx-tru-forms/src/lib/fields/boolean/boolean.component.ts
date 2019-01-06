@@ -12,7 +12,7 @@ import { CommonComponent } from '../common/common.component';
           [formControl]="control"
         />
         <label [attr.for]="schema.key" [attr.class]="schema.key" [ngClass]="{required: isRequired()}">
-          {{title()}}<sup *ngIf="isRequired()">*</sup>
+          <span [innerHTML]="title()"></span><sup *ngIf="isRequired()">*</sup>
         </label>
       </div>
     </div>

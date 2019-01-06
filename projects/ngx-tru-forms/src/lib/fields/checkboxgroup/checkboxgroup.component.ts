@@ -4,7 +4,7 @@ import { CommonComponent } from '../common/common.component';
 @Component({
   template: `
     <label [attr.class]="schema.key" [ngClass]="{'margin-bottom--half': true, required: isRequired()}">
-      {{title()}}<sup *ngIf="isRequired()">*</sup></label>
+      <span [innerHTML]="title()"></span><sup *ngIf="isRequired()">*</sup></label>
     <button type="button" *ngIf="this.schema.description" [attr.class]="'info'" [attr.title]="this.schema.description">Info</button>
     <div [class]="getClass('checkbox-group')">
       <div *ngFor="let child of this.control['controls']; let i = index"

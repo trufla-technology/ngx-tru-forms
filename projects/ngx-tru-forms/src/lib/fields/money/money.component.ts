@@ -5,7 +5,7 @@ import createNumberMask from 'text-mask-addons/dist/createNumberMask';
 @Component({
   template: `
     <label [ngClass]="['jf-label', schema.key, (isRequired() ? 'required' : '')]">
-      {{title()}}<sup *ngIf="isRequired()">*</sup>
+      <span [innerHTML]="title()"></span><sup *ngIf="isRequired()">*</sup>
     </label>
     <input
       class="form-control"

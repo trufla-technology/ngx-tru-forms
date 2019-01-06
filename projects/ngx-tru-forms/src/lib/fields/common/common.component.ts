@@ -27,8 +27,8 @@ export class CommonComponent implements AfterViewInit {
     return this.control.validator !== null && this.control.isRequired;
   }
 
-  title() {
-    const required = this.isRequired() ? '*' : '';
+  title(material = false) {
+    const required = this.isRequired() && material ? '*' : '';
     return (typeof this.schema.title === 'undefined'
       ? this.strToUpperCase(this.schema.key) : this.schema.title) + required;
   }

@@ -13,7 +13,7 @@ import { CommonComponent } from '../common/common.component';
         [attr.minLength]="schema.minLength || null"
         [attr.placeholder]="placeholder()"
         [textMask]="{ mask: getMask() }"
-        [placeholder]="title()"
+        [placeholder]="title(true)"
       />
       <mat-error jf-error [control]="control"></mat-error>
     </mat-form-field>

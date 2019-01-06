@@ -5,7 +5,7 @@ import { CommonComponent } from '../common/common.component';
   template: `
     <label
       [ngClass]="['jf-label', schema.key, (isRequired() ? 'required' : '')]" *ngIf="type() !== 'hidden'">
-      {{title()}}<sup *ngIf="isRequired()">*</sup>
+      <span [innerHTML]="title()"></span><sup *ngIf="isRequired()">*</sup>
     </label>
     <button type="button" *ngIf="this.schema.description" [attr.class]="'info'" [attr.title]="this.schema.description">Info</button>
     <input

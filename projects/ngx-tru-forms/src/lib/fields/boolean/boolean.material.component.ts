@@ -7,7 +7,7 @@ import { CommonComponent } from '../common/common.component';
   [id]="schema.key"
   [name]="schema.key"
   [formControl]="control">
-    {{title()}}
+    {{title(true)}}
   </mat-slide-toggle>
   `
 })

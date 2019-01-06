@@ -21,7 +21,7 @@ const MY_FORMATS = {
         matInput
         [matDatepicker]='myDatepicker'
         [formControl]='control'
-        [placeholder]='title()'
+        [placeholder]='title(true)'
       >
       <mat-datepicker-toggle matSuffix [for]='myDatepicker'></mat-datepicker-toggle>
       <mat-datepicker #myDatepicker></mat-datepicker>

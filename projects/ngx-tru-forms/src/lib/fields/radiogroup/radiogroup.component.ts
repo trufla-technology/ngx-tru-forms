@@ -5,7 +5,7 @@ import { CommonComponent } from '../common/common.component';
   template: `
     <label
       [ngClass]="['margin-bottom--half', 'jf-label', schema.key, (isRequired() ? 'required' : '')]">
-      {{title()}}<sup *ngIf="isRequired()">*</sup></label>
+      <span [innerHTML]="title()"></span><sup *ngIf="isRequired()">*</sup></label>
     <button type="button" *ngIf="this.schema.description" [attr.class]="'info'" [attr.title]="this.schema.description">Info</button>
     <div [class]="getClass('radio-group')">
       <div *ngFor="let enum of this.schema.enum; let i = index"
