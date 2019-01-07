@@ -3,7 +3,7 @@ import { CommonComponent } from '../common/common.component';
 
 @Component({
   template: `
-    <p>{{title()}}: {{control.value}}</p>
+    <p><span>{{placeholder()}}</span> <span>{{control.value}}</span></p>
   `
 })
 export class NumberViewComponent extends CommonComponent { }

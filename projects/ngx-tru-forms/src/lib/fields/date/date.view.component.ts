@@ -4,7 +4,7 @@ import createNumberMask from 'text-mask-addons/dist/createNumberMask';
 
 @Component({
   template: `
-  <p><span>{{title()}}</span> <span>{{control.value}}</span></p>
+  <p><span>{{placeholder()}}</span> <span>{{control.value}}</span></p>
   `
 })
 export class DateViewComponent extends CommonComponent {

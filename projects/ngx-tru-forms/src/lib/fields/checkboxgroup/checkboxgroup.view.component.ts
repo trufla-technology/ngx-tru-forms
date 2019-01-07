@@ -3,7 +3,7 @@ import { CommonComponent } from '../common/common.component';
 
 @Component({
   template: `
-    <p>{{title()}}</p>
+    <p>{{placeholder()}}</p>
     <ul *ngFor="let selected of control.value">
       <li>{{selected}}</li>
     </ul>

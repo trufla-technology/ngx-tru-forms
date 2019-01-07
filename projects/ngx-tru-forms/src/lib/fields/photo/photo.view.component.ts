@@ -3,7 +3,7 @@ import { CommonComponent } from '../common/common.component';
 
 @Component({
   template: `
-    <p>{{title()}}</p>
+    <p>{{placeholder()}}</p>
     <img src="{{control.value}}" class="img-thumbnail" />
   `
 })
