@@ -9,10 +9,10 @@ import { CommonComponent } from '../common/common.component';
       class="form-control"
       name="name"
       [formControl]="control"
-      placeholder="{{emptyOption()}}"
+      placeholder="{{placeholder()}}"
     >
       <mat-option [disabled]="true">
-          {{emptyOption()}}
+          {{placeholder()}}
       </mat-option>
       <mat-option *ngFor="let en of this.schema.enum; let i = index" [value]="en">
           {{enumNames(i)}}
@@ -23,8 +23,4 @@ import { CommonComponent } from '../common/common.component';
 
   `
 })
-export class SelectMaterialComponent extends CommonComponent {
-  emptyOption() {
-    return super.title(true).replace(/[^A-Z0-9*]+$/ig, '');
-  }
-}
+export class SelectMaterialComponent extends CommonComponent {}

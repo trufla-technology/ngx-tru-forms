@@ -15,7 +15,7 @@ import { CommonComponent } from '../common/common.component';
         [formControl]="control"
       >
         <option value="" [selected]="control.value === ''" [disabled]="true">
-          {{emptyOption()}}
+          {{placeholder()}}
         </option>
         <option
           *ngFor="let en of this.schema.enum; let i = index"
@@ -28,8 +28,4 @@ import { CommonComponent } from '../common/common.component';
     <jf-error [control]="control"></jf-error>
   `
 })
-export class SelectComponent extends CommonComponent {
-  emptyOption() {
-    return super.title().replace(/[^A-Z0-9]+$/ig, '');
-  }
-}
+export class SelectComponent extends CommonComponent {}

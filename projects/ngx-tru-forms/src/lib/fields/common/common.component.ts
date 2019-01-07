@@ -38,7 +38,7 @@ export class CommonComponent implements AfterViewInit {
   }
 
   placeholder() {
-    return this.schema.title || this.strToUpperCase(this.schema.key);
+    return (this.schema.title || this.strToUpperCase(this.schema.key)).replace(/<.*?>/g, '');
   }
 
   type() {
