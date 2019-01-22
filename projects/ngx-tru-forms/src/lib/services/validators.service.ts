@@ -15,7 +15,7 @@ export class JsonFormValidatorsService {
     const varPath = [].concat(path, prop).join('.');
 
     if (schema.properties[prop].type === 'boolean' && required.indexOf(prop) > -1) {
-      return Validators.pattern('true');
+      return Validators.requiredTrue;
     }
 
     return Validators.compose(this.validators.concat([
