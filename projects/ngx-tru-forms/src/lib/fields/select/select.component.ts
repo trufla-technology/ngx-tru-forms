@@ -8,17 +8,17 @@ import { CommonComponent } from '../common/common.component';
         [ngClass]="['jf-label', schema.key, (isRequired() ? 'required' : '')]">
         <span [innerHTML]="title()"></span><sup *ngIf="isRequired()">*</sup>
       </label>
-      <button type="button" *ngIf="this.schema.description" [attr.class]="'info'" [attr.title]="this.schema.description">Info</button>
+      <button type="button" *ngIf="schema.description" [attr.class]="'info'" [attr.title]="schema.description">Info</button>
       <select
         class="form-control"
-        name="name"
+        [attr.name]="schema.key"
         [formControl]="control"
       >
         <option value="" [selected]="control.value === ''" [disabled]="true">
           {{placeholder()}}
         </option>
         <option
-          *ngFor="let en of this.schema.enum; let i = index"
+          *ngFor="let en of schema.enum; let i = index"
           [selected]="control.value === en"
           [ngValue]="en">
           {{enumNames(i)}}

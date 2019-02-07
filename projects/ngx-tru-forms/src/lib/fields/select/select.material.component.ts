@@ -7,7 +7,7 @@ import { CommonComponent } from '../common/common.component';
   <mat-form-field>
     <mat-select
       class="form-control"
-      name="name"
+      [attr.name]="schema.key"
       [formControl]="control"
       placeholder="{{placeholder()}}"
     >

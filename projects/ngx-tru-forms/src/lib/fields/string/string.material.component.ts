@@ -6,7 +6,7 @@ import { CommonComponent } from '../common/common.component';
     <mat-form-field>
       <input
         matInput
-        [name]="schema.key"
+        [attr.name]="schema.key"
         [attr.type]="type()"
         [formControl]="control"
         [attr.maxLength]="schema.maxLength || null"

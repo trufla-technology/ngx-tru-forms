@@ -10,7 +10,7 @@ import { CommonComponent } from '../common/common.component';
     <button type="button" *ngIf="this.schema.description" [attr.class]="'info'" [attr.title]="this.schema.description">Info</button>
     <input
       class="form-control"
-      [name]="schema.key"
+      [attr.name]="schema.key"
       [attr.type]="type()"
       [formControl]="control"
       [attr.maxLength]="schema.maxLength || null"
