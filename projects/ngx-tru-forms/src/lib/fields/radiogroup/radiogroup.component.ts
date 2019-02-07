@@ -12,7 +12,7 @@ import { CommonComponent } from '../common/common.component';
            [ngClass]="{'radio-container': true, 'checked': control.value === enum}">
         <input
           type="radio"
-          [attr.id]="getId(i, enum)"
+          [attr.id]="getId(schema.key, enum)"
           [checked]="control.value === enum"
           [name]="getName(schema.key)"
           [formControl]="control"
@@ -30,8 +30,8 @@ import { CommonComponent } from '../common/common.component';
 export class RadiogroupComponent extends CommonComponent {
   randomSuffix = Math.random().toString(36).substring(7);
 
-  getId(i, val) {
-      return `${i}-${val.toString().replace(/[\W_]+/g, '')}+${this.randomSuffix}`;
+  getId(key, val) {
+      return `${key}-${val.toString()}`;
   }
 
   getName(key) {

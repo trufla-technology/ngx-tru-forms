@@ -11,7 +11,7 @@ import { CommonComponent } from '../common/common.component';
            [ngClass]="{'checkbox-container': true, 'checked': child.value === schema.enum[i]}">
         <input
           type="checkbox"
-          [attr.id]="getId(i, schema.enum[i])"
+          [attr.id]="getId(schema.key, schema.enum[i])"
           [checked]="child.value === schema.enum[i]"
           [name]="schema.key"
           [formControl]="child"
@@ -29,7 +29,6 @@ import { CommonComponent } from '../common/common.component';
 })
 export class CheckboxgroupComponent extends CommonComponent {
   checkboxGroupValues = [];
-  randomSuffix = Math.random().toString(36).substring(7);
 
   setValue(event, index) {
     if (this.checkboxGroupValues.length === 0) {
@@ -46,7 +45,7 @@ export class CheckboxgroupComponent extends CommonComponent {
     this.control.setValue(this.checkboxGroupValues);
   }
 
-  getId(i, val) {
-    return `${i}-${val.replace(/[\W_]+/g, '')}+${this.randomSuffix}`;
+  getId(key, val) {
+    return `${key}-${val.toString()}`;
   }
 }
