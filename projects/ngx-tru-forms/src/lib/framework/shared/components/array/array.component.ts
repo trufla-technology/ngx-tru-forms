@@ -3,7 +3,7 @@ import { SchemaFormControl } from '../../../../models/schema-form-control';
 import { AbstractControl, FormArray } from '@angular/forms';
 import { SchemaFormArray } from '../../../../models/schema-form-array';
 import { SchemaFormGroup } from '../../../../models/schema-form-group';
-import startCase from 'lodash.startcase';
+import { startCase } from 'lodash';
 
 @Component({
   template: `

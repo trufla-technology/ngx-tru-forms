@@ -38,11 +38,13 @@ import { CommonComponent } from '../common/common.component';
       </button>
     </ng-template>
     <input #fileInput type="file" [name]="schema.key" (change)="onChange($event)" style="display:none;"/>
-    <input type="hidden" [name]="schema.key" [formControl]="control" />
+    <input type="hidden" [name]="schema.key" [formControl]="control"/>
     <div class="mat-form-field-subscript-wrapper" *ngIf="error" style="position: relative;">
       <mat-error class="mat-error">Please upload a valid photo format (JPG, PNG)</mat-error>
     </div>
-
+    <div>
+      <jf-error [control]="control"></jf-error>
+    </div>
   `
 })
 export class PhotoMaterialComponent extends CommonComponent {
@@ -84,8 +86,8 @@ export class PhotoMaterialComponent extends CommonComponent {
   }
 
   processFile(dataURL, fileType) {
-    const maxWidth = 800;
-    const maxHeight = 800;
+    const maxWidth = 1024;
+    const maxHeight = 1024;
 
     const image = new Image();
     image.src = dataURL;

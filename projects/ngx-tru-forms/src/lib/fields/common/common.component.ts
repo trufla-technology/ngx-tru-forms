@@ -2,7 +2,7 @@ import { Schema } from '../../models/schema';
 import { SchemaFormControl } from '../../models/schema-form-control';
 import { Component, ChangeDetectorRef, AfterViewInit } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
-import startCase from 'lodash.startcase';
+import { startCase } from 'lodash';
 
 @Component({
   selector: 'jf-component',

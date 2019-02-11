@@ -27,9 +27,24 @@ export class JsonSchemaExamplesSamples {
         effective_date: {
           type: 'string',
           format: 'date'
+        },
+        do_not_contact: {
+          type: 'boolean'
         }
       },
       required: ['year', 'make', 'model', 'vin_number', 'description', 'effective_date']
+    },
+    photo_example: {
+      title: 'Photo example',
+      description: 'Photos are common to forms',
+      type: 'object',
+      properties: {
+        test_photo: {
+          type: 'string',
+          format: 'photo'
+        }
+      },
+      required: ['test_photo']
     },
     cancel_test: {
       title: 'Cancel',

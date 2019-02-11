@@ -1,28 +1,31 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { BooleanComponent } from './boolean.component';
+import { BooleanMaterialComponent } from './boolean.material.component';
 import { ReactiveFormsModule, Validators } from '@angular/forms';
-import { ErrorComponent } from '../error/error.component';
 import { By } from '@angular/platform-browser';
 import { SchemaFormControl } from '../../models/schema-form-control';
+import { MatFormFieldModule, MatSlideToggleModule } from '@angular/material';
+import { ErrorComponent } from '../error/error.component';
 
-describe('BooleanComponent', () => {
-  let component: BooleanComponent;
-  let fixture: ComponentFixture<BooleanComponent>;
+describe('BooleanMaterialComponent', () => {
+  let component: BooleanMaterialComponent;
+  let fixture: ComponentFixture<BooleanMaterialComponent>;
   let input;
   let label;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
+        MatSlideToggleModule,
+        MatFormFieldModule,
         ReactiveFormsModule
       ],
       declarations: [
-        BooleanComponent,
+        BooleanMaterialComponent,
         ErrorComponent
       ]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
@@ -35,14 +38,14 @@ describe('BooleanComponent', () => {
     control.setErrors({'required': true});
     control.markAsTouched();
 
-    fixture = TestBed.createComponent(BooleanComponent);
+    fixture = TestBed.createComponent(BooleanMaterialComponent);
     component = fixture.componentInstance;
     component.schema = control.schema;
     component.control = control;
 
     fixture.detectChanges();
     input = fixture.debugElement.query(By.css('input'));
-    label = fixture.debugElement.query(By.css('label'));
+    label = fixture.debugElement.query(By.css('.mat-slide-toggle-content'));
   });
 
   it('should create', () => {
@@ -54,11 +57,11 @@ describe('BooleanComponent', () => {
   });
 
   it('should have an id', () => {
-    expect(input.nativeElement.id).toBe('test');
+    expect(input.nativeElement.id).toBe('test-input');
   });
 
   it('should have a label', () => {
-    expect(label.nativeElement.querySelector('span:first-child').innerHTML).toBe('Test');
+    expect(label.nativeElement.innerHTML).toBe('Test*');
   });
 
   it('should display an error', () => {

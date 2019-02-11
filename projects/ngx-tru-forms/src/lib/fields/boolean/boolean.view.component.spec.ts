@@ -1,16 +1,15 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { BooleanComponent } from './boolean.component';
+import { BooleanViewComponent } from './boolean.view.component';
 import { ReactiveFormsModule, Validators } from '@angular/forms';
 import { ErrorComponent } from '../error/error.component';
 import { By } from '@angular/platform-browser';
 import { SchemaFormControl } from '../../models/schema-form-control';
 
-describe('BooleanComponent', () => {
-  let component: BooleanComponent;
-  let fixture: ComponentFixture<BooleanComponent>;
-  let input;
-  let label;
+describe('BooleanViewComponent', () => {
+  let component: BooleanViewComponent;
+  let fixture: ComponentFixture<BooleanViewComponent>;
+  let el;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -18,11 +17,11 @@ describe('BooleanComponent', () => {
         ReactiveFormsModule
       ],
       declarations: [
-        BooleanComponent,
+        BooleanViewComponent,
         ErrorComponent
       ]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
@@ -31,38 +30,29 @@ describe('BooleanComponent', () => {
     control.schema.key = 'test';
     control.valueChanges.subscribe(() => {});
     control.isRequired = true;
+    control.setValue(123);
     control.setValidators(Validators.required);
     control.setErrors({'required': true});
     control.markAsTouched();
 
-    fixture = TestBed.createComponent(BooleanComponent);
+    fixture = TestBed.createComponent(BooleanViewComponent);
     component = fixture.componentInstance;
     component.schema = control.schema;
     component.control = control;
 
     fixture.detectChanges();
-    input = fixture.debugElement.query(By.css('input'));
-    label = fixture.debugElement.query(By.css('label'));
+    el = fixture.debugElement.query(By.css('p'));
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should have a name', () => {
-    expect(input.nativeElement.name).toBe('test');
-  });
-
-  it('should have an id', () => {
-    expect(input.nativeElement.id).toBe('test');
-  });
-
   it('should have a label', () => {
-    expect(label.nativeElement.querySelector('span:first-child').innerHTML).toBe('Test');
+    expect(el.nativeElement.querySelector('span:first-child').innerHTML).toBe('Test');
   });
 
-  it('should display an error', () => {
-    const error = fixture.debugElement.query(By.css('.invalid-feedback'));
-    expect(error).toBeTruthy();
+  it('should have a value', () => {
+    expect(el.nativeElement.querySelector('span:last-child').innerHTML).toBe('123');
   });
 });

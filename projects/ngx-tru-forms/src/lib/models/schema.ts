@@ -3,38 +3,38 @@ export interface Schema {
   key: string;
 
   // title to use when describing the element
-  title: string;
+  title?: string;
 
   // type of field: array, string, object, boolean, integer, number
   type: string;
 
   // formatting of the field: email, uri, date, date-time
-  format: string;
+  format?: string;
 
   // array of select values
-  enum: Array<any>;
+  enum?: Array<any>;
 
   // array of select names
-  enumNames: Array<any>;
+  enumNames?: Array<any>;
 
   // minimum input length
-  maxLength: number;
+  maxLength?: number;
 
   // maximum input length
-  minLength: number;
+  minLength?: number;
 
   // properties
-  properties: Array<any>;
+  properties?: Array<any>;
 
   // required
-  required: Array<any>;
+  required?: Array<any>;
 
   // show tooltip
-  description: string;
+  description?: string;
 
   // display or not
-  visible: boolean;
+  visible?: boolean;
 
   // add masking
-  mask: Array<any>;
+  mask?: Array<any>;
 }

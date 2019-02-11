@@ -3,12 +3,14 @@ import { CommonComponent } from '../common/common.component';
 
 @Component({
   template: `
-  <mat-slide-toggle
-  [id]="schema.key"
-  [name]="schema.key"
-  [formControl]="control">
-    {{title(true)}}
-  </mat-slide-toggle>
+    <div class="slide-container">
+      <mat-slide-toggle
+      [id]="schema.key"
+      [name]="schema.key"
+      color="primary"
+      [formControl]="control">{{title(true)}}</mat-slide-toggle>
+    </div>
+    <jf-error [control]="control"></jf-error>
   `
 })
 export class BooleanMaterialComponent extends CommonComponent {}

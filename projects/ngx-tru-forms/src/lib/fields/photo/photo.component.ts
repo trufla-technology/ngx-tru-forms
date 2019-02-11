@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
+import { Component } from '@angular/core';
 import { CommonComponent } from '../common/common.component';
 
 @Component({
@@ -19,6 +19,9 @@ import { CommonComponent } from '../common/common.component';
         (change)="onChange($event)"
       />
       <input type="hidden" [name]="schema.key" [formControl]="control" />
+    </div>
+    <div>
+      <jf-error [control]="control"></jf-error>
     </div>
   `
 })
