@@ -60,7 +60,6 @@ In component add following:
 | [outerClass] | Wrapper class for the form component | |
 | [submitClass] | Class for submit button | |
 | [cancelClass] | Class for cancel button | | 
-| [isWorking] | Toggle form state if using async data process | |
 | [isMultiStep] | Treat schema as multi step. See example. | |
 | (handleSubmit) | Watch for form submission. Return JSON Schema response data| |
 | (handleChange) | Watch for form changes | |

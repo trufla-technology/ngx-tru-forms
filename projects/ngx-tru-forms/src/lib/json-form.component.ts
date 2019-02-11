@@ -6,6 +6,7 @@ import { JsonFormDefaultsService } from './services/defaults.service';
 import { SchemaFormGroup } from './models/schema-form-group';
 import { SchemaFormArray } from './models/schema-form-array';
 import { JsonFormFieldsService } from './framework/json-form-fields.service';
+import { DeprecatedCurrencyPipe } from '@angular/common';
 
 @Component({
   selector: 'jf-form, tru-form',

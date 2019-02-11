@@ -4,7 +4,6 @@ import { ChooserComponent } from './components/chooser/chooser.component';
 import { FieldComponent } from './components/field/field.component';
 import { FormButtonComponent } from './components/form-button/form-button.component';
 import { InfoButtonComponent } from './components/info-button/info-button.component';
-import { WorkingSpinnerComponent } from './components/working-spinner/working-spinner.component';
 import { TextareaViewComponent } from '../../fields/textarea/textarea.view.component';
 import { RadiogroupViewComponent } from '../../fields/radiogroup/radiogroup.view.component';
 import { SelectViewComponent } from '../../fields/select/select.view.component';
@@ -37,7 +36,6 @@ import { ArrayViewComponent } from './components/array/array.view.component';
     FieldComponent,
     FormButtonComponent,
     InfoButtonComponent,
-    WorkingSpinnerComponent,
     StringViewComponent,
     SelectViewComponent,
     NumberViewComponent,
@@ -60,7 +58,6 @@ import { ArrayViewComponent } from './components/array/array.view.component';
     FieldComponent,
     FormButtonComponent,
     InfoButtonComponent,
-    WorkingSpinnerComponent,
     StringViewComponent,
     SelectViewComponent,
     NumberViewComponent,
@@ -81,7 +78,6 @@ import { ArrayViewComponent } from './components/array/array.view.component';
     FieldComponent,
     FormButtonComponent,
     InfoButtonComponent,
-    WorkingSpinnerComponent,
     JsonFormComponent,
     CommonComponent,
     ArrayComponent,
