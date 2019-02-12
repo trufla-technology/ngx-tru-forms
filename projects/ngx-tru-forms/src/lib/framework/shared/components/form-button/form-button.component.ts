@@ -1,4 +1,14 @@
-import {Component, Input, Output, EventEmitter, ViewChild, ViewContainerRef, ComponentFactoryResolver, OnInit} from '@angular/core';
+import {
+  Component,
+  Input,
+  Output,
+  EventEmitter,
+  ViewChild,
+  ViewContainerRef,
+  ComponentFactoryResolver,
+  OnInit,
+  OnChanges, SimpleChanges
+} from '@angular/core';
 import {JsonFormFieldsService} from '../../../json-form-fields.service';
 import {ButtonComponent} from '../../../../fields/button/button.component';
 
@@ -8,7 +18,7 @@ import {ButtonComponent} from '../../../../fields/button/button.component';
     <ng-container #button></ng-container>
   `
 })
-export class FormButtonComponent implements OnInit {
+export class FormButtonComponent implements OnInit, OnChanges {
   @Input() isFormValid = true;
   @Input() label = '';
   @Input() isMultiStep = false;
@@ -27,7 +37,15 @@ export class FormButtonComponent implements OnInit {
     private jsonFormFieldsService: JsonFormFieldsService
   ) {}
 
+  ngOnChanges(changes: SimpleChanges): void {
+    this.drawButton();
+  }
+
   ngOnInit(): void {
+    this.drawButton();
+  }
+
+  drawButton() {
     this.button.clear();
     const componentFactory = this.componentFactoryResolver.resolveComponentFactory(this.jsonFormFieldsService[0].get('button'));
     const componentRef = this.button.createComponent(componentFactory);
