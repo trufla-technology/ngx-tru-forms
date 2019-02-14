@@ -23,6 +23,12 @@ export interface Schema {
   // maximum input length
   minLength?: number;
 
+  // maximum value
+  maximum?: any;
+
+  // minimum value
+  minimum?: any;
+
   // properties
   properties?: Array<any>;
 

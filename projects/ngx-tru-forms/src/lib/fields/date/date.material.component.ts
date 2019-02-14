@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { CommonComponent } from '../common/common.component';
-import {DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE} from '@angular/material';
 
 const MY_FORMATS = {
   parse: {
@@ -22,6 +21,8 @@ const MY_FORMATS = {
         [matDatepicker]='myDatepicker'
         [formControl]='control'
         [placeholder]='title(true)'
+        [min]="minDate()"
+        [max]="maxDate()"
       >
       <mat-datepicker-toggle matSuffix [for]='myDatepicker'></mat-datepicker-toggle>
       <mat-datepicker #myDatepicker></mat-datepicker>
@@ -29,4 +30,12 @@ const MY_FORMATS = {
     </mat-form-field>
   `
 })
-export class DateMaterialComponent extends CommonComponent {}
+export class DateMaterialComponent extends CommonComponent {
+  minDate() {
+    return isNaN(new Date(this.schema.minimum).getDate()) ? null : new Date(this.schema.minimum);
+  }
+
+  maxDate() {
+    return isNaN(new Date(this.schema.maximum).getDate()) ? null : new Date(this.schema.maximum);
+  }
+}

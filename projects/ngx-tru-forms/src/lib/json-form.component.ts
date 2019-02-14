@@ -6,7 +6,7 @@ import { JsonFormDefaultsService } from './services/defaults.service';
 import { SchemaFormGroup } from './models/schema-form-group';
 import { SchemaFormArray } from './models/schema-form-array';
 import { JsonFormFieldsService } from './framework/json-form-fields.service';
-import { DeprecatedCurrencyPipe } from '@angular/common';
+import * as _ from 'lodash';
 
 @Component({
   selector: 'jf-form, tru-form',
@@ -167,7 +167,7 @@ export class JsonFormComponent implements DoCheck, OnDestroy {
     }
 
     Object.keys(schema.properties).forEach((prop) => {
-      if (this.isOneOf(schema, prop)) {
+      if (this.isOneOf(schema, prop, path)) {
         return;
       }
 
@@ -229,27 +229,30 @@ export class JsonFormComponent implements DoCheck, OnDestroy {
     return group;
   }
 
-  isOneOf(schema, prop) {
-    if (typeof (schema.oneOf) !== 'undefined') {
-      return schema.oneOf.filter((p) => {
-        const key = Object.keys(p.properties)[0];
-
-        if (p.properties[key].required.indexOf(prop) > -1) {
-          let value = this.data[key];
-          if (schema.properties[key].type === 'boolean') {
-            value = String(this.data[key]) === 'true'; // material preserves string & bootstrap doesn't
-          } else if (schema.properties[key].type === 'number') {
-            value = +this.data[key];
-          }
-
-          return this.data.hasOwnProperty(key) === false || p.properties[key].enum.indexOf(value) === -1;
-        }
-
-        return false;
-      }).length > 0;
+  isOneOf(schema, key, path) {
+    if (!schema.oneOf) {
+      return false;
     }
 
-    return false;
+    return schema.oneOf.filter((p) => {
+      if (_.get(p, 'required', []).includes(key)) {
+
+        const parent = Object.keys(p.properties)[0];
+        const dataPath = path.concat(parent).join('.');
+        let value = _.get(this.data, dataPath, null);
+
+        if (schema.properties[parent].type === 'boolean') {
+          value = String(value) === 'true'; // material preserves string & bootstrap doesn't
+        } else if (schema.properties[parent].type === 'number') {
+          value = +value;
+        }
+
+        // when returns true it will not display field, otherwise it will
+        return value === null || _.get(p.properties[parent], 'enum', []).indexOf(value) === -1;
+      }
+
+      return false;
+    }).length > 0;
   }
 
   inOneOf(schema, prop) {

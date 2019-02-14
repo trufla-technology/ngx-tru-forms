@@ -295,7 +295,7 @@ export class JsonSchemaExamplesSamples {
       description: 'Add conditional multistep control',
       type: 'object',
       properties: {
-        foods: {
+        meal: {
           type: 'object',
           properties: {
             food_like: {
@@ -305,12 +305,7 @@ export class JsonSchemaExamplesSamples {
                 'Pizza',
                 'Hamburger'
               ]
-            }
-          }
-        },
-        drinks: {
-          type: 'object',
-          properties: {
+            },
             drink: {
               type: 'string',
               enum: [
@@ -319,23 +314,41 @@ export class JsonSchemaExamplesSamples {
                 'Sprite'
               ]
             }
-          }
-        }
-      },
-      oneOf: [
-        {
-          properties: {
-            'foods.food_like': {
-              enum: [
-                'Hamburger'
-              ],
+          },
+          oneOf: [
+            {
+              properties: {
+                'food_like': {
+                  enum: [
+                    'Hamburger'
+                  ]
+                }
+              },
               required: [
-                'drinks'
+                'drink'
               ]
-            }
-          }
+            },
+            {
+              properties: {
+                'food_like': {
+                  enum: [
+                    'Pizza'
+                  ]
+                }
+              }
+            },
+            {
+              properties: {
+                'food_like': {
+                  enum: [
+                    'Hot Dog'
+                  ]
+                }
+              }
+            },
+          ]
         }
-      ]
+      }
     },
     checkbox_group: {
       title: 'Checkbox Group',
@@ -456,16 +469,23 @@ export class JsonSchemaExamplesSamples {
         {
           properties: {
             food_like: {
-              enum: ['Pizza'],
-              required: ['pizza_type']
+              enum: ['Pizza']
             }
-          }
+          },
+          required: ['pizza_type']
         },
         {
           properties: {
             food_like: {
-              enum: ['Hamburger'],
-              required: ['hamburger_meat']
+              enum: ['Hamburger']
+            }
+          },
+          required: ['hamburger_meat']
+        },
+        {
+          properties: {
+            food_like: {
+              enum: ['Hot Dog']
             }
           }
         }
