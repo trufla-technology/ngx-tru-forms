@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ValidatorFn, Validators} from '@angular/forms';
+import { AbstractControl, ValidatorFn, Validators } from '@angular/forms';
 
 @Injectable()
 export class JsonFormValidatorsService {
@@ -10,6 +10,13 @@ export class JsonFormValidatorsService {
   }
 
   public get(prop, schema, path) {
+    const dateValidator = function ageRangeValidator(control: AbstractControl) {
+      if (control.value === null || (control.value !== null && isNaN(new Date(control.value).getDate()))) {
+        return { customError: 'Please enter a valid date.' };
+      }
+      return null;
+    };
+
     const required = schema.required || [];
     const field = schema.properties[prop];
     const varPath = [].concat(path, prop).join('.');
@@ -26,6 +33,7 @@ export class JsonFormValidatorsService {
       (field.hasOwnProperty('format') && field.format === 'email' ? Validators.email : null),
       (field.hasOwnProperty('minimum') ? Validators.min(field.minimum) : null),
       (field.hasOwnProperty('maximum') ? Validators.max(field.maximum) : null),
+      (field.format && field.format === 'date' ? dateValidator : null),
       (field.pattern ? Validators.pattern(field.pattern) : null)
     ]));
   }

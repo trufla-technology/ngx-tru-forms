@@ -19,6 +19,7 @@ const MY_FORMATS = {
       <input
         matInput
         [matDatepicker]='myDatepicker'
+        (click)="myDatepicker.open()"
         [formControl]='control'
         [placeholder]='title(true)'
         [min]="minDate()"
