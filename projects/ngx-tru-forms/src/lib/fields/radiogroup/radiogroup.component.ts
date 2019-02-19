@@ -18,7 +18,7 @@ import { CommonComponent } from '../common/common.component';
           [formControl]="control"
           [value]="en" />
         <label
-          [attr.for]="getId(i, en, schema.id)"
+          [attr.for]="getId(schema.key, en, schema.id)"
           [attr.class]="schema.key">
            {{enumNames(i)}}
         </label>
