@@ -7,10 +7,10 @@ import { CommonComponent } from '../common/common.component';
       <label [attr.class]="schema.key" [ngClass]="{'margin-bottom--half': true, required: isRequired()}">
         <span [innerHTML]="title(true)"></span><sup *ngIf="isRequired()">*</sup></label>
 
-      <mat-radio-group [formControl]="control" *ngFor="let enum of this.schema.enum; let i = index">
+      <mat-radio-group [formControl]="control" *ngFor="let en of this.schema.enum; let i = index">
         <mat-radio-button
-          [checked]="control.value === enum.toString()"
-          [value]="enum.toString()"
+          [checked]="control.value === en.toString()"
+          [value]="en.toString()"
         >
           {{enumNames(i)}}
         </mat-radio-button>

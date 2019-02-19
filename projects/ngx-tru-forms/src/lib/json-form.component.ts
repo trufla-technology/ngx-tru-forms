@@ -177,6 +177,7 @@ export class JsonFormComponent implements DoCheck, OnDestroy {
         group[prop] = new SchemaFormGroup(this.generateForm(schema.properties[prop], {}, groupData, groupStyle, [].concat(path, prop)));
         group[prop].schema = schema.properties[prop];
         group[prop].schema.key = prop;
+        group[prop].schema.id = this.id;
         group[prop].style = groupStyle;
       } else if (schema.properties[prop].type === 'array' && !this.isFormat(schema.properties[prop], 'multiselect')) {
         path.push(prop);
@@ -189,6 +190,7 @@ export class JsonFormComponent implements DoCheck, OnDestroy {
             const control = new SchemaFormControl();
             control.schema = Object.assign({}, schema.properties[prop]);
             control.schema.key = prop;
+            control.schema.id = this.id;
             control.valueChanges.subscribe((event) => this.handleOnChange(prop, event));
             control.isRequired = schema.hasOwnProperty('required') && schema.required.indexOf(prop) > -1;
 
@@ -208,12 +210,14 @@ export class JsonFormComponent implements DoCheck, OnDestroy {
         group[prop] = new SchemaFormArray(fbArray);
         group[prop].schema = schema.properties[prop];
         group[prop].schema.key = prop;
+        group[prop].schema.id = this.id;
         group[prop].style = arrayStyle;
       } else if (this.isVisible(schema.properties[prop])) {
 
         const control = new SchemaFormControl(this.df.get(prop, schema, data), this.vl.get(prop, schema, path));
         control.schema = Object.assign({}, schema.properties[prop]);
         control.schema.key = prop;
+        control.schema.id = this.id;
         control.data = this.df.get(prop, schema, data);
         control.style = (style && style.hasOwnProperty(prop)) ? style[prop] : {};
         control.valueChanges.subscribe((event) => this.handleOnChange(prop, event, this.inOneOf(schema, prop)));

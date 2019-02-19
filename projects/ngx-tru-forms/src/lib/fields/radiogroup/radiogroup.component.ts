@@ -8,17 +8,17 @@ import { CommonComponent } from '../common/common.component';
       <span [innerHTML]="title()"></span><sup *ngIf="isRequired()">*</sup></label>
     <button type="button" *ngIf="this.schema.description" [attr.class]="'info'" [attr.title]="this.schema.description">Info</button>
     <div [class]="getClass('radio-group')">
-      <div *ngFor="let enum of this.schema.enum; let i = index"
-           [ngClass]="{'radio-container': true, 'checked': control.value === enum}">
+      <div *ngFor="let en of this.schema.enum; let i = index"
+           [ngClass]="{'radio-container': true, 'checked': control.value === en}">
         <input
           type="radio"
-          [attr.id]="getId(schema.key, enum)"
-          [checked]="control.value === enum"
+          [attr.id]="getId(schema.key, en, schema.id)"
+          [checked]="control.value === en"
           [name]="getName(schema.key)"
           [formControl]="control"
-          [value]="enum" />
+          [value]="en" />
         <label
-          [attr.for]="getId(i, enum)"
+          [attr.for]="getId(i, en, schema.id)"
           [attr.class]="schema.key">
            {{enumNames(i)}}
         </label>
@@ -30,8 +30,8 @@ import { CommonComponent } from '../common/common.component';
 export class RadiogroupComponent extends CommonComponent {
   randomSuffix = Math.random().toString(36).substring(7);
 
-  getId(key, val) {
-      return `${key}-${val.toString()}`;
+  getId(key, val, formId) {
+      return [formId, key, val.toString()].filter((f) => f.length).join('-');
   }
 
   getName(key) {

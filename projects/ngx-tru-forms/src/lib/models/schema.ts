@@ -1,4 +1,7 @@
 export interface Schema {
+  // form id
+  id: string;
+
   // parent key element
   key: string;
 
