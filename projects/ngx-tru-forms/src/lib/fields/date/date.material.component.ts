@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonComponent } from '../common/common.component';
+import { DateAdapter } from '@angular/material';
+import { MomentUtcDateAdapter } from '../../services/moment-utc-adapter.service';
 
 const MY_FORMATS = {
   parse: {
@@ -29,7 +31,13 @@ const MY_FORMATS = {
       <mat-datepicker #myDatepicker></mat-datepicker>
       <mat-error jf-error [control]='control'></mat-error>
     </mat-form-field>
-  `
+  `,
+  providers: [
+    {
+      provide: DateAdapter,
+      useClass: MomentUtcDateAdapter
+    }
+  ]
 })
 export class DateMaterialComponent extends CommonComponent {
   minDate() {

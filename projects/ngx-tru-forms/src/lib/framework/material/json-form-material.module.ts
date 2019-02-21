@@ -29,6 +29,7 @@ import { ErrorMaterialComponent } from '../../fields/error/error.material.compon
 import { ButtonMaterialComponent } from '../../fields/button/button.material.component';
 import { SharedModule} from '../shared/shared.module';
 import { ArrayMaterialComponent } from '../../fields/array/array.material.component';
+import { MatMomentDateModule } from '@angular/material-moment-adapter';
 
 @NgModule({
   imports: [
@@ -46,6 +47,7 @@ import { ArrayMaterialComponent } from '../../fields/array/array.material.compon
     MatNativeDateModule,
     MatDatepickerModule,
     MatCardModule,
+    MatMomentDateModule,
     SharedModule
   ],
   declarations: [

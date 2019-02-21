@@ -32,7 +32,7 @@ export class JsonSchemaExamplesSamples {
           type: 'boolean'
         }
       },
-      required: ['year', 'make', 'model', 'vin_number', 'description', 'effective_date']
+      required: ['year', 'effective_date']
     },
     photo_example: {
       title: 'Photo example',

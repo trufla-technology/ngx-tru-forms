@@ -1,7 +1,7 @@
 {
   "name": "@trufla/ngx-tru-forms",
   "author": "Boris Cosic <boris.c@trufla.com>",
-  "version": "0.6.38",
+  "version": "0.6.39",
   "license": "MIT",
   "main": "./index.js",
   "typings": "./index.d.ts",
@@ -29,6 +29,7 @@
     "@angular/router": ">=6.1.0",
     "angular2-text-mask": ">=8.0.4",
     "text-mask-addons": ">=3.7.2",
-    "lodash": "^4.17.10"
+    "lodash": "^4.17.10",
+    "@angular/material-moment-adapter": ">=6.1.0"
   }
 }
