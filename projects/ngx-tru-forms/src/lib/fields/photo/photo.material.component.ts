@@ -7,7 +7,7 @@ import { CommonComponent } from '../common/common.component';
       <span [innerHTML]="title(true)"></span>
     </label>
     <div *ngIf="previewSrcExists(); else addImage" class="photo-preview">
-      <button
+      <a
         class="photo-add"
         mat-button
         color="primary"
@@ -17,25 +17,25 @@ import { CommonComponent } from '../common/common.component';
         (click)="$event.preventDefault(); fileInput.click();"
       >
         <mat-icon>add_a_photo</mat-icon>
-      </button>
-      <button
+      </a>
+      <a
         class="photo-remove"
         mat-mini-fab
         color="warn"
         (click)="clearPhoto()"
       >
         <mat-icon>close</mat-icon>
-      </button>
+      </a>
     </div>
     <ng-template #addImage>
-      <button
+      <a
         class="photo-add"
         mat-button
         color="primary"
         (click)="$event.preventDefault(); fileInput.click();"
       >
         <mat-icon>add_a_photo</mat-icon>
-      </button>
+      </a>
     </ng-template>
     <input #fileInput type="file" [name]="schema.key" (change)="onChange($event)" style="display:none;"/>
     <input type="hidden" [name]="schema.key" [formControl]="control"/>
