@@ -15,7 +15,7 @@ import { CommonComponent } from '../common/common.component';
       [attr.maxLength]="schema.maxLength || null"
       [attr.minLength]="schema.minLength || null"
       [attr.placeholder]="placeholder()"
-      [disabled]="disabled"
+      [attr.disabled]="disabled"
     ></textarea>
     <jf-error [control]="control"></jf-error>
   `
