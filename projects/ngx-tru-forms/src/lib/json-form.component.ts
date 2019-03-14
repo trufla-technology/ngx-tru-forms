@@ -29,7 +29,7 @@ export class JsonFormComponent implements DoCheck, OnDestroy {
   @Input() id = '';
   @Input() fields = {};
   @Input() viewOnly = false;
-  @Input() disabled = false;
+  @Input() disabled = null;
   @Output() handleStep = new EventEmitter();
   @Output() handleSubmit = new EventEmitter();
   @Output() handleChange = new EventEmitter();

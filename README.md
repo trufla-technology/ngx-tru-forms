@@ -63,7 +63,7 @@ In component add following:
 | [isWorking] | Toggle form state if using async data process | |
 | [isMultiStep] | Treat schema as multi step. See example. | |
 | [viewOnly] | Render only the labels and form data. Useful for reports. | |
-| [disabled] | Disable all the fields in the form. | |
+| [disabled] | Disable all the fields in the form. Set to true for disabled and null otherwise | |
 | (handleSubmit) | Watch for form submission. Return JSON Schema response data| |
 | (handleChange) | Watch for form changes | |
 | (handleCancel) | Watch for cancel click | |
