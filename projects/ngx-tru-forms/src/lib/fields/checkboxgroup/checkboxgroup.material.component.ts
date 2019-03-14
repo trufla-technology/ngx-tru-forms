@@ -11,6 +11,7 @@ import { CommonComponent } from '../common/common.component';
     [formControl]="child"
     (change)="setValue($event, i)"
     [value]="schema.enum[i]"
+    [disabled]="disabled"
     >
         {{enumNames(i)}}
     </mat-checkbox>

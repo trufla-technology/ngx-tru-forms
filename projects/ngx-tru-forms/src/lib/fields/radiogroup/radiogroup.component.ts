@@ -16,6 +16,7 @@ import { CommonComponent } from '../common/common.component';
           [checked]="control.value === en"
           [name]="getName(schema.key)"
           [formControl]="control"
+          [attr.disabled]="disabled"
           [value]="en" />
         <label
           [attr.for]="getId(schema.key, en, schema.id)"

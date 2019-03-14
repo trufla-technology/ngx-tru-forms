@@ -13,6 +13,7 @@ import { CommonComponent } from '../common/common.component';
       [attr.type]="'number'"
       [formControl]="control"
       [attr.placeholder]="placeholder()"
+      [attr.disabled]="disabled"
     />
     <jf-error [control]="control"></jf-error>
   `

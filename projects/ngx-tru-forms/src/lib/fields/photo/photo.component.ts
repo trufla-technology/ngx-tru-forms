@@ -17,6 +17,7 @@ import { CommonComponent } from '../common/common.component';
         *ngIf="!previewSrcExists()"
         type="file"
         (change)="onChange($event)"
+        [disabled]="disabled"
       />
       <input type="hidden" [name]="schema.key" [formControl]="control" />
     </div>

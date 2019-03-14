@@ -11,6 +11,7 @@ import { CommonComponent } from '../common/common.component';
           [attr.maxLength]="schema.maxLength || null"
           [attr.minLength]="schema.minLength || null"
           [attr.placeholder]="placeholder()"
+          [disabled]="disabled"
           [placeholder]="title(true)">
       </textarea>
       <mat-error jf-error [control]="control"></mat-error>

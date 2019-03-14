@@ -11,6 +11,7 @@ import { CommonComponent } from '../common/common.component';
         <mat-radio-button
           [checked]="control.value === en.toString()"
           [value]="en.toString()"
+          [disabled]="disabled"
         >
           {{enumNames(i)}}
         </mat-radio-button>

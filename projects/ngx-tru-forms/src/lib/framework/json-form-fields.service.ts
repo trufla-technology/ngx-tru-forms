@@ -20,6 +20,7 @@ export class JsonFormFieldsService {
   rootViewContainer;
   public fieldTypes: { [type: string]: any } = {};
   private viewOnly = false;
+  private disabled = false;
   private viewTypes: Object = {
     string: StringViewComponent,
     select: SelectViewComponent,
@@ -50,6 +51,7 @@ export class JsonFormFieldsService {
     componentRef.instance.control = control;
     componentRef.instance.schema = control.schema;
     componentRef.instance.style = control.style;
+    componentRef.instance.disabled = this.disabled;
   }
 
   has(type: string) {

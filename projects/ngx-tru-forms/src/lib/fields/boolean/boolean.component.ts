@@ -10,6 +10,7 @@ import { CommonComponent } from '../common/common.component';
           [name]="schema.key"
           type="checkbox"
           [formControl]="control"
+          [attr.disabled]="disabled"
         />
         <label [attr.for]="schema.key" [attr.class]="schema.key" [ngClass]="{required: isRequired()}">
           <span [innerHTML]="title()"></span><sup *ngIf="isRequired()">*</sup>

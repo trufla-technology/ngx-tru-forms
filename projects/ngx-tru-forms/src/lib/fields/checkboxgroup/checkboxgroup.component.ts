@@ -12,6 +12,7 @@ import { CommonComponent } from '../common/common.component';
         <input
           type="checkbox"
           [attr.id]="getId(schema.key, schema.enum[i])"
+          [attr.disabled]="disabled"
           [checked]="child.value === schema.enum[i]"
           [name]="schema.key"
           [formControl]="child"

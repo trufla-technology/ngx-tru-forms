@@ -12,6 +12,7 @@ import { CommonComponent } from '../common/common.component';
       name="name"
       [formControl]="control"
       multiple="multiple"
+      [attr.disabled]="disabled"
     >
       <option
         *ngFor="let en of schema.enum; let i = index"

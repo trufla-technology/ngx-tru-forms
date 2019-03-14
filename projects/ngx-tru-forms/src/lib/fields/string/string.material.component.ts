@@ -14,6 +14,7 @@ import { CommonComponent } from '../common/common.component';
         [attr.placeholder]="placeholder()"
         [textMask]="{ mask: getMask() }"
         [placeholder]="title(true)"
+        [disabled]="disabled"
       />
       <mat-error jf-error [control]="control"></mat-error>
     </mat-form-field>

@@ -11,6 +11,7 @@ import { CommonComponent } from '../common/common.component';
         [formControl]="control"
         [attr.placeholder]="placeholder()"
         [placeholder]="title(true)"
+        [disabled]="disabled"
       />
       <mat-error jf-error [control]="control"></mat-error>
     </mat-form-field>

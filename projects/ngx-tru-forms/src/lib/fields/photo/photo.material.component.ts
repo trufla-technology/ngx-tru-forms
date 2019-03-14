@@ -15,6 +15,7 @@ import { CommonComponent } from '../common/common.component';
         [style.background-size]="'cover'"
         [style.background-repeat]="'no-repeat'"
         (click)="$event.preventDefault(); fileInput.click();"
+        [disabled]="disabled"
       >
         <mat-icon>add_a_photo</mat-icon>
       </a>

@@ -13,6 +13,7 @@ import { CommonComponent } from '../common/common.component';
       [placeholder]="placeholder()"
       [bsConfig]="{ containerClass: 'theme-default', dateInputFormat: 'MM/DD/YYYY' }"
       bsDatepicker
+      [attr.disabled]="disabled"
     />
     <jf-error [control]="control"></jf-error>
   `

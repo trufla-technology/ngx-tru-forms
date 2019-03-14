@@ -27,6 +27,7 @@ const MY_FORMATS = {
         [placeholder]='title(true)'
         [min]="minDate()"
         [max]="maxDate()"
+        [disabled]="disabled"
       >
       <mat-datepicker-toggle matSuffix [for]='myDatepicker'></mat-datepicker-toggle>
       <mat-datepicker #myDatepicker [touchUi]="isMobile()"></mat-datepicker>

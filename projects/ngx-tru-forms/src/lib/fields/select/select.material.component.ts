@@ -10,6 +10,7 @@ import { CommonComponent } from '../common/common.component';
       [attr.name]="schema.key"
       [formControl]="control"
       placeholder="{{title(true)}}"
+      [disabled]="disabled"
     >
       <mat-option [disabled]="true">
           {{placeholder()}}

@@ -9,9 +9,10 @@ import { startCase } from 'lodash';
   template: ''
 })
 export class CommonComponent implements AfterViewInit {
-  public control: SchemaFormControl;
-  public schema: Schema;
-  public style: {};
+  control: SchemaFormControl;
+  schema: Schema;
+  style: {};
+  disabled = false;
 
   constructor(
     public sanitizer: DomSanitizer,

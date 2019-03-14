@@ -8,6 +8,7 @@ import { CommonComponent } from '../common/common.component';
       [id]="schema.key"
       [name]="schema.key"
       color="primary"
+      [disabled]="disabled"
       [formControl]="control">{{title(true)}}</mat-slide-toggle>
     </div>
     <jf-error [control]="control"></jf-error>

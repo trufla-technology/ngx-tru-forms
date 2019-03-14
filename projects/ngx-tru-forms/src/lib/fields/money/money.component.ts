@@ -15,6 +15,7 @@ import createNumberMask from 'text-mask-addons/dist/createNumberMask';
       [placeholder]="placeholder()"
       [textMask]="{ mask: numberMask}"
       (input)=cleanMask($event.target.value)
+      [attr.disabled]="disabled"
     />
     <jf-error [control]="control"></jf-error>
   `

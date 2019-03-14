@@ -4,7 +4,11 @@ import { CommonComponent } from '../common/common.component';
 @Component({
   template: `
   <mat-form-field>
-    <mat-select [formControl]="control" name="name" multiple>
+    <mat-select
+      [formControl]="control"
+      name="name"
+      [disabled]="disabled"
+      multiple>
       <mat-option
         *ngFor="let en of schema.enum; let i = index"
         [value]="en">

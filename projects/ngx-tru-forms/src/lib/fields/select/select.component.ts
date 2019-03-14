@@ -13,6 +13,7 @@ import { CommonComponent } from '../common/common.component';
         class="form-control"
         [attr.name]="schema.key"
         [formControl]="control"
+        [attr.disabled]="disabled"
       >
         <option value="" [selected]="control.value === ''" [disabled]="true">
           {{placeholder()}}

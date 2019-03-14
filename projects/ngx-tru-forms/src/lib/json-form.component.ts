@@ -29,6 +29,7 @@ export class JsonFormComponent implements DoCheck, OnDestroy {
   @Input() id = '';
   @Input() fields = {};
   @Input() viewOnly = false;
+  @Input() disabled = false;
   @Output() handleStep = new EventEmitter();
   @Output() handleSubmit = new EventEmitter();
   @Output() handleChange = new EventEmitter();
@@ -80,8 +81,9 @@ export class JsonFormComponent implements DoCheck, OnDestroy {
       this.appendFields();
       this.constructForm();
       this.jf[0].viewOnly = this.viewOnly;
-      this.cancel = this.viewOnly ? '' : this.cancel;
-      this.submit = this.viewOnly ? '' : this.submit;
+      this.jf[0].disabled = this.disabled;
+      this.cancel = this.viewOnly || this.disabled ? '' : this.cancel;
+      this.submit = this.viewOnly || this.disabled ? '' : this.submit;
     }
   }
 
