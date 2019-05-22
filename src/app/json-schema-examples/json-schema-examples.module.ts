@@ -6,6 +6,8 @@ import { JsonFormModule, JsonFormBootstrap4Module, JsonFormMaterialModule, JsonF
 import { JsonSchemaExamplesSamples } from './json-schema-examples.samples';
 import { InputColourComponent } from './input-colour/input-colour.component';
 import { ColorPickerModule } from 'ngx-color-picker';
+import { PastebinService } from '../services/pastebin.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   imports: [
@@ -13,8 +15,10 @@ import { ColorPickerModule } from 'ngx-color-picker';
     ReactiveFormsModule,
     JsonFormBootstrap4Module,
     JsonFormMaterialModule,
+    JsonFormModule.forRoot(JsonFormMaterialModule),
     JsonFormModule.forRoot(JsonFormBootstrap4Module),
-    ColorPickerModule
+    ColorPickerModule,
+    HttpClientModule
   ],
   declarations: [
     JsonSchemaExamplesComponent,
@@ -22,7 +26,8 @@ import { ColorPickerModule } from 'ngx-color-picker';
   ],
   providers: [
     JsonSchemaExamplesSamples,
-    JsonFormMaterial
+    JsonFormMaterial,
+    PastebinService
   ],
   exports: [
     JsonSchemaExamplesComponent
