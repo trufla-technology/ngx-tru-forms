@@ -11,6 +11,9 @@ import { CommonComponent } from '../common/common.component';
       <ng-container *ngIf="control.errors && control.errors['pattern']">
         Input value is invalid.
       </ng-container>
+      <ng-container *ngIf="control.errors && control.errors['email']">
+        Email is invalid.
+      </ng-container>
       <ng-container *ngIf="control.errors && control.errors['minlength']">
         Input has to be a minimum of {{control.errors['minlength']['requiredLength']}} characters.
       </ng-container>
