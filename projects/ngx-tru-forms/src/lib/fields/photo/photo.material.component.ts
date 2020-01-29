@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import { CommonComponent } from '../common/common.component';
 
 @Component({
@@ -48,9 +48,15 @@ import { CommonComponent } from '../common/common.component';
     </div>
   `
 })
-export class PhotoMaterialComponent extends CommonComponent {
+export class PhotoMaterialComponent extends CommonComponent implements OnInit {
   photoData: string;
   error = false;
+
+  ngOnInit() {
+    if (this.control.data) {
+      this.photoData = this.control.data;
+    }
+  }
 
   onChange(event) {
     const file = event.target.files[0];
