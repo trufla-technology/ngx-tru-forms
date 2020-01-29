@@ -19,6 +19,7 @@ import {ButtonComponent} from '../../../../fields/button/button.component';
   `
 })
 export class FormButtonComponent implements OnInit, OnChanges {
+  @Input() isDisabled = false;
   @Input() isFormValid = true;
   @Input() label = '';
   @Input() isMultiStep = false;
@@ -52,7 +53,7 @@ export class FormButtonComponent implements OnInit, OnChanges {
     (<ButtonComponent> componentRef.instance).type = this.getType();
     (<ButtonComponent> componentRef.instance).isVisible = this.isVisible();
     (<ButtonComponent> componentRef.instance).class = this.getClass();
-    (<ButtonComponent> componentRef.instance).disabled = this.isWorking;
+    (<ButtonComponent> componentRef.instance).disabled = this.isDisabled;
     (<ButtonComponent> componentRef.instance).isWorking = this.isWorking;
     (<ButtonComponent> componentRef.instance).label = this.getLabel();
     (<ButtonComponent> componentRef.instance).handleButtonClick.subscribe((event) => {
