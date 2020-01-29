@@ -17,6 +17,15 @@ export class JsonFormValidatorsService {
       return null;
     };
 
+    const emailValidator = function (control: AbstractControl) {
+      /* tslint:disable-next-line:max-line-length */
+      const mailRegex = `^(([^<>()\\[\\]\\\\.,;:\\s@"]+(\\.[^<>()\\[\\]\\\\.,;:\\s@"]+)*)|(".+"))@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$`;
+      if (RegExp(mailRegex).test(control.value)) {
+        return null;
+      }
+      return { customError: 'Please enter a valid email address' };
+    };
+
     const required = schema.required || [];
     const field = schema.properties[prop];
     const varPath = [].concat(path, prop).join('.');
@@ -30,7 +39,7 @@ export class JsonFormValidatorsService {
       (required.indexOf(prop) > -1 ? Validators.required : null),
       (field.hasOwnProperty('minLength') ? Validators.minLength(field.minLength) : null),
       (field.hasOwnProperty('maxLength') ? Validators.maxLength(field.maxLength) : null),
-      (field.hasOwnProperty('format') && field.format === 'email' ? Validators.email : null),
+      (field.hasOwnProperty('format') && field.format === 'email' ? emailValidator : null),
       (field.hasOwnProperty('minimum') ? Validators.min(field.minimum) : null),
       (field.hasOwnProperty('maximum') ? Validators.max(field.maximum) : null),
       (field.format && field.format === 'date' ? dateValidator : null),
