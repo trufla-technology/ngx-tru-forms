@@ -26,6 +26,14 @@ export class JsonFormValidatorsService {
       return { customError: 'Please enter a valid email address' };
     };
 
+    const phoneNumberValidator = function(control: AbstractControl) {
+      const phoneNumberRegex = RegExp('^[+]*([(]+[0-9]{2,4}[)]+)?[-0-9]{8,}$');
+      if (!control.value || phoneNumberRegex.test(control.value)) {
+        return null;
+      }
+      return { customError: 'Please enter a valid phone or mobile number' };
+    };
+
     const required = schema.required || [];
     const field = schema.properties[prop];
     const varPath = [].concat(path, prop).join('.');
@@ -43,6 +51,7 @@ export class JsonFormValidatorsService {
       (field.hasOwnProperty('minimum') ? Validators.min(field.minimum) : null),
       (field.hasOwnProperty('maximum') ? Validators.max(field.maximum) : null),
       (field.format && field.format === 'date' ? dateValidator : null),
+      (field.hasOwnProperty('format') && field.format === 'tel' ? phoneNumberValidator : null),
       (field.pattern ? Validators.pattern(field.pattern) : null)
     ]));
   }
