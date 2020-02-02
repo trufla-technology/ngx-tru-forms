@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import { CommonComponent } from '../common/common.component';
 
 @Component({
@@ -38,7 +38,7 @@ import { CommonComponent } from '../common/common.component';
         <mat-icon>add_a_photo</mat-icon>
       </a>
     </ng-template>
-    <input #fileInput type="file" [name]="schema.key" (change)="onChange($event)" style="display:none;" />
+    <input #fileInput type="file" accept="image/*" [name]="schema.key" (change)="onChange($event)" style="display:none;"/>
     <input type="hidden" [name]="schema.key" [formControl]="control"/>
     <div class="mat-form-field-subscript-wrapper" *ngIf="error" style="position: relative;">
       <mat-error class="mat-error">Please upload a valid photo format (JPG, PNG)</mat-error>
@@ -48,9 +48,15 @@ import { CommonComponent } from '../common/common.component';
     </div>
   `
 })
-export class PhotoMaterialComponent extends CommonComponent {
+export class PhotoMaterialComponent extends CommonComponent implements OnInit {
   photoData: string;
   error = false;
+
+  ngOnInit() {
+    if (this.control.data) {
+      this.photoData = this.control.data;
+    }
+  }
 
   onChange(event) {
     const file = event.target.files[0];
