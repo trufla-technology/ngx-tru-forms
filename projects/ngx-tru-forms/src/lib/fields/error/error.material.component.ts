@@ -12,7 +12,7 @@ import { CommonComponent } from '../common/common.component';
         Input value is invalid
       </ng-container>
       <ng-container *ngIf="control.errors && control.errors['email']">
-        Email is invalid.
+        Email is invalid
       </ng-container>
       <ng-container *ngIf="control.errors && control.errors['minlength']">
         Input has to be a minimum of {{control.errors['minlength']['requiredLength']}} characters
@@ -28,6 +28,12 @@ import { CommonComponent } from '../common/common.component';
       </ng-container>
       <ng-container *ngIf="control.errors && control.errors['customError']">
         {{control.errors['customError']}}
+      </ng-container>
+      <ng-container *ngIf="control.errors && control.errors['matDatepickerMin']">
+        Date should be greater than or equal {{ control.errors['matDatepickerMin'].min.format('LL') }}
+      </ng-container>
+      <ng-container *ngIf="control.errors && control.errors['matDatepickerMax']">
+        Date should be less than or equal {{ control.errors['matDatepickerMax'].max.format('LL') }}
       </ng-container>
     </ng-container>
   `
