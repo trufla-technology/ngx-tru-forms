@@ -28,6 +28,7 @@ const MY_FORMATS = {
         [min]="minDate()"
         [max]="maxDate()"
         [disabled]="disabled"
+        (dateInput)="onDateInput($event)"
       >
       <mat-datepicker-toggle matSuffix [for]='myDatepicker'></mat-datepicker-toggle>
       <mat-datepicker #myDatepicker [touchUi]="isMobile()"></mat-datepicker>
@@ -52,5 +53,9 @@ export class DateMaterialComponent extends CommonComponent {
 
   maxDate() {
     return isNaN(new Date(this.schema.maximum).getDate()) ? null : new Date(this.schema.maximum);
+  }
+
+  onDateInput(e) {
+    this.control.setValue(e.value.format('YYYY-MM-DD'));
   }
 }
