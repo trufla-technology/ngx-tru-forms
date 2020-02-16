@@ -20,7 +20,7 @@ export class JsonFormValidatorsService {
     const emailValidator = function (control: AbstractControl) {
       /* tslint:disable-next-line:max-line-length */
       const mailRegex = `^(([^<>()\\[\\]\\\\.,;:\\s@"]+(\\.[^<>()\\[\\]\\\\.,;:\\s@"]+)*)|(".+"))@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$`;
-      if (RegExp(mailRegex).test(control.value)) {
+      if (!control.value || RegExp(mailRegex).test(control.value)) {
         return null;
       }
       return { customError: 'Please enter a valid email address' };
