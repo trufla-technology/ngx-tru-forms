@@ -30,10 +30,10 @@ import { CommonComponent } from '../common/common.component';
         {{control.errors['customError']}}
       </ng-container>
       <ng-container *ngIf="control.errors && control.errors['matDatepickerMin']">
-        Date should be greater than or equal {{ control.errors['matDatepickerMin'].min.format('LL') }}
+        Date should be greater than or equal {{ control.errors['matDatepickerMin'].min.format('DD MMM, YYYY') }}
       </ng-container>
       <ng-container *ngIf="control.errors && control.errors['matDatepickerMax']">
-        Date should be less than or equal {{ control.errors['matDatepickerMax'].max.format('LL') }}
+        Date should be less than or equal {{ control.errors['matDatepickerMax'].max.format('DD MMM, YYYY') }}
       </ng-container>
     </ng-container>
   `
