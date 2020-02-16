@@ -55,7 +55,9 @@ export class DateMaterialComponent extends CommonComponent {
     return isNaN(new Date(this.schema.maximum).getDate()) ? null : new Date(this.schema.maximum);
   }
 
+  /*
   onDateInput(e) {
     this.control.setValue(e.value.format('YYYY-MM-DD'));
   }
+  */
 }
