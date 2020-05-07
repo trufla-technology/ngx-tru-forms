@@ -18,7 +18,7 @@ const MY_FORMATS = {
 
 @Component({
   template: `
-    <mat-form-field>
+    <mat-form-field color="primary">
       <input
         matInput
         [matDatepicker]='myDatepicker'
@@ -28,9 +28,10 @@ const MY_FORMATS = {
         [min]="minDate()"
         [max]="maxDate()"
         [disabled]="disabled"
+        readonly
       >
       <mat-datepicker-toggle matSuffix [for]='myDatepicker'></mat-datepicker-toggle>
-      <mat-datepicker #myDatepicker [touchUi]="isMobile()"></mat-datepicker>
+      <mat-datepicker #myDatepicker [touchUi]="isMobile()" color="primary"></mat-datepicker>
       <mat-error jf-error [control]='control'></mat-error>
     </mat-form-field>
   `,
