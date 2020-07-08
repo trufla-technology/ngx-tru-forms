@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonComponent } from '../common/common.component';
-import { DateAdapter } from '@angular/material';
+import { DateAdapter } from '@angular/material/core';
 import { MomentUtcDateAdapter } from '../../services/moment-utc-adapter.service';
 import { MediaMatcher } from '@angular/cdk/layout';
 

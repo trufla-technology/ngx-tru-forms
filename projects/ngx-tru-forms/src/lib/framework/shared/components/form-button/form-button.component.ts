@@ -31,7 +31,7 @@ export class FormButtonComponent implements OnInit, OnChanges {
   @Input() cancelClass: string;
   @Input() isWorking = false;
   @Output() handleClick = new EventEmitter();
-  @ViewChild('button', {read: ViewContainerRef}) button: ViewContainerRef;
+  @ViewChild('button', {read: ViewContainerRef, static: true}) button: ViewContainerRef;
 
   constructor(
     private componentFactoryResolver: ComponentFactoryResolver,
