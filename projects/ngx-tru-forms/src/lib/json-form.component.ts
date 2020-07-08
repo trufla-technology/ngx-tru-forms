@@ -376,14 +376,14 @@ export class JsonFormComponent implements DoCheck, OnDestroy {
    * API: set header of the form
    */
   setHeader(val) {
-    this.header.nativeElement.innerHTML = val;
+    if (this.header) { this.header.nativeElement.innerHTML = val; }
   }
 
   /**
    * API: set footer of the form
    */
   setFooter(val) {
-    this.footer.nativeElement.innerHTML = val;
+   if (this.footer) { this.footer.nativeElement.innerHTML = val; }
   }
 
   /**
