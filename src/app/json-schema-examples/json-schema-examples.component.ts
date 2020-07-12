@@ -22,9 +22,9 @@ export class JsonSchemaExamplesComponent implements OnInit, AfterViewInit {
   selectedSchema = 'simple_input';
   viewOnly = false;
   data: Object = {};
-  @ViewChild('jsonSchema') jsonSchema: ElementRef;
-  @ViewChild('formResponse') formResponse: ElementRef;
-  @ViewChild('jfForm') jfForm: JsonFormComponent;
+  @ViewChild('jsonSchema', {static: true}) jsonSchema: ElementRef;
+  @ViewChild('formResponse', {static: false}) formResponse: ElementRef;
+  @ViewChild('jfForm', {static: false}) jfForm: JsonFormComponent;
 
   constructor(
     public jsonSchemaExamplesSamples: JsonSchemaExamplesSamples,

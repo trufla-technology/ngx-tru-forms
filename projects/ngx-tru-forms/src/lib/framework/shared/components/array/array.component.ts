@@ -78,7 +78,7 @@ export class ArrayComponent {
     if (control.disabled) {
       newControl.disable({emitEvent: false});
     }
-
+    newControl.reset();
     return newControl;
   }
 

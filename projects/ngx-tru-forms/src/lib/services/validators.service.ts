@@ -12,9 +12,26 @@ export class JsonFormValidatorsService {
   public get(prop, schema, path) {
     const dateValidator = function ageRangeValidator(control: AbstractControl) {
       if (control.value === null || (control.value !== null && isNaN(new Date(control.value).getDate()))) {
-        return { customError: 'Please enter a valid date.' };
+        return { customError: 'Please enter a valid date' };
       }
       return null;
+    };
+
+    const emailValidator = function (control: AbstractControl) {
+      /* tslint:disable-next-line:max-line-length */
+      const mailRegex = `^(([^<>()\\[\\]\\\\.,;:\\s@"]+(\\.[^<>()\\[\\]\\\\.,;:\\s@"]+)*)|(".+"))@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$`;
+      if (!control.value || RegExp(mailRegex).test(control.value)) {
+        return null;
+      }
+      return { customError: 'Please enter a valid email address' };
+    };
+
+    const phoneNumberValidator = function(control: AbstractControl) {
+      const phoneNumberRegex = RegExp('^[+]*([(]+[0-9]{2,4}[)]+)?[-0-9]{8,}$');
+      if (!control.value || phoneNumberRegex.test(control.value)) {
+        return null;
+      }
+      return { customError: 'Please enter a valid phone or mobile number' };
     };
 
     const required = schema.required || [];
@@ -30,10 +47,11 @@ export class JsonFormValidatorsService {
       (required.indexOf(prop) > -1 ? Validators.required : null),
       (field.hasOwnProperty('minLength') ? Validators.minLength(field.minLength) : null),
       (field.hasOwnProperty('maxLength') ? Validators.maxLength(field.maxLength) : null),
-      (field.hasOwnProperty('format') && field.format === 'email' ? Validators.email : null),
+      (field.hasOwnProperty('format') && field.format === 'email' ? emailValidator : null),
       (field.hasOwnProperty('minimum') ? Validators.min(field.minimum) : null),
       (field.hasOwnProperty('maximum') ? Validators.max(field.maximum) : null),
       (field.format && field.format === 'date' ? dateValidator : null),
+      (field.hasOwnProperty('format') && field.format === 'tel' ? phoneNumberValidator : null),
       (field.pattern ? Validators.pattern(field.pattern) : null)
     ]));
   }
