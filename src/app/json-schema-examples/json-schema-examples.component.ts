@@ -172,6 +172,8 @@ export class JsonSchemaExamplesComponent implements OnInit, AfterViewInit {
       window.location.href = 'https://trufla-technology.github.io/ngx-tru-forms/material/';
     } else if (framework === 'bootstrap') {
       window.location.href = 'https://trufla-technology.github.io/ngx-tru-forms/bootstrap4/';
+    } else if (framework === 'tru-ui') {
+      
     }
   }
 }

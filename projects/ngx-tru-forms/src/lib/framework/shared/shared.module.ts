@@ -22,6 +22,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { TextMaskModule } from 'angular2-text-mask';
 import { ArrayComponent } from './components/array/array.component';
 import { ArrayViewComponent } from './components/array/array.view.component';
+import { DragAndDropDirective } from './directive/drag-and-drop.directive';
 
 @NgModule({
   imports: [
@@ -49,7 +50,8 @@ import { ArrayViewComponent } from './components/array/array.view.component';
     MoneyViewComponent,
     ObjectComponent,
     ArrayComponent,
-    ArrayViewComponent
+    ArrayViewComponent,
+    DragAndDropDirective
   ],
   entryComponents: [
     JsonFormComponent,
@@ -81,7 +83,8 @@ import { ArrayViewComponent } from './components/array/array.view.component';
     JsonFormComponent,
     CommonComponent,
     ArrayComponent,
-    ObjectComponent
+    ObjectComponent,
+    DragAndDropDirective
   ]
 })
 
