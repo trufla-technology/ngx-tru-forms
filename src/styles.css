@@ -1,4 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
+body {
+  background: #fafafa;
+  padding: 5px;
+}
 body, html {
   width: 100%;
   height: 100%;
@@ -27,4 +31,32 @@ body, h1, h2, h3, h4, h5, h6 {
 
 label {
   display: block;
+}
+
+/* Utilities */
+
+.display-flex-row {
+  display: flex;
+  flex-direction: row;
+}
+
+.w-50 {
+  width: 50%;
+}
+
+.demo_input {
+  margin-bottom: 10px;
+  /*width: 600px;*/
+  background: #FFFFFF;
+  border: 1px solid #d4d9e2;
+  border-radius: 3px;
+  height: 50px;
+  padding: 15px;
+  font-size: 16px;
+  color: #596377;
+  width: 90%;
+}
+
+.demo_input:focus {
+  outline: none;
 }

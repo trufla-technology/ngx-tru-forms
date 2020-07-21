@@ -1,0 +1,14 @@
+.form_data_result {
+  margin-top: 50px;
+}
+.form_data_result pre {
+  background: #1e1e1e;
+  color: #ce9178;
+  padding: 10px;
+  border-radius: 4px;
+  font-family: "Droid Sans Mono", monospace, monospace, "Droid Sans Fallback";
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 19px;
+  letter-spacing: 0px;
+}
