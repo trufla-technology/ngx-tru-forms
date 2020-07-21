@@ -4243,7 +4243,7 @@ var JsonSchemaExamplesSamples = /** @class */ (function () {
             },
             multistep: {
                 title: 'Multi Step',
-                description: 'Form composed of nested schemas and displayed as steps',
+                description: 'Form composed of nested allSchemaTitles and displayed as steps',
                 type: 'object',
                 properties: {
                     employee_information: {
@@ -4280,7 +4280,7 @@ var JsonSchemaExamplesSamples = /** @class */ (function () {
             },
             multistep_back: {
                 title: 'Multi Step With Back',
-                description: 'Form composed of nested schemas and displayed as steps that can go back',
+                description: 'Form composed of nested allSchemaTitles and displayed as steps that can go back',
                 type: 'object',
                 properties: {
                     employee_information: {
@@ -4311,7 +4311,7 @@ var JsonSchemaExamplesSamples = /** @class */ (function () {
             },
             multistep_back_with_state: {
                 title: 'Multi Step With Back With State',
-                description: 'Form composed of nested schemas and displayed as steps that can go back with state preserved',
+                description: 'Form composed of nested allSchemaTitles and displayed as steps that can go back with state preserved',
                 type: 'object',
                 properties: {
                     employee_information: {
