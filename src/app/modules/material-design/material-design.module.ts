@@ -17,7 +17,17 @@ const routes: Routes = [
     CommonModule,
     RouterModule.forChild(routes),
     JsonFormMaterialModule,
-    JsonFormModule.forRoot(JsonFormMaterialModule),
+    {
+      ngModule: JsonFormModule,
+      providers: [
+        {
+          provide: JsonFormFieldsService,
+          useClass: JsonFormMaterialModule,
+          multi: true
+        }
+      ]
+    }
+    // JsonFormModule.forRoot(JsonFormMaterialModule),
   ],
   // exports: [MaterialDesignComponent]
 })
