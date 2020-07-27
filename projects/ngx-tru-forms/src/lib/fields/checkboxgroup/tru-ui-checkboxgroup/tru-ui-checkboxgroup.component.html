@@ -1,0 +1,53 @@
+<!-- <label [attr.class]="schema.key" [ngClass]="{'margin-bottom--half': true, required: isRequired()}">
+    <span [innerHTML]="title()"></span><sup *ngIf="isRequired()">*</sup></label>
+  <button type="button" *ngIf="this.schema.description" [attr.class]="'info'" [attr.title]="this.schema.description">Info</button>
+  <div [class]="getClass('checkbox-group')">
+    <div *ngFor="let child of this.control['controls']; let i = index"
+         [ngClass]="{'checkbox-container': true, 'checked': child.value === schema.enum[i]}">
+      <input
+        type="checkbox"
+        [attr.id]="getId(schema.key, schema.enum[i])"
+        [attr.disabled]="disabled"
+        [checked]="child.value === schema.enum[i]"
+        [name]="schema.key"
+        [formControl]="child"
+        (change)="setValue($event, i)"
+        [value]="schema.enum[i]" />
+      <label
+        [attr.for]="getId(i, schema.enum[i])"
+        [attr.class]="schema.key">
+        {{enumNames(i)}}
+      </label>
+    </div>
+  </div>
+  <jf-tru-ui-error [control]="control"></jf-tru-ui-error>
+ -->
+
+  <div class="tru-ui-input-container">
+
+    <label
+    [ngClass]="['margin-bottom--half', 'jf-label', schema.key, (isRequired() ? 'required' : '')]">
+    <span  class="tru-ui-label" [innerHTML]="title()"></span><sup *ngIf="isRequired()">*</sup></label>
+    <button type="button" *ngIf="this.schema.description" [attr.class]="'info'" [attr.title]="this.schema.description">Info</button>
+    <div [class]="getClass('radio-group')">
+    <div  *ngFor="let child of this.control['controls']; let i = index"
+    [ngClass]="{'checkbox-container': true, 'checked': child.value === schema.enum[i]}">
+      <div [class]="getClass('checkbox-group')">
+        <label class="container"  [attr.for]="getId(i, schema.enum[i])">
+          <span  class="tru-ui-label"> {{enumNames(i)}}</span>    
+          <input
+          type="checkbox"
+          [attr.id]="getId(i, schema.enum[i])"
+          [attr.disabled]="disabled"
+          [checked]="child.value === schema.enum[i]"
+          [name]="schema.key"
+          [formControl]="child"
+          (change)="setValue($event, i)"
+          [value]="schema.enum[i]"  />
+          <span class="checkmark"></span>
+        </label>
+      </div>
+    </div>
+    </div>
+    <jf-tru-ui-error [control]="control"></jf-tru-ui-error>
+    </div>

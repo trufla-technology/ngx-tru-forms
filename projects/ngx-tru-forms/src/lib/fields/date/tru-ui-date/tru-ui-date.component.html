@@ -1,0 +1,15 @@
+<div class="tru-ui-input-container">
+<label class="tru-ui-label" [ngClass]="['jf-label', schema.key, (isRequired() ? 'required' : '')]">
+    <span [innerHTML]="title()"></span><sup *ngIf="isRequired()">*</sup>
+  </label>
+  <input
+    class="tru-ui-input-control tru-ui-date"
+    [name]="schema.key"
+    [formControl]="control"
+    [placeholder]="placeholder()"
+    [bsConfig]="{ containerClass: 'theme-default', dateInputFormat: 'MM/DD/YYYY' }"
+    bsDatepicker
+    [attr.disabled]="disabled"
+  />
+  <jf-tru-ui-error [control]="control"></jf-tru-ui-error>
+</div>

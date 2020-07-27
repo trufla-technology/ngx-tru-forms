@@ -18,12 +18,73 @@ export class TruUiFormComponent implements OnInit {
         "type": "string"
       },
       "email": {
-        "type": "string"
+        "type": "string",
+        "format": "email"
+      },
+      "message": {
+        "type": "textarea"
       },
       "idPhoto": {
         "type": "string",
         "format": "photo"
-      }
+      },
+      "billing_address": {
+        "type": "boolean"
+      },
+		"dob": {
+			"type": "string",
+			"format": "date"
+    },
+    "checkBoxGroup": {
+      "type": "array",
+      "enum": [
+        "cell",
+        "home",
+        "work"
+      ]
+    }, 
+    "radioButtonGroup": {
+      "type": "string",
+      "format":"radiogroup",
+      "enum": [
+        "cell",
+        "home",
+        "work"
+      ]
+    },
+    "multi_check_box": {
+			"type": "array",
+			"enum": [
+				"one",
+				"two",
+				"three"
+			],
+			"format": "multiselect"
+		},
+		"phone_numbers": {
+			"type": "array",
+			"items": {
+				"type": "object",
+				"properties": {
+					"number": {
+						"type": "number"
+          },
+          "type": {
+						"type": "radiogroup",
+						"enum": [
+							"cell",
+							"home",
+							"work"
+						],
+						"enumNames": [
+							"Cell",
+							"Home",
+							"Work"
+						]
+					},
+				}
+			}
+		}
     },
     "required": ["idPhoto"]
   };

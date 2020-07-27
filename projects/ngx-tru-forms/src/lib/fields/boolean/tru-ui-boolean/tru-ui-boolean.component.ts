@@ -2,8 +2,8 @@ import { Component } from '@angular/core';
 import { CommonComponent } from '../../common/common.component';
 
 @Component({
-  selector: 'jf-tru-ui-string',
-  templateUrl: './tru-ui-string.component.html',
+  selector: 'jf-tru-ui-boolean',
+  templateUrl: './tru-ui-boolean.component.html',
   styleUrls: ['../../../assets/tru-ui.css']
 })
-export class TruUiStringComponent extends CommonComponent {}
+export class TruUiBooleanComponent  extends CommonComponent {}

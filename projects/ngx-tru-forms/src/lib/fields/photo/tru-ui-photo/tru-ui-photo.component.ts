@@ -10,7 +10,6 @@ export class TruUiPhotoComponent extends CommonComponent {
   file: any = {};
   selectFile = false;
   photoData: string;
-  fieldId: string = Math.random().toString();
 
   resetUpload() {
     this.file = {};

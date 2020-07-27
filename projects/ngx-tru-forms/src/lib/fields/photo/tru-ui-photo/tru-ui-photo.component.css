@@ -47,3 +47,12 @@ color:#bfbfbf
 .d-none {
   display: none;
 }
+.btn-remove {
+  background-color: #F75757;
+  width: 24px;
+  height: 24px;
+  margin-left: 3px;
+  border-radius: 3px;
+  border-style: none;
+
+}

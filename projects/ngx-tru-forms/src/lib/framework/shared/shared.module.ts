@@ -51,7 +51,7 @@ import { DragAndDropDirective } from './directive/drag-and-drop.directive';
     ObjectComponent,
     ArrayComponent,
     ArrayViewComponent,
-    DragAndDropDirective
+    DragAndDropDirective,
   ],
   entryComponents: [
     JsonFormComponent,

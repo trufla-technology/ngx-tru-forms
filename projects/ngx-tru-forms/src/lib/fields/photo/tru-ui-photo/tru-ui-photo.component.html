@@ -3,18 +3,18 @@
 </label>
 <div class="tru-form-group" jfDragAndDrop (filesDropped)="handleDrop($event)">
   
-    <label  for="upload-edoc-{{fieldId}}" [ngClass]="{'d-none': selectFile}" >
+    <label [ngClass]="{'d-none': selectFile}" >
       <div class="tru-drag-and-drop">
         <span>Drop your file here or <span class="primary-color browse-btn">Browse</span></span>
       </div>
-    <input #fileInput id="upload-edoc-{{fieldId}}" 
+    <input #fileInput
       style="display: none" class="tru-input" type="file" (change)="dragAndDrop($event)"  />
     </label>
     <div class="file-preview-container"  [ngClass]="{'d-none': !selectFile}">
       <div style="max-width: 165px;text-overflow: ellipsis;overflow: hidden;display: block;"><small >{{file.name}}</small></div>
       <div>
         <small style="color: #212121;font-size: 12px">{{shortenSize(file.size/1024/1024)}}MB</small>
-        <button class="reset-btn primary-bg" style="cursor: pointer" (click)="resetUpload()">
+        <button class="btn-remove" style="cursor: pointer" (click)="resetUpload()">
             <svg width="12px" height="12px" viewBox="0 0 12 12" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                 <title>23B3CC4B-4831-401C-9824-3B0851CC5704@2x</title>
                 <g id="Full-Admin" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
