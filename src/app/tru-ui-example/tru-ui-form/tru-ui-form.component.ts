@@ -53,14 +53,14 @@ export class TruUiFormComponent implements OnInit {
       ]
     },
     "multi_check_box": {
-			"type": "array",
+      "type": "string",
+      "format": "autocomplete",
 			"enum": [
 				"one",
 				"two",
 				"three"
-			],
-			"format": "multiselect"
-		},
+      ]
+     },
 		"phone_numbers": {
 			"type": "array",
 			"items": {

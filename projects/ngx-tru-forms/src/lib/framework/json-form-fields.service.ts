@@ -34,7 +34,9 @@ export class JsonFormFieldsService {
     radiogroup: RadiogroupViewComponent,
     checkboxgroup: CheckboxgroupViewComponent,
     multiselect: MultiselectViewComponent,
-    money: MoneyViewComponent
+    money: MoneyViewComponent,
+    autocomplete: StringViewComponent,
+
   };
 
   constructor(

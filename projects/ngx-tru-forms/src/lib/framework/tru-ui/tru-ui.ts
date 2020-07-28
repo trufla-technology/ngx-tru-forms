@@ -14,7 +14,7 @@ import { TruUiRadigroupComponent } from '../../fields/radiogroup/tru-ui-radigrou
 import { TruUiCheckboxgroupComponent } from '../../fields/checkboxgroup/tru-ui-checkboxgroup/tru-ui-checkboxgroup.component';
 import { TruUiMultiselectComponent } from '../../fields/multiselect/tru-ui-multiselect/tru-ui-multiselect.component';
 import { TruUiArrayComponent } from '../shared/components/array/tru-ui-array/tru-ui-array.component';
-
+import {TruUiAutocompleteComponent} from '../../fields/autocomplete/tru-ui-autocomplete/tru-ui-autocomplete.component';
 @Injectable()
 export class TruUi extends JsonFormFieldsService {
     fieldTypes = {
@@ -30,6 +30,7 @@ export class TruUi extends JsonFormFieldsService {
         radiogroup: TruUiRadigroupComponent,
         checkboxgroup: TruUiCheckboxgroupComponent,
         multiselect: TruUiMultiselectComponent,
-        button: TruUiButtonComponent
+        button: TruUiButtonComponent,
+        autocomplete: TruUiAutocompleteComponent
       };
 }

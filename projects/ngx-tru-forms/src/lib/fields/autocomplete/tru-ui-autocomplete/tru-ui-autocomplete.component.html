@@ -1,0 +1,14 @@
+<div class="tru-ui-input-container">
+    <label  class="tru-ui-label"
+    [ngClass]="['jf-label', schema.key, (isRequired() ? 'required' : '')]" *ngIf="type() !== 'hidden'">
+    <span [innerHTML]="title()"></span><sup *ngIf="isRequired()">*</sup>
+    </label>
+<input [formControl]="control"
+       [typeahead]="schema.enum"
+       [typeaheadMinLength]="0"
+       [attr.disabled]="disabled"
+       (focusout)="typeaheadNoResults()"
+
+       class="tru-ui-input-control tru-ui-select" />
+       <jf-tru-ui-error [control]="control"></jf-tru-ui-error>
+</div>

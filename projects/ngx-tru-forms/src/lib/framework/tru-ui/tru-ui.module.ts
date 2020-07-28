@@ -19,6 +19,9 @@ import { TruUiRadigroupComponent } from '../../fields/radiogroup/tru-ui-radigrou
 import { TruUiCheckboxgroupComponent } from '../../fields/checkboxgroup/tru-ui-checkboxgroup/tru-ui-checkboxgroup.component';
 import { TruUiMultiselectComponent } from '../../fields/multiselect/tru-ui-multiselect/tru-ui-multiselect.component';
 import { TruUiArrayComponent } from '../shared/components/array/tru-ui-array/tru-ui-array.component';
+import { TruUiAutocompleteComponent } from '../../fields/autocomplete/tru-ui-autocomplete/tru-ui-autocomplete.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { TypeaheadModule } from 'ngx-bootstrap/typeahead';
 
 @NgModule({
   declarations: [TruUiButtonComponent,
@@ -33,14 +36,17 @@ import { TruUiArrayComponent } from '../shared/components/array/tru-ui-array/tru
      TruUiRadigroupComponent,
      TruUiCheckboxgroupComponent,
      TruUiMultiselectComponent,
-     TruUiArrayComponent
+     TruUiArrayComponent,
+     TruUiAutocompleteComponent
     ],
   imports: [
     CommonModule,
     ReactiveFormsModule,
     SharedModule,
     TextMaskModule,
-    BsDatepickerModule.forRoot()
+    BsDatepickerModule.forRoot(),
+    BrowserAnimationsModule,
+    TypeaheadModule.forRoot()
   ],
   entryComponents: [
     TruUiButtonComponent,
@@ -55,7 +61,8 @@ import { TruUiArrayComponent } from '../shared/components/array/tru-ui-array/tru
     TruUiRadigroupComponent,
     TruUiCheckboxgroupComponent,
     TruUiMultiselectComponent,
-    TruUiArrayComponent
+    TruUiArrayComponent,
+    TruUiAutocompleteComponent
   ],
   exports: [
     TruUiButtonComponent, 
@@ -70,7 +77,8 @@ import { TruUiArrayComponent } from '../shared/components/array/tru-ui-array/tru
     TruUiRadigroupComponent,
     TruUiCheckboxgroupComponent,
     TruUiMultiselectComponent,
-    TruUiArrayComponent
+    TruUiArrayComponent,
+    TruUiAutocompleteComponent
   ]
 })
 export class TruUiModule {

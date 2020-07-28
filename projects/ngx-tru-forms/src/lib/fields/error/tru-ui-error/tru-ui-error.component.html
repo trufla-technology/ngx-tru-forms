@@ -20,6 +20,9 @@
     <ng-container *ngIf="control.errors && control.errors['max']">
       Enter a value less than or equal to {{control.errors['max']['max']}}
     </ng-container>
+    <ng-container *ngIf="control.errors && control.errors['notInMenu']">
+      Select from the dropdown list
+    </ng-container>
     <ng-container *ngIf="control.errors && control.errors['customError']">
       {{control.errors['customError']}}
     </ng-container>
