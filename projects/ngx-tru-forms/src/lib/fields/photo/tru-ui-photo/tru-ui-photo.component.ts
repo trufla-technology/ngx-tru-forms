@@ -17,14 +17,12 @@ export class TruUiPhotoComponent extends CommonComponent {
     this.control.reset();
 
   }
- async handleDrop(files) { 
+ async handleDrop(files) {
     this.file = files[0];
     this.selectFile = true;
     const file = await this.toBase64(this.file);
     this.photoData = file.toString();
-    console.log(this.schema)
     this.control.setValue(this.photoData);
-
   }
   shortenSize(data) {
     return data.toString().substring(0, 4);

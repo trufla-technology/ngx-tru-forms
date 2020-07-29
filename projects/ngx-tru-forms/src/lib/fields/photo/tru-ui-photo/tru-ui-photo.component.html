@@ -1,14 +1,14 @@
 <label [attr.class]="schema.key" [ngClass]="{'required': isRequired()}" style="margin-bottom: 6px;">
     <span class="tru-ui-lable" [innerHTML]="title()"></span><sup *ngIf="isRequired()">*</sup>
 </label>
-<div class="tru-form-group" jfDragAndDrop (filesDropped)="handleDrop($event)">
+<div class="tru-form-group" jfDragAndDrop (filesDropped)="handleDrop($event);fileInput.value = null">
   
     <label [ngClass]="{'d-none': selectFile}" >
       <div class="tru-drag-and-drop">
         <span>Drop your file here or <span class="primary-color browse-btn">Browse</span></span>
       </div>
     <input #fileInput
-      style="display: none" class="tru-input" type="file" (change)="dragAndDrop($event)"  />
+      style="display: none" class="tru-input" type="file" (change)="dragAndDrop($event);fileInput.value = null"  />
     </label>
     <div class="file-preview-container"  [ngClass]="{'d-none': !selectFile}">
       <div style="max-width: 165px;text-overflow: ellipsis;overflow: hidden;display: block;"><small >{{file.name}}</small></div>

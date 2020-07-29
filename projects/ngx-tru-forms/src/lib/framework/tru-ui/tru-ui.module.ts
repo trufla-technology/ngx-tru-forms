@@ -4,7 +4,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { JsonFormFieldsService } from '../json-form-fields.service';
 import { SharedModule } from '../shared/shared.module';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
-import { TruUi } from './tru-ui'
+import { TruUi } from './tru-ui';
 import { TruUiButtonComponent } from '../../fields/button/tru-ui-button/tru-ui-button.component';
 import { TruUiStringComponent } from '../../fields/string/tru-ui-string/tru-ui-string.component';
 import { TextMaskModule } from 'angular2-text-mask';
@@ -65,12 +65,12 @@ import { TypeaheadModule } from 'ngx-bootstrap/typeahead';
     TruUiAutocompleteComponent
   ],
   exports: [
-    TruUiButtonComponent, 
+    TruUiButtonComponent,
     TruUiStringComponent,
     TruUiErrorComponent,
     TruUiPhotoComponent,
     TruUiTextareaComponent,
-    TruUiBooleanComponent, 
+    TruUiBooleanComponent,
     TruUiDateComponent,
     TruUiSelectComponent,
     TruUiNumberComponent,

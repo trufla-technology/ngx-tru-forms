@@ -12,8 +12,9 @@ import { Schema } from '../../../../models/schema';
     <h4 style="color: #8C8C8C;font-size:14px" *ngIf="schema && schema.hasOwnProperty('title') && nested">
       {{schema.title}}
     </h4>
-    <div style="color: #8C8C8C;font-size:14px" class="description" *ngIf="schema && schema.hasOwnProperty('description')" [innerHTML]="schema.description"></div>
-    </div> 
+    <div style="color: #8C8C8C;font-size:14px" class="description"
+    *ngIf="schema && schema.hasOwnProperty('description')" [innerHTML]="schema.description"></div>
+    </div>
     <div [ngClass]="['form-container']">
       <div *ngFor="let control of keys(form.controls)" jf-field [control]="form.get(control)"></div>
     </div>
