@@ -3,7 +3,8 @@ import { PhotoMaterialComponent } from './photo.material.component';
 import { ReactiveFormsModule, Validators } from '@angular/forms';
 import { By } from '@angular/platform-browser';
 import { SchemaFormControl } from '../../models/schema-form-control';
-import { MatFormFieldModule, MatIconModule } from '@angular/material';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
 import { ErrorComponent } from '../error/error.component';
 
 describe('PhotoMaterialComponent', () => {

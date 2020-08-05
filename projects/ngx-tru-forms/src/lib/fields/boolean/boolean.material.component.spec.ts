@@ -4,7 +4,8 @@ import { BooleanMaterialComponent } from './boolean.material.component';
 import { ReactiveFormsModule, Validators } from '@angular/forms';
 import { By } from '@angular/platform-browser';
 import { SchemaFormControl } from '../../models/schema-form-control';
-import { MatFormFieldModule, MatSlideToggleModule } from '@angular/material';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { ErrorComponent } from '../error/error.component';
 
 describe('BooleanMaterialComponent', () => {

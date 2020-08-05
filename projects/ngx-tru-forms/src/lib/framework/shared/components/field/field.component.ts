@@ -11,7 +11,7 @@ import {JsonFormFieldsService} from '../../../json-form-fields.service';
 })
 
 export class FieldComponent implements OnInit, OnChanges {
-  @ViewChild('container', {read: ViewContainerRef}) container: ViewContainerRef;
+  @ViewChild('container', {read: ViewContainerRef, static: true} ) container: ViewContainerRef;
   @Input() control: SchemaFormControl;
   public patterns;
 

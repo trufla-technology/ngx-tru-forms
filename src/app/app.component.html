@@ -1,1 +1,16 @@
-<app-json-schema-examples></app-json-schema-examples>
+<!-- <app-json-schema-examples></app-json-schema-examples> -->
+<div class="display-flex-row">
+  <div class="w-50">
+    <app-schema-dropdown [schemas]="allSchemaTitles" (selectedSchemaChanged)="handleSelectedSchemaChanged($event)"></app-schema-dropdown>
+    <app-schema-editor [schema]="schema" (schemaHasChanged)="handleSchemaHasChanged($event)"></app-schema-editor>
+  </div>
+  <div class="w-50">
+    <app-framework-dropdown (frameworkChanged)="handleFrameWorkChanged($event)"></app-framework-dropdown>
+<!--    <ng-container [ngSwitch]="framework">-->
+<!--      <app-material-design *ngSwitchCase="'material'" [schema]="generateFormSchema"></app-material-design>-->
+<!--      <app-bootstrap *ngSwitchCase="'bootstrap'" [schema]="generateFormSchema"></app-bootstrap>-->
+<!--    </ng-container>-->
+    <router-outlet></router-outlet>
+    <app-submitted-data></app-submitted-data>
+  </div>
+</div>
