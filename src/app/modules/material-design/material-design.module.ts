@@ -22,7 +22,7 @@ const routes: Routes = [
       providers: [
         {
           provide: JsonFormFieldsService,
-          useClass: JsonFormMaterialModule,
+          useClass: JsonFormMaterial,
           multi: true
         }
       ]

@@ -6,10 +6,6 @@
   </div>
   <div class="w-50">
     <app-framework-dropdown (frameworkChanged)="handleFrameWorkChanged($event)"></app-framework-dropdown>
-<!--    <ng-container [ngSwitch]="framework">-->
-<!--      <app-material-design *ngSwitchCase="'material'" [schema]="generateFormSchema"></app-material-design>-->
-<!--      <app-bootstrap *ngSwitchCase="'bootstrap'" [schema]="generateFormSchema"></app-bootstrap>-->
-<!--    </ng-container>-->
     <router-outlet></router-outlet>
     <app-submitted-data></app-submitted-data>
   </div>

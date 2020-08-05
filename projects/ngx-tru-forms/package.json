@@ -11,11 +11,11 @@
   },
   "keywords": [
     "angular",
-    "javascript",
-    "schema",
-    "form",
-    "json schema form",
-    "json schema"
+    "forms",
+    "json-schema",
+    "angular-json-forms",
+    "dynamic-forms",
+    "json-schema-forms"
   ],
   "bugs": {
     "url": "https://github.com/trufla-technology/ngx-tru-forms/issues"
