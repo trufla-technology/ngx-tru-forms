@@ -8,8 +8,8 @@ import {FormsModule} from '@angular/forms';
 import { SchemaDropdownComponent } from './components/schema-dropdown/schema-dropdown.component';
 import {RouterModule, Routes} from '@angular/router';
 import { FrameworkDropdownComponent } from './components/framework-dropdown/framework-dropdown.component';
-import {BootstrapModule} from './modules/bootstrap/bootstrap.module';
-import {MaterialDesignModule} from './modules/material-design/material-design.module';
+// import {BootstrapModule} from './modules/bootstrap/bootstrap.module';
+// import {MaterialDesignModule} from './modules/material-design/material-design.module';
 import {JsonSchemaExamplesSamples} from './json-schema-examples/json-schema-examples.samples';
 import { SubmittedDataComponent } from './components/submitted-data/submitted-data.component';
 

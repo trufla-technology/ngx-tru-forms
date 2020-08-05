@@ -21,7 +21,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "<!-- <app-json-schema-examples></app-json-schema-examples> -->\n<div class=\"display-flex-row\">\n  <div class=\"w-50\">\n    <app-schema-dropdown [schemas]=\"allSchemaTitles\" (selectedSchemaChanged)=\"handleSelectedSchemaChanged($event)\"></app-schema-dropdown>\n    <app-schema-editor [schema]=\"schema\" (schemaHasChanged)=\"handleSchemaHasChanged($event)\"></app-schema-editor>\n  </div>\n  <div class=\"w-50\">\n    <app-framework-dropdown (frameworkChanged)=\"handleFrameWorkChanged($event)\"></app-framework-dropdown>\n<!--    <ng-container [ngSwitch]=\"framework\">-->\n<!--      <app-material-design *ngSwitchCase=\"'material'\" [schema]=\"generateFormSchema\"></app-material-design>-->\n<!--      <app-bootstrap *ngSwitchCase=\"'bootstrap'\" [schema]=\"generateFormSchema\"></app-bootstrap>-->\n<!--    </ng-container>-->\n    <router-outlet></router-outlet>\n    <app-submitted-data></app-submitted-data>\n  </div>\n</div>\n";
+    __webpack_exports__["default"] = "<!-- <app-json-schema-examples></app-json-schema-examples> -->\n<div class=\"display-flex-row\">\n  <div class=\"w-50\">\n    <app-schema-dropdown [schemas]=\"allSchemaTitles\" (selectedSchemaChanged)=\"handleSelectedSchemaChanged($event)\"></app-schema-dropdown>\n    <app-schema-editor [schema]=\"schema\" (schemaHasChanged)=\"handleSchemaHasChanged($event)\"></app-schema-editor>\n  </div>\n  <div class=\"w-50\">\n    <app-framework-dropdown (frameworkChanged)=\"handleFrameWorkChanged($event)\"></app-framework-dropdown>\n    <router-outlet></router-outlet>\n    <app-submitted-data></app-submitted-data>\n  </div>\n</div>\n";
     /***/
   },
 
@@ -405,6 +405,8 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         "default": mod
       };
     }; // import { JsonSchemaExamplesModule } from './json-schema-examples/json-schema-examples.module';
+    // import {BootstrapModule} from './modules/bootstrap/bootstrap.module';
+    // import {MaterialDesignModule} from './modules/material-design/material-design.module';
 
 
     var routes = [{
