@@ -1,0 +1,22 @@
+.btn-remove {
+    margin-bottom: 12px;
+    margin-left: 5px;
+    height: 32px;
+    border: none;
+    width: 32px;
+    background-color: #F75757 !important;
+    color: #fff;
+    font-weight: bold;
+    border-radius: 4px;
+}
+.btn-add {
+    margin-bottom: 12px;
+    margin-left: 5px;
+    height: 32px;
+    border: none;
+    width: 32px;
+    background-color: #959595 !important;
+    color: #fff;
+    font-weight: bold;
+    border-radius: 4px;
+}

@@ -10,9 +10,8 @@
     "publish": "npm run build && cd dist/ngx-tru-forms && npm publish",
     "test": "ng test ngx-tru-forms",
     "lint": "ng lint",
-    "clean": "rm -fr build dist",
-    "updatemat": "ng update  ngx-tru-forms @angular/material@8 --allow-dirty"
-  },
+    "clean": "rm -fr build dist"
+    },
   "config": {
     "deployToGit": {
       "repository": "git@github.com:trufla-technology/ngx-tru-forms.git",
