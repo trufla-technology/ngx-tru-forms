@@ -1,2 +1,13 @@
-<app-json-schema-examples></app-json-schema-examples>
-<!-- <app-tru-ui-form></app-tru-ui-form> -->
+<!-- <app-json-schema-examples></app-json-schema-examples> -->
+<div class="display-flex-row">
+  <div class="w-50">
+    <app-schema-dropdown [schemas]="allSchemaTitles" (selectedSchemaChanged)="handleSelectedSchemaChanged($event)"></app-schema-dropdown>
+    <app-schema-editor [schema]="schema" (schemaHasChanged)="handleSchemaHasChanged($event)"></app-schema-editor>
+  </div>
+  <div class="w-50">
+    <app-framework-dropdown (frameworkChanged)="handleFrameWorkChanged($event)"></app-framework-dropdown>
+    <router-outlet></router-outlet>
+    <app-submitted-data></app-submitted-data>
+  </div>
+</div>
+
