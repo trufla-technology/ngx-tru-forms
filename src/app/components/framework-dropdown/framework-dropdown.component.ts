@@ -11,7 +11,8 @@ export class FrameworkDropdownComponent implements OnInit {
 
   frameworks = [
     'material',
-    'bootstrap'
+    'bootstrap',
+    'tru-ui'
   ]
   value: string;
 
@@ -24,7 +25,13 @@ export class FrameworkDropdownComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.value = this.location.path() && this.location.path().indexOf('bootstrap') > -1 ? 'bootstrap' : 'material';
+    if (this.location.path()) {
+      this.value = this.frameworks.find((f) => this.location.path().indexOf(f) > -1);
+    } else {
+      this.value = 'tru-ui';
+    }
+
+    // this.value = this.location.path() && this.location.path().indexOf('bootstrap') > -1 ? 'bootstrap' : 'material';
   }
 
   startCase(value) {
@@ -36,11 +43,13 @@ export class FrameworkDropdownComponent implements OnInit {
     this.frameworkChanged.emit(framework);
     switch (framework) {
       case 'material':
-        this.router.navigate(['']);
+        this.router.navigate(['material']);
         break;
       case 'bootstrap':
-        this.router.navigate(['bootstrap-example']);
+        this.router.navigate(['bootstrap']);
         break;
+      case 'tru-ui':
+        this.router.navigate([''])
 
 
     }

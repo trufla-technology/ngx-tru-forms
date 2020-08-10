@@ -9,7 +9,7 @@
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<!-- <app-json-schema-examples></app-json-schema-examples> -->\n<div class=\"display-flex-row\">\n  <div class=\"w-50\">\n    <app-schema-dropdown [schemas]=\"allSchemaTitles\" (selectedSchemaChanged)=\"handleSelectedSchemaChanged($event)\"></app-schema-dropdown>\n    <app-schema-editor [schema]=\"schema\" (schemaHasChanged)=\"handleSchemaHasChanged($event)\"></app-schema-editor>\n  </div>\n  <div class=\"w-50\">\n    <app-framework-dropdown (frameworkChanged)=\"handleFrameWorkChanged($event)\"></app-framework-dropdown>\n    <router-outlet></router-outlet>\n    <app-submitted-data></app-submitted-data>\n  </div>\n</div>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<!-- <app-json-schema-examples></app-json-schema-examples> -->\n<div class=\"display-flex-row\">\n  <div class=\"w-50\">\n    <app-schema-dropdown [schemas]=\"allSchemaTitles\" (selectedSchemaChanged)=\"handleSelectedSchemaChanged($event)\"></app-schema-dropdown>\n    <app-schema-editor [schema]=\"schema\" (schemaHasChanged)=\"handleSchemaHasChanged($event)\"></app-schema-editor>\n  </div>\n  <div class=\"w-50\">\n    <app-framework-dropdown (frameworkChanged)=\"handleFrameWorkChanged($event)\"></app-framework-dropdown>\n    <router-outlet></router-outlet>\n    <app-submitted-data></app-submitted-data>\n  </div>\n</div>\n\n");
 
 /***/ }),
 
@@ -223,7 +223,6 @@ var __importDefault = (undefined && undefined.__importDefault) || function (mod)
 };
 
 
-// import { JsonSchemaExamplesModule } from './json-schema-examples/json-schema-examples.module';
 
 
 
@@ -231,19 +230,21 @@ var __importDefault = (undefined && undefined.__importDefault) || function (mod)
 
 
 
-// import {BootstrapModule} from './modules/bootstrap/bootstrap.module';
-// import {MaterialDesignModule} from './modules/material-design/material-design.module';
 
 
 const routes = [
     {
         path: '',
-        loadChildren: () => Promise.all(/*! import() | modules-material-design-material-design-module */[__webpack_require__.e("default~modules-bootstrap-bootstrap-module~modules-material-design-material-design-module"), __webpack_require__.e("modules-material-design-material-design-module")]).then(__webpack_require__.bind(null, /*! ./modules/material-design/material-design.module */ "./src/app/modules/material-design/material-design.module.ts")).then((m) => m.MaterialDesignModule)
+        loadChildren: () => Promise.all(/*! import() | modules-tru-ui-tru-ui-module */[__webpack_require__.e("default~modules-bootstrap-bootstrap-module~modules-material-design-material-design-module~modules-tr~af656d29"), __webpack_require__.e("modules-tru-ui-tru-ui-module")]).then(__webpack_require__.bind(null, /*! ./modules/tru-ui/tru-ui.module */ "./src/app/modules/tru-ui/tru-ui.module.ts")).then((m) => m.TruUiModuleExample)
     },
     {
-        path: 'bootstrap-example',
-        loadChildren: () => Promise.all(/*! import() | modules-bootstrap-bootstrap-module */[__webpack_require__.e("default~modules-bootstrap-bootstrap-module~modules-material-design-material-design-module"), __webpack_require__.e("modules-bootstrap-bootstrap-module")]).then(__webpack_require__.bind(null, /*! ./modules/bootstrap/bootstrap.module */ "./src/app/modules/bootstrap/bootstrap.module.ts")).then((m) => m.BootstrapModule)
+        path: 'bootstrap',
+        loadChildren: () => Promise.all(/*! import() | modules-bootstrap-bootstrap-module */[__webpack_require__.e("default~modules-bootstrap-bootstrap-module~modules-material-design-material-design-module~modules-tr~af656d29"), __webpack_require__.e("modules-bootstrap-bootstrap-module")]).then(__webpack_require__.bind(null, /*! ./modules/bootstrap/bootstrap.module */ "./src/app/modules/bootstrap/bootstrap.module.ts")).then((m) => m.BootstrapModule)
     },
+    {
+        path: 'material',
+        loadChildren: () => Promise.all(/*! import() | modules-material-design-material-design-module */[__webpack_require__.e("default~modules-bootstrap-bootstrap-module~modules-material-design-material-design-module~modules-tr~af656d29"), __webpack_require__.e("modules-material-design-material-design-module")]).then(__webpack_require__.bind(null, /*! ./modules/material-design/material-design.module */ "./src/app/modules/material-design/material-design.module.ts")).then((m) => m.MaterialDesignModule)
+    }
 ];
 let AppModule = class AppModule {
 };
@@ -258,7 +259,6 @@ AppModule = __decorate([
         ],
         imports: [
             _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_2__["BrowserAnimationsModule"],
-            // JsonSchemaExamplesModule,
             _angular_router__WEBPACK_IMPORTED_MODULE_7__["RouterModule"].forRoot(routes),
             ngx_monaco_editor__WEBPACK_IMPORTED_MODULE_4__["MonacoEditorModule"].forRoot(),
             _angular_forms__WEBPACK_IMPORTED_MODULE_5__["FormsModule"]
@@ -325,12 +325,20 @@ let FrameworkDropdownComponent = class FrameworkDropdownComponent {
         this.location = location;
         this.frameworks = [
             'material',
-            'bootstrap'
+            'bootstrap',
+            'tru-ui'
         ];
         this.frameworkChanged = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"]();
     }
     ngOnInit() {
-        this.value = this.location.path() && this.location.path().indexOf('bootstrap') > -1 ? 'bootstrap' : 'material';
+        if (this.location.path()) {
+            this.value = this.frameworks.find((f) => this.location.path().indexOf(f) > -1);
+        }
+        else {
+            this.value = 'tru-ui';
+        }
+        console.log(this.value);
+        // this.value = this.location.path() && this.location.path().indexOf('bootstrap') > -1 ? 'bootstrap' : 'material';
     }
     startCase(value) {
         return Object(lodash__WEBPACK_IMPORTED_MODULE_1__["startCase"])(value);
@@ -340,11 +348,13 @@ let FrameworkDropdownComponent = class FrameworkDropdownComponent {
         this.frameworkChanged.emit(framework);
         switch (framework) {
             case 'material':
-                this.router.navigate(['']);
+                this.router.navigate(['material']);
                 break;
             case 'bootstrap':
-                this.router.navigate(['bootstrap-example']);
+                this.router.navigate(['bootstrap']);
                 break;
+            case 'tru-ui':
+                this.router.navigate(['']);
         }
     }
 };
