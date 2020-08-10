@@ -20,7 +20,7 @@ import { TruUiCheckboxgroupComponent } from '../../fields/checkboxgroup/tru-ui-c
 import { TruUiMultiselectComponent } from '../../fields/multiselect/tru-ui-multiselect/tru-ui-multiselect.component';
 import { TruUiArrayComponent } from '../shared/components/array/tru-ui-array/tru-ui-array.component';
 import { TruUiAutocompleteComponent } from '../../fields/autocomplete/tru-ui-autocomplete/tru-ui-autocomplete.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+// import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TypeaheadModule } from 'ngx-bootstrap/typeahead';
 
 @NgModule({
@@ -45,7 +45,7 @@ import { TypeaheadModule } from 'ngx-bootstrap/typeahead';
     SharedModule,
     TextMaskModule,
     BsDatepickerModule.forRoot(),
-    BrowserAnimationsModule,
+    // BrowserAnimationsModule,
     TypeaheadModule.forRoot()
   ],
   entryComponents: [

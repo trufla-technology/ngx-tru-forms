@@ -21,7 +21,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "<!-- <app-json-schema-examples></app-json-schema-examples> -->\n<div class=\"display-flex-row\">\n  <div class=\"w-50\">\n    <app-schema-dropdown [schemas]=\"allSchemaTitles\" (selectedSchemaChanged)=\"handleSelectedSchemaChanged($event)\"></app-schema-dropdown>\n    <app-schema-editor [schema]=\"schema\" (schemaHasChanged)=\"handleSchemaHasChanged($event)\"></app-schema-editor>\n  </div>\n  <div class=\"w-50\">\n    <app-framework-dropdown (frameworkChanged)=\"handleFrameWorkChanged($event)\"></app-framework-dropdown>\n    <router-outlet></router-outlet>\n    <app-submitted-data></app-submitted-data>\n  </div>\n</div>\n";
+    __webpack_exports__["default"] = "<!-- <app-json-schema-examples></app-json-schema-examples> -->\n<div class=\"display-flex-row\">\n  <div class=\"w-50\">\n    <app-schema-dropdown [schemas]=\"allSchemaTitles\" (selectedSchemaChanged)=\"handleSelectedSchemaChanged($event)\"></app-schema-dropdown>\n    <app-schema-editor [schema]=\"schema\" (schemaHasChanged)=\"handleSchemaHasChanged($event)\"></app-schema-editor>\n  </div>\n  <div class=\"w-50\">\n    <app-framework-dropdown (frameworkChanged)=\"handleFrameWorkChanged($event)\"></app-framework-dropdown>\n    <router-outlet></router-outlet>\n    <app-submitted-data></app-submitted-data>\n  </div>\n</div>\n\n";
     /***/
   },
 
@@ -404,31 +404,39 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       return mod && mod.__esModule ? mod : {
         "default": mod
       };
-    }; // import { JsonSchemaExamplesModule } from './json-schema-examples/json-schema-examples.module';
-    // import {BootstrapModule} from './modules/bootstrap/bootstrap.module';
-    // import {MaterialDesignModule} from './modules/material-design/material-design.module';
-
+    };
 
     var routes = [{
       path: '',
       loadChildren: function loadChildren() {
         return Promise.all(
-        /*! import() | modules-material-design-material-design-module */
-        [__webpack_require__.e("default~modules-bootstrap-bootstrap-module~modules-material-design-material-design-module"), __webpack_require__.e("modules-material-design-material-design-module")]).then(__webpack_require__.bind(null,
-        /*! ./modules/material-design/material-design.module */
-        "./src/app/modules/material-design/material-design.module.ts")).then(function (m) {
-          return m.MaterialDesignModule;
+        /*! import() | modules-tru-ui-tru-ui-module */
+        [__webpack_require__.e("default~modules-bootstrap-bootstrap-module~modules-material-design-material-design-module~modules-tr~af656d29"), __webpack_require__.e("modules-tru-ui-tru-ui-module")]).then(__webpack_require__.bind(null,
+        /*! ./modules/tru-ui/tru-ui.module */
+        "./src/app/modules/tru-ui/tru-ui.module.ts")).then(function (m) {
+          return m.TruUiModuleExample;
         });
       }
     }, {
-      path: 'bootstrap-example',
+      path: 'bootstrap',
       loadChildren: function loadChildren() {
         return Promise.all(
         /*! import() | modules-bootstrap-bootstrap-module */
-        [__webpack_require__.e("default~modules-bootstrap-bootstrap-module~modules-material-design-material-design-module"), __webpack_require__.e("modules-bootstrap-bootstrap-module")]).then(__webpack_require__.bind(null,
+        [__webpack_require__.e("default~modules-bootstrap-bootstrap-module~modules-material-design-material-design-module~modules-tr~af656d29"), __webpack_require__.e("modules-bootstrap-bootstrap-module")]).then(__webpack_require__.bind(null,
         /*! ./modules/bootstrap/bootstrap.module */
         "./src/app/modules/bootstrap/bootstrap.module.ts")).then(function (m) {
           return m.BootstrapModule;
+        });
+      }
+    }, {
+      path: 'material',
+      loadChildren: function loadChildren() {
+        return Promise.all(
+        /*! import() | modules-material-design-material-design-module */
+        [__webpack_require__.e("default~modules-bootstrap-bootstrap-module~modules-material-design-material-design-module~modules-tr~af656d29"), __webpack_require__.e("modules-material-design-material-design-module")]).then(__webpack_require__.bind(null,
+        /*! ./modules/material-design/material-design.module */
+        "./src/app/modules/material-design/material-design.module.ts")).then(function (m) {
+          return m.MaterialDesignModule;
         });
       }
     }];
@@ -439,8 +447,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
     AppModule = __decorate([Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["NgModule"])({
       declarations: [_app_component__WEBPACK_IMPORTED_MODULE_1__["AppComponent"], _components_schema_editor_schema_editor_component__WEBPACK_IMPORTED_MODULE_3__["SchemaEditorComponent"], _components_schema_dropdown_schema_dropdown_component__WEBPACK_IMPORTED_MODULE_6__["SchemaDropdownComponent"], _components_framework_dropdown_framework_dropdown_component__WEBPACK_IMPORTED_MODULE_8__["FrameworkDropdownComponent"], _components_submitted_data_submitted_data_component__WEBPACK_IMPORTED_MODULE_10__["SubmittedDataComponent"]],
-      imports: [_angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_2__["BrowserAnimationsModule"], // JsonSchemaExamplesModule,
-      _angular_router__WEBPACK_IMPORTED_MODULE_7__["RouterModule"].forRoot(routes), ngx_monaco_editor__WEBPACK_IMPORTED_MODULE_4__["MonacoEditorModule"].forRoot(), _angular_forms__WEBPACK_IMPORTED_MODULE_5__["FormsModule"]],
+      imports: [_angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_2__["BrowserAnimationsModule"], _angular_router__WEBPACK_IMPORTED_MODULE_7__["RouterModule"].forRoot(routes), ngx_monaco_editor__WEBPACK_IMPORTED_MODULE_4__["MonacoEditorModule"].forRoot(), _angular_forms__WEBPACK_IMPORTED_MODULE_5__["FormsModule"]],
       providers: [_json_schema_examples_json_schema_examples_samples__WEBPACK_IMPORTED_MODULE_9__["JsonSchemaExamplesSamples"]],
       bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_1__["AppComponent"]]
     })], AppModule);
@@ -542,14 +549,24 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         this.router = router;
         this.activatedRoute = activatedRoute;
         this.location = location;
-        this.frameworks = ['material', 'bootstrap'];
+        this.frameworks = ['material', 'bootstrap', 'tru-ui'];
         this.frameworkChanged = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"]();
       }
 
       _createClass(FrameworkDropdownComponent, [{
         key: "ngOnInit",
         value: function ngOnInit() {
-          this.value = this.location.path() && this.location.path().indexOf('bootstrap') > -1 ? 'bootstrap' : 'material';
+          var _this = this;
+
+          if (this.location.path()) {
+            this.value = this.frameworks.find(function (f) {
+              return _this.location.path().indexOf(f) > -1;
+            });
+          } else {
+            this.value = 'tru-ui';
+          }
+
+          console.log(this.value); // this.value = this.location.path() && this.location.path().indexOf('bootstrap') > -1 ? 'bootstrap' : 'material';
         }
       }, {
         key: "startCase",
@@ -564,12 +581,15 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
           switch (framework) {
             case 'material':
-              this.router.navigate(['']);
+              this.router.navigate(['material']);
               break;
 
             case 'bootstrap':
-              this.router.navigate(['bootstrap-example']);
+              this.router.navigate(['bootstrap']);
               break;
+
+            case 'tru-ui':
+              this.router.navigate(['']);
           }
         }
       }]);
@@ -929,7 +949,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       _createClass(SubmittedDataComponent, [{
         key: "ngOnInit",
         value: function ngOnInit() {
-          var _this = this;
+          var _this2 = this;
 
           this.options = {
             readOnly: true
@@ -940,9 +960,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           };
           this.dataservice.data.subscribe(function (d) {
             if (d) {
-              _this.data = JSON.stringify(d, null, 2);
-              _this.model = {
-                value: _this.data,
+              _this2.data = JSON.stringify(d, null, 2);
+              _this2.model = {
+                value: _this2.data,
                 language: 'json'
               };
             }
