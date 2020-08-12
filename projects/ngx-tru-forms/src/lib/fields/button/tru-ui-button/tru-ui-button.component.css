@@ -1,0 +1,22 @@
+.tru-ui-button {
+    border-radius: 6px;
+    font-size: 14px;
+    padding: 6px 24px;
+    margin: 6px;
+    width: auto;
+    height: 32px;
+    border: none;
+}
+
+.tru-ui-button:not([disabled]):hover {
+    opacity: 0.8;
+}
+
+.tru-ui-button:disabled {
+    background-color: #D8D8DE;
+    color: #959595;
+}
+::ng-deep .secondary-bg {
+background-color: #8e8e8e;
+color: #fff;
+}

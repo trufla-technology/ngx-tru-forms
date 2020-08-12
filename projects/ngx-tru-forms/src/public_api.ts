@@ -9,3 +9,5 @@ export { JsonFormMaterial } from './lib/framework/material/json-form-material';
 export { JsonFormBootstrap4 } from './lib/framework/bootstrap4/json-form-bootstrap4';
 export { JsonFormValidatorsService } from './lib/services/validators.service';
 export { CommonComponent } from './lib/fields/common/common.component';
+export { TruUiModule }  from './lib/framework/tru-ui/tru-ui.module';
+export { TruUi } from './lib/framework/tru-ui/tru-ui';

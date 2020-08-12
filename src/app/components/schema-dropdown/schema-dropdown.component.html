@@ -1,0 +1,3 @@
+<select class="demo_input" (change)="handleSelectedSchemaChange($event)">
+  <option *ngFor="let schema of schemas" [value]="schema">{{ startCase(schema) }}</option>
+</select>

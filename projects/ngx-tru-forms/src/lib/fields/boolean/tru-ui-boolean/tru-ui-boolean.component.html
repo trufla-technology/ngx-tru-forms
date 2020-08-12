@@ -1,0 +1,15 @@
+<div class="tru-ui-input-container">
+  <div [class]="getClass('checkbox-group')">
+    <label class="container">
+      <span  class="tru-ui-label"  [innerHTML]="title()"></span><sup *ngIf="isRequired()">*</sup>
+      <input 
+      [id]="schema.key"
+      [name]="schema.key"
+      type="checkbox"
+      [formControl]="control"
+      [attr.disabled]="disabled">
+      <span class="checkmark"></span>
+    </label>
+  </div>
+  <jf-tru-ui-error [control]="control"></jf-tru-ui-error>
+  </div>

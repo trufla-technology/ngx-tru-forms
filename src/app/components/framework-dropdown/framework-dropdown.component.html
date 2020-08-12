@@ -1,0 +1,3 @@
+<select [value]="value" class="demo_input" (change)="handleFrameworkChange($event)" name="" id="">
+  <option *ngFor="let framework of frameworks" [value]="framework">{{ startCase(framework) }}</option>
+</select>

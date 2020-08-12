@@ -1,0 +1,58 @@
+.tru-ui-lable {
+  font-size: 14px;
+    color: #8c8c8c;
+    margin-bottom: 6px;
+    padding: 0;
+}
+.tru-drag-and-drop {
+    text-align: center;
+    padding: 30px !important;
+    background-color: #FAFAFA;
+    border: 1px dashed #bfbfbf;
+    border-radius: 6px;
+
+}
+.tru-drag-and-drop > span {
+font-size: 12px;
+color:#bfbfbf
+}
+
+.browse-btn:hover {
+    cursor: pointer;
+    text-decoration: underline;
+  
+}
+.tru-form-actions {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  margin-top: 30px;
+  margin-left: 23px;
+ 
+}
+.file-preview-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.reset-btn {
+  width: 24px;
+  height: 24px;
+  margin-left: 3px;
+  border-radius: 3px;
+  border-style: none;
+}
+.d-none {
+  display: none;
+}
+.btn-remove {
+  background-color: #F75757;
+  width: 24px;
+  height: 24px;
+  margin-left: 3px;
+  border-radius: 3px;
+  border-style: none;
+
+}

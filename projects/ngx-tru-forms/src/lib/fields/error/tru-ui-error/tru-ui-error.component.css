@@ -1,0 +1,8 @@
+.tru-ui-feedback {
+    color: #f75a5a;
+    font-size: 12px;
+    margin-bottom: 6px;
+}
+.invalid-feedback {
+    display: block !important;
+}

@@ -1,0 +1,9 @@
+<button
+      class="tru-ui-button"
+      *ngIf="isVisible"
+      [type]="type"
+      [ngClass]="class"
+      [disabled]="disabled"
+      (click)="handleClick($event)">
+      {{label}}
+    </button>

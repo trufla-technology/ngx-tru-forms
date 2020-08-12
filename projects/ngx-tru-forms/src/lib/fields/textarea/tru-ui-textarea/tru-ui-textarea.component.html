@@ -1,0 +1,16 @@
+<div class="tru-ui-input-container">
+<label class="tru-ui-label"
+[ngClass]="['jf-label', schema.key, (isRequired() ? 'required' : '')]">
+<span [innerHTML]="title()"></span><sup *ngIf="isRequired()">*</sup>
+</label>
+<button type="button" *ngIf="this.schema.description" [attr.class]="'info'" [attr.title]="this.schema.description">Info</button>
+<textarea
+class="tru-ui-input-control"
+[name]="schema.key"
+[formControl]="control"
+[attr.maxLength]="schema.maxLength || null"
+[attr.minLength]="schema.minLength || null"
+[attr.disabled]="disabled"
+></textarea>
+<jf-tru-ui-error [control]="control"></jf-tru-ui-error>
+</div>
