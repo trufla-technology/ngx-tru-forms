@@ -337,7 +337,6 @@ let FrameworkDropdownComponent = class FrameworkDropdownComponent {
         else {
             this.value = 'tru-ui';
         }
-        console.log(this.value);
         // this.value = this.location.path() && this.location.path().indexOf('bootstrap') > -1 ? 'bootstrap' : 'material';
     }
     startCase(value) {
@@ -1417,7 +1416,7 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_1__["platformB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /home/george/projects/trufla/ngx-tru-forms/src/main.ts */"./src/main.ts");
+module.exports = __webpack_require__(/*! /home/abdelhameed/Desktop/ngx-tru-forms/src/main.ts */"./src/main.ts");
 
 
 /***/ })
