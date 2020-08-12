@@ -564,9 +564,8 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
             });
           } else {
             this.value = 'tru-ui';
-          }
+          } // this.value = this.location.path() && this.location.path().indexOf('bootstrap') > -1 ? 'bootstrap' : 'material';
 
-          console.log(this.value); // this.value = this.location.path() && this.location.path().indexOf('bootstrap') > -1 ? 'bootstrap' : 'material';
         }
       }, {
         key: "startCase",
@@ -1909,7 +1908,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
   /***/
   function _(module, exports, __webpack_require__) {
     module.exports = __webpack_require__(
-    /*! /home/george/projects/trufla/ngx-tru-forms/src/main.ts */
+    /*! /home/abdelhameed/Desktop/ngx-tru-forms/src/main.ts */
     "./src/main.ts");
     /***/
   }
