@@ -14,15 +14,15 @@
 height: 32px;
 padding: 6px;
 width: 100%;
-margin:  4px 0;
+/* margin:  4px 0; */
 background-color: #fff;
 border: 1px solid #D8D8D8;
 border-radius: 6px;
 color: #959595 !important;
 }
-::ng-deep .ng-dirty.ng-valid {
+/* ::ng-deep .ng-dirty.ng-valid {
     border-color: #b7d581 !important;
-}
+} */
 
 ::ng-deep .ng-invalid.ng-touched {
     border-color: #f75a5a !important;
