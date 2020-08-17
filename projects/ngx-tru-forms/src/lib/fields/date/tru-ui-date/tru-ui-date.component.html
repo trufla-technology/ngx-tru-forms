@@ -3,10 +3,12 @@
     <span [innerHTML]="title()"></span><sup *ngIf="isRequired()">*</sup>
   </label>
   <input
+    type="text"
     class="tru-ui-input-control tru-ui-date"
     [name]="schema.key"
+    (bsValueChange)="onDateInput($event)"
     [formControl]="control"
-    [bsConfig]="{ containerClass: 'theme-default', dateInputFormat: 'MM/DD/YYYY' }"
+    [bsConfig]="{ containerClass: 'theme-default', dateInputFormat: 'MM/DD/YYYY'}"
     bsDatepicker
     [attr.disabled]="disabled"
   />
