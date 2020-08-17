@@ -1,5 +1,5 @@
 <div class="tru-ui-input-container">
-<label [ngClass]="['jf-label', schema.key, (isRequired() ? 'required' : '')]" *ngIf="type() !== 'hidden'">
+<label class="tru-ui-label" [ngClass]="['jf-label', schema.key, (isRequired() ? 'required' : '')]" *ngIf="type() !== 'hidden'">
     <span  class="tru-ui-label" [innerHTML]="title()"></span><sup *ngIf="isRequired()">*</sup>
   </label>
   <button type="button" *ngIf="this.schema.description" [attr.class]="'info'" [attr.title]="this.schema.description">Info</button>
@@ -8,7 +8,6 @@
     [name]="schema.key"
     [attr.type]="'number'"
     [formControl]="control"
-    [attr.placeholder]="placeholder()"
     [attr.disabled]="disabled"
   />
   <jf-tru-ui-error [control]="control"></jf-tru-ui-error>
