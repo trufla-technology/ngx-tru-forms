@@ -21,9 +21,9 @@ border: 1px solid #D8D8D8;
 border-radius: 6px;
 color: #959595 !important;
 }
-/* ::ng-deep .ng-dirty.ng-valid {
+::ng-deep .ng-dirty.ng-valid.ng-touched {
     border-color: #b7d581 !important;
-} */
+}
 
 ::ng-deep .ng-invalid.ng-touched {
     border-color: #f75a5a !important;
@@ -76,7 +76,7 @@ textarea.tru-ui-input-control {
   /* Create a custom checkbox */
   .checkmark {
     position: absolute;
-    top: 0;
+    top: 3px;
     left: 0;
     height: 15px;
     width: 15px;
