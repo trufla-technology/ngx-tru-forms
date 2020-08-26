@@ -671,6 +671,49 @@ let JsonSchemaExamplesSamples = class JsonSchemaExamplesSamples {
                 },
                 required: ['year', 'effective_date']
             },
+            localization: {
+                "title": [
+                    { "language": "en", "value": "login form" },
+                    { "language": "fr", "value": "Formulaire de connexion" }
+                ],
+                "description": [
+                    { "language": "en", "value": "login form" },
+                    { "language": "fr", "value": "Formulaire de connexion" }
+                ],
+                "type": "object",
+                "properties": {
+                    "first_name": {
+                        "type": "string",
+                        "title": [
+                            { "language": "en", "value": "first_name" },
+                            { "language": "fr", "value": "leprénom" }
+                        ]
+                    },
+                    "last_name": {
+                        "type": "string",
+                        "title": [
+                            { "language": "en", "value": "last_name" },
+                            { "language": "fr", "value": "lenom de famille" }
+                        ]
+                    }
+                }
+            },
+            auto_complete: {
+                title: 'Photo example',
+                description: 'Photos are common to forms',
+                type: 'object',
+                properties: {
+                    auto_complete: {
+                        type: 'string',
+                        format: 'autocomplete',
+                        enum: [
+                            'js',
+                            'sql',
+                            'api'
+                        ]
+                    }
+                }
+            },
             photo_example: {
                 title: 'Photo example',
                 description: 'Photos are common to forms',
@@ -695,7 +738,7 @@ let JsonSchemaExamplesSamples = class JsonSchemaExamplesSamples {
                         type: 'string'
                     }
                 },
-                required: ['year', 'make', 'model', 'vin_number', 'description', 'effective_date']
+                required: ['first_name', 'last_name']
             },
             array_sample: {
                 title: 'Array',
@@ -714,8 +757,7 @@ let JsonSchemaExamplesSamples = class JsonSchemaExamplesSamples {
                                     type: 'string'
                                 }
                             }
-                        },
-                        required: ['year', 'make', 'model', 'vin_number', 'description', 'effective_date']
+                        }
                     }
                 }
             },
@@ -747,9 +789,7 @@ let JsonSchemaExamplesSamples = class JsonSchemaExamplesSamples {
                         type: 'number',
                         enum: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
                     }
-                },
-                required: ['first_name', 'last_name', 'driver_license_no', 'insurance_duration', 'number_of_conviction', 'number_of_accidents',
-                    'effective_date']
+                }
             },
             nested: {
                 title: 'Nested',
@@ -849,7 +889,7 @@ let JsonSchemaExamplesSamples = class JsonSchemaExamplesSamples {
                                 type: 'string'
                             }
                         },
-                        required: ['first_name', 'last_name']
+                        required: ['first_name', 'last_name', 'email']
                     },
                     bank_information: {
                         type: 'object',
@@ -950,6 +990,13 @@ let JsonSchemaExamplesSamples = class JsonSchemaExamplesSamples {
                                     'Coke',
                                     'Sprite'
                                 ]
+                            },
+                            Hamburger_type: {
+                                type: 'string',
+                                enum: [
+                                    'beef',
+                                    'chicken'
+                                ]
                             }
                         },
                         oneOf: [
@@ -962,7 +1009,7 @@ let JsonSchemaExamplesSamples = class JsonSchemaExamplesSamples {
                                     }
                                 },
                                 required: [
-                                    'drink'
+                                    'Hamburger_type'
                                 ]
                             },
                             {
@@ -971,7 +1018,10 @@ let JsonSchemaExamplesSamples = class JsonSchemaExamplesSamples {
                                         enum: [
                                             'Pizza'
                                         ]
-                                    }
+                                    },
+                                    required: [
+                                        'drink'
+                                    ]
                                 }
                             },
                             {

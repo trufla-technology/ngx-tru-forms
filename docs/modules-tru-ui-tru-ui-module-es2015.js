@@ -9,7 +9,7 @@
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<jf-form\n  [schema]=\"schema\"\n  (handleSubmit)=\"handleSubmit($event)\"\n  [submit]=\"'submit'\"\n></jf-form>");
+/* harmony default export */ __webpack_exports__["default"] = ("<div *ngIf=\"isArray(schema.title)\">\n<h6>Language</h6>\n<select  class=\"demo_input\" (change)=\"changeLanguage($event.target.value)\">\n  <option value=\"en\">English</option>\n  <option value=\"fr\">Frensh</option>\n</select>\n</div>\n<jf-form\n  [schema]=\"schema\"\n  (handleSubmit)=\"handleSubmit($event)\"\n  [language]=\"language\"\n  [submit]=\"'submit'\"\n></jf-form>");
 
 /***/ }),
 
@@ -64,6 +64,12 @@ let TruUiComponent = class TruUiComponent {
     }
     handleSubmit(e) {
         this.dataService.data = e;
+    }
+    changeLanguage(lang) {
+        this.language = lang;
+    }
+    isArray(array) {
+        return Array.isArray(array);
     }
 };
 TruUiComponent.ctorParameters = () => [
