@@ -6,6 +6,7 @@
 <button type="button" *ngIf="this.schema.description" [attr.class]="'info'" [attr.title]="this.schema.description">Info</button>
 <textarea
 class="tru-ui-input-control"
+[ngClass]="{'empty': control.value === '' && !isRequired()}"
 [name]="schema.key"
 [formControl]="control"
 [attr.maxLength]="schema.maxLength || null"

@@ -21,8 +21,9 @@ export class JsonSchemaExamplesComponent implements OnInit, AfterViewInit {
   fields = {};
   selectedSchema = 'simple_input';
   viewOnly = false;
+  language = 'en';
   data: Object = {};
-  @ViewChild('jsonSchema', {static: true}) jsonSchema: ElementRef;
+  @ViewChild('jsonSchema', {static: false}) jsonSchema: ElementRef;
   @ViewChild('formResponse', {static: false}) formResponse: ElementRef;
   @ViewChild('jfForm', {static: false}) jfForm: JsonFormComponent;
 
@@ -53,6 +54,12 @@ export class JsonSchemaExamplesComponent implements OnInit, AfterViewInit {
   ngAfterViewInit(): void {
     this.jfForm.setHeader('<p>Please complete the following form.</p>');
     this.jfForm.setFooter('<p><small>* indicates required fields</small></p>');
+  }
+
+  changeLanguage(lang) {
+    this.language = lang;
+    // console.log(lang)
+    // this.cd.detectChanges();
   }
 
   handleSubmit(data) {

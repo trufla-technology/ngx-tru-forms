@@ -8,9 +8,9 @@ import { CommonComponent } from '../../common/common.component';
 })
 export class TruUiAutocompleteComponent extends CommonComponent {
   typeaheadNoResults() {
-    if ( this.control.value !== '' ) {
+    if ( this.control.value !== '') {
     let searchValue = [];
-    searchValue = this.schema.enum.filter((en) => en === this.control.value);
+    searchValue = this.schema.enum.filter((en, i) => en === this.control.value);
     searchValue.length !== 0 ? this.control.setErrors(null) : this.control.setErrors({notInMenu: 'invalid'});
   } else {
     this.control.setErrors(null);

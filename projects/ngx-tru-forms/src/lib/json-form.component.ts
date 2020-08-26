@@ -14,6 +14,7 @@ import * as _ from 'lodash';
 })
 export class JsonFormComponent implements DoCheck, OnDestroy {
   @Input() schema;
+  @Input() language: string;
   @Input() data = {};
   @Input() style = {};
   @Input() continue = 'Continue';
@@ -60,6 +61,9 @@ export class JsonFormComponent implements DoCheck, OnDestroy {
 
   ngDoCheck(): void {
     this.changeDetected = false;
+    if(!this.language) {
+      this.language = 'en';
+    }
 
     if (this.oldSchema !== JSON.stringify(this.schema)) {
       this.oldSchema = JSON.stringify(this.schema);
