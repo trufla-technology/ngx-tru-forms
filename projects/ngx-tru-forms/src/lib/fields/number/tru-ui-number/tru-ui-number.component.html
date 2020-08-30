@@ -9,7 +9,6 @@
     [attr.type]="'number'"
     [formControl]="control"
     [attr.disabled]="disabled"
-    [ngClass]="{'empty': control.value === '' && !isRequired()}"
   />
   <jf-tru-ui-error [control]="control"></jf-tru-ui-error>
   </div>

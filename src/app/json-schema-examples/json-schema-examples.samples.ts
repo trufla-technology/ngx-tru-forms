@@ -34,49 +34,6 @@ export class JsonSchemaExamplesSamples {
       },
       required: ['year', 'effective_date']
     },
-    localization: {
-      "title": [
-        {"language":"en", "value": "login form"},
-        {"language":"fr", "value": "Formulaire de connexion"}
-      ],
-      "description": [  
-        {"language":"en","value": "login form"},
-        {"language":"fr", "value": "Formulaire de connexion"}
-      ],
-      "type": "object",
-      "properties": {
-        "first_name": {
-          "type": "string",
-          "title": [
-            {"language": "en","value": "first_name"},
-            {"language": "fr","value": "leprénom"}
-          ]
-        },
-        "last_name": {
-          "type": "string",
-          "title": [
-            {"language":"en","value": "last_name"},
-            {"language":"fr","value": "lenom de famille"}
-          ]
-        }
-      }
-    },
-    auto_complete: {
-      title: 'Photo example',
-      description: 'Photos are common to forms',
-      type: 'object',
-      properties: {
-      auto_complete: {
-        type: 'string',
-        format: 'autocomplete',
-        enum: [
-          'js',
-          'sql',
-          'api'
-        ]
-      }
-     }
-    },
     photo_example: {
       title: 'Photo example',
       description: 'Photos are common to forms',
@@ -101,7 +58,7 @@ export class JsonSchemaExamplesSamples {
           type: 'string'
         }
       },
-      required: ['first_name', 'last_name']
+      required: ['year', 'make', 'model', 'vin_number', 'description', 'effective_date']
     },
     array_sample: {
       title: 'Array',
@@ -120,7 +77,8 @@ export class JsonSchemaExamplesSamples {
                 type: 'string'
               }
             }
-          }
+          },
+          required: ['year', 'make', 'model', 'vin_number', 'description', 'effective_date']
         }
       }
     },
@@ -152,7 +110,9 @@ export class JsonSchemaExamplesSamples {
           type: 'number',
           enum: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
         }
-      }
+      },
+      required: ['first_name', 'last_name', 'driver_license_no', 'insurance_duration', 'number_of_conviction', 'number_of_accidents',
+        'effective_date']
     },
     nested: {
       title: 'Nested',
@@ -252,7 +212,7 @@ export class JsonSchemaExamplesSamples {
               type: 'string'
             }
           },
-          required: ['first_name', 'last_name', 'email']
+          required: ['first_name', 'last_name']
         },
         bank_information: {
           type: 'object',
@@ -353,13 +313,6 @@ export class JsonSchemaExamplesSamples {
                 'Coke',
                 'Sprite'
               ]
-            },
-            Hamburger_type: {
-              type: 'string',
-              enum: [
-                'beef',
-                'chicken'
-              ]
             }
           },
           oneOf: [
@@ -372,7 +325,7 @@ export class JsonSchemaExamplesSamples {
                 }
               },
               required: [
-                'Hamburger_type'
+                'drink'
               ]
             },
             {
@@ -381,10 +334,7 @@ export class JsonSchemaExamplesSamples {
                   enum: [
                     'Pizza'
                   ]
-                },
-                required: [
-                  'drink'
-                ]
+                }
               }
             },
             {
