@@ -35,28 +35,28 @@ export class JsonSchemaExamplesSamples {
       required: ['year', 'effective_date']
     },
     localization: {
-      "title": [
-        {"language":"en", "value": "login form"},
-        {"language":"fr", "value": "Formulaire de connexion"}
+      'title': [
+        {'language': 'en', 'value': 'login form'},
+        {'language': 'fr', 'value': 'Formulaire de connexion'}
       ],
-      "description": [  
-        {"language":"en","value": "login form"},
-        {"language":"fr", "value": "Formulaire de connexion"}
+      'description': [
+        {'language': 'en', 'value': 'login form'},
+        {'language': 'fr', 'value': 'Formulaire de connexion'}
       ],
-      "type": "object",
-      "properties": {
-        "first_name": {
-          "type": "string",
-          "title": [
-            {"language": "en","value": "first_name"},
-            {"language": "fr","value": "leprénom"}
+      'type': 'object',
+      'properties': {
+        'first_name': {
+          'type': 'string',
+          'title': [
+            {'language': 'en', 'value': 'first_name'},
+            {'language': 'fr', 'value': 'leprénom'}
           ]
         },
-        "last_name": {
-          "type": "string",
-          "title": [
-            {"language":"en","value": "last_name"},
-            {"language":"fr","value": "lenom de famille"}
+        'last_name': {
+          'type': 'string',
+          'title': [
+            {'language': 'en', 'value': 'last_name'},
+            {'language': 'fr', 'value': 'lenom de famille'}
           ]
         }
       }

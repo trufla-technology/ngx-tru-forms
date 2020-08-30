@@ -17,7 +17,7 @@ const routes: Routes = [
     path: '',
     component: BootstrapComponent
   }
-]
+];
 
 @NgModule({
   declarations: [BootstrapComponent],

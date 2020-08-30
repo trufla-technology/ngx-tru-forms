@@ -13,7 +13,7 @@ export class FrameworkDropdownComponent implements OnInit {
     'material',
     'bootstrap',
     'tru-ui'
-  ]
+  ];
   value: string;
 
   @Output() frameworkChanged = new EventEmitter();
@@ -49,7 +49,7 @@ export class FrameworkDropdownComponent implements OnInit {
         this.router.navigate(['bootstrap']);
         break;
       case 'tru-ui':
-        this.router.navigate([''])
+        this.router.navigate(['']);
 
 
     }

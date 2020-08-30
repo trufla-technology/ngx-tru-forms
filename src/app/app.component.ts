@@ -56,7 +56,7 @@ export class AppComponent implements OnInit {
   }
 
   format(json) {
-    return JSON.stringify(json, null, 2)
+    return JSON.stringify(json, null, 2);
   }
 
   handleFrameWorkChanged(e) {

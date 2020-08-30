@@ -23,7 +23,7 @@ const routes: Routes = [
     path: 'material',
     loadChildren: () => import('./modules/material-design/material-design.module').then((m) => m.MaterialDesignModule)
   }
-]
+];
 
 @NgModule({
   declarations: [

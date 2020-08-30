@@ -61,7 +61,7 @@ export class JsonFormComponent implements DoCheck, OnDestroy {
 
   ngDoCheck(): void {
     this.changeDetected = false;
-    if(!this.language) {
+    if (!this.language) {
       this.language = 'en';
     }
 

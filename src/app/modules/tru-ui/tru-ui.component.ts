@@ -26,6 +26,6 @@ export class TruUiComponent implements OnInit {
     this.language = lang;
   }
   isArray(array) {
-    return Array.isArray(array)
+    return Array.isArray(array);
   }
 }

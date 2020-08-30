@@ -43,7 +43,7 @@ export class CommonComponent implements AfterViewInit {
   placeholder() {
    const key = this.strToUpperCase(this.schema.key).replace(/<.*?>/g, '');
    return (typeof this.schema.title === 'undefined'
-      ? key : (this.getTranslation(this.schema.title) ? this.getTranslation(this.schema.title) : key))
+      ? key : (this.getTranslation(this.schema.title) ? this.getTranslation(this.schema.title) : key));
   }
 
   type() {
@@ -91,8 +91,8 @@ export class CommonComponent implements AfterViewInit {
       : this.schema.enumNames[index];
   }
   getTranslation(titleArray) {
-    if(Array.isArray(titleArray)) {
-    const translatedTitle = titleArray.filter(val => 
+    if (Array.isArray(titleArray)) {
+    const translatedTitle = titleArray.filter(val =>
        val.language === this.language
       );
       return translatedTitle[0] ? this.strToUpperCase(translatedTitle[0].value.replace(/<.*?>/g, '')) : false;

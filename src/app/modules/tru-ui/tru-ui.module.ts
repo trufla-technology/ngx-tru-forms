@@ -10,7 +10,7 @@ const routes: Routes = [
     path: '',
     component: TruUiComponent
   }
-]
+];
 
 @NgModule({
   declarations: [TruUiComponent],
@@ -28,7 +28,7 @@ const routes: Routes = [
         }
       ]
     }
-    
+
   ]
 })
 export class TruUiModuleExample { }

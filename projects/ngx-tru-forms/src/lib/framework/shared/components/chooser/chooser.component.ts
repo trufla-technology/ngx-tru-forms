@@ -25,14 +25,15 @@ export class ChooserComponent {
   @Input() form: SchemaFormGroup;
   @Input() schema: Schema;
   @Input() nested = false;
-  @Input() language: string
+  @Input() language: string;
   keys = Object.keys;
   getTranslation(titleArray) {
-    if(Array.isArray(titleArray)) {
-    const translatedTitle = titleArray.filter(val => 
+    if (Array.isArray(titleArray)) {
+    const translatedTitle = titleArray.filter(val =>
        val.language === this.language
       );
-      return translatedTitle[0] && translatedTitle[0].value ? startCase(translatedTitle[0].value.replace(/<.*?>/g, '')): titleArray[0].value;
+      return translatedTitle[0] && translatedTitle[0].value ?
+       startCase(translatedTitle[0].value.replace(/<.*?>/g, '')) : titleArray[0].value;
   } else {
     return titleArray;
   }
