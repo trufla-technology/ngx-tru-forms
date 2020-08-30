@@ -13,6 +13,8 @@ class="tru-ui-input-control"
 [attr.minLength]="schema.minLength || null"
 [attr.disabled]="disabled"
 [textMask]="{ mask: getMask() }"
+[ngClass]="{'empty': control.value === '' && !isRequired()}"
+
 />
 <jf-tru-ui-error [control]="control"></jf-tru-ui-error>
 </div>

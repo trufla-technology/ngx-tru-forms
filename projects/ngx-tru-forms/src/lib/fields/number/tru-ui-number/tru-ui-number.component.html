@@ -10,6 +10,8 @@
     [formControl]="control"
     [attr.placeholder]="placeholder()"
     [attr.disabled]="disabled"
+    [ngClass]="{'empty': control.value === '' && !isRequired()}"
+
   />
   <jf-tru-ui-error [control]="control"></jf-tru-ui-error>
   </div>

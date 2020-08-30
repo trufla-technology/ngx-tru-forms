@@ -1,162 +1,169 @@
 .tru-ui-label {
-    font-size: 14px;
-    color: #8C8C8C;
-    margin-bottom: 6px;
-    padding: 0;
+  font-size: 14px;
+  color: #8C8C8C;
+  margin-bottom: 6px;
+  padding: 0;
 }
 
 .tru-ui-input-container {
-    margin-bottom: 8px;
-    position: relative;
+  margin-bottom: 8px;
+  position: relative;
 }
-
+.tru-ui-input-control.empty {
+border-color: #D8D8D8 !important;
+}
 .tru-ui-input-control {
 height: 32px;
 padding: 6px;
 width: 100%;
-margin:  4px 0;
+font-size: 12px;
+/* margin:  4px 0; */
 background-color: #fff;
 border: 1px solid #D8D8D8;
 border-radius: 6px;
 color: #959595 !important;
 }
-::ng-deep .ng-dirty.ng-valid {
-    border-color: #b7d581 !important;
+.tru-ui-input-control:focus{ 
+outline: none !important;
+
+}
+::ng-deep .ng-dirty.ng-valid.ng-touched {
+  border-color: #b7d581;
 }
 
 ::ng-deep .ng-invalid.ng-touched {
-    border-color: #f75a5a !important;
+  border-color: #f75a5a !important;
 }
 
 textarea.tru-ui-input-control {
-    height: 120px;
+  height: 120px;
 }
 .tru-ui-date {
-    background-position: calc(100% - 6px);
-    background-repeat: no-repeat;
-    background-image: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='UTF-8'%3F%3E%3Csvg width='14px' height='16px' viewBox='0 0 14 16' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'%3E%3Cg id='Full-Admin' stroke='none' stroke-width='1' fill='none' fill-rule='evenodd'%3E%3Cg id='All-form-inputs' transform='translate(-870.000000, -1088.000000)' fill='%238C8C8C' fill-rule='nonzero'%3E%3Cg id='Group-44-Copy' transform='translate(631.000000, 1056.000000)'%3E%3Cg id='Group-31' transform='translate(0.000000, 24.000000)'%3E%3Cpath d='M252.625,13 L239.375,13 C239.16875,13 239,12.83125 239,12.625 L239,11.5 C239,10.671875 239.671875,10 240.5,10 L242,10 L242,8.375 C242,8.16875 242.16875,8 242.375,8 L243.625,8 C243.83125,8 244,8.16875 244,8.375 L244,10 L248,10 L248,8.375 C248,8.16875 248.16875,8 248.375,8 L249.625,8 C249.83125,8 250,8.16875 250,8.375 L250,10 L251.5,10 C252.328125,10 253,10.671875 253,11.5 L253,12.625 C253,12.83125 252.83125,13 252.625,13 Z M239.375,14 L252.625,14 C252.83125,14 253,14.16875 253,14.375 L253,22.5 C253,23.328125 252.328125,24 251.5,24 L240.5,24 C239.671875,24 239,23.328125 239,22.5 L239,14.375 C239,14.16875 239.16875,14 239.375,14 Z M243,20.375 C243,20.16875 242.83125,20 242.625,20 L241.375,20 C241.16875,20 241,20.16875 241,20.375 L241,21.625 C241,21.83125 241.16875,22 241.375,22 L242.625,22 C242.83125,22 243,21.83125 243,21.625 L243,20.375 Z M243,16.375 C243,16.16875 242.83125,16 242.625,16 L241.375,16 C241.16875,16 241,16.16875 241,16.375 L241,17.625 C241,17.83125 241.16875,18 241.375,18 L242.625,18 C242.83125,18 243,17.83125 243,17.625 L243,16.375 Z M247,20.375 C247,20.16875 246.83125,20 246.625,20 L245.375,20 C245.16875,20 245,20.16875 245,20.375 L245,21.625 C245,21.83125 245.16875,22 245.375,22 L246.625,22 C246.83125,22 247,21.83125 247,21.625 L247,20.375 Z M247,16.375 C247,16.16875 246.83125,16 246.625,16 L245.375,16 C245.16875,16 245,16.16875 245,16.375 L245,17.625 C245,17.83125 245.16875,18 245.375,18 L246.625,18 C246.83125,18 247,17.83125 247,17.625 L247,16.375 Z M251,20.375 C251,20.16875 250.83125,20 250.625,20 L249.375,20 C249.16875,20 249,20.16875 249,20.375 L249,21.625 C249,21.83125 249.16875,22 249.375,22 L250.625,22 C250.83125,22 251,21.83125 251,21.625 L251,20.375 Z M251,16.375 C251,16.16875 250.83125,16 250.625,16 L249.375,16 C249.16875,16 249,16.16875 249,16.375 L249,17.625 C249,17.83125 249.16875,18 249.375,18 L250.625,18 C250.83125,18 251,17.83125 251,17.625 L251,16.375 Z' id='calendar-alt'%3E%3C/path%3E%3C/g%3E%3C/g%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  background-position: calc(100% - 6px);
+  background-repeat: no-repeat;
+  background-image: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='UTF-8'%3F%3E%3Csvg width='14px' height='16px' viewBox='0 0 14 16' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'%3E%3Cg id='Full-Admin' stroke='none' stroke-width='1' fill='none' fill-rule='evenodd'%3E%3Cg id='All-form-inputs' transform='translate(-870.000000, -1088.000000)' fill='%238C8C8C' fill-rule='nonzero'%3E%3Cg id='Group-44-Copy' transform='translate(631.000000, 1056.000000)'%3E%3Cg id='Group-31' transform='translate(0.000000, 24.000000)'%3E%3Cpath d='M252.625,13 L239.375,13 C239.16875,13 239,12.83125 239,12.625 L239,11.5 C239,10.671875 239.671875,10 240.5,10 L242,10 L242,8.375 C242,8.16875 242.16875,8 242.375,8 L243.625,8 C243.83125,8 244,8.16875 244,8.375 L244,10 L248,10 L248,8.375 C248,8.16875 248.16875,8 248.375,8 L249.625,8 C249.83125,8 250,8.16875 250,8.375 L250,10 L251.5,10 C252.328125,10 253,10.671875 253,11.5 L253,12.625 C253,12.83125 252.83125,13 252.625,13 Z M239.375,14 L252.625,14 C252.83125,14 253,14.16875 253,14.375 L253,22.5 C253,23.328125 252.328125,24 251.5,24 L240.5,24 C239.671875,24 239,23.328125 239,22.5 L239,14.375 C239,14.16875 239.16875,14 239.375,14 Z M243,20.375 C243,20.16875 242.83125,20 242.625,20 L241.375,20 C241.16875,20 241,20.16875 241,20.375 L241,21.625 C241,21.83125 241.16875,22 241.375,22 L242.625,22 C242.83125,22 243,21.83125 243,21.625 L243,20.375 Z M243,16.375 C243,16.16875 242.83125,16 242.625,16 L241.375,16 C241.16875,16 241,16.16875 241,16.375 L241,17.625 C241,17.83125 241.16875,18 241.375,18 L242.625,18 C242.83125,18 243,17.83125 243,17.625 L243,16.375 Z M247,20.375 C247,20.16875 246.83125,20 246.625,20 L245.375,20 C245.16875,20 245,20.16875 245,20.375 L245,21.625 C245,21.83125 245.16875,22 245.375,22 L246.625,22 C246.83125,22 247,21.83125 247,21.625 L247,20.375 Z M247,16.375 C247,16.16875 246.83125,16 246.625,16 L245.375,16 C245.16875,16 245,16.16875 245,16.375 L245,17.625 C245,17.83125 245.16875,18 245.375,18 L246.625,18 C246.83125,18 247,17.83125 247,17.625 L247,16.375 Z M251,20.375 C251,20.16875 250.83125,20 250.625,20 L249.375,20 C249.16875,20 249,20.16875 249,20.375 L249,21.625 C249,21.83125 249.16875,22 249.375,22 L250.625,22 C250.83125,22 251,21.83125 251,21.625 L251,20.375 Z M251,16.375 C251,16.16875 250.83125,16 250.625,16 L249.375,16 C249.16875,16 249,16.16875 249,16.375 L249,17.625 C249,17.83125 249.16875,18 249.375,18 L250.625,18 C250.83125,18 251,17.83125 251,17.625 L251,16.375 Z' id='calendar-alt'%3E%3C/path%3E%3C/g%3E%3C/g%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
 }
 .tru-ui-select {
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' version='1.1' viewBox='0 0 129 129' enable-background='new 0 0 129 129' width='512px' height='512px'%3E%3Cg%3E%3Cpath d='m121.3,34.6c-1.6-1.6-4.2-1.6-5.8,0l-51,51.1-51.1-51.1c-1.6-1.6-4.2-1.6-5.8,0-1.6,1.6-1.6,4.2 0,5.8l53.9,53.9c0.8,0.8 1.8,1.2 2.9,1.2 1,0 2.1-0.4 2.9-1.2l53.9-53.9c1.7-1.6 1.7-4.2 0.1-5.8z' fill='%23959595'/%3E%3C/g%3E%3C/svg%3E%0A");    background-position: calc(100% - 6px);
-    background-repeat: no-repeat;
-    -moz-appearance:none; /* Firefox */
-    -webkit-appearance:none; /* Safari and Chrome */
-    appearance:none;
-    background-size: 14px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' version='1.1' viewBox='0 0 129 129' enable-background='new 0 0 129 129' width='512px' height='512px'%3E%3Cg%3E%3Cpath d='m121.3,34.6c-1.6-1.6-4.2-1.6-5.8,0l-51,51.1-51.1-51.1c-1.6-1.6-4.2-1.6-5.8,0-1.6,1.6-1.6,4.2 0,5.8l53.9,53.9c0.8,0.8 1.8,1.2 2.9,1.2 1,0 2.1-0.4 2.9-1.2l53.9-53.9c1.7-1.6 1.7-4.2 0.1-5.8z' fill='%23959595'/%3E%3C/g%3E%3C/svg%3E%0A");    background-position: calc(100% - 6px);
+  background-repeat: no-repeat;
+  -moz-appearance:none; /* Firefox */
+  -webkit-appearance:none; /* Safari and Chrome */
+  appearance:none;
+  background-size: 14px;
 }
 .tru-ui-number {
-    -moz-appearance:none; /* Firefox */
-    -webkit-appearance:none; /* Safari and Chrome */
-    appearance:none;
+  -moz-appearance:none; /* Firefox */
+  -webkit-appearance:none; /* Safari and Chrome */
+  appearance:none;
 }
 .container, .container-radio-button {
-    display: block;
-    position: relative;
-    padding-left: 18px;
-    margin-bottom: 12px;
-    cursor: pointer;
-    font-size: 14px;
-    margin-top: 12px;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-  }
-  
-  /* Hide the browser's default checkbox */
-  .container input, .container-radio-button input {
-    position: absolute;
-    opacity: 0;
-    cursor: pointer;
-    height: 0;
-    width: 0;
-  }
-  
-  /* Create a custom checkbox */
-  .checkmark {
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 15px;
-    width: 15px;
-    background-color: #fff;
-    border-radius: 3px;
-    border: 1px solid rgba(0, 0, 0, .3);  
+  display: block;
+  position: relative;
+  padding-left: 18px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 14px;
+  margin-top: 12px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
-  
-  /* On mouse-over, add a grey background color */
-  .container:hover input ~ .checkmark {
-    background-color: #fff;
-    border-radius: 3px;
-    border: 1px solid rgba(0, 0, 0, .3);
-  }
-  .container-radio-button input ~.checkmark {
-    border-radius: 50%;
-    background-color: #fff;
-    border: 1px solid rgba(0, 0, 0, .3);
-  }
-  /* When the checkbox is checked, add a blue background */
-  .container input:checked ~ .checkmark, .container-radio-button input:checked ~ .checkmark  {
-    background-color: #2196F3;
-  }
-  
-  /* Create the checkmark/indicator (hidden when not checked) */
-  .checkmark:after {
-    content: "";
-    position: absolute;
-    display: none;
-  }
-  
-  /* Show the checkmark when checked */
-  .container input:checked ~ .checkmark:after,  .container-radio-button input:checked ~ .checkmark:after{
-    display: block;
-  }
-  
-  /* Style the checkmark/indicator */
-  .container .checkmark:after {
-    left: 4px;
-    top: 1px;
-    width: 5px;
-    height: 10px;
-    border: solid #fff;
-    border-width: 0 2px 2px 0;
-    transform: rotate(45deg);
-  }
-  .container-radio-button .checkmark:after {
-    background-color: #fff;
-    border-radius: 50%;
-    width: 7px;
-    height: 7px;
-    top: 3px;    background-color: #fff;
-    border-radius: 50%;
-    left: 3px;
-  }
-  ::ng-deep typeahead-container {
-    background-color: #fff;
-    border-radius: 6px;
-    width: 100%;
-    box-shadow: 10px 10px 20px 0 rgba(30,30,30,0.05);
 
-  }
-  ::ng-deep .dropdown-menu {
-    list-style: none;
-    padding: 0;
-    width: 100%;
+/* Hide the browser's default checkbox */
+.container input, .container-radio-button input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
 
-  }
-  ::ng-deep .dropdown-menu li a {
-    text-decoration: none;
-    font-size: 14px;
-    color: #8C8C8C;
-    display: block;
-    width: 100%;
-  }
-  ::ng-deep .dropdown-menu li {
-    padding: 4px 6px;
-  }
-  ::ng-deep .dropdown-menu li:hover {
-    background-color: rgba(0, 0, 0, .05);
-  }
-  ::ng-deep .dropdown-menu > li > a > span > strong, .dropdown-menu > li > a > span > strong {
-  color: #b7d581 !important;
-  }
+/* Create a custom checkbox */
+.checkmark {
+  position: absolute;
+  top: 3px;
+  left: 0;
+  height: 15px;
+  width: 15px;
+  background-color: #fff;
+  border-radius: 3px;
+  border: 1px solid rgba(0, 0, 0, .3);  
+}
+
+/* On mouse-over, add a grey background color */
+.container:hover input ~ .checkmark {
+  background-color: #fff;
+  border-radius: 3px;
+  border: 1px solid rgba(0, 0, 0, .3);
+}
+.container-radio-button input ~.checkmark {
+  border-radius: 50%;
+  background-color: #fff;
+  border: 1px solid rgba(0, 0, 0, .3);
+}
+/* When the checkbox is checked, add a blue background */
+.container input:checked ~ .checkmark, .container-radio-button input:checked ~ .checkmark  {
+  background-color: #2196F3;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the checkmark when checked */
+.container input:checked ~ .checkmark:after,  .container-radio-button input:checked ~ .checkmark:after{
+  display: block;
+}
+
+/* Style the checkmark/indicator */
+.container .checkmark:after {
+  left: 4px;
+  top: 1px;
+  width: 5px;
+  height: 10px;
+  border: solid #fff;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+.container-radio-button .checkmark:after {
+  background-color: #fff;
+  border-radius: 50%;
+  width: 7px;
+  height: 7px;
+  top: 3px;    background-color: #fff;
+  border-radius: 50%;
+  left: 3px;
+}
+::ng-deep typeahead-container {
+  background-color: #fff;
+  border-radius: 6px;
+  width: 100%;
+  box-shadow: 10px 10px 20px 0 rgba(30,30,30,0.05);
+
+}
+::ng-deep .dropdown-menu {
+  list-style: none;
+  padding: 0;
+  width: 100%;
+
+}
+::ng-deep .dropdown-menu li a {
+  text-decoration: none;
+  font-size: 14px;
+  color: #8C8C8C;
+  display: block;
+  width: 100%;
+}
+::ng-deep .dropdown-menu li {
+  padding: 4px 6px;
+}
+::ng-deep .dropdown-menu li:hover {
+  background-color: rgba(0, 0, 0, .05);
+}
+::ng-deep .dropdown-menu > li > a > span > strong, .dropdown-menu > li > a > span > strong {
+color: #b7d581 !important;
+}

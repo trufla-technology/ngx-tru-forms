@@ -11,6 +11,8 @@ class="tru-ui-input-control"
 [attr.maxLength]="schema.maxLength || null"
 [attr.minLength]="schema.minLength || null"
 [attr.disabled]="disabled"
+[ngClass]="{'empty': control.value === '' && !isRequired()}"
+
 ></textarea>
 <jf-tru-ui-error [control]="control"></jf-tru-ui-error>
 </div>
