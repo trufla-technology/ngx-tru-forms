@@ -1,13 +1,5 @@
-<div *ngIf="isArray(schema.title)">
-<h6>Language</h6>
-<select  class="demo_input" (change)="changeLanguage($event.target.value)">
-  <option value="en">English</option>
-  <option value="fr">Frensh</option>
-</select>
-</div>
 <jf-form
   [schema]="schema"
   (handleSubmit)="handleSubmit($event)"
-  [language]="language"
   [submit]="'submit'"
 ></jf-form>

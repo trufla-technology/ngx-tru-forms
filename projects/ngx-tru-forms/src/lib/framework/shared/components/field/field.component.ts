@@ -13,7 +13,6 @@ import {JsonFormFieldsService} from '../../../json-form-fields.service';
 export class FieldComponent implements OnInit, OnChanges {
   @ViewChild('container', {read: ViewContainerRef, static: true} ) container: ViewContainerRef;
   @Input() control: SchemaFormControl;
-  @Input() language: string;
   public patterns;
 
   constructor(
@@ -34,7 +33,7 @@ export class FieldComponent implements OnInit, OnChanges {
   generateField() {
     this.container.clear();
     this.jsonFormFieldsService[0].setRootViewContainerRef(this.container);
-    this.jsonFormFieldsService[0].addDynamicComponent(this.control, this.language);
+    this.jsonFormFieldsService[0].addDynamicComponent(this.control);
     this.el.nativeElement.className = `field margin-bottom ${this.getClass()} form-group`;
   }
 
@@ -42,7 +41,6 @@ export class FieldComponent implements OnInit, OnChanges {
     const fieldClass = [defaultClass];
     fieldClass.push(this.control.schema.type);
     fieldClass.push(this.control.schema.key);
-    fieldClass.push(this.language);
 
     if (this.control.schema.hasOwnProperty('description')) {
       fieldClass.push('has-info');

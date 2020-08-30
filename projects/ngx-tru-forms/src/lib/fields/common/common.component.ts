@@ -1,6 +1,6 @@
 import { Schema } from '../../models/schema';
 import { SchemaFormControl } from '../../models/schema-form-control';
-import { Component, ChangeDetectorRef, AfterViewInit, Input } from '@angular/core';
+import { Component, ChangeDetectorRef, AfterViewInit } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { startCase } from 'lodash';
 
@@ -13,7 +13,6 @@ export class CommonComponent implements AfterViewInit {
   schema: Schema;
   style: {};
   disabled = false;
-  language: string;
 
   constructor(
     public sanitizer: DomSanitizer,
@@ -30,10 +29,9 @@ export class CommonComponent implements AfterViewInit {
   }
 
   title(material = false) {
-    const key = this.strToUpperCase(this.schema.key).replace(/<.*?>/g, '');
     const required = this.isRequired() && material ? '*' : '';
     return (typeof this.schema.title === 'undefined'
-      ? key : (this.getTranslation(this.schema.title) ? this.getTranslation(this.schema.title) : key)) + required;
+      ? this.strToUpperCase(this.schema.key) : this.schema.title) + required;
   }
 
   strToUpperCase(str: string) {
@@ -41,9 +39,7 @@ export class CommonComponent implements AfterViewInit {
   }
 
   placeholder() {
-   const key = this.strToUpperCase(this.schema.key).replace(/<.*?>/g, '');
-   return (typeof this.schema.title === 'undefined'
-      ? key : (this.getTranslation(this.schema.title) ? this.getTranslation(this.schema.title) : key))
+    return (this.schema.title || this.strToUpperCase(this.schema.key)).replace(/<.*?>/g, '');
   }
 
   type() {
@@ -90,14 +86,4 @@ export class CommonComponent implements AfterViewInit {
       ? this.schema.enum[index]
       : this.schema.enumNames[index];
   }
-  getTranslation(titleArray) {
-    if(Array.isArray(titleArray)) {
-    const translatedTitle = titleArray.filter(val => 
-       val.language === this.language
-      );
-      return translatedTitle[0] ? this.strToUpperCase(translatedTitle[0].value.replace(/<.*?>/g, '')) : false;
-  } else {
-    return titleArray;
-  }
-}
 }

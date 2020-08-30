@@ -9,9 +9,7 @@
     margin-bottom: 8px;
     position: relative;
 }
-.tru-ui-input-control.empty {
-  border-color: #D8D8D8 !important;
-}
+
 .tru-ui-input-control {
 height: 32px;
 padding: 6px;
@@ -23,12 +21,8 @@ border: 1px solid #D8D8D8;
 border-radius: 6px;
 color: #959595 !important;
 }
-.tru-ui-input-control:focus{ 
-  outline: none !important;
-
-}
 ::ng-deep .ng-dirty.ng-valid.ng-touched {
-    border-color: #b7d581;
+    border-color: #b7d581 !important;
 }
 
 ::ng-deep .ng-invalid.ng-touched {

@@ -8,7 +8,7 @@ import { SchemaListenerService } from 'src/app/services/schema-listener.service'
   styleUrls: ['./tru-ui.component.css']
 })
 export class TruUiComponent implements OnInit {
-  language;
+
   schema;
   constructor(
     private schemaListenerService: SchemaListenerService,
@@ -22,10 +22,5 @@ export class TruUiComponent implements OnInit {
   handleSubmit(e) {
     this.dataService.data = e;
   }
-  changeLanguage(lang) {
-    this.language = lang;
-  }
-  isArray(array) {
-    return Array.isArray(array)
-  }
+
 }

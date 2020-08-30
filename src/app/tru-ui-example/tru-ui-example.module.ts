@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { JsonFormModule, TruUiModule } from '@trufla/ngx-tru-forms';
+import { JsonFormModule, TruUiModule, JsonFormBootstrap4Module } from '@trufla/ngx-tru-forms';
 import { TruUiFormComponent } from './tru-ui-form/tru-ui-form.component';
 
 
