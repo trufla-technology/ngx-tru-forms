@@ -8,7 +8,7 @@
        [typeaheadMinLength]="0"
        [attr.disabled]="disabled"
        (focusout)="typeaheadNoResults()"
-
+       [ngClass]="{'empty': control.value === '' && !isRequired()}"
        class="tru-ui-input-control tru-ui-select" />
        <jf-tru-ui-error [control]="control"></jf-tru-ui-error>
 </div>
