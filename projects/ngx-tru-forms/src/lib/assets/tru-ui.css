@@ -27,9 +27,9 @@ color: #959595 !important;
 outline: none !important;
 
 }
-::ng-deep .ng-dirty.ng-valid.ng-touched {
+/* ::ng-deep .ng-dirty.ng-valid.ng-touched {
   border-color: #b7d581;
-}
+} */
 
 ::ng-deep .ng-invalid.ng-touched {
   border-color: #f75a5a !important;
