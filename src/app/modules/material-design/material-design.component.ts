@@ -9,6 +9,7 @@ import {DataListenerService} from '../../services/data-listener.service';
 })
 export class MaterialDesignComponent implements OnInit {
   schema;
+  btnDisabled;
   constructor(
     private schemaListenerService: SchemaListenerService,
     private dataService: DataListenerService
@@ -20,6 +21,7 @@ export class MaterialDesignComponent implements OnInit {
 
   handleSubmit(e) {
     this.dataService.data = e;
+    this.btnDisabled = true;
   }
 
 }
