@@ -256,6 +256,12 @@ Add it via the component:
 ```ts
 [fields]="{'colour': ColourPickerComponent}"
 ```
+
+Also you can disable Submit button by passing
+```HTML
+<jf-form [btnDisabled]="true"></jf-form>
+```
+
 Now objects of format `new_format` will show the CustomComponent.
 
 ## External Methods
