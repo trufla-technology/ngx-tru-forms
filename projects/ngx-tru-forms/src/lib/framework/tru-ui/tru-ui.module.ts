@@ -22,6 +22,7 @@ import { TruUiArrayComponent } from '../shared/components/array/tru-ui-array/tru
 import { TruUiAutocompleteComponent } from '../../fields/autocomplete/tru-ui-autocomplete/tru-ui-autocomplete.component';
 // import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TypeaheadModule } from 'ngx-bootstrap/typeahead';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [TruUiButtonComponent,
@@ -41,6 +42,7 @@ import { TypeaheadModule } from 'ngx-bootstrap/typeahead';
     ],
   imports: [
     CommonModule,
+    FormsModule,
     ReactiveFormsModule,
     SharedModule,
     TextMaskModule,

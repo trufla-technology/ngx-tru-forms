@@ -34,6 +34,27 @@ export class JsonSchemaExamplesSamples {
       },
       required: ['year', 'effective_date']
     },
+    auto_complete: {
+      title: 'Photo example',
+      description: 'Photos are common to forms',
+      type: 'object',
+      properties: {
+      auto_complete: {
+        type: 'string',
+        format: 'autocomplete',
+        enum: [
+          '1',
+          '2',
+          '3'
+        ],
+        enumNames: [
+          'js',
+          'sql',
+          'api'
+        ]
+      }
+     }
+    },
     photo_example: {
       title: 'Photo example',
       description: 'Photos are common to forms',
