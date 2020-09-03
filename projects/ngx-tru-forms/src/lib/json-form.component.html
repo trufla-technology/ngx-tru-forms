@@ -33,7 +33,7 @@
     </jf-form-button>
     <jf-form-button
       *ngIf="submit"
-      [isDisabled]="form.invalid"
+      [isDisabled]="form.invalid || btnDisabled"
       [submitClass]="submitClass"
       [cancelClass]="cancelClass"
       [submit]="submit"
