@@ -7,6 +7,7 @@ import { JsonFormBootstrap4 } from './framework/bootstrap4/json-form-bootstrap4'
 import { JsonFormFieldsService } from './framework/json-form-fields.service';
 import { SharedModule } from './framework/shared/shared.module';
 import { CommonModule } from '@angular/common';
+import {ValidationFeedbackTranslation} from './fields/error/validation-feedback-translation';
 
 @NgModule({
   imports: [
@@ -22,8 +23,10 @@ import { CommonModule } from '@angular/common';
   ],
   providers: [
     JsonFormDefaultsService,
-    JsonFormValidatorsService
-  ]
+    JsonFormValidatorsService,
+    ValidationFeedbackTranslation
+  ],
+  declarations: []
 })
 
 export class JsonFormModule {

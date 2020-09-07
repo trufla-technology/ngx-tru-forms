@@ -3,7 +3,7 @@ import { SchemaFormControl } from '../../models/schema-form-control';
 import { Component, ChangeDetectorRef, AfterViewInit, Input } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { startCase } from 'lodash';
-
+import {ValidationFeedbackTranslation} from '../error/validation-feedback-translation';
 @Component({
   selector: 'jf-component',
   template: ''
@@ -17,8 +17,10 @@ export class CommonComponent implements AfterViewInit {
 
   constructor(
     public sanitizer: DomSanitizer,
-    public cd: ChangeDetectorRef
-  ) {}
+    public cd: ChangeDetectorRef,
+    private validationFeedbackTranslation: ValidationFeedbackTranslation
+  ) {    console.log(this.language)
+  }
 
   ngAfterViewInit() {
     this.cd.detectChanges();
@@ -99,5 +101,9 @@ export class CommonComponent implements AfterViewInit {
   } else {
     return titleArray;
   }
+}
+
+getLanguage() {
+  return this.validationFeedbackTranslation.validation[this.language || 'en'];
 }
 }

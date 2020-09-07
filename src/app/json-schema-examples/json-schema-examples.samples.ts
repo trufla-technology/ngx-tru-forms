@@ -59,7 +59,9 @@ export class JsonSchemaExamplesSamples {
             {'language': 'fr', 'value': 'lenom de famille'}
           ]
         }
-      }
+      },
+      required: ['first_name', 'last_name']
+
     },
     auto_complete: {
       title: 'Photo example',

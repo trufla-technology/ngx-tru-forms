@@ -54,7 +54,7 @@ export class JsonFormFieldsService {
     componentRef.instance.schema = control.schema;
     componentRef.instance.style = control.style;
     componentRef.instance.disabled = this.disabled;
-    componentRef.instance.language = lang;
+    componentRef.instance.language = lang || 'en';
   }
 
   has(type: string) {
