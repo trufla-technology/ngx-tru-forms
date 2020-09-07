@@ -3,14 +3,17 @@
     [ngClass]="['jf-label', schema.key, (isRequired() ? 'required' : '')]" *ngIf="type() !== 'hidden'">
     <span [innerHTML]="title()"></span><sup *ngIf="isRequired()">*</sup>
     </label>
-<input [formControl]="control"
-       [typeahead]="schema.enum"
+<input [(ngModel)]="selectedValue"
+       [typeahead]="values"
+       typeaheadOptionField="enumName"
        [typeaheadMinLength]="0"
        [attr.disabled]="disabled"
+       (typeaheadOnSelect)="onSelect($event)"
        (focusout)="typeaheadNoResults()"
-       [ngClass]="{'empty': control.value === '' && !isRequired()}"
-       autocomplete="off"
+       [ngClass]="{'empty': control.value === '' && !isRequired(), 'ng-invalid': !control.valid}"
        class="tru-ui-input-control tru-ui-select" />
+
+       <input style="display: none;" [formControl]="control">
        <jf-tru-ui-error [control]="control" [language]="language || 'en'"></jf-tru-ui-error>
 
 </div>

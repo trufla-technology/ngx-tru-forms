@@ -9,11 +9,11 @@ class="tru-ui-input-control"
 [attr.name]="schema.key"
 [attr.type]="type()"
 [formControl]="control"
-[ngClass]="{'empty': control.value === '' && !isRequired()}"
 [attr.maxLength]="schema.maxLength || null"
 [attr.minLength]="schema.minLength || null"
 [attr.disabled]="disabled"
 [textMask]="{ mask: getMask() }"
+[ngClass]="{'empty': control.value === '' && !isRequired()}"
 />
 <jf-tru-ui-error [control]="control" [language]="language || 'en'"></jf-tru-ui-error>
 </div>

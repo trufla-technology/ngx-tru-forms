@@ -2,11 +2,6 @@
   <br />
   <div class="row form-builder">
     <div class="col-md-6">
-      <h6>Language</h6>
-      <select (change)="changeLanguage($event.target.value)">
-        <option value="en">English</option>
-        <option value="fr">Frensh</option>
-      </select>
       <h6>Schema Samples:</h6>
       <div class="form-group">
         <select style="float:left;" class="form-control" (change)="handleSchemaUpdate($event.target.value)">
@@ -50,8 +45,6 @@
         [cancel]="cancel"
         [submit]="'Submit'"
         [schema]="schema"
-        [language]= "language"
-
         [isMultiStep]="isMultiStep"
         [state]="state"
         [fields]="fields"
@@ -68,7 +61,6 @@
         [cancel]="cancel"
         [submit]="'Submit'"
         [schema]="schema"
-        [language]= "language"
         [isMultiStep]="isMultiStep"
         [state]="state"
         [fields]="fields"

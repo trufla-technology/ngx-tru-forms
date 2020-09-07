@@ -72,6 +72,11 @@ export class JsonSchemaExamplesSamples {
         type: 'string',
         format: 'autocomplete',
         enum: [
+          '1',
+          '2',
+          '3'
+        ],
+        enumNames: [
           'js',
           'sql',
           'api'
@@ -103,7 +108,7 @@ export class JsonSchemaExamplesSamples {
           type: 'string'
         }
       },
-      required: ['first_name', 'last_name']
+      required: ['year', 'make', 'model', 'vin_number', 'description', 'effective_date']
     },
     array_sample: {
       title: 'Array',
@@ -122,7 +127,8 @@ export class JsonSchemaExamplesSamples {
                 type: 'string'
               }
             }
-          }
+          },
+          required: ['year', 'make', 'model', 'vin_number', 'description', 'effective_date']
         }
       }
     },
@@ -154,7 +160,9 @@ export class JsonSchemaExamplesSamples {
           type: 'number',
           enum: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
         }
-      }
+      },
+      required: ['first_name', 'last_name', 'driver_license_no', 'insurance_duration', 'number_of_conviction', 'number_of_accidents',
+        'effective_date']
     },
     nested: {
       title: 'Nested',
@@ -254,7 +262,7 @@ export class JsonSchemaExamplesSamples {
               type: 'string'
             }
           },
-          required: ['first_name', 'last_name', 'email']
+          required: ['first_name', 'last_name']
         },
         bank_information: {
           type: 'object',
@@ -355,13 +363,6 @@ export class JsonSchemaExamplesSamples {
                 'Coke',
                 'Sprite'
               ]
-            },
-            Hamburger_type: {
-              type: 'string',
-              enum: [
-                'beef',
-                'chicken'
-              ]
             }
           },
           oneOf: [
@@ -374,7 +375,7 @@ export class JsonSchemaExamplesSamples {
                 }
               },
               required: [
-                'Hamburger_type'
+                'drink'
               ]
             },
             {
@@ -383,10 +384,7 @@ export class JsonSchemaExamplesSamples {
                   enum: [
                     'Pizza'
                   ]
-                },
-                required: [
-                  'drink'
-                ]
+                }
               }
             },
             {

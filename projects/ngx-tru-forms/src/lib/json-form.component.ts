@@ -14,7 +14,6 @@ import * as _ from 'lodash';
 })
 export class JsonFormComponent implements DoCheck, OnDestroy {
   @Input() schema;
-  @Input() language: string;
   @Input() data = {};
   @Input() style = {};
   @Input() continue = 'Continue';
@@ -31,10 +30,12 @@ export class JsonFormComponent implements DoCheck, OnDestroy {
   @Input() fields = {};
   @Input() viewOnly = false;
   @Input() disabled = null;
+  @Input() btnDisabled = false;
   @Output() handleStep = new EventEmitter();
   @Output() handleSubmit = new EventEmitter();
   @Output() handleChange = new EventEmitter();
   @Output() handleCancel = new EventEmitter();
+  @Input() language: string;
   @ViewChild('userForm', { static: false }) userForm: NgForm;
   @ViewChild('header', { static: false }) header: ElementRef;
   @ViewChild('footer', { static: false }) footer: ElementRef;

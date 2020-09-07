@@ -13,7 +13,7 @@ import {JsonFormFieldsService} from '../../../json-form-fields.service';
 export class FieldComponent implements OnInit, OnChanges {
   @ViewChild('container', {read: ViewContainerRef, static: true} ) container: ViewContainerRef;
   @Input() control: SchemaFormControl;
-  @Input() language: string;
+  @Input() language;
   public patterns;
 
   constructor(
@@ -42,7 +42,6 @@ export class FieldComponent implements OnInit, OnChanges {
     const fieldClass = [defaultClass];
     fieldClass.push(this.control.schema.type);
     fieldClass.push(this.control.schema.key);
-    fieldClass.push(this.language);
 
     if (this.control.schema.hasOwnProperty('description')) {
       fieldClass.push('has-info');

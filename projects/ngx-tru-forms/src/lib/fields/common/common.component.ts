@@ -1,6 +1,6 @@
 import { Schema } from '../../models/schema';
 import { SchemaFormControl } from '../../models/schema-form-control';
-import { Component, ChangeDetectorRef, AfterViewInit, Input } from '@angular/core';
+import { Component, ChangeDetectorRef, AfterViewInit } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { startCase } from 'lodash';
 import {ValidationFeedbackTranslation} from '../error/validation-feedback-translation';
@@ -13,14 +13,13 @@ export class CommonComponent implements AfterViewInit {
   schema: Schema;
   style: {};
   disabled = false;
-  language: string;
+  language;
 
   constructor(
     public sanitizer: DomSanitizer,
     public cd: ChangeDetectorRef,
     private validationFeedbackTranslation: ValidationFeedbackTranslation
-  ) {    console.log(this.language)
-  }
+  ) {}
 
   ngAfterViewInit() {
     this.cd.detectChanges();
@@ -32,10 +31,9 @@ export class CommonComponent implements AfterViewInit {
   }
 
   title(material = false) {
-    const key = this.strToUpperCase(this.schema.key).replace(/<.*?>/g, '');
     const required = this.isRequired() && material ? '*' : '';
     return (typeof this.schema.title === 'undefined'
-      ? key : (this.getTranslation(this.schema.title) ? this.getTranslation(this.schema.title) : key)) + required;
+      ? this.strToUpperCase(this.schema.key) : this.getTranslation(this.schema.title)) + required;
   }
 
   strToUpperCase(str: string) {

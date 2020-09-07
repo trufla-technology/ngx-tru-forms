@@ -1,8 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { SchemaFormGroup } from '../../../../models/schema-form-group';
 import { Schema } from '../../../../models/schema';
-import { startCase } from 'lodash';
-
+import {startCase} from 'lodash';
 @Component({
   selector: 'jf-component-chooser, [jf-component-chooser]',
   template: `
