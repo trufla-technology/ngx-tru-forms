@@ -35,6 +35,7 @@ export class JsonFormComponent implements DoCheck, OnDestroy {
   @Output() handleSubmit = new EventEmitter();
   @Output() handleChange = new EventEmitter();
   @Output() handleCancel = new EventEmitter();
+  @Input() language: string;
   @ViewChild('userForm', { static: false }) userForm: NgForm;
   @ViewChild('header', { static: false }) header: ElementRef;
   @ViewChild('footer', { static: false }) footer: ElementRef;
@@ -61,6 +62,9 @@ export class JsonFormComponent implements DoCheck, OnDestroy {
 
   ngDoCheck(): void {
     this.changeDetected = false;
+    if (!this.language) {
+      this.language = 'en';
+    }
 
     if (this.oldSchema !== JSON.stringify(this.schema)) {
       this.oldSchema = JSON.stringify(this.schema);

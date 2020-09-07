@@ -10,7 +10,7 @@ const routes: Routes = [
     path: '',
     component: MaterialDesignComponent
   }
-]
+];
 @NgModule({
   declarations: [MaterialDesignComponent],
   imports: [

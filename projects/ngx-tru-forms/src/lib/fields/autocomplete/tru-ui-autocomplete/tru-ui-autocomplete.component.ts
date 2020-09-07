@@ -12,7 +12,6 @@ export class TruUiAutocompleteComponent extends CommonComponent implements OnIni
   selectedOption: any;
   values = [];
   ngOnInit() {
-    console.log(this.schema)
     if (this.schema.enumNames) {
       this.values = [];
       this.schema.enum.map((enm, i) => {

@@ -15,5 +15,5 @@ class="tru-ui-input-control"
 [textMask]="{ mask: getMask() }"
 [ngClass]="{'empty': control.value === '' && !isRequired()}"
 />
-<jf-tru-ui-error [control]="control"></jf-tru-ui-error>
+<jf-tru-ui-error [control]="control" [language]="language || 'en'"></jf-tru-ui-error>
 </div>

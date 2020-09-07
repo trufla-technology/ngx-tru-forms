@@ -8,8 +8,8 @@ import { JsonSchemaExamplesSamples } from 'src/app/json-schema-examples/json-sch
   styleUrls: ['./schema-editor.component.css']
 })
 export class SchemaEditorComponent implements OnInit, OnChanges {
-  @Input('schema') schema;
-  @Output() schemaHasChanged = new EventEmitter()
+  @Input() schema;
+  @Output() schemaHasChanged = new EventEmitter();
   options = {theme: 'vs-dark', wordWrap: 'on'};
   model: NgxEditorModel;
 

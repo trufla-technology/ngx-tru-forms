@@ -19,18 +19,18 @@ export class SubmittedDataComponent implements OnInit {
   ngOnInit() {
     this.options = {
       readOnly: true
-    }
+    };
     this.model = {
       value: this.data,
       language: 'json'
-    }
+    };
     this.dataservice.data.subscribe((d) => {
       if (d) {
         this.data = JSON.stringify(d, null, 2);
         this.model = {
           value: this.data,
           language: 'json'
-        }
+        };
       }
     });
   }

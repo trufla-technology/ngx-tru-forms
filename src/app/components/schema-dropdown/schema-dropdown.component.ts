@@ -7,7 +7,7 @@ import { startCase } from 'lodash';
 })
 export class SchemaDropdownComponent implements OnInit {
 
-  @Input('schemas') schemas;
+  @Input() schemas: any;
   @Output() selectedSchemaChanged = new EventEmitter();
   constructor() { }
 

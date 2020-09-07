@@ -8,10 +8,6 @@ import { Component, OnInit } from '@angular/core';
 export class TruUiFormComponent implements OnInit {
 
   constructor() { }
-
   ngOnInit() {
   }
-//   handleSubmit(data) {
-// console.log(data);
-//  }
 }
