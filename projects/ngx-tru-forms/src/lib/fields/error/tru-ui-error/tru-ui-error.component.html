@@ -3,25 +3,25 @@
       {{getLanguage().required}}
     </ng-container>
     <ng-container *ngIf="control.errors && control.errors['pattern']">
-      Input value is invalid     {{getLanguage()}}
+      {{getLanguage().invalid}}
     </ng-container>
     <ng-container *ngIf="control.errors && control.errors['email']">
-      Email is invalid. {{language}}     {{getLanguage()}}
+      {{getLanguage().email_invalid}}
     </ng-container>
     <ng-container *ngIf="control.errors && control.errors['minlength']">
-      Input has to be a minimum of {{control.errors['minlength']['requiredLength']}} characters
+      {{getLanguage().minimum_invalid}} {{control.errors['minlength']['requiredLength']}} {{getLanguage().characters}}
     </ng-container>
     <ng-container *ngIf="control.errors && control.errors['maxlength']">
-      Input can contain a maximum of {{control.errors['maxlength']['requiredLength']}} characters
+      {{getLanguage().maximum_invalid}} {{control.errors['maxlength']['requiredLength']}}  {{getLanguage().characters}}
     </ng-container>
     <ng-container *ngIf="control.errors && control.errors['min']">
-      Enter a value greater than or equal to {{control.errors['min']['min']}}
+      {{getLanguage().greater_than}} {{control.errors['min']['min']}}
     </ng-container>
     <ng-container *ngIf="control.errors && control.errors['max']">
-      Enter a value less than or equal to {{control.errors['max']['max']}}
+      {{getLanguage().less_than}}  {{control.errors['max']['max']}}
     </ng-container>
     <ng-container *ngIf="control.errors && control.errors['notInMenu']">
-      Select from the dropdown list
+      {{getLanguage().not_in_menu}}
     </ng-container>
     <ng-container *ngIf="control.errors && control.errors['customError']">
       {{control.errors['customError']}}   

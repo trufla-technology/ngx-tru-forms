@@ -16,7 +16,10 @@ export class TruUiComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.schemaListenerService.schema.subscribe((d) => this.schema = d);
+    this.schemaListenerService.schema.subscribe((d) => {
+    this.language = this.language ? 'en' : null;
+      this.schema = d;
+     });
   }
 
   handleSubmit(e) {
