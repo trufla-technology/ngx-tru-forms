@@ -436,7 +436,7 @@ let SchemaDropdownComponent = class SchemaDropdownComponent {
     }
 };
 __decorate([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])('schemas'),
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
     __metadata("design:type", Object)
 ], SchemaDropdownComponent.prototype, "schemas", void 0);
 __decorate([
@@ -518,7 +518,7 @@ SchemaEditorComponent.ctorParameters = () => [
     { type: src_app_json_schema_examples_json_schema_examples_samples__WEBPACK_IMPORTED_MODULE_1__["JsonSchemaExamplesSamples"] }
 ];
 __decorate([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])('schema'),
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
     __metadata("design:type", Object)
 ], SchemaEditorComponent.prototype, "schema", void 0);
 __decorate([
@@ -670,6 +670,34 @@ let JsonSchemaExamplesSamples = class JsonSchemaExamplesSamples {
                     }
                 },
                 required: ['year', 'effective_date']
+            },
+            localization: {
+                'title': [
+                    { 'language': 'en', 'value': 'login form' },
+                    { 'language': 'fr', 'value': 'Formulaire de connexion' }
+                ],
+                'description': [
+                    { 'language': 'en', 'value': 'login form' },
+                    { 'language': 'fr', 'value': 'Formulaire de connexion' }
+                ],
+                'type': 'object',
+                'properties': {
+                    'first_name': {
+                        'type': 'string',
+                        'title': [
+                            { 'language': 'en', 'value': 'first_name' },
+                            { 'language': 'fr', 'value': 'leprénom' }
+                        ]
+                    },
+                    'last_name': {
+                        'type': 'string',
+                        'title': [
+                            { 'language': 'en', 'value': 'last_name' },
+                            { 'language': 'fr', 'value': 'lenom de famille' }
+                        ]
+                    }
+                },
+                required: ['first_name', 'last_name']
             },
             auto_complete: {
                 title: 'Photo example',
