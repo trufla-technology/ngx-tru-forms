@@ -3,7 +3,7 @@ import { SchemaFormControl } from '../../models/schema-form-control';
 import { Component, ChangeDetectorRef, AfterViewInit } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { startCase } from 'lodash';
-
+import {ValidationFeedbackTranslation} from '../error/validation-feedback-translation';
 @Component({
   selector: 'jf-component',
   template: ''
@@ -13,10 +13,12 @@ export class CommonComponent implements AfterViewInit {
   schema: Schema;
   style: {};
   disabled = false;
+  language;
 
   constructor(
     public sanitizer: DomSanitizer,
-    public cd: ChangeDetectorRef
+    public cd: ChangeDetectorRef,
+    private validationFeedbackTranslation: ValidationFeedbackTranslation
   ) {}
 
   ngAfterViewInit() {
@@ -31,7 +33,7 @@ export class CommonComponent implements AfterViewInit {
   title(material = false) {
     const required = this.isRequired() && material ? '*' : '';
     return (typeof this.schema.title === 'undefined'
-      ? this.strToUpperCase(this.schema.key) : this.schema.title) + required;
+      ? this.strToUpperCase(this.schema.key) : this.getTranslation(this.schema.title)) + required;
   }
 
   strToUpperCase(str: string) {
@@ -39,7 +41,9 @@ export class CommonComponent implements AfterViewInit {
   }
 
   placeholder() {
-    return (this.schema.title || this.strToUpperCase(this.schema.key)).replace(/<.*?>/g, '');
+   const key = this.strToUpperCase(this.schema.key).replace(/<.*?>/g, '');
+   return (typeof this.schema.title === 'undefined'
+      ? key : (this.getTranslation(this.schema.title) ? this.getTranslation(this.schema.title) : key));
   }
 
   type() {
@@ -86,4 +90,18 @@ export class CommonComponent implements AfterViewInit {
       ? this.schema.enum[index]
       : this.schema.enumNames[index];
   }
+  getTranslation(titleArray) {
+    if (Array.isArray(titleArray)) {
+    const translatedTitle = titleArray.filter(val =>
+       val.language === this.language
+      );
+      return translatedTitle[0] ? this.strToUpperCase(translatedTitle[0].value.replace(/<.*?>/g, '')) : false;
+  } else {
+    return titleArray;
+  }
+}
+
+getLanguage() {
+  return this.validationFeedbackTranslation.validation[this.language || 'en'];
+}
 }

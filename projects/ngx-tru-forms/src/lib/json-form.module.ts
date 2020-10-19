@@ -4,9 +4,11 @@ import { JsonFormDefaultsService } from './services/defaults.service';
 import { JsonFormValidatorsService } from './services/validators.service';
 import { CommonComponent } from './fields/common/common.component';
 import { JsonFormBootstrap4 } from './framework/bootstrap4/json-form-bootstrap4';
+import { TruUiModule } from './framework/tru-ui/tru-ui.module';
 import { JsonFormFieldsService } from './framework/json-form-fields.service';
 import { SharedModule } from './framework/shared/shared.module';
 import { CommonModule } from '@angular/common';
+import {ValidationFeedbackTranslation} from './fields/error/validation-feedback-translation';
 
 @NgModule({
   imports: [
@@ -22,8 +24,10 @@ import { CommonModule } from '@angular/common';
   ],
   providers: [
     JsonFormDefaultsService,
-    JsonFormValidatorsService
-  ]
+    JsonFormValidatorsService,
+    ValidationFeedbackTranslation
+  ],
+  declarations: []
 })
 
 export class JsonFormModule {

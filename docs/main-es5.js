@@ -722,7 +722,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       return SchemaDropdownComponent;
     }();
 
-    __decorate([Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])('schemas'), __metadata("design:type", Object)], SchemaDropdownComponent.prototype, "schemas", void 0);
+    __decorate([Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(), __metadata("design:type", Object)], SchemaDropdownComponent.prototype, "schemas", void 0);
 
     __decorate([Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Output"])(), __metadata("design:type", Object)], SchemaDropdownComponent.prototype, "selectedSchemaChanged", void 0);
 
@@ -850,7 +850,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }];
     };
 
-    __decorate([Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])('schema'), __metadata("design:type", Object)], SchemaEditorComponent.prototype, "schema", void 0);
+    __decorate([Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(), __metadata("design:type", Object)], SchemaEditorComponent.prototype, "schema", void 0);
 
     __decorate([Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Output"])(), __metadata("design:type", Object)], SchemaEditorComponent.prototype, "schemaHasChanged", void 0);
 
@@ -1066,6 +1066,46 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
             }
           },
           required: ['year', 'effective_date']
+        },
+        localization: {
+          'title': [{
+            'language': 'en',
+            'value': 'login form'
+          }, {
+            'language': 'fr',
+            'value': 'Formulaire de connexion'
+          }],
+          'description': [{
+            'language': 'en',
+            'value': 'login form'
+          }, {
+            'language': 'fr',
+            'value': 'Formulaire de connexion'
+          }],
+          'type': 'object',
+          'properties': {
+            'first_name': {
+              'type': 'string',
+              'title': [{
+                'language': 'en',
+                'value': 'first_name'
+              }, {
+                'language': 'fr',
+                'value': 'leprénom'
+              }]
+            },
+            'last_name': {
+              'type': 'string',
+              'title': [{
+                'language': 'en',
+                'value': 'last_name'
+              }, {
+                'language': 'fr',
+                'value': 'lenom de famille'
+              }]
+            }
+          },
+          required: ['first_name', 'last_name']
         },
         auto_complete: {
           title: 'Photo example',

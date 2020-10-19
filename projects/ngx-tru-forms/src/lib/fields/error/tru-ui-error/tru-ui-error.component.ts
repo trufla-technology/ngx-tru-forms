@@ -7,4 +7,5 @@ import { CommonComponent } from '../../common/common.component';
 })
 export class TruUiErrorComponent  extends CommonComponent {
   @Input() control;
+  @Input() language;
 }

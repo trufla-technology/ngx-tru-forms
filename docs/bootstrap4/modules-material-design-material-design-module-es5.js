@@ -124,6 +124,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         key: "handleSubmit",
         value: function handleSubmit(e) {
           this.dataService.data = e;
+          this.btnDisabled = true;
         }
       }]);
 

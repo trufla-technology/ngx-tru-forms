@@ -47,13 +47,14 @@ export class JsonFormFieldsService {
     this.rootViewContainer = viewContainerRef;
   }
 
-  addDynamicComponent(control: SchemaFormControl) {
+  addDynamicComponent(control: SchemaFormControl, lang?) {
     const componentFactory = this.componentFactoryResolver.resolveComponentFactory(this.get(control));
     const componentRef = this.rootViewContainer.createComponent(componentFactory);
     componentRef.instance.control = control;
     componentRef.instance.schema = control.schema;
     componentRef.instance.style = control.style;
     componentRef.instance.disabled = this.disabled;
+    componentRef.instance.language = lang || 'en';
   }
 
   has(type: string) {
