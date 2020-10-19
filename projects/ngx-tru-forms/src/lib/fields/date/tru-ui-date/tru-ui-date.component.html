@@ -8,8 +8,12 @@
     [name]="schema.key"
     (bsValueChange)="onDateInput($event)"
     [formControl]="control"
-    [bsConfig]="{ containerClass: 'theme-default', dateInputFormat: 'MM/DD/YYYY'}"
+    [bsConfig]="{ containerClass: 'theme-default', dateInputFormat: 'DD/MM/YYYY'}"
     bsDatepicker
+    readonly
+    readonly="readonly"
+    placement="bottom"
+    triggers="touchstart click touchstart"
     [attr.disabled]="disabled"
   />
   <jf-tru-ui-error [control]="control" [language]="language || 'en'"></jf-tru-ui-error>
