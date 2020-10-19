@@ -64,6 +64,7 @@ let MaterialDesignComponent = class MaterialDesignComponent {
     }
     handleSubmit(e) {
         this.dataService.data = e;
+        this.btnDisabled = true;
     }
 };
 MaterialDesignComponent.ctorParameters = () => [
