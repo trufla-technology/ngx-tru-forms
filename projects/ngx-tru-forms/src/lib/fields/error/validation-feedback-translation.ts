@@ -12,7 +12,7 @@ export class ValidationFeedbackTranslation {
             not_in_menu: " Select from the dropdown list"
         }, 
         fr: {
-            required: "Ce champ est requis",
+            required: "Ce champ est requis.",
             invalid: "Input value is invalid",
             email_invalid: "Email is invalid",
             minimum_invalid: "Input has to be a minimum of",
