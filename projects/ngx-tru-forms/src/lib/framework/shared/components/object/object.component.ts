@@ -7,10 +7,12 @@ import {SchemaFormControl} from '../../../../models/schema-form-control';
       jf-component-chooser
       [form]="control"
       [schema]="control.schema"
+      [language]= "language"
       [nested]="true">
     </div>`
 })
 export class ObjectComponent {
   @Input() control: SchemaFormControl;
+  @Input() language;
 }
 

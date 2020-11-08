@@ -24,6 +24,7 @@
       {{getLanguage().not_in_menu}}
     </ng-container>
     <ng-container *ngIf="control.errors && control.errors['customError']">
-      {{control.errors['customError']}}   
+      {{getLanguage().invalid}}
+      {{control.errors['customError']}} 
     </ng-container>
   </div>
