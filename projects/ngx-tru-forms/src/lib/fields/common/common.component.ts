@@ -14,12 +14,17 @@ export class CommonComponent implements AfterViewInit {
   style: {};
   disabled = false;
   language;
+  isWebView = false;
 
   constructor(
     public sanitizer: DomSanitizer,
     public cd: ChangeDetectorRef,
     private validationFeedbackTranslation: ValidationFeedbackTranslation
-  ) {}
+  ) {
+    if ( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+      this.isWebView = true;
+     }
+  }
 
   ngAfterViewInit() {
     this.cd.detectChanges();

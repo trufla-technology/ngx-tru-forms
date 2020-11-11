@@ -11,7 +11,7 @@
     "test": "ng test ngx-tru-forms",
     "lint": "ng lint",
     "clean": "rm -fr build dist"
-    },
+  },
   "config": {
     "deployToGit": {
       "repository": "git@github.com:trufla-technology/ngx-tru-forms.git",
@@ -37,7 +37,7 @@
     "@angular/platform-browser": "8.2.14",
     "@angular/platform-browser-dynamic": "8.2.14",
     "@angular/router": "^8.2.14",
-    "@trufla/ngx-tru-forms": "^0.3.9",
+    "@trufla/ngx-tru-forms": "^1.0.2",
     "angular2-text-mask": "^9.0.0",
     "bootstrap": "^4.5.0",
     "core-js": "^2.5.4",

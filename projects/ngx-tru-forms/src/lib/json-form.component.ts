@@ -45,6 +45,7 @@ export class JsonFormComponent implements DoCheck, OnDestroy {
   public control = { key: '', value: '', isPartOf: false };
   public oldSchema: string;
   public oldData: string;
+  public oldLanguage: string;
   public changeDetected = false;
   public oldActiveStep = '';
   public steps = [];
@@ -64,6 +65,9 @@ export class JsonFormComponent implements DoCheck, OnDestroy {
     this.changeDetected = false;
     if (!this.language) {
       this.language = 'en';
+    } else  if (this.language !== this.oldLanguage) {
+      this.oldLanguage = this.language;
+      this.changeDetected = true;
     }
 
     if (this.oldSchema !== JSON.stringify(this.schema)) {
@@ -220,8 +224,7 @@ export class JsonFormComponent implements DoCheck, OnDestroy {
         group[prop].schema.id = this.id;
         group[prop].style = arrayStyle;
       } else if (this.isVisible(schema.properties[prop])) {
-
-        const control = new SchemaFormControl(this.df.get(prop, schema, data), this.vl.get(prop, schema, path));
+        const control = new SchemaFormControl(this.df.get(prop, schema, data), this.vl.get(prop, schema, path, this.language));
         control.schema = Object.assign({}, schema.properties[prop]);
         control.schema.key = prop;
         control.schema.id = this.id;

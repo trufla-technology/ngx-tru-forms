@@ -683,7 +683,8 @@ let JsonSchemaExamplesSamples = class JsonSchemaExamplesSamples {
                 'type': 'object',
                 'properties': {
                     'first_name': {
-                        'type': 'string',
+                        type: 'string',
+                        format: 'email',
                         'title': [
                             { 'language': 'en', 'value': 'first_name' },
                             { 'language': 'fr', 'value': 'leprénom' }
@@ -762,7 +763,8 @@ let JsonSchemaExamplesSamples = class JsonSchemaExamplesSamples {
                                 last_name: {
                                     type: 'string'
                                 }
-                            }
+                            },
+                            required: ['first_name', 'last_name']
                         },
                         required: ['year', 'make', 'model', 'vin_number', 'description', 'effective_date']
                     }

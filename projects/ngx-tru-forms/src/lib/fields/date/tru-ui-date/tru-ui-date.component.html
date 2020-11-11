@@ -3,6 +3,7 @@
     <span [innerHTML]="title()"></span><sup *ngIf="isRequired()">*</sup>
   </label>
   <input
+    *ngIf="isWebView; else desktop"
     type="text"
     class="tru-ui-input-control tru-ui-date"
     [name]="schema.key"
@@ -13,9 +14,25 @@
     readonly
     readonly="readonly"
     placement="bottom"
-    triggers="touchstart click touchstart"
+    triggers="touchstart"
     [attr.disabled]="disabled"
   />
+  <ng-template #desktop>
+    <input
+    type="text"
+    class="tru-ui-input-control tru-ui-date"
+    [name]="schema.key"
+    (bsValueChange)="onDateInput($event)"
+    [formControl]="control"
+    [bsConfig]="{ containerClass: 'theme-default', dateInputFormat: 'DD/MM/YYYY'}"
+    bsDatepicker
+    readonly
+    readonly="readonly"
+    placement="bottom"
+    triggers="click"
+    [attr.disabled]="disabled"
+    /> 
+   </ng-template>
   <jf-tru-ui-error [control]="control" [language]="language || 'en'"></jf-tru-ui-error>
 
 </div>

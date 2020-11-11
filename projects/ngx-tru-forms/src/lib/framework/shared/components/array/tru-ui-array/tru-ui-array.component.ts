@@ -12,6 +12,7 @@ import { startCase } from 'lodash';
 export class TruUiArrayComponent {
 
   @Input() control: SchemaFormArray;
+  @Input() language;
 
   getLegend(control) {
     return (control && control.schema && control.schema.key) ? startCase(control.schema.key) : '';
