@@ -8,7 +8,7 @@ import { TypeaheadMatch } from 'ngx-bootstrap/typeahead/typeahead-match.class';
   styleUrls: ['../../../assets/tru-ui.css']
 })
 export class TruUiAutocompleteComponent extends CommonComponent implements OnInit  {
-  selectedValue: string = '';
+  selectedValue = '';
   selectedOption: any;
   values = [];
   ngOnInit() {
@@ -16,7 +16,7 @@ export class TruUiAutocompleteComponent extends CommonComponent implements OnIni
       this.values = [];
       this.schema.enum.map((enm, i) => {
         this.values.push({enum: enm, enumName: this.schema.enumNames[i]});
-      })
+      });
     } else {
       this.values = [];
       this.schema.enum.map((enm) => {

@@ -13,5 +13,5 @@ class="tru-ui-input-control"
 [attr.disabled]="disabled"
 [ngClass]="{'empty': control.value === '' && !isRequired()}"
 ></textarea>
-<jf-tru-ui-error [control]="control"></jf-tru-ui-error>
+<jf-tru-ui-error [control]="control" [language]="language || 'en'"></jf-tru-ui-error>
 </div>

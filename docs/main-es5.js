@@ -1085,7 +1085,8 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           'type': 'object',
           'properties': {
             'first_name': {
-              'type': 'string',
+              type: 'string',
+              format: 'email',
               'title': [{
                 'language': 'en',
                 'value': 'first_name'
@@ -1162,7 +1163,8 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                   last_name: {
                     type: 'string'
                   }
-                }
+                },
+                required: ['first_name', 'last_name']
               },
               required: ['year', 'make', 'model', 'vin_number', 'description', 'effective_date']
             }

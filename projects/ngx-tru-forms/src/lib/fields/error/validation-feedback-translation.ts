@@ -12,15 +12,15 @@ export class ValidationFeedbackTranslation {
             not_in_menu: ' Select from the dropdown list'
         },
         fr: {
-            required: 'Ce champ est requis.',
-            invalid: 'La valeur d entrée n est pas valide',
+            required: 'Ce champ est obligatoire',
+            invalid: 'La valeur d’entrée est invalide',
             email_invalid: 'Le courriel est invalide',
-            minimum_invalid: 'Entrée doit être au minimum',
-            maximum_invalid: 'Entrée peut contenir un maximum de',
-            characters: 'Personnages',
+            minimum_invalid: 'La contribution doit être un minimum de',
+            maximum_invalid: 'L’entrée peut contenir un maximum de',
+            characters: 'Caractères',
             greater_than: 'Entrez une valeur supérieure ou égale à',
             less_than: 'Entrez une valeur inférieure ou égale à',
-            not_in_menu: ' Sélectionnez dans la liste déroulante'
+            not_in_menu: ' Sélectionner dans la liste déroulante'
         }
     };
 }
