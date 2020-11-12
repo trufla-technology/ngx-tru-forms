@@ -2,7 +2,11 @@
     <h6 *ngIf="getLegend(control).length" style="color:#8c8c8c;;margin-top: 20px;font-size: 14px;">{{getLegend(control)}}</h6>
     <div *ngFor="let arrControl of getEnabledControls(control); let i = index;let last = last; let first = first">
       <div style="display: flex;flex-direction: row;align-items: flex-end;">
-        <div class="control" jf-component-chooser [form]="arrControl" style="display: flex;flex-direction: row;"></div>
+        <div class="control" 
+        jf-component-chooser 
+        [form]="arrControl" 
+        [language]= "language"
+        style="display: flex;flex-direction: row;"></div>
         <div class="remove" >
           <button class="btn-remove" *ngIf="control.controls.length > 1" type="button" (click)="removeControl(control, i)"> 
             <svg width="14px" height="14px" viewBox="0 0 14 14" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">

@@ -4,4 +4,5 @@ import { Schema } from './schema';
 export class SchemaFormGroup extends FormGroup {
   public schema: Schema;
   public style: any;
+  language: any;
 }

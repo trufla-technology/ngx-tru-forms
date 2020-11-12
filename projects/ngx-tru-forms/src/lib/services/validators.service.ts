@@ -9,10 +9,10 @@ export class JsonFormValidatorsService {
     this.validators = [];
   }
 
-  public get(prop, schema, path) {
+  public get(prop, schema, path, lan) {
     const dateValidator = function ageRangeValidator(control: AbstractControl) {
       if (control.value === null || (control.value !== null && isNaN(new Date(control.value).getDate()))) {
-        return { customError: 'Please enter a valid date' };
+        return { customError: lan === 'en' ? 'Please enter a valid date' : 'Veuillez entrer une date valide' };
       }
       return null;
     };
@@ -23,7 +23,7 @@ export class JsonFormValidatorsService {
       if (!control.value || RegExp(mailRegex).test(control.value)) {
         return null;
       }
-      return { customError: 'Please enter a valid email address' };
+      return { customError: lan === 'en' ? 'Please enter a valid email address' : 'Veuillez saisir une adresse e-mail valide' };
     };
 
     const phoneNumberValidator = function(control: AbstractControl) {
@@ -31,7 +31,8 @@ export class JsonFormValidatorsService {
       if (!control.value || phoneNumberRegex.test(control.value)) {
         return null;
       }
-      return { customError: 'Please enter a valid phone or mobile number' };
+      // tslint:disable-next-line: max-line-length
+      return { customError: lan === 'en' ? 'Please enter a valid phone or mobile number' : 'Veuillez entrer un numéro de téléphone ou mobile valide' };
     };
 
     const required = schema.required || [];
