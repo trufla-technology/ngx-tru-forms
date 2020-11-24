@@ -15,7 +15,20 @@ export class TruUiArrayComponent {
   @Input() language;
 
   getLegend(control) {
-    return (control && control.schema && control.schema.key) ? startCase(control.schema.key) : '';
+    // return (control && control.schema && control.schema.key) ? startCase(control.schema.key) : '';
+    // tslint:disable-next-line: max-line-length
+    return (typeof control.schema.title === 'undefined' ? control.schema.key : (this.getTranslation(control.schema.title) ? this.getTranslation(control.schema.title) : startCase(control.schema.key)));
+  }
+
+  getTranslation(titleArray) {
+      if (Array.isArray(titleArray)) {
+      const translatedTitle = titleArray.filter(val =>
+        val.language === this.language
+        );
+        return translatedTitle[0] ? this.strToUpperCase(translatedTitle[0].value.replace(/<.*?>/g, '')) : false;
+    } else {
+      return titleArray;
+    }
   }
 
   strToUpperCase(str: string) {

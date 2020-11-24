@@ -93,8 +93,9 @@ export class CommonComponent implements AfterViewInit {
   enumNames(index) {
     return typeof(this.schema.enumNames) === 'undefined'
       ? this.schema.enum[index]
-      : this.schema.enumNames[index];
+      :  this.getTranslation(this.schema.enumNames[index]);
   }
+
   getTranslation(titleArray) {
     if (Array.isArray(titleArray)) {
     const translatedTitle = titleArray.filter(val =>
