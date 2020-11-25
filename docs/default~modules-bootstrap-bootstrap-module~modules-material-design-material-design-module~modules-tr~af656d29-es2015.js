@@ -336,7 +336,7 @@ class CommonComponent {
     enumNames(index) {
         return typeof (this.schema.enumNames) === 'undefined'
             ? this.schema.enum[index]
-            : this.schema.enumNames[index];
+            : this.getTranslation(this.schema.enumNames[index]);
     }
     /**
      * @param {?} titleArray
@@ -653,7 +653,27 @@ class ArrayComponent {
      * @return {?}
      */
     getLegend(control) {
-        return (control && control.schema && control.schema.key) ? Object(lodash__WEBPACK_IMPORTED_MODULE_5__["startCase"])(control.schema.key) : '';
+        // return (control && control.schema && control.schema.key) ? startCase(control.schema.key) : '';
+        // tslint:disable-next-line: max-line-length
+        return (typeof control.schema.title === 'undefined' ? control.schema.key : (this.getTranslation(control.schema.title) ? this.getTranslation(control.schema.title) : Object(lodash__WEBPACK_IMPORTED_MODULE_5__["startCase"])(control.schema.key)));
+    }
+    /**
+     * @param {?} titleArray
+     * @return {?}
+     */
+    getTranslation(titleArray) {
+        if (Array.isArray(titleArray)) {
+            /** @type {?} */
+            const translatedTitle = titleArray.filter((/**
+             * @param {?} val
+             * @return {?}
+             */
+            val => val.language === this.language));
+            return translatedTitle[0] ? this.strToUpperCase(translatedTitle[0].value.replace(/<.*?>/g, '')) : false;
+        }
+        else {
+            return titleArray;
+        }
     }
     /**
      * @param {?} str
@@ -758,7 +778,7 @@ ArrayComponent.decorators = [
       <h6 *ngIf="getLegend(control).length" style="color:#8c8c8c;;margin-top: 20px;font-size: 14px;">{{getLegend(control)}}</h6>
       <div *ngFor="let arrControl of getEnabledControls(control); let i = index;">
         <div class="row">
-          <div class="control" jf-component-chooser [form]="arrControl"></div>
+          <div class="control" jf-component-chooser [form]="arrControl" [language]= "language"></div>
           <div class="remove" *ngIf="control.controls.length > 1">
             <input type="button" (click)="removeControl(control, i)" class="btn btn-success btn-sm" value="Remove"/>
           </div>
@@ -774,7 +794,8 @@ ArrayComponent.decorators = [
             }] }
 ];
 ArrayComponent.propDecorators = {
-    control: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"] }]
+    control: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"] }],
+    language: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"] }]
 };
 if (false) {}
 
@@ -789,10 +810,10 @@ ArrayViewComponent.decorators = [
     { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"], args: [{
                 template: `
     <div [ngClass]="['array', control.schema.key]">
-      <h6 *ngIf="getLegend(control).length">{{getLegend(control)}}</h6>
+      <h6 *ngIf="getLegend(control).length">{{getLegend(control) + 'tet'}}</h6>
       <div *ngFor="let arrControl of getEnabledControls(control); let i = index;">
         <div class="row">
-          <div class="control" jf-component-chooser [form]="arrControl"></div>
+          <div class="control" jf-component-chooser [form]="arrControl" [language]= "language"></div>
         </div>
       </div>
     </div>
@@ -3987,7 +4008,27 @@ class TruUiArrayComponent {
      * @return {?}
      */
     getLegend(control) {
-        return (control && control.schema && control.schema.key) ? Object(lodash__WEBPACK_IMPORTED_MODULE_5__["startCase"])(control.schema.key) : '';
+        // return (control && control.schema && control.schema.key) ? startCase(control.schema.key) : '';
+        // tslint:disable-next-line: max-line-length
+        return (typeof control.schema.title === 'undefined' ? control.schema.key : (this.getTranslation(control.schema.title) ? this.getTranslation(control.schema.title) : Object(lodash__WEBPACK_IMPORTED_MODULE_5__["startCase"])(control.schema.key)));
+    }
+    /**
+     * @param {?} titleArray
+     * @return {?}
+     */
+    getTranslation(titleArray) {
+        if (Array.isArray(titleArray)) {
+            /** @type {?} */
+            const translatedTitle = titleArray.filter((/**
+             * @param {?} val
+             * @return {?}
+             */
+            val => val.language === this.language));
+            return translatedTitle[0] ? this.strToUpperCase(translatedTitle[0].value.replace(/<.*?>/g, '')) : false;
+        }
+        else {
+            return titleArray;
+        }
     }
     /**
      * @param {?} str
