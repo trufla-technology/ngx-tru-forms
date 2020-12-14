@@ -7,9 +7,9 @@ import { CommonComponent } from '../../common/common.component';
   styleUrls: ['./tru-ui-photo.component.css']
 })
 export class TruUiPhotoComponent extends CommonComponent {
-  file: any = {};
+  file: any = {name: ''};
   selectFile = false;
-  photoData: string;
+  photoData: string = this.getControlValue();
 
   resetUpload() {
     this.file = {};
@@ -17,7 +17,7 @@ export class TruUiPhotoComponent extends CommonComponent {
     this.control.reset();
 
   }
- async handleDrop(files) {
+  async handleDrop(files) {
     this.file = files[0];
     this.selectFile = true;
     const file = await this.toBase64(this.file);
@@ -27,15 +27,15 @@ export class TruUiPhotoComponent extends CommonComponent {
   shortenSize(data) {
     return data.toString().substring(0, 4);
   }
- async dragAndDrop(files) {
+
+  async dragAndDrop(files) {
     this.file = files.target.files[0];
     this.selectFile = true;
     const file = await this.toBase64(this.file);
     this.photoData = file.toString();
     this.control.setValue(this.photoData);
-
-
   }
+
   toBase64(file) {
     return new Promise((resolve, reject) => {
     const reader = new FileReader();

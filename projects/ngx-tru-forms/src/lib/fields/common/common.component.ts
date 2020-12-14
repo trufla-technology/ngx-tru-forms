@@ -4,6 +4,13 @@ import { Component, ChangeDetectorRef, AfterViewInit } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { startCase } from 'lodash';
 import {ValidationFeedbackTranslation} from '../error/validation-feedback-translation';
+import { BsLocaleService } from 'ngx-bootstrap/datepicker';
+import { listLocales } from 'ngx-bootstrap/chronos';
+import { defineLocale } from 'ngx-bootstrap/chronos';
+import { deLocale } from 'ngx-bootstrap/locale';
+
+// defineLocale('fr', deLocale);
+
 @Component({
   selector: 'jf-component',
   template: ''
@@ -15,18 +22,20 @@ export class CommonComponent implements AfterViewInit {
   disabled = false;
   language;
   isWebView = false;
-
   constructor(
     public sanitizer: DomSanitizer,
     public cd: ChangeDetectorRef,
+    private localeService: BsLocaleService,
     private validationFeedbackTranslation: ValidationFeedbackTranslation
   ) {
     if ( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
       this.isWebView = true;
      }
+     this.localeService.use(this.language);
   }
 
   ngAfterViewInit() {
+    this.localeService.use(this.language);
     this.cd.detectChanges();
   }
 
@@ -110,4 +119,22 @@ export class CommonComponent implements AfterViewInit {
 getLanguage() {
   return this.validationFeedbackTranslation.validation[this.language || 'en'];
 }
+
+getControlValue() {
+  return this.control && this.control.value ? this.control.value : '';
+}
+
+getFilename() {
+    if (this.getControlValue().length) {
+    return this.getControlValue().substring("data:image/".length, this.getControlValue().indexOf(";base64"))
+    }
+  }
+
+  getFilesize() {
+    if (this.getControlValue().length) {
+    const base64str = this.getControlValue().substr(22);
+    const decoded = atob(base64str);
+    return decoded.length
+    }
+  }
 }
