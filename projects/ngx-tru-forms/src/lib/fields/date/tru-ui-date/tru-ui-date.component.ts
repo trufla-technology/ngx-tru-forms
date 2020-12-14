@@ -3,6 +3,7 @@ import { CommonComponent } from '../../common/common.component';
 import * as moment from 'moment';
 import { DateAdapter } from '@angular/material/core';
 import { MomentUtcDateAdapter } from '../../../services/moment-utc-adapter.service';
+
 @Component({
   selector: 'jf-tru-ui-date',
   templateUrl: './tru-ui-date.component.html',
@@ -16,6 +17,7 @@ import { MomentUtcDateAdapter } from '../../../services/moment-utc-adapter.servi
 })
 export class TruUiDateComponent extends CommonComponent  {
   oldValue;
+
   isMobile() {
     return window.innerWidth <= 800;
   }
