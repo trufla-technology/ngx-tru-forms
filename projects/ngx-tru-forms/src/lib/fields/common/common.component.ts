@@ -126,15 +126,7 @@ getControlValue() {
 
 getFilename() {
     if (this.getControlValue().length) {
-    return this.getControlValue().substring("data:image/".length, this.getControlValue().indexOf(";base64"))
-    }
-  }
-
-  getFilesize() {
-    if (this.getControlValue().length) {
-    const base64str = this.getControlValue().substr(22);
-    const decoded = atob(base64str);
-    return decoded.length
+    return this.getControlValue().substring("data:image/".length, this.getControlValue().indexOf(";base64")) || '';
     }
   }
 }
