@@ -14,7 +14,7 @@
     <div class="file-preview-container"  [ngClass]="{'d-none': !getControlValue().length}">
       <div style="max-width: 165px;text-overflow: ellipsis;overflow: hidden;display: block;"><small >{{file.name || title() + '.' + getFilename()}}</small></div>
       <div>
-        <small style="color: #212121;font-size: 12px" >{{shortenSize(file?.size || getFilesize()/1024/1024)}}MB</small>
+        <small style="color: #212121;font-size: 12px" >{{shortenSize(file?.size/1024/1024)}}MB</small>
         <button class="btn-remove" style="cursor: pointer" type="button" (click)="resetUpload()">
             <svg width="12px" height="12px" viewBox="0 0 12 12" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                 <g id="Full-Admin" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
