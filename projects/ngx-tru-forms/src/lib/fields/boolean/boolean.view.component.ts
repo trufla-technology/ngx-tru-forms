@@ -6,4 +6,5 @@ import { CommonComponent } from '../common/common.component';
   <p><span>{{placeholder()}}</span> <span>{{control.value}}</span></p>
   `
 })
-export class BooleanViewComponent extends CommonComponent {}
+export class BooleanViewComponent extends CommonComponent {
+}

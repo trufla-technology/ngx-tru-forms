@@ -23,12 +23,9 @@ const routes: Routes = [
         {
           provide: JsonFormFieldsService,
           useClass: JsonFormMaterial,
-          multi: true
         }
       ]
     }
-    // JsonFormModule.forRoot(JsonFormMaterialModule),
   ],
-  // exports: [MaterialDesignComponent]
 })
 export class MaterialDesignModule { }

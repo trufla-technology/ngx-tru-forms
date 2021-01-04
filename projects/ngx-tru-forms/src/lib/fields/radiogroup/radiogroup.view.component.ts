@@ -3,7 +3,7 @@ import { CommonComponent } from '../common/common.component';
 
 @Component({
   template: `
-  <p><span>{{placeholder()}}</span> <span>{{control.value}}</span></p>
+  <p><span>{{placeholder()}}</span> <span>{{getSelectedEnumName()}}</span></p>
   `
 })
 export class RadiogroupViewComponent extends CommonComponent { }

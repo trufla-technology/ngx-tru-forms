@@ -20,7 +20,6 @@ import { ColorPickerModule } from 'ngx-color-picker';
         {
           provide: JsonFormMaterialModule,
           useClass: JsonFormMaterialModule,
-          multi: true
         }
       ]
     },

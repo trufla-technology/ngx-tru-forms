@@ -7,9 +7,9 @@ import { CommonComponent } from '../../common/common.component';
   styleUrls: ['./tru-ui-photo.component.css']
 })
 export class TruUiPhotoComponent extends CommonComponent {
-  file: any = {name: ''};
+  file: any ;
   selectFile = false;
-  photoData: string = this.getControlValue();
+  photoData: string;
 
   resetUpload() {
     this.file = {};
