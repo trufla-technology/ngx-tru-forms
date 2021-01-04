@@ -23,10 +23,7 @@ import { TruUiAutocompleteComponent } from '../../fields/autocomplete/tru-ui-aut
 // import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TypeaheadModule } from 'ngx-bootstrap/typeahead';
 import { FormsModule } from '@angular/forms';
-import { defineLocale } from 'ngx-bootstrap/chronos';
-import { deLocale } from 'ngx-bootstrap/locale';
 
-defineLocale('fr', deLocale);
 @NgModule({
   declarations: [TruUiButtonComponent,
      TruUiStringComponent,

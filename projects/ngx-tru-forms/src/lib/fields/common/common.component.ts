@@ -5,9 +5,8 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { startCase } from 'lodash';
 import {ValidationFeedbackTranslation} from '../error/validation-feedback-translation';
 import { BsLocaleService } from 'ngx-bootstrap/datepicker';
-import { listLocales } from 'ngx-bootstrap/chronos';
 import { defineLocale } from 'ngx-bootstrap/chronos';
-import { deLocale } from 'ngx-bootstrap/locale';
+import { esLocale } from 'ngx-bootstrap/locale';
 
 // defineLocale('fr', deLocale);
 
@@ -31,6 +30,7 @@ export class CommonComponent implements AfterViewInit {
     if ( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
       this.isWebView = true;
      }
+     defineLocale('fr', esLocale);
      this.localeService.use(this.language);
   }
 
@@ -103,6 +103,16 @@ export class CommonComponent implements AfterViewInit {
     return typeof(this.schema.enumNames) === 'undefined'
       ? this.schema.enum[index]
       :  this.getTranslation(this.schema.enumNames[index]);
+  }
+
+  getSelectedEnumName() {
+    let index;
+    this.schema.enum.map((e, i) => {
+     if (e === this.control.value) {
+       index = i;
+     }
+    });
+    return index ? this.getTranslation(this.schema.enumNames[index]) : this.control.value;
   }
 
   getTranslation(titleArray) {

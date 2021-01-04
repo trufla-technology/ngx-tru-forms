@@ -92,26 +92,26 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
 /* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_5__);
 /* harmony import */ var ngx_bootstrap_datepicker__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ngx-bootstrap/datepicker */ "./node_modules/ngx-bootstrap/datepicker/fesm2015/ngx-bootstrap-datepicker.js");
-/* harmony import */ var text_mask_addons_dist_createNumberMask__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! text-mask-addons/dist/createNumberMask */ "./node_modules/text-mask-addons/dist/createNumberMask.js");
-/* harmony import */ var text_mask_addons_dist_createNumberMask__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(text_mask_addons_dist_createNumberMask__WEBPACK_IMPORTED_MODULE_7__);
-/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm2015/forms.js");
-/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm2015/common.js");
-/* harmony import */ var angular2_text_mask__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! angular2-text-mask */ "./node_modules/angular2-text-mask/dist/angular2TextMask.js");
-/* harmony import */ var angular2_text_mask__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(angular2_text_mask__WEBPACK_IMPORTED_MODULE_10__);
-/* harmony import */ var _angular_material_button__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @angular/material/button */ "./node_modules/@angular/material/esm2015/button.js");
-/* harmony import */ var _angular_material_card__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @angular/material/card */ "./node_modules/@angular/material/esm2015/card.js");
-/* harmony import */ var _angular_material_checkbox__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! @angular/material/checkbox */ "./node_modules/@angular/material/esm2015/checkbox.js");
-/* harmony import */ var _angular_material_datepicker__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! @angular/material/datepicker */ "./node_modules/@angular/material/esm2015/datepicker.js");
-/* harmony import */ var _angular_material_form_field__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! @angular/material/form-field */ "./node_modules/@angular/material/esm2015/form-field.js");
-/* harmony import */ var _angular_material_icon__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! @angular/material/icon */ "./node_modules/@angular/material/esm2015/icon.js");
-/* harmony import */ var _angular_material_input__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! @angular/material/input */ "./node_modules/@angular/material/esm2015/input.js");
-/* harmony import */ var _angular_material_radio__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! @angular/material/radio */ "./node_modules/@angular/material/esm2015/radio.js");
-/* harmony import */ var _angular_material_select__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! @angular/material/select */ "./node_modules/@angular/material/esm2015/select.js");
-/* harmony import */ var _angular_material_slide_toggle__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! @angular/material/slide-toggle */ "./node_modules/@angular/material/esm2015/slide-toggle.js");
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var ngx_bootstrap_typeahead__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ngx-bootstrap/typeahead */ "./node_modules/ngx-bootstrap/typeahead/fesm2015/ngx-bootstrap-typeahead.js");
-/* harmony import */ var ngx_bootstrap_chronos__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ngx-bootstrap/chronos */ "./node_modules/ngx-bootstrap/chronos/fesm2015/ngx-bootstrap-chronos.js");
-/* harmony import */ var ngx_bootstrap_locale__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ngx-bootstrap/locale */ "./node_modules/ngx-bootstrap/locale/fesm2015/ngx-bootstrap-locale.js");
+/* harmony import */ var ngx_bootstrap_chronos__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ngx-bootstrap/chronos */ "./node_modules/ngx-bootstrap/chronos/fesm2015/ngx-bootstrap-chronos.js");
+/* harmony import */ var ngx_bootstrap_locale__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ngx-bootstrap/locale */ "./node_modules/ngx-bootstrap/locale/fesm2015/ngx-bootstrap-locale.js");
+/* harmony import */ var text_mask_addons_dist_createNumberMask__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! text-mask-addons/dist/createNumberMask */ "./node_modules/text-mask-addons/dist/createNumberMask.js");
+/* harmony import */ var text_mask_addons_dist_createNumberMask__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(text_mask_addons_dist_createNumberMask__WEBPACK_IMPORTED_MODULE_9__);
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm2015/forms.js");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm2015/common.js");
+/* harmony import */ var angular2_text_mask__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! angular2-text-mask */ "./node_modules/angular2-text-mask/dist/angular2TextMask.js");
+/* harmony import */ var angular2_text_mask__WEBPACK_IMPORTED_MODULE_12___default = /*#__PURE__*/__webpack_require__.n(angular2_text_mask__WEBPACK_IMPORTED_MODULE_12__);
+/* harmony import */ var _angular_material_button__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! @angular/material/button */ "./node_modules/@angular/material/esm2015/button.js");
+/* harmony import */ var _angular_material_card__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! @angular/material/card */ "./node_modules/@angular/material/esm2015/card.js");
+/* harmony import */ var _angular_material_checkbox__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! @angular/material/checkbox */ "./node_modules/@angular/material/esm2015/checkbox.js");
+/* harmony import */ var _angular_material_datepicker__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! @angular/material/datepicker */ "./node_modules/@angular/material/esm2015/datepicker.js");
+/* harmony import */ var _angular_material_form_field__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! @angular/material/form-field */ "./node_modules/@angular/material/esm2015/form-field.js");
+/* harmony import */ var _angular_material_icon__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! @angular/material/icon */ "./node_modules/@angular/material/esm2015/icon.js");
+/* harmony import */ var _angular_material_input__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! @angular/material/input */ "./node_modules/@angular/material/esm2015/input.js");
+/* harmony import */ var _angular_material_radio__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! @angular/material/radio */ "./node_modules/@angular/material/esm2015/radio.js");
+/* harmony import */ var _angular_material_select__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! @angular/material/select */ "./node_modules/@angular/material/esm2015/select.js");
+/* harmony import */ var _angular_material_slide_toggle__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! @angular/material/slide-toggle */ "./node_modules/@angular/material/esm2015/slide-toggle.js");
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var ngx_bootstrap_typeahead__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ngx-bootstrap/typeahead */ "./node_modules/ngx-bootstrap/typeahead/fesm2015/ngx-bootstrap-typeahead.js");
 
 
 
@@ -240,6 +240,7 @@ class CommonComponent {
         if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
             this.isWebView = true;
         }
+        Object(ngx_bootstrap_chronos__WEBPACK_IMPORTED_MODULE_7__["defineLocale"])('fr', ngx_bootstrap_locale__WEBPACK_IMPORTED_MODULE_8__["esLocale"]);
         this.localeService.use(this.language);
     }
     /**
@@ -348,6 +349,24 @@ class CommonComponent {
             : this.getTranslation(this.schema.enumNames[index]);
     }
     /**
+     * @return {?}
+     */
+    getSelectedEnumName() {
+        /** @type {?} */
+        let index;
+        this.schema.enum.map((/**
+         * @param {?} e
+         * @param {?} i
+         * @return {?}
+         */
+        (e, i) => {
+            if (e === this.control.value) {
+                index = i;
+            }
+        }));
+        return index ? this.getTranslation(this.schema.enumNames[index]) : this.control.value;
+    }
+    /**
      * @param {?} titleArray
      * @return {?}
      */
@@ -426,7 +445,8 @@ class SelectViewComponent extends CommonComponent {
 SelectViewComponent.decorators = [
     { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"], args: [{
                 template: `
-    <p><span>{{placeholder()}}</span> <span>{{control.value}}</span></p>
+    <p><span>{{placeholder()}}</span>
+     <span>{{getSelectedEnumName()}}</span></p>
   `
             }] }
 ];
@@ -508,7 +528,7 @@ TextareaViewComponent.decorators = [
 class DateViewComponent extends CommonComponent {
     constructor() {
         super(...arguments);
-        this.numberMask = text_mask_addons_dist_createNumberMask__WEBPACK_IMPORTED_MODULE_7___default()({ allowDecimal: false, prefix: '' });
+        this.numberMask = text_mask_addons_dist_createNumberMask__WEBPACK_IMPORTED_MODULE_9___default()({ allowDecimal: false, prefix: '' });
     }
     /**
      * @param {?} value
@@ -537,7 +557,7 @@ class RadiogroupViewComponent extends CommonComponent {
 RadiogroupViewComponent.decorators = [
     { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"], args: [{
                 template: `
-  <p><span>{{placeholder()}}</span> <span>{{control.value}}</span></p>
+  <p><span>{{placeholder()}}</span> <span>{{getSelectedEnumName()}}</span></p>
   `
             }] }
 ];
@@ -595,7 +615,7 @@ MultiselectViewComponent.decorators = [
 class MoneyViewComponent extends CommonComponent {
     constructor() {
         super(...arguments);
-        this.numberMask = text_mask_addons_dist_createNumberMask__WEBPACK_IMPORTED_MODULE_7___default()({ allowDecimal: false, prefix: '' });
+        this.numberMask = text_mask_addons_dist_createNumberMask__WEBPACK_IMPORTED_MODULE_9___default()({ allowDecimal: false, prefix: '' });
     }
     /**
      * @param {?} value
@@ -619,7 +639,7 @@ if (false) {}
  * Generated from: lib/models/schema-form-control.ts
  * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
  */
-class SchemaFormControl extends _angular_forms__WEBPACK_IMPORTED_MODULE_8__["FormControl"] {
+class SchemaFormControl extends _angular_forms__WEBPACK_IMPORTED_MODULE_10__["FormControl"] {
 }
 if (false) {}
 
@@ -653,7 +673,7 @@ if (false) {}
  * Generated from: lib/models/schema-form-array.ts
  * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
  */
-class SchemaFormArray extends _angular_forms__WEBPACK_IMPORTED_MODULE_8__["FormArray"] {
+class SchemaFormArray extends _angular_forms__WEBPACK_IMPORTED_MODULE_10__["FormArray"] {
 }
 if (false) {}
 
@@ -662,7 +682,7 @@ if (false) {}
  * Generated from: lib/models/schema-form-group.ts
  * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
  */
-class SchemaFormGroup extends _angular_forms__WEBPACK_IMPORTED_MODULE_8__["FormGroup"] {
+class SchemaFormGroup extends _angular_forms__WEBPACK_IMPORTED_MODULE_10__["FormGroup"] {
 }
 if (false) {}
 
@@ -834,7 +854,7 @@ ArrayViewComponent.decorators = [
     { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"], args: [{
                 template: `
     <div [ngClass]="['array', control.schema.key]">
-      <h6 *ngIf="getLegend(control).length">{{getLegend(control) + 'tet'}}</h6>
+      <h6 *ngIf="getLegend(control).length">{{getLegend(control)}}</h6>
       <div *ngFor="let arrControl of getEnabledControls(control); let i = index;">
         <div class="row">
           <div class="control" jf-component-chooser [form]="arrControl" [language]= "language"></div>
@@ -1016,19 +1036,19 @@ class JsonFormValidatorsService {
         /** @type {?} */
         const varPath = [].concat(path, prop).join('.');
         if (schema.properties[prop].type === 'boolean' && required.indexOf(prop) > -1) {
-            return _angular_forms__WEBPACK_IMPORTED_MODULE_8__["Validators"].requiredTrue;
+            return _angular_forms__WEBPACK_IMPORTED_MODULE_10__["Validators"].requiredTrue;
         }
-        return _angular_forms__WEBPACK_IMPORTED_MODULE_8__["Validators"].compose(this.validators.concat([
+        return _angular_forms__WEBPACK_IMPORTED_MODULE_10__["Validators"].compose(this.validators.concat([
             (this.has(varPath) ? this.validators[varPath] : null),
-            (required.indexOf(prop) > -1 ? _angular_forms__WEBPACK_IMPORTED_MODULE_8__["Validators"].required : null),
-            (field.hasOwnProperty('minLength') ? _angular_forms__WEBPACK_IMPORTED_MODULE_8__["Validators"].minLength(field.minLength) : null),
-            (field.hasOwnProperty('maxLength') ? _angular_forms__WEBPACK_IMPORTED_MODULE_8__["Validators"].maxLength(field.maxLength) : null),
+            (required.indexOf(prop) > -1 ? _angular_forms__WEBPACK_IMPORTED_MODULE_10__["Validators"].required : null),
+            (field.hasOwnProperty('minLength') ? _angular_forms__WEBPACK_IMPORTED_MODULE_10__["Validators"].minLength(field.minLength) : null),
+            (field.hasOwnProperty('maxLength') ? _angular_forms__WEBPACK_IMPORTED_MODULE_10__["Validators"].maxLength(field.maxLength) : null),
             (field.hasOwnProperty('format') && field.format === 'email' ? emailValidator : null),
-            (field.hasOwnProperty('minimum') ? _angular_forms__WEBPACK_IMPORTED_MODULE_8__["Validators"].min(field.minimum) : null),
-            (field.hasOwnProperty('maximum') ? _angular_forms__WEBPACK_IMPORTED_MODULE_8__["Validators"].max(field.maximum) : null),
+            (field.hasOwnProperty('minimum') ? _angular_forms__WEBPACK_IMPORTED_MODULE_10__["Validators"].min(field.minimum) : null),
+            (field.hasOwnProperty('maximum') ? _angular_forms__WEBPACK_IMPORTED_MODULE_10__["Validators"].max(field.maximum) : null),
             (field.format && field.format === 'date' ? dateValidator : null),
             (field.hasOwnProperty('format') && field.format === 'tel' ? phoneNumberValidator : null),
-            (field.pattern ? _angular_forms__WEBPACK_IMPORTED_MODULE_8__["Validators"].pattern(field.pattern) : null)
+            (field.pattern ? _angular_forms__WEBPACK_IMPORTED_MODULE_10__["Validators"].pattern(field.pattern) : null)
         ]));
     }
     /**
@@ -1635,7 +1655,7 @@ JsonFormComponent.decorators = [
 ];
 /** @nocollapse */
 JsonFormComponent.ctorParameters = () => [
-    { type: _angular_forms__WEBPACK_IMPORTED_MODULE_8__["FormBuilder"] },
+    { type: _angular_forms__WEBPACK_IMPORTED_MODULE_10__["FormBuilder"] },
     { type: JsonFormValidatorsService },
     { type: JsonFormDefaultsService },
     { type: JsonFormFieldsService }
@@ -2238,7 +2258,7 @@ if (false) {}
 class MoneyComponent extends CommonComponent {
     constructor() {
         super(...arguments);
-        this.numberMask = text_mask_addons_dist_createNumberMask__WEBPACK_IMPORTED_MODULE_7___default()({ allowDecimal: false, prefix: '' });
+        this.numberMask = text_mask_addons_dist_createNumberMask__WEBPACK_IMPORTED_MODULE_9___default()({ allowDecimal: false, prefix: '' });
     }
     /**
      * @param {?} value
@@ -2685,9 +2705,9 @@ class SharedModule {
 SharedModule.decorators = [
     { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["NgModule"], args: [{
                 imports: [
-                    _angular_common__WEBPACK_IMPORTED_MODULE_9__["CommonModule"],
-                    angular2_text_mask__WEBPACK_IMPORTED_MODULE_10__["TextMaskModule"],
-                    _angular_forms__WEBPACK_IMPORTED_MODULE_8__["ReactiveFormsModule"]
+                    _angular_common__WEBPACK_IMPORTED_MODULE_11__["CommonModule"],
+                    angular2_text_mask__WEBPACK_IMPORTED_MODULE_12__["TextMaskModule"],
+                    _angular_forms__WEBPACK_IMPORTED_MODULE_10__["ReactiveFormsModule"]
                 ],
                 declarations: [
                     JsonFormComponent,
@@ -2780,7 +2800,7 @@ class JsonFormModule {
 JsonFormModule.decorators = [
     { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["NgModule"], args: [{
                 imports: [
-                    _angular_common__WEBPACK_IMPORTED_MODULE_9__["CommonModule"],
+                    _angular_common__WEBPACK_IMPORTED_MODULE_11__["CommonModule"],
                     SharedModule
                 ],
                 exports: [
@@ -2869,9 +2889,9 @@ class JsonFormBootstrap4Module {
 JsonFormBootstrap4Module.decorators = [
     { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["NgModule"], args: [{
                 imports: [
-                    _angular_common__WEBPACK_IMPORTED_MODULE_9__["CommonModule"],
-                    _angular_forms__WEBPACK_IMPORTED_MODULE_8__["ReactiveFormsModule"],
-                    angular2_text_mask__WEBPACK_IMPORTED_MODULE_10__["TextMaskModule"],
+                    _angular_common__WEBPACK_IMPORTED_MODULE_11__["CommonModule"],
+                    _angular_forms__WEBPACK_IMPORTED_MODULE_10__["ReactiveFormsModule"],
+                    angular2_text_mask__WEBPACK_IMPORTED_MODULE_12__["TextMaskModule"],
                     SharedModule,
                     ngx_bootstrap_datepicker__WEBPACK_IMPORTED_MODULE_6__["BsDatepickerModule"].forRoot()
                 ],
@@ -3585,20 +3605,20 @@ class JsonFormMaterialModule {
 JsonFormMaterialModule.decorators = [
     { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["NgModule"], args: [{
                 imports: [
-                    _angular_common__WEBPACK_IMPORTED_MODULE_9__["CommonModule"],
-                    _angular_forms__WEBPACK_IMPORTED_MODULE_8__["ReactiveFormsModule"],
-                    angular2_text_mask__WEBPACK_IMPORTED_MODULE_10__["TextMaskModule"],
-                    _angular_material_form_field__WEBPACK_IMPORTED_MODULE_15__["MatFormFieldModule"],
-                    _angular_material_input__WEBPACK_IMPORTED_MODULE_17__["MatInputModule"],
-                    _angular_material_button__WEBPACK_IMPORTED_MODULE_11__["MatButtonModule"],
-                    _angular_material_select__WEBPACK_IMPORTED_MODULE_19__["MatSelectModule"],
-                    _angular_material_radio__WEBPACK_IMPORTED_MODULE_18__["MatRadioModule"],
-                    _angular_material_checkbox__WEBPACK_IMPORTED_MODULE_13__["MatCheckboxModule"],
-                    _angular_material_slide_toggle__WEBPACK_IMPORTED_MODULE_20__["MatSlideToggleModule"],
-                    _angular_material_icon__WEBPACK_IMPORTED_MODULE_16__["MatIconModule"],
+                    _angular_common__WEBPACK_IMPORTED_MODULE_11__["CommonModule"],
+                    _angular_forms__WEBPACK_IMPORTED_MODULE_10__["ReactiveFormsModule"],
+                    angular2_text_mask__WEBPACK_IMPORTED_MODULE_12__["TextMaskModule"],
+                    _angular_material_form_field__WEBPACK_IMPORTED_MODULE_17__["MatFormFieldModule"],
+                    _angular_material_input__WEBPACK_IMPORTED_MODULE_19__["MatInputModule"],
+                    _angular_material_button__WEBPACK_IMPORTED_MODULE_13__["MatButtonModule"],
+                    _angular_material_select__WEBPACK_IMPORTED_MODULE_21__["MatSelectModule"],
+                    _angular_material_radio__WEBPACK_IMPORTED_MODULE_20__["MatRadioModule"],
+                    _angular_material_checkbox__WEBPACK_IMPORTED_MODULE_15__["MatCheckboxModule"],
+                    _angular_material_slide_toggle__WEBPACK_IMPORTED_MODULE_22__["MatSlideToggleModule"],
+                    _angular_material_icon__WEBPACK_IMPORTED_MODULE_18__["MatIconModule"],
                     _angular_material_core__WEBPACK_IMPORTED_MODULE_1__["MatNativeDateModule"],
-                    _angular_material_datepicker__WEBPACK_IMPORTED_MODULE_14__["MatDatepickerModule"],
-                    _angular_material_card__WEBPACK_IMPORTED_MODULE_12__["MatCardModule"],
+                    _angular_material_datepicker__WEBPACK_IMPORTED_MODULE_16__["MatDatepickerModule"],
+                    _angular_material_card__WEBPACK_IMPORTED_MODULE_14__["MatCardModule"],
                     _angular_material_moment_adapter__WEBPACK_IMPORTED_MODULE_2__["MatMomentDateModule"],
                     SharedModule
                 ],
@@ -3696,9 +3716,7 @@ if (false) {}
 class TruUiPhotoComponent extends CommonComponent {
     constructor() {
         super(...arguments);
-        this.file = { name: '' };
         this.selectFile = false;
-        this.photoData = this.getControlValue();
     }
     /**
      * @return {?}
@@ -3713,7 +3731,7 @@ class TruUiPhotoComponent extends CommonComponent {
      * @return {?}
      */
     handleDrop(files) {
-        return Object(tslib__WEBPACK_IMPORTED_MODULE_21__["__awaiter"])(this, void 0, void 0, function* () {
+        return Object(tslib__WEBPACK_IMPORTED_MODULE_23__["__awaiter"])(this, void 0, void 0, function* () {
             this.file = files[0];
             this.selectFile = true;
             /** @type {?} */
@@ -3734,7 +3752,7 @@ class TruUiPhotoComponent extends CommonComponent {
      * @return {?}
      */
     dragAndDrop(files) {
-        return Object(tslib__WEBPACK_IMPORTED_MODULE_21__["__awaiter"])(this, void 0, void 0, function* () {
+        return Object(tslib__WEBPACK_IMPORTED_MODULE_23__["__awaiter"])(this, void 0, void 0, function* () {
             this.file = files.target.files[0];
             this.selectFile = true;
             /** @type {?} */
@@ -3772,7 +3790,7 @@ class TruUiPhotoComponent extends CommonComponent {
 TruUiPhotoComponent.decorators = [
     { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"], args: [{
                 selector: 'jf-tru-ui-photo',
-                template: "<label [attr.class]=\"schema.key\" [ngClass]=\"{'required': isRequired()}\" style=\"margin-bottom: 6px;\">\n    <span class=\"tru-ui-lable\" [innerHTML]=\"title()\"></span><sup *ngIf=\"isRequired()\">*</sup>\n</label>\n<div class=\"tru-form-group\" jfDragAndDrop (filesDropped)=\"handleDrop($event);fileInput.value = null\">\n  \n    <label [ngClass]=\"{'d-none': getControlValue().length > 0}\"  style=\"margin-bottom: 0 !important;\">\n      <div class=\"tru-drag-and-drop\">\n        <span *ngIf=\"language === 'en'; else french\">Drop your file here or <span class=\"primary-color browse-btn\">Browse</span></span>\n        <ng-template #french><span>D\u00E9posez votre fichier ici ou <span class=\"primary-color browse-btn\">naviguez</span></span></ng-template>\n      </div>\n    <input #fileInput\n      style=\"display: none\" class=\"tru-input\" type=\"file\" (change)=\"dragAndDrop($event);fileInput.value = null\"  />\n    </label>\n    <div class=\"file-preview-container\"  [ngClass]=\"{'d-none': !getControlValue().length}\">\n      <div style=\"max-width: 165px;text-overflow: ellipsis;overflow: hidden;display: block;\"><small >{{file.name || title() + '.' + getFilename()}}</small></div>\n      <div>\n        <small style=\"color: #212121;font-size: 12px\" >{{shortenSize(file?.size/1024/1024)}}MB</small>\n        <button class=\"btn-remove\" style=\"cursor: pointer\" type=\"button\" (click)=\"resetUpload()\">\n            <svg width=\"12px\" height=\"12px\" viewBox=\"0 0 12 12\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">\n                <g id=\"Full-Admin\" stroke=\"none\" stroke-width=\"1\" fill=\"none\" fill-rule=\"evenodd\">\n                    <g id=\"My-Documents-listing-add-sidebar-Progress\" transform=\"translate(-1402.000000, -196.000000)\" fill=\"#FFFFFF\" fill-rule=\"nonzero\">\n                        <g id=\"Group-32\" transform=\"translate(1140.000000, 60.000000)\">\n                            <g id=\"Group-27\">\n                                <g id=\"Group-26\">\n                                    <g id=\"Group-11\" transform=\"translate(20.000000, 130.000000)\">\n                                        <g id=\"Group-10\">\n                                            <g id=\"Group-21\" transform=\"translate(1.000000, 0.000000)\">\n                                                <g id=\"Group-33\">\n                                                    <g id=\"Group-24\">\n                                                        <g id=\"Group-7-Copy\" transform=\"translate(235.000000, 0.000000)\">\n                                                            <g id=\"Group-13\">\n                                                                <path d=\"M6.75,7.96875 L6.75,7.3125 C6.75,7.00078125 7.0186942,6.75 7.35267857,6.75 L10.1651786,6.75 L10.4012277,6.31171875 C10.5016741,6.11953125 10.7101004,6 10.9386161,6 L13.8088728,6 C14.0373884,6 14.2458147,6.11953125 14.3487723,6.31171875 L14.5848214,6.75 L17.3973214,6.75 C17.7313058,6.75 18,7.00078125 18,7.3125 L18,7.96875 C18,8.1234375 17.8643973,8.25 17.6986607,8.25 L7.05133929,8.25 C6.88560268,8.25 6.75,8.1234375 6.75,7.96875 Z M17.1964286,9.28125 L17.1964286,16.875 C17.1964286,17.4960938 16.656529,18 15.9910714,18 L8.75892857,18 C8.09347098,18 7.55357143,17.4960938 7.55357143,16.875 L7.55357143,9.28125 C7.55357143,9.1265625 7.68917411,9 7.85491071,9 L16.8950893,9 C17.0608259,9 17.1964286,9.1265625 17.1964286,9.28125 Z M10.3660714,10.875 C10.3660714,10.66875 10.1852679,10.5 9.96428571,10.5 C9.74330357,10.5 9.5625,10.66875 9.5625,10.875 L9.5625,16.125 C9.5625,16.33125 9.74330357,16.5 9.96428571,16.5 C10.1852679,16.5 10.3660714,16.33125 10.3660714,16.125 L10.3660714,10.875 Z M12.7767857,10.875 C12.7767857,10.66875 12.5959821,10.5 12.375,10.5 C12.1540179,10.5 11.9732143,10.66875 11.9732143,10.875 L11.9732143,16.125 C11.9732143,16.33125 12.1540179,16.5 12.375,16.5 C12.5959821,16.5 12.7767857,16.33125 12.7767857,16.125 L12.7767857,10.875 Z M15.1875,10.875 C15.1875,10.66875 15.0066964,10.5 14.7857143,10.5 C14.5647321,10.5 14.3839286,10.66875 14.3839286,10.875 L14.3839286,16.125 C14.3839286,16.33125 14.5647321,16.5 14.7857143,16.5 C15.0066964,16.5 15.1875,16.33125 15.1875,16.125 L15.1875,10.875 Z\" id=\"trash-alt\"></path>\n                                                            </g>\n                                                        </g>\n                                                    </g>\n                                                </g>\n                                            </g>\n                                        </g>\n                                    </g>\n                                </g>\n                            </g>\n                        </g>\n                    </g>\n                </g>\n            </svg>        \n         </button>\n      </div>\n    </div>\n<jf-tru-ui-error [control]=\"control\" [language]=\"language || 'en'\"></jf-tru-ui-error>\n  </div>",
+                template: "<label [attr.class]=\"schema.key\" [ngClass]=\"{'required': isRequired()}\" style=\"margin-bottom: 6px;\">\n    <span class=\"tru-ui-lable\" [innerHTML]=\"title()\"></span><sup *ngIf=\"isRequired()\">*</sup>\n</label>\n<div class=\"tru-form-group\" jfDragAndDrop (filesDropped)=\"handleDrop($event);fileInput.value = null\">\n  \n    <label [ngClass]=\"{'d-none': getControlValue().length > 0}\"  style=\"margin-bottom: 0 !important;\">\n      <div class=\"tru-drag-and-drop\">\n        <span *ngIf=\"language === 'en'; else french\">Drop your file here or <span class=\"primary-color browse-btn\">Browse</span></span>\n        <ng-template #french><span>D\u00E9posez votre fichier ici ou <span class=\"primary-color browse-btn\">naviguez</span></span></ng-template>\n      </div>\n    <input #fileInput\n      style=\"display: none\" class=\"tru-input\" type=\"file\" (change)=\"dragAndDrop($event);fileInput.value = null\"  />\n    </label>\n    <div class=\"file-preview-container\"  [ngClass]=\"{'d-none': !getControlValue().length}\">\n      <div style=\"max-width: 165px;text-overflow: ellipsis;overflow: hidden;display: block;\"><small >{{file?.name || title()}}</small></div>\n      <div>\n        <small style=\"color: #212121;font-size: 12px\" *ngIf=\"file && file.size\" >{{shortenSize(file?.size/1024/1024)}}MB</small>\n        <button class=\"btn-remove\" style=\"cursor: pointer\" type=\"button\" (click)=\"resetUpload()\">\n            <svg width=\"12px\" height=\"12px\" viewBox=\"0 0 12 12\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">\n                <g id=\"Full-Admin\" stroke=\"none\" stroke-width=\"1\" fill=\"none\" fill-rule=\"evenodd\">\n                    <g id=\"My-Documents-listing-add-sidebar-Progress\" transform=\"translate(-1402.000000, -196.000000)\" fill=\"#FFFFFF\" fill-rule=\"nonzero\">\n                        <g id=\"Group-32\" transform=\"translate(1140.000000, 60.000000)\">\n                            <g id=\"Group-27\">\n                                <g id=\"Group-26\">\n                                    <g id=\"Group-11\" transform=\"translate(20.000000, 130.000000)\">\n                                        <g id=\"Group-10\">\n                                            <g id=\"Group-21\" transform=\"translate(1.000000, 0.000000)\">\n                                                <g id=\"Group-33\">\n                                                    <g id=\"Group-24\">\n                                                        <g id=\"Group-7-Copy\" transform=\"translate(235.000000, 0.000000)\">\n                                                            <g id=\"Group-13\">\n                                                                <path d=\"M6.75,7.96875 L6.75,7.3125 C6.75,7.00078125 7.0186942,6.75 7.35267857,6.75 L10.1651786,6.75 L10.4012277,6.31171875 C10.5016741,6.11953125 10.7101004,6 10.9386161,6 L13.8088728,6 C14.0373884,6 14.2458147,6.11953125 14.3487723,6.31171875 L14.5848214,6.75 L17.3973214,6.75 C17.7313058,6.75 18,7.00078125 18,7.3125 L18,7.96875 C18,8.1234375 17.8643973,8.25 17.6986607,8.25 L7.05133929,8.25 C6.88560268,8.25 6.75,8.1234375 6.75,7.96875 Z M17.1964286,9.28125 L17.1964286,16.875 C17.1964286,17.4960938 16.656529,18 15.9910714,18 L8.75892857,18 C8.09347098,18 7.55357143,17.4960938 7.55357143,16.875 L7.55357143,9.28125 C7.55357143,9.1265625 7.68917411,9 7.85491071,9 L16.8950893,9 C17.0608259,9 17.1964286,9.1265625 17.1964286,9.28125 Z M10.3660714,10.875 C10.3660714,10.66875 10.1852679,10.5 9.96428571,10.5 C9.74330357,10.5 9.5625,10.66875 9.5625,10.875 L9.5625,16.125 C9.5625,16.33125 9.74330357,16.5 9.96428571,16.5 C10.1852679,16.5 10.3660714,16.33125 10.3660714,16.125 L10.3660714,10.875 Z M12.7767857,10.875 C12.7767857,10.66875 12.5959821,10.5 12.375,10.5 C12.1540179,10.5 11.9732143,10.66875 11.9732143,10.875 L11.9732143,16.125 C11.9732143,16.33125 12.1540179,16.5 12.375,16.5 C12.5959821,16.5 12.7767857,16.33125 12.7767857,16.125 L12.7767857,10.875 Z M15.1875,10.875 C15.1875,10.66875 15.0066964,10.5 14.7857143,10.5 C14.5647321,10.5 14.3839286,10.66875 14.3839286,10.875 L14.3839286,16.125 C14.3839286,16.33125 14.5647321,16.5 14.7857143,16.5 C15.0066964,16.5 15.1875,16.33125 15.1875,16.125 L15.1875,10.875 Z\" id=\"trash-alt\"></path>\n                                                            </g>\n                                                        </g>\n                                                    </g>\n                                                </g>\n                                            </g>\n                                        </g>\n                                    </g>\n                                </g>\n                            </g>\n                        </g>\n                    </g>\n                </g>\n            </svg>        \n         </button>\n      </div>\n    </div>\n<jf-tru-ui-error [control]=\"control\" [language]=\"language || 'en'\"></jf-tru-ui-error>\n  </div>",
                 styles: [".tru-ui-lable{font-size:14px;color:#8c8c8c;margin-bottom:6px;padding:0}.tru-drag-and-drop{text-align:center;padding:30px!important;background-color:#fafafa;border:1px dashed #bfbfbf;border-radius:6px}.tru-drag-and-drop>span{font-size:12px;color:#bfbfbf}.browse-btn:hover{cursor:pointer;text-decoration:underline}.tru-form-actions{display:flex;flex-direction:row;justify-content:flex-start;align-items:flex-start;margin-top:30px;margin-left:23px}.file-preview-container{display:flex;flex-direction:row;justify-content:space-between;align-items:center}.reset-btn{width:24px;height:24px;margin-left:3px;border-radius:3px;border-style:none}.d-none{display:none}.btn-remove{background-color:#f75757;width:24px;height:24px;margin-left:3px;border-radius:3px;border-style:none}"]
             }] }
 ];
@@ -4306,7 +4324,6 @@ if (false) {}
  * Generated from: lib/framework/tru-ui/tru-ui.module.ts
  * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
  */
-Object(ngx_bootstrap_chronos__WEBPACK_IMPORTED_MODULE_23__["defineLocale"])('fr', ngx_bootstrap_locale__WEBPACK_IMPORTED_MODULE_24__["deLocale"]);
 class TruUiModule {
     /**
      * @return {?}
@@ -4342,14 +4359,14 @@ TruUiModule.decorators = [
                     TruUiAutocompleteComponent
                 ],
                 imports: [
-                    _angular_common__WEBPACK_IMPORTED_MODULE_9__["CommonModule"],
-                    _angular_forms__WEBPACK_IMPORTED_MODULE_8__["FormsModule"],
-                    _angular_forms__WEBPACK_IMPORTED_MODULE_8__["ReactiveFormsModule"],
+                    _angular_common__WEBPACK_IMPORTED_MODULE_11__["CommonModule"],
+                    _angular_forms__WEBPACK_IMPORTED_MODULE_10__["FormsModule"],
+                    _angular_forms__WEBPACK_IMPORTED_MODULE_10__["ReactiveFormsModule"],
                     SharedModule,
-                    angular2_text_mask__WEBPACK_IMPORTED_MODULE_10__["TextMaskModule"],
+                    angular2_text_mask__WEBPACK_IMPORTED_MODULE_12__["TextMaskModule"],
                     ngx_bootstrap_datepicker__WEBPACK_IMPORTED_MODULE_6__["BsDatepickerModule"].forRoot(),
                     // BrowserAnimationsModule,
-                    ngx_bootstrap_typeahead__WEBPACK_IMPORTED_MODULE_22__["TypeaheadModule"].forRoot()
+                    ngx_bootstrap_typeahead__WEBPACK_IMPORTED_MODULE_24__["TypeaheadModule"].forRoot()
                 ],
                 entryComponents: [
                     TruUiButtonComponent,
