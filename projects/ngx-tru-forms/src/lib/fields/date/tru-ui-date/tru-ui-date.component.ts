@@ -17,7 +17,6 @@ import { MomentUtcDateAdapter } from '../../../services/moment-utc-adapter.servi
 })
 export class TruUiDateComponent extends CommonComponent  {
   oldValue;
-
   isMobile() {
     return window.innerWidth <= 800;
   }
