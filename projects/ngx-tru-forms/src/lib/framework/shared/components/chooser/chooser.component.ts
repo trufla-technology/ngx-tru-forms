@@ -9,7 +9,7 @@ import {startCase} from 'lodash';
     <h2 style="color: #8C8C8C;font-size:16px" *ngIf="schema && schema.hasOwnProperty('title') && !nested">
       {{getTranslation(schema.title)}}
     </h2>
-    <h4 style="color: #8C8C8C;font-size:14px" *ngIf="schema && schema.hasOwnProperty('title') && nested">
+    <h4 style="color: #8C8C8C;font-size:14px" *ngIf="schema && schema.hasOwnProperty('title') && nested" class="tru-ui-object-title">
       {{getTranslation(schema.title)}}
     </h4>
     <div style="color: #8C8C8C;font-size:14px" class="description"

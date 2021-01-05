@@ -12,9 +12,10 @@
     [bsConfig]="{ containerClass: 'theme-default', dateInputFormat: 'DD/MM/YYYY', showWeekNumbers: false }"
     bsDatepicker
     readonly
+    #dp="bsDatepicker"
     readonly="readonly"
     placement="bottom"
-    triggers="touchstart"
+    (touchstart)="dp.show()"
     [attr.disabled]="disabled"
   />
   <ng-template #desktop>
