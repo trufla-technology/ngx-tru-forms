@@ -27,7 +27,7 @@ export class CommonComponent implements AfterViewInit {
     private localeService: BsLocaleService,
     private validationFeedbackTranslation: ValidationFeedbackTranslation
   ) {
-    if ( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+    if ( (/android|webos|iphone|ipad|ipod|blackberry|iemobile|opera mini/i.test(navigator.userAgent.toLowerCase())) ) {
       this.isWebView = true;
      }
      defineLocale('fr', esLocale);
