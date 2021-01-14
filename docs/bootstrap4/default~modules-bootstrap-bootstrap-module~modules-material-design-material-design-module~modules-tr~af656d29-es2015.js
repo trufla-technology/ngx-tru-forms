@@ -240,7 +240,7 @@ class CommonComponent {
         if ((/android|webos|iphone|ipad|ipod|blackberry|iemobile|opera mini/i.test(navigator.userAgent.toLowerCase()))) {
             this.isWebView = true;
         }
-        Object(ngx_bootstrap_chronos__WEBPACK_IMPORTED_MODULE_7__["defineLocale"])('fr', ngx_bootstrap_locale__WEBPACK_IMPORTED_MODULE_8__["esLocale"]);
+        Object(ngx_bootstrap_chronos__WEBPACK_IMPORTED_MODULE_7__["defineLocale"])('fr', ngx_bootstrap_locale__WEBPACK_IMPORTED_MODULE_8__["deLocale"]);
         this.localeService.use(this.language);
     }
     /**
@@ -360,11 +360,11 @@ class CommonComponent {
          * @return {?}
          */
         (e, i) => {
-            if (e === this.control.value) {
+            if (e.toString().toLowerCase() === this.control.value.toString().toLowerCase()) {
                 index = i;
             }
         }));
-        return index ? this.getTranslation(this.schema.enumNames[index]) : this.control.value;
+        return typeof index !== 'undefined' ? this.getTranslation(this.schema.enumNames[index]) : this.control.value;
     }
     /**
      * @param {?} titleArray
