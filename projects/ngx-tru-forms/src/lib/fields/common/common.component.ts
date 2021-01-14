@@ -6,7 +6,7 @@ import { startCase } from 'lodash';
 import {ValidationFeedbackTranslation} from '../error/validation-feedback-translation';
 import { BsLocaleService } from 'ngx-bootstrap/datepicker';
 import { defineLocale } from 'ngx-bootstrap/chronos';
-import { esLocale } from 'ngx-bootstrap/locale';
+import { deLocale } from 'ngx-bootstrap/locale';
 
 // defineLocale('fr', deLocale);
 
@@ -30,7 +30,7 @@ export class CommonComponent implements AfterViewInit {
     if ( (/android|webos|iphone|ipad|ipod|blackberry|iemobile|opera mini/i.test(navigator.userAgent.toLowerCase())) ) {
       this.isWebView = true;
      }
-     defineLocale('fr', esLocale);
+     defineLocale('fr', deLocale);
      this.localeService.use(this.language);
   }
 
@@ -108,11 +108,11 @@ export class CommonComponent implements AfterViewInit {
   getSelectedEnumName() {
     let index;
     this.schema.enum.map((e, i) => {
-     if (e === this.control.value) {
+     if (e.toString().toLowerCase() === this.control.value.toString().toLowerCase()) {
        index = i;
      }
     });
-    return index ? this.getTranslation(this.schema.enumNames[index]) : this.control.value;
+    return typeof index !== 'undefined' ? this.getTranslation(this.schema.enumNames[index]) : this.control.value;
   }
 
   getTranslation(titleArray) {
