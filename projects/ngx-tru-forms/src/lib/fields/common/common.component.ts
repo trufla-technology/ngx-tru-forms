@@ -112,7 +112,7 @@ export class CommonComponent implements AfterViewInit {
        index = i;
      }
     });
-    return typeof index !== 'undefined' ? this.getTranslation(this.schema.enumNames[index]) : this.control.value;
+    return typeof index !== 'undefined' && this.schema.enumNames?.length  ? this.getTranslation(this.schema.enumNames[index]) : this.control.value;
   }
 
   getTranslation(titleArray) {
