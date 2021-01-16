@@ -646,13 +646,15 @@ let JsonSchemaExamplesSamples = class JsonSchemaExamplesSamples {
                 type: 'object',
                 properties: {
                     first_name: {
-                        type: 'string'
+                        type: 'string',
                     },
                     last_name: {
                         type: 'string'
                     },
                     email: {
-                        type: 'string'
+                        type: 'string',
+                        verify: 'true',
+                        format: 'email'
                     },
                     phone_number: {
                         type: 'string'
@@ -672,29 +674,29 @@ let JsonSchemaExamplesSamples = class JsonSchemaExamplesSamples {
                 required: ['year', 'effective_date']
             },
             localization: {
-                'title': [
-                    { 'language': 'en', 'value': 'login form' },
-                    { 'language': 'fr', 'value': 'Formulaire de connexion' }
+                title: [
+                    { language: 'en', value: 'login form' },
+                    { language: 'fr', value: 'Formulaire de connexion' }
                 ],
-                'description': [
-                    { 'language': 'en', 'value': 'login form' },
-                    { 'language': 'fr', 'value': 'Formulaire de connexion' }
+                description: [
+                    { language: 'en', value: 'login form' },
+                    { language: 'fr', value: 'Formulaire de connexion' }
                 ],
-                'type': 'object',
+                type: 'object',
                 'properties': {
                     'first_name': {
                         type: 'string',
                         format: 'email',
-                        'title': [
-                            { 'language': 'en', 'value': 'first_name' },
-                            { 'language': 'fr', 'value': 'leprénom' }
+                        title: [
+                            { language: 'en', value: 'first_name' },
+                            { language: 'fr', value: 'leprénom' }
                         ]
                     },
                     'last_name': {
-                        'type': 'string',
-                        'title': [
-                            { 'language': 'en', 'value': 'last_name' },
-                            { 'language': 'fr', 'value': 'lenom de famille' }
+                        type: 'string',
+                        title: [
+                            { language: 'en', value: 'last_name' },
+                            { language: 'fr', value: 'lenom de famille' }
                         ]
                     }
                 },
@@ -1006,7 +1008,7 @@ let JsonSchemaExamplesSamples = class JsonSchemaExamplesSamples {
                         oneOf: [
                             {
                                 properties: {
-                                    'food_like': {
+                                    food_like: {
                                         enum: [
                                             'Hamburger'
                                         ]
@@ -1069,33 +1071,33 @@ let JsonSchemaExamplesSamples = class JsonSchemaExamplesSamples {
             complex: {
                 title: 'Complex form',
                 description: 'Complex form with variable inputs',
-                'type': 'object',
+                type: 'object',
                 'properties': {
-                    'photo': { 'type': 'string', 'format': 'photo' },
+                    'photo': { type: 'string', 'format': 'photo' },
                     'accident_photos': {
-                        'type': 'array',
+                        type: 'array',
                         'items': {
-                            'type': 'object',
+                            type: 'object',
                             'properties': {
-                                'photo': { 'type': 'string', 'format': 'photo' }
+                                'photo': { type: 'string', 'format': 'photo' }
                             }
                         }
                     },
-                    'billing_address': { 'type': 'boolean' },
-                    'full_name': { 'type': 'string', 'default': 'now' },
-                    'dob': { 'type': 'string', 'format': 'date' },
+                    'billing_address': { type: 'boolean' },
+                    'full_name': { type: 'string', 'default': 'now' },
+                    'dob': { type: 'string', 'format': 'date' },
                     'email': {
-                        'type': 'string',
+                        type: 'string',
                         'format': 'email'
                     },
                     'address': {
-                        'type': 'object',
+                        type: 'object',
                         'properties': {
-                            'street_1': { 'type': 'string' },
-                            'street_2': { 'type': 'string' },
-                            'city': { 'type': 'string' },
+                            'street_1': { type: 'string' },
+                            'street_2': { type: 'string' },
+                            'city': { type: 'string' },
                             'state': {
-                                'type': 'string',
+                                type: 'string',
                                 'enum': ['AL', 'AK', 'AS', 'AZ', 'AR', 'CA', 'CO', 'CT', 'DE',
                                     'DC', 'FM', 'FL', 'GA', 'GU', 'HI', 'ID', 'IL', 'IN', 'IA',
                                     'KS', 'KY', 'LA', 'ME', 'MH', 'MD', 'MA', 'MI', 'MN', 'MS',
@@ -1103,18 +1105,18 @@ let JsonSchemaExamplesSamples = class JsonSchemaExamplesSamples {
                                     'MP', 'OH', 'OK', 'OR', 'PW', 'PA', 'PR', 'RI', 'SC', 'SD',
                                     'TN', 'TX', 'UT', 'VT', 'VI', 'VA', 'WA', 'WV', 'WI', 'WY']
                             },
-                            'zip_code': { 'type': 'string' }
+                            'zip_code': { type: 'string' }
                         }
                     },
-                    'birthday': { 'type': 'string' },
-                    'notes': { 'type': 'string' },
+                    'birthday': { type: 'string' },
+                    'notes': { type: 'string' },
                     'phone_numbers': {
-                        'type': 'array',
+                        type: 'array',
                         'items': {
-                            'type': 'object',
+                            type: 'object',
                             'properties': {
-                                'type': { 'type': 'string', 'enum': ['cell', 'home', 'work'], 'enumNames': ['Cell', 'Home', 'Work'] },
-                                'number': { 'type': 'string' }
+                                type: { type: 'string', 'enum': ['cell', 'home', 'work'], 'enumNames': ['Cell', 'Home', 'Work'] },
+                                'number': { type: 'string' }
                             },
                             'required': ['type', 'number']
                         }
@@ -1294,6 +1296,10 @@ let JsonSchemaExamplesSamples = class JsonSchemaExamplesSamples {
                     }
                 }
             },
+        };
+        this.data = {
+            first_name: 'John',
+            last_name: 'dave'
         };
     }
 };

@@ -135,6 +135,7 @@ MaterialDesignModule = __decorate([
                     {
                         provide: _trufla_ngx_tru_forms__WEBPACK_IMPORTED_MODULE_3__["JsonFormFieldsService"],
                         useClass: _trufla_ngx_tru_forms__WEBPACK_IMPORTED_MODULE_3__["JsonFormMaterial"],
+                        multi: true
                     }
                 ]
             }

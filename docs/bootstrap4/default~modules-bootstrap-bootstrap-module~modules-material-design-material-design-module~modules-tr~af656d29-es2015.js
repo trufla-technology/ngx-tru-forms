@@ -88,15 +88,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_material_moment_adapter__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/material-moment-adapter */ "./node_modules/@angular/material-moment-adapter/esm2015/material-moment-adapter.js");
 /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
 /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _angular_platform_browser__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/platform-browser */ "./node_modules/@angular/platform-browser/fesm2015/platform-browser.js");
-/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
-/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var ngx_bootstrap_datepicker__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ngx-bootstrap/datepicker */ "./node_modules/ngx-bootstrap/datepicker/fesm2015/ngx-bootstrap-datepicker.js");
-/* harmony import */ var ngx_bootstrap_chronos__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ngx-bootstrap/chronos */ "./node_modules/ngx-bootstrap/chronos/fesm2015/ngx-bootstrap-chronos.js");
-/* harmony import */ var ngx_bootstrap_locale__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ngx-bootstrap/locale */ "./node_modules/ngx-bootstrap/locale/fesm2015/ngx-bootstrap-locale.js");
-/* harmony import */ var text_mask_addons_dist_createNumberMask__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! text-mask-addons/dist/createNumberMask */ "./node_modules/text-mask-addons/dist/createNumberMask.js");
-/* harmony import */ var text_mask_addons_dist_createNumberMask__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(text_mask_addons_dist_createNumberMask__WEBPACK_IMPORTED_MODULE_9__);
-/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm2015/forms.js");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm2015/forms.js");
+/* harmony import */ var _angular_platform_browser__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/platform-browser */ "./node_modules/@angular/platform-browser/fesm2015/platform-browser.js");
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var ngx_bootstrap_datepicker__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ngx-bootstrap/datepicker */ "./node_modules/ngx-bootstrap/datepicker/fesm2015/ngx-bootstrap-datepicker.js");
+/* harmony import */ var ngx_bootstrap_chronos__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ngx-bootstrap/chronos */ "./node_modules/ngx-bootstrap/chronos/fesm2015/ngx-bootstrap-chronos.js");
+/* harmony import */ var ngx_bootstrap_locale__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ngx-bootstrap/locale */ "./node_modules/ngx-bootstrap/locale/fesm2015/ngx-bootstrap-locale.js");
+/* harmony import */ var text_mask_addons_dist_createNumberMask__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! text-mask-addons/dist/createNumberMask */ "./node_modules/text-mask-addons/dist/createNumberMask.js");
+/* harmony import */ var text_mask_addons_dist_createNumberMask__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(text_mask_addons_dist_createNumberMask__WEBPACK_IMPORTED_MODULE_10__);
 /* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm2015/common.js");
 /* harmony import */ var angular2_text_mask__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! angular2-text-mask */ "./node_modules/angular2-text-mask/dist/angular2TextMask.js");
 /* harmony import */ var angular2_text_mask__WEBPACK_IMPORTED_MODULE_12___default = /*#__PURE__*/__webpack_require__.n(angular2_text_mask__WEBPACK_IMPORTED_MODULE_12__);
@@ -184,6 +184,15 @@ MomentUtcDateAdapter.ctorParameters = () => [
 
 /**
  * @fileoverview added by tsickle
+ * Generated from: lib/models/schema-form-control.ts
+ * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+class SchemaFormControl extends _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormControl"] {
+}
+if (false) {}
+
+/**
+ * @fileoverview added by tsickle
  * Generated from: lib/fields/error/validation-feedback-translation.ts
  * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
  */
@@ -191,6 +200,7 @@ class ValidationFeedbackTranslation {
     constructor() {
         this.validation = {
             en: {
+                confirm: 'Confirm',
                 required: 'This field is required',
                 invalid: 'Input value is invalid',
                 email_invalid: 'Email is invalid',
@@ -199,9 +209,11 @@ class ValidationFeedbackTranslation {
                 characters: 'characters',
                 greater_than: 'Enter a value greater than or equal to',
                 less_than: 'Enter a value less than or equal to ',
-                not_in_menu: ' Select from the dropdown list'
+                not_in_menu: ' Select from the dropdown list',
+                is_match: 'Value not matching'
             },
             fr: {
+                confirm: 'Confirmer',
                 required: 'Ce champ est obligatoire',
                 invalid: 'La valeur d’entrée est invalide',
                 email_invalid: 'Le courriel est invalide',
@@ -210,7 +222,8 @@ class ValidationFeedbackTranslation {
                 characters: 'Caractères',
                 greater_than: 'Entrez une valeur supérieure ou égale à',
                 less_than: 'Entrez une valeur inférieure ou égale à',
-                not_in_menu: ' Sélectionner dans la liste déroulante'
+                not_in_menu: ' Sélectionner dans la liste déroulante',
+                is_match: 'valeur nesutampa'
             }
         };
     }
@@ -222,7 +235,6 @@ if (false) {}
  * Generated from: lib/fields/common/common.component.ts
  * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
  */
-// defineLocale('fr', deLocale);
 class CommonComponent {
     /**
      * @param {?} sanitizer
@@ -235,12 +247,13 @@ class CommonComponent {
         this.cd = cd;
         this.localeService = localeService;
         this.validationFeedbackTranslation = validationFeedbackTranslation;
+        this.confirmInput = new SchemaFormControl('');
         this.disabled = false;
         this.isWebView = false;
         if ((/android|webos|iphone|ipad|ipod|blackberry|iemobile|opera mini/i.test(navigator.userAgent.toLowerCase()))) {
             this.isWebView = true;
         }
-        Object(ngx_bootstrap_chronos__WEBPACK_IMPORTED_MODULE_7__["defineLocale"])('fr', ngx_bootstrap_locale__WEBPACK_IMPORTED_MODULE_8__["deLocale"]);
+        Object(ngx_bootstrap_chronos__WEBPACK_IMPORTED_MODULE_8__["defineLocale"])('fr', ngx_bootstrap_locale__WEBPACK_IMPORTED_MODULE_9__["deLocale"]);
         this.localeService.use(this.language);
     }
     /**
@@ -272,7 +285,7 @@ class CommonComponent {
      * @return {?}
      */
     strToUpperCase(str) {
-        return Object(lodash__WEBPACK_IMPORTED_MODULE_5__["startCase"])(str);
+        return Object(lodash__WEBPACK_IMPORTED_MODULE_6__["startCase"])(str);
     }
     /**
      * @return {?}
@@ -364,7 +377,8 @@ class CommonComponent {
                 index = i;
             }
         }));
-        return typeof index !== 'undefined' ? this.getTranslation(this.schema.enumNames[index]) : this.control.value;
+        return this.schema.enumNames && this.schema.enumNames.length && typeof index !== 'undefined' ?
+            this.getTranslation(this.schema.enumNames[index]) : this.control.value;
     }
     /**
      * @param {?} titleArray
@@ -401,7 +415,28 @@ class CommonComponent {
      */
     getFilename() {
         if (this.getControlValue().length) {
-            return this.getControlValue().substring("data:image/".length, this.getControlValue().indexOf(";base64")) || '';
+            return this.getControlValue().substring('data:image/'.length, this.getControlValue().indexOf(';base64')) || '';
+        }
+    }
+    /**
+     * @return {?}
+     */
+    isMatch() {
+        if (this.schema.verify) {
+            /** @type {?} */
+            const input = this.control.value;
+            /** @type {?} */
+            const confirmInput = this.confirmInput.value;
+            /** @type {?} */
+            let error = this.control.errors && Object.keys(this.control.errors).length > 0 ? this.control.errors : null;
+            if (error && Object.keys(this.control.errors).length > 0) {
+                delete error.isMatch;
+                if (Object.keys(error).length === 0) {
+                    error = null;
+                }
+            }
+            return input.toString() === confirmInput.toString() ?
+                this.control.setErrors(error) : this.control.setErrors(Object.assign({}, this.control.errors, { isMatch: true }));
         }
     }
 }
@@ -413,9 +448,9 @@ CommonComponent.decorators = [
 ];
 /** @nocollapse */
 CommonComponent.ctorParameters = () => [
-    { type: _angular_platform_browser__WEBPACK_IMPORTED_MODULE_4__["DomSanitizer"] },
+    { type: _angular_platform_browser__WEBPACK_IMPORTED_MODULE_5__["DomSanitizer"] },
     { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ChangeDetectorRef"] },
-    { type: ngx_bootstrap_datepicker__WEBPACK_IMPORTED_MODULE_6__["BsLocaleService"] },
+    { type: ngx_bootstrap_datepicker__WEBPACK_IMPORTED_MODULE_7__["BsLocaleService"] },
     { type: ValidationFeedbackTranslation }
 ];
 if (false) {}
@@ -528,7 +563,7 @@ TextareaViewComponent.decorators = [
 class DateViewComponent extends CommonComponent {
     constructor() {
         super(...arguments);
-        this.numberMask = text_mask_addons_dist_createNumberMask__WEBPACK_IMPORTED_MODULE_9___default()({ allowDecimal: false, prefix: '' });
+        this.numberMask = text_mask_addons_dist_createNumberMask__WEBPACK_IMPORTED_MODULE_10___default()({ allowDecimal: false, prefix: '' });
     }
     /**
      * @param {?} value
@@ -615,7 +650,7 @@ MultiselectViewComponent.decorators = [
 class MoneyViewComponent extends CommonComponent {
     constructor() {
         super(...arguments);
-        this.numberMask = text_mask_addons_dist_createNumberMask__WEBPACK_IMPORTED_MODULE_9___default()({ allowDecimal: false, prefix: '' });
+        this.numberMask = text_mask_addons_dist_createNumberMask__WEBPACK_IMPORTED_MODULE_10___default()({ allowDecimal: false, prefix: '' });
     }
     /**
      * @param {?} value
@@ -632,15 +667,6 @@ MoneyViewComponent.decorators = [
   `
             }] }
 ];
-if (false) {}
-
-/**
- * @fileoverview added by tsickle
- * Generated from: lib/models/schema-form-control.ts
- * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-class SchemaFormControl extends _angular_forms__WEBPACK_IMPORTED_MODULE_10__["FormControl"] {
-}
 if (false) {}
 
 /**
@@ -673,7 +699,7 @@ if (false) {}
  * Generated from: lib/models/schema-form-array.ts
  * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
  */
-class SchemaFormArray extends _angular_forms__WEBPACK_IMPORTED_MODULE_10__["FormArray"] {
+class SchemaFormArray extends _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormArray"] {
 }
 if (false) {}
 
@@ -682,7 +708,7 @@ if (false) {}
  * Generated from: lib/models/schema-form-group.ts
  * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
  */
-class SchemaFormGroup extends _angular_forms__WEBPACK_IMPORTED_MODULE_10__["FormGroup"] {
+class SchemaFormGroup extends _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormGroup"] {
 }
 if (false) {}
 
@@ -699,7 +725,7 @@ class ArrayComponent {
     getLegend(control) {
         // return (control && control.schema && control.schema.key) ? startCase(control.schema.key) : '';
         // tslint:disable-next-line: max-line-length
-        return (typeof control.schema.title === 'undefined' ? control.schema.key : (this.getTranslation(control.schema.title) ? this.getTranslation(control.schema.title) : Object(lodash__WEBPACK_IMPORTED_MODULE_5__["startCase"])(control.schema.key)));
+        return (typeof control.schema.title === 'undefined' ? control.schema.key : (this.getTranslation(control.schema.title) ? this.getTranslation(control.schema.title) : Object(lodash__WEBPACK_IMPORTED_MODULE_6__["startCase"])(control.schema.key)));
     }
     /**
      * @param {?} titleArray
@@ -1036,19 +1062,19 @@ class JsonFormValidatorsService {
         /** @type {?} */
         const varPath = [].concat(path, prop).join('.');
         if (schema.properties[prop].type === 'boolean' && required.indexOf(prop) > -1) {
-            return _angular_forms__WEBPACK_IMPORTED_MODULE_10__["Validators"].requiredTrue;
+            return _angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].requiredTrue;
         }
-        return _angular_forms__WEBPACK_IMPORTED_MODULE_10__["Validators"].compose(this.validators.concat([
+        return _angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].compose(this.validators.concat([
             (this.has(varPath) ? this.validators[varPath] : null),
-            (required.indexOf(prop) > -1 ? _angular_forms__WEBPACK_IMPORTED_MODULE_10__["Validators"].required : null),
-            (field.hasOwnProperty('minLength') ? _angular_forms__WEBPACK_IMPORTED_MODULE_10__["Validators"].minLength(field.minLength) : null),
-            (field.hasOwnProperty('maxLength') ? _angular_forms__WEBPACK_IMPORTED_MODULE_10__["Validators"].maxLength(field.maxLength) : null),
+            (required.indexOf(prop) > -1 ? _angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].required : null),
+            (field.hasOwnProperty('minLength') ? _angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].minLength(field.minLength) : null),
+            (field.hasOwnProperty('maxLength') ? _angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].maxLength(field.maxLength) : null),
             (field.hasOwnProperty('format') && field.format === 'email' ? emailValidator : null),
-            (field.hasOwnProperty('minimum') ? _angular_forms__WEBPACK_IMPORTED_MODULE_10__["Validators"].min(field.minimum) : null),
-            (field.hasOwnProperty('maximum') ? _angular_forms__WEBPACK_IMPORTED_MODULE_10__["Validators"].max(field.maximum) : null),
+            (field.hasOwnProperty('minimum') ? _angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].min(field.minimum) : null),
+            (field.hasOwnProperty('maximum') ? _angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].max(field.maximum) : null),
             (field.format && field.format === 'date' ? dateValidator : null),
             (field.hasOwnProperty('format') && field.format === 'tel' ? phoneNumberValidator : null),
-            (field.pattern ? _angular_forms__WEBPACK_IMPORTED_MODULE_10__["Validators"].pattern(field.pattern) : null)
+            (field.pattern ? _angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].pattern(field.pattern) : null)
         ]));
     }
     /**
@@ -1431,13 +1457,13 @@ class JsonFormComponent {
          * @return {?}
          */
         (p) => {
-            if (Object(lodash__WEBPACK_IMPORTED_MODULE_5__["get"])(p, 'required', []).includes(key)) {
+            if (Object(lodash__WEBPACK_IMPORTED_MODULE_6__["get"])(p, 'required', []).includes(key)) {
                 /** @type {?} */
                 const parent = Object.keys(p.properties)[0];
                 /** @type {?} */
                 const dataPath = path.concat(parent).join('.');
                 /** @type {?} */
-                let value = Object(lodash__WEBPACK_IMPORTED_MODULE_5__["get"])(this.data, dataPath, null);
+                let value = Object(lodash__WEBPACK_IMPORTED_MODULE_6__["get"])(this.data, dataPath, null);
                 if (schema.properties[parent].type === 'boolean') {
                     value = String(value) === 'true'; // material preserves string & bootstrap doesn't
                 }
@@ -1445,7 +1471,7 @@ class JsonFormComponent {
                     value = +value;
                 }
                 // when returns true it will not display field, otherwise it will
-                return value === null || Object(lodash__WEBPACK_IMPORTED_MODULE_5__["get"])(p.properties[parent], 'enum', []).indexOf(value) === -1;
+                return value === null || Object(lodash__WEBPACK_IMPORTED_MODULE_6__["get"])(p.properties[parent], 'enum', []).indexOf(value) === -1;
             }
             return false;
         })).length > 0;
@@ -1569,7 +1595,7 @@ class JsonFormComponent {
                 this.handleCancel.emit(this.form.value);
             }
         }
-        else if (this.form.valid) {
+        else {
             this.handleCancel.emit(this.form.value);
         }
     }
@@ -1655,7 +1681,7 @@ JsonFormComponent.decorators = [
 ];
 /** @nocollapse */
 JsonFormComponent.ctorParameters = () => [
-    { type: _angular_forms__WEBPACK_IMPORTED_MODULE_10__["FormBuilder"] },
+    { type: _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormBuilder"] },
     { type: JsonFormValidatorsService },
     { type: JsonFormDefaultsService },
     { type: JsonFormFieldsService }
@@ -2171,7 +2197,25 @@ StringComponent.decorators = [
       [attr.placeholder]="placeholder()"
       [attr.disabled]="disabled"
       [textMask]="{ mask: getMask() }"
+      (change)="isMatch()"
     />
+    <div *ngIf="schema.verify" style="margin-top: 1rem">
+    <label
+    [ngClass]="['jf-label', schema.key, (isRequired() ? 'required' : '')]" *ngIf="type() !== 'hidden'">
+    <span > {{ getLanguage().confirm}} {{title()}}</span><sup *ngIf="isRequired()">*</sup>
+    </label>
+    <input
+    class="form-control"
+    [attr.type]="type()"
+    [formControl]="confirmInput"
+    [attr.maxLength]="schema.maxLength || null"
+    [attr.minLength]="schema.minLength || null"
+    [attr.disabled]="disabled"
+    [attr.placeholder]="placeholder()"
+    [textMask]="{ mask: getMask() }"
+    (change)="isMatch()"
+    />
+    </div>
     <jf-error [control]="control"></jf-error>
   `
             }] }
@@ -2258,7 +2302,7 @@ if (false) {}
 class MoneyComponent extends CommonComponent {
     constructor() {
         super(...arguments);
-        this.numberMask = text_mask_addons_dist_createNumberMask__WEBPACK_IMPORTED_MODULE_9___default()({ allowDecimal: false, prefix: '' });
+        this.numberMask = text_mask_addons_dist_createNumberMask__WEBPACK_IMPORTED_MODULE_10___default()({ allowDecimal: false, prefix: '' });
     }
     /**
      * @param {?} value
@@ -2344,7 +2388,7 @@ class ChooserComponent {
              */
             val => val.language === this.language));
             return translatedTitle[0] && translatedTitle[0].value ?
-                Object(lodash__WEBPACK_IMPORTED_MODULE_5__["startCase"])(translatedTitle[0].value.replace(/<.*?>/g, '')) : titleArray[0].value;
+                Object(lodash__WEBPACK_IMPORTED_MODULE_6__["startCase"])(translatedTitle[0].value.replace(/<.*?>/g, '')) : titleArray[0].value;
         }
         else {
             return titleArray;
@@ -2707,7 +2751,7 @@ SharedModule.decorators = [
                 imports: [
                     _angular_common__WEBPACK_IMPORTED_MODULE_11__["CommonModule"],
                     angular2_text_mask__WEBPACK_IMPORTED_MODULE_12__["TextMaskModule"],
-                    _angular_forms__WEBPACK_IMPORTED_MODULE_10__["ReactiveFormsModule"]
+                    _angular_forms__WEBPACK_IMPORTED_MODULE_4__["ReactiveFormsModule"]
                 ],
                 declarations: [
                     JsonFormComponent,
@@ -2830,7 +2874,7 @@ ErrorComponent.decorators = [
     { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"], args: [{
                 selector: 'jf-error, [jf-error]',
                 template: `
-    <div *ngIf="control.invalid && (control.dirty || control.touched)" class="invalid-feedback">
+    <div *ngIf="control.invalid && (control.dirty || control.touched)" class="invalid-feedback" style="display: block !important">
       <ng-container *ngIf="control.errors && control.errors['required']">
         This field is required
       </ng-container>
@@ -2855,6 +2899,9 @@ ErrorComponent.decorators = [
       <ng-container *ngIf="control.errors && control.errors['customError']">
         {{control.errors['customError']}}
       </ng-container>
+      <ng-container *ngIf="control.errors && control.errors['isMatch']">
+      {{getLanguage().is_match}}
+    </ng-container>
     </div>
   `
             }] }
@@ -2890,10 +2937,10 @@ JsonFormBootstrap4Module.decorators = [
     { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["NgModule"], args: [{
                 imports: [
                     _angular_common__WEBPACK_IMPORTED_MODULE_11__["CommonModule"],
-                    _angular_forms__WEBPACK_IMPORTED_MODULE_10__["ReactiveFormsModule"],
+                    _angular_forms__WEBPACK_IMPORTED_MODULE_4__["ReactiveFormsModule"],
                     angular2_text_mask__WEBPACK_IMPORTED_MODULE_12__["TextMaskModule"],
                     SharedModule,
-                    ngx_bootstrap_datepicker__WEBPACK_IMPORTED_MODULE_6__["BsDatepickerModule"].forRoot()
+                    ngx_bootstrap_datepicker__WEBPACK_IMPORTED_MODULE_7__["BsDatepickerModule"].forRoot()
                 ],
                 declarations: [
                     StringComponent,
@@ -2950,9 +2997,29 @@ StringMaterialComponent.decorators = [
         [textMask]="{ mask: getMask() }"
         [placeholder]="title(true)"
         [disabled]="disabled"
+        (change)="isMatch()"
+
       />
       <mat-error jf-error [control]="control"></mat-error>
     </mat-form-field>
+    <div *ngIf="schema.verify" style="margin-top: 1rem">
+    <mat-form-field>
+          <input
+          matInput
+          [attr.type]="type()"
+          [formControl]="confirmInput"
+          [attr.maxLength]="schema.maxLength || null"
+          [attr.minLength]="schema.minLength || null"
+          [attr.disabled]="disabled"
+          [attr.placeholder]="placeholder()"
+          [placeholder]="getLanguage().confirm + title(true)"
+          [textMask]="{ mask: getMask() }"
+          [disabled]="disabled"
+          (change)="isMatch()"
+          />
+     <mat-error jf-error [control]="control"></mat-error>
+    </mat-form-field>
+    </div>
   `
             }] }
 ];
@@ -3571,6 +3638,9 @@ ErrorMaterialComponent.decorators = [
       <ng-container *ngIf="control.errors && control.errors['matDatepickerMax']">
         Date should be less than or equal {{ control.errors['matDatepickerMax'].max.format('DD MMM, YYYY') }}
       </ng-container>
+      <ng-container *ngIf="control.errors && control.errors['isMatch']">
+      {{getLanguage().is_match}}
+    </ng-container>
     </ng-container>
   `
             }] }
@@ -3606,7 +3676,7 @@ JsonFormMaterialModule.decorators = [
     { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["NgModule"], args: [{
                 imports: [
                     _angular_common__WEBPACK_IMPORTED_MODULE_11__["CommonModule"],
-                    _angular_forms__WEBPACK_IMPORTED_MODULE_10__["ReactiveFormsModule"],
+                    _angular_forms__WEBPACK_IMPORTED_MODULE_4__["ReactiveFormsModule"],
                     angular2_text_mask__WEBPACK_IMPORTED_MODULE_12__["TextMaskModule"],
                     _angular_material_form_field__WEBPACK_IMPORTED_MODULE_17__["MatFormFieldModule"],
                     _angular_material_input__WEBPACK_IMPORTED_MODULE_19__["MatInputModule"],
@@ -3620,7 +3690,8 @@ JsonFormMaterialModule.decorators = [
                     _angular_material_datepicker__WEBPACK_IMPORTED_MODULE_16__["MatDatepickerModule"],
                     _angular_material_card__WEBPACK_IMPORTED_MODULE_14__["MatCardModule"],
                     _angular_material_moment_adapter__WEBPACK_IMPORTED_MODULE_2__["MatMomentDateModule"],
-                    SharedModule
+                    SharedModule,
+                    ngx_bootstrap_datepicker__WEBPACK_IMPORTED_MODULE_7__["BsDatepickerModule"].forRoot()
                 ],
                 declarations: [
                     StringMaterialComponent,
@@ -3665,7 +3736,7 @@ class TruUiStringComponent extends CommonComponent {
 TruUiStringComponent.decorators = [
     { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"], args: [{
                 selector: 'jf-tru-ui-string',
-                template: "<div class=\"tru-ui-input-container\">\n<label  class=\"tru-ui-label\"\n[ngClass]=\"['jf-label', schema.key, (isRequired() ? 'required' : '')]\" *ngIf=\"type() !== 'hidden'\">\n<span [innerHTML]=\"title()\"></span><sup *ngIf=\"isRequired()\">*</sup>\n</label>\n<button type=\"button\" *ngIf=\"this.schema.description\" [attr.class]=\"'info'\" [attr.title]=\"this.schema.description\" class=\"tru-ui-button\">Info</button>\n<input\nclass=\"tru-ui-input-control\"\n[attr.name]=\"schema.key\"\n[attr.type]=\"type()\"\n[formControl]=\"control\"\n[attr.maxLength]=\"schema.maxLength || null\"\n[attr.minLength]=\"schema.minLength || null\"\n[attr.disabled]=\"disabled\"\n[textMask]=\"{ mask: getMask() }\"\n[ngClass]=\"{'empty': control.value === '' && !isRequired()}\"\n/>\n<jf-tru-ui-error [control]=\"control\" [language]=\"language || 'en'\"></jf-tru-ui-error>\n</div>",
+                template: "<div class=\"tru-ui-input-container\">\n<label  class=\"tru-ui-label\"\n[ngClass]=\"['jf-label', schema.key, (isRequired() ? 'required' : '')]\" *ngIf=\"type() !== 'hidden'\">\n<span [innerHTML]=\"title()\"></span><sup *ngIf=\"isRequired()\">*</sup>\n</label>\n<button type=\"button\" *ngIf=\"this.schema.description\" [attr.class]=\"'info'\" [attr.title]=\"this.schema.description\" class=\"tru-ui-button\">Info</button>\n<input\nclass=\"tru-ui-input-control\"\n[attr.name]=\"schema.key\"\n[attr.type]=\"type()\"\n[formControl]=\"control\"\n[attr.maxLength]=\"schema.maxLength || null\"\n[attr.minLength]=\"schema.minLength || null\"\n[attr.disabled]=\"disabled\"\n[textMask]=\"{ mask: getMask() }\"\n[ngClass]=\"{'empty': control.value === '' && !isRequired()}\"\n(change)=\"isMatch()\"\n/>\n<div *ngIf=\"schema.verify\" style=\"margin-top: 1rem\">\n    <label  class=\"tru-ui-label\"\n    [ngClass]=\"['jf-label', schema.key, (isRequired() ? 'required' : '')]\" *ngIf=\"type() !== 'hidden'\">\n    <span > {{ getLanguage().confirm}} {{title()}}</span><sup *ngIf=\"isRequired()\">*</sup>\n    </label>\n    <input\n    class=\"tru-ui-input-control\"\n    [attr.type]=\"type()\"\n    [formControl]=\"confirmInput\"\n    [attr.maxLength]=\"schema.maxLength || null\"\n    [attr.minLength]=\"schema.minLength || null\"\n    [attr.disabled]=\"disabled\"\n    [textMask]=\"{ mask: getMask() }\"\n    (change)=\"isMatch()\"\n    />\n</div>\n<jf-tru-ui-error [control]=\"control\" [language]=\"language || 'en'\"></jf-tru-ui-error>\n</div>",
                 styles: [".tru-ui-label{font-size:14px;color:#8c8c8c;margin-bottom:6px;padding:0}.tru-ui-input-container{margin-bottom:8px;position:relative}.tru-ui-input-control.empty{border-color:#d8d8d8!important}.tru-ui-input-control{height:32px;padding:6px;width:100%;font-size:12px;background-color:#fff;border:1px solid #d8d8d8;border-radius:6px;color:#959595!important}.tru-ui-input-control:focus{outline:0!important}::ng-deep .ng-invalid.ng-touched{border-color:#f75a5a!important}textarea.tru-ui-input-control{height:120px}.tru-ui-date{background-position:calc(100% - 6px);background-repeat:no-repeat;background-image:url(\"data:image/svg+xml,%3C%3Fxml version='1.0' encoding='UTF-8'%3F%3E%3Csvg width='14px' height='16px' viewBox='0 0 14 16' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'%3E%3Cg id='Full-Admin' stroke='none' stroke-width='1' fill='none' fill-rule='evenodd'%3E%3Cg id='All-form-inputs' transform='translate(-870.000000, -1088.000000)' fill='%238C8C8C' fill-rule='nonzero'%3E%3Cg id='Group-44-Copy' transform='translate(631.000000, 1056.000000)'%3E%3Cg id='Group-31' transform='translate(0.000000, 24.000000)'%3E%3Cpath d='M252.625,13 L239.375,13 C239.16875,13 239,12.83125 239,12.625 L239,11.5 C239,10.671875 239.671875,10 240.5,10 L242,10 L242,8.375 C242,8.16875 242.16875,8 242.375,8 L243.625,8 C243.83125,8 244,8.16875 244,8.375 L244,10 L248,10 L248,8.375 C248,8.16875 248.16875,8 248.375,8 L249.625,8 C249.83125,8 250,8.16875 250,8.375 L250,10 L251.5,10 C252.328125,10 253,10.671875 253,11.5 L253,12.625 C253,12.83125 252.83125,13 252.625,13 Z M239.375,14 L252.625,14 C252.83125,14 253,14.16875 253,14.375 L253,22.5 C253,23.328125 252.328125,24 251.5,24 L240.5,24 C239.671875,24 239,23.328125 239,22.5 L239,14.375 C239,14.16875 239.16875,14 239.375,14 Z M243,20.375 C243,20.16875 242.83125,20 242.625,20 L241.375,20 C241.16875,20 241,20.16875 241,20.375 L241,21.625 C241,21.83125 241.16875,22 241.375,22 L242.625,22 C242.83125,22 243,21.83125 243,21.625 L243,20.375 Z M243,16.375 C243,16.16875 242.83125,16 242.625,16 L241.375,16 C241.16875,16 241,16.16875 241,16.375 L241,17.625 C241,17.83125 241.16875,18 241.375,18 L242.625,18 C242.83125,18 243,17.83125 243,17.625 L243,16.375 Z M247,20.375 C247,20.16875 246.83125,20 246.625,20 L245.375,20 C245.16875,20 245,20.16875 245,20.375 L245,21.625 C245,21.83125 245.16875,22 245.375,22 L246.625,22 C246.83125,22 247,21.83125 247,21.625 L247,20.375 Z M247,16.375 C247,16.16875 246.83125,16 246.625,16 L245.375,16 C245.16875,16 245,16.16875 245,16.375 L245,17.625 C245,17.83125 245.16875,18 245.375,18 L246.625,18 C246.83125,18 247,17.83125 247,17.625 L247,16.375 Z M251,20.375 C251,20.16875 250.83125,20 250.625,20 L249.375,20 C249.16875,20 249,20.16875 249,20.375 L249,21.625 C249,21.83125 249.16875,22 249.375,22 L250.625,22 C250.83125,22 251,21.83125 251,21.625 L251,20.375 Z M251,16.375 C251,16.16875 250.83125,16 250.625,16 L249.375,16 C249.16875,16 249,16.16875 249,16.375 L249,17.625 C249,17.83125 249.16875,18 249.375,18 L250.625,18 C250.83125,18 251,17.83125 251,17.625 L251,16.375 Z' id='calendar-alt'%3E%3C/path%3E%3C/g%3E%3C/g%3E%3C/g%3E%3C/g%3E%3C/svg%3E\")}.tru-ui-select{background-image:url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' version='1.1' viewBox='0 0 129 129' enable-background='new 0 0 129 129' width='512px' height='512px'%3E%3Cg%3E%3Cpath d='m121.3,34.6c-1.6-1.6-4.2-1.6-5.8,0l-51,51.1-51.1-51.1c-1.6-1.6-4.2-1.6-5.8,0-1.6,1.6-1.6,4.2 0,5.8l53.9,53.9c0.8,0.8 1.8,1.2 2.9,1.2 1,0 2.1-0.4 2.9-1.2l53.9-53.9c1.7-1.6 1.7-4.2 0.1-5.8z' fill='%23959595'/%3E%3C/g%3E%3C/svg%3E%0A\");background-position:calc(100% - 6px);background-repeat:no-repeat;-moz-appearance:none;-webkit-appearance:none;appearance:none;background-size:14px}.tru-ui-number{-moz-appearance:none;-webkit-appearance:none;appearance:none}.container,.container-radio-button{display:block;position:relative;padding-left:18px;margin-bottom:12px;cursor:pointer;font-size:14px;margin-top:12px;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.container input,.container-radio-button input{position:absolute;opacity:0;cursor:pointer;height:0;width:0}.checkmark{position:absolute;top:3px;left:0;height:15px;width:15px;background-color:#fff;border-radius:3px;border:1px solid rgba(0,0,0,.3)}.container:hover input~.checkmark{background-color:#fff;border-radius:3px;border:1px solid rgba(0,0,0,.3)}.container-radio-button input~.checkmark{border-radius:50%;background-color:#fff;border:1px solid rgba(0,0,0,.3)}.container input:checked~.checkmark,.container-radio-button input:checked~.checkmark{background-color:#2196f3}.checkmark:after{content:\"\";position:absolute;display:none}.container input:checked~.checkmark:after,.container-radio-button input:checked~.checkmark:after{display:block}.container .checkmark:after{left:4px;top:1px;width:5px;height:10px;border:solid #fff;border-width:0 2px 2px 0;transform:rotate(45deg)}.container-radio-button .checkmark:after{border-radius:50%;width:7px;height:7px;top:3px;background-color:#fff;left:3px}::ng-deep typeahead-container{background-color:#fff;border-radius:6px;width:100%;box-shadow:10px 10px 20px 0 rgba(30,30,30,.05)}::ng-deep .dropdown-menu{list-style:none;padding:0;width:100%}::ng-deep .dropdown-menu li a{text-decoration:none;font-size:14px;color:#8c8c8c;display:block;width:100%}::ng-deep .dropdown-menu li{padding:4px 6px}::ng-deep .dropdown-menu li:hover{background-color:rgba(0,0,0,.05)}.dropdown-menu>li>a>span>strong,::ng-deep .dropdown-menu>li>a>span>strong{color:#b7d581!important}"]
             }] }
 ];
@@ -4053,7 +4124,7 @@ class TruUiArrayComponent {
     getLegend(control) {
         // return (control && control.schema && control.schema.key) ? startCase(control.schema.key) : '';
         // tslint:disable-next-line: max-line-length
-        return (typeof control.schema.title === 'undefined' ? control.schema.key : (this.getTranslation(control.schema.title) ? this.getTranslation(control.schema.title) : Object(lodash__WEBPACK_IMPORTED_MODULE_5__["startCase"])(control.schema.key)));
+        return (typeof control.schema.title === 'undefined' ? control.schema.key : (this.getTranslation(control.schema.title) ? this.getTranslation(control.schema.title) : Object(lodash__WEBPACK_IMPORTED_MODULE_6__["startCase"])(control.schema.key)));
     }
     /**
      * @param {?} titleArray
@@ -4309,7 +4380,7 @@ class TruUiErrorComponent extends CommonComponent {
 TruUiErrorComponent.decorators = [
     { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"], args: [{
                 selector: 'jf-tru-ui-error',
-                template: "<div *ngIf=\"control.invalid && (control.dirty || control.touched)\" class=\"invalid-feedback tru-ui-feedback\">\n    <ng-container *ngIf=\"control.errors && control.errors['required']\">\n      {{getLanguage().required}}\n    </ng-container>\n    <ng-container *ngIf=\"control.errors && control.errors['pattern']\">\n      {{getLanguage().invalid}}\n    </ng-container>\n    <ng-container *ngIf=\"control.errors && control.errors['email']\">\n      {{getLanguage().email_invalid}}\n    </ng-container>\n    <ng-container *ngIf=\"control.errors && control.errors['minlength']\">\n      {{getLanguage().minimum_invalid}} {{control.errors['minlength']['requiredLength']}} {{getLanguage().characters}}\n    </ng-container>\n    <ng-container *ngIf=\"control.errors && control.errors['maxlength']\">\n      {{getLanguage().maximum_invalid}} {{control.errors['maxlength']['requiredLength']}}  {{getLanguage().characters}}\n    </ng-container>\n    <ng-container *ngIf=\"control.errors && control.errors['min']\">\n      {{getLanguage().greater_than}} {{control.errors['min']['min']}}\n    </ng-container>\n    <ng-container *ngIf=\"control.errors && control.errors['max']\">\n      {{getLanguage().less_than}}  {{control.errors['max']['max']}}\n    </ng-container>\n    <ng-container *ngIf=\"control.errors && control.errors['notInMenu']\">\n      {{getLanguage().not_in_menu}}\n    </ng-container>\n    <ng-container *ngIf=\"control.errors && control.errors['customError']\">\n      {{getLanguage().invalid}}\n      {{control.errors['customError']}} \n    </ng-container>\n  </div>",
+                template: "<div *ngIf=\"control.invalid && (control.dirty || control.touched)\" class=\"invalid-feedback tru-ui-feedback\">\n    <ng-container *ngIf=\"control.errors && control.errors['required']\">\n      {{getLanguage().required}}\n    </ng-container>\n    <ng-container *ngIf=\"control.errors && control.errors['pattern']\">\n      {{getLanguage().invalid}}\n    </ng-container>\n    <ng-container *ngIf=\"control.errors && control.errors['isMatch']\">\n      {{getLanguage().is_match}}\n    </ng-container>\n    <ng-container *ngIf=\"control.errors && control.errors['email']\">\n      {{getLanguage().email_invalid}}\n    </ng-container>\n    <ng-container *ngIf=\"control.errors && control.errors['minlength']\">\n      {{getLanguage().minimum_invalid}} {{control.errors['minlength']['requiredLength']}} {{getLanguage().characters}}\n    </ng-container>\n    <ng-container *ngIf=\"control.errors && control.errors['maxlength']\">\n      {{getLanguage().maximum_invalid}} {{control.errors['maxlength']['requiredLength']}}  {{getLanguage().characters}}\n    </ng-container>\n    <ng-container *ngIf=\"control.errors && control.errors['min']\">\n      {{getLanguage().greater_than}} {{control.errors['min']['min']}}\n    </ng-container>\n    <ng-container *ngIf=\"control.errors && control.errors['max']\">\n      {{getLanguage().less_than}}  {{control.errors['max']['max']}}\n    </ng-container>\n    <ng-container *ngIf=\"control.errors && control.errors['notInMenu']\">\n      {{getLanguage().not_in_menu}}\n    </ng-container>\n    <ng-container *ngIf=\"control.errors && control.errors['customError']\">\n      {{getLanguage().invalid}}\n      {{control.errors['customError']}} \n    </ng-container>\n  </div>",
                 styles: [".tru-ui-feedback{color:#f75a5a;font-size:12px;margin-bottom:6px}.invalid-feedback{display:block!important}"]
             }] }
 ];
@@ -4360,11 +4431,11 @@ TruUiModule.decorators = [
                 ],
                 imports: [
                     _angular_common__WEBPACK_IMPORTED_MODULE_11__["CommonModule"],
-                    _angular_forms__WEBPACK_IMPORTED_MODULE_10__["FormsModule"],
-                    _angular_forms__WEBPACK_IMPORTED_MODULE_10__["ReactiveFormsModule"],
+                    _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormsModule"],
+                    _angular_forms__WEBPACK_IMPORTED_MODULE_4__["ReactiveFormsModule"],
                     SharedModule,
                     angular2_text_mask__WEBPACK_IMPORTED_MODULE_12__["TextMaskModule"],
-                    ngx_bootstrap_datepicker__WEBPACK_IMPORTED_MODULE_6__["BsDatepickerModule"].forRoot(),
+                    ngx_bootstrap_datepicker__WEBPACK_IMPORTED_MODULE_7__["BsDatepickerModule"].forRoot(),
                     // BrowserAnimationsModule,
                     ngx_bootstrap_typeahead__WEBPACK_IMPORTED_MODULE_24__["TypeaheadModule"].forRoot()
                 ],

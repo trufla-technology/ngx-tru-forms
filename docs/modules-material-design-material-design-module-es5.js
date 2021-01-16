@@ -232,7 +232,8 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         ngModule: _trufla_ngx_tru_forms__WEBPACK_IMPORTED_MODULE_3__["JsonFormModule"],
         providers: [{
           provide: _trufla_ngx_tru_forms__WEBPACK_IMPORTED_MODULE_3__["JsonFormFieldsService"],
-          useClass: _trufla_ngx_tru_forms__WEBPACK_IMPORTED_MODULE_3__["JsonFormMaterial"]
+          useClass: _trufla_ngx_tru_forms__WEBPACK_IMPORTED_MODULE_3__["JsonFormMaterial"],
+          multi: true
         }]
       }]
     })], MaterialDesignModule);
