@@ -4,7 +4,7 @@ import { CommonComponent } from '../common/common.component';
 @Component({
   selector: 'jf-error, [jf-error]',
   template: `
-    <div *ngIf="control.invalid && (control.dirty || control.touched)" class="invalid-feedback">
+    <div *ngIf="control.invalid && (control.dirty || control.touched)" class="invalid-feedback" style="display: block !important">
       <ng-container *ngIf="control.errors && control.errors['required']">
         This field is required
       </ng-container>
@@ -29,6 +29,9 @@ import { CommonComponent } from '../common/common.component';
       <ng-container *ngIf="control.errors && control.errors['customError']">
         {{control.errors['customError']}}
       </ng-container>
+      <ng-container *ngIf="control.errors && control.errors['isMatch']">
+      {{getLanguage().is_match}}
+    </ng-container>
     </div>
   `
 })

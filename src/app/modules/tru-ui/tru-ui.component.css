@@ -1,0 +1,4 @@
+::ng-deep p {
+        display: flex;
+        flex-direction: column;    
+}

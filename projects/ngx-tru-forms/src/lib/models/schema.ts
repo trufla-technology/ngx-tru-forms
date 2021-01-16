@@ -46,4 +46,7 @@ export interface Schema {
 
   // add masking
   mask?: Array<any>;
+
+  // add verify input
+  verify?: any;
 }

@@ -30,6 +30,7 @@ import { ButtonMaterialComponent } from '../../fields/button/button.material.com
 import { SharedModule} from '../shared/shared.module';
 import { ArrayMaterialComponent } from '../../fields/array/array.material.component';
 import { MatMomentDateModule } from '@angular/material-moment-adapter';
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 
 @NgModule({
   imports: [
@@ -48,7 +49,8 @@ import { MatMomentDateModule } from '@angular/material-moment-adapter';
     MatDatepickerModule,
     MatCardModule,
     MatMomentDateModule,
-    SharedModule
+    SharedModule,
+    BsDatepickerModule.forRoot()
   ],
   declarations: [
     StringMaterialComponent,

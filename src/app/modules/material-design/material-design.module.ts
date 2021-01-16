@@ -23,6 +23,7 @@ const routes: Routes = [
         {
           provide: JsonFormFieldsService,
           useClass: JsonFormMaterial,
+          multi: true
         }
       ]
     }

@@ -18,7 +18,25 @@ import { CommonComponent } from '../common/common.component';
       [attr.placeholder]="placeholder()"
       [attr.disabled]="disabled"
       [textMask]="{ mask: getMask() }"
+      (change)="isMatch()"
     />
+    <div *ngIf="schema.verify" style="margin-top: 1rem">
+    <label
+    [ngClass]="['jf-label', schema.key, (isRequired() ? 'required' : '')]" *ngIf="type() !== 'hidden'">
+    <span > {{ getLanguage().confirm}} {{title()}}</span><sup *ngIf="isRequired()">*</sup>
+    </label>
+    <input
+    class="form-control"
+    [attr.type]="type()"
+    [formControl]="confirmInput"
+    [attr.maxLength]="schema.maxLength || null"
+    [attr.minLength]="schema.minLength || null"
+    [attr.disabled]="disabled"
+    [attr.placeholder]="placeholder()"
+    [textMask]="{ mask: getMask() }"
+    (change)="isMatch()"
+    />
+    </div>
     <jf-error [control]="control"></jf-error>
   `
 })

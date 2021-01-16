@@ -342,7 +342,7 @@ export class JsonFormComponent implements DoCheck, OnDestroy {
         this.handleCancel.emit(this.form.value);
       }
 
-    } else if (this.form.valid) {
+    } else {
       this.handleCancel.emit(this.form.value);
     }
   }

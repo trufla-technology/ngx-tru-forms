@@ -7,15 +7,13 @@ import {ValidationFeedbackTranslation} from '../error/validation-feedback-transl
 import { BsLocaleService } from 'ngx-bootstrap/datepicker';
 import { defineLocale } from 'ngx-bootstrap/chronos';
 import { deLocale } from 'ngx-bootstrap/locale';
-
-// defineLocale('fr', deLocale);
-
 @Component({
   selector: 'jf-component',
   template: ''
 })
 export class CommonComponent implements AfterViewInit {
   control: SchemaFormControl;
+  confirmInput = new SchemaFormControl('');
   schema: Schema;
   style: {};
   disabled = false;
@@ -112,7 +110,8 @@ export class CommonComponent implements AfterViewInit {
        index = i;
      }
     });
-    return typeof index !== 'undefined' && this.schema.enumNames?.length  ? this.getTranslation(this.schema.enumNames[index]) : this.control.value;
+    return this.schema.enumNames && this.schema.enumNames.length && typeof index !== 'undefined' ?
+     this.getTranslation(this.schema.enumNames[index]) : this.control.value;
   }
 
   getTranslation(titleArray) {
@@ -121,22 +120,38 @@ export class CommonComponent implements AfterViewInit {
        val.language === this.language
       );
       return translatedTitle[0] ? this.strToUpperCase(translatedTitle[0].value.replace(/<.*?>/g, '')) : false;
-  } else {
-    return titleArray;
+    } else {
+      return titleArray;
+    }
   }
-}
 
-getLanguage() {
-  return this.validationFeedbackTranslation.validation[this.language || 'en'];
-}
+  getLanguage() {
+    return this.validationFeedbackTranslation.validation[this.language || 'en'];
+  }
 
-getControlValue() {
-  return this.control && this.control.value ? this.control.value : '';
-}
+  getControlValue() {
+    return this.control && this.control.value ? this.control.value : '';
+  }
 
-getFilename() {
+  getFilename() {
     if (this.getControlValue().length) {
-    return this.getControlValue().substring("data:image/".length, this.getControlValue().indexOf(";base64")) || '';
+    return this.getControlValue().substring('data:image/'.length, this.getControlValue().indexOf(';base64')) || '';
+    }
+  }
+
+  isMatch() {
+    if (this.schema.verify) {
+      const input = this.control.value;
+      const confirmInput = this.confirmInput.value;
+      let error = this.control.errors && Object.keys(this.control.errors).length > 0 ? this.control.errors : null;
+      if (error && Object.keys(this.control.errors).length > 0) {
+         delete error.isMatch;
+        if (Object.keys(error).length === 0) {
+          error = null;
+        }
+      }
+      return input.toString() === confirmInput.toString() ?
+       this.control.setErrors(error) : this.control.setErrors({...this.control.errors, isMatch: true });
     }
   }
 }

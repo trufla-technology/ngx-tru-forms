@@ -5,6 +5,9 @@
     <ng-container *ngIf="control.errors && control.errors['pattern']">
       {{getLanguage().invalid}}
     </ng-container>
+    <ng-container *ngIf="control.errors && control.errors['isMatch']">
+      {{getLanguage().is_match}}
+    </ng-container>
     <ng-container *ngIf="control.errors && control.errors['email']">
       {{getLanguage().email_invalid}}
     </ng-container>
