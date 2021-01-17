@@ -110,6 +110,7 @@ export class AppComponent {
 | [isMultiStep] | Treat schema as multi step. See example. | |
 | [viewOnly] | Render only the labels and form data. Useful for reports. | |
 | [disabled] | Disable all the fields in the form. Set to true for disabled and null otherwise | |
+| [language] | Text for translation default is 'en' | |
 | (handleSubmit) | Watch for form submission. Return JSON Schema response data| |
 | (handleChange) | Watch for form changes | |
 | (handleCancel) | Watch for cancel click | |
@@ -150,9 +151,22 @@ const onFormSubmit = (form) => console.log(form);
 
 ### Quick Reference
 `type`: string, number, object, array, boolean  
-`format (optional)`: date, photo, textarea
-`description (optional)`: hover text to describe purpose of field
+`format (optional)`: date, photo, textarea  
+`description (optional)`: hover text to describe purpose of field  
+`title`: string | array of objects each contains language and value for label or header or array title or object title 
+```JSON
+"title": [{"language": "en", "value": "first name"}, {"language": "fr", "value": "le prénom"}]
+```  
+`enumNames`: array of string or array of arrays contains translation array of objects if not provided enum used as default  
+```JSON
+// with translation
+"enumNames": [[{"language": "en", "value":  "Yes"}, {"language": "fr", "value":  "Qui"}],
+              [{"language": "en", "value":  "No"}, {"language": "fr", "value": "Non"}]]
+// without translation
+"enumNames": ["Yes", "No"]
 
+```  
+`verify`: Boolean default false duplicate string type for verification
 ### Extending
 
 This module allows for extension via injectors.
