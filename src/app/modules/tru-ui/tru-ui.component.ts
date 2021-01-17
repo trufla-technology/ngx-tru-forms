@@ -3,7 +3,7 @@ import { DataListenerService } from 'src/app/services/data-listener.service';
 import { SchemaListenerService } from 'src/app/services/schema-listener.service';
 import { JsonFormComponent } from '@trufla/ngx-tru-forms';
 import { JsonSchemaExamplesSamples } from '../../json-schema-examples/json-schema-examples.samples';
-
+import { InputColourComponent } from '../../json-schema-examples/input-colour/input-colour.component';
 @Component({
   selector: 'app-tru-ui',
   templateUrl: './tru-ui.component.html',
@@ -14,6 +14,7 @@ export class TruUiComponent implements OnInit {
   schema;
   viewOnly;
   data;
+  fields;
   @ViewChild('truForms', {static: false}) truForms: JsonFormComponent;
   constructor(
     private schemaListenerService: SchemaListenerService,
@@ -22,6 +23,9 @@ export class TruUiComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.fields = {
+      'colour': InputColourComponent
+    };
     this.viewOnly = localStorage.getItem('viewOnly') ? localStorage.getItem('viewOnly') === 'true' : false;
     this.language = localStorage.getItem('language') ? localStorage.getItem('language') : 'en';
     this.data = this.viewOnly ? this.jsonSchemaSamples.data : null;

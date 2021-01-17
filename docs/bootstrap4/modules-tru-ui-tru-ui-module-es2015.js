@@ -9,7 +9,7 @@
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<div style=\"display: flex; flex-direction: row;justify-content: center;align-items: center;\">\n<div style=\"width: 100%;\" >\n  <h6>Language</h6>\n  <select  class=\"demo_input\" (change)=\"changeLanguage($event.target.value)\">\n    <option value=\"en\" [selected]=\"language=== 'en'\">English</option>\n    <option value=\"fr\" [selected]=\"language=== 'fr'\">Frensh</option>\n  </select>\n  </div>\n  <div style=\"width: 100%;\" >\n    <h6>View only</h6>\n    <select  class=\"demo_input\" (change)=\"toggleViewonly($event.target.value)\">\n      <option disabled>select mode</option>\n      <option value=\"true\" [selected]=\"viewOnly\">on</option>\n      <option value=\"false\" [selected]=\"!viewOnly\">off</option>\n    </select>\n    </div>\n    <div style=\"width: 100%;\" >\n      <h6>Data preview</h6>\n      <select  class=\"demo_input\" (change)=\"toggleData($event.target.value)\">\n        <option disabled> select preview </option>\n        <option value=\"true\" [selected]=\"data\">on</option>\n        <option value=\"false\" [selected]=\"!data\">off</option>\n      </select>\n      </div>\n    </div>\n<jf-form\n  #truForms\n  [schema]=\"schema\"\n  (handleSubmit)=\"handleSubmit($event)\"\n  [language]=\"language\"\n  [viewOnly]=\"viewOnly\"\n  [data]=\"data\"\n  (handleCancel)=\"handleCancel($event)\"\n  [submit]=\"'submit'\"\n  [cancel]=\"'cancel'\"\n></jf-form>");
+/* harmony default export */ __webpack_exports__["default"] = ("<div style=\"display: flex; flex-direction: row;justify-content: center;align-items: center;\">\n<div style=\"width: 100%;\" >\n  <h6>Language</h6>\n  <select  class=\"demo_input\" (change)=\"changeLanguage($event.target.value)\">\n    <option value=\"en\" [selected]=\"language=== 'en'\">English</option>\n    <option value=\"fr\" [selected]=\"language=== 'fr'\">Frensh</option>\n  </select>\n  </div>\n  <div style=\"width: 100%;\" >\n    <h6>View only</h6>\n    <select  class=\"demo_input\" (change)=\"toggleViewonly($event.target.value)\">\n      <option disabled>select mode</option>\n      <option value=\"true\" [selected]=\"viewOnly\">on</option>\n      <option value=\"false\" [selected]=\"!viewOnly\">off</option>\n    </select>\n    </div>\n    <div style=\"width: 100%;\" >\n      <h6>Data preview</h6>\n      <select  class=\"demo_input\" (change)=\"toggleData($event.target.value)\">\n        <option disabled> select preview </option>\n        <option value=\"true\" [selected]=\"data\">on</option>\n        <option value=\"false\" [selected]=\"!data\">off</option>\n      </select>\n      </div>\n    </div>\n<jf-form\n  #truForms\n  [schema]=\"schema\"\n  (handleSubmit)=\"handleSubmit($event)\"\n  [language]=\"language\"\n  [viewOnly]=\"viewOnly\"\n  [data]=\"data\"\n  [fields]=\"fields\"\n  (handleCancel)=\"handleCancel($event)\"\n  [submit]=\"'submit'\"\n  [cancel]=\"'cancel'\"\n></jf-form>");
 
 /***/ }),
 
@@ -41,6 +41,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var src_app_services_schema_listener_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/services/schema-listener.service */ "./src/app/services/schema-listener.service.ts");
 /* harmony import */ var _trufla_ngx_tru_forms__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @trufla/ngx-tru-forms */ "./dist/ngx-tru-forms/fesm2015/trufla-ngx-tru-forms.js");
 /* harmony import */ var _json_schema_examples_json_schema_examples_samples__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../json-schema-examples/json-schema-examples.samples */ "./src/app/json-schema-examples/json-schema-examples.samples.ts");
+/* harmony import */ var _json_schema_examples_input_colour_input_colour_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../json-schema-examples/input-colour/input-colour.component */ "./src/app/json-schema-examples/input-colour/input-colour.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -58,6 +59,7 @@ var __importDefault = (undefined && undefined.__importDefault) || function (mod)
 
 
 
+
 let TruUiComponent = class TruUiComponent {
     constructor(schemaListenerService, dataService, jsonSchemaSamples) {
         this.schemaListenerService = schemaListenerService;
@@ -65,6 +67,9 @@ let TruUiComponent = class TruUiComponent {
         this.jsonSchemaSamples = jsonSchemaSamples;
     }
     ngOnInit() {
+        this.fields = {
+            'colour': _json_schema_examples_input_colour_input_colour_component__WEBPACK_IMPORTED_MODULE_5__["InputColourComponent"]
+        };
         this.viewOnly = localStorage.getItem('viewOnly') ? localStorage.getItem('viewOnly') === 'true' : false;
         this.language = localStorage.getItem('language') ? localStorage.getItem('language') : 'en';
         this.data = this.viewOnly ? this.jsonSchemaSamples.data : null;
@@ -133,6 +138,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _tru_ui_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./tru-ui.component */ "./src/app/modules/tru-ui/tru-ui.component.ts");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
 /* harmony import */ var _trufla_ngx_tru_forms__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @trufla/ngx-tru-forms */ "./dist/ngx-tru-forms/fesm2015/trufla-ngx-tru-forms.js");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm2015/forms.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -142,6 +148,7 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 var __importDefault = (undefined && undefined.__importDefault) || function (mod) {
   return (mod && mod.__esModule) ? mod : { "default": mod };
 };
+
 
 
 
@@ -161,6 +168,8 @@ TruUiModuleExample = __decorate([
         imports: [
             _angular_common__WEBPACK_IMPORTED_MODULE_1__["CommonModule"],
             _angular_router__WEBPACK_IMPORTED_MODULE_3__["RouterModule"].forChild(routes),
+            _angular_forms__WEBPACK_IMPORTED_MODULE_5__["ReactiveFormsModule"],
+            _trufla_ngx_tru_forms__WEBPACK_IMPORTED_MODULE_4__["JsonFormModule"],
             _trufla_ngx_tru_forms__WEBPACK_IMPORTED_MODULE_4__["TruUiModule"],
             {
                 ngModule: _trufla_ngx_tru_forms__WEBPACK_IMPORTED_MODULE_4__["JsonFormModule"],
@@ -172,7 +181,8 @@ TruUiModuleExample = __decorate([
                     }
                 ]
             }
-        ]
+        ],
+        entryComponents: []
     })
 ], TruUiModuleExample);
 

@@ -9,7 +9,7 @@
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<jf-form\n  [schema]=\"schema\"\n  (handleSubmit)=\"handleSubmit($event)\"\n  [submit]=\"'submit'\"\n></jf-form>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<jf-form\n  [schema]=\"schema\"\n  [fields]=\"fields\"\n  (handleSubmit)=\"handleSubmit($event)\"\n  [submit]=\"'submit'\"\n></jf-form>\n");
 
 /***/ }),
 
@@ -39,6 +39,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
 /* harmony import */ var _services_schema_listener_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../services/schema-listener.service */ "./src/app/services/schema-listener.service.ts");
 /* harmony import */ var _services_data_listener_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../services/data-listener.service */ "./src/app/services/data-listener.service.ts");
+/* harmony import */ var _json_schema_examples_input_colour_input_colour_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../json-schema-examples/input-colour/input-colour.component */ "./src/app/json-schema-examples/input-colour/input-colour.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -54,12 +55,16 @@ var __importDefault = (undefined && undefined.__importDefault) || function (mod)
 
 
 
+
 let MaterialDesignComponent = class MaterialDesignComponent {
     constructor(schemaListenerService, dataService) {
         this.schemaListenerService = schemaListenerService;
         this.dataService = dataService;
     }
     ngOnInit() {
+        this.fields = {
+            'colour': _json_schema_examples_input_colour_input_colour_component__WEBPACK_IMPORTED_MODULE_3__["InputColourComponent"]
+        };
         this.schemaListenerService.schema.subscribe((d) => this.schema = d);
     }
     handleSubmit(e) {
@@ -100,6 +105,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _material_design_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./material-design.component */ "./src/app/modules/material-design/material-design.component.ts");
 /* harmony import */ var _trufla_ngx_tru_forms__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @trufla/ngx-tru-forms */ "./dist/ngx-tru-forms/fesm2015/trufla-ngx-tru-forms.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm2015/forms.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -109,6 +115,7 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 var __importDefault = (undefined && undefined.__importDefault) || function (mod) {
   return (mod && mod.__esModule) ? mod : { "default": mod };
 };
+
 
 
 
@@ -128,6 +135,7 @@ MaterialDesignModule = __decorate([
         imports: [
             _angular_common__WEBPACK_IMPORTED_MODULE_1__["CommonModule"],
             _angular_router__WEBPACK_IMPORTED_MODULE_4__["RouterModule"].forChild(routes),
+            _angular_forms__WEBPACK_IMPORTED_MODULE_5__["ReactiveFormsModule"],
             _trufla_ngx_tru_forms__WEBPACK_IMPORTED_MODULE_3__["JsonFormMaterialModule"],
             {
                 ngModule: _trufla_ngx_tru_forms__WEBPACK_IMPORTED_MODULE_3__["JsonFormModule"],

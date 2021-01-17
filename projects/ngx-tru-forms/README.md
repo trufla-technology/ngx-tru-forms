@@ -30,7 +30,7 @@ This component utilizes [Reactive Forms](https://angular.io/guide/reactive-forms
 ### Usage
 
 Module can be used with [Angular Material](https://material.angular.io/) or [Bootstrap 4](https://getbootstrap.com/).
-Import either `JsonFormBootstrap4Module` or `JsonFormMaterialModule` and use it with `JsonFormModule`. For example: 
+Import either `JsonFormBootstrap4Module` or `JsonFormMaterialModule` or `TruUiModule` and use it with `JsonFormModule`. For example: 
 
 **_Example uses Angular Material_**
 
@@ -41,9 +41,16 @@ import {
   JsonFormMaterialModule,
   JsonFormMaterila
 } from '@trufla/ngx-tru-forms';
+// for using tru ui
+// import { JsonFormModule, TruUiModule, JsonFormFieldsService, TruUi } from '@trufla/ngx-tru-forms';
 
 @NgModule({
   imports: [
+    JsonFormMaterialModule,
+    // for using tru ui
+    // TruUiModule
+    // for using Bootstrap
+    // JsonFormBootstrap4Module
     {
       ngModule: JsonFormModule,
       providers: [
@@ -52,6 +59,18 @@ import {
           useClass: JsonFormMaterial,
           multi: true
         }
+        // for using tru ui
+        // {
+        //   provide: JsonFormFieldsService,
+        //   useClass: TruUi,
+        //   multi: true
+        // }
+        // for using bootstrap
+        // {
+        //   provide: JsonFormBootstrap4,
+        //   useClass: TruUi,
+        //   multi: true
+        // }
       ]
     }
   ]
@@ -113,7 +132,7 @@ export class AppComponent {
 | [language] | Text for translation default is 'en' | |
 | (handleSubmit) | Watch for form submission. Return JSON Schema response data| |
 | (handleChange) | Watch for form changes | |
-| (handleCancel) | Watch for cancel click | |
+| (handleCancel) | Watch for cancel click (emitting value even if form invalid) | |
 
 For additional ways to modify and access the form see [External Methods](#external-methods).
 

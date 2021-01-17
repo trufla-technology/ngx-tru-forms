@@ -9,7 +9,9 @@ import {RouterModule, Routes} from '@angular/router';
 import { FrameworkDropdownComponent } from './components/framework-dropdown/framework-dropdown.component';
 import {JsonSchemaExamplesSamples} from './json-schema-examples/json-schema-examples.samples';
 import { SubmittedDataComponent } from './components/submitted-data/submitted-data.component';
-
+import { InputColourComponent } from './json-schema-examples/input-colour/input-colour.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { ColorPickerModule } from 'ngx-color-picker';
 const routes: Routes = [
   {
     path: '',
@@ -31,17 +33,21 @@ const routes: Routes = [
     SchemaEditorComponent,
     SchemaDropdownComponent,
     FrameworkDropdownComponent,
-    SubmittedDataComponent
+    SubmittedDataComponent,
+    InputColourComponent
   ],
   imports: [
     BrowserAnimationsModule,
     RouterModule.forRoot(routes),
     MonacoEditorModule.forRoot(),
-    FormsModule
+    ReactiveFormsModule,
+    FormsModule,
+    ColorPickerModule
   ],
   providers: [
     JsonSchemaExamplesSamples
   ],
+  entryComponents: [InputColourComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
