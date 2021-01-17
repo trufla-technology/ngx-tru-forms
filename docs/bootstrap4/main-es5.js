@@ -776,7 +776,8 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
           greater_than: 'Enter a value greater than or equal to',
           less_than: 'Enter a value less than or equal to ',
           not_in_menu: ' Select from the dropdown list',
-          is_match: 'Value not matching'
+          is_match: 'Value not matching',
+          max_size: 'File exceeded the allowed size'
         },
         fr: {
           confirm: 'Confirmer',
@@ -789,7 +790,8 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
           greater_than: 'Entrez une valeur supérieure ou égale à',
           less_than: 'Entrez une valeur inférieure ou égale à',
           not_in_menu: ' Sélectionner dans la liste déroulante',
-          is_match: 'valeur nesutampa'
+          is_match: 'valeur nesutampa',
+          max_size: 'Le fichier a dépassé la taille autorisée'
         }
       };
     };
@@ -819,6 +821,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
         this.confirmInput = new SchemaFormControl('');
         this.disabled = false;
         this.isWebView = false;
+        this.fileSize = null;
 
         if (/android|webos|iphone|ipad|ipod|blackberry|iemobile|opera mini/i.test(navigator.userAgent.toLowerCase())) {
           this.isWebView = true;
@@ -835,6 +838,10 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
       _createClass(CommonComponent, [{
         key: "ngAfterViewInit",
         value: function ngAfterViewInit() {
+          if (this.schema && this.schema.format === 'photo' && this.control.value) {
+            this.getImageFromUrl(this.control.value);
+          }
+
           this.localeService.use(this.language);
           this.cd.detectChanges();
         }
@@ -1076,6 +1083,61 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
             }));
           }
         }
+        /**
+         * @param {?} str
+         * @return {?}
+         */
+
+      }, {
+        key: "validURL",
+        value: function validURL(str) {
+          /** @type {?} */
+          var pattern = new RegExp('^(https?:\\/\\/)?' + // protocol
+          '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|' + // domain name
+          '((\\d{1,3}\\.){3}\\d{1,3}))' + // OR ip (v4) address
+          '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*' + // port and path
+          '(\\?[;&a-z\\d%_.~+=-]*)?' + // query string
+          '(\\#[-a-z\\d_]*)?$', 'i');
+          return !!pattern.test(str);
+        }
+        /**
+         * @param {?} url
+         * @return {?}
+         */
+
+      }, {
+        key: "getImageFromUrl",
+        value: function getImageFromUrl(url) {
+          var _this3 = this;
+
+          fetch(url).then(
+          /**
+          * @param {?} r
+          * @return {?}
+          */
+          function (r) {
+            return r.blob().then(
+            /**
+            * @param {?} s
+            * @return {?}
+            */
+            function (s) {
+              return _this3.fileSize = s.size;
+            })["catch"](
+            /**
+            * @return {?}
+            */
+            function () {
+              return _this3.fileSize = null;
+            });
+          })["catch"](
+          /**
+          * @return {?}
+          */
+          function () {
+            return _this3.fileSize = null;
+          });
+        }
       }]);
 
       return CommonComponent;
@@ -1285,16 +1347,16 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
       var _super9 = _createSuper(DateViewComponent);
 
       function DateViewComponent() {
-        var _this3;
+        var _this4;
 
         _classCallCheck(this, DateViewComponent);
 
-        _this3 = _super9.apply(this, arguments);
-        _this3.numberMask = text_mask_addons_dist_createNumberMask__WEBPACK_IMPORTED_MODULE_10___default()({
+        _this4 = _super9.apply(this, arguments);
+        _this4.numberMask = text_mask_addons_dist_createNumberMask__WEBPACK_IMPORTED_MODULE_10___default()({
           allowDecimal: false,
           prefix: ''
         });
-        return _this3;
+        return _this4;
       }
       /**
        * @param {?} value
@@ -1423,16 +1485,16 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
       var _super13 = _createSuper(MoneyViewComponent);
 
       function MoneyViewComponent() {
-        var _this4;
+        var _this5;
 
         _classCallCheck(this, MoneyViewComponent);
 
-        _this4 = _super13.apply(this, arguments);
-        _this4.numberMask = text_mask_addons_dist_createNumberMask__WEBPACK_IMPORTED_MODULE_10___default()({
+        _this5 = _super13.apply(this, arguments);
+        _this5.numberMask = text_mask_addons_dist_createNumberMask__WEBPACK_IMPORTED_MODULE_10___default()({
           allowDecimal: false,
           prefix: ''
         });
-        return _this4;
+        return _this5;
       }
       /**
        * @param {?} value
@@ -1561,7 +1623,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
       }, {
         key: "getTranslation",
         value: function getTranslation(titleArray) {
-          var _this5 = this;
+          var _this6 = this;
 
           if (Array.isArray(titleArray)) {
             /** @type {?} */
@@ -1571,7 +1633,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
             * @return {?}
             */
             function (val) {
-              return val.language === _this5.language;
+              return val.language === _this6.language;
             });
             return translatedTitle[0] ? this.strToUpperCase(translatedTitle[0].value.replace(/<.*?>/g, '')) : false;
           } else {
@@ -1624,7 +1686,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
       }, {
         key: "cloneControl",
         value: function cloneControl(control) {
-          var _this6 = this;
+          var _this7 = this;
 
           /** @type {?} */
           var newControl;
@@ -1642,7 +1704,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
             * @return {?}
             */
             function (key) {
-              formGroup.addControl(key, _this6.cloneControl(controls[key]));
+              formGroup.addControl(key, _this7.cloneControl(controls[key]));
             });
             newControl = formGroup;
           } else if (control instanceof SchemaFormArray) {
@@ -1654,7 +1716,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
             * @return {?}
             */
             function (formControl) {
-              formArray.push(_this6.cloneControl(formControl));
+              formArray.push(_this7.cloneControl(formControl));
               return formArray;
             });
             newControl = formArray;
@@ -2227,7 +2289,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
       }, {
         key: "appendFields",
         value: function appendFields() {
-          var _this7 = this;
+          var _this8 = this;
 
           Object.keys(this.fields).forEach(
           /**
@@ -2235,7 +2297,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
           * @return {?}
           */
           function (f) {
-            _this7.jf[0].register(f, _this7.fields[f]);
+            _this8.jf[0].register(f, _this8.fields[f]);
           });
         }
         /**
@@ -2245,7 +2307,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
       }, {
         key: "constructForm",
         value: function constructForm() {
-          var _this8 = this;
+          var _this9 = this;
 
           this.model = {};
 
@@ -2286,15 +2348,15 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
             * @return {?}
             */
             function (data) {
-              if (_this8.control.isPartOf) {
-                _this8.data = data;
+              if (_this9.control.isPartOf) {
+                _this9.data = data;
 
-                _this8.constructForm();
+                _this9.constructForm();
               }
 
-              _this8.handleChange.emit({
-                id: _this8.id,
-                control: _this8.control,
+              _this9.handleChange.emit({
+                id: _this9.id,
+                control: _this9.control,
                 data: data
               });
             });
@@ -2309,7 +2371,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
       }, {
         key: "getSteps",
         value: function getSteps(schema, activeStep) {
-          var _this9 = this;
+          var _this10 = this;
 
           return Object.keys(schema.properties).map(
           /**
@@ -2322,7 +2384,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
             var type = 'step';
 
             if (index === 0) {
-              _this9.activeStep = _this9.activeStep || name;
+              _this10.activeStep = _this10.activeStep || name;
               type = 'first';
             } else if (index === Object.keys(schema.properties).length - 1) {
               type = 'last';
@@ -2359,7 +2421,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
       }, {
         key: "generateForm",
         value: function generateForm(schema, group, data, style, path) {
-          var _this10 = this;
+          var _this11 = this;
 
           if (!this.isVisible(schema)) {
             return group;
@@ -2375,7 +2437,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
           * @return {?}
           */
           function (prop) {
-            if (_this10.isOneOf(schema, prop, path)) {
+            if (_this11.isOneOf(schema, prop, path)) {
               return;
             }
 
@@ -2385,12 +2447,12 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
               /** @type {?} */
 
               var groupStyle = style && style.hasOwnProperty(prop) ? style[prop] : {};
-              group[prop] = new SchemaFormGroup(_this10.generateForm(schema.properties[prop], {}, groupData, groupStyle, [].concat(path, prop)));
+              group[prop] = new SchemaFormGroup(_this11.generateForm(schema.properties[prop], {}, groupData, groupStyle, [].concat(path, prop)));
               group[prop].schema = schema.properties[prop];
               group[prop].schema.key = prop;
-              group[prop].schema.id = _this10.id;
+              group[prop].schema.id = _this11.id;
               group[prop].style = groupStyle;
-            } else if (schema.properties[prop].type === 'array' && !_this10.isFormat(schema.properties[prop], 'multiselect')) {
+            } else if (schema.properties[prop].type === 'array' && !_this11.isFormat(schema.properties[prop], 'multiselect')) {
               path.push(prop);
               /** @type {?} */
 
@@ -2413,19 +2475,19 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
                   var control = new SchemaFormControl();
                   control.schema = Object.assign({}, schema.properties[prop]);
                   control.schema.key = prop;
-                  control.schema.id = _this10.id;
+                  control.schema.id = _this11.id;
                   control.valueChanges.subscribe(
                   /**
                   * @param {?} event
                   * @return {?}
                   */
                   function (event) {
-                    return _this10.handleOnChange(prop, event);
+                    return _this11.handleOnChange(prop, event);
                   });
                   control.isRequired = schema.hasOwnProperty('required') && schema.required.indexOf(prop) > -1;
 
                   if (control.isRequired) {
-                    _this10.requiredFields++;
+                    _this11.requiredFields++;
                   }
 
                   return control;
@@ -2438,7 +2500,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
                 */
                 function (dataAtIndex) {
                   /** @type {?} */
-                  var g = new SchemaFormGroup(_this10.generateForm(schema.properties[prop].items, {}, dataAtIndex, {}, [].concat(path, prop)));
+                  var g = new SchemaFormGroup(_this11.generateForm(schema.properties[prop].items, {}, dataAtIndex, {}, [].concat(path, prop)));
                   g.schema = schema.properties[prop];
                   return g;
                 });
@@ -2447,15 +2509,15 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
               group[prop] = new SchemaFormArray(fbArray);
               group[prop].schema = schema.properties[prop];
               group[prop].schema.key = prop;
-              group[prop].schema.id = _this10.id;
+              group[prop].schema.id = _this11.id;
               group[prop].style = arrayStyle;
-            } else if (_this10.isVisible(schema.properties[prop])) {
+            } else if (_this11.isVisible(schema.properties[prop])) {
               /** @type {?} */
-              var control = new SchemaFormControl(_this10.df.get(prop, schema, data), _this10.vl.get(prop, schema, path, _this10.language));
+              var control = new SchemaFormControl(_this11.df.get(prop, schema, data), _this11.vl.get(prop, schema, path, _this11.language));
               control.schema = Object.assign({}, schema.properties[prop]);
               control.schema.key = prop;
-              control.schema.id = _this10.id;
-              control.data = _this10.df.get(prop, schema, data);
+              control.schema.id = _this11.id;
+              control.data = _this11.df.get(prop, schema, data);
               control.style = style && style.hasOwnProperty(prop) ? style[prop] : {};
               control.valueChanges.subscribe(
               /**
@@ -2463,12 +2525,12 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
               * @return {?}
               */
               function (event) {
-                return _this10.handleOnChange(prop, event, _this10.inOneOf(schema, prop));
+                return _this11.handleOnChange(prop, event, _this11.inOneOf(schema, prop));
               });
               control.isRequired = schema.hasOwnProperty('required') && schema.required.indexOf(prop) > -1;
 
               if (control.isRequired) {
-                _this10.requiredFields++;
+                _this11.requiredFields++;
               }
 
               group[prop] = control;
@@ -2486,7 +2548,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
       }, {
         key: "isOneOf",
         value: function isOneOf(schema, key, path) {
-          var _this11 = this;
+          var _this12 = this;
 
           if (!schema.oneOf) {
             return false;
@@ -2506,7 +2568,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
               var dataPath = path.concat(parent).join('.');
               /** @type {?} */
 
-              var value = Object(lodash__WEBPACK_IMPORTED_MODULE_6__["get"])(_this11.data, dataPath, null);
+              var value = Object(lodash__WEBPACK_IMPORTED_MODULE_6__["get"])(_this12.data, dataPath, null);
 
               if (schema.properties[parent].type === 'boolean') {
                 value = String(value) === 'true'; // material preserves string & bootstrap doesn't
@@ -2573,7 +2635,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
       }, {
         key: "handleOnSubmit",
         value: function handleOnSubmit() {
-          var _this12 = this;
+          var _this13 = this;
 
           this.touchAll(this.form.controls);
 
@@ -2596,7 +2658,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
             * @return {?}
             */
             function (s) {
-              return s.name === _this12.activeStep;
+              return s.name === _this13.activeStep;
             });
             /** @type {?} */
 
@@ -2644,7 +2706,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
       }, {
         key: "handleOnCancel",
         value: function handleOnCancel() {
-          var _this13 = this;
+          var _this14 = this;
 
           if (this.isMultiStep) {
             /** @type {?} */
@@ -2665,7 +2727,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
             * @return {?}
             */
             function (s) {
-              return s.name === _this13.activeStep;
+              return s.name === _this14.activeStep;
             });
             /** @type {?} */
 
@@ -2696,7 +2758,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
       }, {
         key: "touchAll",
         value: function touchAll(controls) {
-          var _this14 = this;
+          var _this15 = this;
 
           Object.keys(controls).forEach(
           /**
@@ -2705,7 +2767,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
           */
           function (key) {
             if (controls[key].hasOwnProperty('controls')) {
-              _this14.touchAll(controls[key].controls);
+              _this15.touchAll(controls[key].controls);
             }
 
             controls[key].markAsTouched();
@@ -2719,7 +2781,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
       }, {
         key: "subRefs",
         value: function subRefs(schema) {
-          var _this15 = this;
+          var _this16 = this;
 
           Object.keys(schema.properties).forEach(
           /**
@@ -2728,7 +2790,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
           */
           function (prop) {
             if (schema.properties[prop].hasOwnProperty('$ref')) {
-              schema.properties[prop] = _this15.schema.definitions[schema.properties[prop]['$ref'].replace('#/definitions/', '')];
+              schema.properties[prop] = _this16.schema.definitions[schema.properties[prop]['$ref'].replace('#/definitions/', '')];
             }
           });
           return schema;
@@ -2919,13 +2981,13 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
       var _super17 = _createSuper(CheckboxgroupComponent);
 
       function CheckboxgroupComponent() {
-        var _this16;
+        var _this17;
 
         _classCallCheck(this, CheckboxgroupComponent);
 
-        _this16 = _super17.apply(this, arguments);
-        _this16.checkboxGroupValues = [];
-        return _this16;
+        _this17 = _super17.apply(this, arguments);
+        _this17.checkboxGroupValues = [];
+        return _this17;
       }
       /**
        * @param {?} event
@@ -3025,13 +3087,13 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
       var _super19 = _createSuper(TextareaComponent);
 
       function TextareaComponent() {
-        var _this17;
+        var _this18;
 
         _classCallCheck(this, TextareaComponent);
 
-        _this17 = _super19.apply(this, arguments);
-        _this17.randomSuffix = Math.random().toString(36).substring(7);
-        return _this17;
+        _this18 = _super19.apply(this, arguments);
+        _this18.randomSuffix = Math.random().toString(36).substring(7);
+        return _this18;
       }
       /**
        * @param {?} i
@@ -3172,7 +3234,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
          * @return {?}
          */
         value: function onChange(event) {
-          var _this18 = this;
+          var _this19 = this;
 
           /** @type {?} */
           var file = event.target.files[0];
@@ -3185,15 +3247,15 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
           * @return {?}
           */
           function () {
-            _this18.processFile(reader.result, file.type).then(
+            _this19.processFile(reader.result, file.type).then(
             /**
             * @param {?} data
             * @return {?}
             */
             function (data) {
-              _this18.photoData = data.toString();
+              _this19.photoData = data.toString();
 
-              _this18.control.setValue(_this18.photoData);
+              _this19.control.setValue(_this19.photoData);
             });
           };
 
@@ -3334,13 +3396,13 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
       var _super24 = _createSuper(RadiogroupComponent);
 
       function RadiogroupComponent() {
-        var _this19;
+        var _this20;
 
         _classCallCheck(this, RadiogroupComponent);
 
-        _this19 = _super24.apply(this, arguments);
-        _this19.randomSuffix = Math.random().toString(36).substring(7);
-        return _this19;
+        _this20 = _super24.apply(this, arguments);
+        _this20.randomSuffix = Math.random().toString(36).substring(7);
+        return _this20;
       }
       /**
        * @param {?} key
@@ -3518,16 +3580,16 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
       var _super27 = _createSuper(MoneyComponent);
 
       function MoneyComponent() {
-        var _this20;
+        var _this21;
 
         _classCallCheck(this, MoneyComponent);
 
-        _this20 = _super27.apply(this, arguments);
-        _this20.numberMask = text_mask_addons_dist_createNumberMask__WEBPACK_IMPORTED_MODULE_10___default()({
+        _this21 = _super27.apply(this, arguments);
+        _this21.numberMask = text_mask_addons_dist_createNumberMask__WEBPACK_IMPORTED_MODULE_10___default()({
           allowDecimal: false,
           prefix: ''
         });
-        return _this20;
+        return _this21;
       }
       /**
        * @param {?} value
@@ -3566,12 +3628,12 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
       var _super28 = _createSuper(JsonFormBootstrap4);
 
       function JsonFormBootstrap4() {
-        var _this21;
+        var _this22;
 
         _classCallCheck(this, JsonFormBootstrap4);
 
-        _this21 = _super28.apply(this, arguments);
-        _this21.fieldTypes = {
+        _this22 = _super28.apply(this, arguments);
+        _this22.fieldTypes = {
           string: StringComponent,
           select: SelectComponent,
           number: NumberComponent,
@@ -3587,7 +3649,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
           money: MoneyComponent,
           button: ButtonComponent
         };
-        return _this21;
+        return _this22;
       }
 
       return JsonFormBootstrap4;
@@ -3621,7 +3683,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
       _createClass(ChooserComponent, [{
         key: "getTranslation",
         value: function getTranslation(titleArray) {
-          var _this22 = this;
+          var _this23 = this;
 
           if (Array.isArray(titleArray)) {
             /** @type {?} */
@@ -3631,7 +3693,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
             * @return {?}
             */
             function (val) {
-              return val.language === _this22.language;
+              return val.language === _this23.language;
             });
             return translatedTitle[0] && translatedTitle[0].value ? Object(lodash__WEBPACK_IMPORTED_MODULE_6__["startCase"])(translatedTitle[0].value.replace(/<.*?>/g, '')) : titleArray[0].value;
           } else {
@@ -3847,7 +3909,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
       }, {
         key: "drawButton",
         value: function drawButton() {
-          var _this23 = this;
+          var _this24 = this;
 
           this.button.clear();
           /** @type {?} */
@@ -3882,8 +3944,8 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
           * @return {?}
           */
           function (event) {
-            if (_this23.cancel.length > 0) {
-              _this23.handleClick.emit(event);
+            if (_this24.cancel.length > 0) {
+              _this24.handleClick.emit(event);
             }
           });
 
@@ -4427,13 +4489,13 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
       var _super34 = _createSuper(PhotoMaterialComponent);
 
       function PhotoMaterialComponent() {
-        var _this24;
+        var _this25;
 
         _classCallCheck(this, PhotoMaterialComponent);
 
-        _this24 = _super34.apply(this, arguments);
-        _this24.error = false;
-        return _this24;
+        _this25 = _super34.apply(this, arguments);
+        _this25.error = false;
+        return _this25;
       }
       /**
        * @return {?}
@@ -4455,7 +4517,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
       }, {
         key: "onChange",
         value: function onChange(event) {
-          var _this25 = this;
+          var _this26 = this;
 
           /** @type {?} */
           var file = event.target.files[0];
@@ -4468,23 +4530,23 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
           * @return {?}
           */
           function () {
-            _this25.processFile(reader.result, file.type).then(
+            _this26.processFile(reader.result, file.type).then(
             /**
             * @param {?} data
             * @return {?}
             */
             function (data) {
-              _this25.error = false;
-              _this25.photoData = data.toString();
+              _this26.error = false;
+              _this26.photoData = data.toString();
 
-              _this25.control.setValue(_this25.photoData);
+              _this26.control.setValue(_this26.photoData);
             })["catch"](
             /**
             * @param {?} err
             * @return {?}
             */
             function (err) {
-              _this25.error = true;
+              _this26.error = true;
             });
           };
 
@@ -4493,7 +4555,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
           * @return {?}
           */
           function () {
-            _this25.error = true;
+            _this26.error = true;
           };
 
           if (typeof file !== 'undefined') {
@@ -4689,14 +4751,14 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
       var _super37 = _createSuper(CheckboxgroupMaterialComponent);
 
       function CheckboxgroupMaterialComponent() {
-        var _this26;
+        var _this27;
 
         _classCallCheck(this, CheckboxgroupMaterialComponent);
 
-        _this26 = _super37.apply(this, arguments);
-        _this26.checkboxGroupValues = [];
-        _this26.randomSuffix = Math.random().toString(36).substring(7);
-        return _this26;
+        _this27 = _super37.apply(this, arguments);
+        _this27.checkboxGroupValues = [];
+        _this27.randomSuffix = Math.random().toString(36).substring(7);
+        return _this27;
       }
       /**
        * @param {?} event
@@ -4910,12 +4972,12 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
       var _super42 = _createSuper(JsonFormMaterial);
 
       function JsonFormMaterial() {
-        var _this27;
+        var _this28;
 
         _classCallCheck(this, JsonFormMaterial);
 
-        _this27 = _super42.apply(this, arguments);
-        _this27.fieldTypes = {
+        _this28 = _super42.apply(this, arguments);
+        _this28.fieldTypes = {
           string: StringMaterialComponent,
           select: SelectMaterialComponent,
           number: NumberMaterialComponent,
@@ -4931,7 +4993,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
           money: MoneyComponent,
           button: ButtonMaterialComponent
         };
-        return _this27;
+        return _this28;
       }
 
       return JsonFormMaterial;
@@ -5127,13 +5189,13 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
       var _super45 = _createSuper(TruUiPhotoComponent);
 
       function TruUiPhotoComponent() {
-        var _this28;
+        var _this29;
 
         _classCallCheck(this, TruUiPhotoComponent);
 
-        _this28 = _super45.apply(this, arguments);
-        _this28.selectFile = false;
-        return _this28;
+        _this29 = _super45.apply(this, arguments);
+        _this29.selectFile = false;
+        return _this29;
       }
       /**
        * @return {?}
@@ -5145,6 +5207,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
         value: function resetUpload() {
           this.file = {};
           this.selectFile = false;
+          this.fileSize = null;
           this.control.reset();
         }
         /**
@@ -5161,19 +5224,34 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
               while (1) {
                 switch (_context.prev = _context.next) {
                   case 0:
+                    if (!(this.schema.maxSize && +this.schema.maxSize < +files[0].size / 1024 / 1024)) {
+                      _context.next = 6;
+                      break;
+                    }
+
+                    this.fileSize = null;
+                    this.control.setErrors({
+                      maxSize: true
+                    });
+                    this.control.markAsTouched();
+                    _context.next = 14;
+                    break;
+
+                  case 6:
                     this.file = files[0];
+                    this.fileSize = null;
                     this.selectFile = true;
                     /** @type {?} */
 
-                    _context.next = 4;
+                    _context.next = 11;
                     return this.toBase64(this.file);
 
-                  case 4:
+                  case 11:
                     file = _context.sent;
                     this.photoData = file.toString();
                     this.control.setValue(this.photoData);
 
-                  case 7:
+                  case 14:
                   case "end":
                     return _context.stop();
                 }
@@ -5189,7 +5267,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
       }, {
         key: "shortenSize",
         value: function shortenSize(data) {
-          return data.toString().substring(0, 4);
+          return data.toString().substring(0, 5);
         }
         /**
          * @param {?} files
@@ -5205,19 +5283,34 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
               while (1) {
                 switch (_context2.prev = _context2.next) {
                   case 0:
+                    if (!(this.schema.maxSize && +this.schema.maxSize < +files.target.files[0].size / 1024 / 1024)) {
+                      _context2.next = 6;
+                      break;
+                    }
+
+                    this.fileSize = null;
+                    this.control.setErrors({
+                      maxSize: true
+                    });
+                    this.control.markAsTouched();
+                    _context2.next = 14;
+                    break;
+
+                  case 6:
                     this.file = files.target.files[0];
+                    this.fileSize = null;
                     this.selectFile = true;
                     /** @type {?} */
 
-                    _context2.next = 4;
+                    _context2.next = 11;
                     return this.toBase64(this.file);
 
-                  case 4:
+                  case 11:
                     file = _context2.sent;
                     this.photoData = file.toString();
                     this.control.setValue(this.photoData);
 
-                  case 7:
+                  case 14:
                   case "end":
                     return _context2.stop();
                 }
@@ -5271,8 +5364,8 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
       type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"],
       args: [{
         selector: 'jf-tru-ui-photo',
-        template: "<label [attr.class]=\"schema.key\" [ngClass]=\"{'required': isRequired()}\" style=\"margin-bottom: 6px;\">\n    <span class=\"tru-ui-lable\" [innerHTML]=\"title()\"></span><sup *ngIf=\"isRequired()\">*</sup>\n</label>\n<div class=\"tru-form-group\" jfDragAndDrop (filesDropped)=\"handleDrop($event);fileInput.value = null\">\n  \n    <label [ngClass]=\"{'d-none': getControlValue().length > 0}\"  style=\"margin-bottom: 0 !important;\">\n      <div class=\"tru-drag-and-drop\">\n        <span *ngIf=\"language === 'en'; else french\">Drop your file here or <span class=\"primary-color browse-btn\">Browse</span></span>\n        <ng-template #french><span>D\xE9posez votre fichier ici ou <span class=\"primary-color browse-btn\">naviguez</span></span></ng-template>\n      </div>\n    <input #fileInput\n      style=\"display: none\" class=\"tru-input\" type=\"file\" (change)=\"dragAndDrop($event);fileInput.value = null\"  />\n    </label>\n    <div class=\"file-preview-container\"  [ngClass]=\"{'d-none': !getControlValue().length}\">\n      <div style=\"max-width: 165px;text-overflow: ellipsis;overflow: hidden;display: block;\"><small >{{file?.name || title()}}</small></div>\n      <div>\n        <small style=\"color: #212121;font-size: 12px\" *ngIf=\"file && file.size\" >{{shortenSize(file?.size/1024/1024)}}MB</small>\n        <button class=\"btn-remove\" style=\"cursor: pointer\" type=\"button\" (click)=\"resetUpload()\">\n            <svg width=\"12px\" height=\"12px\" viewBox=\"0 0 12 12\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">\n                <g id=\"Full-Admin\" stroke=\"none\" stroke-width=\"1\" fill=\"none\" fill-rule=\"evenodd\">\n                    <g id=\"My-Documents-listing-add-sidebar-Progress\" transform=\"translate(-1402.000000, -196.000000)\" fill=\"#FFFFFF\" fill-rule=\"nonzero\">\n                        <g id=\"Group-32\" transform=\"translate(1140.000000, 60.000000)\">\n                            <g id=\"Group-27\">\n                                <g id=\"Group-26\">\n                                    <g id=\"Group-11\" transform=\"translate(20.000000, 130.000000)\">\n                                        <g id=\"Group-10\">\n                                            <g id=\"Group-21\" transform=\"translate(1.000000, 0.000000)\">\n                                                <g id=\"Group-33\">\n                                                    <g id=\"Group-24\">\n                                                        <g id=\"Group-7-Copy\" transform=\"translate(235.000000, 0.000000)\">\n                                                            <g id=\"Group-13\">\n                                                                <path d=\"M6.75,7.96875 L6.75,7.3125 C6.75,7.00078125 7.0186942,6.75 7.35267857,6.75 L10.1651786,6.75 L10.4012277,6.31171875 C10.5016741,6.11953125 10.7101004,6 10.9386161,6 L13.8088728,6 C14.0373884,6 14.2458147,6.11953125 14.3487723,6.31171875 L14.5848214,6.75 L17.3973214,6.75 C17.7313058,6.75 18,7.00078125 18,7.3125 L18,7.96875 C18,8.1234375 17.8643973,8.25 17.6986607,8.25 L7.05133929,8.25 C6.88560268,8.25 6.75,8.1234375 6.75,7.96875 Z M17.1964286,9.28125 L17.1964286,16.875 C17.1964286,17.4960938 16.656529,18 15.9910714,18 L8.75892857,18 C8.09347098,18 7.55357143,17.4960938 7.55357143,16.875 L7.55357143,9.28125 C7.55357143,9.1265625 7.68917411,9 7.85491071,9 L16.8950893,9 C17.0608259,9 17.1964286,9.1265625 17.1964286,9.28125 Z M10.3660714,10.875 C10.3660714,10.66875 10.1852679,10.5 9.96428571,10.5 C9.74330357,10.5 9.5625,10.66875 9.5625,10.875 L9.5625,16.125 C9.5625,16.33125 9.74330357,16.5 9.96428571,16.5 C10.1852679,16.5 10.3660714,16.33125 10.3660714,16.125 L10.3660714,10.875 Z M12.7767857,10.875 C12.7767857,10.66875 12.5959821,10.5 12.375,10.5 C12.1540179,10.5 11.9732143,10.66875 11.9732143,10.875 L11.9732143,16.125 C11.9732143,16.33125 12.1540179,16.5 12.375,16.5 C12.5959821,16.5 12.7767857,16.33125 12.7767857,16.125 L12.7767857,10.875 Z M15.1875,10.875 C15.1875,10.66875 15.0066964,10.5 14.7857143,10.5 C14.5647321,10.5 14.3839286,10.66875 14.3839286,10.875 L14.3839286,16.125 C14.3839286,16.33125 14.5647321,16.5 14.7857143,16.5 C15.0066964,16.5 15.1875,16.33125 15.1875,16.125 L15.1875,10.875 Z\" id=\"trash-alt\"></path>\n                                                            </g>\n                                                        </g>\n                                                    </g>\n                                                </g>\n                                            </g>\n                                        </g>\n                                    </g>\n                                </g>\n                            </g>\n                        </g>\n                    </g>\n                </g>\n            </svg>        \n         </button>\n      </div>\n    </div>\n<jf-tru-ui-error [control]=\"control\" [language]=\"language || 'en'\"></jf-tru-ui-error>\n  </div>",
-        styles: [".tru-ui-lable{font-size:14px;color:#8c8c8c;margin-bottom:6px;padding:0}.tru-drag-and-drop{text-align:center;padding:30px!important;background-color:#fafafa;border:1px dashed #bfbfbf;border-radius:6px}.tru-drag-and-drop>span{font-size:12px;color:#bfbfbf}.browse-btn:hover{cursor:pointer;text-decoration:underline}.tru-form-actions{display:flex;flex-direction:row;justify-content:flex-start;align-items:flex-start;margin-top:30px;margin-left:23px}.file-preview-container{display:flex;flex-direction:row;justify-content:space-between;align-items:center}.reset-btn{width:24px;height:24px;margin-left:3px;border-radius:3px;border-style:none}.d-none{display:none}.btn-remove{background-color:#f75757;width:24px;height:24px;margin-left:3px;border-radius:3px;border-style:none}"]
+        template: "<label [attr.class]=\"schema.key\" [ngClass]=\"{'required': isRequired()}\" style=\"margin-bottom: 6px;\">\n    <span class=\"tru-ui-lable\" [innerHTML]=\"title()\"></span><sup *ngIf=\"isRequired()\">*</sup>\n</label>\n<div class=\"tru-form-group\" jfDragAndDrop (filesDropped)=\"handleDrop($event);fileInput.value = null\">\n  \n    <label [ngClass]=\"{'d-none': getControlValue().length > 0}\"  style=\"margin-bottom: 0 !important;\">\n      <div class=\"tru-drag-and-drop\" [ngClass]=\"{'invalid-upload': control.invalid}\">\n        <span *ngIf=\"language === 'en'; else french\">Drop your file here or <span class=\"primary-color browse-btn\">Browse</span></span>\n        <ng-template #french><span>D\xE9posez votre fichier ici ou <span class=\"primary-color browse-btn\">naviguez</span></span></ng-template>\n        <div *ngIf=\"schema.maxSize\" style=\"color: #bfbfbf\"> <small>Maximum {{schema.maxSize}} MB</small></div>\n      </div>\n    <input #fileInput\n      style=\"display: none\" class=\"tru-input\" type=\"file\" (change)=\"dragAndDrop($event);fileInput.value = null\"  />\n    </label>\n    <div class=\"file-preview-container\"  [ngClass]=\"{'d-none': !getControlValue().length}\">\n      <div style=\"max-width: 165px;text-overflow: ellipsis;overflow: hidden;display: block;\"><small >{{file?.name || title()}}</small></div>\n      <div>\n        <small style=\"color: #212121;font-size: 12px\" *ngIf=\"file && file.size\" >{{shortenSize(file?.size/1024/1024)}} MB</small>\n        <small style=\"color: #212121;font-size: 12px\" *ngIf=\"fileSize\" > {{shortenSize(fileSize/1024/1024)}} MB</small>\n        <button class=\"btn-remove\" style=\"cursor: pointer\" type=\"button\" (click)=\"resetUpload()\">\n            <svg width=\"12px\" height=\"12px\" viewBox=\"0 0 12 12\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">\n                <g id=\"Full-Admin\" stroke=\"none\" stroke-width=\"1\" fill=\"none\" fill-rule=\"evenodd\">\n                    <g id=\"My-Documents-listing-add-sidebar-Progress\" transform=\"translate(-1402.000000, -196.000000)\" fill=\"#FFFFFF\" fill-rule=\"nonzero\">\n                        <g id=\"Group-32\" transform=\"translate(1140.000000, 60.000000)\">\n                            <g id=\"Group-27\">\n                                <g id=\"Group-26\">\n                                    <g id=\"Group-11\" transform=\"translate(20.000000, 130.000000)\">\n                                        <g id=\"Group-10\">\n                                            <g id=\"Group-21\" transform=\"translate(1.000000, 0.000000)\">\n                                                <g id=\"Group-33\">\n                                                    <g id=\"Group-24\">\n                                                        <g id=\"Group-7-Copy\" transform=\"translate(235.000000, 0.000000)\">\n                                                            <g id=\"Group-13\">\n                                                                <path d=\"M6.75,7.96875 L6.75,7.3125 C6.75,7.00078125 7.0186942,6.75 7.35267857,6.75 L10.1651786,6.75 L10.4012277,6.31171875 C10.5016741,6.11953125 10.7101004,6 10.9386161,6 L13.8088728,6 C14.0373884,6 14.2458147,6.11953125 14.3487723,6.31171875 L14.5848214,6.75 L17.3973214,6.75 C17.7313058,6.75 18,7.00078125 18,7.3125 L18,7.96875 C18,8.1234375 17.8643973,8.25 17.6986607,8.25 L7.05133929,8.25 C6.88560268,8.25 6.75,8.1234375 6.75,7.96875 Z M17.1964286,9.28125 L17.1964286,16.875 C17.1964286,17.4960938 16.656529,18 15.9910714,18 L8.75892857,18 C8.09347098,18 7.55357143,17.4960938 7.55357143,16.875 L7.55357143,9.28125 C7.55357143,9.1265625 7.68917411,9 7.85491071,9 L16.8950893,9 C17.0608259,9 17.1964286,9.1265625 17.1964286,9.28125 Z M10.3660714,10.875 C10.3660714,10.66875 10.1852679,10.5 9.96428571,10.5 C9.74330357,10.5 9.5625,10.66875 9.5625,10.875 L9.5625,16.125 C9.5625,16.33125 9.74330357,16.5 9.96428571,16.5 C10.1852679,16.5 10.3660714,16.33125 10.3660714,16.125 L10.3660714,10.875 Z M12.7767857,10.875 C12.7767857,10.66875 12.5959821,10.5 12.375,10.5 C12.1540179,10.5 11.9732143,10.66875 11.9732143,10.875 L11.9732143,16.125 C11.9732143,16.33125 12.1540179,16.5 12.375,16.5 C12.5959821,16.5 12.7767857,16.33125 12.7767857,16.125 L12.7767857,10.875 Z M15.1875,10.875 C15.1875,10.66875 15.0066964,10.5 14.7857143,10.5 C14.5647321,10.5 14.3839286,10.66875 14.3839286,10.875 L14.3839286,16.125 C14.3839286,16.33125 14.5647321,16.5 14.7857143,16.5 C15.0066964,16.5 15.1875,16.33125 15.1875,16.125 L15.1875,10.875 Z\" id=\"trash-alt\"></path>\n                                                            </g>\n                                                        </g>\n                                                    </g>\n                                                </g>\n                                            </g>\n                                        </g>\n                                    </g>\n                                </g>\n                            </g>\n                        </g>\n                    </g>\n                </g>\n            </svg>        \n         </button>\n      </div>\n    </div>\n  </div>\n  <jf-tru-ui-error [control]=\"control\" [language]=\"language || 'en'\"></jf-tru-ui-error>\n",
+        styles: [".tru-ui-lable{font-size:14px;color:#8c8c8c;margin-bottom:6px;padding:0}.tru-drag-and-drop{text-align:center;padding:30px!important;background-color:#fafafa;border:1px dashed #bfbfbf;border-radius:6px}.tru-drag-and-drop>span{font-size:12px;color:#bfbfbf}.browse-btn:hover{cursor:pointer;text-decoration:underline}.tru-form-actions{display:flex;flex-direction:row;justify-content:flex-start;align-items:flex-start;margin-top:30px;margin-left:23px}.file-preview-container{display:flex;flex-direction:row;justify-content:space-between;align-items:center}.reset-btn{width:24px;height:24px;margin-left:3px;border-radius:3px;border-style:none}.d-none{display:none}.btn-remove{background-color:#f75757;width:24px;height:24px;margin-left:3px;border-radius:3px;border-style:none}.invalid-upload{border-color:#f75757!important}"]
       }]
     }];
 
@@ -5290,13 +5383,13 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
       var _super46 = _createSuper(TruUiTextareaComponent);
 
       function TruUiTextareaComponent() {
-        var _this29;
+        var _this30;
 
         _classCallCheck(this, TruUiTextareaComponent);
 
-        _this29 = _super46.apply(this, arguments);
-        _this29.randomSuffix = Math.random().toString(36).substring(7);
-        return _this29;
+        _this30 = _super46.apply(this, arguments);
+        _this30.randomSuffix = Math.random().toString(36).substring(7);
+        return _this30;
       }
       /**
        * @param {?} i
@@ -5514,13 +5607,13 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
       var _super51 = _createSuper(TruUiRadigroupComponent);
 
       function TruUiRadigroupComponent() {
-        var _this30;
+        var _this31;
 
         _classCallCheck(this, TruUiRadigroupComponent);
 
-        _this30 = _super51.apply(this, arguments);
-        _this30.randomSuffix = Math.random().toString(36).substring(7);
-        return _this30;
+        _this31 = _super51.apply(this, arguments);
+        _this31.randomSuffix = Math.random().toString(36).substring(7);
+        return _this31;
       }
       /**
        * @param {?} key
@@ -5580,13 +5673,13 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
       var _super52 = _createSuper(TruUiCheckboxgroupComponent);
 
       function TruUiCheckboxgroupComponent() {
-        var _this31;
+        var _this32;
 
         _classCallCheck(this, TruUiCheckboxgroupComponent);
 
-        _this31 = _super52.apply(this, arguments);
-        _this31.checkboxGroupValues = [];
-        return _this31;
+        _this32 = _super52.apply(this, arguments);
+        _this32.checkboxGroupValues = [];
+        return _this32;
       }
       /**
        * @param {?} event
@@ -5709,7 +5802,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
       }, {
         key: "getTranslation",
         value: function getTranslation(titleArray) {
-          var _this32 = this;
+          var _this33 = this;
 
           if (Array.isArray(titleArray)) {
             /** @type {?} */
@@ -5719,7 +5812,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
             * @return {?}
             */
             function (val) {
-              return val.language === _this32.language;
+              return val.language === _this33.language;
             });
             return translatedTitle[0] ? this.strToUpperCase(translatedTitle[0].value.replace(/<.*?>/g, '')) : false;
           } else {
@@ -5772,7 +5865,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
       }, {
         key: "cloneControl",
         value: function cloneControl(control) {
-          var _this33 = this;
+          var _this34 = this;
 
           /** @type {?} */
           var newControl;
@@ -5790,7 +5883,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
             * @return {?}
             */
             function (key) {
-              formGroup.addControl(key, _this33.cloneControl(controls[key]));
+              formGroup.addControl(key, _this34.cloneControl(controls[key]));
             });
             newControl = formGroup;
           } else if (control instanceof SchemaFormArray) {
@@ -5802,7 +5895,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
             * @return {?}
             */
             function (formControl) {
-              formArray.push(_this33.cloneControl(formControl));
+              formArray.push(_this34.cloneControl(formControl));
               return formArray;
             });
             newControl = formArray;
@@ -5889,14 +5982,14 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
       var _super54 = _createSuper(TruUiAutocompleteComponent);
 
       function TruUiAutocompleteComponent() {
-        var _this34;
+        var _this35;
 
         _classCallCheck(this, TruUiAutocompleteComponent);
 
-        _this34 = _super54.apply(this, arguments);
-        _this34.selectedValue = '';
-        _this34.values = [];
-        return _this34;
+        _this35 = _super54.apply(this, arguments);
+        _this35.selectedValue = '';
+        _this35.values = [];
+        return _this35;
       }
       /**
        * @return {?}
@@ -5906,7 +5999,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
       _createClass(TruUiAutocompleteComponent, [{
         key: "ngOnInit",
         value: function ngOnInit() {
-          var _this35 = this;
+          var _this36 = this;
 
           if (this.schema.enumNames) {
             this.values = [];
@@ -5917,10 +6010,17 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
             * @return {?}
             */
             function (enm, i) {
-              _this35.values.push({
-                "enum": enm,
-                enumName: _this35.schema.enumNames[i]
-              });
+              if (Array.isArray(_this36.schema.enumNames[i])) {
+                _this36.values.push({
+                  "enum": enm,
+                  enumName: _this36.getTranslation(_this36.schema.enumNames[i])
+                });
+              } else {
+                _this36.values.push({
+                  "enum": enm,
+                  enumName: _this36.schema.enumNames[i]
+                });
+              }
             });
           } else {
             this.values = [];
@@ -5930,7 +6030,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
             * @return {?}
             */
             function (enm) {
-              _this35.values.push({
+              _this36.values.push({
                 "enum": enm,
                 enumName: enm
               });
@@ -5944,7 +6044,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
       }, {
         key: "typeaheadNoResults",
         value: function typeaheadNoResults() {
-          var _this36 = this;
+          var _this37 = this;
 
           if (this.selectedValue !== '') {
             /** @type {?} */
@@ -5955,14 +6055,14 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
             * @return {?}
             */
             function (en) {
-              return en.enumName === _this36.selectedValue;
+              return en.enumName === _this37.selectedValue;
             }) : this.values.filter(
             /**
             * @param {?} en
             * @return {?}
             */
             function (en) {
-              return en["enum"] === _this36.selectedValue;
+              return en["enum"] === _this37.selectedValue;
             });
             searchValue.length ? this.setValue(searchValue[0]["enum"]) : this.control.setErrors({
               notInMenu: 'invalid'
@@ -6021,12 +6121,12 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
       var _super55 = _createSuper(TruUi);
 
       function TruUi() {
-        var _this37;
+        var _this38;
 
         _classCallCheck(this, TruUi);
 
-        _this37 = _super55.apply(this, arguments);
-        _this37.fieldTypes = {
+        _this38 = _super55.apply(this, arguments);
+        _this38.fieldTypes = {
           string: TruUiStringComponent,
           select: TruUiSelectComponent,
           number: TruUiNumberComponent,
@@ -6042,7 +6142,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
           button: TruUiButtonComponent,
           autocomplete: TruUiAutocompleteComponent
         };
-        return _this37;
+        return _this38;
       }
 
       return TruUi;
@@ -6078,7 +6178,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
       type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"],
       args: [{
         selector: 'jf-tru-ui-error',
-        template: "<div *ngIf=\"control.invalid && (control.dirty || control.touched)\" class=\"invalid-feedback tru-ui-feedback\">\n    <ng-container *ngIf=\"control.errors && control.errors['required']\">\n      {{getLanguage().required}}\n    </ng-container>\n    <ng-container *ngIf=\"control.errors && control.errors['pattern']\">\n      {{getLanguage().invalid}}\n    </ng-container>\n    <ng-container *ngIf=\"control.errors && control.errors['isMatch']\">\n      {{getLanguage().is_match}}\n    </ng-container>\n    <ng-container *ngIf=\"control.errors && control.errors['email']\">\n      {{getLanguage().email_invalid}}\n    </ng-container>\n    <ng-container *ngIf=\"control.errors && control.errors['minlength']\">\n      {{getLanguage().minimum_invalid}} {{control.errors['minlength']['requiredLength']}} {{getLanguage().characters}}\n    </ng-container>\n    <ng-container *ngIf=\"control.errors && control.errors['maxlength']\">\n      {{getLanguage().maximum_invalid}} {{control.errors['maxlength']['requiredLength']}}  {{getLanguage().characters}}\n    </ng-container>\n    <ng-container *ngIf=\"control.errors && control.errors['min']\">\n      {{getLanguage().greater_than}} {{control.errors['min']['min']}}\n    </ng-container>\n    <ng-container *ngIf=\"control.errors && control.errors['max']\">\n      {{getLanguage().less_than}}  {{control.errors['max']['max']}}\n    </ng-container>\n    <ng-container *ngIf=\"control.errors && control.errors['notInMenu']\">\n      {{getLanguage().not_in_menu}}\n    </ng-container>\n    <ng-container *ngIf=\"control.errors && control.errors['customError']\">\n      {{getLanguage().invalid}}\n      {{control.errors['customError']}} \n    </ng-container>\n  </div>",
+        template: "<div *ngIf=\"control.invalid && (control.dirty || control.touched)\" class=\"invalid-feedback tru-ui-feedback\">\n    <ng-container *ngIf=\"control.errors && control.errors['required']\">\n      {{getLanguage().required}}\n    </ng-container>\n    <ng-container *ngIf=\"control.errors && control.errors['pattern']\">\n      {{getLanguage().invalid}}\n    </ng-container>\n    <ng-container *ngIf=\"control.errors && control.errors['isMatch']\">\n      {{getLanguage().is_match}}\n    </ng-container>\n    <ng-container *ngIf=\"control.errors && control.errors['email']\">\n      {{getLanguage().email_invalid}}\n    </ng-container>\n    <ng-container *ngIf=\"control.errors && control.errors['minlength']\">\n      {{getLanguage().minimum_invalid}} {{control.errors['minlength']['requiredLength']}} {{getLanguage().characters}}\n    </ng-container>\n    <ng-container *ngIf=\"control.errors && control.errors['maxlength']\">\n      {{getLanguage().maximum_invalid}} {{control.errors['maxlength']['requiredLength']}}  {{getLanguage().characters}}\n    </ng-container>\n    <ng-container *ngIf=\"control.errors && control.errors['min']\">\n      {{getLanguage().greater_than}} {{control.errors['min']['min']}}\n    </ng-container>\n    <ng-container *ngIf=\"control.errors && control.errors['max']\">\n      {{getLanguage().less_than}}  {{control.errors['max']['max']}}\n    </ng-container>\n    <ng-container *ngIf=\"control.errors && control.errors['notInMenu']\">\n      {{getLanguage().not_in_menu}}\n    </ng-container>\n    <ng-container *ngIf=\"control.errors && control.errors['customError']\">\n      {{getLanguage().invalid}}\n      {{control.errors['customError']}} \n    </ng-container>\n    <ng-container *ngIf=\"control.errors && control.errors['maxSize']\">\n      {{getLanguage().invalid}}\n      {{getLanguage().max_size }}, maximum {{control.schema.maxSize}} MB\n    </ng-container>\n  </div>",
         styles: [".tru-ui-feedback{color:#f75a5a;font-size:12px;margin-bottom:6px}.invalid-feedback{display:block!important}"]
       }]
     }];
@@ -7019,11 +7119,11 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
       _createClass(FrameworkDropdownComponent, [{
         key: "ngOnInit",
         value: function ngOnInit() {
-          var _this38 = this;
+          var _this39 = this;
 
           if (this.location.path()) {
             this.value = this.frameworks.find(function (f) {
-              return _this38.location.path().indexOf(f) > -1;
+              return _this39.location.path().indexOf(f) > -1;
             });
           } else {
             this.value = 'tru-ui';
@@ -7411,7 +7511,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
       _createClass(SubmittedDataComponent, [{
         key: "ngOnInit",
         value: function ngOnInit() {
-          var _this39 = this;
+          var _this40 = this;
 
           this.options = {
             readOnly: true
@@ -7422,9 +7522,9 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
           };
           this.dataservice.data.subscribe(function (d) {
             if (d) {
-              _this39.data = JSON.stringify(d, null, 2);
-              _this39.model = {
-                value: _this39.data,
+              _this40.data = JSON.stringify(d, null, 2);
+              _this40.model = {
+                value: _this40.data,
                 language: 'json'
               };
             }
@@ -7649,15 +7749,33 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
           required: ['first_name', 'last_name']
         },
         auto_complete: {
-          title: 'Photo example',
-          description: 'Photos are common to forms',
+          title: 'Auto complete example',
+          description: 'complete are common to forms',
           type: 'object',
           properties: {
             auto_complete: {
               type: 'string',
               format: 'autocomplete',
               "enum": ['1', '2', '3'],
-              enumNames: ['js', 'sql', 'api']
+              enumNames: [[{
+                "language": "en",
+                "value": "Hot Dog"
+              }, {
+                "language": "fr",
+                "value": "Dešrainis"
+              }], [{
+                "language": "en",
+                "value": "Pizza"
+              }, {
+                "language": "fr",
+                "value": "pica"
+              }], [{
+                "language": "en",
+                "value": "Mexican chicken"
+              }, {
+                "language": "fr",
+                "value": "Mexican chicken"
+              }]]
             }
           }
         },
@@ -7668,10 +7786,28 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
           properties: {
             test_photo: {
               type: 'string',
-              format: 'photo'
+              format: 'photo',
+              maxSize: '2'
             }
           },
           required: ['test_photo']
+        },
+        photo_url: {
+          title: 'Photo Url',
+          type: 'object',
+          properties: {
+            photo_base64: {
+              type: 'string',
+              format: 'photo',
+              maxSize: '5'
+            },
+            photo_url: {
+              type: 'string',
+              format: 'photo',
+              maxSize: '4'
+            }
+          },
+          required: ['photo_base64']
         },
         cancel_test: {
           title: 'Cancel',
@@ -8001,7 +8137,8 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
                 'properties': {
                   'photo': {
                     type: 'string',
-                    'format': 'photo'
+                    'format': 'photo',
+                    maximum: '1'
                   }
                 }
               }
@@ -8235,7 +8372,9 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
       };
       this.data = {
         first_name: 'John',
-        last_name: 'dave'
+        last_name: 'dave',
+        photo_base64: "data:image/png;base64,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",
+        photo_url: 'https://www.trufla.com/wp-content/uploads/2020/10/truLeads-car-insurance-workflow-ec.png'
       };
     };
 

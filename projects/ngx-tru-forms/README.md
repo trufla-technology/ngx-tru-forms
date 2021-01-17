@@ -185,7 +185,8 @@ const onFormSubmit = (form) => console.log(form);
 "enumNames": ["Yes", "No"]
 
 ```  
-`verify`: Boolean default false duplicate string type for verification
+`verify`: Boolean default false duplicate string type for verification   
+`maxSize`: for photo format to verify size, unit are in MB
 ### Extending
 
 This module allows for extension via injectors.

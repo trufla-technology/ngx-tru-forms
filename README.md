@@ -1,6 +1,6 @@
 ## Tru Forms
 
-Angular 6+ module for generating forms from JSON schema. Refer to documentation for structure of JSON Schema [PDF](https://spacetelescope.github.io/understanding-json-schema/UnderstandingJSONSchema.pdf)/[HTML](https://spacetelescope.github.io/understanding-json-schema/index.html).
+Angular 8+ module for generating forms from JSON schema. Refer to documentation for structure of JSON Schema [PDF](https://spacetelescope.github.io/understanding-json-schema/UnderstandingJSONSchema.pdf)/[HTML](https://spacetelescope.github.io/understanding-json-schema/index.html).
 This component utilizes [Reactive Forms](https://angular.io/guide/reactive-forms) for most of its functionality.
 
 ### Table of Contents
@@ -24,27 +24,92 @@ This component utilizes [Reactive Forms](https://angular.io/guide/reactive-forms
 
 ### Installation
 
-```bash
-npm install @trufla/ngx-tru-forms --save
-```
+`npm install @trufla/ngx-tru-forms --save`
+
 
 ### Usage
 
 Module can be used with [Angular Material](https://material.angular.io/) or [Bootstrap 4](https://getbootstrap.com/).
-Import either `JsonFormBootstrap4Module` or `JsonFormMaterialModule` and use it with `JsonFormModule`. For example: 
-```
-import { JsonFormModule, JsonFormMaterialModule } from '@trufla/ngx-tru-forms';
+Import either `JsonFormBootstrap4Module` or `JsonFormMaterialModule` or `TruUiModule` and use it with `JsonFormModule`. For example: 
+
+**_Example uses Angular Material_**
+
+`app.module.ts`
+```ts
+import {
+  JsonFormModule,
+  JsonFormMaterialModule,
+  JsonFormMaterila
+} from '@trufla/ngx-tru-forms';
+// for using tru ui
+// import { JsonFormModule, TruUiModule, JsonFormFieldsService, TruUi } from '@trufla/ngx-tru-forms';
 
 @NgModule({
   imports: [
-    JsonFormModule.forRoot(JsonFormMaterialModule)
+    JsonFormMaterialModule,
+    // for using tru ui
+    // TruUiModule
+    // for using Bootstrap
+    // JsonFormBootstrap4Module
+    {
+      ngModule: JsonFormModule,
+      providers: [
+        {
+          provide: JsonFormFieldsService,
+          useClass: JsonFormMaterial,
+          multi: true
+        }
+        // for using tru ui
+        // {
+        //   provide: JsonFormFieldsService,
+        //   useClass: TruUi,
+        //   multi: true
+        // }
+        // for using bootstrap
+        // {
+        //   provide: JsonFormBootstrap4,
+        //   useClass: TruUi,
+        //   multi: true
+        // }
+      ]
+    }
   ]
 })
 ```
 
-In component add following:
+`app.component.ts`
+```ts
+
+export class AppComponent {
+  schema = {
+    "type": "object",
+    "properties": {
+      "username": {
+        "type": "string"
+      },
+      "password": {
+        "type": "string",
+        "format": "password"
+      }
+    },
+    "required": ["username", "password"]
+  };
+
+  handleSubmit(e) {
+    // e = { username: "john_doe", password: "123456789" }
+    this.loginService.login(e);
+  }
+}
+
 ```
-<jf-form></jf-form>
+
+`app.component.html`
+```HTML
+<jf-form
+  [schema]="schema"
+  [submit]="'Login'"
+  (handleSubmit)="handleSubmit($event)"
+></jf-form>
 ```
 
 ### Options
@@ -64,9 +129,10 @@ In component add following:
 | [isMultiStep] | Treat schema as multi step. See example. | |
 | [viewOnly] | Render only the labels and form data. Useful for reports. | |
 | [disabled] | Disable all the fields in the form. Set to true for disabled and null otherwise | |
+| [language] | Text for translation default is 'en' | |
 | (handleSubmit) | Watch for form submission. Return JSON Schema response data| |
 | (handleChange) | Watch for form changes | |
-| (handleCancel) | Watch for cancel click | |
+| (handleCancel) | Watch for cancel click (emitting value even if form invalid) | |
 
 For additional ways to modify and access the form see [External Methods](#external-methods).
 
@@ -83,7 +149,7 @@ const schema = {
     	"type": "string"
     }
 	},
-	"required": ["make"]
+	"required": ["first_name"]
 };
 
 const data = {
@@ -104,14 +170,27 @@ const onFormSubmit = (form) => console.log(form);
 
 ### Quick Reference
 `type`: string, number, object, array, boolean  
-`format (optional)`: date, photo, textarea
-`description (optional)`: hover text to describe purpose of field
+`format (optional)`: date, photo, textarea  
+`description (optional)`: hover text to describe purpose of field  
+`title`: string | array of objects each contains language and value for label or header or array title or object title 
+```JSON
+"title": [{"language": "en", "value": "first name"}, {"language": "fr", "value": "le prénom"}]
+```  
+`enumNames`: array of string or array of arrays contains translation array of objects if not provided enum used as default  
+```JSON
+// with translation
+"enumNames": [[{"language": "en", "value":  "Yes"}, {"language": "fr", "value":  "Qui"}],
+              [{"language": "en", "value":  "No"}, {"language": "fr", "value": "Non"}]]
+// without translation
+"enumNames": ["Yes", "No"]
 
+```  
+`verify`: Boolean default false duplicate string type for verification
 ### Extending
 
 This module allows for extension via injectors.
 
-```
+```ts
 constructor(
   jfDefaultsService: JsonFormDefaultsService,
   jfValidatorsService: JsonFormValidatorsService
@@ -121,14 +200,14 @@ constructor(
 #### Defaults
 
 Extend values in `default` tag. 
-```
+```ts
 this.jfDefaultsService.register('now', () => new Date());
 ```
 
 #### Validations
 
 Add JSON validator. 
-```
+```ts
 const ValidatorJSON = (control: AbstractControl) => {
   try {
     JSON.parse(control.value);
@@ -169,7 +248,7 @@ Fields would be `first_name`, `last_name`, `last_name.prefix.custom`.
 
 Add new field type. Create a component that extends CommonComponent. Add the following as a starting 
 template (or copy from string field).
-```
+```ts
 import { CommonComponent } from '@trufla/ngx-tru-forms';
 
 @Component({
@@ -200,16 +279,22 @@ export class CustomComponent extends CommonComponent {
 
 ```
 Add it to your module:
-```
+```ts
 entryComponents: [
   ColourPickerComponent
 ]
 ```
 
 Add it via the component:
-```
+```ts
 [fields]="{'colour': ColourPickerComponent}"
 ```
+
+Also you can disable Submit button by passing
+```HTML
+<jf-form [btnDisabled]="true"></jf-form>
+```
+
 Now objects of format `new_format` will show the CustomComponent.
 
 ## External Methods
@@ -236,7 +321,7 @@ Get number of required fields.
 We prefer [csswizardry-grids](https://github.com/csswizardry/csswizardry-grids) to align and order fields. Form, groups and labels are assigned classes which can be utilized globally or per form.
 Certain forms fields can be assigned classes on top of current defaults.
 
-```
+```js
 {
   first_name: {
     default: 'one-half grid__item'

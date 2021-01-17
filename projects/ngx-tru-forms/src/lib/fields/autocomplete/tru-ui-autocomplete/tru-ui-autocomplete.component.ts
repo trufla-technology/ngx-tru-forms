@@ -15,7 +15,11 @@ export class TruUiAutocompleteComponent extends CommonComponent implements OnIni
     if (this.schema.enumNames) {
       this.values = [];
       this.schema.enum.map((enm, i) => {
+        if (Array.isArray(this.schema.enumNames[i])) { 
+        this.values.push({enum: enm, enumName: this.getTranslation(this.schema.enumNames[i])});
+         } else {
         this.values.push({enum: enm, enumName: this.schema.enumNames[i]});
+      }
       });
     } else {
       this.values = [];

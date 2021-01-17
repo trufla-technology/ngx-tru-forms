@@ -49,4 +49,7 @@ export interface Schema {
 
   // add verify input
   verify?: any;
+
+  // add image uploader validation in MB
+  maxSize?: any
 }

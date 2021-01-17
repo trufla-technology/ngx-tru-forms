@@ -30,4 +30,8 @@
       {{getLanguage().invalid}}
       {{control.errors['customError']}} 
     </ng-container>
+    <ng-container *ngIf="control.errors && control.errors['maxSize']">
+      {{getLanguage().invalid}}
+      {{getLanguage().max_size }}, maximum {{control.schema.maxSize}} MB
+    </ng-container>
   </div>

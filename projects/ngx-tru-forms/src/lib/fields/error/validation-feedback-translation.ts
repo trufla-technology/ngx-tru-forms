@@ -11,7 +11,8 @@ export class ValidationFeedbackTranslation {
             greater_than: 'Enter a value greater than or equal to',
             less_than: 'Enter a value less than or equal to ',
             not_in_menu: ' Select from the dropdown list',
-            is_match: 'Value not matching'
+            is_match: 'Value not matching', 
+            max_size: 'File exceeded the allowed size'
         },
         fr: {
             confirm: 'Confirmer',
@@ -24,7 +25,8 @@ export class ValidationFeedbackTranslation {
             greater_than: 'Entrez une valeur supérieure ou égale à',
             less_than: 'Entrez une valeur inférieure ou égale à',
             not_in_menu: ' Sélectionner dans la liste déroulante',
-            is_match: 'valeur nesutampa'
+            is_match: 'valeur nesutampa',
+            max_size: 'Le fichier a dépassé la taille autorisée'
         }
     };
 }

@@ -19,6 +19,7 @@ export class CommonComponent implements AfterViewInit {
   disabled = false;
   language;
   isWebView = false;
+  fileSize= null;
   constructor(
     public sanitizer: DomSanitizer,
     public cd: ChangeDetectorRef,
@@ -33,6 +34,9 @@ export class CommonComponent implements AfterViewInit {
   }
 
   ngAfterViewInit() {
+    if ( this.schema && this.schema.format === 'photo' && this.control.value ) {
+       this.getImageFromUrl(this.control.value);
+      }
     this.localeService.use(this.language);
     this.cd.detectChanges();
   }
@@ -154,4 +158,18 @@ export class CommonComponent implements AfterViewInit {
        this.control.setErrors(error) : this.control.setErrors({...this.control.errors, isMatch: true });
     }
   }
+
+  validURL(str) {
+    const pattern = new RegExp('^(https?:\\/\\/)?'+ // protocol
+      '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|'+ // domain name
+      '((\\d{1,3}\\.){3}\\d{1,3}))'+ // OR ip (v4) address
+      '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*'+ // port and path
+      '(\\?[;&a-z\\d%_.~+=-]*)?'+ // query string
+      '(\\#[-a-z\\d_]*)?$','i'); // fragment locator
+    return !!pattern.test(str);
+  }
+
+  getImageFromUrl(url: any) {
+    fetch(url).then((r) => r.blob().then(s => this.fileSize = s.size).catch(() => this.fileSize = null)).catch(() => this.fileSize = null);
+}
 }
