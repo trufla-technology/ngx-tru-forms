@@ -239,8 +239,8 @@ class CommonComponent {
     /**
      * @param {?} sanitizer
      * @param {?} cd
-     * @param {?} localeService
-     * @param {?} validationFeedbackTranslation
+     * @param {?=} localeService
+     * @param {?=} validationFeedbackTranslation
      */
     constructor(sanitizer, cd, localeService, validationFeedbackTranslation) {
         this.sanitizer = sanitizer;

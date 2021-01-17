@@ -22,8 +22,8 @@ export class CommonComponent implements AfterViewInit {
   constructor(
     public sanitizer: DomSanitizer,
     public cd: ChangeDetectorRef,
-    private localeService: BsLocaleService,
-    private validationFeedbackTranslation: ValidationFeedbackTranslation
+    private localeService?: BsLocaleService,
+    private validationFeedbackTranslation?: ValidationFeedbackTranslation
   ) {
     if ( (/android|webos|iphone|ipad|ipod|blackberry|iemobile|opera mini/i.test(navigator.userAgent.toLowerCase())) ) {
       this.isWebView = true;

@@ -36,7 +36,7 @@ export class TruUiPhotoComponent extends CommonComponent {
     this.control.setValue(this.photoData);
   }
 
-  toBase64(file) {
+  toBase64(file): Promise<any> {
     return new Promise((resolve, reject) => {
     const reader = new FileReader();
     reader.readAsDataURL(file);
