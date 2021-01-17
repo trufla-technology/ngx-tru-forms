@@ -2,6 +2,17 @@
   "$schema": "../../node_modules/ng-packagr/ng-package.schema.json",
   "dest": "../../dist/ngx-tru-forms",
   "lib": {
-    "entryFile": "src/public_api.ts"
+    "entryFile": "src/public_api.ts",
+    "umdModuleIds": {
+      "moment": "moment",
+      "lodash": "lodash",
+      "ngx-bootstrap/datepicker": "datepicker",
+      "ngx-bootstrap/chronos": "chronos",
+      "ngx-bootstrap/locale": "locale",
+      "text-mask-addons/dist/createNumberMask": "createNumberMask",
+      "angular2-text-mask": "angular2TextMask",
+      "ngx-bootstrap/typeahead": "typeahead"
+
+    }
   }
 }
