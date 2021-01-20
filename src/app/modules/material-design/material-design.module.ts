@@ -2,7 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MaterialDesignComponent } from './material-design.component';
 import {JsonFormFieldsService, JsonFormMaterialModule, JsonFormModule, JsonFormMaterial} from '@trufla/ngx-tru-forms';
-import {RouterModule, Routes} from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 const routes: Routes = [
@@ -16,6 +17,7 @@ const routes: Routes = [
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
+    ReactiveFormsModule,
     JsonFormMaterialModule,
     {
       ngModule: JsonFormModule,
@@ -23,6 +25,7 @@ const routes: Routes = [
         {
           provide: JsonFormFieldsService,
           useClass: JsonFormMaterial,
+          multi: true
         }
       ]
     }

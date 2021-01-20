@@ -1,13 +1,37 @@
-<div >
+<div style="display: flex; flex-direction: row;justify-content: center;align-items: center;">
+<div style="width: 100%;" >
   <h6>Language</h6>
   <select  class="demo_input" (change)="changeLanguage($event.target.value)">
-    <option value="en">English</option>
-    <option value="fr">Frensh</option>
+    <option value="en" [selected]="language=== 'en'">English</option>
+    <option value="fr" [selected]="language=== 'fr'">Frensh</option>
   </select>
   </div>
+  <div style="width: 100%;" >
+    <h6>View only</h6>
+    <select  class="demo_input" (change)="toggleViewonly($event.target.value)">
+      <option disabled>select mode</option>
+      <option value="true" [selected]="viewOnly">on</option>
+      <option value="false" [selected]="!viewOnly">off</option>
+    </select>
+    </div>
+    <div style="width: 100%;" >
+      <h6>Data preview</h6>
+      <select  class="demo_input" (change)="toggleData($event.target.value)">
+        <option disabled> select preview </option>
+        <option value="true" [selected]="data">on</option>
+        <option value="false" [selected]="!data">off</option>
+      </select>
+      </div>
+    </div>
 <jf-form
+  #truForms
   [schema]="schema"
   (handleSubmit)="handleSubmit($event)"
   [language]="language"
+  [viewOnly]="viewOnly"
+  [data]="data"
+  [fields]="fields"
+  (handleCancel)="handleCancel($event)"
   [submit]="'submit'"
+  [cancel]="'cancel'"
 ></jf-form>

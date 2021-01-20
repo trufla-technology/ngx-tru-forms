@@ -10,33 +10,47 @@ export class TruUiPhotoComponent extends CommonComponent {
   file: any ;
   selectFile = false;
   photoData: string;
-
   resetUpload() {
     this.file = {};
     this.selectFile = false;
+    this.fileSize = null;
     this.control.reset();
 
   }
   async handleDrop(files) {
-    this.file = files[0];
+    if (this.schema.maxSize && +this.schema.maxSize < +files[0].size/1024/1024) {
+      this.fileSize = null;
+      this.control.setErrors({maxSize: true});
+      this.control.markAsTouched();
+     } else { 
+      this.file = files[0];
+      this.fileSize = null;
     this.selectFile = true;
     const file = await this.toBase64(this.file);
     this.photoData = file.toString();
     this.control.setValue(this.photoData);
+     }
   }
   shortenSize(data) {
-    return data.toString().substring(0, 4);
+    return data.toString().substring(0, 5);
   }
 
   async dragAndDrop(files) {
-    this.file = files.target.files[0];
+    if (this.schema.maxSize && +this.schema.maxSize < +files.target.files[0].size/1024/1024) {
+      this.fileSize = null;
+     this.control.setErrors({maxSize: true});
+     this.control.markAsTouched();
+    } else { 
+      this.file = files.target.files[0];
+      this.fileSize = null;
     this.selectFile = true;
     const file = await this.toBase64(this.file);
     this.photoData = file.toString();
     this.control.setValue(this.photoData);
   }
+  }
 
-  toBase64(file) {
+  toBase64(file): Promise<any> {
     return new Promise((resolve, reject) => {
     const reader = new FileReader();
     reader.readAsDataURL(file);

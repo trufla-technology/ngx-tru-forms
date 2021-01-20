@@ -14,6 +14,23 @@ class="tru-ui-input-control"
 [attr.disabled]="disabled"
 [textMask]="{ mask: getMask() }"
 [ngClass]="{'empty': control.value === '' && !isRequired()}"
+(change)="isMatch()"
 />
+<div *ngIf="schema.verify" style="margin-top: 1rem">
+    <label  class="tru-ui-label"
+    [ngClass]="['jf-label', schema.key, (isRequired() ? 'required' : '')]" *ngIf="type() !== 'hidden'">
+    <span > {{ getLanguage().confirm}} {{title()}}</span><sup *ngIf="isRequired()">*</sup>
+    </label>
+    <input
+    class="tru-ui-input-control"
+    [attr.type]="type()"
+    [formControl]="confirmInput"
+    [attr.maxLength]="schema.maxLength || null"
+    [attr.minLength]="schema.minLength || null"
+    [attr.disabled]="disabled"
+    [textMask]="{ mask: getMask() }"
+    (change)="isMatch()"
+    />
+</div>
 <jf-tru-ui-error [control]="control" [language]="language || 'en'"></jf-tru-ui-error>
 </div>

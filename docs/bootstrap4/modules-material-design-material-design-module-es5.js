@@ -21,7 +21,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "<jf-form\n  [schema]=\"schema\"\n  (handleSubmit)=\"handleSubmit($event)\"\n  [submit]=\"'submit'\"\n></jf-form>\n";
+    __webpack_exports__["default"] = "<jf-form\n  [schema]=\"schema\"\n  [fields]=\"fields\"\n  (handleSubmit)=\"handleSubmit($event)\"\n  [submit]=\"'submit'\"\n></jf-form>\n";
     /***/
   },
 
@@ -82,6 +82,12 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     var _services_data_listener_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
     /*! ../../services/data-listener.service */
     "./src/app/services/data-listener.service.ts");
+    /* harmony import */
+
+
+    var _json_schema_examples_input_colour_input_colour_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    /*! ../../json-schema-examples/input-colour/input-colour.component */
+    "./src/app/json-schema-examples/input-colour/input-colour.component.ts");
 
     var __decorate = undefined && undefined.__decorate || function (decorators, target, key, desc) {
       var c = arguments.length,
@@ -116,6 +122,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         value: function ngOnInit() {
           var _this = this;
 
+          this.fields = {
+            'colour': _json_schema_examples_input_colour_input_colour_component__WEBPACK_IMPORTED_MODULE_3__["InputColourComponent"]
+          };
           this.schemaListenerService.schema.subscribe(function (d) {
             return _this.schema = d;
           });
@@ -200,6 +209,12 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
     /*! @angular/router */
     "./node_modules/@angular/router/fesm2015/router.js");
+    /* harmony import */
+
+
+    var _angular_forms__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
+    /*! @angular/forms */
+    "./node_modules/@angular/forms/fesm2015/forms.js");
 
     var __decorate = undefined && undefined.__decorate || function (decorators, target, key, desc) {
       var c = arguments.length,
@@ -228,11 +243,12 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
     MaterialDesignModule = __decorate([Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["NgModule"])({
       declarations: [_material_design_component__WEBPACK_IMPORTED_MODULE_2__["MaterialDesignComponent"]],
-      imports: [_angular_common__WEBPACK_IMPORTED_MODULE_1__["CommonModule"], _angular_router__WEBPACK_IMPORTED_MODULE_4__["RouterModule"].forChild(routes), _trufla_ngx_tru_forms__WEBPACK_IMPORTED_MODULE_3__["JsonFormMaterialModule"], {
+      imports: [_angular_common__WEBPACK_IMPORTED_MODULE_1__["CommonModule"], _angular_router__WEBPACK_IMPORTED_MODULE_4__["RouterModule"].forChild(routes), _angular_forms__WEBPACK_IMPORTED_MODULE_5__["ReactiveFormsModule"], _trufla_ngx_tru_forms__WEBPACK_IMPORTED_MODULE_3__["JsonFormMaterialModule"], {
         ngModule: _trufla_ngx_tru_forms__WEBPACK_IMPORTED_MODULE_3__["JsonFormModule"],
         providers: [{
           provide: _trufla_ngx_tru_forms__WEBPACK_IMPORTED_MODULE_3__["JsonFormFieldsService"],
-          useClass: _trufla_ngx_tru_forms__WEBPACK_IMPORTED_MODULE_3__["JsonFormMaterial"]
+          useClass: _trufla_ngx_tru_forms__WEBPACK_IMPORTED_MODULE_3__["JsonFormMaterial"],
+          multi: true
         }]
       }]
     })], MaterialDesignModule);

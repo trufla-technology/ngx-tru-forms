@@ -56,3 +56,6 @@ color:#bfbfbf
   border-style: none;
 
 }
+.invalid-upload {
+  border-color: #F75757 !important;
+}

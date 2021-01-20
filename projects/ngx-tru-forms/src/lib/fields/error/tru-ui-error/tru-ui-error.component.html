@@ -5,6 +5,9 @@
     <ng-container *ngIf="control.errors && control.errors['pattern']">
       {{getLanguage().invalid}}
     </ng-container>
+    <ng-container *ngIf="control.errors && control.errors['isMatch']">
+      {{getLanguage().is_match}}
+    </ng-container>
     <ng-container *ngIf="control.errors && control.errors['email']">
       {{getLanguage().email_invalid}}
     </ng-container>
@@ -26,5 +29,9 @@
     <ng-container *ngIf="control.errors && control.errors['customError']">
       {{getLanguage().invalid}}
       {{control.errors['customError']}} 
+    </ng-container>
+    <ng-container *ngIf="control.errors && control.errors['maxSize']">
+      {{getLanguage().invalid}}
+      {{getLanguage().max_size }}, maximum {{control.schema.maxSize}} MB
     </ng-container>
   </div>

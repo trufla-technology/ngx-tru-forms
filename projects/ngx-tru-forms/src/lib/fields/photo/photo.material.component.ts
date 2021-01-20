@@ -92,7 +92,7 @@ export class PhotoMaterialComponent extends CommonComponent implements OnInit {
     this.control.reset();
   }
 
-  processFile(dataURL, fileType) {
+  processFile(dataURL, fileType): Promise<any> {
     const maxWidth = 1024;
     const maxHeight = 1024;
 

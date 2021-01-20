@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { TruUiComponent } from './tru-ui.component';
 import { Routes, RouterModule } from '@angular/router';
 import { JsonFormModule, TruUiModule, JsonFormFieldsService, TruUi } from '@trufla/ngx-tru-forms';
-
+import { ReactiveFormsModule } from '@angular/forms';
 
 const routes: Routes = [
   {
@@ -17,6 +17,8 @@ const routes: Routes = [
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
+    ReactiveFormsModule,
+    JsonFormModule,
     TruUiModule,
     {
       ngModule: JsonFormModule,
@@ -29,6 +31,7 @@ const routes: Routes = [
       ]
     }
 
-  ]
+  ],
+  entryComponents: []
 })
 export class TruUiModuleExample { }

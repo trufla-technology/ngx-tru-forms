@@ -30,7 +30,7 @@ This component utilizes [Reactive Forms](https://angular.io/guide/reactive-forms
 ### Usage
 
 Module can be used with [Angular Material](https://material.angular.io/) or [Bootstrap 4](https://getbootstrap.com/).
-Import either `JsonFormBootstrap4Module` or `JsonFormMaterialModule` and use it with `JsonFormModule`. For example: 
+Import either `JsonFormBootstrap4Module` or `JsonFormMaterialModule` or `TruUiModule` and use it with `JsonFormModule`. For example: 
 
 **_Example uses Angular Material_**
 
@@ -41,9 +41,16 @@ import {
   JsonFormMaterialModule,
   JsonFormMaterila
 } from '@trufla/ngx-tru-forms';
+// for using tru ui
+// import { JsonFormModule, TruUiModule, JsonFormFieldsService, TruUi } from '@trufla/ngx-tru-forms';
 
 @NgModule({
   imports: [
+    JsonFormMaterialModule,
+    // for using tru ui
+    // TruUiModule
+    // for using Bootstrap
+    // JsonFormBootstrap4Module
     {
       ngModule: JsonFormModule,
       providers: [
@@ -52,6 +59,18 @@ import {
           useClass: JsonFormMaterial,
           multi: true
         }
+        // for using tru ui
+        // {
+        //   provide: JsonFormFieldsService,
+        //   useClass: TruUi,
+        //   multi: true
+        // }
+        // for using bootstrap
+        // {
+        //   provide: JsonFormBootstrap4,
+        //   useClass: TruUi,
+        //   multi: true
+        // }
       ]
     }
   ]
@@ -110,9 +129,10 @@ export class AppComponent {
 | [isMultiStep] | Treat schema as multi step. See example. | |
 | [viewOnly] | Render only the labels and form data. Useful for reports. | |
 | [disabled] | Disable all the fields in the form. Set to true for disabled and null otherwise | |
+| [language] | Text for translation default is 'en' | |
 | (handleSubmit) | Watch for form submission. Return JSON Schema response data| |
 | (handleChange) | Watch for form changes | |
-| (handleCancel) | Watch for cancel click | |
+| (handleCancel) | Watch for cancel click (emitting value even if form invalid) | |
 
 For additional ways to modify and access the form see [External Methods](#external-methods).
 
@@ -150,9 +170,23 @@ const onFormSubmit = (form) => console.log(form);
 
 ### Quick Reference
 `type`: string, number, object, array, boolean  
-`format (optional)`: date, photo, textarea
-`description (optional)`: hover text to describe purpose of field
+`format (optional)`: date, photo, textarea  
+`description (optional)`: hover text to describe purpose of field  
+`title`: string | array of objects each contains language and value for label or header or array title or object title 
+```JSON
+"title": [{"language": "en", "value": "first name"}, {"language": "fr", "value": "le prénom"}]
+```  
+`enumNames`: array of string or array of arrays contains translation array of objects if not provided enum used as default  
+```JSON
+// with translation
+"enumNames": [[{"language": "en", "value":  "Yes"}, {"language": "fr", "value":  "Qui"}],
+              [{"language": "en", "value":  "No"}, {"language": "fr", "value": "Non"}]]
+// without translation
+"enumNames": ["Yes", "No"]
 
+```  
+`verify`: Boolean default false duplicate string type for verification   
+`maxSize`: for photo format to verify size, unit are in MB
 ### Extending
 
 This module allows for extension via injectors.

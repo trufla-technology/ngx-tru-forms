@@ -46,4 +46,10 @@ export interface Schema {
 
   // add masking
   mask?: Array<any>;
+
+  // add verify input
+  verify?: any;
+
+  // add image uploader validation in MB
+  maxSize?: any
 }

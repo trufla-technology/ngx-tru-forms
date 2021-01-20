@@ -7,25 +7,24 @@ import {ValidationFeedbackTranslation} from '../error/validation-feedback-transl
 import { BsLocaleService } from 'ngx-bootstrap/datepicker';
 import { defineLocale } from 'ngx-bootstrap/chronos';
 import { deLocale } from 'ngx-bootstrap/locale';
-
-// defineLocale('fr', deLocale);
-
 @Component({
   selector: 'jf-component',
   template: ''
 })
 export class CommonComponent implements AfterViewInit {
   control: SchemaFormControl;
+  confirmInput = new SchemaFormControl('');
   schema: Schema;
   style: {};
   disabled = false;
   language;
   isWebView = false;
+  fileSize= null;
   constructor(
     public sanitizer: DomSanitizer,
     public cd: ChangeDetectorRef,
-    private localeService: BsLocaleService,
-    private validationFeedbackTranslation: ValidationFeedbackTranslation
+    private localeService?: BsLocaleService,
+    private validationFeedbackTranslation?: ValidationFeedbackTranslation
   ) {
     if ( (/android|webos|iphone|ipad|ipod|blackberry|iemobile|opera mini/i.test(navigator.userAgent.toLowerCase())) ) {
       this.isWebView = true;
@@ -35,6 +34,9 @@ export class CommonComponent implements AfterViewInit {
   }
 
   ngAfterViewInit() {
+    if ( this.schema && this.schema.format === 'photo' && this.control.value ) {
+       this.getImageFromUrl(this.control.value);
+      }
     this.localeService.use(this.language);
     this.cd.detectChanges();
   }
@@ -112,7 +114,8 @@ export class CommonComponent implements AfterViewInit {
        index = i;
      }
     });
-    return typeof index !== 'undefined' ? this.getTranslation(this.schema.enumNames[index]) : this.control.value;
+    return this.schema.enumNames && this.schema.enumNames.length && typeof index !== 'undefined' ?
+     this.getTranslation(this.schema.enumNames[index]) : this.control.value;
   }
 
   getTranslation(titleArray) {
@@ -121,22 +124,52 @@ export class CommonComponent implements AfterViewInit {
        val.language === this.language
       );
       return translatedTitle[0] ? this.strToUpperCase(translatedTitle[0].value.replace(/<.*?>/g, '')) : false;
-  } else {
-    return titleArray;
-  }
-}
-
-getLanguage() {
-  return this.validationFeedbackTranslation.validation[this.language || 'en'];
-}
-
-getControlValue() {
-  return this.control && this.control.value ? this.control.value : '';
-}
-
-getFilename() {
-    if (this.getControlValue().length) {
-    return this.getControlValue().substring("data:image/".length, this.getControlValue().indexOf(";base64")) || '';
+    } else {
+      return titleArray;
     }
   }
+
+  getLanguage() {
+    return this.validationFeedbackTranslation.validation[this.language || 'en'];
+  }
+
+  getControlValue() {
+    return this.control && this.control.value ? this.control.value : '';
+  }
+
+  getFilename() {
+    if (this.getControlValue().length) {
+    return this.getControlValue().substring('data:image/'.length, this.getControlValue().indexOf(';base64')) || '';
+    }
+  }
+
+  isMatch() {
+    if (this.schema.verify) {
+      const input = this.control.value;
+      const confirmInput = this.confirmInput.value;
+      let error = this.control.errors && Object.keys(this.control.errors).length > 0 ? this.control.errors : null;
+      if (error && Object.keys(this.control.errors).length > 0) {
+         delete error.isMatch;
+        if (Object.keys(error).length === 0) {
+          error = null;
+        }
+      }
+      return input.toString() === confirmInput.toString() ?
+       this.control.setErrors(error) : this.control.setErrors({...this.control.errors, isMatch: true });
+    }
+  }
+
+  validURL(str) {
+    const pattern = new RegExp('^(https?:\\/\\/)?'+ // protocol
+      '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|'+ // domain name
+      '((\\d{1,3}\\.){3}\\d{1,3}))'+ // OR ip (v4) address
+      '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*'+ // port and path
+      '(\\?[;&a-z\\d%_.~+=-]*)?'+ // query string
+      '(\\#[-a-z\\d_]*)?$','i'); // fragment locator
+    return !!pattern.test(str);
+  }
+
+  getImageFromUrl(url: any) {
+    fetch(url).then((r) => r.blob().then(s => this.fileSize = s.size).catch(() => this.fileSize = null)).catch(() => this.fileSize = null);
+}
 }

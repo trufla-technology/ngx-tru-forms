@@ -10,6 +10,7 @@ import {
   JsonFormModule
 } from '@trufla/ngx-tru-forms';
 import { Routes, RouterModule } from '@angular/router';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 const routes: Routes = [
@@ -25,6 +26,7 @@ const routes: Routes = [
     CommonModule,
     JsonFormBootstrap4Module,
     RouterModule.forChild(routes),
+    ReactiveFormsModule,
     // JsonFormModule.forRoot(JsonFormBootstrap4Module),
      {
       ngModule: JsonFormModule,

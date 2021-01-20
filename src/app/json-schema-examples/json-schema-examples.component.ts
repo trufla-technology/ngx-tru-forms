@@ -73,7 +73,6 @@ export class JsonSchemaExamplesComponent implements OnInit, AfterViewInit {
   handleSchemaUpdate(value?: string) {
     this.isMultiStep = false;
     this.selectedSchema = value;
-
     if (typeof (this.selectedSchema) !== 'undefined') {
       this.schemaControl.setValue(JSON.stringify(this.jsonSchemaExamplesSamples.json[this.selectedSchema], null, '\t'));
 

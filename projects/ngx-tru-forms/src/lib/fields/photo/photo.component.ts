@@ -59,7 +59,7 @@ export class PhotoComponent extends CommonComponent {
     this.control.reset();
   }
 
-  processFile(dataURL, fileType) {
+  processFile(dataURL, fileType): Promise<any> {
     const maxWidth = 800;
     const maxHeight = 800;
 
