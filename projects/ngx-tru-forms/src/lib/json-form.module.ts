@@ -9,6 +9,7 @@ import { JsonFormFieldsService } from './framework/json-form-fields.service';
 import { SharedModule } from './framework/shared/shared.module';
 import { CommonModule } from '@angular/common';
 import {ValidationFeedbackTranslation} from './fields/error/validation-feedback-translation';
+import { NgxImageCompressService } from 'ngx-image-compress';
 
 @NgModule({
   imports: [
@@ -25,7 +26,8 @@ import {ValidationFeedbackTranslation} from './fields/error/validation-feedback-
   providers: [
     JsonFormDefaultsService,
     JsonFormValidatorsService,
-    ValidationFeedbackTranslation
+    ValidationFeedbackTranslation,
+    NgxImageCompressService
   ],
   declarations: []
 })

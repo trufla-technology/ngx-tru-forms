@@ -51,5 +51,8 @@ export interface Schema {
   verify?: any;
 
   // add image uploader validation in MB
-  maxSize?: any
+  maxSize?: any;
+
+  // allowed format default allow all
+  imageFormat: Array<any>;
 }

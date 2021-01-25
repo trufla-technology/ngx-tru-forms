@@ -19,7 +19,7 @@ class="tru-ui-input-control"
 <div *ngIf="schema.verify" style="margin-top: 1rem">
     <label  class="tru-ui-label"
     [ngClass]="['jf-label', schema.key, (isRequired() ? 'required' : '')]" *ngIf="type() !== 'hidden'">
-    <span > {{ getLanguage().confirm}} {{title()}}</span><sup *ngIf="isRequired()">*</sup>
+    <span > {{ getLanguage()?.confirm}} {{title()}}</span><sup *ngIf="isRequired()">*</sup>
     </label>
     <input
     class="tru-ui-input-control"

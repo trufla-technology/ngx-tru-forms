@@ -7,6 +7,7 @@ import {ValidationFeedbackTranslation} from '../error/validation-feedback-transl
 import { BsLocaleService } from 'ngx-bootstrap/datepicker';
 import { defineLocale } from 'ngx-bootstrap/chronos';
 import { deLocale } from 'ngx-bootstrap/locale';
+import {NgxImageCompressService} from 'ngx-image-compress';
 @Component({
   selector: 'jf-component',
   template: ''
@@ -24,7 +25,8 @@ export class CommonComponent implements AfterViewInit {
     public sanitizer: DomSanitizer,
     public cd: ChangeDetectorRef,
     private localeService?: BsLocaleService,
-    private validationFeedbackTranslation?: ValidationFeedbackTranslation
+    private validationFeedbackTranslation?: ValidationFeedbackTranslation,
+    private imageCompress?: NgxImageCompressService
   ) {
     if ( (/android|webos|iphone|ipad|ipod|blackberry|iemobile|opera mini/i.test(navigator.userAgent.toLowerCase())) ) {
       this.isWebView = true;
@@ -130,7 +132,8 @@ export class CommonComponent implements AfterViewInit {
   }
 
   getLanguage() {
-    return this.validationFeedbackTranslation.validation[this.language || 'en'];
+    this.language = this.language ? this.language : 'en'; 
+    return this.validationFeedbackTranslation.validation[this.language];
   }
 
   getControlValue() {
@@ -171,5 +174,9 @@ export class CommonComponent implements AfterViewInit {
 
   getImageFromUrl(url: any) {
     fetch(url).then((r) => r.blob().then(s => this.fileSize = s.size).catch(() => this.fileSize = null)).catch(() => this.fileSize = null);
-}
+  }
+
+  compressFile(file: any) {
+   return this.imageCompress.compressFile(file, -2, 35, 35);
+  }
 }

@@ -4,20 +4,20 @@
 <div class="tru-form-group" jfDragAndDrop (filesDropped)="handleDrop($event);fileInput.value = null">
   
     <label [ngClass]="{'d-none': getControlValue().length > 0}"  style="margin-bottom: 0 !important;">
-      <div class="tru-drag-and-drop" [ngClass]="{'invalid-upload': control.invalid}">
-        <span *ngIf="language === 'en'; else french">Drop your file here or <span class="primary-color browse-btn">Browse</span></span>
-        <ng-template #french><span>Déposez votre fichier ici ou <span class="primary-color browse-btn">naviguez</span></span></ng-template>
-        <div *ngIf="schema.maxSize" style="color: #bfbfbf"> <small>Maximum {{schema.maxSize}} MB</small></div>
+      <div class="tru-drag-and-drop" [ngClass]="{'invalid-upload': control.invalid && (control.touched || control.dirty), 'busy': busy}">
+        <span *ngIf="language === 'en'; else french">Drop your file here or <strong class="primary-color browse-btn">Browse</strong></span>
+        <ng-template #french><span>Déposez votre fichier ici ou <strong class="primary-color browse-btn">naviguez</strong></span></ng-template>
+        <div style="line-height: 1;font-size: 12px;"> <small *ngIf="schema.maxSize" style="color: #bfbfbf">Maximum {{schema.maxSize}} MB<span *ngIf="schema.imageFormat">, </span></small> <small *ngIf="schema.imageFormat" style="color: #bfbfbf"> {{getLanguage().allowed_format}}  <span *ngFor="let format of schema.imageFormat"> {{ format }} </span></small></div>
       </div>
     <input #fileInput
-      style="display: none" class="tru-input" type="file" (change)="dragAndDrop($event);fileInput.value = null"  />
+      style="display: none" class="tru-input" type="file" (change)="dragAndDrop($event)"  />
     </label>
     <div class="file-preview-container"  [ngClass]="{'d-none': !getControlValue().length}">
       <div style="max-width: 165px;text-overflow: ellipsis;overflow: hidden;display: block;"><small >{{file?.name || title()}}</small></div>
       <div>
-        <small style="color: #212121;font-size: 12px" *ngIf="file && file.size" >{{shortenSize(file?.size/1024/1024)}} MB</small>
+        <!-- <small style="color: #212121;font-size: 12px" *ngIf="file && file.size" >{{shortenSize(file?.size/1024/1024)}} MB</small> -->
         <small style="color: #212121;font-size: 12px" *ngIf="fileSize" > {{shortenSize(fileSize/1024/1024)}} MB</small>
-        <button class="btn-remove" style="cursor: pointer" type="button" (click)="resetUpload()">
+        <button class="btn-remove" style="cursor: pointer" type="button" (click)="resetUpload();fileInput.value = null">
             <svg width="12px" height="12px" viewBox="0 0 12 12" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                 <g id="Full-Admin" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                     <g id="My-Documents-listing-add-sidebar-Progress" transform="translate(-1402.000000, -196.000000)" fill="#FFFFFF" fill-rule="nonzero">

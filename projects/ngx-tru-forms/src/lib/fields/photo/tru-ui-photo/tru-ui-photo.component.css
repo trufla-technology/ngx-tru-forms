@@ -59,3 +59,26 @@ color:#bfbfbf
 .invalid-upload {
   border-color: #F75757 !important;
 }
+.tru-drag-and-drop.busy {
+  min-width: 200px;
+  /* background-color: #8c8c8c !important; */
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+  animation-iteration-count: infinite;
+  animation-name: placeHolderShimmer;
+  animation-timing-function: linear;
+  background: linear-gradient(to right,#d8d8de 8%,#f1f1f1 38%,#d8d8de 54%);
+  background-size: 1000px 640px;
+  position: relative;
+} 
+.tru-drag-and-drop.busy > * {
+  opacity: 0;
+}
+@keyframes placeHolderShimmer{
+  0%{
+      background-position: -468px 0
+  }
+  100%{
+      background-position: 468px 0
+  }
+}
