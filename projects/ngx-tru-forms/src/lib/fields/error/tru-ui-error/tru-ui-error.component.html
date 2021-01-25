@@ -34,4 +34,8 @@
       {{getLanguage().invalid}}
       {{getLanguage().max_size }}, maximum {{control.schema.maxSize}} MB
     </ng-container>
+    <ng-container *ngIf="control.errors && control.errors['invalidFormat']">
+      {{getLanguage().invalid}},
+      {{getLanguage().allowed_format }}<span *ngFor="let format of control.schema.imageFormat"> {{ format }} </span>
+    </ng-container>
   </div>
