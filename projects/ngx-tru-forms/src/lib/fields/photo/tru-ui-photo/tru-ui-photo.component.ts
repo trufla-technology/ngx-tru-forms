@@ -22,7 +22,6 @@ export class TruUiPhotoComponent extends CommonComponent {
   }
 
   async handleDrop(files) {
-    console.log('handleDrop')
    this.processFile(files);
   }
 
@@ -61,7 +60,7 @@ export class TruUiPhotoComponent extends CommonComponent {
       this.fileSize = null;
       this.selectFile = true;
       if ( ['png', 'jpeg', 'jpg', 'jpeg', 'gif'].indexOf(ext.toLowerCase()) !== -1 ) {
-        this.compressFile( file.toString()).then((res) => {
+        this.compressFile( file.toString(), +files[0].size/1024/1024).then((res) => {
         this.getImageFromUrl(res);
         this.photoData = res;
         this.busy = false;

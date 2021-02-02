@@ -176,7 +176,8 @@ export class CommonComponent implements AfterViewInit {
     fetch(url).then((r) => r.blob().then(s => this.fileSize = s.size).catch(() => this.fileSize = null)).catch(() => this.fileSize = null);
   }
 
-  compressFile(file: any) {
-   return this.imageCompress.compressFile(file, -2, 35, 35);
+  compressFile(file: any, size?) {
+    const quality = size < 0.300 ? 80 : size < 0.900 ? 50 : 35;
+   return this.imageCompress.compressFile(file, -2, quality, quality);
   }
 }
