@@ -11,7 +11,8 @@
       "ngx-bootstrap/locale": "locale",
       "text-mask-addons/dist/createNumberMask": "createNumberMask",
       "angular2-text-mask": "angular2TextMask",
-      "ngx-bootstrap/typeahead": "typeahead"
+      "ngx-bootstrap/typeahead": "typeahead",
+      "ngx-image-compress": "ngxImageCompress"
 
     }
   }
