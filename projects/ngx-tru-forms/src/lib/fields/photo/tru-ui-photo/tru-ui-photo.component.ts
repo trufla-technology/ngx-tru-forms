@@ -30,7 +30,7 @@ export class TruUiPhotoComponent extends CommonComponent {
   }
 
   async dragAndDrop(files) {
-    this.processFile(files.target.files)
+    this.processFile(files.target.files);
   }
 
   toBase64(file): Promise<any> {
@@ -47,20 +47,20 @@ export class TruUiPhotoComponent extends CommonComponent {
     const file = await this.toBase64(files[0]);
     const lastDot = name.lastIndexOf('.');
     const ext = name.substring(lastDot + 1);
-    if ((this.schema.maxSize && +this.schema.maxSize < +files[0].size/1024/1024) ||
+    if ((this.schema.maxSize && +this.schema.maxSize < +files[0].size / 1024 / 1024) ||
         (this.schema.imageFormat && [...this.schema.imageFormat].indexOf(ext.toLowerCase()) === -1 )) {
       this.fileSize = null;
       this.busy = false;
-      (this.schema.maxSize && +this.schema.maxSize < +files[0].size/1024/1024) ? this.control.setErrors({maxSize: true}) : this.control.setErrors({invalidFormat: true});
+      (this.schema.maxSize && +this.schema.maxSize < +files[0].size / 1024 / 1024) ? this.control.setErrors({maxSize: true}) : this.control.setErrors({invalidFormat: true});
       this.control.markAsTouched();
-      return
-     } else { 
+      return;
+     } else {
        this.busy = true;
       this.file = files[0];
       this.fileSize = null;
       this.selectFile = true;
       if ( ['png', 'jpeg', 'jpg', 'jpeg', 'gif'].indexOf(ext.toLowerCase()) !== -1 ) {
-        this.compressFile( file.toString(), +files[0].size/1024/1024).then((res) => {
+        this.compressFile( file.toString(), +files[0].size / 1024 / 1024).then((res) => {
         this.getImageFromUrl(res);
         this.photoData = res;
         this.busy = false;

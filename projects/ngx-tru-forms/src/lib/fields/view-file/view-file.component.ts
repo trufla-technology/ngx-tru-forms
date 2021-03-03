@@ -36,19 +36,17 @@ export class ViewFileComponent implements OnInit {
     return  this.sanitizer.bypassSecurityTrustResourceUrl(file);
   }
    zoomin() {
-    var myImg = document.getElementById('image');
-    var currWidth = myImg.clientWidth;
-    if (currWidth == 2500) return false;
-    else {
+    const myImg = document.getElementById('image');
+    const currWidth = myImg.clientWidth;
+    if (currWidth == 2500) { return false; } else {
       myImg.style.width = (currWidth + 100) + 'px';
     }
   }
-  
+
    zoomout() {
-    var myImg = document.getElementById('image');
-    var currWidth = myImg.clientWidth;
-    if (currWidth == 100) return false;
-    else {
+    const myImg = document.getElementById('image');
+    const currWidth = myImg.clientWidth;
+    if (currWidth == 100) { return false; } else {
       myImg.style.width = (currWidth - 100) + 'px';
     }
   }

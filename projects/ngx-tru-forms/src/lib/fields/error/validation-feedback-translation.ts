@@ -11,7 +11,7 @@ export class ValidationFeedbackTranslation {
             greater_than: 'Enter a value greater than or equal to',
             less_than: 'Enter a value less than or equal to ',
             not_in_menu: ' Select from the dropdown list',
-            is_match: 'Value not matching', 
+            is_match: 'Value not matching',
             max_size: 'File exceeded the allowed size',
             allowed_format: 'allowed format',
         },

@@ -16,6 +16,6 @@ export class DateViewComponent extends CommonComponent {
     this.control.setValue(value.replace(/\D/g, ''));
   }
   translateDate() {
-    return moment(this.control.value).locale(this.language).format('DD MMM, YYYY').replace('.', '')
+    return moment(this.control.value).locale(this.language).format('DD MMM, YYYY').replace('.', '');
   }
 }

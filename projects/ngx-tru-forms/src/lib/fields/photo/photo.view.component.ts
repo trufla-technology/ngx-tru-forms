@@ -5,17 +5,17 @@ import { ViewFileComponent } from '../view-file/view-file.component';
 @Component({
   template: `
     <p>{{placeholder()}}</p>
-    <img 
+    <img
     [alt]="'View '+title()"
-    *ngIf='!isPdf() && control.value' 
-    src='{{control.value}}' 
-    class='img-thumbnail' 
-    (click)='openFile()' 
+    *ngIf='!isPdf() && control.value'
+    src='{{control.value}}'
+    class='img-thumbnail'
+    (click)='openFile()'
     style='width: 100px !important;cursor:pointer'  />
-    <button *ngIf='isPdf() && control.value' 
+    <button *ngIf='isPdf() && control.value'
     class='img-thumbnail primary-bg'
     [attr.aria-label]="'View '+title()"
-    (click)='openFile()' 
+    (click)='openFile()'
     style='width: 100px !important;
     height:100px !important;
     cursor:pointer;
@@ -47,7 +47,7 @@ export class PhotoViewComponent extends CommonComponent {
   </svg>`;
 
   openFile() {
-    this.modalService.config.class = 'modal-lg modal-dialog-centered'
+    this.modalService.config.class = 'modal-lg modal-dialog-centered';
     const initialState = {
       file: this.control.value,
       title: `${this.title()}`,

@@ -23,7 +23,7 @@ export class CommonComponent implements AfterViewInit {
   disabled = false;
   language;
   isWebView = false;
-  fileSize= null;
+  fileSize = null;
   maskDate;
 
   constructor(
@@ -34,7 +34,7 @@ export class CommonComponent implements AfterViewInit {
     private imageCompress?: NgxImageCompressService,
     public modalService?: BsModalService
   ) {
-  
+
      defineLocale('fr', deLocale);
      this.localeService.use(this.language);
   }
@@ -44,8 +44,8 @@ export class CommonComponent implements AfterViewInit {
        this.getImageFromUrl(this.control.value);
       }
     if (this.schema && this.schema.format === 'date' && this.control.data) {
-      this.maskDate = moment.utc(this.control.data ).toDate(); 
-      this.control.setValue(this.maskDate)
+      this.maskDate = moment.utc(this.control.data ).toDate();
+      this.control.setValue(this.maskDate);
     }
     this.localeService.use(this.language);
     this.cd.detectChanges();
@@ -150,7 +150,7 @@ export class CommonComponent implements AfterViewInit {
   }
 
   getLanguage() {
-    this.language = this.language ? this.language : 'en'; 
+    this.language = this.language ? this.language : 'en';
     return this.validationFeedbackTranslation.validation[this.language];
   }
 
@@ -181,12 +181,12 @@ export class CommonComponent implements AfterViewInit {
   }
 
   validURL(str) {
-    const pattern = new RegExp('^(https?:\\/\\/)?'+ // protocol
-      '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|'+ // domain name
-      '((\\d{1,3}\\.){3}\\d{1,3}))'+ // OR ip (v4) address
-      '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*'+ // port and path
-      '(\\?[;&a-z\\d%_.~+=-]*)?'+ // query string
-      '(\\#[-a-z\\d_]*)?$','i'); // fragment locator
+    const pattern = new RegExp('^(https?:\\/\\/)?' + // protocol
+      '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|' + // domain name
+      '((\\d{1,3}\\.){3}\\d{1,3}))' + // OR ip (v4) address
+      '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*' + // port and path
+      '(\\?[;&a-z\\d%_.~+=-]*)?' + // query string
+      '(\\#[-a-z\\d_]*)?$', 'i'); // fragment locator
     return !!pattern.test(str);
   }
 

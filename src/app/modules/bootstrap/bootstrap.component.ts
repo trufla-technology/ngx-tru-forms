@@ -10,7 +10,7 @@ import { InputColourComponent } from '../../json-schema-examples/input-colour/in
 })
 export class BootstrapComponent implements OnInit {
   schema;
-  fields
+  fields;
   constructor(
     private schemaListenerService: SchemaListenerService,
     private dataService: DataListenerService
