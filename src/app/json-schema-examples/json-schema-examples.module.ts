@@ -28,7 +28,7 @@ import { ColorPickerModule } from 'ngx-color-picker';
   ],
   declarations: [
     JsonSchemaExamplesComponent,
-    InputColourComponent
+    // InputColourComponent
   ],
   providers: [
     JsonSchemaExamplesSamples,

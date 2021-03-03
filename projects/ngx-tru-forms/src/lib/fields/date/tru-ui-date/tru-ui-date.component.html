@@ -3,36 +3,31 @@
     <span [innerHTML]="title()"></span><sup *ngIf="isRequired()">*</sup>
   </label>
   <input
-    *ngIf="isWebView; else desktop"
+    *ngIf="!isWebView; else webview"
     type="text"
     class="tru-ui-input-control tru-ui-date"
     [name]="schema.key"
-    (bsValueChange)="onDateInput($event)"
+    (ngModelChange)="onDateInput($event)"
     [formControl]="control"
-    [bsConfig]="{ containerClass: 'theme-default', dateInputFormat: 'DD/MM/YYYY', showWeekNumbers: false }"
+    [bsConfig]="{ containerClass: 'theme-default', dateInputFormat: 'DD MMM YYYY', showWeekNumbers: false}"
     bsDatepicker
-    readonly
-    #dp="bsDatepicker"
-    readonly="readonly"
     placement="bottom"
-    (hover)="dp.show()"
-    [attr.disabled]="disabled"
+    readonly
+    readonly="readonly"
   />
-  <ng-template #desktop>
+  <ng-template #webview>
     <input
     type="text"
     class="tru-ui-input-control tru-ui-date"
     [name]="schema.key"
-    (bsValueChange)="onDateInput($event)"
+    (ngModelChange)="onDateInput($event)"
     [formControl]="control"
-    [bsConfig]="{ containerClass: 'theme-default', dateInputFormat: 'DD/MM/YYYY', showWeekNumbers: false }"
+    [bsConfig]="{ containerClass: 'theme-default', dateInputFormat: 'DD MMM YYYY', showWeekNumbers: false }"
     bsDatepicker
+    triggers="touchend:touchend"
+    placement="top"
     readonly
-    readonly="readonly"
-    placement="bottom"
-    triggers="click"
-    [attr.disabled]="disabled"
-    /> 
+    readonly="readonly"    /> 
    </ng-template>
   <jf-tru-ui-error [control]="control" [language]="language || 'en'"></jf-tru-ui-error>
 

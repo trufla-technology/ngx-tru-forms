@@ -1,13 +1,16 @@
 import { Schema } from '../../models/schema';
 import { SchemaFormControl } from '../../models/schema-form-control';
-import { Component, ChangeDetectorRef, AfterViewInit } from '@angular/core';
+import { Component, ChangeDetectorRef, AfterViewInit, HostListener } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
-import { startCase } from 'lodash';
+import { upperFirst, startCase } from 'lodash';
 import {ValidationFeedbackTranslation} from '../error/validation-feedback-translation';
 import { BsLocaleService } from 'ngx-bootstrap/datepicker';
 import { defineLocale } from 'ngx-bootstrap/chronos';
 import { deLocale } from 'ngx-bootstrap/locale';
 import {NgxImageCompressService} from 'ngx-image-compress';
+import { BsModalService } from 'ngx-bootstrap/modal';
+import * as moment_ from 'moment';
+const moment = moment_;
 @Component({
   selector: 'jf-component',
   template: ''
@@ -21,16 +24,17 @@ export class CommonComponent implements AfterViewInit {
   language;
   isWebView = false;
   fileSize= null;
+  maskDate;
+
   constructor(
-    public sanitizer: DomSanitizer,
-    public cd: ChangeDetectorRef,
+    public sanitizer?: DomSanitizer,
+    public cd?: ChangeDetectorRef,
     private localeService?: BsLocaleService,
     private validationFeedbackTranslation?: ValidationFeedbackTranslation,
-    private imageCompress?: NgxImageCompressService
+    private imageCompress?: NgxImageCompressService,
+    public modalService?: BsModalService
   ) {
-    if ( (/android|webos|iphone|ipad|ipod|blackberry|iemobile|opera mini/i.test(navigator.userAgent.toLowerCase())) ) {
-      this.isWebView = true;
-     }
+  
      defineLocale('fr', deLocale);
      this.localeService.use(this.language);
   }
@@ -39,8 +43,18 @@ export class CommonComponent implements AfterViewInit {
     if ( this.schema && this.schema.format === 'photo' && this.control.value ) {
        this.getImageFromUrl(this.control.value);
       }
+    if (this.schema && this.schema.format === 'date' && this.control.data) {
+      this.maskDate = moment.utc(this.control.data ).toDate(); 
+      this.control.setValue(this.maskDate)
+    }
     this.localeService.use(this.language);
     this.cd.detectChanges();
+  }
+
+  @HostListener('window:resize', ['$event']) onResize(event) {
+   if ( (/android|webos|iphone|ipad|ipod|blackberry|iemobile|opera mini/i.test(navigator.userAgent.toLowerCase()))) {
+    this.isWebView = true;
+   }
   }
 
   isRequired() {
@@ -61,7 +75,7 @@ export class CommonComponent implements AfterViewInit {
   placeholder() {
    const key = this.strToUpperCase(this.schema.key).replace(/<.*?>/g, '');
    return (typeof this.schema.title === 'undefined'
-      ? key : (this.getTranslation(this.schema.title) ? this.getTranslation(this.schema.title) : key));
+      ? startCase(key) : (this.getTranslation(this.schema.title) ? this.getTranslation(this.schema.title) : startCase(key)));
   }
 
   type() {
@@ -103,6 +117,10 @@ export class CommonComponent implements AfterViewInit {
     return this.sanitizer.bypassSecurityTrustStyle(style);
   }
 
+  makeTrustedHtml(html): any {
+    return this.sanitizer.bypassSecurityTrustHtml(html);
+  }
+
   enumNames(index) {
     return typeof(this.schema.enumNames) === 'undefined'
       ? this.schema.enum[index]
@@ -125,9 +143,9 @@ export class CommonComponent implements AfterViewInit {
     const translatedTitle = titleArray.filter(val =>
        val.language === this.language
       );
-      return translatedTitle[0] ? this.strToUpperCase(translatedTitle[0].value.replace(/<.*?>/g, '')) : false;
+      return translatedTitle[0] ? upperFirst(translatedTitle[0].value.replace(/<.*?>/g, '')) : false;
     } else {
-      return titleArray;
+      return startCase(titleArray);
     }
   }
 
@@ -172,6 +190,9 @@ export class CommonComponent implements AfterViewInit {
     return !!pattern.test(str);
   }
 
+  isPdf() {
+    return this.control.value.toLowerCase().includes('application/pdf;base64');
+  }
   getImageFromUrl(url: any) {
     fetch(url).then((r) => r.blob().then(s => this.fileSize = s.size).catch(() => this.fileSize = null)).catch(() => this.fileSize = null);
   }

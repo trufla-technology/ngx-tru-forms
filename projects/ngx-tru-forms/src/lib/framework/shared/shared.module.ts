@@ -23,18 +23,22 @@ import { TextMaskModule } from 'angular2-text-mask';
 import { ArrayComponent } from './components/array/array.component';
 import { ArrayViewComponent } from './components/array/array.view.component';
 import { DragAndDropDirective } from './directive/drag-and-drop.directive';
+import { ViewFileComponent } from '../../fields/view-file/view-file.component';
+import { PdfViewerModule } from 'ng2-pdf-viewer';
 
 @NgModule({
   imports: [
     CommonModule,
     TextMaskModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    PdfViewerModule
   ],
   declarations: [
     JsonFormComponent,
     CommonComponent,
     ChooserComponent,
     FieldComponent,
+    ViewFileComponent,
     FormButtonComponent,
     InfoButtonComponent,
     StringViewComponent,
@@ -65,6 +69,7 @@ import { DragAndDropDirective } from './directive/drag-and-drop.directive';
     NumberViewComponent,
     BooleanViewComponent,
     PhotoViewComponent,
+    ViewFileComponent,
     TextareaViewComponent,
     DateViewComponent,
     RadiogroupViewComponent,

@@ -3,7 +3,7 @@ import { SchemaFormControl } from '../../../../../models/schema-form-control';
 import { AbstractControl, FormArray } from '@angular/forms';
 import { SchemaFormArray } from '../../../../../models/schema-form-array';
 import { SchemaFormGroup } from '../../../../../models/schema-form-group';
-import { startCase } from 'lodash';
+import { startCase, upperFirst } from 'lodash';
 @Component({
   selector: 'jf-tru-ui-array',
   templateUrl: './tru-ui-array.component.html',
@@ -25,7 +25,7 @@ export class TruUiArrayComponent {
       const translatedTitle = titleArray.filter(val =>
         val.language === this.language
         );
-        return translatedTitle[0] ? this.strToUpperCase(translatedTitle[0].value.replace(/<.*?>/g, '')) : false;
+        return translatedTitle[0] ? upperFirst(translatedTitle[0].value.replace(/<.*?>/g, '')) : false;
     } else {
       return titleArray;
     }

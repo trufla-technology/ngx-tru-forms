@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { SchemaFormGroup } from '../../../../models/schema-form-group';
 import { Schema } from '../../../../models/schema';
-import {startCase} from 'lodash';
+import {startCase, upperFirst} from 'lodash';
 @Component({
   selector: 'jf-component-chooser, [jf-component-chooser]',
   template: `
@@ -32,9 +32,9 @@ export class ChooserComponent {
        val.language === this.language
       );
       return translatedTitle[0] && translatedTitle[0].value ?
-       startCase(translatedTitle[0].value.replace(/<.*?>/g, '')) : titleArray[0].value;
+      upperFirst(translatedTitle[0].value.replace(/<.*?>/g, '')) : upperFirst(titleArray[0].value);
   } else {
-    return titleArray;
+    return startCase(titleArray);
   }
 }
 }
