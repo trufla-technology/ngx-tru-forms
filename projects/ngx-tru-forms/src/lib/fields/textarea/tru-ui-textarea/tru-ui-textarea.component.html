@@ -1,5 +1,5 @@
 <div class="tru-ui-input-container">
-<label class="tru-ui-label"
+<label [for]="schema.key" class="tru-ui-label"
 [ngClass]="['jf-label', schema.key, (isRequired() ? 'required' : '')]">
 <span [innerHTML]="title()"></span><sup *ngIf="isRequired()">*</sup>
 </label>
@@ -8,6 +8,8 @@
 class="tru-ui-input-control"
 [name]="schema.key"
 [formControl]="control"
+[id]="schema.key"
+[attr.aria-required]="isRequired()"
 [attr.maxLength]="schema.maxLength || null"
 [attr.minLength]="schema.minLength || null"
 [attr.disabled]="disabled"

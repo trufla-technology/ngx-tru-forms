@@ -13,6 +13,8 @@
         class="test__pdf-doc"
         [src]="edocSrc"
         [autoresize]="true"
-        [original-size]="false">
+        [original-size]="false"
+        (error)="onError($event)">
       </pdf-viewer>
+      <span *ngIf="error">{{getTranslation('errorPdf')}} </span>
       </div>

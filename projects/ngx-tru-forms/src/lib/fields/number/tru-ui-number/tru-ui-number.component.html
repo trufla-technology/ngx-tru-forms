@@ -1,12 +1,15 @@
 <div class="tru-ui-input-container">
-<label class="tru-ui-label" [ngClass]="['jf-label', schema.key, (isRequired() ? 'required' : '')]" *ngIf="type() !== 'hidden'">
+<label [for]="schema.key" class="tru-ui-label" [ngClass]="['jf-label', schema.key, (isRequired() ? 'required' : '')]" *ngIf="type() !== 'hidden'">
     <span  class="tru-ui-label" [innerHTML]="title()"></span><sup *ngIf="isRequired()">*</sup>
   </label>
   <button type="button" *ngIf="this.schema.description" [attr.class]="'info'" [attr.title]="this.schema.description">Info</button>
   <input
     class="tru-ui-input-control tru-ui-number"
     [name]="schema.key"
+    [attr.aria-required]="isRequired()"
+    [id]="schema.key"
     [attr.type]="'number'"
+    tabindex="1"
     [formControl]="control"
     [attr.disabled]="disabled"
     [ngClass]="{'empty': control.value === '' && !isRequired()}"

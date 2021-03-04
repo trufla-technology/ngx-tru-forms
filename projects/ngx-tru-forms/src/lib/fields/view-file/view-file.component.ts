@@ -2,6 +2,7 @@ import { Component, OnInit, Sanitizer, ViewChild, ElementRef } from '@angular/co
 import { DomSanitizer } from '@angular/platform-browser';
 import { BsModalRef } from 'ngx-bootstrap/modal';
 import DOMPurify from 'dompurify';
+import { ValidationFeedbackTranslation } from '../error/validation-feedback-translation';
 @Component({
   selector: 'jf-view-file',
   templateUrl: './view-file.component.html',
@@ -15,7 +16,11 @@ export class ViewFileComponent implements OnInit {
   pdfBody: string;
   mimeType;
   edocSrc;
-  constructor(private sanitizer: DomSanitizer, public bsModalRef: BsModalRef) {
+  error = false;
+  language;
+  constructor(private sanitizer: DomSanitizer, 
+    public bsModalRef: BsModalRef,
+    private validationFeedbackTranslation?: ValidationFeedbackTranslation) {
    }
 
   ngOnInit() {
@@ -34,6 +39,15 @@ export class ViewFileComponent implements OnInit {
   makeTrustedImage(file): any {
     file =  DOMPurify.sanitize(file);
     return  this.sanitizer.bypassSecurityTrustResourceUrl(file);
+  }
+
+  onError(error) {
+    console.info(error);
+    this.error = true;
+  }
+
+  getTranslation(message) {
+    return this.validationFeedbackTranslation[this.language][message]
   }
    zoomin() {
     const myImg = document.getElementById('image');

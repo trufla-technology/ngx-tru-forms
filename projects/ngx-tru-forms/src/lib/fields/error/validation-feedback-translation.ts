@@ -14,6 +14,9 @@ export class ValidationFeedbackTranslation {
             is_match: 'Value not matching',
             max_size: 'File exceeded the allowed size',
             allowed_format: 'allowed format',
+            error_pdf: 'No documents available',
+            delete_file: 'Click here to delete file',
+            browse: 'Browse'
         },
         fr: {
             confirm: 'Confirmer',
@@ -28,7 +31,10 @@ export class ValidationFeedbackTranslation {
             not_in_menu: ' Sélectionner dans la liste déroulante',
             is_match: 'valeur nesutampa',
             max_size: 'Le fichier a dépassé la taille autorisée',
-            allowed_format: 'fichiers autorisés'
+            allowed_format: 'fichiers autorisés',
+            error_pdf: 'Aucun document disponible',
+            delete_file: 'Cliquez ici pour supprimer le fichier',
+            browse: 'Naviguez'
         }
     };
 }
