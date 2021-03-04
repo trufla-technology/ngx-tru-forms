@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { CommonComponent } from '../../common/common.component';
 
 @Component({
@@ -11,6 +11,15 @@ export class TruUiPhotoComponent extends CommonComponent {
   selectFile = false;
   photoData: string;
   busy = false;
+
+  // For accessible file/image upload
+  onUploadLabelClick(evt): void {
+    var keyCode = evt.which || evt.keyCode;
+    if (keyCode === 13 || keyCode === 32) {
+        document.getElementById(this.schema.key).click();
+        evt.preventDefault();
+    }
+  }
 
   resetUpload() {
     this.file = {};

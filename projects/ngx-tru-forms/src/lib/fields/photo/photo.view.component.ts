@@ -51,7 +51,8 @@ export class PhotoViewComponent extends CommonComponent {
     const initialState = {
       file: this.control.value,
       title: `${this.title()}`,
-      isPdf: this.isPdf()
+      isPdf: this.isPdf(),
+      language: this.language || 'en'
         };
     this.bsModalRef = this.modalService.show(ViewFileComponent, {initialState});
 }
