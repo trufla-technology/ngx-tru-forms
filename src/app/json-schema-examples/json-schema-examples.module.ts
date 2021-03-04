@@ -17,7 +17,7 @@ import { ColorPickerModule } from 'ngx-color-picker';
     ReactiveFormsModule,
     ColorPickerModule,
     JsonFormBootstrap4Module,
-    JsonFormMaterialModule
+    JsonFormMaterialModule,
     {
       ngModule: JsonFormModule,
       providers: [
