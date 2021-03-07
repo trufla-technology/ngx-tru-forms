@@ -136,7 +136,7 @@ export class JsonSchemaExamplesSamples {
         photo_base64: {
           type: 'string',
           format: 'photo',
-          imageFormat: ['png', 'gif'],
+          imageFormat: ['png', 'gif', 'pdf'],
           maxSize: '5'
         },
         photo_url: {
