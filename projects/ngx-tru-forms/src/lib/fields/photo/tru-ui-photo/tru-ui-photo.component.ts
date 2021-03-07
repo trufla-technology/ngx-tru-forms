@@ -14,7 +14,7 @@ export class TruUiPhotoComponent extends CommonComponent {
 
   // For accessible file/image upload
   onUploadLabelClick(evt): void {
-    var keyCode = evt.which || evt.keyCode;
+    const keyCode = evt.which || evt.keyCode;
     if (keyCode === 13 || keyCode === 32) {
         document.getElementById(this.schema.key).click();
         evt.preventDefault();
@@ -60,7 +60,8 @@ export class TruUiPhotoComponent extends CommonComponent {
         (this.schema.imageFormat && [...this.schema.imageFormat].indexOf(ext.toLowerCase()) === -1 )) {
       this.fileSize = null;
       this.busy = false;
-      (this.schema.maxSize && +this.schema.maxSize < +files[0].size / 1024 / 1024) ? this.control.setErrors({maxSize: true}) : this.control.setErrors({invalidFormat: true});
+      (this.schema.maxSize && +this.schema.maxSize < +files[0].size / 1024 / 1024) ?
+       this.control.setErrors({maxSize: true}) : this.control.setErrors({invalidFormat: true});
       this.control.markAsTouched();
       return;
      } else {

@@ -3,7 +3,7 @@
 </label>
 <div class="tru-form-group" jfDragAndDrop (filesDropped)="handleDrop($event);fileInput.value = null">
   
-    <label [attr.aria-required]="isRequired()" tabindex="1" (keydown.enter)="onUploadLabelClick($event)" [attr.aria-label]="getLanguage()['browse']" [for]="schema.key" [ngClass]="{'d-none': getControlValue().length > 0}"  style="margin-bottom: 0 !important;">
+    <label [attr.aria-required]="isRequired()" tabindex="1" (keydown.enter)="onUploadLabelClick($event)" [attr.aria-label]="getLanguage().browse" [for]="schema.key" [ngClass]="{'d-none': getControlValue().length > 0}"  style="margin-bottom: 0 !important;">
       <div class="tru-drag-and-drop" [ngClass]="{'invalid-upload': control.invalid && (control.touched || control.dirty), 'busy': busy}">
         <span *ngIf="language === 'en'; else french">Drop your file here or <strong class="primary-color browse-btn">Browse</strong></span>
         <ng-template #french><span>Déposez votre fichier ici ou <strong class="primary-color browse-btn">Naviguez</strong></span></ng-template>
@@ -48,7 +48,7 @@
                 </g>
             </svg>   
             <span class="cdk-visually-hidden">
-                {{getLanguage()['delete_file']}}
+                {{getLanguage()?.delete_file}}
             </span>     
          </button>
       </div>

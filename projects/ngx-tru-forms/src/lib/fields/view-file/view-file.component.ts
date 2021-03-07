@@ -18,7 +18,7 @@ export class ViewFileComponent implements OnInit {
   edocSrc;
   error = false;
   language;
-  constructor(private sanitizer: DomSanitizer, 
+  constructor(private sanitizer: DomSanitizer,
     public bsModalRef: BsModalRef,
     private validationFeedbackTranslation?: ValidationFeedbackTranslation) {
    }
@@ -42,17 +42,16 @@ export class ViewFileComponent implements OnInit {
   }
 
   onError(error) {
-    console.info(error);
     this.error = true;
   }
 
   getTranslation(message) {
-    return this.validationFeedbackTranslation[this.language][message]
+    return this.validationFeedbackTranslation[this.language][message];
   }
    zoomin() {
     const myImg = document.getElementById('image');
     const currWidth = myImg.clientWidth;
-    if (currWidth == 2500) { return false; } else {
+    if (currWidth === 2500) { return false; } else {
       myImg.style.width = (currWidth + 100) + 'px';
     }
   }
@@ -60,7 +59,7 @@ export class ViewFileComponent implements OnInit {
    zoomout() {
     const myImg = document.getElementById('image');
     const currWidth = myImg.clientWidth;
-    if (currWidth == 100) { return false; } else {
+    if (currWidth === 100) { return false; } else {
       myImg.style.width = (currWidth - 100) + 'px';
     }
   }
