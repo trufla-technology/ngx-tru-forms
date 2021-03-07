@@ -27,7 +27,7 @@
   #truForms
   [schema]="schema"
   (handleSubmit)="handleSubmit($event)"
-  [language]="language"
+  [language]="language || 'en'"
   [viewOnly]="viewOnly"
   [data]="data"
   [fields]="fields"
