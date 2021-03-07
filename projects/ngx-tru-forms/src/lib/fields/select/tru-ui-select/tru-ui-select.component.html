@@ -9,12 +9,14 @@
       [attr.name]="schema.key"
       [formControl]="control"
       [attr.disabled]="disabled"
+      [attr.aria-required]="isRequired()"
     >
       <option value="" [selected]="control.value === ''" [disabled]="true">
         {{placeholder()}}
       </option>
       <option
         *ngFor="let en of schema.enum; let i = index"
+        [attr.aria-label]="enumNames(i)"
         [selected]="control.value === en"
         [ngValue]="en">
         {{enumNames(i)}}

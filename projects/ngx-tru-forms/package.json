@@ -1,7 +1,7 @@
 {
   "name": "@trufla/ngx-tru-forms",
   "author": "Boris Cosic <boris.c@trufla.com>",
-  "version": "1.802.08",
+  "version": "1.1.0",
   "license": "MIT",
   "main": "./index.js",
   "typings": "./index.d.ts",
@@ -31,6 +31,15 @@
     "text-mask-addons": ">=3.7.2",
     "lodash": "^4.17.10",
     "@angular/material-moment-adapter": "^8.2.3",
-    "ngx-image-compress": "^11.0.3"
+    "ngx-image-compress": "^11.0.3",
+    "ng2-pdf-viewer": "^6.4.0"
+  },
+  "dependencies": {
+    "ngx-image-compress": "^11.0.3",
+    "text-mask-addons": ">=3.7.2",
+    "lodash": "^4.17.10",
+    "angular2-text-mask": ">=8.0.4",
+    "dompurify": "^2.2.6",
+    "ng2-pdf-viewer": "^6.4.0"
   }
 }

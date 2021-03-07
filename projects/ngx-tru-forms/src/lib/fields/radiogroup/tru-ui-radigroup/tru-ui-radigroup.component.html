@@ -1,6 +1,6 @@
 <div class="tru-ui-input-container">
 
-<label
+<label [for]="schema.key"
 [ngClass]="['margin-bottom--half', 'jf-label', schema.key, (isRequired() ? 'required' : '')]">
 <span  class="tru-ui-label" [innerHTML]="title()"></span><sup *ngIf="isRequired()">*</sup></label>
 <button type="button" *ngIf="this.schema.description" [attr.class]="'info'" [attr.title]="this.schema.description">Info</button>
@@ -15,6 +15,7 @@
       [attr.id]="getId(schema.key, en, schema.id)"
       [checked]="control.value === en"
       [name]="getName(schema.key)"
+      [attr.aria-required]="isRequired()"
       [formControl]="control"
       [attr.disabled]="disabled"
       [value]="en" />

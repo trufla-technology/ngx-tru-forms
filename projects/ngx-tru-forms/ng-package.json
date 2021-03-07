@@ -13,11 +13,19 @@
       "text-mask-addons/dist/createNumberMask": "createNumberMask",
       "angular2-text-mask": "angular2TextMask",
       "ngx-bootstrap/typeahead": "typeahead",
-      "ngx-image-compress": "ngxImageCompress"
+      "ngx-image-compress": "ngxImageCompress",
+      "ngx-bootstrap/modal": "modal",
+      "dompurify": "DOMPurify",
+      "ng2-pdf-viewer": "ng2PdfViewer"
     }
   },
- 
   "whitelistedNonPeerDependencies": [
-    "@angular/material-moment-adapter"
-  ]
+    "@angular/material-moment-adapter",
+    "ngx-image-compress",
+    "text-mask-addons",
+    "lodash",
+    "angular2-text-mask",
+    "dompurify",
+    "ng2-pdf-viewer"
+    ]
 }

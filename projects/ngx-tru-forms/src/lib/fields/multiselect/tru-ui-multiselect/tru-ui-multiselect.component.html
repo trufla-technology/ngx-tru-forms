@@ -7,12 +7,14 @@
   <select
     class="tru-ui-select"
     name="name"
+    [attr.aria-required]="isRequired()"
     [formControl]="control"
     multiple="multiple"
     [attr.disabled]="disabled"
   >
     <option
       *ngFor="let en of schema.enum; let i = index"
+      [attr.aria-label]="enumNames(i)"
       [selected]="control.value === en"
       [ngValue]="en">
       {{enumNames(i)}}

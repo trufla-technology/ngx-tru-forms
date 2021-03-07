@@ -1,0 +1,48 @@
+
+.controllers {
+    position: absolute;
+    bottom: 30px;
+    right: 30px;
+    display: flex;
+    flex-direction: column;
+}
+.zoom-in, .zoom-out {
+    border: none;
+    background-color: #fff;
+    border-radius: 5px;
+    width: 30px;
+    height: 40px;
+    border-style: none;
+    font-size: 24px;
+    font-weight: bold;
+    color: #a2a2a2;
+}
+.zoom-in:focus, .zoom-out:focus {
+    border: none;
+    outline: 0;
+}
+.zoom-out {
+border-top-left-radius: 0;
+border-top-right-radius: 0;
+}
+.zoom-in {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+.image-container{
+    overflow: auto;
+    height: 480px;
+}
+.image-container img {
+	max-width: 100%;
+	height: auto;
+}
+::ng-deep #toolbar {
+    display: none;
+}
+:host #toolbar {
+    display: none;
+}
+.pdfViewer .page #toolbar {
+    display: none;
+}
