@@ -177,6 +177,17 @@ export class JsonSchemaExamplesSamples {
               },
               last_name: {
                 type: 'string'
+              },
+              photo_base64: {
+                type: 'string',
+                format: 'photo',
+                imageFormat: ['png', 'gif', 'pdf'],
+                maxSize: '5'
+              },
+              photo_url: {
+                type: 'string',
+                format: 'photo',
+                maxSize: '4'
               }
             },
             required: ['first_name', 'last_name']

@@ -1,5 +1,5 @@
 <div class="tru-ui-input-container">
-    <label  class="tru-ui-label" [for]="schema.key"
+    <label  class="tru-ui-label" 
     [ngClass]="['jf-label', schema.key, (isRequired() ? 'required' : '')]" *ngIf="type() !== 'hidden'">
     <span [innerHTML]="title()"></span><sup *ngIf="isRequired()">*</sup>
     </label>
@@ -10,7 +10,6 @@
        [typeaheadMinLength]="0"
        [attr.disabled]="disabled"
        [name]="title"
-       [id]="schema.key"
        [attr.aria-required]="isRequired()"
        [attr.aria-label]="title()"
        (typeaheadOnSelect)="onSelect($event)"

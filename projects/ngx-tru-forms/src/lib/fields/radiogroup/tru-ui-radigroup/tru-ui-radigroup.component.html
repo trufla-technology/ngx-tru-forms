@@ -1,6 +1,6 @@
 <div class="tru-ui-input-container">
 
-<label [for]="schema.key"
+<label 
 [ngClass]="['margin-bottom--half', 'jf-label', schema.key, (isRequired() ? 'required' : '')]">
 <span  class="tru-ui-label" [innerHTML]="title()"></span><sup *ngIf="isRequired()">*</sup></label>
 <button type="button" *ngIf="this.schema.description" [attr.class]="'info'" [attr.title]="this.schema.description">Info</button>
