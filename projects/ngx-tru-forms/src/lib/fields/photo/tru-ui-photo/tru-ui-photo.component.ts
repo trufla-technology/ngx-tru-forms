@@ -39,6 +39,9 @@ export class TruUiPhotoComponent extends CommonComponent {
   }
 
   async dragAndDrop(files) {
+    if(!files) {
+      return
+    }
     this.processFile(files.target.files);
   }
 
@@ -52,6 +55,9 @@ export class TruUiPhotoComponent extends CommonComponent {
   }
 
  async processFile(files) {
+   if (!files) {
+     return
+   }
     const name = files[0].name;
     const file = await this.toBase64(files[0]);
     const lastDot = name.lastIndexOf('.');

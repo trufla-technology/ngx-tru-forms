@@ -25,7 +25,6 @@
     [name]="schema.key"
     [attr.aria-required]="isRequired()"
     tabindex="1"
-    [id]="schema.key"
     (ngModelChange)="onDateInput($event)"
     [formControl]="control"
     [bsConfig]="{ containerClass: 'theme-default', dateInputFormat: 'DD MMM YYYY', showWeekNumbers: false }"

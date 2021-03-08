@@ -1,6 +1,6 @@
 <div *ngIf="control.invalid && (control.dirty || control.touched)" class="invalid-feedback tru-ui-feedback">
     <ng-container *ngIf="control.errors && control.errors['required']">
-      {{getLanguage().required}}
+      {{getLanguage()?.required}}
     </ng-container>
     <ng-container *ngIf="control.errors && control.errors['pattern']">
       {{getLanguage()?.invalid}}

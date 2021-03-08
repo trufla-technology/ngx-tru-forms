@@ -1,5 +1,5 @@
 <div class="tru-ui-input-container">
-<label  class="tru-ui-label" [for]="schema.key"
+<label  class="tru-ui-label"
 [ngClass]="['jf-label', schema.key, (isRequired() ? 'required' : '')]" *ngIf="type() !== 'hidden'">
 <span [innerHTML]="title()"></span><sup *ngIf="isRequired()">*</sup>
 </label>
@@ -7,7 +7,6 @@
 <input
 class="tru-ui-input-control"
 [attr.name]="schema.key"
-[id]="schema.key"
 [attr.type]="type()"
 [formControl]="control"
 [attr.maxLength]="schema.maxLength || null"
@@ -20,14 +19,13 @@ class="tru-ui-input-control"
 tabindex="1"
 />
 <div *ngIf="schema.verify" style="margin-top: 1rem">
-    <label  class="tru-ui-label" [for]="schema.key+'verify'"
+    <label  class="tru-ui-label"
     [ngClass]="['jf-label', schema.key, (isRequired() ? 'required' : '')]" *ngIf="type() !== 'hidden'">
     <span > {{ getLanguage()?.confirm}} {{title()}}</span><sup *ngIf="isRequired()">*</sup>
     </label>
     <input
     class="tru-ui-input-control"
     [attr.type]="type()"
-    [id]="schema.key+'verify'"
     [attr.aria-required]="isRequired()"
     [attr.name]="schema.key+'verify'"
     [formControl]="confirmInput"

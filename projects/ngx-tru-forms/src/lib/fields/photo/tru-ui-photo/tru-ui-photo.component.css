@@ -4,6 +4,9 @@
     margin-bottom: 6px;
     padding: 0;
 }
+label:focus {
+  outline: 0 !important
+}
 .tru-drag-and-drop {
     text-align: center;
     padding: 30px !important;
@@ -35,7 +38,7 @@ color:#bfbfbf
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-end;
 }
 .reset-btn {
   width: 24px;

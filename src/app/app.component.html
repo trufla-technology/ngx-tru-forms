@@ -1,7 +1,7 @@
 <!-- <app-json-schema-examples></app-json-schema-examples> -->
 <div class="display-flex-row">
   <div class="w-50">
-    <app-schema-dropdown [schemas]="allSchemaTitles" (selectedSchemaChanged)="handleSelectedSchemaChanged($event)"></app-schema-dropdown>
+    <app-schema-dropdown *ngIf="allSchemaTitles" [schemas]="allSchemaTitles" (selectedSchemaChanged)="handleSelectedSchemaChanged($event)"></app-schema-dropdown>
     <app-schema-editor [schema]="schema" (schemaHasChanged)="handleSchemaHasChanged($event)"></app-schema-editor>
   </div>
   <div class="w-50">

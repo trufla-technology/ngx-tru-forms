@@ -4,12 +4,13 @@
       <div style="display: flex;flex-direction: row;align-items: flex-end;">
         <div class="control" 
         jf-component-chooser 
-        [form]="arrControl" 
+        [form]="arrControl"
+         
         [language]= "language"
         style="display: flex;flex-direction: row;"></div>
         <div class="remove" >
           <button class="btn-remove" *ngIf="control.controls.length > 1" type="button" (click)="removeControl(control, i)"> 
-            <svg width="14px" height="14px" viewBox="0 0 14 14" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+            <svg width="10px" height="10px" viewBox="0 0 14 14" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                 <g id="Full-Admin" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                     <g id="Settings-/-Branches-Add-Map-have-data" transform="translate(-961.000000, -519.000000)" fill="#FFFFFF">
                         <g id="Group-50" transform="translate(664.000000, 492.000000)">
@@ -29,7 +30,7 @@
           </button>
           <button  *ngIf="last && control?.schema?.maxItem !== i+1"  type="button" (click)="addControl(control)" class="btn-add">
               
-            <svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+            <svg width="10px" height="10px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                 <g id="Full-Admin" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                     <g id="Settings-/-Branches-Add-Map-have-data" transform="translate(-960.000000, -580.000000)" fill="#FFFFFF">
                         <g id="Group-35" transform="translate(952.000000, 572.000000)">

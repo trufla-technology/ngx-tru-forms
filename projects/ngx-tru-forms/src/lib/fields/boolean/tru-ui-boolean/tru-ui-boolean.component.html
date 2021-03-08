@@ -1,9 +1,8 @@
 <div class="tru-ui-input-container">
   <div [class]="getClass('checkbox-group')">
-    <label class="container" [for]="schema.key">
+    <label class="container" >
       <span  class="tru-ui-label"  [innerHTML]="title()"></span><sup *ngIf="isRequired()">*</sup>
       <input 
-      [id]="schema.key"
       [name]="schema.key"
       type="checkbox"
       [formControl]="control"
