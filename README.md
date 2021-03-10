@@ -186,7 +186,7 @@ const onFormSubmit = (form) => console.log(form);
 
 ```  
 `verify`: Boolean default false duplicate string type for verification  
-`maxItem`: maximum items allowed in array  
+`maxItems`: maximum items allowed in array  
 ### Extending
 
 This module allows for extension via injectors.
