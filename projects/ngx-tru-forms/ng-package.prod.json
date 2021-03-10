@@ -15,7 +15,8 @@
       "ngx-image-compress": "ngxImageCompress",
       "ngx-bootstrap/modal": "modal",
       "dompurify": "DOMPurify",
-      "ng2-pdf-viewer": "ng2PdfViewer"
+      "ng2-pdf-viewer": "ng2PdfViewer",
+      "moment-timezone": "momentTimezone"
     }
   }
 }
