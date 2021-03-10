@@ -8,6 +8,7 @@
     class="tru-ui-input-control tru-ui-date desktop"
     [attr.aria-required]="isRequired()"
     (bsValueChange)="onDateInput($event)"
+    (onHidden)="control.markAsTouched()"
     [bsConfig]="{ containerClass: 'theme-default', dateInputFormat: 'DD MMM YYYY', showWeekNumbers: false}"
     bsDatepicker
     [bsValue]="maskDate"
@@ -26,7 +27,8 @@
     [bsConfig]="{ containerClass: 'theme-default', dateInputFormat: 'DD MMM YYYY', showWeekNumbers: false }"
     bsDatepicker
     (bsValueChange)="onDateInput($event)"
-    placement="top"
+    (onHidden)="control.markAsTouched()"
+    placement="bottom"
     triggers="touchend:touchend"
     readonly
     readonly="readonly"    /> 
