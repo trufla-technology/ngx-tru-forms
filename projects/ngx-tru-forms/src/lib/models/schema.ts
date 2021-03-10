@@ -55,5 +55,5 @@ export interface Schema {
 
   // allowed format default allow all
   imageFormat?: Array<any>;
-  maxItem?: any;
+  maxItems?: any;
 }

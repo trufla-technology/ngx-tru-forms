@@ -168,7 +168,7 @@ export class JsonSchemaExamplesSamples {
       properties: {
         employee: {
           type: 'array',
-          maxItem: 3,
+          maxItems: 3,
           items: {
             type: 'object',
             properties: {
