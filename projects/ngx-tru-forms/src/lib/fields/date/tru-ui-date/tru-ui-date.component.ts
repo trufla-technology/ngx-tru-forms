@@ -1,19 +1,13 @@
 import { Component } from '@angular/core';
 import { CommonComponent } from '../../common/common.component';
-import * as moment from 'moment';
-import { DateAdapter } from '@angular/material/core';
-import { MomentUtcDateAdapter } from '../../../services/moment-utc-adapter.service';
-
+import * as moment_ from 'moment';
+import * as momentTimeZone from 'moment-timezone';
+const localTimeZone = momentTimeZone.tz.guess();
+const moment = moment_;
 @Component({
   selector: 'jf-tru-ui-date',
   templateUrl: './tru-ui-date.component.html',
   styleUrls: ['../../../assets/tru-ui.css'],
-  providers: [
-    {
-      provide: DateAdapter,
-      useClass: MomentUtcDateAdapter
-    }
-  ]
 })
 export class TruUiDateComponent extends CommonComponent  {
   oldValue;
@@ -30,11 +24,11 @@ export class TruUiDateComponent extends CommonComponent  {
   }
 
   onDateInput(e) {
-    const date = moment.utc(e).format('YYYY-MM-DD');
-    if (e && date !== this.oldValue) {
-    const newDate = new Date(`${moment.utc(e).format('YYYY-MM-DD')}T00:00:00.000Z`);
-    this.oldValue = moment.utc(e).format('YYYY-MM-DD');
-    this.control.setValue(newDate);
+    if (!e) { return; }
+    const date = moment(e).locale(this.language || 'en').utc(e).tz(localTimeZone).format('YYYY-MM-DD');
+    if (e && `${date}` !== `${this.oldValue}`) {
+    this.oldValue = date;
+    this.control.setValue(date);
     }
   }
 }

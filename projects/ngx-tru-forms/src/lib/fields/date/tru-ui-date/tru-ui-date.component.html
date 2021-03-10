@@ -5,35 +5,35 @@
   <input
     *ngIf="!isWebView; else webview"
     type="text"
-    class="tru-ui-input-control tru-ui-date"
-    [name]="schema.key"
+    class="tru-ui-input-control tru-ui-date desktop"
     [attr.aria-required]="isRequired()"
-    (ngModelChange)="onDateInput($event)"
-    [formControl]="control"
+    (bsValueChange)="onDateInput($event)"
     [bsConfig]="{ containerClass: 'theme-default', dateInputFormat: 'DD MMM YYYY', showWeekNumbers: false}"
     bsDatepicker
+    [bsValue]="maskDate"
     tabindex="1"
     placement="bottom"
     readonly
     readonly="readonly"
-    triggers="keydown.enter:keydown.enter click:click"
   />
   <ng-template #webview>
     <input
     type="text"
-    class="tru-ui-input-control tru-ui-date"
-    [name]="schema.key"
+    class="tru-ui-input-control tru-ui-date ios"
     [attr.aria-required]="isRequired()"
     tabindex="1"
-    (ngModelChange)="onDateInput($event)"
-    [formControl]="control"
+    [bsValue]="maskDate"
     [bsConfig]="{ containerClass: 'theme-default', dateInputFormat: 'DD MMM YYYY', showWeekNumbers: false }"
     bsDatepicker
-    triggers="touchend:touchend"
+    (bsValueChange)="onDateInput($event)"
     placement="top"
+    triggers="touchend:touchend"
     readonly
     readonly="readonly"    /> 
    </ng-template>
-  <jf-tru-ui-error [control]="control" [language]="language || 'en'"></jf-tru-ui-error>
 
+   <input style="display: none;visibility: hidden;"     
+   [name]="schema.key"
+   [formControl]="control" />
+  <jf-tru-ui-error [control]="control" [language]="language || 'en'"></jf-tru-ui-error>
 </div>

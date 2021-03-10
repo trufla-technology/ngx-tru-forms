@@ -1,6 +1,6 @@
 import { Schema } from '../../models/schema';
 import { SchemaFormControl } from '../../models/schema-form-control';
-import { Component, ChangeDetectorRef, AfterViewInit, HostListener } from '@angular/core';
+import { Component, ChangeDetectorRef, AfterViewInit } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { upperFirst, startCase } from 'lodash';
 import {ValidationFeedbackTranslation} from '../error/validation-feedback-translation';
@@ -34,7 +34,7 @@ export class CommonComponent implements AfterViewInit {
     private imageCompress?: NgxImageCompressService,
     public modalService?: BsModalService
   ) {
-
+    this.isWebView = this.detectWebView();
      defineLocale('fr', deLocale);
      this.localeService.use(this.language);
   }
@@ -44,17 +44,11 @@ export class CommonComponent implements AfterViewInit {
        this.getImageFromUrl(this.control.value);
       }
     if (this.schema && this.schema.format === 'date' && this.control.data) {
-      this.maskDate = moment.utc(this.control.data ).toDate();
+      this.maskDate = new Date(this.control.data );
       this.control.setValue(this.maskDate);
     }
     this.localeService.use(this.language);
     this.cd.detectChanges();
-  }
-
-  @HostListener('window:resize', ['$event']) onResize(event) {
-   if ( (/android|webos|iphone|ipad|ipod|blackberry|iemobile|opera mini/i.test(navigator.userAgent.toLowerCase()))) {
-    this.isWebView = true;
-   }
   }
 
   isRequired() {
@@ -200,5 +194,12 @@ export class CommonComponent implements AfterViewInit {
   compressFile(file: any, size?) {
     const quality = size < 0.300 ? 80 : size < 0.900 ? 50 : 35;
    return this.imageCompress.compressFile(file, -2, quality, quality);
+  }
+
+  detectWebView() {
+    const userAgent = window.navigator.userAgent.toLowerCase(),
+    ios = /iphone|ipod|ipad/.test( userAgent );
+    return ios;
+
   }
 }
