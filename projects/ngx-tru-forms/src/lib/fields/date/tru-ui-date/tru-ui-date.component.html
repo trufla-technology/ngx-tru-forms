@@ -9,6 +9,8 @@
     [attr.aria-required]="isRequired()"
     (bsValueChange)="onDateInput($event)"
     (onHidden)="control.markAsTouched()"
+    [minDate]="minDate()"
+    [maxDate]="maxDate()"
     [bsConfig]="{ containerClass: 'theme-default', dateInputFormat: 'DD MMM YYYY', showWeekNumbers: false}"
     bsDatepicker
     [bsValue]="maskDate"

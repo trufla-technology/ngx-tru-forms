@@ -29,7 +29,8 @@ export class JsonSchemaExamplesSamples {
         },
         effective_date: {
           type: 'string',
-          format: 'date'
+          format: 'date',
+          minimum: '2021-04-11'
         },
         do_not_contact: {
           type: 'boolean'
@@ -487,7 +488,8 @@ export class JsonSchemaExamplesSamples {
         },
         effective_date: {
           type: 'string',
-          format: 'date'
+          format: 'date',
+          minimum: '2021-04-11'
         }
       },
       required: ['day_of_the_month', 'effective_date']
