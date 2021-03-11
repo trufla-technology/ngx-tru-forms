@@ -17,6 +17,7 @@ export class ViewFileComponent implements OnInit {
   mimeType;
   edocSrc;
   error = false;
+  zoom = 1;
   language;
   constructor(private sanitizer: DomSanitizer,
     public bsModalRef: BsModalRef,
@@ -62,5 +63,11 @@ export class ViewFileComponent implements OnInit {
     if (currWidth === 100) { return false; } else {
       myImg.style.width = (currWidth - 100) + 'px';
     }
+  }
+  zoomPdfIn() {
+    this.zoom = this.zoom + 0.25;
+  }
+  zoomPdfOut() {
+    this.zoom = this.zoom - 0.25;
   }
 }

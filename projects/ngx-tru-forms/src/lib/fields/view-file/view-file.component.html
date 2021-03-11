@@ -8,13 +8,20 @@
                 <button class="zoom-out" type="button" (click)="zoomout()" aria-label="zoom out" >-</button>
             </div>
       </div>
-      <div *ngIf="isPdf" class="modal-body" style="height:480px !important;padding: 0;margin: 0">
+      <div *ngIf="isPdf" class="modal-body" style="max-height:90vh !important;padding: 0;margin: 0;overflow: auto;">
         <pdf-viewer 
         class="test__pdf-doc"
         [src]="edocSrc"
         [autoresize]="true"
         [original-size]="false"
+        [zoom]="zoom"
+        [zoom-scale]="'page-fit'"
+
         (error)="onError($event)">
       </pdf-viewer>
+      <div class="controllers" *ngIf="isPdf">
+        <button class="zoom-in" type="button" (click)="zoomPdfIn()" aria-label="zoom in" >+</button>
+        <button class="zoom-out" type="button" (click)="zoomPdfOut()" aria-label="zoom out" >-</button>
+    </div>
       <span *ngIf="error">{{getTranslation('errorPdf')}} </span>
       </div>
