@@ -89,7 +89,8 @@ import { PdfViewerModule } from 'ng2-pdf-viewer';
     CommonComponent,
     ArrayComponent,
     ObjectComponent,
-    DragAndDropDirective
+    DragAndDropDirective,
+    ViewFileComponent
   ]
 })
 

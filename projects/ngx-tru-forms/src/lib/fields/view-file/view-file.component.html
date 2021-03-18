@@ -1,22 +1,24 @@
+<button type="button" class="btn-circle" id="close-modal-button" aria-label="close" tabindex="1" (click)="bsModalRef.hide()">x</button>
+
       <div *ngIf="!isPdf" class="modal-body" style="height:480px !important;padding: 0;margin: 0;display: flex;justify-content: center;align-items: center;flex-direction: row;">
         
-            <div  class="image-container">
+            <div  class="image-container-modal">
                 <img [src]="makeTrustedImage(file)" id="image" [alt]="title">
             </div>
             <div class="controllers" *ngIf="!isPdf">
-                <button class="zoom-in" type="button" (click)="zoomin()" aria-label="zoom in" >+</button>
-                <button class="zoom-out" type="button" (click)="zoomout()" aria-label="zoom out" >-</button>
+                <button class="zoom-in" type="button" (click)="zoomin()" aria-label="zoom in" tabindex="1" >+</button>
+                <button class="zoom-out" type="button" (click)="zoomout()" aria-label="zoom out" tabindex="1">-</button>
             </div>
       </div>
       <div *ngIf="isPdf" class="modal-body" style="max-height:90vh !important;padding: 0;margin: 0;overflow: auto;">
-        <pdf-viewer 
+        <pdf-viewer  *ngIf="edocSrc"
         class="test__pdf-doc"
         [src]="edocSrc"
         [autoresize]="true"
         [original-size]="false"
         [zoom]="zoom"
+        [render-text]="false"
         [zoom-scale]="'page-fit'"
-
         (error)="onError($event)">
       </pdf-viewer>
       <div class="controllers" *ngIf="isPdf">
@@ -25,3 +27,4 @@
     </div>
       <span *ngIf="error">{{getTranslation('errorPdf')}} </span>
       </div>
+      
