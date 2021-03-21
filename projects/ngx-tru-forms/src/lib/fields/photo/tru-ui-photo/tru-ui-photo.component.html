@@ -10,7 +10,7 @@
         <div style="line-height: 1;font-size: 12px;"> <small *ngIf="schema.maxSize" style="color: #bfbfbf">Maximum {{schema.maxSize}} MB<span *ngIf="schema.imageFormat">, </span></small> <small *ngIf="schema.imageFormat" style="color: #bfbfbf"> {{getLanguage()?.allowed_format}}  <span *ngFor="let format of schema.imageFormat"> {{ format }} </span></small></div>
       </div>
     <input #fileInput
-      style="display: none" class="tru-input"  type="file" [attr.aria-label]="getLanguage().browse" (change)="dragAndDrop($event)" (keypress)="dragAndDrop($event)"  />
+      style="display: none" class="tru-input"  type="file" [accept]="acceptFormats"  [attr.aria-label]="getLanguage().browse" (change)="dragAndDrop($event)" (keypress)="dragAndDrop($event)"  />
     </label>
     <div class="file-preview-container"  [ngClass]="{'d-none': !getControlValue().length}">
       <div style="max-width: 190px;text-overflow: ellipsis;overflow: hidden;display: block;"><small >{{file?.name || title()}}</small></div>

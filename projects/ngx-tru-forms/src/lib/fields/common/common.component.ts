@@ -25,7 +25,7 @@ export class CommonComponent implements AfterViewInit {
   isWebView = false;
   fileSize = null;
   maskDate;
-
+  acceptFormats = 'image/x-png,image/jpeg,image/jpg'
   constructor(
     public sanitizer?: DomSanitizer,
     public cd?: ChangeDetectorRef,
@@ -46,6 +46,9 @@ export class CommonComponent implements AfterViewInit {
     if (this.schema && this.schema.format === 'date' && this.control.data) {
       this.maskDate = new Date(this.control.data );
       this.control.setValue(this.maskDate);
+    }
+    if (this.schema && this.schema.format === 'photo' && this.schema.imageFormat && this.schema.imageFormat.indexOf('pdf') !== -1) {
+      this.acceptFormats = 'image/x-png,image/jpeg,image/jpg,application/pdf';
     }
     this.localeService.use(this.language);
     this.cd.detectChanges();
