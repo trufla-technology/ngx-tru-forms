@@ -3,9 +3,9 @@ import { CommonComponent } from '../common/common.component';
 
 @Component({
   template: `
-    <p>{{placeholder()}}</p>
-    <ul *ngFor="let selected of control.value">
-      <li>{{selected}}</li>
+    <p tabindex="0">{{placeholder()}}</p>
+    <ul *ngFor="let selected of control.value" >
+      <li tabindex="0" *ngIf="selected">{{selected}}</li>
     </ul>
   `
 })

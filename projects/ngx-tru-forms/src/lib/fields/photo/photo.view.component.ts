@@ -4,8 +4,8 @@ import { BsModalRef } from 'ngx-bootstrap/modal';
 import { ViewFileComponent } from '../view-file/view-file.component';
 @Component({
   template: `
-    <p>{{placeholder()}}</p>
-    <img
+    <p tabindex="0">{{placeholder()}}</p>
+    <img tabindex="0"
     [alt]="'View '+title()"
     *ngIf='!isPdf() && control.value'
     src='{{control.value}}'
@@ -13,7 +13,7 @@ import { ViewFileComponent } from '../view-file/view-file.component';
     (click)='openFile()'
     style='width: 100px !important;cursor:pointer'  />
     <button *ngIf='isPdf() && control.value'
-    class='img-thumbnail primary-bg'
+    class='img-thumbnail primary-bg' tabindex="0"
     [attr.aria-label]="'View '+title()"
     (click)='openFile()'
     style='width: 100px !important;

@@ -3,7 +3,7 @@ import { CommonComponent } from '../common/common.component';
 
 @Component({
   template: `
-  <p><span>{{placeholder()}}</span> <span style="white-space: pre-wrap;">{{ formatString(control.value) }}</span></p>
+  <p><span tabindex="0">{{placeholder()}}</span> <span tabindex="0" *ngIf="control.value" style="white-space: pre-wrap;">{{ formatString(control.value) }}</span></p>
   `
 })
 export class TextareaViewComponent extends CommonComponent {
