@@ -25,13 +25,17 @@ import { ArrayViewComponent } from './components/array/array.view.component';
 import { DragAndDropDirective } from './directive/drag-and-drop.directive';
 import { ViewFileComponent } from '../../fields/view-file/view-file.component';
 import { PdfViewerModule } from 'ng2-pdf-viewer';
-
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { OutsideClickDirective } from './directive/outside-click.directive';
 @NgModule({
   imports: [
     CommonModule,
     TextMaskModule,
     ReactiveFormsModule,
-    PdfViewerModule
+    PdfViewerModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
   declarations: [
     JsonFormComponent,
@@ -56,6 +60,7 @@ import { PdfViewerModule } from 'ng2-pdf-viewer';
     ArrayComponent,
     ArrayViewComponent,
     DragAndDropDirective,
+    OutsideClickDirective
   ],
   entryComponents: [
     JsonFormComponent,
@@ -90,8 +95,11 @@ import { PdfViewerModule } from 'ng2-pdf-viewer';
     ArrayComponent,
     ObjectComponent,
     DragAndDropDirective,
-    ViewFileComponent
+    ViewFileComponent,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    OutsideClickDirective
   ]
 })
 
-export class SharedModule {}
+export class SharedModule { }

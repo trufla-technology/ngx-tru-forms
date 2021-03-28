@@ -2,73 +2,59 @@
   <br />
   <div class="row form-builder">
     <div class="col-md-6">
-      <h6>Schema Samples:</h6>
+      <label>Schema Samples:</label>
       <div class="form-group">
         <select style="float:left;" class="form-control" (change)="handleSchemaUpdate($event.target.value)">
           <option *ngFor="let schema of getSchemaSamples()" [value]="schema">
             {{jsonSchemaExamplesSamples.json[schema].title}}
           </option>
         </select>
-        <select style="float:left; margin-left: 10px;" class="form-control" (change)="handleFrameworkUpdate($event.target.value)" >
+        <select style="float:left; margin-left: 10px;" class="form-control"
+          (change)="handleFrameworkUpdate($event.target.value)">
           <option value="material">Material Design</option>
           <option value="bootstrap">Bootstrap 4</option>
         </select>
         <div style="clear:both;"></div>
       </div>
-      <h6>JSON Schema:
+      <label>JSON Schema:
         <span class="text-danger" *ngIf="(schemaControl.touched || schemaControl.dirty) && schemaControl.invalid">
           {{schemaControl.errors['invalidJSON']}}
         </span>
         <a href="javascript:void(0)" class="text-danger"
-           *ngIf="(schemaControl.touched || schemaControl.dirty) && schemaControl.invalid"
-           (click)="goToError(schemaControl.errors['invalidJSON'])">
+          *ngIf="(schemaControl.touched || schemaControl.dirty) && schemaControl.invalid"
+          (click)="goToError(schemaControl.errors['invalidJSON'])">
           <i class="fa fa-exclamation-triangle"></i>
         </a>
-      </h6>
+      </label>
       <form [formGroup]="form">
         <div class="form-group" [ngClass]="{
           'has-danger': schemaControl.invalid && (schemaControl.dirty || schemaControl.touched)
           }">
-          <textarea class="form-control schema" style="height: 100%" [formControl]="schemaControl" (keyup)="handleSchemaUpdate()"
-                    (keydown.Enter)="onEnterKey($event)" (keydown.Tab)="onTabKey($event)" #jsonSchema
-                    [ngClass]="{
+          <textarea class="form-control schema" style="height: 100%" [formControl]="schemaControl"
+            (keyup)="handleSchemaUpdate()" (keydown.Enter)="onEnterKey($event)" (keydown.Tab)="onTabKey($event)"
+            #jsonSchema [ngClass]="{
               'has-danger': schemaControl.invalid && (schemaControl.dirty || schemaControl.touched)
             }"></textarea>
         </div>
       </form>
     </div>
     <div class="col-md-6">
-      <h6>Form:</h6>
-      <jf-form
-        #jfForm
-        [id]="'exampleform'"
-        [cancel]="cancel"
-        [submit]="'Submit'"
-        [schema]="schema"
-        [isMultiStep]="isMultiStep"
-        [state]="state"
-        [fields]="fields"
-        [viewOnly]="viewOnly"
-        [data]="data"
-        (handleCancel)="handleCancel($event)"
-        (handleChange)="handleChange($event)"
+      <label>Form:</label>
+      <jf-form #jfForm [id]="'exampleform'" [cancel]="cancel" [submit]="'Submit'" [schema]="schema"
+        [isMultiStep]="isMultiStep" [state]="state" [fields]="fields" [viewOnly]="viewOnly" [data]="data"
+        (handleCancel)="handleCancel($event)" (handleChange)="handleChange($event)"
         (handleSubmit)="handleSubmit($event)">
       </jf-form>
 
-      <jf-form
-        *ngIf="this.selectedSchema === 'multiple_forms'"
-        [id]="'exampleform'"
-        [cancel]="cancel"
-        [submit]="'Submit'"
-        [schema]="schema"
-        [isMultiStep]="isMultiStep"
-        [state]="state"
-        [fields]="fields"
+      <jf-form *ngIf="this.selectedSchema === 'multiple_forms'" [id]="'exampleform'" [cancel]="cancel"
+        [submit]="'Submit'" [schema]="schema" [isMultiStep]="isMultiStep" [state]="state" [fields]="fields"
         (handleSubmit)="handleSubmit($event)">
       </jf-form>
       <p></p>
-      <h6 *ngIf="!this.viewOnly">Data: (click Submit to preview form data)</h6>
-      <h6 *ngIf="this.viewOnly">Data: <pre>{{formattedData(data)}}</pre></h6>
+      <label *ngIf="!this.viewOnly">Data: (click Submit to preview form data)</label>
+      <label *ngIf="this.viewOnly">Data:
+        <pre>{{formattedData(data)}}</pre>
+      </label>
       <pre *ngIf="!this.viewOnly" #formResponse>&#123;&#125;</pre>
     </div>
   </div>

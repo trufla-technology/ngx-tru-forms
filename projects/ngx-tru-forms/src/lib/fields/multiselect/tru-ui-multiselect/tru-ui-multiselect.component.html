@@ -1,25 +1,18 @@
 <div class="tru-ui-input-container">
 
-<label [attr.class]="schema.key" [ngClass]="{required: isRequired()}">
-    <span class="tru-ui-label"  [innerHTML]="title()"></span><sup *ngIf="isRequired()">*</sup>
+  <label class="tru-ui-label" [for]="inputId" [attr.class]="schema.key" [ngClass]="{required: isRequired()}"
+    tabindex="0">
+    <span class="tru-ui-label" [innerHTML]="title()"></span><sup *ngIf="isRequired()">*</sup>
   </label>
-  <button type="button" *ngIf="schema.description" [attr.class]="'info'" [attr.title]="this.schema.description">Info</button>
-  <select
-    class="tru-ui-select"
-    name="name"
-    [attr.aria-required]="isRequired()"
-    [formControl]="control"
-    multiple="multiple"
-    [attr.disabled]="disabled"
-  >
-    <option
-      *ngFor="let en of schema.enum; let i = index"
-      [attr.aria-label]="enumNames(i)"
-      [selected]="control.value === en"
-      [ngValue]="en">
+  <button type="button" *ngIf="schema.description" [attr.class]="'info'"
+    [attr.title]="this.schema.description">Info</button>
+  <select class="tru-ui-select" name="name" [attr.aria-required]="isRequired()" [formControl]="control"
+    multiple="multiple" [attr.id]="inputId" [attr.disabled]="disabled">
+    <option *ngFor="let en of schema.enum; let i = index" [attr.aria-label]="enumNames(i)"
+      [selected]="control.value === en" [ngValue]="en">
       {{enumNames(i)}}
     </option>
   </select>
   <jf-tru-ui-error [control]="control" [language]="language || 'en'"></jf-tru-ui-error>
 
-  </div>
+</div>
