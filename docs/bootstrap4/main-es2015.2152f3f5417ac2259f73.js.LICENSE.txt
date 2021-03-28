@@ -1,5 +1,3 @@
-/*! @license DOMPurify | (c) Cure53 and other contributors | Released under the Apache license 2.0 and Mozilla Public License 2.0 | github.com/cure53/DOMPurify/blob/2.2.2/LICENSE */
-
 /**
  * @license
  * Copyright Google Inc. All Rights Reserved.
@@ -58,38 +56,16 @@
 * found in the LICENSE file at https://angular.io/license
 */
 
-//! Copyright (c) JS Foundation and other contributors
-
 //! author : Abdel Said: https://github.com/abdelsaid
 
 //! author : Ahmed Elkhatib
 
-//! author : Chris Gedrim : https://github.com/chrisgedrim
-
-//! author : Mikolaj Dadela : https://github.com/mik01aj
-
 //! author : forabi https://github.com/forabi
 
-//! author : lluchs : https://github.com/lluchs
-
-//! author: Menelion Elensúle: https://github.com/Oire
-
-//! github.com/moment/moment-timezone
-
-//! license : MIT
-
 //! locale : Arabic [ar]
-
-//! locale : English (United Kingdom) [en-gb]
-
-//! locale : German [de]
-
-//! moment-timezone.js
 
 //! moment.js
 
 //! moment.js language configuration
 
 //! moment.js locale configuration
-
-//! version : 0.5.33
