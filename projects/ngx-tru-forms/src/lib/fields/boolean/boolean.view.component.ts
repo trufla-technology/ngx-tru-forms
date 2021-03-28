@@ -3,7 +3,7 @@ import { CommonComponent } from '../common/common.component';
 
 @Component({
   template: `
-  <p><span>{{placeholder()}}</span> <span>{{control.value}}</span></p>
+  <p><span tabindex="0">{{placeholder()}}</span> <span *ngIf="control.value" tabindex="0">{{control.value}}</span></p>
   `
 })
 export class BooleanViewComponent extends CommonComponent {

@@ -1,5 +1,5 @@
 <button type="button" class="btn-circle" id="close-modal-button" aria-label="close" tabindex="0"
-    (click)="bsModalRef.hide()">
+    (click)="bsModalRef.hide()" tabindex="0">
     <svg role="img" aria-labledby="close" width="14px" height="14px" viewBox="0 0 14 14" version="1.1"
         xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
         <title>close</title>
@@ -43,8 +43,8 @@
         [zoom]="zoom" [render-text]="false" [zoom-scale]="'page-fit'" (error)="onError($event)">
     </pdf-viewer>
     <div class="controllers" *ngIf="isPdf">
-        <button class="zoom-in" type="button" (click)="zoomPdfIn()" aria-label="zoom in">+</button>
-        <button class="zoom-out" type="button" (click)="zoomPdfOut()" aria-label="zoom out">-</button>
+        <button class="zoom-in" tabindex="0" type="button" (click)="zoomPdfIn()" aria-label="zoom in">+</button>
+        <button class="zoom-out" tabindex="0" type="button" (click)="zoomPdfOut()" aria-label="zoom out">-</button>
     </div>
     <span *ngIf="error">{{getTranslation('errorPdf')}} </span>
 </div>
