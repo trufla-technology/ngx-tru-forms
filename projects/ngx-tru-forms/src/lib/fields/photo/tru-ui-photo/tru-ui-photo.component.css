@@ -21,7 +21,7 @@ label.tru-ui-label:focus {
 .tru-drag-and-drop-wrapper:focus {
   border-radius: 6px;
   box-shadow: 0 1px 6px rgb(32 33 36 / 28%);
-  outline: none !important;
+  /* outline: none !important; */
 }
 
 .tru-drag-and-drop>span {
@@ -72,7 +72,7 @@ label.tru-ui-label:focus {
 }
 
 .btn-remove:focus {
-  outline: none !important;
+  /* outline: none !important; */
   opacity: 0.8;
 }
 
