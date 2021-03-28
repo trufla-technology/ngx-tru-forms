@@ -1,8 +1,10 @@
-<!-- <app-json-schema-examples></app-json-schema-examples> -->
+<h1>Ngx Tru Forms</h1>
 <div class="display-flex-row">
   <div class="width-50">
-    <app-schema-dropdown *ngIf="allSchemaTitles" [schemas]="allSchemaTitles" (selectedSchemaChanged)="handleSelectedSchemaChanged($event)"></app-schema-dropdown>
-    <app-schema-editor *ngIf="schema" [schema]="schema" (schemaHasChanged)="handleSchemaHasChanged($event)"></app-schema-editor>
+    <app-schema-dropdown *ngIf="allSchemaTitles" [schemas]="allSchemaTitles"
+      (selectedSchemaChanged)="handleSelectedSchemaChanged($event)"></app-schema-dropdown>
+    <app-schema-editor *ngIf="schema" [schema]="schema" (schemaHasChanged)="handleSchemaHasChanged($event)">
+    </app-schema-editor>
   </div>
   <div class="width-50">
     <app-framework-dropdown (frameworkChanged)="handleFrameWorkChanged($event)"></app-framework-dropdown>
@@ -10,4 +12,3 @@
     <app-submitted-data></app-submitted-data>
   </div>
 </div>
-

@@ -20,3 +20,7 @@
     font-weight: bold;
     border-radius: 4px;
 }
+.btn-add:focus, .btn-remove:focus {
+    opacity: 0.85;
+    outline: none !important;
+}

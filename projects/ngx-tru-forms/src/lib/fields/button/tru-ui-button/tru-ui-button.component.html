@@ -1,11 +1,4 @@
-<button
-      class="tru-ui-button"
-      *ngIf="isVisible"
-      [type]="type"
-      [ngClass]="class"
-      tabindex="1"
-      [disabled]="disabled"
-      [attr.aria-label]="label"
-      (click)="handleClick($event)">
-      {{label}}
-    </button>
+<button class="tru-ui-button" *ngIf="isVisible" [type]="type" [ngClass]="class" tabindex="0" [disabled]="disabled"
+  [attr.aria-label]="label" (click)="handleClick($event)">
+  {{label}}
+</button>

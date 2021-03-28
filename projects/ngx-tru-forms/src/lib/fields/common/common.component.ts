@@ -1,19 +1,46 @@
 import { Schema } from '../../models/schema';
 import { SchemaFormControl } from '../../models/schema-form-control';
-import { Component, ChangeDetectorRef, AfterViewInit } from '@angular/core';
+import { Component, ChangeDetectorRef, AfterViewInit, Renderer2 } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { upperFirst, startCase } from 'lodash';
-import {ValidationFeedbackTranslation} from '../error/validation-feedback-translation';
-import { BsLocaleService } from 'ngx-bootstrap/datepicker';
-import { defineLocale } from 'ngx-bootstrap/chronos';
-import { deLocale } from 'ngx-bootstrap/locale';
-import {NgxImageCompressService} from 'ngx-image-compress';
+import { ValidationFeedbackTranslation } from '../error/validation-feedback-translation';
+// import { BsLocaleService } from 'ngx-bootstrap/datepicker';
+// import { defineLocale } from 'ngx-bootstrap/chronos';
+// import { deLocale } from 'ngx-bootstrap/locale';
+import { NgxImageCompressService } from 'ngx-image-compress';
 import { BsModalService } from 'ngx-bootstrap/modal';
 import * as moment_ from 'moment';
+import {
+  MAT_MOMENT_DATE_FORMATS,
+  MomentDateAdapter,
+  MAT_MOMENT_DATE_ADAPTER_OPTIONS,
+} from '@angular/material-moment-adapter';
+import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
 const moment = moment_;
+const MY_FORMATS = {
+  parse: {
+    dateInput: 'LL',
+  },
+  display: {
+    dateInput: 'LL',
+    monthYearLabel: 'MMM YYYY',
+    dateA11yLabel: 'LL',
+    monthYearA11yLabel: 'MMMM YYYY',
+  },
+};
 @Component({
   selector: 'jf-component',
-  template: ''
+  template: '',
+  providers: [
+    { provide: MAT_DATE_LOCALE, useValue: 'fr' },
+    {
+      provide: DateAdapter,
+      useClass: MomentDateAdapter,
+      deps: [MAT_DATE_LOCALE, MAT_MOMENT_DATE_ADAPTER_OPTIONS]
+    },
+
+    { provide: MAT_DATE_FORMATS, useValue: MY_FORMATS },
+  ]
 })
 export class CommonComponent implements AfterViewInit {
   control: SchemaFormControl;
@@ -24,34 +51,37 @@ export class CommonComponent implements AfterViewInit {
   language;
   isWebView = false;
   fileSize = null;
-  maskDate;
-  acceptFormats = 'image/x-png,image/jpeg,image/jpg'
+  inputId = Math.random().toString(36).substring(7);
+
+  acceptFormats = 'image/x-png,image/jpeg,image/jpg';
   constructor(
     public sanitizer?: DomSanitizer,
     public cd?: ChangeDetectorRef,
-    private localeService?: BsLocaleService,
     private validationFeedbackTranslation?: ValidationFeedbackTranslation,
     private imageCompress?: NgxImageCompressService,
-    public modalService?: BsModalService
+    public modalService?: BsModalService,
+    public _adapter?: DateAdapter<any>,
+    public renderer?: Renderer2,
   ) {
     this.isWebView = this.detectWebView();
-     defineLocale('fr', deLocale);
-     this.localeService.use(this.language);
   }
 
   ngAfterViewInit() {
-    if ( this.schema && this.schema.format === 'photo' && this.control.value ) {
-       this.getImageFromUrl(this.control.value);
-      }
-    if (this.schema && this.schema.format === 'date' && this.control.data) {
-      this.maskDate = new Date(this.control.data );
-      this.control.setValue(this.maskDate);
+    if (this.schema && this.schema.format === 'photo' && this.control.value) {
+      this.getImageFromUrl(this.control.value);
+      this.cd.detectChanges();
     }
     if (this.schema && this.schema.format === 'photo' && this.schema.imageFormat && this.schema.imageFormat.indexOf('pdf') !== -1) {
       this.acceptFormats = 'image/x-png,image/jpeg,image/jpg,application/pdf';
+      this.cd.detectChanges();
     }
-    this.localeService.use(this.language);
-    this.cd.detectChanges();
+    // if (this.schema && this.schema.format === 'date' && this.control.data) {
+    //   let maskDate = new Date(this.control.data );
+    //   this.control.setValue(this.control.data);
+    // }
+    if (this.schema && this.schema.format === 'date') {
+
+    }
   }
 
   isRequired() {
@@ -70,8 +100,8 @@ export class CommonComponent implements AfterViewInit {
   }
 
   placeholder() {
-   const key = this.strToUpperCase(this.schema.key).replace(/<.*?>/g, '');
-   return (typeof this.schema.title === 'undefined'
+    const key = this.strToUpperCase(this.schema.key).replace(/<.*?>/g, '');
+    return (typeof this.schema.title === 'undefined'
       ? startCase(key) : (this.getTranslation(this.schema.title) ? this.getTranslation(this.schema.title) : startCase(key)));
   }
 
@@ -109,7 +139,7 @@ export class CommonComponent implements AfterViewInit {
   }
 
   makeTrustedImage(image): any {
-    const imageString =  JSON.stringify(image).replace(/\\n/g, '');
+    const imageString = JSON.stringify(image).replace(/\\n/g, '');
     const style = 'url(' + imageString + ')';
     return this.sanitizer.bypassSecurityTrustStyle(style);
   }
@@ -119,26 +149,26 @@ export class CommonComponent implements AfterViewInit {
   }
 
   enumNames(index) {
-    return typeof(this.schema.enumNames) === 'undefined'
+    return typeof (this.schema.enumNames) === 'undefined'
       ? this.schema.enum[index]
-      :  this.getTranslation(this.schema.enumNames[index]);
+      : this.getTranslation(this.schema.enumNames[index]);
   }
 
   getSelectedEnumName() {
     let index;
     this.schema.enum.map((e, i) => {
-     if (e.toString().toLowerCase() === this.control.value.toString().toLowerCase()) {
-       index = i;
-     }
+      if (e.toString().toLowerCase() === this.control.value.toString().toLowerCase()) {
+        index = i;
+      }
     });
     return this.schema.enumNames && this.schema.enumNames.length && typeof index !== 'undefined' ?
-     this.getTranslation(this.schema.enumNames[index]) : this.control.value;
+      this.getTranslation(this.schema.enumNames[index]) : this.control.value;
   }
 
   getTranslation(titleArray) {
     if (Array.isArray(titleArray)) {
-    const translatedTitle = titleArray.filter(val =>
-       val.language === this.language
+      const translatedTitle = titleArray.filter(val =>
+        val.language === this.language
       );
       return translatedTitle[0] ? upperFirst(translatedTitle[0].value.replace(/<.*?>/g, '')) : false;
     } else {
@@ -157,7 +187,7 @@ export class CommonComponent implements AfterViewInit {
 
   getFilename() {
     if (this.getControlValue().length) {
-    return this.getControlValue().substring('data:image/'.length, this.getControlValue().indexOf(';base64')) || '';
+      return this.getControlValue().substring('data:image/'.length, this.getControlValue().indexOf(';base64')) || '';
     }
   }
 
@@ -167,13 +197,13 @@ export class CommonComponent implements AfterViewInit {
       const confirmInput = this.confirmInput.value;
       let error = this.control.errors && Object.keys(this.control.errors).length > 0 ? this.control.errors : null;
       if (error && Object.keys(this.control.errors).length > 0) {
-         delete error.isMatch;
+        delete error.isMatch;
         if (Object.keys(error).length === 0) {
           error = null;
         }
       }
       return input.toString() === confirmInput.toString() ?
-       this.control.setErrors(error) : this.control.setErrors({...this.control.errors, isMatch: true });
+        this.control.setErrors(error) : this.control.setErrors({ ...this.control.errors, isMatch: true });
     }
   }
 
@@ -196,12 +226,12 @@ export class CommonComponent implements AfterViewInit {
 
   compressFile(file: any, size?) {
     const quality = size < 0.300 ? 80 : size < 0.900 ? 50 : 35;
-   return this.imageCompress.compressFile(file, -2, quality, quality);
+    return this.imageCompress.compressFile(file, -2, quality, quality);
   }
 
   detectWebView() {
     const userAgent = window.navigator.userAgent.toLowerCase(),
-    ios = /iphone|ipod|ipad/.test( userAgent );
+      ios = /iphone|ipod|ipad/.test(userAgent);
     return ios;
 
   }

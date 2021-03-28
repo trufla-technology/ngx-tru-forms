@@ -16,7 +16,8 @@
     background-color: #D8D8DE;
     color: #959595;
 }
+
 ::ng-deep .secondary-bg {
-background-color: #8e8e8e;
-color: #fff;
+    background-color: #8e8e8e;
+    color: #fff;
 }

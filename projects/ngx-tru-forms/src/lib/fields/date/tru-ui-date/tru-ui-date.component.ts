@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild, AfterViewInit } from '@angular/core';
 import { CommonComponent } from '../../common/common.component';
 import * as moment_ from 'moment';
 import * as momentTimeZone from 'moment-timezone';
+import { MatCalendar } from '@angular/material/datepicker';
 const localTimeZone = momentTimeZone.tz.guess();
 const moment = moment_;
 @Component({
@@ -9,8 +10,22 @@ const moment = moment_;
   templateUrl: './tru-ui-date.component.html',
   styleUrls: ['../../../assets/tru-ui.css'],
 })
-export class TruUiDateComponent extends CommonComponent  {
+export class TruUiDateComponent extends CommonComponent implements AfterViewInit {
   oldValue;
+  show = false;
+  selectedMonth;
+  @ViewChild(MatCalendar, { static: false }) calendar;
+
+  ngAfterViewInit() {
+    this._adapter.setLocale(this.language || 'en');
+    if (this.control.data) {
+      this.selectedMonth = new Date(this.control.data);
+      this.calendar.activeDate = new Date(this.control.data);
+    }
+    this.cd.detectChanges();
+
+  }
+
   isMobile() {
     return window.innerWidth <= 800;
   }
@@ -24,13 +39,31 @@ export class TruUiDateComponent extends CommonComponent  {
   }
 
   onDateInput(e) {
-    if (!e) { 
-      return; }
+    if (!e) {
+      return;
+    }
     const date = moment(e).locale(this.language || 'en').utc(e).tz(localTimeZone).format('YYYY-MM-DD');
     if (e && `${date}` !== `${this.oldValue}`) {
-    this.oldValue = date;
-    this.control.setValue(date);
-    this.control.markAsTouched();
+      this.oldValue = date;
+      this.control.setValue(date);
+      this.selectedMonth = new Date(e);
+      this.show = false;
+      this.calendar.activeDate = new Date(e);
+      this.cd.detectChanges();
     }
+  }
+
+  outsideClick(hasClickedOutside) {
+    this.show = hasClickedOutside ? this.excludeDomElements(hasClickedOutside.target.className) : true;
+  }
+
+  excludeDomElements(domElement) {
+    const excludeArray = [
+      'mat-calendar-body-cell-content mat-calendar-body-today',
+      'mat-calendar-body-cell-content',
+      'mat-calendar-body-today',
+      'mat-calendar-body-cell-content mat-calendar-body-selected'
+    ];
+    return excludeArray.includes(`${domElement}`) ? true : false;
   }
 }

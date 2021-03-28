@@ -16,7 +16,7 @@ export class TruUiPhotoComponent extends CommonComponent {
   onUploadLabelClick(evt): void {
     const keyCode = evt.which || evt.keyCode;
     if (keyCode === 13 || keyCode === 32) {
-        document.getElementById(this.schema.key).click();
+        document.getElementById(this.inputId).click();
         evt.preventDefault();
     }
   }

@@ -1,18 +1,18 @@
 import { Component, Input } from '@angular/core';
 import { SchemaFormGroup } from '../../../../models/schema-form-group';
 import { Schema } from '../../../../models/schema';
-import {startCase, upperFirst} from 'lodash';
+import { startCase, upperFirst } from 'lodash';
 @Component({
   selector: 'jf-component-chooser, [jf-component-chooser]',
   template: `
   <div style="margin-bottom: 20px">
-    <h2 style="color: #8C8C8C;font-size:16px" *ngIf="schema && schema.hasOwnProperty('title') && !nested">
+    <h2 style="color: #4D4D4D;font-size:16px" *ngIf="schema && schema.hasOwnProperty('title') && !nested">
       {{getTranslation(schema.title)}}
     </h2>
-    <h4 style="color: #8C8C8C;font-size:14px" *ngIf="schema && schema.hasOwnProperty('title') && nested" class="tru-ui-object-title">
+    <h3 style="color: #4D4D4D;font-size:14px" *ngIf="schema && schema.hasOwnProperty('title') && nested" class="tru-ui-object-title">
       {{getTranslation(schema.title)}}
-    </h4>
-    <div style="color: #8C8C8C;font-size:14px" class="description"
+    </h3>
+    <div style="color: #4D4D4D;font-size:14px" class="description"
     *ngIf="schema && schema.hasOwnProperty('description')" [innerHTML]="getTranslation(schema.description)"></div>
     </div>
     <div [ngClass]="['form-container']">
@@ -28,13 +28,13 @@ export class ChooserComponent {
   keys = Object.keys;
   getTranslation(titleArray) {
     if (Array.isArray(titleArray)) {
-    const translatedTitle = titleArray.filter(val =>
-       val.language === this.language
+      const translatedTitle = titleArray.filter(val =>
+        val.language === this.language
       );
       return translatedTitle[0] && translatedTitle[0].value ?
-      upperFirst(translatedTitle[0].value.replace(/<.*?>/g, '')) : upperFirst(titleArray[0].value);
-  } else {
-    return startCase(titleArray);
+        upperFirst(translatedTitle[0].value.replace(/<.*?>/g, '')) : upperFirst(titleArray[0].value);
+    } else {
+      return startCase(titleArray);
+    }
   }
-}
 }

@@ -1,22 +1,15 @@
 <div class="tru-ui-input-container">
-    <label  class="tru-ui-label" 
-    [ngClass]="['jf-label', schema.key, (isRequired() ? 'required' : '')]" *ngIf="type() !== 'hidden'">
-    <span [innerHTML]="title()"></span><sup *ngIf="isRequired()">*</sup>
+    <label class="tru-ui-label" tabindex="0" [for]="inputId"
+        [ngClass]="['jf-label', schema.key, (isRequired() ? 'required' : '')]" *ngIf="type() !== 'hidden'">
+        <span [innerHTML]="title()"></span><sup *ngIf="isRequired()">*</sup>
     </label>
-<input [(ngModel)]="selectedValue"
-       [typeahead]="values"
-       tabindex="1"
-       typeaheadOptionField="enumName"
-       [typeaheadMinLength]="0"
-       [attr.disabled]="disabled"
-       [name]="title"
-       [attr.aria-required]="isRequired()"
-       [attr.aria-label]="title()"
-       (typeaheadOnSelect)="onSelect($event)"
-       (focusout)="typeaheadNoResults()"
-       [ngClass]="{'empty': control.value === '' && !isRequired(), 'ng-invalid': !control.valid}"
-       class="tru-ui-input-control tru-ui-select" />
-       <input style="display: none;" [formControl]="control">
-       <jf-tru-ui-error [control]="control" [language]="language || 'en'"></jf-tru-ui-error>
+    <input [(ngModel)]="selectedValue" [typeahead]="values" tabindex="0" typeaheadOptionField="enumName"
+        [typeaheadMinLength]="0" [attr.disabled]="disabled" [attr.id]="inputId" [name]="title"
+        [attr.aria-required]="isRequired()" [attr.aria-label]="title()" (typeaheadOnSelect)="onSelect($event)"
+        (focusout)="typeaheadNoResults()"
+        [ngClass]="{'empty': control.value === '' && !isRequired(), 'ng-invalid': !control.valid}"
+        class="tru-ui-input-control tru-ui-select" />
+    <input style="display: none;" [formControl]="control">
+    <jf-tru-ui-error [control]="control" [language]="language || 'en'"></jf-tru-ui-error>
 
 </div>

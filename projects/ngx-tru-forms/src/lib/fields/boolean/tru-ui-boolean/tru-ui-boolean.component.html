@@ -1,18 +1,13 @@
 <div class="tru-ui-input-container">
   <div [class]="getClass('checkbox-group')">
-    <label class="container" >
-      <span  class="tru-ui-label"  [innerHTML]="title()"></span><sup *ngIf="isRequired()">*</sup>
-      <input 
-      [name]="schema.key"
-      type="checkbox"
-      [formControl]="control"
-      [attr.aria-required]="isRequired()"
-      tabindex="1"
-      [attr.aria-label]="title()"
-      [attr.disabled]="disabled">
+    <label class="container tru-ui-label" tabindex="0" [attr.for]="labelId" [attr.aria-label]="title()"
+      (keydown)="toggleValue($event)">
+      <span class="tru-ui-label" [innerHTML]="title()"></span><sup *ngIf="isRequired()">*</sup>
+      <input [name]="schema.key" type="checkbox" [formControl]="control" [attr.id]="labelId"
+        [attr.aria-required]="isRequired()" [attr.aria-label]="title()" [attr.disabled]="disabled" tabindex="-1">
       <span class="checkmark"></span>
     </label>
   </div>
   <jf-tru-ui-error [control]="control" [language]="language || 'en'"></jf-tru-ui-error>
 
-  </div>
+</div>
