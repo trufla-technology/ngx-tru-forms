@@ -6,8 +6,8 @@
 }
 
 label.tru-ui-label:focus {
-  outline: dashed 1px;
-  outline-offset: 2px;
+  /* outline: dashed 1px;
+  outline-offset: 2px; */
 }
 
 .tru-drag-and-drop {

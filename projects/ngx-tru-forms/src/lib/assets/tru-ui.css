@@ -197,8 +197,8 @@ textarea.tru-ui-input-control {
 }
 
 label.tru-ui-label:focus {
-  outline: dashed 1px;
-  outline-offset: 2px;
+  /* outline: dashed 1px;
+  outline-offset: 2px; */
 }
 
 .container:focus>.checkmark {

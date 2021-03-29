@@ -5,13 +5,15 @@ import { ViewFileComponent } from '../view-file/view-file.component';
 @Component({
   template: `
     <p tabindex="0">{{placeholder()}}</p>
-    <img tabindex="0"
+    <button class='img-thumbnail primary-bg' tabindex="0" [attr.aria-label]="'View '+title()" (click)='openFile()'>
+    <img
+    role="button"
     [alt]="'View '+title()"
     *ngIf='!isPdf() && control.value'
     src='{{control.value}}'
     class='img-thumbnail'
-    (click)='openFile()'
     style='width: 100px !important;cursor:pointer'  />
+    </button>
     <button *ngIf='isPdf() && control.value'
     class='img-thumbnail primary-bg' tabindex="0"
     [attr.aria-label]="'View '+title()"
