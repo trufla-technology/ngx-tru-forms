@@ -22,5 +22,5 @@
 }
 .btn-add:focus, .btn-remove:focus {
     opacity: 0.85;
-    outline: none !important;
+    /* outline: none !important; */
 }

@@ -23,7 +23,7 @@
 
 .zoom-in:focus, .zoom-out:focus {
   border: none;
-  outline: 0;
+  outline: 1px dashed;
 }
 
 .zoom-out {
@@ -78,7 +78,7 @@
 }
 
 .btn-circle:focus {
-  outline: 0 !important;
+  /* outline: 0 !important; */
 }
 
 .btn-circle:hover {
@@ -113,8 +113,8 @@
 }
 
 .zoom-in:focus, .zoom-out:focus {
-  border: none;
-  outline: 0;
+  /* border: none;
+  outline: 0; */
 }
 
 .zoom-out {

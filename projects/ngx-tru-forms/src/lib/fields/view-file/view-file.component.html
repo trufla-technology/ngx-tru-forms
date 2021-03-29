@@ -30,7 +30,7 @@
 <div *ngIf="!isPdf" class="modal-body"
     style="height:480px !important;padding: 0;margin: 0;display: flex;justify-content: center;align-items: center;flex-direction: row;">
 
-    <div class="image-container-modal">
+    <div class="image-container-modal" tabindex="0">
         <img [src]="makeTrustedImage(file)" id="image" [alt]="title">
     </div>
     <div class="controllers" *ngIf="!isPdf">
@@ -40,7 +40,7 @@
 </div>
 <div *ngIf="isPdf" class="modal-body" style="max-height:90vh !important;padding: 0;margin: 0;overflow: auto;">
     <pdf-viewer *ngIf="edocSrc" class="test__pdf-doc" [src]="edocSrc" [autoresize]="true" [original-size]="false"
-        [zoom]="zoom" [render-text]="false" [zoom-scale]="'page-fit'" (error)="onError($event)">
+        [zoom]="zoom" [render-text]="false" [zoom-scale]="'page-fit'" (error)="onError($event)" (after-load-complete)="onLoad()">
     </pdf-viewer>
     <div class="controllers" *ngIf="isPdf">
         <button class="zoom-in" tabindex="0" type="button" (click)="zoomPdfIn()" aria-label="zoom in">+</button>

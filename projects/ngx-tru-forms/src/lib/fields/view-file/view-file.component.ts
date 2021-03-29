@@ -22,18 +22,23 @@ export class ViewFileComponent implements OnInit, OnDestroy {
   constructor(private sanitizer: DomSanitizer,
     public bsModalRef: BsModalRef,
     private validationFeedbackTranslation?: ValidationFeedbackTranslation) {
-   }
+  }
 
   ngOnInit() {
     if (this.isPdf) {
-    const bin64Data = window.atob((this.file + '').split('base64,')[1]);
-    const len = bin64Data.length;
-    const bytes = new Uint8Array(len);
-    for (let i = 0; i < len; i++) {
-      bytes[i] = bin64Data.charCodeAt(i);
+      const bin64Data = window.atob((this.file + '').split('base64,')[1]);
+      const len = bin64Data.length;
+      const bytes = new Uint8Array(len);
+      for (let i = 0; i < len; i++) {
+        bytes[i] = bin64Data.charCodeAt(i);
+      }
+      this.edocSrc = bytes;
     }
-    this.edocSrc = bytes;
   }
+
+  onLoad() {
+    const pdf = document.getElementsByClassName('ng2-pdf-viewer-container');
+    pdf[0].setAttribute('tabindex', '0');
   }
 
   ngOnDestroy() {
@@ -42,8 +47,8 @@ export class ViewFileComponent implements OnInit, OnDestroy {
   }
 
   makeTrustedImage(file): any {
-    file =  DOMPurify.sanitize(file);
-    return  this.sanitizer.bypassSecurityTrustResourceUrl(file);
+    file = DOMPurify.sanitize(file);
+    return this.sanitizer.bypassSecurityTrustResourceUrl(file);
   }
 
   onError(error) {
@@ -62,7 +67,7 @@ export class ViewFileComponent implements OnInit, OnDestroy {
     }
   }
 
-   zoomout() {
+  zoomout() {
     const myImg = document.getElementById('image');
     const currWidth = myImg.clientWidth;
     if (currWidth === 100) { return false; } else {
