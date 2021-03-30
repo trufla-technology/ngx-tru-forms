@@ -67,7 +67,7 @@
   height: 25px;
   border-radius: 100%;
   border: 2px solid #fff;
-  background-color: rgba(0, 0, 0, .4);
+  background-color: #727272;
   font-weight: bold;
   color: #fff;
   /* transform: rotate(90); */
@@ -101,7 +101,7 @@
   border: none;
   background-color: #fff;
   border-radius: 5px;
-  width: 30px;
+  width: 40px;
   height: 40px;
   border-style: none;
   position: absolute;
@@ -109,12 +109,12 @@
   font-weight: bold;
   position: absolute;
   color: #a2a2a2;
-  right: 15px
+  right: 15px;
+  opacity: 0.8
 }
 
-.zoom-in:focus, .zoom-out:focus {
-  /* border: none;
-  outline: 0; */
+.zoom-in:focus, .zoom-out:focus, .zoom-in:hover, .zoom-out:hover {
+    opacity: 1;
 }
 
 .zoom-out {
