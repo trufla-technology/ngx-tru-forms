@@ -34,10 +34,13 @@ export class TruUiAutocompleteComponent extends CommonComponent implements OnIni
       let searchValue = [];
       searchValue = this.schema.enumNames ? this.values.filter((en) => en.enumName === this.selectedValue) :
       this.values.filter((en) => en.enum === this.selectedValue);
-      searchValue.length ? this.setValue(searchValue[0].enum) : this.control.setErrors({notInMenu: 'invalid'});
+      searchValue.length ? this.setValue(searchValue[0].enum) : this.setError();
     } else {
-      this.control.setErrors(null);
       this.control.setValue('');
+      if (this.control.isRequired) {
+        this.control.setErrors({required: 'invalid'});
+      }
+      this.control.markAsTouched();
     }
   }
   onSelect(event: TypeaheadMatch): void {
@@ -47,5 +50,10 @@ export class TruUiAutocompleteComponent extends CommonComponent implements OnIni
   setValue(value) {
     this.control.setValue(value);
     this.control.setErrors(null);
+  }
+
+  setError() {
+    this.control.setErrors({notInMenu: 'invalid'});
+    this.control.markAsTouched();
   }
 }

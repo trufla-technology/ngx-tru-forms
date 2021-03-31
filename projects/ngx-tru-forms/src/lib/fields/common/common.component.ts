@@ -100,7 +100,7 @@ export class CommonComponent implements AfterViewInit {
   }
 
   placeholder() {
-    const key = this.strToUpperCase(this.schema.key).replace(/<.*?>/g, '');
+    const key = this.strToUpperCase(this.schema.key).replace(/[&\/\\#,+()$~%.'":?<>{}_-]/g, '');
     return (typeof this.schema.title === 'undefined'
       ? startCase(key) : (this.getTranslation(this.schema.title) ? this.getTranslation(this.schema.title) : startCase(key)));
   }
@@ -170,9 +170,9 @@ export class CommonComponent implements AfterViewInit {
       const translatedTitle = titleArray.filter(val =>
         val.language === this.language
       );
-      return translatedTitle[0] ? upperFirst(translatedTitle[0].value.replace(/<.*?>/g, '')) : false;
+      return translatedTitle[0] ? translatedTitle[0].value.replace(/[&\/\\#,+()$~%.'":?<>{}_-]/g, ' ') : false;
     } else {
-      return startCase(titleArray);
+      return titleArray.replace(/[&\/\\#,+()$~%.'":?<>{}_-]/g, ' ');
     }
   }
 

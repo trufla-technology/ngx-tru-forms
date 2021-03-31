@@ -4,7 +4,7 @@
         <span [innerHTML]="title()"></span><sup *ngIf="isRequired()">*</sup>
     </label>
     <input [(ngModel)]="selectedValue" [typeahead]="values" tabindex="0" typeaheadOptionField="enumName"
-        [typeaheadMinLength]="0" [attr.disabled]="disabled" [attr.id]="inputId" [name]="title"
+        [typeaheadMinLength]="0" [attr.disabled]="disabled" [attr.id]="inputId" [name]="title" [typeaheadOptionsLimit]="1000"
         [attr.aria-required]="isRequired()" [attr.aria-label]="title()" (typeaheadOnSelect)="onSelect($event)"
         (focusout)="typeaheadNoResults()"
         [ngClass]="{'empty': control.value === '' && !isRequired(), 'ng-invalid': !control.valid}"
