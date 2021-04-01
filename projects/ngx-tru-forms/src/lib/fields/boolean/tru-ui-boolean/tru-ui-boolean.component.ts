@@ -11,7 +11,7 @@ export class TruUiBooleanComponent extends CommonComponent {
   // accessibility tabindex click
   toggleValue(e) {
     if (e.keyCode === 32 || e.keyCode === 13) {
-      document.getElementById(this.labelId).click();
+      document.getElementById(`${this.schema.key + '_' + this.inputId}`).click();
     }
   }
 }

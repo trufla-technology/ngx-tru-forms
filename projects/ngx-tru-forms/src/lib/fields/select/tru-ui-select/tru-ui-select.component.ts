@@ -10,7 +10,7 @@ export class TruUiSelectComponent extends CommonComponent {
   // workaround for select losing focus after selecting an option and ruin tabindex order
   returnFocus(e) {
     setTimeout(() => {
-      document.getElementById(this.schema.key).focus();
+      document.getElementById(this.schema.key + '_' + this.inputId).focus();
     }, 100);
   }
 }

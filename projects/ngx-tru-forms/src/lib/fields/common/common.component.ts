@@ -51,7 +51,7 @@ export class CommonComponent implements AfterViewInit {
   language;
   isWebView = false;
   fileSize = null;
-  inputId = Math.random().toString(36).substring(7);
+  inputId = Math.floor(Math.random() * 200).toString();
 
   acceptFormats = 'image/x-png,image/jpeg,image/jpg';
   constructor(

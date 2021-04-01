@@ -1,4 +1,4 @@
-import { Component, ViewChild, AfterViewInit } from '@angular/core';
+import { Component, ViewChild, AfterViewInit, HostListener } from '@angular/core';
 import { CommonComponent } from '../../common/common.component';
 import * as moment_ from 'moment';
 import * as momentTimeZone from 'moment-timezone';
@@ -15,6 +15,20 @@ export class TruUiDateComponent extends CommonComponent implements AfterViewInit
   show = false;
   selectedMonth;
   @ViewChild(MatCalendar, { static: false }) calendar;
+  excludeArray = [
+    'mat-calendar-body-cell-content mat-calendar-body-today',
+    'mat-calendar-body-cell-content',
+    'mat-calendar-body-today',
+    'mat-calendar-body-cell-content mat-calendar-body-selected',
+    'mat-calendar-period-button mat-button mat-button-base'
+  ];
+
+  @HostListener('document:keydown', ['$event'])
+  handleKeyboardEvent(event: KeyboardEvent) { 
+     if(event.code === 'Escape') {
+      this.show = false;
+    }
+  }
 
   ngAfterViewInit() {
     this._adapter.setLocale(this.language || 'en');
@@ -58,12 +72,6 @@ export class TruUiDateComponent extends CommonComponent implements AfterViewInit
   }
 
   excludeDomElements(domElement) {
-    const excludeArray = [
-      'mat-calendar-body-cell-content mat-calendar-body-today',
-      'mat-calendar-body-cell-content',
-      'mat-calendar-body-today',
-      'mat-calendar-body-cell-content mat-calendar-body-selected'
-    ];
-    return excludeArray.includes(`${domElement}`) ? true : false;
+    return this.excludeArray.includes(`${domElement}`) ? true : false;
   }
 }

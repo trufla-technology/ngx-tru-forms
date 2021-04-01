@@ -17,7 +17,7 @@
                     *ngIf="schema.imageFormat" style="color: #4D4D4D;font-size: 100%;font-size: 12px"> {{getLanguage()?.allowed_format}} <span
                         *ngFor="let format of schema.imageFormat" style="font-size: 12px;font-size:100%"> {{ format }} </span></small></div>
         </div>
-        <input #fileInput style="display: none" [attr.id]=inputId class="tru-input" type="file" [accept]="acceptFormats"
+        <input #fileInput style="display: none;visibility: hidden;" [attr.aria-hidden]="true" [attr.id]="schema.key + '_' + inputId" class="tru-input" type="file" [accept]="acceptFormats"
             [attr.aria-label]="getLanguage().browse" (change)="dragAndDrop($event)" (keypress)="dragAndDrop($event)" />
     </label>
     <div class="file-preview-container" [ngClass]="{'d-none': !getControlValue().length}">

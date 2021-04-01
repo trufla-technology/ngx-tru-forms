@@ -11,7 +11,7 @@ export class JsonFormValidatorsService {
 
   public get(prop, schema, path, lan) {
     const dateValidator = function ageRangeValidator(control: AbstractControl) {
-      if (control.value === null || (control.value !== null && isNaN(new Date(control.value).getDate()))) {
+      if ( (control.value !== '' && isNaN(new Date(control.value).getDate()))) {
         return { customError: lan === 'en' ? 'Please enter a valid date' : 'Veuillez entrer une date valide' };
       }
       return null;
