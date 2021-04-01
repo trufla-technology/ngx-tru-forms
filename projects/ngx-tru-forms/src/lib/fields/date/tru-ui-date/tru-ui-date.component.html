@@ -1,13 +1,13 @@
 <div class="tru-ui-input-container">
   <label class="tru-ui-label" [ngClass]="['jf-label', schema.key, (isRequired() ? 'required' : '')]" tabindex="0"
-    [for]="inputId">
+    [for]="schema.key + '_' + inputId">
     <span [innerHTML]="title()"></span><sup *ngIf="isRequired()">*</sup>
   </label>
-  <div class="calender-wrapper" jfOutsideClick (clickOutside)="outsideClick($event)"
+  <div class="calender-wrapper" jfOutsideClick (clickOutside)="outsideClick($event)" 
     [exclude]="'.mat-calendar-body-cell-content, .mat-calendar-body-cell-content, .mat-calendar-body-today'"
     [delayClickOutsideInit]="true">
     <input type="text" class="tru-ui-input-control tru-ui-date desktop" [attr.aria-required]="isRequired()"
-      [tabIndex]="0" [attr.id]="inputId" value="{{control.value | date : 'dd/MM/yyyy' }}" readonly (focus)="show = true"
+      [tabIndex]="0" [attr.id]="schema.key + '_' + inputId" value="{{control.value | date : 'dd/MM/yyyy' }}" readonly (focus)="show = true"
       [formControl]="control" />
     <mat-calendar #calendar color="'primary" [ngClass]="{'d-none': !show}" class="calendar-container"
       [selected]="selectedMonth" [startAt]="selectedMonth" (selectedChange)="onDateInput($event)">

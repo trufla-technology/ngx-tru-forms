@@ -169,7 +169,13 @@ textarea.tru-ui-input-control {
   width: 100%;
   box-shadow: 10px 10px 20px 0 rgba(30, 30, 30, 0.05);
 }
-
+::ng-deep typeahead-container, typeahead-container  {
+  background-color: #fff !important;
+  border-radius: 6px !important;
+  width: 100% !important;
+  max-height: 110px !important;
+  box-shadow: -1px 8px 13px 5px rgb(30 30 30 / 18%) !important;
+}
 ::ng-deep .dropdown-menu {
   list-style: none;
   padding: 0;

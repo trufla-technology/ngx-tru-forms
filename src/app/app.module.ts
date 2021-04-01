@@ -12,6 +12,7 @@ import { SubmittedDataComponent } from './components/submitted-data/submitted-da
 import { InputColourComponent } from './json-schema-examples/input-colour/input-colour.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ColorPickerModule } from 'ngx-color-picker';
+import { TypeaheadModule } from 'ngx-bootstrap/typeahead';
 const routes: Routes = [
   {
     path: '',
@@ -40,6 +41,7 @@ const routes: Routes = [
     BrowserAnimationsModule,
     RouterModule.forRoot(routes),
     MonacoEditorModule.forRoot(),
+    TypeaheadModule.forRoot(),
     ReactiveFormsModule,
     FormsModule,
     ColorPickerModule
