@@ -1,4 +1,4 @@
-<div *ngIf="control.invalid && (control.dirty || control.touched)" class="invalid-feedback tru-ui-feedback">
+<div *ngIf="control.invalid && (control.dirty || control.touched)" class="invalid-feedback tru-ui-feedback" tabindex="0">
     <ng-container *ngIf="control.errors && control.errors['required']">
       {{getLanguage()?.required}}
     </ng-container>

@@ -24,8 +24,8 @@ export class TruUiDateComponent extends CommonComponent implements AfterViewInit
   ];
 
   @HostListener('document:keydown', ['$event'])
-  handleKeyboardEvent(event: KeyboardEvent) { 
-     if(event.code === 'Escape') {
+  handleKeyboardEvent(event: KeyboardEvent) {
+     if (event.code === 'Escape') {
       this.show = false;
     }
   }

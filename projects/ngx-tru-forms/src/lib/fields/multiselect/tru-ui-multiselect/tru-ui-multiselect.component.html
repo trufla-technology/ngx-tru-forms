@@ -2,7 +2,7 @@
 
   <label class="tru-ui-label" [for]="schema.key + '_' + inputId" [attr.class]="schema.key" [ngClass]="{required: isRequired()}"
     tabindex="0">
-    <span class="tru-ui-label" [innerHTML]="title()"></span><sup *ngIf="isRequired()">*</sup>
+    <span class="tru-ui-label" [innerHTML]="title()"></span><sup *ngIf="isRequired()" aria-hidden="true">*</sup>
   </label>
   <button type="button" *ngIf="schema.description" [attr.class]="'info'"
     [attr.title]="this.schema.description">Info</button>

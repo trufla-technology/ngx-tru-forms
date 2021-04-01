@@ -46,5 +46,5 @@
         <button class="zoom-in" tabindex="0" type="button" (click)="zoomPdfIn()" aria-label="zoom in">+</button>
         <button class="zoom-out" tabindex="0" type="button" (click)="zoomPdfOut()" aria-label="zoom out">-</button>
     </div>
-    <span *ngIf="error">{{getTranslation('errorPdf')}} </span>
+    <span *ngIf="error" tabindex="0">{{getTranslation('errorPdf')}} </span>
 </div>
