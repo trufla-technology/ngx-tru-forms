@@ -3,7 +3,7 @@
   <label class="tru-ui-label"
     [ngClass]="['margin-bottom--half', 'jf-label', schema.key, (isRequired() ? 'required' : '')]" tabindex="0"
     [attr.aria-label]="getName(schema.key)">
-    <span class="tru-ui-label" [innerHTML]="title()"></span><sup *ngIf="isRequired()">*</sup></label>
+    <span class="tru-ui-label" [innerHTML]="title()"></span><sup *ngIf="isRequired()" aria-hidden="true">*</sup></label>
   <button type="button" *ngIf="schema.description" [attr.class]="'info'" [attr.title]="schema.description">Info</button>
   <div [class]="getClass('radio-group')">
     <div *ngFor="let en of this.schema.enum; let i = index"

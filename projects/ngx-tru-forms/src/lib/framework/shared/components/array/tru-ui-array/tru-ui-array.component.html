@@ -6,11 +6,9 @@
                 style="display: flex;flex-direction: row;"></div>
             <div class="remove">
                 <button class="btn-remove" *ngIf="control.controls.length > 1" type="button"
-                    (click)="removeControl(control, i)" aria-label="Remove" id="remove">
-                    <svg role="img" aria-labelledby="remove" width="10px" height="10px" viewBox="0 0 14 14"
+                    (click)="removeControl(control, i)" aria-label="Remove" tabindex="0">
+                    <svg  width="10px" height="10px" viewBox="0 0 14 14"
                         version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                        <title>Remove</title>
-                        <desc>Remove</desc>
                         <g id="Full-Admin" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                             <g id="Settings-/-Branches-Add-Map-have-data"
                                 transform="translate(-961.000000, -519.000000)" fill="#FFFFFF">
@@ -34,13 +32,11 @@
                     </svg>
                     <span class="cdk-visually-hidden">Remove</span>
                 </button>
-                <button *ngIf="last && control?.schema?.maxItems !== i+1" type="button" (click)="addControl(control)" tabindex="0" id="add"
+                <button *ngIf="last && control?.schema?.maxItems !== i+1" type="button" (click)="addControl(control)" tabindex="0"
                     class="btn-add">
-
-                    <svg role="img" aria-labelledby="add" width="10px" height="10px" viewBox="0 0 16 16" version="1.1"
+                    <svg width="10px" height="10px" viewBox="0 0 16 16" version="1.1"
                         xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                        <title>Add</title>
-                        <desc>Add</desc>
+                    
 
                         <g id="Full-Admin" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                             <g id="Settings-/-Branches-Add-Map-have-data"
