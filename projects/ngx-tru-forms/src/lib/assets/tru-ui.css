@@ -165,16 +165,16 @@ textarea.tru-ui-input-control {
 
 ::ng-deep typeahead-container {
   background-color: #fff;
-  border-radius: 6px;
+  border-radius: 2px;
   width: 100%;
-  box-shadow: 10px 10px 20px 0 rgba(30, 30, 30, 0.05);
+  /* box-shadow: 10px 10px 20px 0 rgba(30, 30, 30, 0.05); */
 }
 ::ng-deep typeahead-container, typeahead-container  {
   background-color: #fff !important;
-  border-radius: 6px !important;
+  border-radius: 2px !important;
   width: 100% !important;
   max-height: 110px !important;
-  box-shadow: -1px 8px 13px 5px rgb(30 30 30 / 18%) !important;
+  box-shadow: none !important;
 }
 ::ng-deep .dropdown-menu {
   list-style: none;
@@ -189,7 +189,10 @@ textarea.tru-ui-input-control {
   display: block;
   width: 100%;
 }
-
+.dropdown-item, ::ng-deep .dropdown-item {
+  padding: 2px 4px !important;
+  font-size: 14px !important;
+}
 ::ng-deep .dropdown-menu li {
   padding: 4px 6px;
 }
@@ -218,7 +221,7 @@ label.tru-ui-label:focus {
   position: absolute;
   display: block;
   background-color: #fff;
-  box-shadow: 0 1px 6px rgb(32 33 36 / 28%);
+  /* box-shadow: 0 1px 6px rgb(32 33 36 / 28%); */
   border-color: rgba(223, 225, 229, 0);
   left: 50%;
   transform: translateX(-50%);
