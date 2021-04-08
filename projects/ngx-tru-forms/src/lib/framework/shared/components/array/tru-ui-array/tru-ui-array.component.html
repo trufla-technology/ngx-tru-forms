@@ -1,6 +1,8 @@
 <div [ngClass]="['array', control.schema.key]">
-    
+
     <div *ngFor="let arrControl of getEnabledControls(control); let i = index;let last = last; let first = first">
+        <div style="color:#555555;margin-top: 20px;font-size: 16px;" tabindex="0">{{getLegend(control)}}</div>
+
         <div style="display: flex;flex-direction: row;align-items: flex-end;">
             <div class="control" jf-component-chooser [form]="arrControl" [language]="language"
                 style="display: flex;flex-direction: row;"></div>
