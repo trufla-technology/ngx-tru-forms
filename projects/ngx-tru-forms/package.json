@@ -17,6 +17,9 @@
     "dynamic-forms",
     "json-schema-forms"
   ],
+  "dependencies": {
+    "tslib": "^2.0.0"
+  },
   "bugs": {
     "url": "https://github.com/trufla-technology/ngx-tru-forms/issues"
   },
