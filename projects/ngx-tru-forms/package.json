@@ -21,17 +21,17 @@
     "url": "https://github.com/trufla-technology/ngx-tru-forms/issues"
   },
   "peerDependencies": {
-    "@angular/common": "8.2.14",
-    "@angular/core": "8.2.14",
-    "@angular/forms": "8.2.14",
-    "@angular/http": "^8.2.14",
-    "@angular/platform-browser": "^8.2.14",
-    "@angular/router": "^8.2.14",
-    "angular2-text-mask": ">=8.0.4",
-    "text-mask-addons": ">=3.7.2",
+    "@angular/common": "9.1.13",
+    "@angular/core": "9.1.13",
+    "@angular/forms": "9.1.13",
+    "@angular/http": "^9.1.13",
+    "@angular/platform-browser": "^9.1.13",
+    "@angular/router": "^9.1.13",
+    "angular2-text-mask": "^9.0.0",
+    "text-mask-addons": ">=3.8.0",
     "lodash": "^4.17.10",
-    "@angular/material-moment-adapter": "^8.2.3",
+    "@angular/material-moment-adapter": "^9.2.4",
     "ngx-image-compress": "^11.0.3",
-    "ng2-pdf-viewer": "^6.4.0"
+    "ng2-pdf-viewer": "^6.4.1"
   }
 }

@@ -186,7 +186,7 @@ export class CommonComponent implements AfterViewInit {
   }
 
   getFilename() {
-    if (this.getControlValue().length) {
+    if (this.getControlValue() && this.getControlValue().length) {
       return this.getControlValue().substring('data:image/'.length, this.getControlValue().indexOf(';base64')) || '';
     }
   }
