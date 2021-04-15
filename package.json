@@ -10,7 +10,8 @@
     "publish": "npm run build && cd dist/ngx-tru-forms && npm publish",
     "test": "ng test ngx-tru-forms",
     "lint": "ng lint",
-    "clean": "rm -fr build dist"
+    "clean": "rm -fr build dist",
+    "postinstall": "ngcc"
   },
   "config": {
     "deployToGit": {
