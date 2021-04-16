@@ -30,7 +30,7 @@ MIT
 MIT
 The MIT License
 
-Copyright (c) 2019 Google LLC.
+Copyright (c) 2021 Google LLC.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -64,7 +64,7 @@ MIT
 MIT
 The MIT License
 
-Copyright (c) 2019 Google LLC.
+Copyright (c) 2021 Google LLC.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -89,7 +89,7 @@ THE SOFTWARE.
 MIT
 The MIT License
 
-Copyright (c) 2019 Google LLC.
+Copyright (c) 2021 Google LLC.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -109,28 +109,6 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 
-
-@angular/material/button
-
-@angular/material/card
-
-@angular/material/checkbox
-
-@angular/material/core
-
-@angular/material/datepicker
-
-@angular/material/dialog
-
-@angular/material/form-field
-
-@angular/material/icon
-
-@angular/material/radio
-
-@angular/material/select
-
-@angular/material/slide-toggle
 
 @angular/platform-browser
 MIT
@@ -197,7 +175,7 @@ THE SOFTWARE.
 
 core-js
 MIT
-Copyright (c) 2014-2020 Denis Pushkarev
+Copyright (c) 2014-2021 Denis Pushkarev
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -742,6 +720,8 @@ ngx-bootstrap/mini-ngrx
 ngx-bootstrap/modal
 
 ngx-bootstrap/positioning
+
+ngx-bootstrap/tooltip
 
 ngx-bootstrap/typeahead
 
@@ -1311,7 +1291,7 @@ zone.js
 MIT
 The MIT License
 
-Copyright (c) 2016-2018 Google, Inc.
+Copyright (c) 2010-2020 Google LLC. http://angular.io/license
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

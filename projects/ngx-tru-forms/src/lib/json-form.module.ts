@@ -33,7 +33,7 @@ import { ModalModule } from 'ngx-bootstrap/modal';
 })
 
 export class JsonFormModule {
-  static forRoot(...frameworks): ModuleWithProviders {
+  static forRoot(...frameworks): ModuleWithProviders<JsonFormModule> {
     const loadFramework = frameworks.length
       ? frameworks.map(framework => framework.forRoot().providers[0])
       : [{ provide: JsonFormFieldsService, useClass: JsonFormBootstrap4, multi: true }];

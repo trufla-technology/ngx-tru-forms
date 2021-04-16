@@ -61,27 +61,11 @@ import { FormsModule } from '@angular/forms';
     TruUiArrayComponent,
     TruUiAutocompleteComponent
   ],
-  exports: [
-    TruUiButtonComponent,
-    TruUiStringComponent,
-    TruUiErrorComponent,
-    TruUiPhotoComponent,
-    TruUiTextareaComponent,
-    TruUiBooleanComponent,
-    TruUiDateComponent,
-    TruUiSelectComponent,
-    TruUiNumberComponent,
-    TruUiRadigroupComponent,
-    TruUiCheckboxgroupComponent,
-    TruUiMultiselectComponent,
-    TruUiArrayComponent,
-    TruUiAutocompleteComponent
-  ],
   providers: [
   ]
 })
 export class TruUiModule {
-  static forRoot(): ModuleWithProviders {
+  static forRoot(): ModuleWithProviders<TruUiModule> {
     return {
       ngModule: TruUiModule,
       providers: [
