@@ -61,22 +61,6 @@ import { FormsModule } from '@angular/forms';
     TruUiArrayComponent,
     TruUiAutocompleteComponent
   ],
-  exports: [
-    TruUiButtonComponent,
-    TruUiStringComponent,
-    TruUiErrorComponent,
-    TruUiPhotoComponent,
-    TruUiTextareaComponent,
-    TruUiBooleanComponent,
-    TruUiDateComponent,
-    TruUiSelectComponent,
-    TruUiNumberComponent,
-    TruUiRadigroupComponent,
-    TruUiCheckboxgroupComponent,
-    TruUiMultiselectComponent,
-    TruUiArrayComponent,
-    TruUiAutocompleteComponent
-  ],
   providers: [
   ]
 })
