@@ -607,6 +607,95 @@ export class JsonSchemaExamplesSamples {
         }
       ]
     },
+    bannerSchema: {
+      title: 'Add Banner',
+      type: 'object',
+      properties: {
+        name: {
+          type: 'string'
+        },
+        is_visible: {
+          type: 'string',
+          title: 'Banner Status',
+          format: 'boolean',
+          default: true
+        },
+        type: {
+          title: 'Banner Platform',
+          enum: ['web', 'mobile'],
+          enumNames: ['Web', 'Mobile'],
+          default: 'web',
+          format: 'radiogroup'
+        },
+        banner_type: {
+          title: 'Banner Type',
+          enum: ['image', 'html'],
+          enumNames: ['Image', 'HTML'],
+          format: 'radiogroup'
+        },
+        image: {
+          type: "string",
+          format: "photo",
+          imageFormat: [
+            'png',
+            'jpeg',
+            'jpg'
+          ],
+          maxSize: '2'
+        },
+        img_alt: {
+          type: 'string',
+          title: 'Image Alternative Text'
+        },
+        html: {
+          type: 'string',
+          format: 'textarea'
+        },
+        link: {
+          type: 'string',
+          title: 'Link URL'
+        },
+        position: {
+          type: 'number',
+          minimum: 0
+  
+        },
+        duration: {
+          type: 'number',
+          title: 'Duration (in seconds)',
+          minimum: 0
+  
+        }
+      },
+      oneOf: [
+        {
+          properties: {
+            banner_type: {
+              enum: [
+                'image'
+              ]
+            }
+          },
+          required: [
+            'image',
+            'img_alt'
+          ]
+        },
+        {
+          properties: {
+            banner_type: {
+              enum: [
+                'html'
+              ]
+            }
+          },
+          required: [
+            'html'
+          ]
+        }
+      ],
+      required: ['name', 'img_alt', 'image', 'html', 'type', 'platform', 'position', 'duration']
+    },
     multiple_conditional_control: {
       title: 'Multiple Conditional Control',
       description: 'Add multiple conditional controls',

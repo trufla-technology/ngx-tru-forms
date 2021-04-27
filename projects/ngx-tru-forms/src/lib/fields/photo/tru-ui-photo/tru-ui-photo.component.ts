@@ -11,7 +11,7 @@ export class TruUiPhotoComponent extends CommonComponent {
   selectFile = false;
   photoData: string;
   busy = false;
-
+  type;
   // For accessible file/image upload
   onUploadLabelClick(evt): void {
     const keyCode = evt.which || evt.keyCode;
@@ -62,6 +62,7 @@ export class TruUiPhotoComponent extends CommonComponent {
     const file = await this.toBase64(files[0]);
     const lastDot = name.lastIndexOf('.');
     const ext = name.substring(lastDot + 1);
+    this.type = ext;
     if ((this.schema.maxSize && +this.schema.maxSize < +files[0].size / 1024 / 1024) ||
         (this.schema.imageFormat && [...this.schema.imageFormat].indexOf(ext.toLowerCase()) === -1 )) {
       this.fileSize = null;
@@ -102,4 +103,9 @@ export class TruUiPhotoComponent extends CommonComponent {
     }
    }
   }
+
+  triggerUpload() {
+    document.getElementById( `${this.schema.key}_${this.inputId}`).click();
+  }
 }
+

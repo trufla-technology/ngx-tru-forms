@@ -6,7 +6,7 @@
     <button type="button" *ngIf="this.schema.description" [attr.class]="'info'"
         [attr.title]="this.schema.description">Info</button>
     <textarea class="tru-ui-input-control" [name]="schema.key" [formControl]="control" [attr.id]="schema.key + '_' + inputId"
-        [attr.aria-required]="isRequired()" [attr.maxLength]="schema.maxLength || null"
+        [attr.aria-required]="isRequired()" [attr.maxLength]="schema.maxLength || null" [attr.disabled]="disabled"
         [attr.minLength]="schema.minLength || null" [attr.disabled]="disabled" tabindex="0"
         [ngClass]="{'empty': control.value === '' && !isRequired()}"></textarea>
     <jf-tru-ui-error [control]="control" [language]="language || 'en'"></jf-tru-ui-error>

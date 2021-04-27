@@ -16,7 +16,9 @@ export class ValidationFeedbackTranslation {
             allowed_format: 'allowed format',
             error_pdf: 'No documents available',
             delete_file: 'Click here to delete file',
-            browse: 'Browse'
+            browse: 'Browse',
+            replace: 'Replace',
+            delete: 'Delete'
         },
         fr: {
             confirm: 'Confirmer',
@@ -34,7 +36,10 @@ export class ValidationFeedbackTranslation {
             allowed_format: 'fichiers autorisés',
             error_pdf: 'Aucun document disponible',
             delete_file: 'Cliquez ici pour supprimer le fichier',
-            browse: 'Naviguez'
+            browse: 'Naviguez',
+            replace: 'Remplacer',
+            delete: 'Supprimer'
+
         }
     };
 }
