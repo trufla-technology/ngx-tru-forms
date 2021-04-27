@@ -9,7 +9,7 @@
     <div *ngFor="let en of this.schema.enum; let i = index"
       [ngClass]="{'radio-container': true, 'checked': control.value === en}">
       <div [class]="getClass('checkbox-group')">
-        <label class="container-radio-button" [attr.for]="getId(schema.key, en, schema.id)">
+        <label class="container-radio-button" [attr.for]="getId(schema.key, en, schema.id)" tabindex="0">
           <span class="tru-ui-label"> {{enumNames(i)}}</span>
           <input type="radio" [attr.id]="getId(schema.key, en, schema.id)" [checked]="control.value === en"
             [name]="enumNames(i)" [attr.aria-required]="isRequired()" [formControl]="control" [attr.disabled]="disabled"
