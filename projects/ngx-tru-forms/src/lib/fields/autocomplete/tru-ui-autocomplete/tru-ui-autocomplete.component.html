@@ -3,7 +3,7 @@
         [ngClass]="['jf-label', schema.key, (isRequired() ? 'required' : '')]" *ngIf="type() !== 'hidden'">
         <span [innerHTML]="title()"></span><sup *ngIf="isRequired()" aria-hidden="true">*</sup>
     </label>
-    <input [(ngModel)]="selectedValue" [typeahead]="values" tabindex="0" typeaheadOptionField="enumName"
+    <input [(ngModel)]="selectedValue" [typeahead]="values" tabindex="0" typeaheadOptionField="enumName" [attr.disabled]="disabled"
          [attr.disabled]="disabled" [attr.id]="schema.key + '_' + inputId" [name]="title()" 
         [attr.aria-required]="isRequired()" [attr.aria-label]="title()" (typeaheadOnSelect)="onSelect($event)"
         (focusout)="typeaheadNoResults()" (change)="onSelect($event)"

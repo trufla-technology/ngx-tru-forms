@@ -2,21 +2,15 @@ import { Schema } from '../../models/schema';
 import { SchemaFormControl } from '../../models/schema-form-control';
 import { Component, ChangeDetectorRef, AfterViewInit, Renderer2 } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
-import { upperFirst, startCase } from 'lodash';
+import {  startCase } from 'lodash';
 import { ValidationFeedbackTranslation } from '../error/validation-feedback-translation';
-// import { BsLocaleService } from 'ngx-bootstrap/datepicker';
-// import { defineLocale } from 'ngx-bootstrap/chronos';
-// import { deLocale } from 'ngx-bootstrap/locale';
 import { NgxImageCompressService } from 'ngx-image-compress';
 import { BsModalService } from 'ngx-bootstrap/modal';
-import * as moment_ from 'moment';
 import {
-  MAT_MOMENT_DATE_FORMATS,
   MomentDateAdapter,
   MAT_MOMENT_DATE_ADAPTER_OPTIONS,
 } from '@angular/material-moment-adapter';
 import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
-const moment = moment_;
 const MY_FORMATS = {
   parse: {
     dateInput: 'LL',
@@ -75,13 +69,6 @@ export class CommonComponent implements AfterViewInit {
       this.acceptFormats = 'image/x-png,image/jpeg,image/jpg,application/pdf';
       this.cd.detectChanges();
     }
-    // if (this.schema && this.schema.format === 'date' && this.control.data) {
-    //   let maskDate = new Date(this.control.data );
-    //   this.control.setValue(this.control.data);
-    // }
-    if (this.schema && this.schema.format === 'date') {
-
-    }
   }
 
   isRequired() {
@@ -100,7 +87,7 @@ export class CommonComponent implements AfterViewInit {
   }
 
   placeholder() {
-    const key = this.strToUpperCase(this.schema.key).replace(/[&\/\\#,+()$~%.":?<>{}_-]/g, '');
+    const key = this.strToUpperCase(this.schema.key).replace(/[&\/\\#,+$~%.":?<>{}_-]/g, '');
     return (typeof this.schema.title === 'undefined'
       ? startCase(key) : (this.getTranslation(this.schema.title) ? this.getTranslation(this.schema.title) : startCase(key)));
   }
@@ -170,9 +157,9 @@ export class CommonComponent implements AfterViewInit {
       const translatedTitle = titleArray.filter(val =>
         val.language === this.language
       );
-      return translatedTitle[0] ? translatedTitle[0].value.replace(/[&\/\\#,+()$~%.":?<>{}_-]/g, ' ') : false;
+      return translatedTitle[0] ? translatedTitle[0].value.replace(/[&\/\\#,+$~%.":?<>{}_-]/g, ' ') : false;
     } else {
-      return titleArray.replace(/[&\/\\#,+()$~%.":?<>{}_-]/g, ' ');
+      return titleArray.replace(/[&\/\\#,+$~%.":?<>{}_-]/g, ' ');
     }
   }
 
@@ -225,7 +212,7 @@ export class CommonComponent implements AfterViewInit {
   }
 
   compressFile(file: any, size?) {
-    const quality = size < 0.300 ? 80 : size < 0.900 ? 50 : 35;
+    const quality = size < 0.300 ? 90 : size < 0.900 ? 70 : 45;
     return this.imageCompress.compressFile(file, -2, quality, quality);
   }
 
