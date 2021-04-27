@@ -70,8 +70,8 @@
             </button>
         </div>
     </div>
-    <div class="image-preview-container" *ngIf="getControlValue().length && type !== 'pdf'">
-        <div class="image-overlay">
+    <div class="image-preview-container" *ngIf="getControlValue().length && type !== 'pdf'" tabindex="0">
+        <div class="image-overlay" tabindex="0">
             <button class="tru-ui-button btn bg-primary"
                 style="max-width: 110px !important;height: 30px !important;font-size: 12px !important;color:#fff"
                 tabindex="0" type="button" (click)="triggerUpload()" [attr.disabled]="disabled">{{getLanguage()?.replace}}</button>
