@@ -56,4 +56,7 @@ export interface Schema {
   // allowed format default allow all
   imageFormat?: Array<any>;
   maxItems?: any;
+
+  // placeholder for the form controls.
+  placeholder?: string;
 }

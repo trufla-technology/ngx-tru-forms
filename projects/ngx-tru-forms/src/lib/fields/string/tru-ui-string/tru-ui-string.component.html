@@ -9,7 +9,7 @@
         [attr.maxLength]="schema.maxLength || null" [attr.minLength]="schema.minLength || null"
         [attr.disabled]="disabled" [textMask]="{ mask: getMask() }" [attr.aria-required]="isRequired()"
         [attr.id]="schema.key + '_' + inputId" [ngClass]="{'empty': control.value === '' && !isRequired()}" (change)="isMatch()"
-        tabindex="0" />
+        tabindex="0" [attr.placeholder]="placeholder()" />
     <div *ngIf="schema.verify" style="margin-top: 1rem">
         <label class="tru-ui-label" tabindex="0" [for]="'confirm'+schema.key + '_' + inputId"
             [ngClass]="['jf-label', schema.key, (isRequired() ? 'required' : '')]" *ngIf="type() !== 'hidden'">

@@ -87,9 +87,7 @@ export class CommonComponent implements AfterViewInit {
   }
 
   placeholder() {
-    const key = this.strToUpperCase(this.schema.key).replace(/[&\/\\#,+$~%.":?<>{}_-]/g, '');
-    return (typeof this.schema.title === 'undefined'
-      ? startCase(key) : (this.getTranslation(this.schema.title) ? this.getTranslation(this.schema.title) : startCase(key)));
+    return this.schema.placeholder;
   }
 
   type() {

@@ -8,7 +8,7 @@
     <textarea *ngIf="!disabled" class="tru-ui-input-control" [name]="schema.key" [formControl]="control" [attr.id]="schema.key + '_' + inputId"
         [attr.aria-required]="isRequired()" [attr.maxLength]="schema.maxLength || null" [attr.disabled]="disabled"
         [attr.minLength]="schema.minLength || null" [attr.disabled]="disabled" tabindex="0"
-        [ngClass]="{'empty': control.value === '' && !isRequired()}">
+        [ngClass]="{'empty': control.value === '' && !isRequired()}" [attr.placeholder]="placeholder()">
     </textarea>
     <div [innerHTML]="control.value" *ngIf="disabled" class="tru-ui-input-control" style="height: auto !important;"></div>
     <jf-tru-ui-error [control]="control" [language]="language || 'en'"></jf-tru-ui-error>

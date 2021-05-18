@@ -43,7 +43,7 @@
     "core-js": "^2.5.4",
     "deploy-to-git": "^0.1.5",
     "dompurify": "^2.2.6",
-    "lodash": "^4.17.19",
+    "lodash": "^4.17.21",
     "moment": "^2.27.0",
     "moment-timezone": "^0.5.33",
     "ng2-pdf-viewer": "^6.4.0",

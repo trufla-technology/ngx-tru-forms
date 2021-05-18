@@ -8,7 +8,7 @@
     [delayClickOutsideInit]="true">
     <input type="text" class="tru-ui-input-control tru-ui-date desktop" [attr.aria-required]="isRequired()"
       [tabIndex]="0" [attr.id]="schema.key + '_' + inputId" value="{{control.value | date : 'dd/MM/yyyy' }}" readonly (focus)="show = true"
-      [formControl]="control" [attr.disabled]="disabled" [ngClass]="{'disabled': disabled}"/>
+      [formControl]="control" [attr.disabled]="disabled" [ngClass]="{'disabled': disabled}" [attr.placeholder]="placeholder()" />
     <mat-calendar #calendar color="'primary" [ngClass]="{'d-none': !show}" class="calendar-container"
       [selected]="selectedMonth" [startAt]="selectedMonth" (selectedChange)="onDateInput($event)">
     </mat-calendar>
