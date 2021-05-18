@@ -9,16 +9,16 @@
         style="margin-bottom: 0 !important;">
         <div class="tru-drag-and-drop" tabindex="0"
             [ngClass]="{'invalid-upload': control.invalid && (control.touched || control.dirty), 'busy': busy}">
-            <span *ngIf="language === 'en'; else french">Drop your file here or <strong
+            <span *ngIf="language === 'en'; else french" style="color: #4d4d4d;">Drop your file here or <strong
                     class="primary-color browse-btn">Browse</strong></span>
-            <ng-template #french><span>Déposez votre fichier ici ou <strong
+            <ng-template #french><span style="color: #4d4d4d;">Déposez votre fichier ici ou <strong
                         class="primary-color browse-btn">Naviguez</strong></span></ng-template>
             <div style="line-height: 1;font-size: 12px;font-size: 100%;"> <small *ngIf="schema.maxSize"
-                    style="color: #4D4D4D;font-size: 100%;font-size: 12px;">Maximum
+                    style="color: #4d4d4d;font-size: 100%;font-size: 12px;">Maximum
                     {{schema.maxSize}} MB<span *ngIf="schema.imageFormat">, </span></small> <small
-                    *ngIf="schema.imageFormat" style="color: #4D4D4D;font-size: 100%;font-size: 12px">
+                    *ngIf="schema.imageFormat" style="color: #4d4d4d;font-size: 100%;font-size: 12px">
                     {{getLanguage()?.allowed_format}} <span *ngFor="let format of schema.imageFormat"
-                        style="font-size: 12px;font-size:100%"> {{ format }} </span></small></div>
+                        style="font-size: 12px;font-size:100%;color: #4d4d4d"> {{ format }} </span></small></div>
         </div>
         <input #fileInput style="display: none;visibility: hidden;" [attr.aria-hidden]="true"
             [attr.id]="schema.key + '_' + inputId" class="tru-input" type="file" [accept]="acceptFormats"
@@ -29,7 +29,7 @@
                 tabindex="0">{{file?.name ||
                 title()}}</small></div>
         <div>
-            <small style="color: #212121;font-size: 12px !important;font-size: 100%;" *ngIf="fileSize" tabindex="0">
+            <small style="color: #4d4d4d;font-size: 12px !important;font-size: 100%;" *ngIf="fileSize" tabindex="0">
                 {{shortenSize(fileSize/1024/1024)}}
                 MB</small>
             <button aria-label="Delete File" tabindex="0" class="btn-remove" style="cursor: pointer" type="button"
