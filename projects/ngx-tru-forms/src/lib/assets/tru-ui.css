@@ -1,6 +1,6 @@
 .tru-ui-label {
   font-size: 14px;
-  color: #4D4D4D;
+  color: #4d4d4d;
   margin-bottom: 6px;
   padding: 0;
 }
@@ -23,7 +23,7 @@
   background-color: #fff;
   border: 1px solid #D8D8D8;
   border-radius: 6px;
-  color: #4D4D4D !important;
+  color: #4d4d4d !important;
 }
 
 .tru-ui-input-control:focus {
@@ -185,7 +185,7 @@ textarea.tru-ui-input-control {
 ::ng-deep .dropdown-menu li a {
   text-decoration: none;
   font-size: 14px;
-  color: #8C8C8C;
+  color: #4d4d4d;
   display: block;
   width: 100%;
 }
