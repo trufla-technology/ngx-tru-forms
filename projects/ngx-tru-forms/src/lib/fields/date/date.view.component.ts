@@ -6,7 +6,7 @@ const moment = moment_;
 
 @Component({
   template: `
-  <p><span tabindex="0">{{placeholder()}}</span> <span tabindex="0" *ngIf="control.value">{{translateDate() | titlecase }}</span></p>
+  <p><span tabindex="0">{{title()}}</span> <span tabindex="0" *ngIf="control.value">{{translateDate() | titlecase }}</span></p>
   `
 })
 export class DateViewComponent extends CommonComponent {

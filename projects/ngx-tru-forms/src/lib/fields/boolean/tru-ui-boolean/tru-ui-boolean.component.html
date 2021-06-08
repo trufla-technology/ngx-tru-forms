@@ -1,10 +1,10 @@
 <div class="tru-ui-input-container">
   <div [class]="getClass('checkbox-group')">
-    <label class="container tru-ui-label" tabindex="0" [attr.for]="schema.key + '_' + inputId" [attr.aria-label]="title()"
+    <label class="container tru-ui-label" tabindex="0" [attr.for]="schema.key + '_' + inputId" 
       (keydown)="toggleValue($event)">
       <span class="tru-ui-label" [innerHTML]="title()"></span><sup *ngIf="isRequired()" aria-hidden="true">*</sup>
       <input [name]="schema.key" type="checkbox" [formControl]="control" [attr.id]="schema.key + '_' + inputId"
-        [attr.aria-required]="isRequired()" [attr.aria-label]="title()" [attr.disabled]="disabled" tabindex="-1">
+        [attr.aria-required]="isRequired()" [attr.disabled]="disabled" tabindex="-1">
       <span class="checkmark"></span>
     </label>
   </div>

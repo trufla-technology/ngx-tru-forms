@@ -4,7 +4,7 @@ import { BsModalRef } from 'ngx-bootstrap/modal';
 import { ViewFileComponent } from '../view-file/view-file.component';
 @Component({
   template: `
-    <p tabindex="0">{{placeholder()}}</p>
+    <p tabindex="0">{{title()}}</p>
     <button class='img-thumbnail' tabindex="0" [attr.aria-label]="'View '+title()" (click)='openFile()' *ngIf='!isPdf() && control.value'>
     <img
     role="button"

@@ -1,5 +1,5 @@
 <label class="tru-ui-label" [ngClass]="{'required': isRequired()}" style="margin-bottom: 6px;" tabindex="0"
-    [attr.aria-label]="title()">
+   >
     <span class="tru-ui-lable" [innerHTML]="title()"></span><sup *ngIf="isRequired()" aria-hidden="true">*</sup>
 </label>
 <div class="tru-form-group" jfDragAndDrop (filesDropped)="handleDrop($event);fileInput.value = null">

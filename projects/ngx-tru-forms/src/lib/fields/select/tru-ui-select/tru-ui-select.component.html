@@ -3,7 +3,7 @@
     <span class="tru-ui-label" [innerHTML]="title()"></span><sup *ngIf="isRequired()" aria-hidden="true">*</sup>
   </label>
   <button type="button" *ngIf="schema.description" [attr.class]="'info'" [attr.title]="schema.description">Info</button>
-  <select class="tru-ui-input-control tru-ui-select" [attr.name]="schema.key" [formControl]="control"
+  <select class=" tru-ui-select" [attr.name]="schema.key" [formControl]="control"
     [attr.disabled]="disabled" [attr.id]="schema.key" [attr.aria-required]="isRequired()" tabindex="0" (change)="returnFocus($event)">
     <option value="" [selected]="control.value === ''" [disabled]="true">
     </option>

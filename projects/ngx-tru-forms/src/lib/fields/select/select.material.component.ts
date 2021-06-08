@@ -13,7 +13,7 @@ import { CommonComponent } from '../common/common.component';
       [disabled]="disabled"
     >
       <mat-option [disabled]="true">
-          {{placeholder()}}
+          {{title()}}
       </mat-option>
       <mat-option *ngFor="let en of this.schema.enum; let i = index" [value]="en">
           {{enumNames(i)}}
