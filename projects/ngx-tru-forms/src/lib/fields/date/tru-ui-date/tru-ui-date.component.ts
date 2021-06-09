@@ -14,6 +14,8 @@ export class TruUiDateComponent extends CommonComponent implements AfterViewInit
   oldValue;
   show = false;
   selectedMonth;
+  minDate;
+  maxDate;
   @ViewChild(MatCalendar, { static: false }) calendar;
   excludeArray = [
     'mat-calendar-body-cell-content mat-calendar-body-today',
@@ -36,20 +38,14 @@ export class TruUiDateComponent extends CommonComponent implements AfterViewInit
       this.selectedMonth = new Date(this.control.data);
       this.calendar.activeDate = new Date(this.control.data);
     }
-    this.cd.detectChanges();
+    this.minDate = isNaN(new Date(this.schema.minimum).getDate()) ? null : new Date(this.schema.minimum);
+    this.maxDate = isNaN(new Date(this.schema.maximum).getDate()) ? null : new Date(this.schema.maximum);
+    this.cd.detectChanges();  
 
   }
 
   isMobile() {
     return window.innerWidth <= 800;
-  }
-
-  minDate() {
-    return isNaN(new Date(this.schema.minimum).getDate()) ? null : new Date(this.schema.minimum);
-  }
-
-  maxDate() {
-    return isNaN(new Date(this.schema.maximum).getDate()) ? null : new Date(this.schema.maximum);
   }
 
   onDateInput(e) {

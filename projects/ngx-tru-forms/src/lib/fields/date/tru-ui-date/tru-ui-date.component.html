@@ -10,7 +10,8 @@
       [tabIndex]="0" [attr.id]="schema.key + '_' + inputId" value="{{control.value | date : 'dd/MM/yyyy' }}" readonly (focus)="show = true"
       [formControl]="control" [attr.disabled]="disabled" [ngClass]="{'disabled': disabled}" [attr.placeholder]="placeholder()" />
     <mat-calendar #calendar color="'primary" [ngClass]="{'d-none': !show}" class="calendar-container"
-      [selected]="selectedMonth" [startAt]="selectedMonth" (selectedChange)="onDateInput($event)">
+      [selected]="selectedMonth" [startAt]="selectedMonth" (selectedChange)="onDateInput($event)" [minDate]="minDate" [maxDate]="maxDate"
+      >
     </mat-calendar>
   </div>
   <jf-tru-ui-error [control]="control" [language]="language || 'en'"></jf-tru-ui-error>
