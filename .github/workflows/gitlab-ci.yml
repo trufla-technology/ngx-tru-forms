@@ -5,9 +5,14 @@ stages:
 
 lint-job:
   stage: Lint
-  script:
-    - npm install
-    - ng lint
+  runs-on: ubuntu-latest
+
+  strategy:
+    matrix:
+      node-version: [12.x]
+    script:
+      - npm install
+      - ng lint
 
  semgrep:
     name: Scan
@@ -21,6 +26,10 @@ lint-job:
 
 build-job1:
   stage: Build
+  runs-on: ubuntu-latest
+  strategy:
+    matrix:
+      node-version: [12.x]
   script:
     - npm install
     - npm run build
