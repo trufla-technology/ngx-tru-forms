@@ -34,8 +34,8 @@
         <img [src]="makeTrustedImage(file)" id="image" [alt]="title">
     </div>
     <div class="controllers" *ngIf="!isPdf">
-        <button class="zoom-in" type="button" (click)="zoomin()" aria-label="zoom in" tabindex="0">+</button>
-        <button class="zoom-out" type="button" (click)="zoomout()" aria-label="zoom out" tabindex="0">-</button>
+        <button type="button" class="zoom-in" type="button" (click)="zoomin()" aria-label="zoom in" tabindex="0">+</button>
+        <button type="button" class="zoom-out" type="button" (click)="zoomout()" aria-label="zoom out" tabindex="0">-</button>
     </div>
 </div>
 <div *ngIf="isPdf" class="modal-body" style="max-height:90vh !important;padding: 0;margin: 0;overflow: auto;">
@@ -43,8 +43,8 @@
         [zoom]="zoom" [render-text]="false" [zoom-scale]="'page-fit'" (error)="onError($event)" (after-load-complete)="onLoad()">
     </pdf-viewer>
     <div class="controllers" *ngIf="isPdf">
-        <button class="zoom-in" tabindex="0" type="button" (click)="zoomPdfIn()" aria-label="zoom in">+</button>
-        <button class="zoom-out" tabindex="0" type="button" (click)="zoomPdfOut()" aria-label="zoom out">-</button>
+        <button type="button" class="zoom-in" tabindex="0" type="button" (click)="zoomPdfIn()" aria-label="zoom in">+</button>
+        <button type="button" class="zoom-out" tabindex="0" type="button" (click)="zoomPdfOut()" aria-label="zoom out">-</button>
     </div>
     <span *ngIf="error" tabindex="0">{{getTranslation('errorPdf')}} </span>
 </div>
