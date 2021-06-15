@@ -23,7 +23,7 @@ lint-job:
           publishDeployment: ${{ secrets.SEMGREP_DEPLOYMENT_ID }}
 
 build-job1:
-  stage: BSuild
+  stage: Build
   script:
     - npm install
     - npm run build
