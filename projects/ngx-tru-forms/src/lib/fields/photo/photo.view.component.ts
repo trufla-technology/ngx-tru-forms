@@ -5,7 +5,7 @@ import { ViewFileComponent } from '../view-file/view-file.component';
 @Component({
   template: `
     <p tabindex="0">{{title()}}</p>
-    <button class='img-thumbnail' tabindex="0" [attr.aria-label]="'View '+title()" (click)='openFile()' *ngIf='!isPdf() && control.value'>
+    <button type="button" class='img-thumbnail' tabindex="0" [attr.aria-label]="'View '+title()" (click)='openFile()' *ngIf='!isPdf() && control.value'>
     <img
     role="button"
     [alt]="'View '+title()"
@@ -16,7 +16,7 @@ import { ViewFileComponent } from '../view-file/view-file.component';
     <button *ngIf='isPdf() && control.value'
     class='img-thumbnail primary-bg' tabindex="0"
     [attr.aria-label]="'View '+title()"
-    (click)='openFile()'
+    (click)='openFile()' type="button"
     style='width: 100px !important;
     height:100px !important;
     cursor:pointer;
