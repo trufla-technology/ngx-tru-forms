@@ -12,15 +12,12 @@ lint-job:
  semgrep:
     name: Scan
     runs-on: ubuntu-latest
-    if: (github.actor != 'dependabot[bot]')
-    steps:
-      - uses: actions/checkout@v2
-
-      - uses: returntocorp/semgrep-action@v1
-
-        with:
-          publishToken: ${{ secrets.SEMGREP_APP_TOKEN }}
-          publishDeployment: ${{ secrets.SEMGREP_DEPLOYMENT_ID }}
+    image: returntocorp/semgrep-agent:v1
+    script: semgrep-agent
+    variables:
+      SEMGREP_RULES: >- # more at semgrep.dev/explore
+        p/security-audit
+        p/secrets
 
 build-job1:
   stage: Build
