@@ -1,0 +1,29 @@
+stages:
+  - Lint
+  - Scan
+  - Build
+
+lint-job:
+  stage: Lint
+  script:
+    - npm install
+    - ng lint
+
+ semgrep:
+    name: Scan
+    runs-on: ubuntu-latest
+    if: (github.actor != 'dependabot[bot]')
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: returntocorp/semgrep-action@v1
+
+        with:
+          publishToken: ${{ secrets.SEMGREP_APP_TOKEN }}
+          publishDeployment: ${{ secrets.SEMGREP_DEPLOYMENT_ID }}
+
+build-job1:
+  stage: BSuild
+  script:
+    - npm install
+    - npm run build
