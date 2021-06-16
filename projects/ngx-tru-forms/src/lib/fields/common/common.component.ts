@@ -2,7 +2,7 @@ import { Schema } from '../../models/schema';
 import { SchemaFormControl } from '../../models/schema-form-control';
 import { Component, ChangeDetectorRef, AfterViewInit, Renderer2 } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
-import {  startCase } from 'lodash';
+import { startCase } from 'lodash';
 import { ValidationFeedbackTranslation } from '../error/validation-feedback-translation';
 import { NgxImageCompressService } from 'ngx-image-compress';
 import { BsModalService } from 'ngx-bootstrap/modal';
@@ -114,7 +114,9 @@ export class CommonComponent implements AfterViewInit {
     if (this.schema.hasOwnProperty('mask')) {
       const mask: Array<string | RegExp> = [];
       this.schema.mask.forEach((el) => {
-        mask.push(/^\/.*\/$/.test(el) ? new RegExp(el.replace(/^\/|\/$/g, '')) : el);
+        const element = el.toString();
+        // tslint:disable-next-line
+        mask.push(/^\/.*\/$/.test(element) ? new RegExp(element.replace(/^\/|\/$/g, '')) : element);
       });
 
       return mask;
@@ -192,14 +194,16 @@ export class CommonComponent implements AfterViewInit {
     }
   }
 
-  validURL(str) {
+  validURL(str: string) {
+    const toBeTested = str.toString();
+    // tslint:disable-next-line
     const pattern = new RegExp('^(https?:\\/\\/)?' + // protocol
       '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|' + // domain name
       '((\\d{1,3}\\.){3}\\d{1,3}))' + // OR ip (v4) address
       '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*' + // port and path
       '(\\?[;&a-z\\d%_.~+=-]*)?' + // query string
       '(\\#[-a-z\\d_]*)?$', 'i'); // fragment locator
-    return !!pattern.test(str);
+    return !!pattern.test(`${toBeTested}`);
   }
 
   isPdf() {
