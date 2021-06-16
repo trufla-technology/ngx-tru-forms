@@ -66,6 +66,7 @@
     "@types/jasminewd2": "~2.0.3",
     "@types/node": "^8.9.4",
     "codelyzer": "^5.0.1",
+    "eslint-plugin-security": "^1.4.0",
     "jasmine-core": "~2.99.1",
     "jasmine-spec-reporter": "~4.2.1",
     "karma": "^6.1.2",
@@ -79,6 +80,7 @@
     "tsickle": "^0.37.0",
     "tslib": "^1.13.0",
     "tslint": "~5.9.1",
+    "tslint-config-security": "^1.16.0",
     "typescript": "3.5.3"
   }
 }
