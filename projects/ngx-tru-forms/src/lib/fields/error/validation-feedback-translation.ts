@@ -13,7 +13,7 @@ export class ValidationFeedbackTranslation {
             not_in_menu: 'No results found',
             is_match: 'Value not matching',
             max_size: 'File exceeded the allowed size',
-            allowed_format: 'allowed format',
+            allowed_format: 'available formats:',
             error_pdf: 'No documents available',
             delete_file: 'Click here to delete file',
             browse: 'Browse',

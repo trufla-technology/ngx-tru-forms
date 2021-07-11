@@ -15,10 +15,10 @@
                         class="primary-color browse-btn">Naviguez</strong></span></ng-template>
             <div style="line-height: 1;font-size: 12px;font-size: 100%;"> <small *ngIf="schema.maxSize"
                     style="color: #4d4d4d;font-size: 100%;font-size: 12px;">Maximum
-                    {{schema.maxSize}} MB<span *ngIf="schema.imageFormat">, </span></small> <small
-                    *ngIf="schema.imageFormat" style="color: #4d4d4d;font-size: 100%;font-size: 12px">
-                    {{getLanguage()?.allowed_format}} <span *ngFor="let format of schema.imageFormat"
-                        style="font-size: 12px;font-size:100%;color: #4d4d4d"> {{ format }} </span></small></div>
+                    {{schema.maxSize}} MB<span *ngIf="schema.imageFormat && schema?.imageFormat?.length">, </span></small> <small
+                    *ngIf="schema.imageFormat && schema?.imageFormat?.length" style="color: #4d4d4d;font-size: 100%;font-size: 12px">
+                    {{getLanguage()?.allowed_format}} <span *ngFor="let format of schema.imageFormat; let last = last"
+                        style="font-size: 12px;font-size:100%;color: #4d4d4d">{{format}}<span *ngIf="!last && schema?.imageFormat?.length > 1">, </span> </span></small></div>
         </div>
         <input #fileInput style="display: none;visibility: hidden;" [attr.aria-hidden]="true"
             [attr.id]="schema.key + '_' + inputId" class="tru-input" type="file" [accept]="acceptFormats"
