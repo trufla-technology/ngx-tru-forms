@@ -1,4 +1,4 @@
-{
+{  "extends": ["tslint-config-security"],
   "rulesDirectory": [
     "node_modules/codelyzer"
   ],
@@ -125,6 +125,8 @@
     "use-lifecycle-interface": true,
     "use-pipe-transform-interface": true,
     "component-class-suffix": true,
-    "directive-class-suffix": true
+    "directive-class-suffix": true,
+    "tsr-detect-html-injection": true,
+    "tsr-detect-unsafe-regexp": true
   }
 }

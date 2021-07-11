@@ -56,17 +56,17 @@ export class JsonSchemaExamplesComponent implements OnInit, AfterViewInit {
   }
 
   handleSubmit(data) {
-    this.formResponse.nativeElement.innerHTML = JSON.stringify(data, null, 2);
+    this.formResponse.nativeElement.appendChild(JSON.stringify(data, null, 2));
   }
 
   handleCancel(data) {
-    this.formResponse.nativeElement.innerHTML = JSON.stringify(data, null, 2);
+    this.formResponse.nativeElement.appendChild(JSON.stringify(data, null, 2));
     window.alert('Cancel also has data');
   }
 
   handleChange(data) {
     if (this.selectedSchema === 'onchange') {
-      this.formResponse.nativeElement.innerHTML = JSON.stringify(data, null, 2);
+      this.formResponse.nativeElement.appendChild(JSON.stringify(data, null, 2));
     }
   }
 

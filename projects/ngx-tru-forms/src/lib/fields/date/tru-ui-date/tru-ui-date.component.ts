@@ -40,7 +40,7 @@ export class TruUiDateComponent extends CommonComponent implements AfterViewInit
     }
     this.minDate = isNaN(new Date(this.schema.minimum).getDate()) ? null : new Date(this.schema.minimum);
     this.maxDate = isNaN(new Date(this.schema.maximum).getDate()) ? null : new Date(this.schema.maximum);
-    this.cd.detectChanges();  
+    this.cd.detectChanges();
 
   }
 
