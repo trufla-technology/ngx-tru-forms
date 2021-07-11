@@ -1,7 +1,7 @@
 {
   "name": "@trufla/ngx-tru-forms",
   "author": "Boris Cosic <boris.c@trufla.com>",
-  "version": "1.1.3-beta.8",
+  "version": "1.1.3-beta.9",
   "license": "MIT",
   "main": "./index.js",
   "typings": "./index.d.ts",
@@ -21,12 +21,6 @@
     "url": "https://github.com/trufla-technology/ngx-tru-forms/issues"
   },
   "peerDependencies": {
-    "@angular/common": "^8.2.14",
-    "@angular/core": "^8.2.14",
-    "@angular/forms": "^8.2.14",
-    "@angular/http": "^8.2.14",
-    "@angular/platform-browser": "^8.2.14",
-    "@angular/router": "^8.2.14",
     "angular2-text-mask": ">=8.0.4",
     "text-mask-addons": ">=3.7.2",
     "lodash": "^4.17.10",
