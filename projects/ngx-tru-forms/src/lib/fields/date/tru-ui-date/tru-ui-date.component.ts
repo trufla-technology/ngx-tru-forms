@@ -16,7 +16,7 @@ export class TruUiDateComponent extends CommonComponent implements AfterViewInit
   selectedMonth;
   minDate;
   maxDate;
-  @ViewChild(MatCalendar, { static: false }) calendar;
+  @ViewChild(MatCalendar) calendar;
   excludeArray = [
     'mat-calendar-body-cell-content mat-calendar-body-today',
     'mat-calendar-body-cell-content',

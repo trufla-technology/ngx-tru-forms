@@ -15,7 +15,7 @@ export class TruUiComponent implements OnInit {
   viewOnly;
   data;
   fields;
-  @ViewChild('truForms', {static: false}) truForms: JsonFormComponent;
+  @ViewChild('truForms') truForms: JsonFormComponent;
   constructor(
     private schemaListenerService: SchemaListenerService,
     private dataService: DataListenerService,
