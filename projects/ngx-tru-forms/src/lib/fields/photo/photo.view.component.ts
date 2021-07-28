@@ -26,21 +26,17 @@ import { ViewFileComponent } from '../view-file/view-file.component';
     border-radius: 6px;
     background-color: #d8d8d8;
     display: flex;justify-content: center;align-items: center;'>
-    <div [innerHTML]="makeTrustedHtml(pdfIcon)" class="svg-fill-primary" style="
+    <div  class="svg-fill-primary" style="
     width: 60px;
     background-color: #fff;
     height: 60px;
     display: flex;
     border-radius: 100%;
     justify-content: center;
-    align-items: center;"> </div>
-  </button>
-  `
-})
-export class PhotoViewComponent extends CommonComponent {
-  bsModalRef: BsModalRef;
-  pdfIcon = `<?xml version="1.0" encoding="UTF-8"?>
-  <svg role="img" aria-labeledby="open-pdf-file" class="svg-fill-primary" width="30px" height="28px"
+    align-items: center;"
+    
+    > 
+    <svg (click)='openFile()' role="img" aria-labeledby="open-pdf-file" class="svg-fill-primary" width="30px" height="28px"
   viewBox="0 0 20 19" version="1.1"
   xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
       <title>PDF File</title>
@@ -81,7 +77,13 @@ export class PhotoViewComponent extends CommonComponent {
            15.1818182,15.5026846 L15.1818182,6.09090909 L18.0909091,6.09090909
            L18.0909091,15.5026846 L18.0908665,15.5026846 Z" id="pdf-file-icon-grey" fill="#8C8C8C" fill-rule="nonzero"></path>
       </g>
-  </svg>`;
+  </svg>
+    </div>
+  </button>
+  `
+})
+export class PhotoViewComponent extends CommonComponent {
+  bsModalRef: BsModalRef;
 
   openFile() {
     this.modalService.config.class = 'modal-lg modal-dialog-centered';
