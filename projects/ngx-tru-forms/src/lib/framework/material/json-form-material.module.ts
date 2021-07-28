@@ -85,7 +85,7 @@ import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 })
 
 export class JsonFormMaterialModule {
-  static forRoot(): ModuleWithProviders {
+  static forRoot(): ModuleWithProviders<JsonFormMaterialModule> {
     return {
       ngModule: JsonFormMaterialModule,
       providers: [

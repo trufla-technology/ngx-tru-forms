@@ -81,7 +81,7 @@ import { FormsModule } from '@angular/forms';
   ]
 })
 export class TruUiModule {
-  static forRoot(): ModuleWithProviders {
+  static forRoot(): ModuleWithProviders<TruUiModule> {
     return {
       ngModule: TruUiModule,
       providers: [
