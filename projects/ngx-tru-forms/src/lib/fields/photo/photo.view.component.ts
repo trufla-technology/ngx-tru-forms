@@ -36,7 +36,7 @@ import { ViewFileComponent } from '../view-file/view-file.component';
     align-items: center;"
     
     > 
-    <svg (click)='openFile()' role="img" aria-labeledby="open-pdf-file" class="svg-fill-primary" width="30px" height="28px"
+    <svg role="img" aria-labeledby="open-pdf-file" class="svg-fill-primary" width="30px" height="28px"
   viewBox="0 0 20 19" version="1.1"
   xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
       <title>PDF File</title>
