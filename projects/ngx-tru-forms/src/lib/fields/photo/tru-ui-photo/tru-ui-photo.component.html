@@ -24,7 +24,7 @@
             [attr.id]="schema.key + '_' + inputId" class="tru-input" type="file" [accept]="acceptFormats"
             [attr.aria-label]="getLanguage().browse" (change)="dragAndDrop($event)" (keypress)="dragAndDrop($event)" />
     </label>
-    <div class="file-preview-container" *ngIf="getControlValue().length && type === 'pdf'">
+    <div class="file-preview-container" *ngIf="getControlValue().length && fileType === 'pdf'">
         <div style="max-width: 190px;text-overflow: ellipsis;overflow: hidden;display: block;"><small
                 tabindex="0">{{file?.name ||
                 title()}}</small></div>
@@ -70,7 +70,7 @@
             </button>
         </div>
     </div>
-    <div class="image-preview-container" *ngIf="getControlValue().length && type !== 'pdf'" tabindex="0">
+    <div class="image-preview-container" *ngIf="getControlValue().length && fileType !== 'pdf'" tabindex="0">
         <div class="image-overlay" tabindex="0">
             <button class="tru-ui-button btn bg-primary"
                 style="max-width: 110px !important;height: 30px !important;font-size: 12px !important;color:#fff"
