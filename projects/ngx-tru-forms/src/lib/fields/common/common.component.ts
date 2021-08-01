@@ -69,6 +69,9 @@ export class CommonComponent implements AfterViewInit {
       this.acceptFormats = 'image/x-png,image/jpeg,image/jpg,application/pdf';
       this.cd.detectChanges();
     }
+    if (this.control && this.control.data && this.schema?.format === 'email' ) {
+      this.confirmInput.setValue(this.control.data);
+    }
   }
 
   isRequired() {
