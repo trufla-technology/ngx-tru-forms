@@ -1,6 +1,34 @@
+<div style="display: flex; flex-direction: row;justify-content: center;align-items: center;">
+  <div style="width: 100%;" >
+    <label>Language</label>
+    <select  class="demo_input" (change)="changeLanguage($event.target.value)">
+      <option value="en" [selected]="language=== 'en'">English</option>
+      <option value="fr" [selected]="language=== 'fr'">Frensh</option>
+    </select>
+    </div>
+    <div style="width: 100%;" >
+      <label>View only</label>
+      <select  class="demo_input" (change)="toggleViewonly($event.target.value)">
+        <option disabled>select mode</option>
+        <option value="true" [selected]="viewOnly">on</option>
+        <option value="false" [selected]="!viewOnly">off</option>
+      </select>
+      </div>
+      <div style="width: 100%;" >
+        <label>Data preview</label>
+        <select  class="demo_input" (change)="toggleData($event.target.value)">
+          <option disabled> select preview </option>
+          <option value="true" [selected]="data">on</option>
+          <option value="false" [selected]="!data">off</option>
+        </select>
+        </div>
+      </div>
 <jf-form
   [schema]="schema"
   [fields]="fields"
   (handleSubmit)="handleSubmit($event)"
   [submit]="'submit'"
+  [language]="language || 'en'"
+  [viewOnly]="viewOnly"
+  [data]="data"
 ></jf-form>
