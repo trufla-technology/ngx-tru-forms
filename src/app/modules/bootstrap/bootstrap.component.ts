@@ -21,9 +21,9 @@ export class BootstrapComponent implements OnInit {
     private dataService: DataListenerService,
     private jsonSchemaSamples: JsonSchemaExamplesSamples
 
-  ) {  
+  ) {
   this.viewOnly = localStorage.getItem('viewOnly') ? localStorage.getItem('viewOnly') === 'true' : false;
-  this.language = localStorage.getItem('language') ? localStorage.getItem('language') : 'en';}
+  this.language = localStorage.getItem('language') ? localStorage.getItem('language') : 'en'; }
 
   ngOnInit() {
     this.fields = {
