@@ -36,7 +36,7 @@ import { ViewFileComponent } from '../view-file/view-file.component';
     align-items: center;"
     
     > 
-    <svg role="img" aria-labeledby="open-pdf-file" class="svg-fill-primary" width="30px" height="28px"
+    <svg role="img"  class="svg-fill-primary" width="30px" height="28px"
   viewBox="0 0 20 19" version="1.1"
   xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
       <title>PDF File</title>
@@ -78,6 +78,9 @@ import { ViewFileComponent } from '../view-file/view-file.component';
            L18.0909091,15.5026846 L18.0908665,15.5026846 Z" id="pdf-file-icon-grey" fill="#8C8C8C" fill-rule="nonzero"></path>
       </g>
   </svg>
+  <span class="cdk-visually-hidden">
+  Open PDF File
+</span>
     </div>
   </button>
   `

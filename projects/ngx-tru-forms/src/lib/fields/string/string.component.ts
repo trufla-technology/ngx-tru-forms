@@ -29,6 +29,7 @@ import { CommonComponent } from '../common/common.component';
     class="form-control"
     [attr.type]="type()"
     [formControl]="confirmInput"
+    [attr.name]="'confirm-'+schema.key"
     [attr.maxLength]="schema.maxLength || null"
     [attr.minLength]="schema.minLength || null"
     [attr.disabled]="disabled"
