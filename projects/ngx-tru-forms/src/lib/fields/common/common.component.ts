@@ -160,9 +160,9 @@ export class CommonComponent implements AfterViewInit {
       const translatedTitle = titleArray.filter(val =>
         val.language === this.language
       );
-      return translatedTitle[0] ? translatedTitle[0].value.replace(/[&\/\\#,+$~%.":?<>{}_-]/g, ' ') : false;
+      return translatedTitle[0] ? translatedTitle[0].value.replace(/[&\\#,+$~%.":?{}_-]/g, ' ') : false;
     } else {
-      return titleArray.replace(/[&\/\\#,+$~%.":?<>{}_-]/g, ' ');
+      return titleArray.replace(/[&\\#,+$~%.":?{}_-]/g, ' ');
     }
   }
 
