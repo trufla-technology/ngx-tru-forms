@@ -7,7 +7,8 @@
     "build": "ng build --prod ngx-tru-forms",
     "build-dev": "ng build ngx-tru-forms",
     "build-docs": "./docs.sh",
-    "publish": "npm run build && cd dist/ngx-tru-forms && npm publish",
+    "version": "cd projects/ngx-tru-forms && npm version prerelease --preid=rc",
+    "publish": "npm run version && npm run build && cd dist/ngx-tru-forms && npm publish",
     "test": "ng test ngx-tru-forms",
     "lint": "ng lint",
     "clean": "rm -fr build dist"
