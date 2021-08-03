@@ -34,7 +34,7 @@ export class TruUiAutocompleteComponent extends CommonComponent implements OnIni
       let searchValue = [];
       searchValue = this.schema.enumNames ? this.values.filter((en) => en.enumName === this.selectedValue) :
       this.values.filter((en) => en.enum === this.selectedValue);
-      searchValue && searchValue.length ? this.setValue(searchValue[0].enum) : this.setError();
+      searchValue && searchValue?.length ? this.setValue(searchValue[0].enum) : this.setError();
     } else {
       this.control.setValue('');
       if (this.control.isRequired) {

@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, ViewChild, ChangeDetectorRef, AfterViewInit } from '@angular/core';
 import { DataListenerService } from 'src/app/services/data-listener.service';
 import { SchemaListenerService } from 'src/app/services/schema-listener.service';
 import { JsonFormComponent } from '@trufla/ngx-tru-forms';
@@ -9,7 +9,7 @@ import { InputColourComponent } from '../../json-schema-examples/input-colour/in
   templateUrl: './tru-ui.component.html',
   styleUrls: ['./tru-ui.component.css']
 })
-export class TruUiComponent implements OnInit {
+export class TruUiComponent implements OnInit, AfterViewInit {
   language;
   schema;
   viewOnly;
@@ -28,12 +28,19 @@ export class TruUiComponent implements OnInit {
     };
     this.viewOnly = localStorage.getItem('viewOnly') ? localStorage.getItem('viewOnly') === 'true' : false;
     this.language = localStorage.getItem('language') ? localStorage.getItem('language') : 'en';
+    
+
     this.data = this.viewOnly ? this.jsonSchemaSamples.data : null;
     this.schemaListenerService.schema.subscribe((d) => {
       this.schema = d;
      });
   }
 
+  ngAfterViewInit() {
+    this.truForms.setHeader('you can change header with <code style="background-color:#161b22;color:#fff;padding:2px;border-radius:3px">  setHeader(value: string)</code> method and pass any string inside it, be aware that any scripts will get sanitized <br> any other html code will get rendered  ')
+    this.truForms.setFooter('you can change footer with <code style="background-color:#161b22;color:#fff;padding:2px;border-radius:3px">  setFooter(value: string)</code> method and pass any string inside it, be aware that any scripts will get sanitized <br> any other html code will get rendered  ')
+
+  }
   handleSubmit(e) {
     this.dataService.data = e;
   }

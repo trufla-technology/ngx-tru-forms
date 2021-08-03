@@ -7,6 +7,7 @@ import { SchemaFormGroup } from './models/schema-form-group';
 import { SchemaFormArray } from './models/schema-form-array';
 import { JsonFormFieldsService } from './framework/json-form-fields.service';
 import * as _ from 'lodash';
+import DOMPurify from 'dompurify';
 
 @Component({
   selector: 'jf-form, tru-form',
@@ -384,14 +385,20 @@ export class JsonFormComponent implements DoCheck, OnDestroy {
    * API: set header of the form
    */
   setHeader(val) {
-    if (this.header) { this.header.nativeElement.appendChild(val); }
+    let value = document.createElement('div');
+    val = DOMPurify.sanitize(val);
+    value.innerHTML = val;
+    if (this.header) { this.header.nativeElement.appendChild(value); }
   }
 
   /**
    * API: set footer of the form
    */
   setFooter(val) {
-   if (this.footer) { this.footer.nativeElement.appendChild(val); }
+    let value = document.createElement('div');
+    val = DOMPurify.sanitize(val);
+    value.innerHTML = val;
+   if (this.footer) { this.footer.nativeElement.appendChild(value); }
   }
 
   /**
