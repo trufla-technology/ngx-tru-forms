@@ -7,5 +7,7 @@ mkdir -p docs && ./node_modules/.bin/ng build --prod --base-href=$BASE_HREF/ --d
 sed -i 's/forRoot(.*),/forRoot(JsonFormBootstrap4Module),/' src/app/json-schema-examples/json-schema-examples.module.ts
 sed -i 's/<!-- bootstrap4-cdn -->/<link rel="stylesheet" href="https:\/\/stackpath.bootstrapcdn.com\/bootstrap\/4.1.3\/css\/bootstrap.min.css" crossorigin="anonymous">/' src/index.html
 mkdir -p docs/bootstrap4 && ./node_modules/.bin/ng build --prod --base-href=$BASE_HREF/bootstrap4/ --deploy-url=$BASE_HREF/bootstrap4/ && cp -R dist/ngx-tru-forms-app/* docs/bootstrap4
+sed -i 's/forRoot(.*),/forRoot(TruUiModule),/' src/app/json-schema-examples/json-schema-examples.module.ts
+mkdir -p docs/tru-ui && ./node_modules/.bin/ng build --prod --base-href=$BASE_HREF/tru-ui/ --deploy-url=$BASE_HREF/tru-ui/ && cp -R dist/ngx-tru-forms-app/* docs/tru-ui
 mv src/index.html.org src/index.html
 sed -i 's/forRoot(.*),/forRoot(JsonFormMaterialModule),/' src/app/json-schema-examples/json-schema-examples.module.ts

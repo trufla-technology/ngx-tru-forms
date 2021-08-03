@@ -7,8 +7,13 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 const routes: Routes = [
   {
+
     path: '',
-    component: TruUiComponent
+    redirectTo: 'tru-ui'
+  },
+  { 
+    path: 'tru-ui',
+    component: TruUiComponent,
   }
 ];
 

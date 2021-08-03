@@ -1,4 +1,4 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import { Component, EventEmitter, OnInit, Output, AfterViewInit } from '@angular/core';
 import {startCase} from 'lodash';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Location} from '@angular/common';
@@ -7,7 +7,7 @@ import {Location} from '@angular/common';
   templateUrl: './framework-dropdown.component.html',
   styleUrls: ['./framework-dropdown.component.css']
 })
-export class FrameworkDropdownComponent implements OnInit {
+export class FrameworkDropdownComponent implements OnInit, AfterViewInit {
 
   frameworks = [
     'material',
@@ -22,16 +22,20 @@ export class FrameworkDropdownComponent implements OnInit {
     private router: Router,
     private activatedRoute: ActivatedRoute,
     private location: Location
-  ) { }
+  ) {    }
 
   ngOnInit() {
+  
     if (this.location.path()) {
       this.value = this.frameworks.find((f) => this.location.path().indexOf(f) > -1);
     } else {
       this.value = 'tru-ui';
     }
-
     // this.value = this.location.path() && this.location.path().indexOf('bootstrap') > -1 ? 'bootstrap' : 'material';
+  }
+
+  ngAfterViewInit() {
+ 
   }
 
   startCase(value) {
