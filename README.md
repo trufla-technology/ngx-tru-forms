@@ -23,8 +23,10 @@ This component utilizes [Reactive Forms](https://angular.io/guide/reactive-forms
 * [Styling](#styling)
 
 ### Installation
-
-`npm install @trufla/ngx-tru-forms --save`
+For angular version below 6 run
+`npm install @trufla/ngx-tru-forms@0.6.43 --save`
+For angular version above 6 run
+`npm install @trufla/ngx-tru-forms@1.1.8 --save`
 
 
 ### Usage
