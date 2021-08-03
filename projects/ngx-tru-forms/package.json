@@ -1,7 +1,7 @@
 {
   "name": "@trufla/ngx-tru-forms",
   "author": "Boris Cosic <boris.c@trufla.com>",
-  "version": "1.1.7",
+  "version": "1.1.8",
   "license": "MIT",
   "main": "./index.js",
   "typings": "./index.d.ts",
