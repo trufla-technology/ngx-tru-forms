@@ -225,6 +225,9 @@ export class CommonComponent implements AfterViewInit {
     const userAgent = window.navigator.userAgent.toLowerCase(),
       ios = /iphone|ipod|ipad/.test(userAgent);
     return ios;
+  }
 
+  getInput(id) {
+    document.getElementById(id).click();
   }
 }

@@ -22,7 +22,12 @@ export class TruUiDateComponent extends CommonComponent implements AfterViewInit
     'mat-calendar-body-cell-content',
     'mat-calendar-body-today',
     'mat-calendar-body-cell-content mat-calendar-body-selected',
-    'mat-calendar-period-button mat-button mat-button-base'
+    'mat-calendar-period-button mat-button mat-button-base',
+    'mat-calendar-body-cell',
+    'mat-calendar-body-cell-preview',
+    'mat-calendar-body-cell ng-star-inserted',
+    'mat-calendar-body-cell ng-star-inserted',
+    'row'
   ];
 
   @HostListener('document:keydown', ['$event'])
