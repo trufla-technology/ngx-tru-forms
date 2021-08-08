@@ -25,7 +25,7 @@ export class FrameworkDropdownComponent implements OnInit, AfterViewInit {
   ) {    }
 
   ngOnInit() {
-  
+
     if (this.location.path()) {
       this.value = this.frameworks.find((f) => this.location.path().indexOf(f) > -1);
     } else {
@@ -35,7 +35,7 @@ export class FrameworkDropdownComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
- 
+
   }
 
   startCase(value) {

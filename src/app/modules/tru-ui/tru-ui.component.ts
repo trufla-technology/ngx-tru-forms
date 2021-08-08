@@ -28,7 +28,7 @@ export class TruUiComponent implements OnInit, AfterViewInit {
     };
     this.viewOnly = localStorage.getItem('viewOnly') ? localStorage.getItem('viewOnly') === 'true' : false;
     this.language = localStorage.getItem('language') ? localStorage.getItem('language') : 'en';
-    
+
 
     this.data = this.viewOnly ? this.jsonSchemaSamples.data : null;
     this.schemaListenerService.schema.subscribe((d) => {
@@ -37,8 +37,8 @@ export class TruUiComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
-    this.truForms.setHeader('you can change header with <code style="background-color:#161b22;color:#fff;padding:2px;border-radius:3px">  setHeader(value: string)</code> method and pass any string inside it, be aware that any scripts will get sanitized <br> any other html code will get rendered  ')
-    this.truForms.setFooter('you can change footer with <code style="background-color:#161b22;color:#fff;padding:2px;border-radius:3px">  setFooter(value: string)</code> method and pass any string inside it, be aware that any scripts will get sanitized <br> any other html code will get rendered  ')
+    this.truForms.setHeader('you can change header with <code style="background-color:#161b22;color:#fff;padding:2px;border-radius:3px">  setHeader(value: string)</code> method and pass any string inside it, be aware that any scripts will get sanitized <br> any other html code will get rendered  ');
+    this.truForms.setFooter('you can change footer with <code style="background-color:#161b22;color:#fff;padding:2px;border-radius:3px">  setFooter(value: string)</code> method and pass any string inside it, be aware that any scripts will get sanitized <br> any other html code will get rendered  ');
 
   }
   handleSubmit(e) {

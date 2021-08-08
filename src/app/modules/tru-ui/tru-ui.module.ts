@@ -11,7 +11,7 @@ const routes: Routes = [
     path: '',
     redirectTo: 'tru-ui'
   },
-  { 
+  {
     path: 'tru-ui',
     component: TruUiComponent,
   }

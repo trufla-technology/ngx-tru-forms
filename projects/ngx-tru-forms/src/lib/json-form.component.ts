@@ -385,8 +385,9 @@ export class JsonFormComponent implements DoCheck, OnDestroy {
    * API: set header of the form
    */
   setHeader(val) {
-    let value = document.createElement('div');
+    const value = document.createElement('div');
     val = DOMPurify.sanitize(val);
+    // tslint:disable-next-line
     value.innerHTML = val;
     if (this.header) { this.header.nativeElement.appendChild(value); }
   }
@@ -395,8 +396,9 @@ export class JsonFormComponent implements DoCheck, OnDestroy {
    * API: set footer of the form
    */
   setFooter(val) {
-    let value = document.createElement('div');
+    const value = document.createElement('div');
     val = DOMPurify.sanitize(val);
+    // tslint:disable-next-line
     value.innerHTML = val;
    if (this.footer) { this.footer.nativeElement.appendChild(value); }
   }
