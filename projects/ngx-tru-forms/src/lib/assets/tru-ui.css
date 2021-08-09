@@ -54,7 +54,9 @@ textarea.tru-ui-input-control {
   background-position: calc(100% - 6px) !important;
   background-repeat: no-repeat !important;
   -moz-appearance: none;
-  background-color: #fff;
+  background-color: transparent;
+  position: relative;
+  z-index: 1;
   /* Firefox */
   -webkit-appearance: none;
   /* Safari and Chrome */

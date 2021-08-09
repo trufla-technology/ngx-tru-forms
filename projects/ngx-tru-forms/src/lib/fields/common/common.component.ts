@@ -228,6 +228,7 @@ export class CommonComponent implements AfterViewInit {
   }
 
   getInput(id) {
-    document.getElementById(id).click();
+    const input: any = document.getElementById(id);
+    input.focus();
   }
 }
