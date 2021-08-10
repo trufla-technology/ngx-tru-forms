@@ -56,10 +56,41 @@ export class TruUiDateComponent extends CommonComponent implements AfterViewInit
       this.selectedMonth = new Date(e);
       this.isOpen = false;
       this.calendar.activeDate = new Date(e);
+      this.returnFocus();
       this.cd.detectChanges();
     }
   }
   close(ev) {
     this.isOpen = false;
+    this.returnFocus();
+  }
+
+  openCalendar(id) {
+    if (this.isOpen === false) {
+      this.isOpen = true;
+      setTimeout(() => {
+        const select = document.getElementById(id);
+        if (select) {
+          select.focus();
+        }
+       }, 100);    
+      } else {
+        setTimeout(() => {
+          const select = document.getElementById(this.schema.key + '_' + this.inputId);
+          if (select) {
+            this.isOpen = false;
+            select.focus();
+          }
+         }, 100);
+    }
+  }
+
+  returnFocus(e?) {
+    setTimeout(() => {
+     const select = document.getElementById(this.schema.key + '_' + this.inputId);
+     if (select) {
+       select.focus();
+     }
+    }, 150);
   }
 }
