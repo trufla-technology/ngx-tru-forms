@@ -41,7 +41,7 @@ import { ViewFileComponent } from '../view-file/view-file.component';
   xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
       <title>PDF File</title>
       <desc>Open PDF File</desc>
-      <g id="Temporarily" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+      <g  stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
           <path d="M18.402585,4.87879752
           L15.1125569,4.87879752 L15.1125569,0.930748323
           C15.1125569,0.567327311 14.8179568,0.272727273
@@ -75,7 +75,7 @@ import { ViewFileComponent } from '../view-file/view-file.component';
            M18.0908665,15.5026846 C18.0908665,16.1957369 17.4396481,16.7575758
            16.6363423,16.7575758 C15.8330366,16.7575758 15.1818182,16.1957369
            15.1818182,15.5026846 L15.1818182,6.09090909 L18.0909091,6.09090909
-           L18.0909091,15.5026846 L18.0908665,15.5026846 Z" id="pdf-file-icon-grey" fill="#8C8C8C" fill-rule="nonzero"></path>
+           L18.0909091,15.5026846 L18.0908665,15.5026846 Z" fill="#8C8C8C" fill-rule="nonzero"></path>
       </g>
   </svg>
   <span class="cdk-visually-hidden">

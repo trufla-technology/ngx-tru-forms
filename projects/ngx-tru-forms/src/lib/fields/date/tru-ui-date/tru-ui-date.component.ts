@@ -73,7 +73,7 @@ export class TruUiDateComponent extends CommonComponent implements AfterViewInit
         if (select) {
           select.focus();
         }
-       }, 100);    
+       }, 100);
       } else {
         setTimeout(() => {
           const select = document.getElementById(this.schema.key + '_' + this.inputId);

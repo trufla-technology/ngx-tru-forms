@@ -37,7 +37,9 @@ export class TruUiComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
+    // tslint:disable-next-line
     this.truForms.setHeader('you can change header with <code style="background-color:#161b22;color:#fff;padding:2px;border-radius:3px">  setHeader(value: string)</code> method and pass any string inside it, be aware that any scripts will get sanitized <br> any other html code will get rendered  ');
+    // tslint:disable-next-line
     this.truForms.setFooter('you can change footer with <code style="background-color:#161b22;color:#fff;padding:2px;border-radius:3px">  setFooter(value: string)</code> method and pass any string inside it, be aware that any scripts will get sanitized <br> any other html code will get rendered  ');
 
   }

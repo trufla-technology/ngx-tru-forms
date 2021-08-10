@@ -11,7 +11,8 @@
     "publish": "npm run version && npm run build && cd dist/ngx-tru-forms && npm publish",
     "test": "ng test ngx-tru-forms",
     "lint": "ng lint",
-    "clean": "rm -fr build dist"
+    "clean": "rm -fr build dist",
+    "pre-push": "npm run clean && ng lint --fix && npm run build && npm run build-docs"
   },
   "config": {
     "deployToGit": {
