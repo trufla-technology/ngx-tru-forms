@@ -21,6 +21,8 @@ import { TruUiArrayComponent } from '../shared/components/array/tru-ui-array/tru
 import { TruUiAutocompleteComponent } from '../../fields/autocomplete/tru-ui-autocomplete/tru-ui-autocomplete.component';
 import { TypeaheadModule } from 'ngx-bootstrap/typeahead';
 import { FormsModule } from '@angular/forms';
+import {OverlayModule} from '@angular/cdk/overlay';
+
 @NgModule({
   declarations: [TruUiButtonComponent,
     TruUiStringComponent,
@@ -43,6 +45,7 @@ import { FormsModule } from '@angular/forms';
     ReactiveFormsModule,
     SharedModule,
     TextMaskModule,
+    OverlayModule,
     TypeaheadModule.forRoot()
   ],
   entryComponents: [

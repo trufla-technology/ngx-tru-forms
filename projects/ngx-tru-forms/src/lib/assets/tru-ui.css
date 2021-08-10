@@ -243,3 +243,11 @@ label.tru-ui-label:focus {
 ::ng-deep .mat-calendar-body-cell-content {
   border-radius: 4px !important;
 }
+.calender-overlay {
+  margin: auto;
+  position: absolute;
+  box-shadow: 0 2px 5px 1px rgb(64 60 67 / 16%);
+  left: 50%;
+  transform: translateX(-50%);
+
+}

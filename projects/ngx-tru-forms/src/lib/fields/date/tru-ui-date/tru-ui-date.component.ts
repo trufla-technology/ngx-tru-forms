@@ -5,6 +5,7 @@ import * as momentTimeZone from 'moment-timezone';
 import { MatCalendar } from '@angular/material/datepicker';
 const localTimeZone = momentTimeZone.tz.guess();
 const moment = moment_;
+import { CdkOverlayOrigin } from '@angular/cdk/overlay';
 @Component({
   selector: 'jf-tru-ui-date',
   templateUrl: './tru-ui-date.component.html',
@@ -16,24 +17,16 @@ export class TruUiDateComponent extends CommonComponent implements AfterViewInit
   selectedMonth;
   minDate;
   maxDate;
+  isOpen = false;
+
   @ViewChild(MatCalendar) calendar;
-  excludeArray = [
-    'mat-calendar-body-cell-content mat-calendar-body-today',
-    'mat-calendar-body-cell-content',
-    'mat-calendar-body-today',
-    'mat-calendar-body-cell-content mat-calendar-body-selected',
-    'mat-calendar-period-button mat-button mat-button-base',
-    'mat-calendar-body-cell',
-    'mat-calendar-body-cell-preview',
-    'mat-calendar-body-cell ng-star-inserted',
-    'mat-calendar-body-cell ng-star-inserted',
-    'row'
-  ];
+  @ViewChild(CdkOverlayOrigin) calendarOverlay;
+
 
   @HostListener('document:keydown', ['$event'])
   handleKeyboardEvent(event: KeyboardEvent) {
      if (event.code === 'Escape') {
-      this.show = false;
+      this.isOpen = false;
     }
   }
 
@@ -46,7 +39,6 @@ export class TruUiDateComponent extends CommonComponent implements AfterViewInit
     this.minDate = isNaN(new Date(this.schema.minimum).getDate()) ? null : new Date(this.schema.minimum);
     this.maxDate = isNaN(new Date(this.schema.maximum).getDate()) ? null : new Date(this.schema.maximum);
     this.cd.detectChanges();
-
   }
 
   isMobile() {
@@ -62,17 +54,12 @@ export class TruUiDateComponent extends CommonComponent implements AfterViewInit
       this.oldValue = date;
       this.control.setValue(date);
       this.selectedMonth = new Date(e);
-      this.show = false;
+      this.isOpen = false;
       this.calendar.activeDate = new Date(e);
       this.cd.detectChanges();
     }
   }
-
-  outsideClick(hasClickedOutside) {
-    this.show = hasClickedOutside ? this.excludeDomElements(hasClickedOutside.target.className) : true;
-  }
-
-  excludeDomElements(domElement) {
-    return this.excludeArray.includes(`${domElement}`) ? true : false;
+  close(ev) {
+    this.isOpen = false;
   }
 }
