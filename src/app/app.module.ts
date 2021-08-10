@@ -13,6 +13,8 @@ import { InputColourComponent } from './json-schema-examples/input-colour/input-
 import { ReactiveFormsModule } from '@angular/forms';
 import { ColorPickerModule } from 'ngx-color-picker';
 import { TypeaheadModule } from 'ngx-bootstrap/typeahead';
+import {OverlayModule} from '@angular/cdk/overlay';
+
 const routes: Routes = [
   {
     path: '',
@@ -44,7 +46,8 @@ const routes: Routes = [
     TypeaheadModule.forRoot(),
     ReactiveFormsModule,
     FormsModule,
-    ColorPickerModule
+    ColorPickerModule,
+    OverlayModule
   ],
   providers: [
     JsonSchemaExamplesSamples
