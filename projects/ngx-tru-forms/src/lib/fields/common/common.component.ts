@@ -45,6 +45,7 @@ export class CommonComponent implements AfterViewInit {
   language;
   isWebView = false;
   fileSize = null;
+  fileType;
   inputId = Math.floor(Math.random() * 200).toString();
 
   acceptFormats = 'image/x-png,image/jpeg,image/jpg';
@@ -72,6 +73,7 @@ export class CommonComponent implements AfterViewInit {
     if (this.control && this.control.data && this.schema?.format === 'email' ) {
       this.confirmInput.setValue(this.control.data);
     }
+    this.fileType = this.isPdf();
   }
 
   isRequired() {

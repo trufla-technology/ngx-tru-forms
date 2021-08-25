@@ -11,7 +11,6 @@ export class TruUiPhotoComponent extends CommonComponent {
   selectFile = false;
   photoData: string;
   busy = false;
-  fileType;
   // For accessible file/image upload
   onUploadLabelClick(evt): void {
     const keyCode = evt.which || evt.keyCode;

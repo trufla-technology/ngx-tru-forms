@@ -6,12 +6,12 @@ import { startCase, upperFirst } from 'lodash';
   selector: 'jf-component-chooser, [jf-component-chooser]',
   template: `
   <div style="margin-bottom: 20px">
-    <div style="color: #4D4D4D;font-size:16px" tabindex="0"
+    <div style="color: #4D4D4D;font-size:16px" tabindex="0" class="tru-ui-object-title"
     *ngIf="schema && schema.hasOwnProperty('title') && !nested">
       {{getTranslation(schema.title)}}
     </div>
-    <div style="color: #4D4D4D;font-size:14px" tabindex="0"
-    *ngIf="schema && schema.hasOwnProperty('title') && nested" class="tru-ui-object-title">
+    <div style="color: #4D4D4D;font-size:16px" tabindex="0"
+    *ngIf="schema && schema.hasOwnProperty('title') && nested" class="tru-ui-object-title nested-title">
       {{getTranslation(schema.title)}}
     </div>
     <div style="color: #4D4D4D;font-size:14px" class="description"
