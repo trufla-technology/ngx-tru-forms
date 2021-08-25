@@ -5,7 +5,7 @@
   <button type="button" *ngIf="schema.description" [attr.class]="'info'" [attr.title]="schema.description">Info</button>
   <div class="tru-ui-icon-container" style="position: relative;background-color: #fff;
   border-radius: 6px;">
-  <select class=" tru-ui-select" [attr.name]="schema.key" [formControl]="control"
+  <select class=" tru-ui-select" [attr.name]="schema.key" [formControl]="control" autocomplete="off" 
     [attr.disabled]="disabled" [attr.id]="schema.key" [attr.aria-required]="isRequired()" tabindex="0" (change)="returnFocus($event)">
     <option value="" [selected]="control.value === ''" [disabled]="true">
     </option>

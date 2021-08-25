@@ -32,7 +32,7 @@ export class TruUiDateComponent extends CommonComponent implements AfterViewInit
 
   ngAfterViewInit() {
     this._adapter.setLocale(this.language || 'en');
-    if (this.control.data) {
+    if (this.control.data && this.calendar) {
       this.selectedMonth = new Date(this.control.data);
       this.calendar.activeDate = new Date(this.control.data);
     }
