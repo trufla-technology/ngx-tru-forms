@@ -212,7 +212,7 @@ export class CommonComponent implements AfterViewInit {
   }
 
   isPdf() {
-    return this.control.value.toLowerCase().includes('application/pdf;base64');
+    return this.control?.value?.toLowerCase()?.includes('application/pdf;base64');
   }
   getImageFromUrl(url: any) {
     fetch(url).then((r) => r.blob().then(s => this.fileSize = s.size).catch(() => this.fileSize = null)).catch(() => this.fileSize = null);
