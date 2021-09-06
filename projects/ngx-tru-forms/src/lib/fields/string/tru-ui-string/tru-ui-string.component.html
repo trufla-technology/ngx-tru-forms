@@ -5,9 +5,9 @@
     </label>
     <button type="button" *ngIf="this.schema.description" [attr.class]="'info'" [attr.title]="this.schema.description"
         class="tru-ui-button">Info</button>
-    <input class="tru-ui-input-control" [attr.name]="schema.key" [attr.type]="type()" [formControl]="control"
+    <input class="tru-ui-input-control" [attr.name]="schema.key" [attr.type]="type()" [formControl]="control" 
         [attr.maxLength]="schema.maxLength || null" [attr.minLength]="schema.minLength || null"
-        [attr.disabled]="disabled" [textMask]="{ mask: getMask() }" [attr.aria-required]="isRequired()" autocomplete="off"
+        [attr.disabled]="disabled" [mask]="getMask() " [attr.aria-required]="isRequired()" autocomplete="off"
         [attr.id]="schema.key + '_' + inputId" [ngClass]="{'empty': control.value === '' && !isRequired()}" (change)="isMatch()"
         tabindex="0" [attr.placeholder]="placeholder()" />
     <div *ngIf="schema.verify" style="margin-top: 1rem">
@@ -18,7 +18,7 @@
         <input class="tru-ui-input-control" [attr.type]="type()" [attr.aria-required]="isRequired()" autocomplete="off"
             [attr.name]="schema.key+'verify'" [formControl]="confirmInput" tabindex="0" [attr.id]="'confirm'+schema.key + '_' + inputId"
             [attr.maxLength]="schema.maxLength || null" [attr.minLength]="schema.minLength || null"
-            [attr.disabled]="disabled" [textMask]="{ mask: getMask() }" (change)="isMatch()" />
+            [attr.disabled]="disabled" [mask]="getMask() " (change)="isMatch()" />
     </div>
     <jf-tru-ui-error [control]="control" [language]="language || 'en'"></jf-tru-ui-error>
 </div>

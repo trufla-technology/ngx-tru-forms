@@ -6,7 +6,6 @@ import { SharedModule } from '../shared/shared.module';
 import { TruUi } from './tru-ui';
 import { TruUiButtonComponent } from '../../fields/button/tru-ui-button/tru-ui-button.component';
 import { TruUiStringComponent } from '../../fields/string/tru-ui-string/tru-ui-string.component';
-import { TextMaskModule } from 'angular2-text-mask';
 import { TruUiErrorComponent } from '../../fields/error/tru-ui-error/tru-ui-error.component';
 import { TruUiPhotoComponent } from '../../fields/photo/tru-ui-photo/tru-ui-photo.component';
 import { TruUiTextareaComponent } from '../../fields/textarea/tru-ui-textarea/tru-ui-textarea.component';
@@ -22,7 +21,7 @@ import { TruUiAutocompleteComponent } from '../../fields/autocomplete/tru-ui-aut
 import { TypeaheadModule } from 'ngx-bootstrap/typeahead';
 import { FormsModule } from '@angular/forms';
 import {OverlayModule} from '@angular/cdk/overlay';
-
+import { NgxMaskModule } from 'ngx-mask';
 @NgModule({
   declarations: [TruUiButtonComponent,
     TruUiStringComponent,
@@ -44,9 +43,9 @@ import {OverlayModule} from '@angular/cdk/overlay';
     FormsModule,
     ReactiveFormsModule,
     SharedModule,
-    TextMaskModule,
     OverlayModule,
-    TypeaheadModule.forRoot()
+    TypeaheadModule.forRoot(),
+    NgxMaskModule.forRoot()
   ],
   entryComponents: [
     TruUiButtonComponent,

@@ -2,7 +2,6 @@ import { ModuleWithProviders, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { StringComponent } from '../../fields/string/string.component';
-import { TextMaskModule } from 'angular2-text-mask';
 import { JsonFormBootstrap4 } from './json-form-bootstrap4';
 import { JsonFormFieldsService } from '../json-form-fields.service';
 import { DateComponent } from '../../fields/date/date.component';
@@ -19,12 +18,14 @@ import { MultiselectComponent } from '../../fields/multiselect/multiselect.compo
 import { PhotoComponent } from '../../fields/photo/photo.component';
 import { RadiogroupComponent } from '../../fields/radiogroup/radiogroup.component';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { NgxMaskModule, IConfig } from 'ngx-mask'
+export const options: Partial<IConfig> | (() => Partial<IConfig>) = null;
 
 @NgModule({
   imports: [
     CommonModule,
     ReactiveFormsModule,
-    TextMaskModule,
+    NgxMaskModule.forRoot(),
     SharedModule,
     BsDatepickerModule.forRoot()
   ],

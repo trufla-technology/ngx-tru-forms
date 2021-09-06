@@ -19,7 +19,8 @@ import { MultiselectViewComponent } from '../../fields/multiselect/multiselect.v
 import { JsonFormComponent } from '../../json-form.component';
 import { CommonComponent } from '../../fields/common/common.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { TextMaskModule } from 'angular2-text-mask';
+import { NgxMaskModule, IConfig } from 'ngx-mask'
+
 import { ArrayComponent } from './components/array/array.component';
 import { ArrayViewComponent } from './components/array/array.view.component';
 import { DragAndDropDirective } from './directive/drag-and-drop.directive';
@@ -27,10 +28,13 @@ import { ViewFileComponent } from '../../fields/view-file/view-file.component';
 import { PdfViewerModule } from 'ng2-pdf-viewer';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
+export const options: Partial<IConfig> | (() => Partial<IConfig>) = null;
+
 @NgModule({
   imports: [
     CommonModule,
-    TextMaskModule,
+    NgxMaskModule.forRoot(),
+
     ReactiveFormsModule,
     PdfViewerModule,
     MatDatepickerModule,
