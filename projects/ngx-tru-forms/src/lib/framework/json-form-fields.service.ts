@@ -41,16 +41,31 @@ export class JsonFormFieldsService {
 
   constructor(
     private componentFactoryResolver: ComponentFactoryResolver
-  ) {}
+  ) { }
 
   setRootViewContainerRef(viewContainerRef) {
     this.rootViewContainer = viewContainerRef;
   }
 
-  addDynamicComponent(control: SchemaFormControl, lang?) {
+  addDynamicComponent(control, lang?) {
     const componentFactory = this.componentFactoryResolver.resolveComponentFactory(this.get(control));
     const componentRef = this.rootViewContainer.createComponent(componentFactory);
-    componentRef.instance.control = control;
+    const newControl = new SchemaFormControl(control.value, {
+      validators: control.validator, asyncValidators: control.asyncValidator, updateOn: 'blur'
+    });
+    if (!Array.isArray(control.controls) && !control.controls) {
+      newControl.data = control.data;
+      newControl.schema = control.schema;
+      newControl.style = control.style;
+      newControl.viewOnly = control.viewOnly;
+      newControl.isRequired = control.isRequired;
+      newControl.language = control.language;
+      componentRef.instance.control = newControl;
+    }
+    else {
+      componentRef.instance.control = control;
+
+    }
     componentRef.instance.schema = control.schema;
     componentRef.instance.style = control.style;
     componentRef.instance.disabled = this.disabled;
@@ -69,18 +84,18 @@ export class JsonFormFieldsService {
   get(control): any {
     const types: Object = this.viewOnly ? this.viewTypes : this.fieldTypes;
 
-    if (typeof(control) === 'string' && this.has(control)) {
+    if (typeof (control) === 'string' && this.has(control)) {
       return this.fieldTypes[control];
     }
 
     // check if a field is getting overridden by format
-    if (typeof(control.schema.format) !== 'undefined' && this.has(control.schema.format)) {
+    if (typeof (control.schema.format) !== 'undefined' && this.has(control.schema.format)) {
       return types[control.schema.format];
     }
 
-    if (typeof(control.schema.enum) !== 'undefined' && control.schema.type === 'array') {
+    if (typeof (control.schema.enum) !== 'undefined' && control.schema.type === 'array') {
       return types['checkboxgroup'];
-    } else if (typeof(control.schema.enum) !== 'undefined') {
+    } else if (typeof (control.schema.enum) !== 'undefined') {
       return types['select'];
     } else if (this.has(control.schema.format)) {
       return types[control.schema.format];
