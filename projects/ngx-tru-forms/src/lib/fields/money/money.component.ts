@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonComponent } from '../common/common.component';
-import createNumberMask from 'text-mask-addons/dist/createNumberMask';
+// import createNumberMask from 'text-mask-addons/dist/createNumberMask';
 
 @Component({
   template: `
@@ -13,7 +13,6 @@ import createNumberMask from 'text-mask-addons/dist/createNumberMask';
       [attr.type]="'text'"
       [formControl]="control"
       [placeholder]="placeholder()"
-      [textMask]="{ mask: numberMask}"
       (input)=cleanMask($event.target.value)
       [attr.disabled]="disabled"
     />
@@ -21,7 +20,7 @@ import createNumberMask from 'text-mask-addons/dist/createNumberMask';
   `
 })
 export class MoneyComponent extends CommonComponent {
-  numberMask = createNumberMask({ allowDecimal: false, prefix: '' });
+  // numberMask = createNumberMask({ allowDecimal: false, prefix: '' });
 
   cleanMask(value) {
     this.control.setValue(value.replace(/\D/g, ''));

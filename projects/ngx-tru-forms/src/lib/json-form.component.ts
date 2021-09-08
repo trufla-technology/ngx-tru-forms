@@ -1,4 +1,4 @@
-import { Component, DoCheck, ElementRef, EventEmitter, Input, OnDestroy, Output, ViewChild } from '@angular/core';
+import { Component, DoCheck, ElementRef, EventEmitter, Input, OnDestroy, Output, ViewChild, AfterViewInit } from '@angular/core';
 import { FormBuilder, NgForm} from '@angular/forms';
 import { JsonFormValidatorsService } from './services/validators.service';
 import { SchemaFormControl } from './models/schema-form-control';
@@ -13,7 +13,7 @@ import DOMPurify from 'dompurify';
   selector: 'jf-form, tru-form',
   templateUrl: './json-form.component.html'
 })
-export class JsonFormComponent implements DoCheck, OnDestroy {
+export class JsonFormComponent implements DoCheck, OnDestroy, AfterViewInit {
   @Input() schema;
   @Input() data = {};
   @Input() style = {};
@@ -60,7 +60,8 @@ export class JsonFormComponent implements DoCheck, OnDestroy {
     private vl: JsonFormValidatorsService,
     private df: JsonFormDefaultsService,
     private jf: JsonFormFieldsService
-  ) {}
+  ) {
+  }
 
   ngDoCheck(): void {
     this.changeDetected = false;
@@ -408,5 +409,9 @@ export class JsonFormComponent implements DoCheck, OnDestroy {
    */
   getRequiredFieldCount() {
     return this.requiredFields;
+  }
+
+  ngAfterViewInit() {
+    // setTimeout(_=> this.userForm.options.updateOn = 'blur');
   }
 }

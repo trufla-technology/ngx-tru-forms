@@ -12,7 +12,7 @@ import { CommonComponent } from '../common/common.component';
         [attr.maxLength]="schema.maxLength || null"
         [attr.minLength]="schema.minLength || null"
         [attr.placeholder]="placeholder()"
-        [textMask]="{ mask: getMask() }"
+        [mask]="getMask() "
         [placeholder]="title(true)"
         [disabled]="disabled"
         (change)="isMatch()"
@@ -31,7 +31,7 @@ import { CommonComponent } from '../common/common.component';
           [attr.disabled]="disabled"
           [attr.placeholder]="placeholder()"
           [placeholder]="getLanguage().confirm + title(true)"
-          [textMask]="{ mask: getMask() }"
+          [mask]="getMask() "
           [disabled]="disabled"
           (change)="isMatch()"
           />

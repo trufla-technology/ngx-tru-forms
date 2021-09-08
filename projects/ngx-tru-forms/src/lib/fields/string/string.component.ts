@@ -17,7 +17,7 @@ import { CommonComponent } from '../common/common.component';
       [attr.minLength]="schema.minLength || null"
       [attr.placeholder]="placeholder()"
       [attr.disabled]="disabled"
-      [textMask]="{ mask: getMask() }"
+      [mask]="getMask() "
       (change)="isMatch()"
     />
     <div *ngIf="schema.verify" style="margin-top: 1rem">
@@ -34,7 +34,7 @@ import { CommonComponent } from '../common/common.component';
     [attr.minLength]="schema.minLength || null"
     [attr.disabled]="disabled"
     [attr.placeholder]="placeholder()"
-    [textMask]="{ mask: getMask() }"
+    [mask]="getMask() "
     (change)="isMatch()"
     />
     </div>

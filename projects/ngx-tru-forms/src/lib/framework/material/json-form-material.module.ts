@@ -1,7 +1,8 @@
 import { ModuleWithProviders, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
-import { TextMaskModule } from 'angular2-text-mask';
+import { NgxMaskModule, IConfig } from 'ngx-mask';
+
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatCheckboxModule } from '@angular/material/checkbox';
@@ -31,12 +32,14 @@ import { SharedModule} from '../shared/shared.module';
 import { ArrayMaterialComponent } from '../../fields/array/array.material.component';
 import { MatMomentDateModule } from '@angular/material-moment-adapter';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+export const options: Partial<IConfig> | (() => Partial<IConfig>) = null;
 
 @NgModule({
   imports: [
     CommonModule,
     ReactiveFormsModule,
-    TextMaskModule,
+    NgxMaskModule.forRoot(),
+
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
