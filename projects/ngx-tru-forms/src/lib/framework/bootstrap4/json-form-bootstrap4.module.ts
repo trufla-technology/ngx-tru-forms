@@ -18,7 +18,7 @@ import { MultiselectComponent } from '../../fields/multiselect/multiselect.compo
 import { PhotoComponent } from '../../fields/photo/photo.component';
 import { RadiogroupComponent } from '../../fields/radiogroup/radiogroup.component';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
-import { NgxMaskModule, IConfig } from 'ngx-mask'
+import { NgxMaskModule, IConfig } from 'ngx-mask';
 export const options: Partial<IConfig> | (() => Partial<IConfig>) = null;
 
 @NgModule({

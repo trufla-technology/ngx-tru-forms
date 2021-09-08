@@ -61,8 +61,7 @@ export class JsonFormFieldsService {
       newControl.isRequired = control.isRequired;
       newControl.language = control.language;
       componentRef.instance.control = newControl;
-    }
-    else {
+    } else {
       componentRef.instance.control = control;
 
     }

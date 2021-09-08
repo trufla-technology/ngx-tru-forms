@@ -19,7 +19,7 @@ import { MultiselectViewComponent } from '../../fields/multiselect/multiselect.v
 import { JsonFormComponent } from '../../json-form.component';
 import { CommonComponent } from '../../fields/common/common.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { NgxMaskModule, IConfig } from 'ngx-mask'
+import { NgxMaskModule, IConfig } from 'ngx-mask';
 
 import { ArrayComponent } from './components/array/array.component';
 import { ArrayViewComponent } from './components/array/array.view.component';
