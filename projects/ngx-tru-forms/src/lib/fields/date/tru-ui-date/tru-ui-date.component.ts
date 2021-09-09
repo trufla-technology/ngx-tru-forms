@@ -49,7 +49,7 @@ export class TruUiDateComponent extends CommonComponent implements AfterViewInit
     if (!e) {
       return;
     }
-    const date = moment(e).locale(this.language || 'en').utc(e).tz(localTimeZone).format('YYYY-MM-DD');
+    const date = moment(e).locale(this.language || 'en').utc(e).format('YYYY-MM-DD');
     if (e && `${date}` !== `${this.oldValue}`) {
       this.oldValue = date;
       this.control.setValue(date);
