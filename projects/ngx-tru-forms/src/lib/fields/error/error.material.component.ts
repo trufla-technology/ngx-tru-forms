@@ -36,7 +36,7 @@ import { CommonComponent } from '../common/common.component';
         Date should be less than or equal {{ control.errors['matDatepickerMax'].max.format('DD MMM, YYYY') }}
       </ng-container>
       <ng-container *ngIf="control.errors && control.errors['isMatch']">
-      {{getLanguage().is_match}}
+      {{getLanguage()?.is_match}}
     </ng-container>
     </ng-container>
   `

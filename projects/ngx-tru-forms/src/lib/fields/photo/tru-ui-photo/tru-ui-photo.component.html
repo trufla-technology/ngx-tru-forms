@@ -22,7 +22,7 @@
         </div>
         <input #fileInput style="display: none;visibility: hidden;" [attr.aria-hidden]="true"
             [attr.id]="schema.key + '_' + inputId" class="tru-input" type="file" [accept]="acceptFormats"
-            [attr.aria-label]="getLanguage().browse" (change)="dragAndDrop($event)" (keypress)="dragAndDrop($event)" />
+            [attr.aria-label]="getLanguage()?.browse" (change)="dragAndDrop($event)" (keypress)="dragAndDrop($event)" />
     </label>
     <div class="file-preview-container" *ngIf="getControlValue().length && isPdf()">
         <div style="max-width: 190px;text-overflow: ellipsis;overflow: hidden;display: block;"><small

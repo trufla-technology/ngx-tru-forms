@@ -30,7 +30,7 @@ import { CommonComponent } from '../common/common.component';
         {{control.errors['customError']}}
       </ng-container>
       <ng-container *ngIf="control.errors && control.errors['isMatch']">
-      {{getLanguage().is_match}}
+      {{getLanguage()?.is_match}}
     </ng-container>
     </div>
   `
