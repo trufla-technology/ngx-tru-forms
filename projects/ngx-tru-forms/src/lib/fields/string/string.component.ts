@@ -23,7 +23,7 @@ import { CommonComponent } from '../common/common.component';
     <div *ngIf="schema.verify" style="margin-top: 1rem">
     <label
     [ngClass]="['jf-label', schema.key, (isRequired() ? 'required' : '')]" *ngIf="type() !== 'hidden'">
-    <span > {{ getLanguage().confirm}} {{title()}}</span><sup *ngIf="isRequired()">*</sup>
+    <span > {{ getLanguage()?.confirm}} {{title()}}</span><sup *ngIf="isRequired()">*</sup>
     </label>
     <input
     class="form-control"

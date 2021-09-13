@@ -1,6 +1,6 @@
 import { Schema } from '../../models/schema';
 import { SchemaFormControl } from '../../models/schema-form-control';
-import { Component, ChangeDetectorRef, AfterViewInit, Renderer2 } from '@angular/core';
+import { Component, ChangeDetectorRef, AfterViewInit, Renderer2, Sanitizer } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { startCase } from 'lodash';
 import { ValidationFeedbackTranslation } from '../error/validation-feedback-translation';
@@ -11,6 +11,7 @@ import {
   MAT_MOMENT_DATE_ADAPTER_OPTIONS,
 } from '@angular/material-moment-adapter';
 import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
+import DOMPurify from 'dompurify';
 const MY_FORMATS = {
   parse: {
     dateInput: 'LL',
@@ -73,7 +74,9 @@ export class CommonComponent implements AfterViewInit {
     if (this.control && this.control.data && this.schema?.format === 'email' ) {
       this.confirmInput.setValue(this.control.data);
     }
+    if (this.schema && this.schema.format === 'photo') {
     this.fileType = this.isPdf();
+  }
   }
 
   isRequired() {
@@ -88,11 +91,12 @@ export class CommonComponent implements AfterViewInit {
   }
 
   strToUpperCase(str: string) {
+    str =  DOMPurify.sanitize(str);
     return startCase(str);
   }
 
   placeholder() {
-    return this.schema.placeholder;
+    return DOMPurify.sanitize(this.schema.placeholder);
   }
 
   type() {
@@ -137,6 +141,7 @@ export class CommonComponent implements AfterViewInit {
   }
 
   makeTrustedHtml(html): any {
+    html =  DOMPurify.sanitize(html);
     return this.sanitizer.bypassSecurityTrustHtml(html);
   }
 
@@ -162,14 +167,16 @@ export class CommonComponent implements AfterViewInit {
       const translatedTitle = titleArray.filter(val =>
         val.language === this.language
       );
-      return translatedTitle[0] ? translatedTitle[0].value.replace(/[&\\#,+$~%.":?{}_-]/g, ' ') : false;
+    const translatedValue = translatedTitle[0] ? translatedTitle[0].value.replace(/[&\\#,+$~%.":?{}_-]/g, ' ') : false;
+      return DOMPurify.sanitize(translatedValue);
     } else {
-      return titleArray.replace(/[&\\#,+$~%.":?{}_-]/g, ' ');
+      const translatedValue = titleArray.replace(/[&\\#,+$~%.":?{}_-]/g, ' ');
+      return DOMPurify.sanitize(translatedValue);
     }
   }
 
   getLanguage() {
-    this.language = this.language ? this.language : 'en';
+    this.language = this.language ? `${this.language}` : 'en';
     return this.validationFeedbackTranslation.validation[this.language];
   }
 
