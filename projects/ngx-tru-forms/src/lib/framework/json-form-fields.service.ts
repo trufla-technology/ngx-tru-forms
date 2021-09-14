@@ -53,18 +53,18 @@ export class JsonFormFieldsService {
     const newControl = new SchemaFormControl(control.value, {
       validators: control.validator, asyncValidators: control.asyncValidator, updateOn: 'blur'
     });
-    if (!Array.isArray(control.controls) && !control.controls) {
-      newControl.data = control.data;
-      newControl.schema = control.schema;
-      newControl.style = control.style;
-      newControl.viewOnly = control.viewOnly;
-      newControl.isRequired = control.isRequired;
-      newControl.language = control.language;
-      componentRef.instance.control = newControl;
-    } else {
+    // if (!Array.isArray(control.controls) && !control.controls) {
+    //   newControl.data = control.data;
+    //   newControl.schema = control.schema;
+    //   newControl.style = control.style;
+    //   newControl.viewOnly = control.viewOnly;
+    //   newControl.isRequired = control.isRequired;
+    //   newControl.language = control.language;
+    //   componentRef.instance.control = newControl;
+    // } else {
       componentRef.instance.control = control;
 
-    }
+    // }
     componentRef.instance.schema = control.schema;
     componentRef.instance.style = control.style;
     componentRef.instance.disabled = this.disabled;
