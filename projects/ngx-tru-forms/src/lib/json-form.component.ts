@@ -200,7 +200,7 @@ export class JsonFormComponent implements DoCheck, OnDestroy, AfterViewInit {
 
         if (schema.properties[prop].enum) {
           fbArray = schema.properties[prop].enum.map((e) => {
-            const control = new SchemaFormControl(null, {updateOn: 'blur'});
+            const control = new SchemaFormControl(this.df.get(prop, schema, data), this.vl.get(prop, schema, path, this.language));
             control.schema = Object.assign({}, schema.properties[prop]);
             control.schema.key = prop;
             control.schema.id = this.id;
@@ -226,8 +226,8 @@ export class JsonFormComponent implements DoCheck, OnDestroy, AfterViewInit {
         group[prop].schema.id = this.id;
         group[prop].style = arrayStyle;
       } else if (this.isVisible(schema.properties[prop])) {
-        const control = new SchemaFormControl(this.df.get(prop, schema, data),
-         { validators: this.vl.get(prop, schema, path, this.language) ,  updateOn: 'blur' });
+        const control = new SchemaFormControl(this.df.get(prop, schema, data), this.vl.get(prop, schema, path, this.language));
+
         control.schema = Object.assign({}, schema.properties[prop]);
         control.schema.key = prop;
         control.schema.id = this.id;
@@ -413,6 +413,5 @@ export class JsonFormComponent implements DoCheck, OnDestroy, AfterViewInit {
   }
 
   ngAfterViewInit() {
-    // setTimeout(_=> this.userForm.options.updateOn = 'blur');
   }
 }
