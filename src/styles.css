@@ -2,6 +2,7 @@
 body {
   background: #fafafa;
   padding: 5px;
+  line-height: normal !important;
 }
 body, html {
   width: 100%;
@@ -102,4 +103,7 @@ label {
   .width-50 {
     width: 100vw !important;
   }
+}
+.form-group {
+  margin-bottom: 0 !important
 }

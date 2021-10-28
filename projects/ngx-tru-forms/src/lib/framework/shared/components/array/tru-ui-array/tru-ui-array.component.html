@@ -1,5 +1,5 @@
 <div [ngClass]="['array', control.schema.key]">
-    <div style="color:#555555;margin-top: 20px;font-size: 16px;" tabindex="0">{{getLegend(control)}}</div>
+    <div  class="array-title" tabindex="0">{{getLegend(control)}}</div>
 
     <div *ngFor="let arrControl of getEnabledControls(control); let i = index;let last = last; let first = first">
 

@@ -1,10 +1,16 @@
+.array-title {
+    color:#555555;
+    font-size: 16px;
+    padding-bottom: 6px;
+  
+  }
 .btn-remove {
     margin-bottom: 16px;
     margin-left: 5px;
     height: 24px;
     border: none;
     width: 24px;
-    background-color: #F75757 !important;
+    background-color: #F75757 ;
     color: #fff;
     font-weight: bold;
     border-radius: 4px;
@@ -15,7 +21,7 @@
     height: 24px;
     border: none;
     width: 24px;
-    background-color: #959595 !important;
+    background-color: #959595 ;
     color: #fff;
     font-weight: bold;
     border-radius: 4px;
