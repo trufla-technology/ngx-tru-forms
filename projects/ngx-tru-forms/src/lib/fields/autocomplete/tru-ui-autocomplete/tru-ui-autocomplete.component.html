@@ -4,11 +4,20 @@
         <span [innerHTML]="title()"></span><sup *ngIf="isRequired()" aria-hidden="true">*</sup>
     </label>
     <input [(ngModel)]="selectedValue" [typeahead]="values" tabindex="0" typeaheadOptionField="enumName" [attr.disabled]="disabled"
-         [attr.disabled]="disabled" [attr.id]="schema.key + '_' + inputId" [name]="title()" 
+         [attr.disabled]="disabled" [attr.id]="schema.key + '_' + inputId" [name]="title()"  *ngIf="!schema.compact"
         [attr.aria-required]="isRequired()" [attr.aria-label]="title()" (typeaheadOnSelect)="onSelect($event)"
         (focusout)="typeaheadNoResults()" (change)="onSelect($event)"
         [ngClass]="{'empty': control.value === '' && !isRequired(), 'ng-invalid': !control.valid}"
         class="tru-ui-input-control tru-ui-autocomplete " [attr.placeholder]="placeholder()" />
+
+        <input [(ngModel)]="selectedValue" [typeahead]="values" tabindex="0" typeaheadOptionField="enumName" [attr.disabled]="disabled"
+        [attr.disabled]="disabled" [attr.id]="schema.key + '_' + inputId" [name]="title()"  *ngIf="schema.compact"
+       [attr.aria-required]="isRequired()" [attr.aria-label]="title()" (typeaheadOnSelect)="onSelect($event)" [typeaheadOptionsLimit]="7"
+       [typeaheadMinLength]="0"
+       (focusout)="typeaheadNoResults()" (change)="onSelect($event)"
+       [ngClass]="{'empty': control.value === '' && !isRequired(), 'ng-invalid': !control.valid}"
+       class="tru-ui-input-control tru-ui-autocomplete " [attr.placeholder]="placeholder()" />
+
     <input [formControl]="control" aria-hidden="true" style="visibility: hidden;display: none;z-index: -1;" [attr.aria-labelledby]="schema.key + '_' + inputId">
     <jf-tru-ui-error [control]="control" [language]="language || 'en'" ></jf-tru-ui-error>
 

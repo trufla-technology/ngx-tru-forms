@@ -59,4 +59,6 @@ export interface Schema {
 
   // placeholder for the form controls.
   placeholder?: string;
+  // compact
+  compact?: boolean;
 }
