@@ -9,7 +9,9 @@ import {SchemaFormControl} from '../../../../models/schema-form-control';
       [schema]="control.schema"
       [language]= "language"
       [nested]="true">
-    </div>`
+    </div>`,
+    styleUrls: ['../../../../assets/tru-ui.css']
+
 })
 export class ObjectComponent {
   @Input() control: SchemaFormControl;

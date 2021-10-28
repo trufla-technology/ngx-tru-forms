@@ -1,8 +1,9 @@
-<label class="tru-ui-label" [ngClass]="{'required': isRequired()}" style="margin-bottom: 6px;" tabindex="0"
+<div class="tru-ui-file-wrapper">
+<label class="tru-ui-label jf-label" [ngClass]="{'required': isRequired()}"  tabindex="0"
    >
-    <span class="tru-ui-lable" [innerHTML]="title()"></span><sup *ngIf="isRequired()" aria-hidden="true">*</sup>
+    <span  [innerHTML]="title()"></span><sup *ngIf="isRequired()" aria-hidden="true">*</sup>
 </label>
-<div class="tru-form-group" jfDragAndDrop (filesDropped)="handleDrop($event);fileInput.value = null">
+<div class="tru-form-group file" jfDragAndDrop (filesDropped)="handleDrop($event);fileInput.value = null">
 
     <label [attr.aria-required]="isRequired()" class="tru-drag-and-drop-wrapper"
         (keydown.enter)="onUploadLabelClick($event)" [ngClass]="{'d-none': getControlValue().length > 0}"
@@ -84,3 +85,4 @@
     </div>
 </div>
 <jf-tru-ui-error [control]="control" [language]="language || 'en'"></jf-tru-ui-error>
+</div>
