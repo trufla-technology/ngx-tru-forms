@@ -1,10 +1,7 @@
 import { Component, ViewChild, AfterViewInit, HostListener } from '@angular/core';
 import { CommonComponent } from '../../common/common.component';
-import * as moment_ from 'moment';
-import * as momentTimeZone from 'moment-timezone';
+import moment from 'moment';
 import { MatCalendar } from '@angular/material/datepicker';
-const localTimeZone = momentTimeZone.tz.guess();
-const moment = moment_;
 import { CdkOverlayOrigin } from '@angular/cdk/overlay';
 @Component({
   selector: 'jf-tru-ui-date',

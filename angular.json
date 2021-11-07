@@ -30,6 +30,14 @@
               "./node_modules/bootstrap/dist/css/bootstrap.min.css"
             ],
             "scripts": [],
+            "allowedCommonJsDependencies": [
+							"moment-business",
+							"ng2-pdf-viewer",
+              "pdfjs-dist/es5/web/pdf_viewer",
+              "pdfjs-dist/es5/build/pdf",
+							"pdfjs-dist/build/pdf",
+							"pdfjs-dist/web/pdf_viewer"
+						],
             "vendorChunk": true,
             "extractLicenses": false,
             "buildOptimizer": false,

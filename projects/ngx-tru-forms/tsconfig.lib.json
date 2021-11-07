@@ -25,6 +25,7 @@
   },
   "angularCompilerOptions": {
     "skipTemplateCodegen": true,
+    "allowSyntheticDefaultImports": true,
     "strictMetadataEmit": true,
     "fullTemplateTypeCheck": true,
     "strictInjectionParameters": true,
