@@ -16,7 +16,7 @@ export class TruUiArrayComponent {
 
   getLegend(control) {
     // return (control && control.schema && control.schema.key) ? startCase(control.schema.key) : '';
-    // tslint:disable-next-line: max-line-length
+    // eslint-disable-next-line max-len
     return (typeof control.schema.title === 'undefined' ? startCase(control.schema.key) : (this.getTranslation(control.schema.title) ? this.getTranslation(control.schema.title) : startCase(control.schema.key)));
   }
 

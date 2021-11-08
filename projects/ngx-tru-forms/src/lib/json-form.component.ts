@@ -1,4 +1,4 @@
-import { Component, DoCheck, ElementRef, EventEmitter, Input, OnDestroy, Output, ViewChild, AfterViewInit } from '@angular/core';
+import { Component, DoCheck, ElementRef, EventEmitter, Input, OnDestroy, Output, ViewChild } from '@angular/core';
 import { FormBuilder, NgForm} from '@angular/forms';
 import { JsonFormValidatorsService } from './services/validators.service';
 import { SchemaFormControl } from './models/schema-form-control';
@@ -13,7 +13,7 @@ import DOMPurify from 'dompurify';
   selector: 'jf-form, tru-form',
   templateUrl: './json-form.component.html'
 })
-export class JsonFormComponent implements DoCheck, OnDestroy, AfterViewInit {
+export class JsonFormComponent implements DoCheck, OnDestroy {
   @Input() schema;
   @Input() data = {};
   @Input() style = {};
@@ -389,7 +389,7 @@ export class JsonFormComponent implements DoCheck, OnDestroy, AfterViewInit {
   setHeader(val) {
     const value = document.createElement('div');
     val = DOMPurify.sanitize(val);
-    // tslint:disable-next-line
+    // eslint-disable-next-line
     value.innerHTML = val;
     if (this.header) { this.header.nativeElement.appendChild(value); }
   }
@@ -400,7 +400,7 @@ export class JsonFormComponent implements DoCheck, OnDestroy, AfterViewInit {
   setFooter(val) {
     const value = document.createElement('div');
     val = DOMPurify.sanitize(val);
-    // tslint:disable-next-line
+    // eslint-disable-next-line
     value.innerHTML = val;
    if (this.footer) { this.footer.nativeElement.appendChild(value); }
   }
@@ -410,8 +410,5 @@ export class JsonFormComponent implements DoCheck, OnDestroy, AfterViewInit {
    */
   getRequiredFieldCount() {
     return this.requiredFields;
-  }
-
-  ngAfterViewInit() {
   }
 }

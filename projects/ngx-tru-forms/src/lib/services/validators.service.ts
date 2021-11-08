@@ -18,7 +18,7 @@ export class JsonFormValidatorsService {
     };
 
     const emailValidator = function (control: AbstractControl) {
-      /* tslint:disable-next-line:max-line-length */
+      /* eslint-disable-next-line max-len */
       const mailRegex = `^(([^<>()\\[\\]\\\\.,;:\\s@"]+(\\.[^<>()\\[\\]\\\\.,;:\\s@"]+)*)|(".+"))@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$`;
       if (!control.value || RegExp(mailRegex).test(control.value)) {
         return null;
@@ -31,7 +31,7 @@ export class JsonFormValidatorsService {
       if (!control.value || phoneNumberRegex.test(control.value)) {
         return null;
       }
-      // tslint:disable-next-line: max-line-length
+      // eslint-disable-next-line max-len
       return { customError: lan === 'en' ? 'Please enter a valid phone or mobile number' : 'Veuillez entrer un numéro de téléphone ou mobile valide' };
     };
 
