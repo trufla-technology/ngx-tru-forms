@@ -14,8 +14,10 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: Use Node.js ${{ matrix.node-version }}
+    - name: Use Node.js 12.20
       uses: actions/setup-node@v1
+      with:
+       node-version: 12.16.2
     - run: npm install 
     - run: npm run lint
     - run: npm run build
