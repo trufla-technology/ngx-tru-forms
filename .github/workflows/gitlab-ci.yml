@@ -10,7 +10,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [12.x]
+        node-version: [12.20]
 
     steps:
     - uses: actions/checkout@v2
@@ -19,14 +19,5 @@ jobs:
     - run: npm install 
     - run: npm run lint
     - run: npm run build
-
-  # semgrep:
-  #     name: Scan
-  #     runs-on: ubuntu-latest
-  #     if: (github.actor != 'dependabot[bot]')
-  #     steps:
-  #       - uses: actions/checkout@v2
-  #       - uses: returntocorp/semgrep-action@v1
-  #       - run: semgrep --config "p/typescript"
 
 
