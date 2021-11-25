@@ -12,7 +12,8 @@
     "test": "ng test ngx-tru-forms",
     "lint": "ng lint ngx-tru-forms",
     "clean": "rm -fr build dist",
-    "pre-push": "npm run clean && ng lint --fix && npm run build && npm run build-docs"
+    "pre-push": "npm run clean && ng lint --fix && npm run build && npm run build-docs",
+    "postinstall": "ngcc --first-only --create-ivy-entry-points --async --use-program-dependencies "
   },
   "config": {
     "deployToGit": {
@@ -30,10 +31,10 @@
   "dependencies": {
     "@angular/animations": "^13.0.0",
     "@angular/cdk": "^13.0.0",
-    "@angular/common": "13.0.0",
-    "@angular/compiler": "13.0.0",
-    "@angular/core": "13.0.0",
-    "@angular/forms": "^13.0.0",
+    "@angular/common": "~13.0.0",
+    "@angular/compiler": "~13.0.1",
+    "@angular/core": "~13.0.0",
+    "@angular/forms": "~13.0.0",
     "@angular/material": "^13.0.0",
     "@angular/material-moment-adapter": "^13.0.0",
     "@angular/platform-browser": "13.0.0",
@@ -45,6 +46,7 @@
     "core-js": "^2.5.4",
     "deploy-to-git": "^0.1.5",
     "dompurify": "^2.2.6",
+    "esm": "^3.2.25",
     "lodash": "^4.17.21",
     "moment": "^2.29.1",
     "moment-timezone": "^0.5.33",
