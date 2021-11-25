@@ -1,18 +1,29 @@
-.tru-ui-lable {
-  font-size: 14px;
-  color: #4D4D4D;
-  margin-bottom: 6px;
-  padding: 0;
-}
+@import url("../../../assets/tru-ui.css");
 
+.tru-form-group.file {
+  margin-bottom: 6px;
+}
 label.tru-ui-label:focus {
   /* outline: dashed 1px;
   outline-offset: 2px; */
 }
+.tru-ui-file-wrapper {
+  margin-bottom: 12px;
+}
+.tru-ui-label {
+  font-size: 14px;
+  color: #4d4d4d;
+  line-height: 12px;
+  vertical-align: top;
+
+  margin-bottom: 6px;
+  padding: 0;
+  /* vertical-align: top; */
+}
 
 .tru-drag-and-drop {
   text-align: center;
-  padding: 30px !important;
+  padding: 30px   ;
   background-color: #FAFAFA;
   border: 1px dashed #4D4D4D;
   border-radius: 6px;
@@ -21,7 +32,7 @@ label.tru-ui-label:focus {
 .tru-drag-and-drop-wrapper:focus {
   border-radius: 6px;
   box-shadow: 0 1px 6px rgb(32 33 36 / 28%);
-  /* outline: none !important; */
+  /* outline: none   ; */
 }
 
 .tru-drag-and-drop>span {
@@ -72,17 +83,17 @@ label.tru-ui-label:focus {
 }
 
 .btn-remove:focus {
-  /* outline: none !important; */
+  /* outline: none   ; */
   opacity: 0.8;
 }
 
 .invalid-upload {
-  border-color: #F75757 !important;
+  border-color: #F75757   ;
 }
 
 .tru-drag-and-drop.busy {
   min-width: 200px;
-  /* background-color: #8c8c8c !important; */
+  /* background-color: #8c8c8c   ; */
   animation-duration: 1s;
   animation-fill-mode: forwards;
   animation-iteration-count: infinite;

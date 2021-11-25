@@ -2,20 +2,6 @@
   "$schema": "../../node_modules/ng-packagr/ng-package.schema.json",
   "dest": "../../dist/ngx-tru-forms",
   "lib": {
-    "entryFile": "src/public_api.ts",
-    "umdModuleIds": {
-      "moment": "moment",
-      "lodash": "lodash",
-      "ngx-bootstrap/datepicker": "datepicker",
-      "ngx-bootstrap/chronos": "chronos",
-      "ngx-bootstrap/locale": "locale",
-      "ngx-bootstrap/typeahead": "typeahead",
-      "ngx-image-compress": "ngxImageCompress",
-      "ngx-bootstrap/modal": "modal",
-      "dompurify": "DOMPurify",
-      "ng2-pdf-viewer": "ng2PdfViewer",
-      "moment-timezone": "momentTimezone",
-      "ngx-mask": "ngxMask"
-    }
+    "entryFile": "src/public_api.ts"
   }
 }

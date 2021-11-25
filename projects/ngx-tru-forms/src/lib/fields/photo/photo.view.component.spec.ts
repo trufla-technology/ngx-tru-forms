@@ -31,7 +31,7 @@ describe('BooleanViewComponent', () => {
     control.schema.key = 'test';
     control.valueChanges.subscribe(() => {});
     control.isRequired = true;
-    // tslint:disable-next-line
+    // eslint-disable-next-line
     control.setValue('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg==');
 
     fixture = TestBed.createComponent(PhotoViewComponent);

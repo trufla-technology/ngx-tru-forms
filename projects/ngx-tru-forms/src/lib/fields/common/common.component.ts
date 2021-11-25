@@ -124,7 +124,7 @@ export class CommonComponent implements AfterViewInit {
       const mask: Array<string | RegExp> = [];
       this.schema.mask.forEach((el) => {
         const element = el.toString();
-        // tslint:disable-next-line
+        // eslint-disable-next-line
         mask.push(/^\/.*\/$/.test(element) ? new RegExp(element.replace(/^\/|\/$/g, '')) : element);
       });
 
@@ -208,7 +208,7 @@ export class CommonComponent implements AfterViewInit {
 
   validURL(str: string) {
     const toBeTested = str.toString();
-    // tslint:disable-next-line
+    // eslint-disable-next-line
     const pattern = new RegExp('^(https?:\\/\\/)?' + // protocol
       '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|' + // domain name
       '((\\d{1,3}\\.){3}\\d{1,3}))' + // OR ip (v4) address

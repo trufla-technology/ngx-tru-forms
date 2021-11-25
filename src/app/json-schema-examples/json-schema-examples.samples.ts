@@ -68,7 +68,56 @@ export class JsonSchemaExamplesSamples {
       required: ['first_name', 'last_name']
 
     },
-    auto_complete: {
+    auto_complete_compact: {
+      title: 'Auto complete example',
+      description: 'complete are common to forms',
+      type: 'object',
+      properties: {
+        auto_complete: {
+          type: 'string',
+          compact: true,
+          format: 'autocomplete',
+          enum: [
+            1,
+            2,
+            3
+          ],
+          enumNames: [
+            [
+              {
+                'language': 'en',
+                'value': 'Hot Dog'
+              },
+              {
+                'language': 'fr',
+                'value': 'Dešrainis'
+              }
+            ],
+            [
+              {
+                'language': 'en',
+                'value': 'Pizza'
+              },
+              {
+                'language': 'fr',
+                'value': 'pica'
+              }
+            ],
+            [
+              {
+                'language': 'en',
+                'value': 'Mexican chicken'
+              },
+              {
+                'language': 'fr',
+                'value': 'Mexican chicken'
+              }
+            ]
+          ]
+
+        }
+      }
+    }, auto_complete: {
       title: 'Auto complete example',
       description: 'complete are common to forms',
       type: 'object',
@@ -77,9 +126,9 @@ export class JsonSchemaExamplesSamples {
           type: 'string',
           format: 'autocomplete',
           enum: [
-            '1',
-            '2',
-            '3'
+            1,
+            2,
+            3
           ],
           enumNames: [
             [
@@ -254,6 +303,8 @@ export class JsonSchemaExamplesSamples {
         }
       }
     },
+
+    
     multi_nested: {
       title: 'Multi Nested',
       description: 'Nesting can go as far as needed to achieve structure',

@@ -21,7 +21,7 @@
   <div #footer></div>
   <div
     #buttons
-    *ngIf="container.children.length == 0 && (submit || cancel)"
+    *ngIf="container.children.length === 0 && (submit || cancel)"
     [ngClass]="{ 'margin-top--double': true, 'page-actions--edges': (cancel && submit), 'page-actions--center': (!cancel || !submit)}">
     <jf-form-button
       *ngIf="cancel"

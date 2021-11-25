@@ -13,7 +13,6 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "aot": true,
             "outputPath": "dist/ngx-tru-forms-app",
             "index": "src/index.html",
             "main": "src/main.ts",
@@ -22,7 +21,11 @@
             "assets": [
               "src/favicon.ico",
               "src/assets",
-              { "glob": "**/*", "input": "node_modules/ngx-monaco-editor/assets/monaco", "output": "./assets/monaco/" }
+              {
+                "glob": "**/*",
+                "input": "node_modules/ngx-monaco-editor/assets/monaco",
+                "output": "./assets/monaco/"
+              }
             ],
             "styles": [
               "src/styles.css",
@@ -30,7 +33,21 @@
               "./node_modules/ngx-bootstrap/datepicker/bs-datepicker.css",
               "./node_modules/bootstrap/dist/css/bootstrap.min.css"
             ],
-            "scripts": []
+            "scripts": [],
+            "allowedCommonJsDependencies": [
+              "moment-business",
+              "ng2-pdf-viewer",
+              "pdfjs-dist/es5/web/pdf_viewer",
+              "pdfjs-dist/es5/build/pdf",
+              "pdfjs-dist/build/pdf",
+              "pdfjs-dist/web/pdf_viewer"
+            ],
+            "vendorChunk": true,
+            "extractLicenses": false,
+            "buildOptimizer": false,
+            "sourceMap": true,
+            "optimization": false,
+            "namedChunks": true
           },
           "configurations": {
             "production": {
@@ -49,14 +66,13 @@
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
-              "extractCss": true,
               "namedChunks": false,
-              "aot": true,
               "extractLicenses": true,
               "vendorChunk": false,
               "buildOptimizer": true
             }
-          }
+          },
+          "defaultConfiguration": ""
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
@@ -91,18 +107,6 @@
               "src/assets"
             ]
           }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "src/tsconfig.app.json",
-              "src/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
-          }
         }
       }
     },
@@ -113,16 +117,16 @@
       "prefix": "jf",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-ng-packagr:build",
+          "builder": "@angular-devkit/build-angular:ng-packagr",
           "options": {
             "tsConfig": "projects/ngx-tru-forms/tsconfig.lib.json",
             "project": "projects/ngx-tru-forms/ng-package.json"
           },
           "configurations": {
             "production": {
-              "project": "projects/ngx-tru-forms/ng-package.prod.json"
-            ,              "tsConfig": "projects/ngx-tru-forms/tsconfig.lib.prod.json"
-}
+              "project": "projects/ngx-tru-forms/ng-package.prod.json",
+              "tsConfig": "projects/ngx-tru-forms/tsconfig.lib.prod.json"
+            }
           }
         },
         "test": {
@@ -134,19 +138,19 @@
           }
         },
         "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
+          "builder": "@angular-eslint/builder:lint",
           "options": {
-            "tsConfig": [
-              "projects/ngx-tru-forms/tsconfig.lib.json",
-              "projects/ngx-tru-forms/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
+            "lintFilePatterns": [
+              "projects/ngx-tru-forms/**/*.ts",
+              "projects/ngx-tru-forms/**/*.html"
             ]
           }
         }
       }
     }
   },
-  "defaultProject": "ngx-tru-forms-app"
+  "defaultProject": "ngx-tru-forms-app",
+  "cli": {
+    "defaultCollection": "@angular-eslint/schematics"
+  }
 }

@@ -1,33 +1,51 @@
+div.tru-ui-object-title {
+  padding-bottom: 12px ;
+  color: #4D4D4D;
+   font-size: 16px;
+}
+.description {
+  padding-bottom: 12px;
+  line-height: 12px;
+
+}
+
 .tru-ui-label {
   font-size: 14px;
   color: #4d4d4d;
+  line-height: 12px;
+  vertical-align: top;
+
   margin-bottom: 6px;
   padding: 0;
+  /* vertical-align: top; */
 }
 
 .tru-ui-input-container {
-  margin-bottom: 8px;
+  margin-bottom: 12px;
   position: relative;
+display: block;
 }
 
 .tru-ui-input-control.empty {
-  border-color: #D8D8D8 !important;
+  border-color: #D8D8D8 ;
 }
 
 .tru-ui-input-control {
   height: 32px;
   padding: 6px;
   width: 100%;
+  vertical-align: top;
+
   font-size: 16px;
   /* margin:  4px 0; */
   background-color: #fff;
   border: 1px solid #D8D8D8;
   border-radius: 6px;
-  color: #4d4d4d !important;
+  color: #4d4d4d ;
 }
 
 .tru-ui-input-control:focus {
-  /* outline: none !important;
+  /* outline: none  ;
   box-shadow: 0 0px 5px 0px rgba(0, 0, 0, 0.2); */
 }
 
@@ -36,11 +54,13 @@
 } */
 
 ::ng-deep .ng-invalid.ng-touched {
-  border-color: #f75a5a !important;
+  border-color: #f75a5a ;
 }
 
 textarea.tru-ui-input-control {
   height: 120px;
+  vertical-align: top;
+
 }
 
 .tru-ui-date {
@@ -51,8 +71,8 @@ textarea.tru-ui-input-control {
 
 .tru-ui-select {
   /* background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' version='1.1' viewBox='0 0 129 129' enable-background='new 0 0 129 129' width='512px' height='512px'%3E%3Cg%3E%3Cpath d='m121.3,34.6c-1.6-1.6-4.2-1.6-5.8,0l-51,51.1-51.1-51.1c-1.6-1.6-4.2-1.6-5.8,0-1.6,1.6-1.6,4.2 0,5.8l53.9,53.9c0.8,0.8 1.8,1.2 2.9,1.2 1,0 2.1-0.4 2.9-1.2l53.9-53.9c1.7-1.6 1.7-4.2 0.1-5.8z' fill='%234d4d4d'/%3E%3C/g%3E%3C/svg%3E%0A"), #fff ; */
-  background-position: calc(100% - 6px) !important;
-  background-repeat: no-repeat !important;
+  background-position: calc(100% - 6px) ;
+  background-repeat: no-repeat ;
   -moz-appearance: none;
   background-color: transparent;
   position: relative;
@@ -68,7 +88,7 @@ textarea.tru-ui-input-control {
   font-size: 16px;
   border: 1px solid #d8d8d8;
   border-radius: 6px;
-  color: #4d4d4d!important;
+  color: #4d4d4d;
 }
 
 .tru-ui-number {
@@ -180,11 +200,11 @@ textarea.tru-ui-input-control {
   /* box-shadow: 10px 10px 20px 0 rgba(30, 30, 30, 0.05); */
 }
 ::ng-deep typeahead-container, typeahead-container  {
-  background-color: #fff !important;
-  border-radius: 2px !important;
-  width: 100% !important;
-  max-height: 110px !important;
-  box-shadow: none !important;
+  background-color: #fff  ;
+  border-radius: 2px  ;
+  width: 100%  ;
+  max-height: 110px  ;
+  box-shadow: none  ;
 }
 ::ng-deep .dropdown-menu {
   list-style: none;
@@ -200,8 +220,8 @@ textarea.tru-ui-input-control {
   width: 100%;
 }
 .dropdown-item, ::ng-deep .dropdown-item {
-  padding: 2px 4px !important;
-  font-size: 14px !important;
+  padding: 2px 4px  ;
+  font-size: 14px  ;
 }
 ::ng-deep .dropdown-menu li {
   padding: 4px 6px;
@@ -212,7 +232,7 @@ textarea.tru-ui-input-control {
 }
 
 ::ng-deep .dropdown-menu>li>a>span>strong, .dropdown-menu>li>a>span>strong {
-  color: #b7d581 !important;
+  color: #b7d581  ;
 }
 
 label.tru-ui-label:focus {
@@ -238,10 +258,10 @@ label.tru-ui-label:focus {
 }
 
 .d-none {
-  display: none !important;
+  display: none  ;
 }
 ::ng-deep .mat-calendar-body-cell-content {
-  border-radius: 4px !important;
+  border-radius: 4px  ;
 }
 .calender-overlay {
   margin: auto;

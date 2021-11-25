@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonComponent } from '../common/common.component';
-import * as moment_ from 'moment';
-const moment = moment_;
+import moment from 'moment';
 
 @Component({
   template: `

@@ -7,17 +7,12 @@ import { CommonComponent } from '../../common/common.component';
   styleUrls: ['../../../assets/tru-ui.css']
 })
 export class TruUiSelectComponent extends CommonComponent {
-  truSelect;
-  // workaround for select losing focus after selecting an option and ruin tabindex order
   returnFocus(e) {
-    this.control.setValue(this.truSelect);
     setTimeout(() => {
      const select = document.getElementById(this.schema.key);
      if (select) {
        select.focus();
      }
-     this.control.markAllAsTouched();
-    this.control.updateValueAndValidity();
-    }, 300);
+    }, 100);
   }
 }
