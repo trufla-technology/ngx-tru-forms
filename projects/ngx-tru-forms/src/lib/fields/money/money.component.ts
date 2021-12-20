@@ -5,7 +5,7 @@ import { CommonComponent } from '../common/common.component';
 @Component({
   template: `
     <label [ngClass]="['jf-label', schema.key, (isRequired() ? 'required' : '')]">
-      <span [innerHTML]="title()"></span><sup *ngIf="isRequired()">*</sup>
+      <span [innerHTML]="title()"></span>  
     </label>
     <input
       class="form-control"

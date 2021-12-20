@@ -6,7 +6,7 @@ import { CommonComponent } from '../common/common.component';
     <div class="select-container">
       <label
         [ngClass]="['jf-label', schema.key, (isRequired() ? 'required' : '')]">
-        <span [innerHTML]="title()"></span><sup *ngIf="isRequired()">*</sup>
+        <span [innerHTML]="title()"></span>  
       </label>
       <button type="button" *ngIf="schema.description" [attr.class]="'info'" [attr.title]="schema.description">Info</button>
       <select

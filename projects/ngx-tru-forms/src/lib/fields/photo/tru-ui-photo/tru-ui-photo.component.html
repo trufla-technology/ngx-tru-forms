@@ -1,7 +1,7 @@
 <div class="tru-ui-file-wrapper">
 <label class="tru-ui-label jf-label" [ngClass]="{'required': isRequired()}"  tabindex="0"
    >
-    <span  [innerHTML]="title()"></span><sup *ngIf="isRequired()" aria-hidden="true">*</sup>
+    <span  [innerHTML]="title()"></span> 
 </label>
 <div class="tru-form-group file" jfDragAndDrop (filesDropped)="handleDrop($event);fileInput.value = null">
 

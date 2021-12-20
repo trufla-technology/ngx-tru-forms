@@ -5,7 +5,7 @@ import { CommonComponent } from '../common/common.component';
   template: `
     <div>
       <label [attr.class]="schema.key" [ngClass]="{'margin-bottom--half': true, required: isRequired()}">
-        <span [innerHTML]="title(true)"></span><sup *ngIf="isRequired()">*</sup></label>
+        <span [innerHTML]="title(true)"></span>  </label>
 
       <mat-radio-group [formControl]="control" *ngFor="let en of this.schema.enum; let i = index">
         <mat-radio-button

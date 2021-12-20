@@ -1,6 +1,6 @@
 <div class="tru-ui-input-container">
   <label class="tru-ui-label" [for]="schema.key" [ngClass]="['jf-label', schema.key, (isRequired() ? 'required' : '')]" tabindex="0">
-    <span [innerHTML]="title()"></span><sup *ngIf="isRequired()" aria-hidden="true">*</sup>
+    <span [innerHTML]="title()"></span> 
   </label>
   <button type="button" *ngIf="schema.description" [attr.class]="'info'" [attr.title]="schema.description">Info</button>
   <div class="tru-ui-icon-container" style="position: relative;background-color: #fff;
