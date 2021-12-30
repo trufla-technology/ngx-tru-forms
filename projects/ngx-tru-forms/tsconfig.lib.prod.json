@@ -4,7 +4,9 @@
     "declarationMap": false,
   },
   "angularCompilerOptions": {
-    "enableIvy": "partial",
-        "allowSyntheticDefaultImports": true
+    "enableIvy": false,
+    "compilationMode": "partial",
+    "allowSyntheticDefaultImports": true,
+    "trace": true
   }
 }
