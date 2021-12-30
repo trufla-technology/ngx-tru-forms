@@ -2,8 +2,7 @@
   "extends": "../tsconfig.json",
   "compilerOptions": {
     "outDir": "../out-tsc/app",
-    "types": []
-  
+    "types": []   
   },
   "files": [
     "main.ts",
@@ -11,5 +10,9 @@
   ],
   "include": [
     "src/**/*.d.ts"
-  ]
+  ],
+  "angularCompilerOptions": {
+    "fullTemplateTypeCheck": true,
+    "enableIvy": true,
+  }
 }
