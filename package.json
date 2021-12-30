@@ -13,7 +13,7 @@
     "lint": "ng lint ngx-tru-forms",
     "clean": "rm -fr build dist",
     "pre-push": "npm run clean && npm run build && npm run build-docs",
-    "postinstall": "ngcc --first-only --create-ivy-entry-points --async --use-program-dependencies  "
+    "postinstall": "ngcc  "
   },
   "config": {
     "deployToGit": {
@@ -32,14 +32,14 @@
   "dependencies": {
     "@angular/animations": "^12.2.13",
     "@angular/cdk": "^11.2.13",
-    "@angular/common": "12.2.13",
-    "@angular/compiler": "12.2.13",
-    "@angular/core": "12.2.13",
+    "@angular/common": "12.2.15",
+    "@angular/compiler": "12.2.15",
+    "@angular/core": "12.2.15",
     "@angular/forms": "^12.2.13",
     "@angular/material": "^11.2.13",
     "@angular/material-moment-adapter": "^11.2.13",
-    "@angular/platform-browser": "12.2.13",
-    "@angular/platform-browser-dynamic": "12.2.13",
+    "@angular/platform-browser": "12.2.15",
+    "@angular/platform-browser-dynamic": "12.2.15",
     "@angular/router": "^12.2.13",
     "@trufla/ngx-tru-forms": "^1.0.2",
     "angular2-text-mask": "^9.0.0",
@@ -62,7 +62,7 @@
     "text-mask-addons": "^3.8.0",
     "tslib": "^2.0.0",
     "zone.js": "~0.11.4"
-    },
+  },
   "devDependencies": {
     "@angular-devkit/build-angular": "~12.2.13",
     "@angular-eslint/builder": "12.6.1",

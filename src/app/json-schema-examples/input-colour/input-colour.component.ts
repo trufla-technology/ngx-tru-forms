@@ -21,7 +21,7 @@ import { CommonComponent } from '@trufla/ngx-tru-forms';
 })
 export class InputColourComponent extends CommonComponent {
   color: '#0000ff';
-
+  constructor() {super()}
   handleColorPickerChange(val) {
     this.control.setValue(val);
   }
