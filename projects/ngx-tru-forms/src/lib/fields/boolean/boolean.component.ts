@@ -13,7 +13,7 @@ import { CommonComponent } from '../common/common.component';
           [attr.disabled]="disabled"
         />
         <label [attr.for]="schema.key" [attr.class]="schema.key" [ngClass]="{required: isRequired()}">
-          <span [innerHTML]="title()"></span><sup *ngIf="isRequired()">*</sup>
+          <span [innerHTML]="title()"></span>
         </label>
       </div>
     </div>

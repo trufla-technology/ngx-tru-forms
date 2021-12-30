@@ -4,7 +4,7 @@ import { CommonComponent } from '@trufla/ngx-tru-forms';
 @Component({
   template: `
     <label [ngClass]="['jf-label', schema.key, (isRequired() ? 'required' : '')]">
-      {{title()}}<sup *ngIf="isRequired()">*</sup>
+      {{title()}}  
     </label>
     <input
       class="form-control"
@@ -21,7 +21,7 @@ import { CommonComponent } from '@trufla/ngx-tru-forms';
 })
 export class InputColourComponent extends CommonComponent {
   color: '#0000ff';
-
+  constructor() {super()}
   handleColorPickerChange(val) {
     this.control.setValue(val);
   }

@@ -1,7 +1,7 @@
 <div class="tru-ui-input-container">
     <label class="tru-ui-label" [ngClass]="['jf-label', schema.key, (isRequired() ? 'required' : '')]"
         *ngIf="type() !== 'hidden'" tabindex="0" [for]="schema.key + '_' + inputId">
-        <span [innerHTML]="title()"></span><sup *ngIf="isRequired()" aria-hidden="true">*</sup>
+        <span [innerHTML]="title()"></span> 
     </label>
     <button type="button" *ngIf="this.schema.description" [attr.class]="'info'" [attr.title]="this.schema.description"
         class="tru-ui-button">Info</button>
@@ -13,7 +13,7 @@
     <div *ngIf="schema.verify" style="margin-top: 1rem">
         <label class="tru-ui-label" tabindex="0" [for]="'confirm'+schema.key + '_' + inputId"
             [ngClass]="['jf-label', schema.key, (isRequired() ? 'required' : '')]" *ngIf="type() !== 'hidden'">
-            <span> {{ getLanguage()?.confirm}} {{title()}}</span><sup *ngIf="isRequired()">*</sup>
+            <span> {{ getLanguage()?.confirm}} {{title()}}</span>  
         </label>
         <input class="tru-ui-input-control" [attr.type]="type()" [attr.aria-required]="isRequired()" autocomplete="off"
             [attr.name]="schema.key+'verify'" [formControl]="confirmInput" tabindex="0" [attr.id]="'confirm'+schema.key + '_' + inputId"

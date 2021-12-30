@@ -255,7 +255,7 @@ import { CommonComponent } from '@trufla/ngx-tru-forms';
 @Component({
   template: `
     <label [ngClass]="['jf-label', schema.key, (isRequired() ? 'required' : '')]">
-      {{title()}}<sup *ngIf="isRequired()">*</sup>
+      {{title()}}  
     </label>
     <input
       class="form-control"

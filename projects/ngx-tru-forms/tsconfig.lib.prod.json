@@ -1,10 +1,12 @@
 {
   "extends": "./tsconfig.lib.json",
   "compilerOptions": {
-    "declarationMap": false
+    "declarationMap": false,
   },
   "angularCompilerOptions": {
     "enableIvy": false,
-    "allowSyntheticDefaultImports": true
+    "compilationMode": "partial",
+    "allowSyntheticDefaultImports": true,
+    "trace": true
   }
 }

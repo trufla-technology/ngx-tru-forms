@@ -20,6 +20,7 @@
   "bugs": {
     "url": "https://github.com/trufla-technology/ngx-tru-forms/issues"
   },
+  "sideEffects": true,
   "peerDependencies": {
     "lodash": "^4.17.10",
     "@angular/material-moment-adapter": "^8.2.3",

@@ -4,7 +4,7 @@ import { CommonComponent } from '../common/common.component';
 @Component({
   template: `
     <label [attr.class]="schema.key" [ngClass]="{required: isRequired()}">
-      <span [innerHTML]="title()"></span><sup *ngIf="isRequired()">*</sup>
+      <span [innerHTML]="title()"></span>
     </label>
     <button type="button" *ngIf="schema.description" [attr.class]="'info'" [attr.title]="this.schema.description">Info</button>
     <select

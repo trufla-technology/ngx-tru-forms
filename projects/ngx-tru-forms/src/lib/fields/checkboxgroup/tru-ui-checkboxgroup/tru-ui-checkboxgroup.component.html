@@ -1,6 +1,6 @@
 <label tabindex="0" class="tru-ui-label"
   [ngClass]="['margin-bottom--half', 'jf-label', schema.key, (isRequired() ? 'required' : '')]">
-  <span class="tru-ui-label" [innerHTML]="title()"></span><sup *ngIf="isRequired()" aria-hidden="true">*</sup></label>
+  <span class="tru-ui-label" [innerHTML]="title()"></span> </label>
 <button type="button" *ngIf="this.schema.description" [attr.class]="'info'"
   [attr.title]="this.schema.description">Info</button>
 <div [class]="getClass('radio-group')">

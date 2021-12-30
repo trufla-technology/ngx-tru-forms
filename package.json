@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build --configuration production ngx-tru-forms",
+    "build": "node --max-old-space-size=8192 node_modules/@angular/cli/bin/ng build --configuration production ngx-tru-forms",
     "build-dev": "ng build ngx-tru-forms",
     "build-docs": "./docs.sh",
     "version": "cd projects/ngx-tru-forms && npm version prerelease --preid=rc",
@@ -12,8 +12,8 @@
     "test": "ng test ngx-tru-forms",
     "lint": "ng lint ngx-tru-forms",
     "clean": "rm -fr build dist",
-    "pre-push": "npm run clean && ng lint --fix && npm run build && npm run build-docs",
-    "postinstall": "ngcc --first-only --create-ivy-entry-points --async --use-program-dependencies "
+    "pre-push": "npm run clean && npm run build && npm run build-docs",
+    "postinstall": "ngcc  "
   },
   "config": {
     "deployToGit": {
@@ -28,17 +28,18 @@
     }
   },
   "private": true,
+  "sideEffects": true,
   "dependencies": {
     "@angular/animations": "^12.2.13",
-    "@angular/cdk": "^12.2.12",
-    "@angular/common": "12.2.13",
-    "@angular/compiler": "12.2.13",
-    "@angular/core": "12.2.13",
+    "@angular/cdk": "^11.2.13",
+    "@angular/common": "12.2.15",
+    "@angular/compiler": "12.2.15",
+    "@angular/core": "12.2.15",
     "@angular/forms": "^12.2.13",
-    "@angular/material": "^12.2.12",
-    "@angular/material-moment-adapter": "^12.2.12",
-    "@angular/platform-browser": "12.2.13",
-    "@angular/platform-browser-dynamic": "12.2.13",
+    "@angular/material": "^11.2.13",
+    "@angular/material-moment-adapter": "^11.2.13",
+    "@angular/platform-browser": "12.2.15",
+    "@angular/platform-browser-dynamic": "12.2.15",
     "@angular/router": "^12.2.13",
     "@trufla/ngx-tru-forms": "^1.0.2",
     "angular2-text-mask": "^9.0.0",
@@ -51,7 +52,7 @@
     "moment": "^2.29.1",
     "moment-timezone": "^0.5.33",
     "ng2-pdf-viewer": "^6.4.0",
-    "ngx-bootstrap": "^5.6.1",
+    "ngx-bootstrap": "^7.0.0",
     "ngx-color-picker": "^6.3.3",
     "ngx-image-compress": "^11.0.3",
     "ngx-mask": "^12.0.0",
