@@ -684,19 +684,19 @@
 
       var _angular_core__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
       /*! @angular/core */
-      2316);
+      91477);
       /* harmony import */
 
 
       var _angular_material_core__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
       /*! @angular/material/core */
-      32220);
+      14147);
       /* harmony import */
 
 
       var _angular_material_moment_adapter__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
       /*! @angular/material-moment-adapter */
-      63737);
+      59481);
       /* harmony import */
 
 
@@ -712,13 +712,13 @@
 
       var _angular_forms__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
       /*! @angular/forms */
-      1707);
+      59298);
       /* harmony import */
 
 
       var _angular_platform_browser__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
       /*! @angular/platform-browser */
-      71570);
+      4919);
       /* harmony import */
 
 
@@ -734,13 +734,13 @@
 
       var ngx_image_compress__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(
       /*! ngx-image-compress */
-      77543);
+      20845);
       /* harmony import */
 
 
       var ngx_bootstrap_modal__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(
       /*! ngx-bootstrap/modal */
-      34183);
+      33030);
       /* harmony import */
 
 
@@ -756,85 +756,85 @@
 
       var _angular_common__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(
       /*! @angular/common */
-      54364);
+      40093);
       /* harmony import */
 
 
       var ngx_mask__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(
       /*! ngx-mask */
-      30247);
+      80846);
       /* harmony import */
 
 
       var ng2_pdf_viewer__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(
       /*! ng2-pdf-viewer */
-      89035);
+      9929);
       /* harmony import */
 
 
       var _angular_material_datepicker__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(
       /*! @angular/material/datepicker */
-      42937);
+      65877);
       /* harmony import */
 
 
       var ngx_bootstrap_datepicker__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(
       /*! ngx-bootstrap/datepicker */
-      84461);
+      64456);
       /* harmony import */
 
 
       var _angular_material_button__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(
       /*! @angular/material/button */
-      70781);
+      45159);
       /* harmony import */
 
 
       var _angular_material_card__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(
       /*! @angular/material/card */
-      42118);
+      74354);
       /* harmony import */
 
 
       var _angular_material_checkbox__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(
       /*! @angular/material/checkbox */
-      74058);
+      73393);
       /* harmony import */
 
 
       var _angular_material_form_field__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(
       /*! @angular/material/form-field */
-      65788);
+      63176);
       /* harmony import */
 
 
       var _angular_material_icon__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(
       /*! @angular/material/icon */
-      52529);
+      3323);
       /* harmony import */
 
 
       var _angular_material_input__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(
       /*! @angular/material/input */
-      64742);
+      95076);
       /* harmony import */
 
 
       var _angular_material_radio__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(
       /*! @angular/material/radio */
-      15644);
+      99673);
       /* harmony import */
 
 
       var _angular_material_select__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(
       /*! @angular/material/select */
-      37007);
+      77820);
       /* harmony import */
 
 
       var _angular_material_slide_toggle__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(
       /*! @angular/material/slide-toggle */
-      32080);
+      19031);
       /* harmony import */
 
 
@@ -846,13 +846,13 @@
 
       var _angular_cdk_overlay__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(
       /*! @angular/cdk/overlay */
-      45129);
+      2897);
       /* harmony import */
 
 
       var ngx_bootstrap_typeahead__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(
       /*! ngx-bootstrap/typeahead */
-      12511);
+      32359);
 
       var _MomentUtcDateAdapter = /*#__PURE__*/function (_angular_material_mom) {
         _inherits(_MomentUtcDateAdapter, _angular_material_mom);
@@ -5215,7 +5215,7 @@
 
       var _angular_core__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
       /*! @angular/core */
-      2316);
+      91477);
       /* harmony import */
 
 
@@ -5233,7 +5233,7 @@
 
       var _angular_common__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(
       /*! @angular/common */
-      54364);
+      40093);
       /* harmony import */
 
 
@@ -5245,7 +5245,7 @@
 
       var _angular_router__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(
       /*! @angular/router */
-      71258);
+      79661);
       /* harmony import */
 
 
@@ -5473,7 +5473,7 @@
 
       var _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(
       /*! @angular/platform-browser/animations */
-      20718);
+      92352);
       /* harmony import */
 
 
@@ -5485,13 +5485,13 @@
 
       var ngx_monaco_editor__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(
       /*! ngx-monaco-editor */
-      90173);
+      50198);
       /* harmony import */
 
 
       var _angular_forms__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(
       /*! @angular/forms */
-      1707);
+      59298);
       /* harmony import */
 
 
@@ -5503,7 +5503,7 @@
 
       var _angular_router__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(
       /*! @angular/router */
-      71258);
+      79661);
       /* harmony import */
 
 
@@ -5533,25 +5533,25 @@
 
       var ngx_color_picker__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
       /*! ngx-color-picker */
-      6044);
+      15067);
       /* harmony import */
 
 
       var ngx_bootstrap_typeahead__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(
       /*! ngx-bootstrap/typeahead */
-      12511);
+      32359);
       /* harmony import */
 
 
       var _angular_cdk_overlay__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(
       /*! @angular/cdk/overlay */
-      45129);
+      2897);
       /* harmony import */
 
 
       var _angular_core__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(
       /*! @angular/core */
-      2316);
+      91477);
 
       var routes = [{
         path: '',
@@ -5647,7 +5647,7 @@
 
       var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
       /*! @angular/core */
-      2316);
+      91477);
       /* harmony import */
 
 
@@ -5663,19 +5663,19 @@
 
       var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
       /*! @angular/router */
-      71258);
+      79661);
       /* harmony import */
 
 
       var _angular_common__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
       /*! @angular/common */
-      54364);
+      40093);
       /* harmony import */
 
 
       var _angular_forms__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
       /*! @angular/forms */
-      1707);
+      59298);
 
       function FrameworkDropdownComponent_option_1_Template(rf, ctx) {
         if (rf & 1) {
@@ -5826,7 +5826,7 @@
 
       var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
       /*! @angular/core */
-      2316);
+      91477);
       /* harmony import */
 
 
@@ -5842,13 +5842,13 @@
 
       var _angular_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
       /*! @angular/common */
-      54364);
+      40093);
       /* harmony import */
 
 
       var _angular_forms__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
       /*! @angular/forms */
-      1707);
+      59298);
 
       function SchemaDropdownComponent_select_0_option_1_Template(rf, ctx) {
         if (rf & 1) {
@@ -5987,7 +5987,7 @@
 
       var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
       /*! @angular/core */
-      2316);
+      91477);
       /* harmony import */
 
 
@@ -5999,13 +5999,13 @@
 
       var ngx_monaco_editor__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
       /*! ngx-monaco-editor */
-      90173);
+      50198);
       /* harmony import */
 
 
       var _angular_forms__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
       /*! @angular/forms */
-      1707);
+      59298);
 
       var _SchemaEditorComponent = /*#__PURE__*/function () {
         function _SchemaEditorComponent(jsonSchemaExamplesSamples) {
@@ -6112,7 +6112,7 @@
 
       var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
       /*! @angular/core */
-      2316);
+      91477);
       /* harmony import */
 
 
@@ -6124,7 +6124,7 @@
 
       var _angular_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
       /*! @angular/common */
-      54364);
+      40093);
 
       function SubmittedDataComponent_div_0_Template(rf, ctx) {
         if (rf & 1) {
@@ -6249,25 +6249,25 @@
 
       var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
       /*! @angular/core */
-      2316);
+      91477);
       /* harmony import */
 
 
       var _angular_common__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
       /*! @angular/common */
-      54364);
+      40093);
       /* harmony import */
 
 
       var _angular_forms__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
       /*! @angular/forms */
-      1707);
+      59298);
       /* harmony import */
 
 
       var ngx_color_picker__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
       /*! ngx-color-picker */
-      6044);
+      15067);
 
       var _c0 = function _c0(a1, a2) {
         return ["jf-label", a1, a2];
@@ -6376,7 +6376,7 @@
 
       var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
       /*! @angular/core */
-      2316);
+      91477);
 
       var _JsonSchemaExamplesSamples = /*#__PURE__*/_createClass(function _JsonSchemaExamplesSamples() {
         _classCallCheck(this, _JsonSchemaExamplesSamples);
@@ -7255,7 +7255,7 @@
 
       var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
       /*! @angular/core */
-      2316);
+      91477);
 
       var _DataListenerService = /*#__PURE__*/function () {
         function _DataListenerService() {
@@ -7325,7 +7325,7 @@
 
       var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
       /*! @angular/core */
-      2316);
+      91477);
 
       var _SchemaListenerService = /*#__PURE__*/function () {
         function _SchemaListenerService() {
@@ -7418,13 +7418,13 @@
 
       var _angular_platform_browser__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
       /*! @angular/platform-browser */
-      71570);
+      4919);
       /* harmony import */
 
 
       var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
       /*! @angular/core */
-      2316);
+      91477);
       /* harmony import */
 
 
