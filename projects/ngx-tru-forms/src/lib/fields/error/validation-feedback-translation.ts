@@ -35,7 +35,7 @@ export class ValidationFeedbackTranslation {
             not_in_menu: 'Aucun Résultat',
             is_match: 'valeur nesutampa',
             max_size: 'Le fichier a dépassé la taille autorisée',
-            allowed_format: 'de fichiers autorisés:',
+            allowed_format: 'Formats de fichiers autorisés:',
             error_pdf: 'Aucun document disponible',
             delete_file: 'Cliquez ici pour supprimer le fichier',
             browse: 'les fichiers',
