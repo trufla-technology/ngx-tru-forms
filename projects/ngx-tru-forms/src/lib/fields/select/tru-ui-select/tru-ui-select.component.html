@@ -5,7 +5,7 @@
   <button type="button" *ngIf="schema.description" [attr.class]="'info'" [attr.title]="schema.description">Info</button>
   <div class="tru-ui-icon-container" style="position: relative;background-color: #fff;
   border-radius: 6px;">
-  <select class=" tru-ui-select" [attr.name]="schema.key" [formControl]="control" autocomplete="off" 
+  <!-- <select class=" tru-ui-select" [attr.name]="schema.key" [formControl]="control" autocomplete="off" 
   [attr.disabled]="disabled" [attr.id]="schema.key" [attr.aria-required]="isRequired()" tabindex="0" (change)="returnFocus($event)">
     <option value="" [selected]="control.value === ''" [disabled]="true">
     </option>
@@ -13,7 +13,27 @@
       [selected]="control.value === en" [ngValue]="en">
       {{enumNames(i)}}
     </option>
-  </select>
+  </select> -->
+  <input class=" tru-ui-select" [attr.name]="schema.key" [formControl]="control" autocomplete="off" 
+  [attr.disabled]="true" [attr.id]="schema.key" [attr.aria-required]="isRequired()" tabindex="0" type="text" cdkOverlayOrigin #trigger="cdkOverlayOrigin" />
+
+  <ng-template
+  cdkConnectedOverlay
+  [cdkConnectedOverlayOrigin]="trigger"
+  [cdkConnectedOverlayOpen]="isOpen"
+  [cdkConnectedOverlayHasBackdrop]="true"
+  (backdropClick)="close($event)"
+  [cdkConnectedOverlayPositions]="{overlayX: 'center', overlayY: 'center', originX: 'center', originY: 'center'}"
+  [cdkConnectedOverlayFlexibleDimensions]="true"
+  [cdkConnectedOverlayBackdropClass]="'cdk-overlay-transparent-backdrop'"
+  [cdkConnectedOverlayPush]="true"
+>
+<span  *ngFor="let en of schema.enum; let i = index" [attr.aria-label]="enumNames(i)" (click)="setSelectVaule(en)">
+  {{enumNames(i)}}
+</span>
+  </ng-template>  
+
+
   <img alt="select menu" (click)="getInput(schema.key)" aria-hidden="true" style="position: absolute;top: 8px;right: 10px;width: 15px;z-index: 0;" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' version='1.1' viewBox='0 0 129 129' enable-background='new 0 0 129 129' width='512px' height='512px'%3E%3Cg%3E%3Cpath d='m121.3,34.6c-1.6-1.6-4.2-1.6-5.8,0l-51,51.1-51.1-51.1c-1.6-1.6-4.2-1.6-5.8,0-1.6,1.6-1.6,4.2 0,5.8l53.9,53.9c0.8,0.8 1.8,1.2 2.9,1.2 1,0 2.1-0.4 2.9-1.2l53.9-53.9c1.7-1.6 1.7-4.2 0.1-5.8z' fill='%234d4d4d'/%3E%3C/g%3E%3C/svg%3E%0A" />
 </div>
   <jf-tru-ui-error [control]="control" [language]="language || 'en'"></jf-tru-ui-error>
