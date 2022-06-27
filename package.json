@@ -13,7 +13,7 @@
     "lint": "ng lint ngx-tru-forms",
     "clean": "rm -fr build dist",
     "pre-push": "npm run clean && npm run build && npm run build-docs",
-    "postinstall": "ngcc  "
+    "postinstall": "ngcc   --properties es2015 browser module main --first-only --async"
   },
   "config": {
     "deployToGit": {
