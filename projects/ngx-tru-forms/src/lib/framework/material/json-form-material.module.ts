@@ -35,56 +35,40 @@ import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 export const options: Partial<IConfig> | (() => Partial<IConfig>) = null;
 
 @NgModule({
-  imports: [
-    CommonModule,
-    ReactiveFormsModule,
-    NgxMaskModule.forRoot(),
-
-    MatFormFieldModule,
-    MatInputModule,
-    MatButtonModule,
-    MatSelectModule,
-    MatRadioModule,
-    MatCheckboxModule,
-    MatSlideToggleModule,
-    MatIconModule,
-    MatNativeDateModule,
-    MatDatepickerModule,
-    MatCardModule,
-    MatMomentDateModule,
-    SharedModule,
-    BsDatepickerModule.forRoot()
-  ],
-  declarations: [
-    StringMaterialComponent,
-    TextareaMaterialComponent,
-    SelectMaterialComponent,
-    RadiogroupMaterialComponent,
-    PhotoMaterialComponent,
-    NumberMaterialComponent,
-    MultiselectMaterialComponent,
-    CheckboxgroupMaterialComponent,
-    BooleanMaterialComponent,
-    DateMaterialComponent,
-    ErrorMaterialComponent,
-    ButtonMaterialComponent,
-    ArrayMaterialComponent
-  ],
-  entryComponents: [
-    StringMaterialComponent,
-    TextareaMaterialComponent,
-    SelectMaterialComponent,
-    RadiogroupMaterialComponent,
-    PhotoMaterialComponent,
-    NumberMaterialComponent,
-    MultiselectMaterialComponent,
-    CheckboxgroupMaterialComponent,
-    BooleanMaterialComponent,
-    DateMaterialComponent,
-    ErrorMaterialComponent,
-    ButtonMaterialComponent,
-    ArrayMaterialComponent
-  ]
+    imports: [
+        CommonModule,
+        ReactiveFormsModule,
+        NgxMaskModule.forRoot(),
+        MatFormFieldModule,
+        MatInputModule,
+        MatButtonModule,
+        MatSelectModule,
+        MatRadioModule,
+        MatCheckboxModule,
+        MatSlideToggleModule,
+        MatIconModule,
+        MatNativeDateModule,
+        MatDatepickerModule,
+        MatCardModule,
+        MatMomentDateModule,
+        SharedModule,
+        BsDatepickerModule.forRoot()
+    ],
+    declarations: [
+        StringMaterialComponent,
+        TextareaMaterialComponent,
+        SelectMaterialComponent,
+        RadiogroupMaterialComponent,
+        PhotoMaterialComponent,
+        NumberMaterialComponent,
+        MultiselectMaterialComponent,
+        CheckboxgroupMaterialComponent,
+        BooleanMaterialComponent,
+        DateMaterialComponent,
+        ErrorMaterialComponent,
+        ButtonMaterialComponent,
+        ArrayMaterialComponent
+    ]
 })
 
 export class JsonFormMaterialModule {

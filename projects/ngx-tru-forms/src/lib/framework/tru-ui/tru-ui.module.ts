@@ -23,49 +23,31 @@ import { FormsModule } from '@angular/forms';
 import {OverlayModule} from '@angular/cdk/overlay';
 import { NgxMaskModule } from 'ngx-mask';
 @NgModule({
-  declarations: [TruUiButtonComponent,
-    TruUiStringComponent,
-    TruUiErrorComponent,
-    TruUiPhotoComponent,
-    TruUiTextareaComponent,
-    TruUiBooleanComponent,
-    TruUiDateComponent,
-    TruUiSelectComponent,
-    TruUiNumberComponent,
-    TruUiRadigroupComponent,
-    TruUiCheckboxgroupComponent,
-    TruUiMultiselectComponent,
-    TruUiArrayComponent,
-    TruUiAutocompleteComponent
-  ],
-  imports: [
-    CommonModule,
-    FormsModule,
-    ReactiveFormsModule,
-    SharedModule,
-    OverlayModule,
-    TypeaheadModule.forRoot(),
-    NgxMaskModule.forRoot()
-  ],
-  entryComponents: [
-    TruUiButtonComponent,
-    TruUiStringComponent,
-    TruUiErrorComponent,
-    TruUiPhotoComponent,
-    TruUiTextareaComponent,
-    TruUiBooleanComponent,
-    TruUiDateComponent,
-    TruUiSelectComponent,
-    TruUiNumberComponent,
-    TruUiRadigroupComponent,
-    TruUiCheckboxgroupComponent,
-    TruUiMultiselectComponent,
-    TruUiArrayComponent,
-    TruUiAutocompleteComponent
-  ],
-
-  providers: [
-  ]
+    declarations: [TruUiButtonComponent,
+        TruUiStringComponent,
+        TruUiErrorComponent,
+        TruUiPhotoComponent,
+        TruUiTextareaComponent,
+        TruUiBooleanComponent,
+        TruUiDateComponent,
+        TruUiSelectComponent,
+        TruUiNumberComponent,
+        TruUiRadigroupComponent,
+        TruUiCheckboxgroupComponent,
+        TruUiMultiselectComponent,
+        TruUiArrayComponent,
+        TruUiAutocompleteComponent
+    ],
+    imports: [
+        CommonModule,
+        FormsModule,
+        ReactiveFormsModule,
+        SharedModule,
+        OverlayModule,
+        TypeaheadModule.forRoot(),
+        NgxMaskModule.forRoot()
+    ],
+    providers: []
 })
 export class TruUiModule {
   static forRoot(): ModuleWithProviders<TruUiModule> {

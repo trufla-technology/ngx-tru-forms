@@ -22,43 +22,28 @@ import { NgxMaskModule, IConfig } from 'ngx-mask';
 export const options: Partial<IConfig> | (() => Partial<IConfig>) = null;
 
 @NgModule({
-  imports: [
-    CommonModule,
-    ReactiveFormsModule,
-    NgxMaskModule.forRoot(),
-    SharedModule,
-    BsDatepickerModule.forRoot()
-  ],
-  declarations: [
-    StringComponent,
-    SelectComponent,
-    DateComponent,
-    TextareaComponent,
-    ErrorComponent,
-    MoneyComponent,
-    NumberComponent,
-    BooleanComponent,
-    ButtonComponent,
-    CheckboxgroupComponent,
-    MultiselectComponent,
-    PhotoComponent,
-    RadiogroupComponent
-  ],
-  entryComponents: [
-    StringComponent,
-    SelectComponent,
-    DateComponent,
-    TextareaComponent,
-    ErrorComponent,
-    MoneyComponent,
-    NumberComponent,
-    BooleanComponent,
-    ButtonComponent,
-    CheckboxgroupComponent,
-    MultiselectComponent,
-    PhotoComponent,
-    RadiogroupComponent
-  ]
+    imports: [
+        CommonModule,
+        ReactiveFormsModule,
+        NgxMaskModule.forRoot(),
+        SharedModule,
+        BsDatepickerModule.forRoot()
+    ],
+    declarations: [
+        StringComponent,
+        SelectComponent,
+        DateComponent,
+        TextareaComponent,
+        ErrorComponent,
+        MoneyComponent,
+        NumberComponent,
+        BooleanComponent,
+        ButtonComponent,
+        CheckboxgroupComponent,
+        MultiselectComponent,
+        PhotoComponent,
+        RadiogroupComponent
+    ]
 })
 
 export class JsonFormBootstrap4Module {

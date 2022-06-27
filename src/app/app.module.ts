@@ -31,28 +31,27 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    SchemaEditorComponent,
-    SchemaDropdownComponent,
-    FrameworkDropdownComponent,
-    SubmittedDataComponent,
-    InputColourComponent
-  ],
-  imports: [
-    BrowserAnimationsModule,
-    RouterModule.forRoot(routes, {useHash: true}),
-    MonacoEditorModule.forRoot(),
-    TypeaheadModule.forRoot(),
-    ReactiveFormsModule,
-    FormsModule,
-    ColorPickerModule,
-    OverlayModule
-  ],
-  providers: [
-    JsonSchemaExamplesSamples
-  ],
-  entryComponents: [InputColourComponent],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+        SchemaEditorComponent,
+        SchemaDropdownComponent,
+        FrameworkDropdownComponent,
+        SubmittedDataComponent,
+        InputColourComponent
+    ],
+    imports: [
+        BrowserAnimationsModule,
+        RouterModule.forRoot(routes, { useHash: true }),
+        MonacoEditorModule.forRoot(),
+        TypeaheadModule.forRoot(),
+        ReactiveFormsModule,
+        FormsModule,
+        ColorPickerModule,
+        OverlayModule
+    ],
+    providers: [
+        JsonSchemaExamplesSamples
+    ],
+    bootstrap: [AppComponent]
 })
 export class AppModule { }

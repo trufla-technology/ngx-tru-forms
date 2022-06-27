@@ -11,25 +11,22 @@ import {ValidationFeedbackTranslation} from './fields/error/validation-feedback-
 import { NgxImageCompressService } from 'ngx-image-compress';
 import { ModalModule } from 'ngx-bootstrap/modal';
 @NgModule({
-  imports: [
-    CommonModule,
-    SharedModule,
-    ModalModule.forRoot()
-  ],
-  exports: [
-    CommonComponent,
-    JsonFormComponent
-  ],
-  entryComponents: [
-    JsonFormComponent
-  ],
-  providers: [
-    JsonFormDefaultsService,
-    JsonFormValidatorsService,
-    ValidationFeedbackTranslation,
-    NgxImageCompressService
-  ],
-  declarations: []
+    imports: [
+        CommonModule,
+        SharedModule,
+        ModalModule.forRoot()
+    ],
+    exports: [
+        CommonComponent,
+        JsonFormComponent
+    ],
+    providers: [
+        JsonFormDefaultsService,
+        JsonFormValidatorsService,
+        ValidationFeedbackTranslation,
+        NgxImageCompressService
+    ],
+    declarations: []
 })
 
 export class JsonFormModule {

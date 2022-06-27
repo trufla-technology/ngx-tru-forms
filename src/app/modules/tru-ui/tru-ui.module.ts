@@ -18,25 +18,23 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [TruUiComponent],
-  imports: [
-    CommonModule,
-    RouterModule.forChild(routes),
-    ReactiveFormsModule,
-    JsonFormModule,
-    TruUiModule,
-    {
-      ngModule: JsonFormModule,
-      providers: [
+    declarations: [TruUiComponent],
+    imports: [
+        CommonModule,
+        RouterModule.forChild(routes),
+        ReactiveFormsModule,
+        JsonFormModule,
+        TruUiModule,
         {
-          provide: JsonFormFieldsService,
-          useClass: TruUi,
-          multi: true
+            ngModule: JsonFormModule,
+            providers: [
+                {
+                    provide: JsonFormFieldsService,
+                    useClass: TruUi,
+                    multi: true
+                }
+            ]
         }
-      ]
-    }
-
-  ],
-  entryComponents: []
+    ]
 })
 export class TruUiModuleExample { }
