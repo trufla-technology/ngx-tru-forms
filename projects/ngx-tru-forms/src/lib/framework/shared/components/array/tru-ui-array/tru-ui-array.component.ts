@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { SchemaFormControl } from '../../../../../models/schema-form-control';
-import { AbstractControl, FormArray } from '@angular/forms';
+import { AbstractControl, UntypedFormArray } from '@angular/forms';
 import { SchemaFormArray } from '../../../../../models/schema-form-array';
 import { SchemaFormGroup } from '../../../../../models/schema-form-group';
 import { startCase, upperFirst } from 'lodash';
@@ -81,11 +81,11 @@ export class TruUiArrayComponent {
     return newControl;
   }
 
-  addControl(formArray: FormArray) {
+  addControl(formArray: UntypedFormArray) {
     formArray.push(this.cloneControl(formArray.controls[0]));
   }
 
-  removeControl(formArray: FormArray, index: number) {
+  removeControl(formArray: UntypedFormArray, index: number) {
     if (formArray.length === 1) {
       formArray.controls[0].reset();
       formArray.controls[0].disable();

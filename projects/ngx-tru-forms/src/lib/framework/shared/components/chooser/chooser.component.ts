@@ -20,8 +20,9 @@ import { startCase, upperFirst } from 'lodash';
     </div>
     </div>
     <div [ngClass]="['form-container']">
-      <div *ngFor="let control of keys(form.controls)" jf-field
-      [control]="form.get(control)" [language]="language">
+      <div *ngFor="let control of keys(form.controls)" 
+      >
+      <jf-field [control]="form.get(control)" [language]="language"></jf-field>
       </div>
     </div>
   `,

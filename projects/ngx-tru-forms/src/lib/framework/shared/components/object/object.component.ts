@@ -4,11 +4,12 @@ import {SchemaFormControl} from '../../../../models/schema-form-control';
 @Component({
   template: `
     <div [ngClass]="['object', control.schema.key]"
-      jf-component-chooser
+    >
+      <jf-component-chooser
       [form]="control"
       [schema]="control.schema"
-      [language]= "language"
-      [nested]="true">
+     
+      [nested]="true"></jf-component-chooser>
     </div>`,
     styleUrls: ['../../../../assets/tru-ui.css']
 

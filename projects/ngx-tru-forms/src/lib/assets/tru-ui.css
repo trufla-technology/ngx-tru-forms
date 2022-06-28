@@ -77,6 +77,7 @@ textarea.tru-ui-input-control {
   background-color: transparent;
   position: relative;
   z-index: 1;
+  text-align: left;
   /* Firefox */
   -webkit-appearance: none;
   /* Safari and Chrome */
@@ -269,5 +270,36 @@ label.tru-ui-label:focus {
   box-shadow: 0 2px 5px 1px rgb(64 60 67 / 16%);
   left: 50%;
   transform: translateX(-50%);
+
+}
+.tru-dropdown-wrapper {
+  background-color: #fff;
+  border-radius: 6px;
+  box-sizing: border-box;
+  min-width: 96px;
+  border: 1px solid #EDEDED;
+  border-radius: 6px;
+  background-color: #FFFFFF;
+  box-shadow: 10px 10px 20px 0 rgba(30,30,30,0.05);
+  margin-top: 6px;
+}
+.tru-dropdown-container {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 0;
+}
+.tru-dropdown-item {
+  text-align: left;
+  color: #060C08;
+  font-family: "Source Sans Pro";
+  font-size: 12px;
+  letter-spacing: 0;
+  height: 22px;
+  vertical-align: middle;
+  padding: 6px 12px;
+}
+.tru-dropdown-item:hover {
+  background-color: #F4F4F8;
+  cursor: pointer;
 
 }

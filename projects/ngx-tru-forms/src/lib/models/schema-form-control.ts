@@ -1,7 +1,7 @@
-import { FormControl } from '@angular/forms';
+import { UntypedFormControl } from '@angular/forms';
 import { Schema } from './schema';
 
-export class SchemaFormControl extends FormControl {
+export class SchemaFormControl extends UntypedFormControl {
   public schema: Schema;
   public style: any;
   public viewOnly: boolean;

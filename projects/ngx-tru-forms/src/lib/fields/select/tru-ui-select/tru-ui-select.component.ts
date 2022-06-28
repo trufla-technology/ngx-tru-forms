@@ -42,10 +42,12 @@ export class TruUiSelectComponent extends CommonComponent implements AfterViewIn
     return window.innerWidth <= 800;
   }
 
- setSelectVaule(en) {
+ setSelectVaule(en?) {
+  this.control.setValue(en);
+  this.close();
 
  }
-  close(ev) {
+  close(ev?) {
     this.isOpen = false;
     this.returnFocus();
   }

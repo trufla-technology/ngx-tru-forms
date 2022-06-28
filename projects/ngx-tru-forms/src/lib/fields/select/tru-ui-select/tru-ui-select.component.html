@@ -15,7 +15,15 @@
     </option>
   </select> -->
   <input class=" tru-ui-select" [attr.name]="schema.key" [formControl]="control" autocomplete="off" 
-  [attr.disabled]="true" [attr.id]="schema.key" [attr.aria-required]="isRequired()" tabindex="0" type="text" cdkOverlayOrigin #trigger="cdkOverlayOrigin" />
+   [attr.id]="schema.key" 
+   [disabled]="true" 
+   type="button"
+   readonly 
+   [attr.aria-required]="isRequired()" 
+   tabindex="0" 
+   cdkOverlayOrigin 
+   #trigger="cdkOverlayOrigin" 
+   (click)="isOpen = !isOpen" />
 
   <ng-template
   cdkConnectedOverlay
@@ -28,9 +36,17 @@
   [cdkConnectedOverlayBackdropClass]="'cdk-overlay-transparent-backdrop'"
   [cdkConnectedOverlayPush]="true"
 >
-<span  *ngFor="let en of schema.enum; let i = index" [attr.aria-label]="enumNames(i)" (click)="setSelectVaule(en)">
-  {{enumNames(i)}}
-</span>
+  <div class="tru-dropdown-wrapper">
+    <ul class="tru-dropdown-container">
+      <li  *ngFor="let en of schema.enum; let i = index" 
+      [attr.aria-label]="enumNames(i)" 
+      (click)="setSelectVaule(en)"
+      [ngClass]="{'selected primary-color': control.value === en}"
+      class="tru-dropdown-item">
+        {{enumNames(i)}}
+      </li>
+    </ul>
+  </div>
   </ng-template>  
 
 

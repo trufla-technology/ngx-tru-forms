@@ -1,5 +1,5 @@
 import { Component, DoCheck, ElementRef, EventEmitter, Input, OnDestroy, Output, ViewChild } from '@angular/core';
-import { FormBuilder, NgForm} from '@angular/forms';
+import { UntypedFormBuilder, NgForm} from '@angular/forms';
 import { JsonFormValidatorsService } from './services/validators.service';
 import { SchemaFormControl } from './models/schema-form-control';
 import { JsonFormDefaultsService } from './services/defaults.service';
@@ -56,7 +56,7 @@ export class JsonFormComponent implements DoCheck, OnDestroy {
   public requiredFields = 0;
 
   constructor(
-    private fb: FormBuilder,
+    private fb: UntypedFormBuilder,
     private vl: JsonFormValidatorsService,
     private df: JsonFormDefaultsService,
     private jf: JsonFormFieldsService

@@ -28,6 +28,8 @@ import { ViewFileComponent } from '../../fields/view-file/view-file.component';
 import { PdfViewerModule } from 'ng2-pdf-viewer';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
+import { FieldModule } from './components/field/field/field.module';
+import { ChooserModule } from './components/chooser/chooser/chooser.module';
 export const options: Partial<IConfig> | (() => Partial<IConfig>) = null;
 
 @NgModule({
@@ -37,13 +39,13 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) = null;
         ReactiveFormsModule,
         PdfViewerModule,
         MatDatepickerModule,
-        MatNativeDateModule
+        MatNativeDateModule,
+        FieldModule,
+        ChooserModule
     ],
     declarations: [
         JsonFormComponent,
         CommonComponent,
-        ChooserComponent,
-        FieldComponent,
         ViewFileComponent,
         FormButtonComponent,
         InfoButtonComponent,
@@ -66,6 +68,7 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) = null;
     exports: [
         ChooserComponent,
         FieldComponent,
+        ChooserComponent,
         FormButtonComponent,
         InfoButtonComponent,
         JsonFormComponent,

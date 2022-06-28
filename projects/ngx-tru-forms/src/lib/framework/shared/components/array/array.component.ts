@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { SchemaFormControl } from '../../../../models/schema-form-control';
-import { AbstractControl, FormArray } from '@angular/forms';
+import { AbstractControl, UntypedFormArray } from '@angular/forms';
 import { SchemaFormArray } from '../../../../models/schema-form-array';
 import { SchemaFormGroup } from '../../../../models/schema-form-group';
 import { startCase } from 'lodash';
@@ -11,7 +11,9 @@ import { startCase } from 'lodash';
       <h4 *ngIf="getLegend(control).length" style="color:#8c8c8c;margin-top: 20px;font-size: 14px;" tabindex="0">{{getLegend(control)}}</h4>
       <div *ngFor="let arrControl of getEnabledControls(control); let i = index;">
         <div class="row">
-          <div class="control" jf-component-chooser [form]="arrControl" [language]= "language"></div>
+          <div class="control" >
+            <jf-component-chooser [form]="arrControl" [language]= "language"></jf-component-chooser>
+          </div>
           <div class="remove" *ngIf="control.controls.length > 1">
             <input type="button" (click)="removeControl(control, i)" class="btn btn-success btn-sm" value="Remove"/>
           </div>
@@ -96,11 +98,11 @@ export class ArrayComponent {
     return newControl;
   }
 
-  addControl(formArray: FormArray) {
+  addControl(formArray: UntypedFormArray) {
     formArray.push(this.cloneControl(formArray.controls[0]));
   }
 
-  removeControl(formArray: FormArray, index: number) {
+  removeControl(formArray: UntypedFormArray, index: number) {
     if (formArray.length === 1) {
       formArray.controls[0].reset();
       formArray.controls[0].disable();
