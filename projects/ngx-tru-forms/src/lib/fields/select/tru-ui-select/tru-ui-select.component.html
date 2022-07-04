@@ -24,7 +24,7 @@
    cdkOverlayOrigin 
    #trigger="cdkOverlayOrigin" 
    (click)="isOpen = !isOpen" >{{getValueFromController(control.value)}}</button>
-  <input [formControl]="control" style="display: none;visibility:hidden">
+  <input [formControl]="control"  aria-hidden="true" style="visibility: hidden;display: none;z-index: -1;" [attr.aria-labelledby]="schema.key + '_' + inputId">
   <ng-template
   cdkConnectedOverlay
   [cdkConnectedOverlayOrigin]="trigger"
