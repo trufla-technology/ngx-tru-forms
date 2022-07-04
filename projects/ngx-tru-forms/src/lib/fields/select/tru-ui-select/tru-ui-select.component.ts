@@ -51,4 +51,7 @@ export class TruUiSelectComponent extends CommonComponent implements AfterViewIn
     this.isOpen = false;
     this.returnFocus();
   }
+  getValueFromController(i) {
+    return i ? this.enumNames(this.schema.enum.indexOf(i)) : '';
+  }
 }

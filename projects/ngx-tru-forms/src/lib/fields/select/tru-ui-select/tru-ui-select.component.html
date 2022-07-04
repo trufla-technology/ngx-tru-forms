@@ -14,7 +14,7 @@
       {{enumNames(i)}}
     </option>
   </select> -->
-  <input class=" tru-ui-select" [attr.name]="schema.key" [formControl]="control" autocomplete="off" 
+  <button class=" tru-ui-select" [attr.name]="schema.key" [formControl]="control" autocomplete="off" 
    [attr.id]="schema.key" 
    [disabled]="true" 
    type="button"
@@ -23,8 +23,8 @@
    tabindex="0" 
    cdkOverlayOrigin 
    #trigger="cdkOverlayOrigin" 
-   (click)="isOpen = !isOpen" />
-
+   (click)="isOpen = !isOpen" >{{getValueFromController(control.value)}}</button>
+  <input [formControl]="control" style="display: none;visibility:hidden">
   <ng-template
   cdkConnectedOverlay
   [cdkConnectedOverlayOrigin]="trigger"

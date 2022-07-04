@@ -34,7 +34,46 @@ export class JsonSchemaExamplesSamples {
         },
         do_not_contact: {
           type: 'boolean'
-        }
+        },
+        select_example: {
+          type: "number",
+          enum: [
+            1,
+            2
+          ],
+          enumNames: [
+            [
+              {
+                'language': 'en',
+                'value': 'Hot Dog'
+              },
+              {
+                'language': 'fr',
+                'value': 'Dešrainis'
+              }
+            ],
+            [
+              {
+                'language': 'en',
+                'value': 'Pizza'
+              },
+              {
+                'language': 'fr',
+                'value': 'pica'
+              }
+            ],
+            [
+              {
+                'language': 'en',
+                'value': 'Mexican chicken'
+              },
+              {
+                'language': 'fr',
+                'value': 'Mexican chicken'
+              }
+            ]
+          ]
+        },
       },
       required: ['year', 'effective_date']
     },
