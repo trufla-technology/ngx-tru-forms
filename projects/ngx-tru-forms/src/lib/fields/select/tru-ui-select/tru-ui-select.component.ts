@@ -1,13 +1,21 @@
 import { Component, ViewChild, HostListener, AfterViewInit } from '@angular/core';
 import { CommonComponent } from '../../common/common.component';
 import { CdkOverlayOrigin } from '@angular/cdk/overlay';
+import { NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
   selector: 'jf-tru-ui-select',
   templateUrl: './tru-ui-select.component.html',
-  styleUrls: ['../../../assets/tru-ui.css']
+  styleUrls: ['../../../assets/tru-ui.css'],
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      multi: true,
+      useExisting: TruUiSelectComponent
+    }
+  ]
 })
-export class TruUiSelectComponent extends CommonComponent implements AfterViewInit  {
+export class TruUiSelectComponent extends CommonComponent implements AfterViewInit {
   oldValue;
   show = false;
   isOpen = false;
@@ -15,26 +23,26 @@ export class TruUiSelectComponent extends CommonComponent implements AfterViewIn
   @ViewChild(CdkOverlayOrigin) calendarOverlay;
   returnFocus(e?) {
     setTimeout(() => {
-     const select = document.getElementById(this.schema.key);
-     if (select) {
-       select.focus();
-     }
+      const select = document.getElementById(this.schema.key);
+      if (select) {
+        select.focus();
+      }
     }, 100);
   }
 
 
   @HostListener('document:keydown', ['$event'])
   handleKeyboardEvent(event: KeyboardEvent) {
-     if (event.code === 'Escape') {
+    if (event.code === 'Escape') {
       this.isOpen = false;
     }
   }
 
   ngAfterViewInit() {
     this._adapter.setLocale(this.language || 'en');
-    if (this.control.data ) {
-  
-    this.cd.detectChanges();
+    if (this.control.data) {
+
+      this.cd.detectChanges();
     }
   }
 
@@ -42,11 +50,12 @@ export class TruUiSelectComponent extends CommonComponent implements AfterViewIn
     return window.innerWidth <= 800;
   }
 
- setSelectVaule(en?) {
-  this.control.setValue(en);
-  this.close();
-
- }
+  setSelectVaule(en?) {
+    if (en) {
+      this.control.setValue(en);
+    }
+    this.close();
+  }
   close(ev?) {
     this.isOpen = false;
     this.returnFocus();
