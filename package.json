@@ -50,7 +50,7 @@
     "esm": "^3.2.25",
     "lodash": "^4.17.21",
     "moment": "^2.29.1",
-    "moment-timezone": "^0.5.34",
+    "moment-timezone": "^0.5.35",
     "ng2-pdf-viewer": "^6.4.0",
     "ngx-bootstrap": "^7.0.0",
     "ngx-color-picker": "^6.3.3",
