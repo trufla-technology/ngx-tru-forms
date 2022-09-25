@@ -1,21 +1,29 @@
-import { Component, ViewChild, HostListener, AfterViewInit } from '@angular/core';
-import { CommonComponent } from '../../common/common.component';
-import { CdkOverlayOrigin } from '@angular/cdk/overlay';
-import { NG_VALUE_ACCESSOR } from '@angular/forms';
+import {
+  Component,
+  ViewChild,
+  HostListener,
+  AfterViewInit,
+} from "@angular/core";
+import { CommonComponent } from "../../common/common.component";
+import { CdkOverlayOrigin } from "@angular/cdk/overlay";
+import { NG_VALUE_ACCESSOR } from "@angular/forms";
 
 @Component({
-  selector: 'jf-tru-ui-select',
-  templateUrl: './tru-ui-select.component.html',
-  styleUrls: ['../../../assets/tru-ui.css'],
+  selector: "jf-tru-ui-select",
+  templateUrl: "./tru-ui-select.component.html",
+  styleUrls: ["../../../assets/tru-ui.css"],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
       multi: true,
-      useExisting: TruUiSelectComponent
-    }
-  ]
+      useExisting: TruUiSelectComponent,
+    },
+  ],
 })
-export class TruUiSelectComponent extends CommonComponent implements AfterViewInit {
+export class TruUiSelectComponent
+  extends CommonComponent
+  implements AfterViewInit
+{
   oldValue;
   show = false;
   isOpen = false;
@@ -30,18 +38,16 @@ export class TruUiSelectComponent extends CommonComponent implements AfterViewIn
     }, 100);
   }
 
-
-  @HostListener('document:keydown', ['$event'])
+  @HostListener("document:keydown", ["$event"])
   handleKeyboardEvent(event: KeyboardEvent) {
-    if (event.code === 'Escape') {
+    if (event.code === "Escape") {
       this.isOpen = false;
     }
   }
 
   ngAfterViewInit() {
-    this._adapter.setLocale(this.language || 'en');
+    this._adapter.setLocale(this.language || "en");
     if (this.control.data) {
-
       this.cd.detectChanges();
     }
   }
@@ -61,6 +67,6 @@ export class TruUiSelectComponent extends CommonComponent implements AfterViewIn
     this.returnFocus();
   }
   getValueFromController(i) {
-    return i ? this.enumNames(this.schema.enum.indexOf(i)) : '';
+    return i ? this.enumNames(this.schema.enum.indexOf(i)) : "";
   }
 }

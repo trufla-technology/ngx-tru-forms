@@ -1,7 +1,6 @@
 <form
   #userForm="ngForm"
   [formGroup]="form"
-  
   (ngSubmit)="handleOnSubmit()"
   *ngIf="isValidSchema()"
   [ngClass]="{ 'view-only': viewOnly }"
@@ -10,11 +9,14 @@
   <div #header></div>
   <div
     jf-component-chooser
-    [ngClass]="[outerClass || '', this.activeStyle['default'] ? this.activeStyle['default'] : '']"
+    [ngClass]="[
+      outerClass || '',
+      this.activeStyle['default'] ? this.activeStyle['default'] : ''
+    ]"
     [form]="form"
     [language]="language"
-    [schema]="activeSchema">
-  </div>
+    [schema]="activeSchema"
+  ></div>
   <div #container>
     <ng-content></ng-content>
   </div>
@@ -22,7 +24,12 @@
   <div
     #buttons
     *ngIf="container.children.length === 0 && (submit || cancel)"
-    [ngClass]="{ 'margin-top--double': true, 'page-actions--edges': (cancel && submit), 'page-actions--center': (!cancel || !submit)}">
+    [ngClass]="{
+      'margin-top--double': true,
+      'page-actions--edges': cancel && submit,
+      'page-actions--center': !cancel || !submit
+    }"
+  >
     <jf-form-button
       *ngIf="cancel"
       [cancel]="cancel"
@@ -31,7 +38,8 @@
       [isWorking]="isWorking"
       (handleClick)="handleOnCancel()"
       [submitClass]="submitClass"
-      [cancelClass]="cancelClass">
+      [cancelClass]="cancelClass"
+    >
     </jf-form-button>
     <jf-form-button
       *ngIf="submit"
@@ -43,7 +51,8 @@
       [continue]="continue"
       [isMultiStep]="isMultiStep"
       [isWorking]="isWorking"
-      [isFormValid]="this.form.valid">
+      [isFormValid]="this.form.valid"
+    >
     </jf-form-button>
   </div>
 </form>

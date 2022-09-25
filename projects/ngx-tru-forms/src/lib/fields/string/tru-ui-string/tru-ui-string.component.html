@@ -1,24 +1,69 @@
 <div class="tru-ui-input-container">
-    <label class="tru-ui-label" [ngClass]="['jf-label', schema.key, (isRequired() ? 'required' : '')]"
-        *ngIf="type() !== 'hidden'" tabindex="0" [for]="schema.key + '_' + inputId">
-        <span [innerHTML]="title()"></span> 
+  <label
+    class="tru-ui-label"
+    [ngClass]="['jf-label', schema.key, isRequired() ? 'required' : '']"
+    *ngIf="type() !== 'hidden'"
+    tabindex="0"
+    [for]="schema.key + '_' + inputId"
+    style="display: inline-flex"
+  >
+    <span [innerHTML]="title()"></span>
+    <div
+      role="tooltip"
+      *ngIf="this.schema.description"
+      [attr.class]="'info'"
+      class="tru-ui-button"
+      [innerHTML]="showMoreIcon"
+      [tooltip]="this.schema.description"
+      style="padding-left: 3px"
+    ></div>
+  </label>
+
+  <input
+    class="tru-ui-input-control"
+    [attr.name]="schema.key"
+    [attr.type]="type()"
+    [formControl]="control"
+    [attr.maxLength]="schema.maxLength || null"
+    [attr.minLength]="schema.minLength || null"
+    [attr.disabled]="disabled"
+    [mask]="getMask()"
+    [attr.aria-required]="isRequired()"
+    autocomplete="off"
+    [attr.id]="schema.key + '_' + inputId"
+    [ngClass]="{ empty: control.value === '' && !isRequired() }"
+    (change)="isMatch()"
+    tabindex="0"
+    [attr.placeholder]="placeholder()"
+  />
+  <div *ngIf="schema.verify" style="margin-top: 1rem">
+    <label
+      class="tru-ui-label"
+      tabindex="0"
+      [for]="'confirm' + schema.key + '_' + inputId"
+      [ngClass]="['jf-label', schema.key, isRequired() ? 'required' : '']"
+      *ngIf="type() !== 'hidden'"
+    >
+      <span> {{ getLanguage()?.confirm }} {{ title() }}</span>
     </label>
-    <button type="button" *ngIf="this.schema.description" [attr.class]="'info'" [attr.title]="this.schema.description"
-        class="tru-ui-button">Info</button>
-    <input class="tru-ui-input-control" [attr.name]="schema.key" [attr.type]="type()" [formControl]="control" 
-        [attr.maxLength]="schema.maxLength || null" [attr.minLength]="schema.minLength || null"
-        [attr.disabled]="disabled" [mask]="getMask() " [attr.aria-required]="isRequired()" autocomplete="off"
-        [attr.id]="schema.key + '_' + inputId" [ngClass]="{'empty': control.value === '' && !isRequired()}" (change)="isMatch()"
-        tabindex="0" [attr.placeholder]="placeholder()" />
-    <div *ngIf="schema.verify" style="margin-top: 1rem">
-        <label class="tru-ui-label" tabindex="0" [for]="'confirm'+schema.key + '_' + inputId"
-            [ngClass]="['jf-label', schema.key, (isRequired() ? 'required' : '')]" *ngIf="type() !== 'hidden'">
-            <span> {{ getLanguage()?.confirm}} {{title()}}</span>  
-        </label>
-        <input class="tru-ui-input-control" [attr.type]="type()" [attr.aria-required]="isRequired()" autocomplete="off"
-            [attr.name]="schema.key+'verify'" [formControl]="confirmInput" tabindex="0" [attr.id]="'confirm'+schema.key + '_' + inputId"
-            [attr.maxLength]="schema.maxLength || null" [attr.minLength]="schema.minLength || null"
-            [attr.disabled]="disabled" [mask]="getMask() " (change)="isMatch()" />
-    </div>
-    <jf-tru-ui-error [control]="control" [language]="language || 'en'"></jf-tru-ui-error>
+    <input
+      class="tru-ui-input-control"
+      [attr.type]="type()"
+      [attr.aria-required]="isRequired()"
+      autocomplete="off"
+      [attr.name]="schema.key + 'verify'"
+      [formControl]="confirmInput"
+      tabindex="0"
+      [attr.id]="'confirm' + schema.key + '_' + inputId"
+      [attr.maxLength]="schema.maxLength || null"
+      [attr.minLength]="schema.minLength || null"
+      [attr.disabled]="disabled"
+      [mask]="getMask()"
+      (change)="isMatch()"
+    />
+  </div>
+  <jf-tru-ui-error
+    [control]="control"
+    [language]="language || 'en'"
+  ></jf-tru-ui-error>
 </div>

@@ -1,8 +1,8 @@
-import {Component } from '@angular/core';
-import {ButtonComponent} from './button.component';
+import { Component } from "@angular/core";
+import { ButtonComponent } from "./button.component";
 
 @Component({
-  selector: 'jf-button',
+  selector: "jf-button",
   template: `
     <button
       mat-raised-button
@@ -11,9 +11,10 @@ import {ButtonComponent} from './button.component';
       [type]="type"
       [ngClass]="class"
       [disabled]="disabled"
-      (click)="handleClick($event)">
-      {{label}}
+      (click)="handleClick($event)"
+    >
+      {{ label }}
     </button>
-  `
+  `,
 })
 export class ButtonMaterialComponent extends ButtonComponent {}

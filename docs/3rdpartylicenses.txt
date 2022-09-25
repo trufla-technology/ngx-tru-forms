@@ -582,6 +582,9 @@ OTHER DEALINGS IN THE SOFTWARE.
 ng2-pdf-viewer
 MIT
 
+ng2-tooltip-directive
+MIT
+
 ngx-bootstrap/chronos
 The MIT License (MIT)
 

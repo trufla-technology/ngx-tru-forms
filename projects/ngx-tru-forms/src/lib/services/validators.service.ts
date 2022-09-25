@@ -1,5 +1,5 @@
-import { Injectable } from '@angular/core';
-import { AbstractControl, ValidatorFn, Validators, FormControl } from '@angular/forms';
+import { Injectable } from "@angular/core";
+import { AbstractControl, ValidatorFn, Validators } from "@angular/forms";
 
 @Injectable()
 export class JsonFormValidatorsService {
@@ -11,8 +11,13 @@ export class JsonFormValidatorsService {
 
   public get(prop, schema, path, lan) {
     const dateValidator = function ageRangeValidator(control: AbstractControl) {
-      if ( (control.value !== '' && isNaN(new Date(control.value).getDate()))) {
-        return { customError: lan === 'en' ? 'Please enter a valid date' : 'Veuillez entrer une date valide' };
+      if (control.value !== "" && isNaN(new Date(control.value).getDate())) {
+        return {
+          customError:
+            lan === "en"
+              ? "Please enter a valid date"
+              : "Veuillez entrer une date valide",
+        };
       }
       return null;
     };
@@ -23,38 +28,61 @@ export class JsonFormValidatorsService {
       if (!control.value || RegExp(mailRegex).test(control.value)) {
         return null;
       }
-      return { customError: lan === 'en' ? 'Please enter a valid email address' : 'Veuillez saisir une adresse e-mail valide' };
+      return {
+        customError:
+          lan === "en"
+            ? "Please enter a valid email address"
+            : "Veuillez saisir une adresse e-mail valide",
+      };
     };
 
-    const phoneNumberValidator = function(control: AbstractControl) {
-      const phoneNumberRegex = RegExp('^[+]*([(]+[0-9]{2,4}[)]+)?[-0-9]{8,}$');
+    const phoneNumberValidator = function (control: AbstractControl) {
+      const phoneNumberRegex = RegExp("^[+]*([(]+[0-9]{2,4}[)]+)?[-0-9]{8,}$");
       if (!control.value || phoneNumberRegex.test(control.value)) {
         return null;
       }
       // eslint-disable-next-line max-len
-      return { customError: lan === 'en' ? 'Please enter a valid phone or mobile number' : 'Veuillez entrer un numéro de téléphone ou mobile valide' };
+      return {
+        customError:
+          lan === "en"
+            ? "Please enter a valid phone or mobile number"
+            : "Veuillez entrer un numéro de téléphone ou mobile valide",
+      };
     };
 
     const required = schema.required || [];
     const field = schema.properties[prop];
-    const varPath = [].concat(path, prop).join('.');
+    const varPath = [].concat(path, prop).join(".");
 
-    if (schema.properties[prop].type === 'boolean' && required.indexOf(prop) > -1) {
+    if (
+      schema.properties[prop].type === "boolean" &&
+      required.indexOf(prop) > -1
+    ) {
       return Validators.requiredTrue;
     }
 
-    return Validators.compose(this.validators.concat([
-      (this.has(varPath) ? this.validators[varPath] : null),
-      (required.indexOf(prop) > -1 ? Validators.required : null),
-      (field.hasOwnProperty('minLength') ? Validators.minLength(field.minLength) : null),
-      (field.hasOwnProperty('maxLength') ? Validators.maxLength(field.maxLength) : null),
-      (field.hasOwnProperty('format') && field.format === 'email' ? emailValidator : null),
-      (field.hasOwnProperty('minimum') ? Validators.min(field.minimum) : null),
-      (field.hasOwnProperty('maximum') ? Validators.max(field.maximum) : null),
-      (field.format && field.format === 'date' ? dateValidator : null),
-      (field.hasOwnProperty('format') && field.format === 'tel' ? phoneNumberValidator : null),
-      (field.pattern ? Validators.pattern(field.pattern) : null)
-    ]));
+    return Validators.compose(
+      this.validators.concat([
+        this.has(varPath) ? this.validators[varPath] : null,
+        required.indexOf(prop) > -1 ? Validators.required : null,
+        field.hasOwnProperty("minLength")
+          ? Validators.minLength(field.minLength)
+          : null,
+        field.hasOwnProperty("maxLength")
+          ? Validators.maxLength(field.maxLength)
+          : null,
+        field.hasOwnProperty("format") && field.format === "email"
+          ? emailValidator
+          : null,
+        field.hasOwnProperty("minimum") ? Validators.min(field.minimum) : null,
+        field.hasOwnProperty("maximum") ? Validators.max(field.maximum) : null,
+        field.format && field.format === "date" ? dateValidator : null,
+        field.hasOwnProperty("format") && field.format === "tel"
+          ? phoneNumberValidator
+          : null,
+        field.pattern ? Validators.pattern(field.pattern) : null,
+      ])
+    );
   }
 
   public register(field: any, validator: ValidatorFn) {

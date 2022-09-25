@@ -1,41 +1,51 @@
-<div *ngIf="control.invalid && (control.dirty || control.touched)" class="invalid-feedback tru-ui-feedback" tabindex="0">
-    <ng-container *ngIf="control.errors && control.errors['required']">
-      {{getLanguage()?.required}}
-    </ng-container>
-    <ng-container *ngIf="control.errors && control.errors['pattern']">
-      {{getLanguage()?.invalid}}
-    </ng-container>
-    <ng-container *ngIf="control.errors && control.errors['isMatch']">
-      {{getLanguage()?.is_match}}
-    </ng-container>
-    <ng-container *ngIf="control.errors && control.errors['email']">
-      {{getLanguage()?.email_invalid}}
-    </ng-container>
-    <ng-container *ngIf="control.errors && control.errors['minlength']">
-      {{getLanguage()?.minimum_invalid}} {{control.errors['minlength']['requiredLength']}} {{getLanguage()?.characters}}
-    </ng-container>
-    <ng-container *ngIf="control.errors && control.errors['maxlength']">
-      {{getLanguage()?.maximum_invalid}} {{control.errors['maxlength']['requiredLength']}}  {{getLanguage()?.characters}}
-    </ng-container>
-    <ng-container *ngIf="control.errors && control.errors['min']">
-      {{getLanguage()?.greater_than}} {{control.errors['min']['min']}}
-    </ng-container>
-    <ng-container *ngIf="control.errors && control.errors['max']">
-      {{getLanguage()?.less_than}}  {{control.errors['max']['max']}}
-    </ng-container>
-    <ng-container *ngIf="control.errors && control.errors['notInMenu']">
-      {{getLanguage()?.not_in_menu}}
-    </ng-container>
-    <ng-container *ngIf="control.errors && control.errors['customError']">
-      {{getLanguage()?.invalid}}
-      {{control.errors['customError']}} 
-    </ng-container>
-    <ng-container *ngIf="control.errors && control.errors['maxSize']">
-      {{getLanguage()?.invalid}}
-      {{getLanguage()?.max_size }}, maximum {{control.schema.maxSize}} MB
-    </ng-container>
-    <ng-container *ngIf="control.errors && control.errors['invalidFormat']">
-      {{getLanguage()?.invalid}},
-      {{getLanguage()?.allowed_format }}<span *ngFor="let format of control.schema.imageFormat"> {{ format }} </span>
-    </ng-container>
-  </div>
+<div
+  *ngIf="control.invalid && (control.dirty || control.touched)"
+  class="invalid-feedback tru-ui-feedback"
+  tabindex="0"
+>
+  <ng-container *ngIf="control.errors && control.errors['required']">
+    {{ getLanguage()?.required }}
+  </ng-container>
+  <ng-container *ngIf="control.errors && control.errors['pattern']">
+    {{ getLanguage()?.invalid }}
+  </ng-container>
+  <ng-container *ngIf="control.errors && control.errors['isMatch']">
+    {{ getLanguage()?.is_match }}
+  </ng-container>
+  <ng-container *ngIf="control.errors && control.errors['email']">
+    {{ getLanguage()?.email_invalid }}
+  </ng-container>
+  <ng-container *ngIf="control.errors && control.errors['minlength']">
+    {{ getLanguage()?.minimum_invalid }}
+    {{ control.errors["minlength"]["requiredLength"] }}
+    {{ getLanguage()?.characters }}
+  </ng-container>
+  <ng-container *ngIf="control.errors && control.errors['maxlength']">
+    {{ getLanguage()?.maximum_invalid }}
+    {{ control.errors["maxlength"]["requiredLength"] }}
+    {{ getLanguage()?.characters }}
+  </ng-container>
+  <ng-container *ngIf="control.errors && control.errors['min']">
+    {{ getLanguage()?.greater_than }} {{ control.errors["min"]["min"] }}
+  </ng-container>
+  <ng-container *ngIf="control.errors && control.errors['max']">
+    {{ getLanguage()?.less_than }} {{ control.errors["max"]["max"] }}
+  </ng-container>
+  <ng-container *ngIf="control.errors && control.errors['notInMenu']">
+    {{ getLanguage()?.not_in_menu }}
+  </ng-container>
+  <ng-container *ngIf="control.errors && control.errors['customError']">
+    {{ getLanguage()?.invalid }}
+    {{ control.errors["customError"] }}
+  </ng-container>
+  <ng-container *ngIf="control.errors && control.errors['maxSize']">
+    {{ getLanguage()?.invalid }}
+    {{ getLanguage()?.max_size }}, maximum {{ control.schema.maxSize }} MB
+  </ng-container>
+  <ng-container *ngIf="control.errors && control.errors['invalidFormat']">
+    {{ getLanguage()?.invalid }}, {{ getLanguage()?.allowed_format
+    }}<span *ngFor="let format of control.schema.imageFormat">
+      {{ format }}
+    </span>
+  </ng-container>
+</div>

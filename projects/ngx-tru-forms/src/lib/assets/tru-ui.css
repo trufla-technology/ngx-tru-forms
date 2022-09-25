@@ -128,7 +128,7 @@ textarea.tru-ui-input-control {
 
 .checkmark {
   position: absolute;
-  top: 3px;
+  top: 0;
   left: 0;
   height: 15px;
   width: 15px;

@@ -1,63 +1,105 @@
 <div [ngClass]="['array', control.schema.key]">
-    <div  class="array-title" tabindex="0">{{getLegend(control)}}</div>
+  <div class="array-title" tabindex="0" style="display: inline-flex">
+    {{ getLegend(control) }}
+    <div
+      role="tooltip"
+      *ngIf="this.control.schema.description"
+      [attr.class]="'info'"
+      class="tru-ui-button"
+      [innerHTML]="showMoreIcon"
+      [tooltip]="this.control.schema.description"
+      style="padding-left: 3px"
+    ></div>
+  </div>
 
-    <div *ngFor="let arrControl of getEnabledControls(control); let i = index;let last = last; let first = first">
-
-        <div style="display: flex;flex-direction: row;align-items: flex-end;">
-            <div class="control" jf-component-chooser [form]="arrControl" [language]="language"
-                style="display: flex;flex-direction: row;"></div>
-            <div class="remove">
-                <button class="btn-remove" *ngIf="control.controls.length > 1" type="button"
-                    (click)="removeControl(control, i)" aria-label="Remove" tabindex="0">
-                    <svg  width="10px" height="10px" viewBox="0 0 14 14"
-                        version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                            <g 
-                                transform="translate(-961.000000, -519.000000)" fill="#FFFFFF">
-                                <g  transform="translate(664.000000, 492.000000)">
-                                    <g>
-                                        <g>
-                                            <g transform="translate(288.000000, 18.000000)">
-                                                <g>
-                                                    <path
-                                                        d="M23.5172415,17.2672414 C23.5172415,17.6228449 23.2262932,17.9137932 22.8706897,17.9137932 L17.9137932,17.9137932 L17.9137932,22.8706897 C17.9137932,23.2262932 17.6228449,23.5172415 17.2672414,23.5172415 L14.25,23.5172415 C13.8943966,23.5172415 13.6034483,23.2262932 13.6034483,22.8706897 L13.6034483,17.9137932 L8.64655173,17.9137932 C8.29094828,17.9137932 8,17.6228449 8,17.2672414 L8,14.25 C8,13.8943966 8.29094828,13.6034483 8.64655173,13.6034483 L13.6034483,13.6034483 L13.6034483,8.64655173 C13.6034483,8.29094828 13.8943966,8 14.25,8 L17.2672414,8 C17.6228449,8 17.9137932,8.29094828 17.9137932,8.64655173 L17.9137932,13.6034483 L22.8706897,13.6034483 C23.2262932,13.6034483 23.5172415,13.8943966 23.5172415,14.25"
-                                                        transform="translate(15.758621, 15.758621) rotate(-315.000000) translate(-15.758621, -15.758621) ">
-                                                    </path>
-                                                </g>
-                                            </g>
-                                        </g>
-                                    </g>
-                                </g>
-                            </g>
+  <div
+    *ngFor="
+      let arrControl of getEnabledControls(control);
+      let i = index;
+      let last = last;
+      let first = first
+    "
+  >
+    <div style="display: flex; flex-direction: row; align-items: flex-end">
+      <div
+        class="control"
+        jf-component-chooser
+        [form]="arrControl"
+        [language]="language"
+        style="display: flex; flex-direction: row"
+      ></div>
+      <div class="remove">
+        <button
+          class="btn-remove"
+          *ngIf="control.controls.length > 1"
+          type="button"
+          (click)="removeControl(control, i)"
+          aria-label="Remove"
+          tabindex="0"
+        >
+          <svg
+            width="10px"
+            height="10px"
+            viewBox="0 0 14 14"
+            version="1.1"
+            xmlns="http://www.w3.org/2000/svg"
+            xmlns:xlink="http://www.w3.org/1999/xlink"
+          >
+            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+              <g transform="translate(-961.000000, -519.000000)" fill="#FFFFFF">
+                <g transform="translate(664.000000, 492.000000)">
+                  <g>
+                    <g>
+                      <g transform="translate(288.000000, 18.000000)">
+                        <g>
+                          <path
+                            d="M23.5172415,17.2672414 C23.5172415,17.6228449 23.2262932,17.9137932 22.8706897,17.9137932 L17.9137932,17.9137932 L17.9137932,22.8706897 C17.9137932,23.2262932 17.6228449,23.5172415 17.2672414,23.5172415 L14.25,23.5172415 C13.8943966,23.5172415 13.6034483,23.2262932 13.6034483,22.8706897 L13.6034483,17.9137932 L8.64655173,17.9137932 C8.29094828,17.9137932 8,17.6228449 8,17.2672414 L8,14.25 C8,13.8943966 8.29094828,13.6034483 8.64655173,13.6034483 L13.6034483,13.6034483 L13.6034483,8.64655173 C13.6034483,8.29094828 13.8943966,8 14.25,8 L17.2672414,8 C17.6228449,8 17.9137932,8.29094828 17.9137932,8.64655173 L17.9137932,13.6034483 L22.8706897,13.6034483 C23.2262932,13.6034483 23.5172415,13.8943966 23.5172415,14.25"
+                            transform="translate(15.758621, 15.758621) rotate(-315.000000) translate(-15.758621, -15.758621) "
+                          ></path>
                         </g>
-                    </svg>
-                    <span class="cdk-visually-hidden">Remove</span>
-                </button>
-                <button *ngIf="last && control?.schema?.maxItems !== i+1" type="button" (click)="addControl(control)" tabindex="0"
-                    class="btn-add">
-                    <svg width="10px" height="10px" viewBox="0 0 16 16" version="1.1"
-                        xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                    
-
-                        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                            <g  transform="translate(-960.000000, -580.000000)" fill="#FFFFFF">
-                                <g transform="translate(952.000000, 572.000000)">
-                                    <g>
-                                        <g>
-                                            <g>
-                                                <path
-                                                    d="M23.5172415,17.2672414 C23.5172415,17.6228449 23.2262932,17.9137932 22.8706897,17.9137932 L17.9137932,17.9137932 L17.9137932,22.8706897 C17.9137932,23.2262932 17.6228449,23.5172415 17.2672414,23.5172415 L14.25,23.5172415 C13.8943966,23.5172415 13.6034483,23.2262932 13.6034483,22.8706897 L13.6034483,17.9137932 L8.64655173,17.9137932 C8.29094828,17.9137932 8,17.6228449 8,17.2672414 L8,14.25 C8,13.8943966 8.29094828,13.6034483 8.64655173,13.6034483 L13.6034483,13.6034483 L13.6034483,8.64655173 C13.6034483,8.29094828 13.8943966,8 14.25,8 L17.2672414,8 C17.6228449,8 17.9137932,8.29094828 17.9137932,8.64655173 L17.9137932,13.6034483 L22.8706897,13.6034483 C23.2262932,13.6034483 23.5172415,13.8943966 23.5172415,14.25"
-                                                    ></path>
-                                            </g>
-                                        </g>
-                                    </g>
-                                </g>
-                            </g>
-                        </g>
-                    </svg>
-                    <span class="cdk-visually-hidden">Add</span>
-                </button>
-            </div>
-        </div>
+                      </g>
+                    </g>
+                  </g>
+                </g>
+              </g>
+            </g>
+          </svg>
+          <span class="cdk-visually-hidden">Remove</span>
+        </button>
+        <button
+          *ngIf="last && control?.schema?.maxItems !== i + 1"
+          type="button"
+          (click)="addControl(control)"
+          tabindex="0"
+          class="btn-add"
+        >
+          <svg
+            width="10px"
+            height="10px"
+            viewBox="0 0 16 16"
+            version="1.1"
+            xmlns="http://www.w3.org/2000/svg"
+            xmlns:xlink="http://www.w3.org/1999/xlink"
+          >
+            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+              <g transform="translate(-960.000000, -580.000000)" fill="#FFFFFF">
+                <g transform="translate(952.000000, 572.000000)">
+                  <g>
+                    <g>
+                      <g>
+                        <path
+                          d="M23.5172415,17.2672414 C23.5172415,17.6228449 23.2262932,17.9137932 22.8706897,17.9137932 L17.9137932,17.9137932 L17.9137932,22.8706897 C17.9137932,23.2262932 17.6228449,23.5172415 17.2672414,23.5172415 L14.25,23.5172415 C13.8943966,23.5172415 13.6034483,23.2262932 13.6034483,22.8706897 L13.6034483,17.9137932 L8.64655173,17.9137932 C8.29094828,17.9137932 8,17.6228449 8,17.2672414 L8,14.25 C8,13.8943966 8.29094828,13.6034483 8.64655173,13.6034483 L13.6034483,13.6034483 L13.6034483,8.64655173 C13.6034483,8.29094828 13.8943966,8 14.25,8 L17.2672414,8 C17.6228449,8 17.9137932,8.29094828 17.9137932,8.64655173 L17.9137932,13.6034483 L22.8706897,13.6034483 C23.2262932,13.6034483 23.5172415,13.8943966 23.5172415,14.25"
+                        ></path>
+                      </g>
+                    </g>
+                  </g>
+                </g>
+              </g>
+            </g>
+          </svg>
+          <span class="cdk-visually-hidden">Add</span>
+        </button>
+      </div>
     </div>
+  </div>
 </div>

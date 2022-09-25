@@ -1,12 +1,38 @@
 <div class="tru-ui-input-container">
-  <label class="tru-ui-label" [ngClass]="['jf-label', schema.key, (isRequired() ? 'required' : '')]"
-    *ngIf="type() !== 'hidden'" tabindex="0" [for]="schema.key + '_' + inputId">
-    <span [innerHTML]="title()"></span> 
+  <label
+    class="tru-ui-label"
+    [ngClass]="['jf-label', schema.key, isRequired() ? 'required' : '']"
+    *ngIf="type() !== 'hidden'"
+    tabindex="0"
+    [for]="schema.key + '_' + inputId"
+    style="display: inline-flex"
+  >
+    <span [innerHTML]="title()"></span>
+    <div
+      role="tooltip"
+      *ngIf="this.schema.description"
+      [attr.class]="'info'"
+      class="tru-ui-button"
+      [innerHTML]="showMoreIcon"
+      [tooltip]="this.schema.description"
+      style="padding-left: 3px"
+    ></div>
   </label>
-  <button type="button" *ngIf="this.schema.description" [attr.class]="'info'"
-    [attr.title]="this.schema.description">Info</button>
-  <input class="tru-ui-input-control tru-ui-number" [name]="schema.key" [attr.aria-required]="isRequired()"
-    [attr.type]="'number'" [attr.id]="schema.key + '_' + inputId" tabindex="0" [formControl]="control" [attr.disabled]="disabled" autocomplete="off"
-    [ngClass]="{'empty': control.value === '' && !isRequired()}" [attr.placeholder]="placeholder()" />
-  <jf-tru-ui-error [control]="control" [language]="language || 'en'"></jf-tru-ui-error>
+  <input
+    class="tru-ui-input-control tru-ui-number"
+    [name]="schema.key"
+    [attr.aria-required]="isRequired()"
+    [attr.type]="'number'"
+    [attr.id]="schema.key + '_' + inputId"
+    tabindex="0"
+    [formControl]="control"
+    [attr.disabled]="disabled"
+    autocomplete="off"
+    [ngClass]="{ empty: control.value === '' && !isRequired() }"
+    [attr.placeholder]="placeholder()"
+  />
+  <jf-tru-ui-error
+    [control]="control"
+    [language]="language || 'en'"
+  ></jf-tru-ui-error>
 </div>

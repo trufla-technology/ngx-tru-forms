@@ -1,16 +1,15 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { TruUiSelectComponent } from './tru-ui-select.component';
+import { TruUiSelectComponent } from "./tru-ui-select.component";
 
-describe('TruUiSelectComponent', () => {
+describe("TruUiSelectComponent", () => {
   let component: TruUiSelectComponent;
   let fixture: ComponentFixture<TruUiSelectComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ TruUiSelectComponent ]
-    })
-    .compileComponents();
+      declarations: [TruUiSelectComponent],
+    }).compileComponents();
   }));
 
   beforeEach(() => {
@@ -19,7 +18,7 @@ describe('TruUiSelectComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });

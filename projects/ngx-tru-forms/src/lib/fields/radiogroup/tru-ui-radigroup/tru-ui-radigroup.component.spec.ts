@@ -1,16 +1,15 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { TruUiRadigroupComponent } from './tru-ui-radigroup.component';
+import { TruUiRadigroupComponent } from "./tru-ui-radigroup.component";
 
-describe('TruUiRadigroupComponent', () => {
+describe("TruUiRadigroupComponent", () => {
   let component: TruUiRadigroupComponent;
   let fixture: ComponentFixture<TruUiRadigroupComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ TruUiRadigroupComponent ]
-    })
-    .compileComponents();
+      declarations: [TruUiRadigroupComponent],
+    }).compileComponents();
   }));
 
   beforeEach(() => {
@@ -19,7 +18,7 @@ describe('TruUiRadigroupComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });

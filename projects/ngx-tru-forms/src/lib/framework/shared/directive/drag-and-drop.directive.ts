@@ -1,7 +1,7 @@
-import { Directive, Output, EventEmitter, HostListener } from '@angular/core';
+import { Directive, Output, EventEmitter, HostListener } from "@angular/core";
 
 @Directive({
-  selector: '[jfDragAndDrop]'
+  selector: "[jfDragAndDrop]",
 })
 export class DragAndDropDirective {
   @Output() filesDropped = new EventEmitter();
@@ -9,24 +9,22 @@ export class DragAndDropDirective {
 
   constructor() {}
 
-  @HostListener('dragover', ['$event'])
+  @HostListener("dragover", ["$event"])
   onDragOver($event) {
     $event.preventDefault();
     this.filesHovered.emit(true);
   }
 
-  @HostListener('drageleave', ['$event'])
+  @HostListener("drageleave", ["$event"])
   onDragLeave($event) {
     $event.preventDefault();
     this.filesHovered.emit(false);
   }
 
-  @HostListener('drop', ['$event'])
+  @HostListener("drop", ["$event"])
   onDrop($event) {
     $event.preventDefault();
     this.filesDropped.emit($event.dataTransfer.files);
     this.filesHovered.emit(false);
-
   }
-
 }

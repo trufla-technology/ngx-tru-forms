@@ -14,5 +14,6 @@
   "angularCompilerOptions": {
     "fullTemplateTypeCheck": true,
     "enableIvy": true,
+    "compilationMode": "partial"
   }
 }

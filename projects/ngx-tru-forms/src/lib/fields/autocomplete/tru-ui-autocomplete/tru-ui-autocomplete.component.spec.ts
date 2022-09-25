@@ -1,16 +1,15 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { TruUiAutocompleteComponent } from './tru-ui-autocomplete.component';
+import { TruUiAutocompleteComponent } from "./tru-ui-autocomplete.component";
 
-describe('TruUiAutocompleteComponent', () => {
+describe("TruUiAutocompleteComponent", () => {
   let component: TruUiAutocompleteComponent;
   let fixture: ComponentFixture<TruUiAutocompleteComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ TruUiAutocompleteComponent ]
-    })
-    .compileComponents();
+      declarations: [TruUiAutocompleteComponent],
+    }).compileComponents();
   }));
 
   beforeEach(() => {
@@ -19,7 +18,7 @@ describe('TruUiAutocompleteComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });

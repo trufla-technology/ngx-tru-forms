@@ -1,7 +1,19 @@
 {
   "root": true,
   "ignorePatterns": [
-    "projects/**/*"
+    "*.spec.ts",
+    "e2e/*",
+    "tests/*"
+  ],
+  "plugins": [
+    "security"
+  ],
+  "extends": [
+    "plugin:security/recommended",
+    "eslint:recommended",
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:prettier/recommended"
   ],
   "overrides": [
     {
@@ -10,8 +22,7 @@
       ],
       "parserOptions": {
         "project": [
-          "tsconfig.json",
-          "e2e/tsconfig.json"
+          "tsconfig.json"
         ],
         "createDefaultProgram": true
       },
@@ -20,22 +31,37 @@
         "plugin:@angular-eslint/template/process-inline-templates"
       ],
       "rules": {
-        "@angular-eslint/component-selector": [
-          "error",
-          {
-            "prefix": "app",
-            "style": "kebab-case",
-            "type": "element"
-          }
-        ],
         "@angular-eslint/directive-selector": [
           "error",
           {
+            "type": "attribute",
             "prefix": "app",
-            "style": "camelCase",
-            "type": "attribute"
+            "style": "camelCase"
           }
-        ]
+        ],
+        "@angular-eslint/component-selector": [
+          "error",
+          {
+            "type": "element",
+            "prefix": "app",
+            "style": "kebab-case"
+          }
+        ],
+        "no-empty-function": "off",
+        "@typescript-eslint/no-empty-function": "off",
+        "@angular-eslint/no-empty-lifecycle-method": "off",
+        "@typescript-eslint/explicit-module-boundary-types": "off",
+        "@typescript-eslint/no-explicit-any": "off",
+        "no-prototype-builtins": "off",
+        "no-irregular-whitespace": "off",
+        "@typescript-eslint/no-var-requires": "off",
+        "@typescript-eslint/ban-types": "off",
+        "no-useless-escape": "off",
+        "no-self-assign":"off"
+
+
+
+
       }
     },
     {
@@ -45,7 +71,17 @@
       "extends": [
         "plugin:@angular-eslint/template/recommended"
       ],
-      "rules": {}
+      "rules": {
+        "@typescript-eslint/explicit-module-boundary-types": "off",
+        "no-prototype-builtins": "off",
+        "@typescript-eslint/no-explicit-any": "off",
+        "no-irregular-whitespace": "off",
+        "@typescript-eslint/no-var-requires": "off",
+        "@typescript-eslint/ban-types": "off",
+        "no-useless-escape": "off",
+        "no-self-assign":"off"
+
+      }
     }
   ]
 }

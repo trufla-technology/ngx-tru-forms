@@ -1,20 +1,64 @@
-<label tabindex="0" class="tru-ui-label"
-  [ngClass]="['margin-bottom--half', 'jf-label', schema.key, (isRequired() ? 'required' : '')]">
-  <span class="tru-ui-label" [innerHTML]="title()"></span> </label>
-<button type="button" *ngIf="this.schema.description" [attr.class]="'info'"
-  [attr.title]="this.schema.description">Info</button>
+<label
+  class="tru-ui-label"
+  [ngClass]="['jf-label', schema.key, isRequired() ? 'required' : '']"
+  *ngIf="type() !== 'hidden'"
+  tabindex="0"
+  [for]="schema.key + '_' + inputId"
+  style="display: inline-flex"
+>
+  <span [innerHTML]="title()"></span>
+  <div
+    role="tooltip"
+    *ngIf="this.schema.description"
+    [attr.class]="'info'"
+    class="tru-ui-button"
+    [innerHTML]="showMoreIcon"
+    [tooltip]="this.schema.description"
+    style="padding-left: 3px"
+  ></div>
+</label>
 <div [class]="getClass('radio-group')">
-  <div *ngFor="let child of this.control['controls']; let i = index"
-    [ngClass]="{'checkbox-container': true, 'checked': child.value === schema.enum[i]}">
+  <div
+    *ngFor="let child of this.control['controls']; let i = index"
+    [ngClass]="{
+      'checkbox-container': true,
+      checked: child.value === schema.enum[i]
+    }"
+  >
     <div [class]="getClass('checkbox-group')">
-      <label class="container" [attr.for]="getId(i, schema.enum[i])" tabindex="0">
-        <span class="tru-ui-label"> {{enumNames(i)}}</span>
-        <input type="checkbox" [attr.id]="getId(i, schema.enum[i])" [attr.disabled]="disabled"
-          [checked]="child.value === schema.enum[i]" [name]="schema.key" [attr.aria-required]="isRequired()"
-          [formControl]="child" (change)="setValue($event, i)" [value]="schema.enum[i]" />
+      <label
+        class="container"
+        [attr.for]="getId(i, schema.enum[i])"
+        tabindex="0"
+      >
+        <span class="tru-ui-label" [innerHTML]="enumNames(1)">
+          <span [innerHTML]="enumNames(1)"></span>
+          <div
+            role="tooltip"
+            *ngIf="this.schema.description"
+            [attr.class]="'info'"
+            [innerHTML]="showMoreIcon"
+            [tooltip]="this.schema.description"
+            style="padding-left: 3px"
+          ></div>
+        </span>
+        <input
+          type="checkbox"
+          [attr.id]="getId(i, schema.enum[i])"
+          [attr.disabled]="disabled"
+          [checked]="child.value === schema.enum[i]"
+          [name]="schema.key"
+          [attr.aria-required]="isRequired()"
+          [formControl]="child"
+          (change)="setValue($event, i)"
+          [value]="schema.enum[i]"
+        />
         <span class="checkmark"></span>
       </label>
     </div>
   </div>
 </div>
-<jf-tru-ui-error [control]="control" [language]="language || 'en'"></jf-tru-ui-error>
+<jf-tru-ui-error
+  [control]="control"
+  [language]="language || 'en'"
+></jf-tru-ui-error>

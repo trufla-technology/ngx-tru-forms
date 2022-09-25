@@ -1,12 +1,12 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { PhotoViewComponent } from './photo.view.component';
-import { ReactiveFormsModule, Validators } from '@angular/forms';
-import { ErrorComponent } from '../error/error.component';
-import { By } from '@angular/platform-browser';
-import { SchemaFormControl } from '../../models/schema-form-control';
+import { PhotoViewComponent } from "./photo.view.component";
+import { ReactiveFormsModule, Validators } from "@angular/forms";
+import { ErrorComponent } from "../error/error.component";
+import { By } from "@angular/platform-browser";
+import { SchemaFormControl } from "../../models/schema-form-control";
 
-describe('BooleanViewComponent', () => {
+describe("BooleanViewComponent", () => {
   let component: PhotoViewComponent;
   let fixture: ComponentFixture<PhotoViewComponent>;
   let label;
@@ -14,21 +14,15 @@ describe('BooleanViewComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [
-        ReactiveFormsModule
-      ],
-      declarations: [
-        PhotoViewComponent,
-        ErrorComponent
-      ]
-    })
-      .compileComponents();
+      imports: [ReactiveFormsModule],
+      declarations: [PhotoViewComponent, ErrorComponent],
+    }).compileComponents();
   }));
 
   beforeEach(() => {
     const control = new SchemaFormControl();
-    control.schema = { key: 'test', type: 'boolean' };
-    control.schema.key = 'test';
+    control.schema = { key: "test", type: "boolean" };
+    control.schema.key = "test";
     control.valueChanges.subscribe(() => {});
     control.isRequired = true;
     // eslint-disable-next-line
@@ -40,19 +34,19 @@ describe('BooleanViewComponent', () => {
     component.control = control;
 
     fixture.detectChanges();
-    label = fixture.debugElement.query(By.css('p'));
-    value = fixture.debugElement.query(By.css('img'));
+    label = fixture.debugElement.query(By.css("p"));
+    value = fixture.debugElement.query(By.css("img"));
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 
-  it('should have a label', () => {
+  it("should have a label", () => {
     expect(label.nativeElement.innerHTML.length).toBeGreaterThan(0);
   });
 
-  it('should have a value', () => {
+  it("should have a value", () => {
     expect(value.nativeElement.src.length).toBeGreaterThan(0);
   });
 });

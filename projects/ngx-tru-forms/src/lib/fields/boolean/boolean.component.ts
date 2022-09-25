@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { CommonComponent } from '../common/common.component';
+import { Component } from "@angular/core";
+import { CommonComponent } from "../common/common.component";
 
 @Component({
   template: `
@@ -12,12 +12,16 @@ import { CommonComponent } from '../common/common.component';
           [formControl]="control"
           [attr.disabled]="disabled"
         />
-        <label [attr.for]="schema.key" [attr.class]="schema.key" [ngClass]="{required: isRequired()}">
+        <label
+          [attr.for]="schema.key"
+          [attr.class]="schema.key"
+          [ngClass]="{ required: isRequired() }"
+        >
           <span [innerHTML]="title()"></span>
         </label>
       </div>
     </div>
     <jf-error [control]="control"></jf-error>
-  `
+  `,
 })
 export class BooleanComponent extends CommonComponent {}

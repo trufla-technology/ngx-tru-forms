@@ -1,23 +1,63 @@
 <div class="tru-ui-input-container">
-
-  <label class="tru-ui-label"
-    [ngClass]="['margin-bottom--half', 'jf-label', schema.key, (isRequired() ? 'required' : '')]" tabindex="0"
-    >
-    <span class="tru-ui-label" [innerHTML]="title()"></span> </label>
-  <button type="button" *ngIf="schema.description" [attr.class]="'info'" [attr.title]="schema.description">Info</button>
+  <label
+    class="tru-ui-label"
+    [ngClass]="['jf-label', schema.key, isRequired() ? 'required' : '']"
+    *ngIf="type() !== 'hidden'"
+    tabindex="0"
+    [for]="schema.key + '_' + inputId"
+    style="display: inline-flex"
+  >
+    <span [innerHTML]="title()"></span>
+    <div
+      role="tooltip"
+      *ngIf="this.schema.description"
+      [attr.class]="'info'"
+      class="tru-ui-button"
+      [innerHTML]="showMoreIcon"
+      [tooltip]="this.schema.description"
+      style="padding-left: 3px"
+    ></div>
+  </label>
   <div [class]="getClass('radio-group')">
-    <div *ngFor="let en of this.schema.enum; let i = index"
-      [ngClass]="{'radio-container': true, 'checked': control.value === en}">
+    <div
+      *ngFor="let en of this.schema.enum; let i = index"
+      [ngClass]="{ 'radio-container': true, checked: control.value === en }"
+    >
       <div [class]="getClass('checkbox-group')">
-        <label class="container-radio-button" [attr.for]="getId(schema.key, en, schema.id)" tabindex="0" (click)="control.setValue(en)">
-          <span class="tru-ui-label"> {{enumNames(i)}}</span>
-          <input type="radio" [attr.id]="getId(schema.key, en, schema.id)" [checked]="control.value === en"
-            [name]="enumNames(i)" [attr.aria-required]="isRequired()" [formControl]="control" [attr.disabled]="disabled"
-            [value]="en" />
+        <label
+          class="container-radio-button"
+          [attr.for]="getId(schema.key, en, schema.id)"
+          tabindex="0"
+          (click)="control.setValue(en)"
+        >
+          <span class="tru-ui-label" [innerHTML]="enumNames(1)">
+            <span [innerHTML]="enumNames(1)"></span>
+            <div
+              role="tooltip"
+              *ngIf="this.schema.description"
+              [attr.class]="'info'"
+              [innerHTML]="showMoreIcon"
+              [tooltip]="this.schema.description"
+              style="padding-left: 3px"
+            ></div>
+          </span>
+          <input
+            type="radio"
+            [attr.id]="getId(schema.key, en, schema.id)"
+            [checked]="control.value === en"
+            [name]="enumNames(i)"
+            [attr.aria-required]="isRequired()"
+            [formControl]="control"
+            [attr.disabled]="disabled"
+            [value]="en"
+          />
           <span class="checkmark"></span>
         </label>
       </div>
     </div>
   </div>
-  <jf-tru-ui-error [control]="control" [language]="language || 'en'"></jf-tru-ui-error>
+  <jf-tru-ui-error
+    [control]="control"
+    [language]="language || 'en'"
+  ></jf-tru-ui-error>
 </div>

@@ -1,16 +1,15 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { TruUiBooleanComponent } from './tru-ui-boolean.component';
+import { TruUiBooleanComponent } from "./tru-ui-boolean.component";
 
-describe('TruUiBooleanComponent', () => {
+describe("TruUiBooleanComponent", () => {
   let component: TruUiBooleanComponent;
   let fixture: ComponentFixture<TruUiBooleanComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ TruUiBooleanComponent ]
-    })
-    .compileComponents();
+      declarations: [TruUiBooleanComponent],
+    }).compileComponents();
   }));
 
   beforeEach(() => {
@@ -19,7 +18,7 @@ describe('TruUiBooleanComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });

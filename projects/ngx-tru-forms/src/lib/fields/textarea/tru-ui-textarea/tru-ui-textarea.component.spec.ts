@@ -1,16 +1,15 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { TruUiTextareaComponent } from './tru-ui-textarea.component';
+import { TruUiTextareaComponent } from "./tru-ui-textarea.component";
 
-describe('TruUiTextareaComponent', () => {
+describe("TruUiTextareaComponent", () => {
   let component: TruUiTextareaComponent;
   let fixture: ComponentFixture<TruUiTextareaComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ TruUiTextareaComponent ]
-    })
-    .compileComponents();
+      declarations: [TruUiTextareaComponent],
+    }).compileComponents();
   }));
 
   beforeEach(() => {
@@ -19,7 +18,7 @@ describe('TruUiTextareaComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });

@@ -1,8 +1,8 @@
-import {Component, Input} from '@angular/core';
-import { CommonComponent } from '../common/common.component';
+import { Component, Input } from "@angular/core";
+import { CommonComponent } from "../common/common.component";
 
 @Component({
-  selector: 'jf-error, [jf-error]',
+  selector: "jf-error, [jf-error]",
   template: `
     <ng-container *ngIf="control.invalid && (control.dirty || control.touched)">
       <ng-container *ngIf="control.errors && control.errors['required']">
@@ -15,31 +15,40 @@ import { CommonComponent } from '../common/common.component';
         Email is invalid
       </ng-container>
       <ng-container *ngIf="control.errors && control.errors['minlength']">
-        Input has to be a minimum of {{control.errors['minlength']['requiredLength']}} characters
+        Input has to be a minimum of
+        {{ control.errors["minlength"]["requiredLength"] }} characters
       </ng-container>
       <ng-container *ngIf="control.errors && control.errors['maxlength']">
-        Input can contain a maximum of {{control.errors['maxlength']['requiredLength']}} characters
+        Input can contain a maximum of
+        {{ control.errors["maxlength"]["requiredLength"] }} characters
       </ng-container>
       <ng-container *ngIf="control.errors && control.errors['min']">
-        Enter a value greater than or equal to {{control.errors['min']['min']}}
+        Enter a value greater than or equal to
+        {{ control.errors["min"]["min"] }}
       </ng-container>
       <ng-container *ngIf="control.errors && control.errors['max']">
-        Enter a value less than or equal to {{control.errors['max']['max']}}
+        Enter a value less than or equal to {{ control.errors["max"]["max"] }}
       </ng-container>
       <ng-container *ngIf="control.errors && control.errors['customError']">
-        {{control.errors['customError']}}
+        {{ control.errors["customError"] }}
       </ng-container>
-      <ng-container *ngIf="control.errors && control.errors['matDatepickerMin']">
-        Date should be greater than or equal {{ control.errors['matDatepickerMin'].min.format('DD MMM, YYYY') }}
+      <ng-container
+        *ngIf="control.errors && control.errors['matDatepickerMin']"
+      >
+        Date should be greater than or equal
+        {{ control.errors["matDatepickerMin"].min.format("DD MMM, YYYY") }}
       </ng-container>
-      <ng-container *ngIf="control.errors && control.errors['matDatepickerMax']">
-        Date should be less than or equal {{ control.errors['matDatepickerMax'].max.format('DD MMM, YYYY') }}
+      <ng-container
+        *ngIf="control.errors && control.errors['matDatepickerMax']"
+      >
+        Date should be less than or equal
+        {{ control.errors["matDatepickerMax"].max.format("DD MMM, YYYY") }}
       </ng-container>
       <ng-container *ngIf="control.errors && control.errors['isMatch']">
-      {{getLanguage()?.is_match}}
+        {{ getLanguage()?.is_match }}
+      </ng-container>
     </ng-container>
-    </ng-container>
-  `
+  `,
 })
 export class ErrorMaterialComponent extends CommonComponent {
   @Input() control;

@@ -1,9 +1,9 @@
-import { Component } from '@angular/core';
-import { CommonComponent } from '../common/common.component';
+import { Component } from "@angular/core";
+import { CommonComponent } from "../common/common.component";
 
 @Component({
   template: `
-    <label [ngClass]="['jf-label', schema.key, (isRequired() ? 'required' : '')]">
+    <label [ngClass]="['jf-label', schema.key, isRequired() ? 'required' : '']">
       <span [innerHTML]="title()"></span>
     </label>
     <input
@@ -11,11 +11,14 @@ import { CommonComponent } from '../common/common.component';
       [name]="schema.key"
       [formControl]="control"
       [placeholder]="placeholder()"
-      [bsConfig]="{ containerClass: 'theme-default', dateInputFormat: 'MM/DD/YYYY' }"
+      [bsConfig]="{
+        containerClass: 'theme-default',
+        dateInputFormat: 'MM/DD/YYYY'
+      }"
       bsDatepicker
       [attr.disabled]="disabled"
     />
     <jf-error [control]="control"></jf-error>
-  `
+  `,
 })
 export class DateComponent extends CommonComponent {}

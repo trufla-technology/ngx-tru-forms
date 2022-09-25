@@ -33,7 +33,7 @@
               "./node_modules/ngx-bootstrap/datepicker/bs-datepicker.css",
               "./node_modules/bootstrap/dist/css/bootstrap.min.css"
             ],
-            "scripts": [],
+            "scripts": ["./node_modules/pdfjs-dist/es5/build/pdf.js"],
             "allowedCommonJsDependencies": [
               "moment-business",
               "ng2-pdf-viewer",
@@ -101,7 +101,7 @@
             "styles": [
               "src/styles.css"
             ],
-            "scripts": [],
+            "scripts": [ "./node_modules/pdfjs-dist/es5/build/pdf.js" ],
             "assets": [
               "src/favicon.ico",
               "src/assets"

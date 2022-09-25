@@ -1,16 +1,15 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { TruUiButtonComponent } from './tru-ui-button.component';
+import { TruUiButtonComponent } from "./tru-ui-button.component";
 
-describe('TruUiButtonComponent', () => {
+describe("TruUiButtonComponent", () => {
   let component: TruUiButtonComponent;
   let fixture: ComponentFixture<TruUiButtonComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ TruUiButtonComponent ]
-    })
-    .compileComponents();
+      declarations: [TruUiButtonComponent],
+    }).compileComponents();
   }));
 
   beforeEach(() => {
@@ -19,7 +18,7 @@ describe('TruUiButtonComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });

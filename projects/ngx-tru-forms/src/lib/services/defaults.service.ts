@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable } from "@angular/core";
 
 @Injectable()
 export class JsonFormDefaultsService {
@@ -9,7 +9,8 @@ export class JsonFormDefaultsService {
   }
 
   public get(prop, schema, data) {
-    const defaultString = (prop.hasOwnProperty('format') && prop.format === 'multiselect') ? [] : '';
+    const defaultString =
+      prop.hasOwnProperty("format") && prop.format === "multiselect" ? [] : "";
     let defaultValue = schema.properties[prop].default || defaultString;
     if (this.has(schema.properties[prop].default)) {
       defaultValue = this.eval(schema.properties[prop].default)();
@@ -20,7 +21,11 @@ export class JsonFormDefaultsService {
       defaultValue = data[prop];
     }
 
-    if (prop.hasOwnProperty('format') && prop.format === 'date' && defaultValue.length > 0) {
+    if (
+      prop.hasOwnProperty("format") &&
+      prop.format === "date" &&
+      defaultValue.length > 0
+    ) {
       defaultValue = new Date(defaultValue);
     }
 

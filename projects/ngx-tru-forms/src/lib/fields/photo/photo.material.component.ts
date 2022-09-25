@@ -1,9 +1,9 @@
-import {Component, OnInit} from '@angular/core';
-import { CommonComponent } from '../common/common.component';
+import { Component, OnInit } from "@angular/core";
+import { CommonComponent } from "../common/common.component";
 
 @Component({
   template: `
-    <label [attr.class]="schema.key" [ngClass]="{required: isRequired()}">
+    <label [attr.class]="schema.key" [ngClass]="{ required: isRequired() }">
       <span [innerHTML]="title(true)"></span>
     </label>
     <div *ngIf="previewSrcExists(); else addImage" class="photo-preview">
@@ -19,12 +19,7 @@ import { CommonComponent } from '../common/common.component';
       >
         <mat-icon>add_a_photo</mat-icon>
       </a>
-      <a
-        class="photo-remove"
-        mat-mini-fab
-        color="warn"
-        (click)="clearPhoto()"
-      >
+      <a class="photo-remove" mat-mini-fab color="warn" (click)="clearPhoto()">
         <mat-icon>close</mat-icon>
       </a>
     </div>
@@ -33,20 +28,35 @@ import { CommonComponent } from '../common/common.component';
         class="photo-add"
         mat-button
         color="primary"
-        (click)="$event.preventDefault(); fileInput.click(fileInput.value = null);  "
+        (click)="
+          $event.preventDefault(); fileInput.click((fileInput.value = null))
+        "
       >
         <mat-icon>add_a_photo</mat-icon>
       </a>
     </ng-template>
-    <input #fileInput type="file" accept="image/*" [name]="schema.key" (change)="onChange($event)" style="display:none;"/>
-    <input type="hidden" [name]="schema.key" [formControl]="control"/>
-    <div class="mat-form-field-subscript-wrapper" *ngIf="error" style="position: relative;">
-      <mat-error class="mat-error">Please upload a valid photo format (JPG, PNG)</mat-error>
+    <input
+      #fileInput
+      type="file"
+      accept="image/*"
+      [name]="schema.key"
+      (change)="onChange($event)"
+      style="display:none;"
+    />
+    <input type="hidden" [name]="schema.key" [formControl]="control" />
+    <div
+      class="mat-form-field-subscript-wrapper"
+      *ngIf="error"
+      style="position: relative;"
+    >
+      <mat-error class="mat-error"
+        >Please upload a valid photo format (JPG, PNG)</mat-error
+      >
     </div>
     <div>
       <jf-error [control]="control"></jf-error>
     </div>
-  `
+  `,
 })
 export class PhotoMaterialComponent extends CommonComponent implements OnInit {
   photoData: string;
@@ -78,13 +88,13 @@ export class PhotoMaterialComponent extends CommonComponent implements OnInit {
       this.error = true;
     };
 
-    if (typeof(file) !== 'undefined') {
+    if (typeof file !== "undefined") {
       reader.readAsDataURL(file);
     }
   }
 
   previewSrcExists() {
-    return typeof (this.photoData) === 'string';
+    return typeof this.photoData === "string";
   }
 
   clearPhoto() {
@@ -103,7 +113,7 @@ export class PhotoMaterialComponent extends CommonComponent implements OnInit {
       image.onload = () => {
         const width = image.width;
         const height = image.height;
-        const shouldResize = (width > maxWidth) || (height > maxHeight);
+        const shouldResize = width > maxWidth || height > maxHeight;
 
         if (!shouldResize) {
           resolve(dataURL);
@@ -120,10 +130,10 @@ export class PhotoMaterialComponent extends CommonComponent implements OnInit {
           newHeight = maxHeight;
         }
 
-        const canvas = document.createElement('canvas');
+        const canvas = document.createElement("canvas");
         canvas.width = newWidth;
         canvas.height = newHeight;
-        const context = canvas.getContext('2d');
+        const context = canvas.getContext("2d");
         context.drawImage(image, 0, 0, newWidth, newHeight);
 
         resolve(canvas.toDataURL(fileType));
@@ -133,4 +143,3 @@ export class PhotoMaterialComponent extends CommonComponent implements OnInit {
     });
   }
 }
-

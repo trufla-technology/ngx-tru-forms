@@ -1,16 +1,15 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { TruUiCheckboxgroupComponent } from './tru-ui-checkboxgroup.component';
+import { TruUiCheckboxgroupComponent } from "./tru-ui-checkboxgroup.component";
 
-describe('TruUiCheckboxgroupComponent', () => {
+describe("TruUiCheckboxgroupComponent", () => {
   let component: TruUiCheckboxgroupComponent;
   let fixture: ComponentFixture<TruUiCheckboxgroupComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ TruUiCheckboxgroupComponent ]
-    })
-    .compileComponents();
+      declarations: [TruUiCheckboxgroupComponent],
+    }).compileComponents();
   }));
 
   beforeEach(() => {
@@ -19,7 +18,7 @@ describe('TruUiCheckboxgroupComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });

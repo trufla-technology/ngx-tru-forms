@@ -1,16 +1,15 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { TruUiMultiselectComponent } from './tru-ui-multiselect.component';
+import { TruUiMultiselectComponent } from "./tru-ui-multiselect.component";
 
-describe('TruUiMultiselectComponent', () => {
+describe("TruUiMultiselectComponent", () => {
   let component: TruUiMultiselectComponent;
   let fixture: ComponentFixture<TruUiMultiselectComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ TruUiMultiselectComponent ]
-    })
-    .compileComponents();
+      declarations: [TruUiMultiselectComponent],
+    }).compileComponents();
   }));
 
   beforeEach(() => {
@@ -19,7 +18,7 @@ describe('TruUiMultiselectComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });

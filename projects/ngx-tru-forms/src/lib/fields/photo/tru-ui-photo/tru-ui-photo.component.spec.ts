@@ -1,16 +1,15 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { TruUiPhotoComponent } from './tru-ui-photo.component';
+import { TruUiPhotoComponent } from "./tru-ui-photo.component";
 
-describe('TruUiPhotoComponent', () => {
+describe("TruUiPhotoComponent", () => {
   let component: TruUiPhotoComponent;
   let fixture: ComponentFixture<TruUiPhotoComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ TruUiPhotoComponent ]
-    })
-    .compileComponents();
+      declarations: [TruUiPhotoComponent],
+    }).compileComponents();
   }));
 
   beforeEach(() => {
@@ -19,7 +18,7 @@ describe('TruUiPhotoComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });

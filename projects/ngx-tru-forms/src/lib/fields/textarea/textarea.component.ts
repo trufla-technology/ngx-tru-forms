@@ -1,13 +1,19 @@
-import { Component } from '@angular/core';
-import { CommonComponent } from '../common/common.component';
+import { Component } from "@angular/core";
+import { CommonComponent } from "../common/common.component";
 
 @Component({
   template: `
-    <label
-      [ngClass]="['jf-label', schema.key, (isRequired() ? 'required' : '')]">
-      <span [innerHTML]="title()"></span>  
+    <label [ngClass]="['jf-label', schema.key, isRequired() ? 'required' : '']">
+      <span [innerHTML]="title()"></span>
     </label>
-    <button type="button" *ngIf="this.schema.description" [attr.class]="'info'" [attr.title]="this.schema.description">Info</button>
+    <button
+      type="button"
+      *ngIf="this.schema.description"
+      [attr.class]="'info'"
+      [attr.title]="this.schema.description"
+    >
+      Info
+    </button>
     <textarea
       class="form-control"
       [name]="schema.key"
@@ -18,17 +24,16 @@ import { CommonComponent } from '../common/common.component';
       [attr.disabled]="disabled"
     ></textarea>
     <jf-error [control]="control"></jf-error>
-  `
+  `,
 })
 export class TextareaComponent extends CommonComponent {
   randomSuffix = Math.random().toString(36).substring(7);
 
   getId(i, val) {
-    return `${i}-${val.toString().replace(/[\W_]+/g, '')}+${this.randomSuffix}`;
+    return `${i}-${val.toString().replace(/[\W_]+/g, "")}+${this.randomSuffix}`;
   }
 
   getName(key) {
     return `${key}-${this.randomSuffix}`;
   }
 }
-

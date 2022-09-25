@@ -1,17 +1,18 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import { Component, EventEmitter, Input, Output } from "@angular/core";
 
 @Component({
-  selector: 'jf-button',
+  selector: "jf-button",
   template: `
     <button
       *ngIf="isVisible"
       [type]="type"
       [ngClass]="class"
       [disabled]="disabled"
-      (click)="handleClick($event)">
-      {{label}}
+      (click)="handleClick($event)"
+    >
+      {{ label }}
     </button>
-  `
+  `,
 })
 export class ButtonComponent {
   @Input() isVisible;
@@ -21,7 +22,7 @@ export class ButtonComponent {
   @Input() disabled;
   @Input() submit;
   @Input() label;
-  @Input() color = '';
+  @Input() color = "";
   @Output() handleButtonClick = new EventEmitter();
 
   handleClick(event) {
