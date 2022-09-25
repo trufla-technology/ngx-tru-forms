@@ -1,4 +1,5 @@
-import { Component } from "@angular/core";
+import { Component, ViewChild } from "@angular/core";
+import { type ChooserComponent } from "../chooser/chooser.component";
 import { ArrayComponent } from "./array.component";
 
 @Component({
@@ -12,14 +13,19 @@ import { ArrayComponent } from "./array.component";
       >
         <div class="row">
           <div class="control">
-            <jf-component-chooser
-              [form]="arrControl"
-              [language]="language"
-            ></jf-component-chooser>
+            <ng-container
+              *ngTemplateOutlet="
+                componentChooser;
+                context: { form: arrControl, language: language }
+              "
+            >
+            </ng-container>
           </div>
         </div>
       </div>
     </div>
   `,
 })
-export class ArrayViewComponent extends ArrayComponent {}
+export class ArrayViewComponent extends ArrayComponent {
+  @ViewChild("componentChooser") componentChooser: ChooserComponent;
+}

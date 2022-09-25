@@ -1,9 +1,16 @@
-import { Component, Input } from "@angular/core";
+import {
+  Component,
+  Input,
+  AfterViewInit,
+  ChangeDetectorRef,
+} from "@angular/core";
 import { SchemaFormControl } from "../../../../models/schema-form-control";
 import { AbstractControl, UntypedFormArray } from "@angular/forms";
 import { SchemaFormArray } from "../../../../models/schema-form-array";
 import { SchemaFormGroup } from "../../../../models/schema-form-group";
 import { startCase } from "lodash";
+import { ViewChild } from "@angular/core";
+import { type ChooserComponent } from "../chooser/chooser.component";
 
 @Component({
   template: `
@@ -20,10 +27,21 @@ import { startCase } from "lodash";
       >
         <div class="row">
           <div class="control">
-            <jf-component-chooser
+            <!-- <jf-component-chooser
               [form]="arrControl"
               [language]="language"
-            ></jf-component-chooser>
+            ></jf-component-chooser> -->
+            <!-- <ng-container #arrControl> </ng-container>
+            <ng-template #componentChooser> ></ng-template> -->
+            <!-- <ng-template #componentChooser > </ng-template> -->
+
+            <ng-container
+              *ngTemplateOutlet="
+                componentChooser;
+                context: { form: arrControl, language: language }
+              "
+            >
+            </ng-container>
           </div>
           <div class="remove" *ngIf="control.controls.length > 1">
             <input
@@ -48,13 +66,19 @@ import { startCase } from "lodash";
     </div>
   `,
 })
-export class ArrayComponent {
+export class ArrayComponent implements AfterViewInit {
   @Input() control: SchemaFormArray;
   @Input() language;
-
+  @ViewChild("componentChooser") componentChooser: ChooserComponent;
+  constructor(private changeDetectorRef: ChangeDetectorRef) {
+    this.componentChooser.language = this.language;
+  }
+  ngAfterViewInit() {
+    this.componentChooser.language = this.language;
+    this.changeDetectorRef.detectChanges();
+  }
   getLegend(control) {
-    // return (control && control.schema && control.schema.key) ? startCase(control.schema.key) : '';
-    // eslint-disable-next-line max-len
+    this.changeDetectorRef.detectChanges();
     return typeof control.schema.title === "undefined"
       ? control.schema.key
       : this.getTranslation(control.schema.title)
@@ -63,6 +87,7 @@ export class ArrayComponent {
   }
 
   getTranslation(titleArray) {
+    this.changeDetectorRef.detectChanges();
     if (Array.isArray(titleArray)) {
       const translatedTitle = titleArray.filter(
         (val) => val.language === this.language

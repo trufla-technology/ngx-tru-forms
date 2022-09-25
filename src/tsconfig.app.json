@@ -13,7 +13,6 @@
   ],
   "angularCompilerOptions": {
     "fullTemplateTypeCheck": true,
-    "enableIvy": true,
-    "compilationMode": "partial"
+    "enableIvy": false,
   }
 }
