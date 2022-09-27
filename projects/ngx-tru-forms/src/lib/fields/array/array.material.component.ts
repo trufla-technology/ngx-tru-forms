@@ -9,7 +9,11 @@ import { ArrayComponent } from "../../framework/shared/components/array/array.co
           *ngFor="let arrControl of getEnabledControls(control); let i = index"
         >
           <div class="row">
-            <jf-component-chooser [form]="arrControl"> </jf-component-chooser>
+            <jf-component-chooser
+              [form]="arrControl"
+              [tooltipEnabled]="tooltipEnabled"
+            >
+            </jf-component-chooser>
             <button
               mat-button
               *ngIf="control.controls.length > 1"

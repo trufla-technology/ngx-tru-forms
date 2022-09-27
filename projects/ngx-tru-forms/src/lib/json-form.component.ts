@@ -46,6 +46,8 @@ export class JsonFormComponent implements DoCheck, OnDestroy {
   @Output() handleChange = new EventEmitter();
   @Output() handleCancel = new EventEmitter();
   @Input() language: string;
+  @Input() tooltipEnabled: boolean;
+  Enabled: boolean;
   @ViewChild("userForm") userForm: NgForm;
   @ViewChild("header") header: ElementRef;
   @ViewChild("footer") footer: ElementRef;

@@ -1,33 +1,28 @@
 import {
   Component,
   Input,
-  ViewChild,
   AfterViewInit,
   ChangeDetectorRef,
 } from "@angular/core";
-import { type ChooserComponent } from "../chooser/chooser.component";
+
 @Component({
   template: ` <div [ngClass]="['object', control.schema.key]">
-    <ng-template #componentChooser> ></ng-template>
+    <div
+      jf-component-chooser
+      [form]="control"
+      [language]="language"
+      [schema]="control?.schema"
+      [tooltipEnabled]="tooltipEnabled"
+      [nested]="true"
+    ></div>
   </div>`,
   styleUrls: ["../../../../assets/tru-ui.css"],
 })
 export class ObjectComponent implements AfterViewInit {
-  @ViewChild("componentChooser") componentChooser: ChooserComponent;
   @Input() control: any;
   @Input() language;
-  constructor(private changeDetectorRef: ChangeDetectorRef) {
-    this.componentChooser.schema = this.control.schema;
-    this.componentChooser.nested = true;
-    this.componentChooser.form = this.control;
-    this.componentChooser.language = this.language;
-  }
+  @Input() tooltipEnabled: boolean;
+  constructor() {}
 
-  ngAfterViewInit() {
-    this.componentChooser.schema = this.control.schema;
-    this.componentChooser.nested = true;
-    this.componentChooser.form = this.control;
-    this.componentChooser.language = this.language;
-    this.changeDetectorRef.detectChanges();
-  }
+  ngAfterViewInit() {}
 }

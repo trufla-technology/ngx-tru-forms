@@ -4,7 +4,7 @@
     "declarationMap": false,
   },
   "angularCompilerOptions": {
-    "compilationMode": "partial",
+    "compilationMode": "full",
     "allowSyntheticDefaultImports": true,
     "trace": true
   }

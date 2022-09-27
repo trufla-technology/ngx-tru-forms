@@ -4,7 +4,6 @@ import {
   Input,
   OnChanges,
   OnInit,
-  SimpleChanges,
   ViewChild,
   ViewContainerRef,
 } from "@angular/core";
@@ -23,6 +22,7 @@ export class FieldComponent implements OnInit, OnChanges {
   container: ViewContainerRef;
   @Input() control: SchemaFormControl;
   @Input() language;
+  @Input() tooltipEnabled: boolean;
   public patterns;
 
   constructor(
@@ -45,6 +45,7 @@ export class FieldComponent implements OnInit, OnChanges {
     this.jsonFormFieldsService[0].setRootViewContainerRef(this.container);
     this.jsonFormFieldsService[0].addDynamicComponent(
       this.control,
+      this.tooltipEnabled,
       this.language
     );
     this.el.nativeElement.className = `field margin-bottom ${this.getClass()} form-group`;

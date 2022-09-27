@@ -18,12 +18,10 @@ import { DomSanitizer } from "@angular/platform-browser";
         {{ getTranslation(schema.title) }}
         <div
           role="tooltip"
-          *ngIf="this.schema.description"
-          [attr.class]="'info'"
-          [attr.title]="this.schema.description"
-          class="tru-ui-button"
+          *ngIf="this.schema.description && tooltipEnabled"
+          [attr.class]="schema.key + '-tooltip'"
           [innerHTML]="showMoreIcon"
-          [tooltip]="this.schema.description"
+          [tooltip]="getTranslation(schema?.description) || schema?.description"
           style="padding-left: 3px"
         ></div>
       </div>
@@ -36,13 +34,11 @@ import { DomSanitizer } from "@angular/platform-browser";
       >
         {{ getTranslation(schema.title) }}
         <div
-          type="button"
-          *ngIf="this.schema.description"
-          [attr.class]="'info'"
-          [attr.title]="this.schema.description"
-          class="tru-ui-button"
+          role="tooltip"
+          *ngIf="this.schema?.description?.length && this.tooltipEnabled"
+          [attr.class]="schema.key + '-tooltip'"
           [innerHTML]="showMoreIcon"
-          [tooltip]="this.schema.description"
+          [tooltip]="getTranslation(schema?.description) || schema?.description"
           style="padding-left: 3px"
         ></div>
       </div>
@@ -59,6 +55,7 @@ import { DomSanitizer } from "@angular/platform-browser";
         <jf-field
           [control]="form.get(control)"
           [language]="language"
+          [tooltipEnabled]="tooltipEnabled"
         ></jf-field>
       </div>
     </div>
@@ -70,6 +67,8 @@ export class ChooserComponent {
   @Input() schema: Schema;
   @Input() nested = false;
   @Input() language: string;
+  @Input() tooltipEnabled: boolean;
+
   keys = Object.keys;
   showMoreIcon = this.sanitizer.bypassSecurityTrustHtml(`
   <svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">

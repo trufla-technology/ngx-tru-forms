@@ -1,18 +1,18 @@
 import { ComponentFactoryResolver, Injectable } from "@angular/core";
-import { SchemaFormControl } from "../models/schema-form-control";
-import { StringViewComponent } from "../fields/string/string.view.component";
+
 import { SelectViewComponent } from "../fields/select/select.view.component";
 import { NumberViewComponent } from "../fields/number/number.view.component";
 import { BooleanViewComponent } from "../fields/boolean/boolean.view.component";
 import { PhotoViewComponent } from "../fields/photo/photo.view.component";
 import { TextareaViewComponent } from "../fields/textarea/textarea.view.component";
+import { ObjectComponent } from "./shared/components/object/object.component";
+import { ArrayViewComponent } from "./shared/components/array/array.view.component";
 import { DateViewComponent } from "../fields/date/date.view.component";
 import { RadiogroupViewComponent } from "../fields/radiogroup/radiogroup.view.component";
 import { CheckboxgroupViewComponent } from "../fields/checkboxgroup/checkboxgroup.view.component";
 import { MultiselectViewComponent } from "../fields/multiselect/multiselect.view.component";
 import { MoneyViewComponent } from "../fields/money/money.view.component";
-import { ObjectComponent } from "./shared/components/object/object.component";
-import { ArrayViewComponent } from "./shared/components/array/array.view.component";
+import { StringViewComponent } from "../fields/string/string.view.component";
 
 @Injectable()
 export class JsonFormFieldsService {
@@ -21,7 +21,7 @@ export class JsonFormFieldsService {
   public fieldTypes: { [type: string]: any } = {};
   private viewOnly = false;
   private disabled = false;
-  private viewTypes: Object = {
+  private viewTypes: object = {
     string: StringViewComponent,
     select: SelectViewComponent,
     number: NumberViewComponent,
@@ -44,7 +44,7 @@ export class JsonFormFieldsService {
     this.rootViewContainer = viewContainerRef;
   }
 
-  addDynamicComponent(control, lang?) {
+  addDynamicComponent(control, tooltipEnabled = false, lang?) {
     const componentFactory =
       this.componentFactoryResolver.resolveComponentFactory(this.get(control));
     const componentRef =
@@ -54,6 +54,7 @@ export class JsonFormFieldsService {
     componentRef.instance.style = control.style;
     componentRef.instance.disabled = this.disabled;
     componentRef.instance.language = lang || "en";
+    componentRef.instance.tooltipEnabled = tooltipEnabled;
   }
 
   has(type: string) {

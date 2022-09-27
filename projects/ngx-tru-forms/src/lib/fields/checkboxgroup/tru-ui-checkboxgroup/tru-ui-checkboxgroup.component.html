@@ -9,11 +9,10 @@
   <span [innerHTML]="title()"></span>
   <div
     role="tooltip"
-    *ngIf="this.schema.description"
-    [attr.class]="'info'"
-    class="tru-ui-button"
+    *ngIf="schema?.description?.length && this.tooltipEnabled"
+    [attr.class]="schema.key + '-tooltip'"
     [innerHTML]="showMoreIcon"
-    [tooltip]="this.schema.description"
+    [tooltip]="getTranslation(schema?.description) || schema?.description"
     style="padding-left: 3px"
   ></div>
 </label>
@@ -35,10 +34,12 @@
           <span [innerHTML]="enumNames(1)"></span>
           <div
             role="tooltip"
-            *ngIf="this.schema.description"
-            [attr.class]="'info'"
+            *ngIf="this.schema.description && this.tooltipEnabled"
+            [attr.class]="schema.key + '-tooltip'"
             [innerHTML]="showMoreIcon"
-            [tooltip]="this.schema.description"
+            [tooltip]="
+              getTranslation(schema?.description) || schema?.description
+            "
             style="padding-left: 3px"
           ></div>
         </span>

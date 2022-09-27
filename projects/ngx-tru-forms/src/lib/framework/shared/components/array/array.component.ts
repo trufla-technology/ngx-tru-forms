@@ -38,7 +38,11 @@ import { type ChooserComponent } from "../chooser/chooser.component";
             <ng-container
               *ngTemplateOutlet="
                 componentChooser;
-                context: { form: arrControl, language: language }
+                context: {
+                  form: arrControl,
+                  language: language,
+                  tooltipEnabled: tooltipEnabled
+                }
               "
             >
             </ng-container>
@@ -69,16 +73,17 @@ import { type ChooserComponent } from "../chooser/chooser.component";
 export class ArrayComponent implements AfterViewInit {
   @Input() control: SchemaFormArray;
   @Input() language;
+  @Input() tooltipEnabled: boolean;
   @ViewChild("componentChooser") componentChooser: ChooserComponent;
-  constructor(private changeDetectorRef: ChangeDetectorRef) {
-    this.componentChooser.language = this.language;
+  constructor() {
+    // this.componentChooser.language = this.language;
+    // this.componentChooser.tooltipEnabled = this.tooltipEnabled;
   }
   ngAfterViewInit() {
     this.componentChooser.language = this.language;
-    this.changeDetectorRef.detectChanges();
+    this.componentChooser.tooltipEnabled = this.tooltipEnabled;
   }
   getLegend(control) {
-    this.changeDetectorRef.detectChanges();
     return typeof control.schema.title === "undefined"
       ? control.schema.key
       : this.getTranslation(control.schema.title)
@@ -87,7 +92,6 @@ export class ArrayComponent implements AfterViewInit {
   }
 
   getTranslation(titleArray) {
-    this.changeDetectorRef.detectChanges();
     if (Array.isArray(titleArray)) {
       const translatedTitle = titleArray.filter(
         (val) => val.language === this.language
@@ -119,6 +123,7 @@ export class ArrayComponent implements AfterViewInit {
 
   cloneControl(control: AbstractControl) {
     let newControl: AbstractControl;
+    console.log(control);
 
     if (control instanceof SchemaFormGroup) {
       const formGroup = new SchemaFormGroup(
@@ -128,6 +133,7 @@ export class ArrayComponent implements AfterViewInit {
       );
       const controls = control.controls;
       formGroup.schema = control.schema;
+      console.log(control.schema);
 
       Object.keys(controls).forEach((key) => {
         formGroup.addControl(key, this.cloneControl(controls[key]));

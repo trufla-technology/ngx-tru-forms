@@ -1,18 +1,29 @@
-import { Component, Input } from "@angular/core";
+import {
+  Component,
+  Input,
+  ViewChild,
+  ChangeDetectorRef,
+  AfterViewInit,
+} from "@angular/core";
 import { SchemaFormControl } from "../../../../../models/schema-form-control";
 import { AbstractControl, UntypedFormArray } from "@angular/forms";
 import { SchemaFormArray } from "../../../../../models/schema-form-array";
 import { SchemaFormGroup } from "../../../../../models/schema-form-group";
 import { startCase, upperFirst } from "lodash";
 import { DomSanitizer } from "@angular/platform-browser";
+import { ChooserComponent } from "../../chooser/chooser.component";
+
 @Component({
   selector: "jf-tru-ui-array",
   templateUrl: "./tru-ui-array.component.html",
   styleUrls: ["./tru-ui-array.component.css"],
 })
-export class TruUiArrayComponent {
+export class TruUiArrayComponent implements AfterViewInit {
+  @ViewChild("chooserInstance", { static: true })
+  chooserInstance: ChooserComponent;
   @Input() control: SchemaFormArray;
   @Input() language;
+  @Input() tooltipEnabled: boolean;
   showMoreIcon = this.sanitizer.bypassSecurityTrustHtml(`
   <svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
       <title>see more</title>
@@ -22,7 +33,19 @@ export class TruUiArrayComponent {
           </g>
       </g>
   </svg>`);
-  constructor(public sanitizer?: DomSanitizer) {}
+  constructor(
+    private changeDetectorRef: ChangeDetectorRef,
+    public sanitizer?: DomSanitizer
+  ) {}
+
+  ngAfterViewInit() {
+    // setTimeout(() => {
+    //   console.log(this.chooserInstance);
+    //   this.chooserInstance.language = this.language;
+    //   this.chooserInstance.tooltipEnabled = this.tooltipEnabled;
+    //   this.changeDetectorRef.detectChanges();
+    // }, 1000);
+  }
   getLegend(control) {
     // return (control && control.schema && control.schema.key) ? startCase(control.schema.key) : '';
     // eslint-disable-next-line max-len

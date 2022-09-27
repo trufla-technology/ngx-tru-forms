@@ -24,6 +24,7 @@ import { NgxMaskModule, IConfig } from "ngx-mask";
 import { ArrayComponent } from "./components/array/array.component";
 import { ArrayViewComponent } from "./components/array/array.view.component";
 import { DragAndDropDirective } from "./directive/drag-and-drop.directive";
+
 import { ViewFileComponent } from "../../fields/view-file/view-file.component";
 import { PdfViewerModule } from "ng2-pdf-viewer";
 import { MatNativeDateModule } from "@angular/material/core";

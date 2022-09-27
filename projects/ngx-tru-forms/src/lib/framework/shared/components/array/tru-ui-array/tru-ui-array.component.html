@@ -3,11 +3,11 @@
     {{ getLegend(control) }}
     <div
       role="tooltip"
-      *ngIf="this.control.schema.description"
-      [attr.class]="'info'"
+      *ngIf="this.control?.schema?.description?.length && this.tooltipEnabled"
+      [attr.class]="control.schema.key + '-tooltip'"
       class="tru-ui-button"
       [innerHTML]="showMoreIcon"
-      [tooltip]="this.control.schema.description"
+      [tooltip]="getTranslation(control?.schema?.description) || control?.schema?.description"
       style="padding-left: 3px"
     ></div>
   </div>
@@ -21,12 +21,19 @@
     "
   >
     <div style="display: flex; flex-direction: row; align-items: flex-end">
-      <div
+      <!-- <div
         class="control"
         jf-component-chooser
         [form]="arrControl"
         [language]="language"
+        [tooltipEnabled]="tooltipEnabled"
         style="display: flex; flex-direction: row"
+      ></div> -->
+      <div
+        jf-component-chooser
+        [form]="arrControl"
+        [language]="language"
+        [tooltipEnabled]="tooltipEnabled"
       ></div>
       <div class="remove">
         <button

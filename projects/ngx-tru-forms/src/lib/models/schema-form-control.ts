@@ -8,4 +8,5 @@ export class SchemaFormControl extends UntypedFormControl {
   public data: any;
   public isRequired: boolean;
   public language?: string;
+  form?: any;
 }
