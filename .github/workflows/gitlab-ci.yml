@@ -20,7 +20,10 @@ jobs:
        node-version: '14'
     - run: npm install 
     - run: npm run lint
-    - run: npm run build
-    - run: npm run publish
+    - run: | 
+          npm run build
+          echo "//npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}" > .npmrc
+          echo "@trufla-technology:registry=https://npm.pkg.github.com" >> .npmrc
+          npm run publish
 
 
