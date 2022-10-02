@@ -19,10 +19,10 @@
       "dom"
     ],
     "paths": {
-      "@trufla/ngx-tru-forms": [
+      "@trufla-technology/ngx-tru-forms": [
         "dist/ngx-tru-forms"
       ],
-      "@trufla/ngx-tru-forms/*": [
+      "@trufla-technology/ngx-tru-forms/*": [
         "dist/ngx-tru-forms/*"
       ]
     }

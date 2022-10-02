@@ -116,7 +116,7 @@ MIT
 @angular/router
 MIT
 
-@trufla/ngx-tru-forms
+@trufla-technology/ngx-tru-forms
 MIT
 
 bootstrap
