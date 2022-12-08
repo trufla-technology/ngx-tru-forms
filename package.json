@@ -1,6 +1,6 @@
 {
-  "name": "ngx-tru-forms-app",
-  "version": "0.0.0",
+  "name": "ngx-tru-forms",
+  "version": "1.0.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -14,6 +14,10 @@
     "clean": "rm -fr build dist",
     "pre-push": "npm run clean && npm run build && npm run build-docs",
     "postinstall": "ngcc --properties es5 browser module main --first-only"
+  },
+  "repository": "https://github.com/trufla-technology/ngx-tru-forms",
+  "publishConfig": {
+    "@trufla-technology:registry": "https://npm.pkg.github.com"
   },
   "config": {
     "deployToGit": {

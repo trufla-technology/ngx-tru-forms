@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MaterialDesignComponent } from './material-design.component';
-import {JsonFormFieldsService, JsonFormMaterialModule, JsonFormModule, JsonFormMaterial} from '@trufla/ngx-tru-forms';
+import {JsonFormFieldsService, JsonFormMaterialModule, JsonFormModule, JsonFormMaterial} from '@trufla-technology/ngx-tru-forms';
 import { RouterModule, Routes } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 
