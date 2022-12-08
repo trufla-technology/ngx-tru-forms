@@ -2,7 +2,9 @@
   "extends": "../../.eslintrc.json",
   "ignorePatterns": [
     "!**/*",
-    "*.spec.ts"
+    "*.spec.ts",
+    "*.html",
+    "**/*.html"
   ],
   "overrides": [
     {

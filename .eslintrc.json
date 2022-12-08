@@ -3,7 +3,9 @@
   "ignorePatterns": [
     "*.spec.ts",
     "e2e/*",
-    "tests/*"
+    "tests/*",
+    "*.html",
+    "**/*.html"
   ],
   "plugins": [
     "security"
