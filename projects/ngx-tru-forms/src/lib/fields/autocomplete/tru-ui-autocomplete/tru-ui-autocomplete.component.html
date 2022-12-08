@@ -1,24 +1,78 @@
-<div class="tru-ui-input-container">
-    <label class="tru-ui-label" tabindex="0" [for]="schema.key + '_' + inputId"
-        [ngClass]="['jf-label', schema.key, (isRequired() ? 'required' : '')]" *ngIf="type() !== 'hidden'">
-        <span [innerHTML]="title()"></span>
-    </label>
-    <input [(ngModel)]="selectedValue" [typeahead]="values" tabindex="0" typeaheadOptionField="enumName" [attr.disabled]="disabled"
-         [attr.disabled]="disabled" [attr.id]="schema.key + '_' + inputId" [name]="title()"  *ngIf="!schema.compact"
-        [attr.aria-required]="isRequired()" [attr.aria-label]="title()" (typeaheadOnSelect)="onSelect($event)"
-        (focusout)="typeaheadNoResults()" (change)="onSelect($event)"
-        [ngClass]="{'empty': control.value === '' && !isRequired(), 'ng-invalid': !control.valid}"
-        class="tru-ui-input-control tru-ui-autocomplete " [attr.placeholder]="placeholder()" />
+<div class="tru-ui-input-container" [ngClass]="{'disabled-container': disabled}">
+  <label
+    class="tru-ui-label"
+    [ngClass]="['jf-label', schema.key, isRequired() ? 'required' : '']"
+    *ngIf="type() !== 'hidden'"
+    tabindex="0"
+    [for]="schema.key + '_' + inputId"
+    style="display: inline-flex"
+  >
+    <span [innerHTML]="title()"></span>
+    <div
+      role="tooltip"
+      *ngIf="this.schema?.description?.length && this.tooltipEnabled"
+      [attr.class]="schema.key + '-tooltip'"
+      [innerHTML]="showMoreIcon"
+      [tooltip]="getTranslation(schema?.description) || schema?.description"
+      style="padding-left: 3px"
+    ></div>
+  </label>
+  <input
+    [(ngModel)]="selectedValue"
+    [typeahead]="values"
+    tabindex="0"
+    typeaheadOptionField="enumName"
+    [attr.disabled]="disabled"
+    [attr.id]="schema.key + '_' + inputId"
+    [name]="title()"
+    autocomplete="false"
+    *ngIf="!schema.compact"
+    [attr.aria-required]="isRequired()"
+    [attr.aria-label]="title()"
+    (typeaheadOnSelect)="onSelect($event)"
+    (focusout)="typeaheadNoResults()"
+    (change)="onSelect($event)"
+    [ngClass]="{
+      empty: control.value === '' && !isRequired(),
+      'ng-invalid': !control.valid
+    }"
+    class="tru-ui-input-control tru-ui-autocomplete"
+    [attr.placeholder]="placeholder()"
+  />
 
-        <input [(ngModel)]="selectedValue" [typeahead]="values" tabindex="0" typeaheadOptionField="enumName" [attr.disabled]="disabled"
-        [attr.disabled]="disabled" [attr.id]="schema.key + '_' + inputId" [name]="title()"  *ngIf="schema.compact"
-       [attr.aria-required]="isRequired()" [attr.aria-label]="title()" (typeaheadOnSelect)="onSelect($event)" [typeaheadOptionsLimit]="7"
-       [typeaheadMinLength]="0"
-       (focusout)="typeaheadNoResults()" (change)="onSelect($event)"
-       [ngClass]="{'empty': control.value === '' && !isRequired(), 'ng-invalid': !control.valid}"
-       class="tru-ui-input-control tru-ui-autocomplete " [attr.placeholder]="placeholder()" />
+  <input
+    [(ngModel)]="selectedValue"
+    [typeahead]="values"
+    tabindex="0"
+    typeaheadOptionField="enumName"
+    [attr.disabled]="disabled"
+    [attr.disabled]="disabled"
+    [attr.id]="schema.key + '_' + inputId"
+    [name]="title()"
+    *ngIf="schema.compact"
+    [attr.aria-required]="isRequired()"
+    [attr.aria-label]="title()"
+    (typeaheadOnSelect)="onSelect($event)"
+    [typeaheadOptionsLimit]="7"
+    [typeaheadMinLength]="0"
+    (focusout)="typeaheadNoResults()"
+    (change)="onSelect($event)"
+    [ngClass]="{
+      empty: control.value === '' && !isRequired(),
+      'ng-invalid': !control.valid
+    }"
+    class="tru-ui-input-control tru-ui-autocomplete"
+    [attr.placeholder]="placeholder()"
+  />
 
-    <input [formControl]="control" aria-hidden="true" style="visibility: hidden;display: none;z-index: -1;" [attr.aria-labelledby]="schema.key + '_' + inputId">
-    <jf-tru-ui-error [control]="control" [language]="language || 'en'" ></jf-tru-ui-error>
-
+  <input
+    [formControl]="control"
+    aria-hidden="true"
+    style="visibility: hidden; display: none; z-index: -1"
+    [attr.aria-labelledby]="schema.key + '_' + inputId"
+  />
+  <jf-tru-ui-error
+    [control]="control"
+    [language]="language || 'en'"
+  ></jf-tru-ui-error>
 </div>

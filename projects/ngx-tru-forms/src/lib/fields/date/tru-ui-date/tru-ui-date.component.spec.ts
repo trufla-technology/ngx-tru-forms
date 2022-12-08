@@ -1,16 +1,15 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { TruUiDateComponent } from './tru-ui-date.component';
+import { TruUiDateComponent } from "./tru-ui-date.component";
 
-describe('TruUiDateComponent', () => {
+describe("TruUiDateComponent", () => {
   let component: TruUiDateComponent;
   let fixture: ComponentFixture<TruUiDateComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ TruUiDateComponent ]
-    })
-    .compileComponents();
+      declarations: [TruUiDateComponent],
+    }).compileComponents();
   }));
 
   beforeEach(() => {
@@ -19,7 +18,7 @@ describe('TruUiDateComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });

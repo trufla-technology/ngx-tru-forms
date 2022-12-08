@@ -1,32 +1,44 @@
-import { Component } from '@angular/core';
-import { CommonComponent } from '../common/common.component';
-import { BsModalRef } from 'ngx-bootstrap/modal';
-import { ViewFileComponent } from '../view-file/view-file.component';
+import { Component } from "@angular/core";
+import { CommonComponent } from "../common/common.component";
+import { BsModalRef } from "ngx-bootstrap/modal";
+import { ViewFileComponent } from "../view-file/view-file.component";
 @Component({
   template: `
-    <p tabindex="0">{{title()}}</p>
-    <button type="button" class='img-thumbnail'
-    tabindex="0" [attr.aria-label]="'View '+title()" (click)='openFile()' *ngIf='!isPdf() && control.value'>
-    <img
-
-    [alt]="'View '+title()"
-    src='{{control.value}}'
-    class='img-thumbnail'
-    style='width: 100px !important;cursor:pointer'  />
+    <p tabindex="0">{{ title() }}</p>
+    <button
+      type="button"
+      class="img-thumbnail"
+      tabindex="0"
+      [attr.aria-label]="'View ' + title()"
+      (click)="openFile()"
+      *ngIf="!isPdf() && control.value"
+    >
+      <img
+        [alt]="'View ' + title()"
+        src="{{ control.value }}"
+        class="img-thumbnail"
+        style="width: 100px !important;cursor:pointer"
+      />
     </button>
-    <button *ngIf='isPdf() && control.value'
-    class='img-thumbnail primary-bg' tabindex="0"
-    [attr.aria-label]="'View '+title()"
-    (click)='openFile()' type="button"
-    style='width: 100px !important;
+    <button
+      *ngIf="isPdf() && control.value"
+      class="img-thumbnail primary-bg"
+      tabindex="0"
+      [attr.aria-label]="'View ' + title()"
+      (click)="openFile()"
+      type="button"
+      style="width: 100px !important;
     height:100px !important;
     cursor:pointer;
     border: none;
     padding: 0;
     border-radius: 6px;
     background-color: #d8d8d8;
-    display: flex;justify-content: center;align-items: center;'>
-    <div  class="svg-fill-primary" style="
+    display: flex;justify-content: center;align-items: center;"
+    >
+      <div
+        class="svg-fill-primary"
+        style="
     width: 60px;
     background-color: #fff;
     height: 60px;
@@ -34,15 +46,22 @@ import { ViewFileComponent } from '../view-file/view-file.component';
     border-radius: 100%;
     justify-content: center;
     align-items: center;"
-
-    >
-    <svg role="img"  class="svg-fill-primary" width="30px" height="28px"
-  viewBox="0 0 20 19" version="1.1"
-  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-      <title>PDF File</title>
-      <desc>Open PDF File</desc>
-      <g  stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-          <path d="M18.402585,4.87879752
+      >
+        <svg
+          role="img"
+          class="svg-fill-primary"
+          width="30px"
+          height="28px"
+          viewBox="0 0 20 19"
+          version="1.1"
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+        >
+          <title>PDF File</title>
+          <desc>Open PDF File</desc>
+          <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+            <path
+              d="M18.402585,4.87879752
           L15.1125569,4.87879752 L15.1125569,0.930748323
           C15.1125569,0.567327311 14.8179568,0.272727273
           14.4545358,0.272727273 L1.29438469,0.272727273
@@ -75,28 +94,30 @@ import { ViewFileComponent } from '../view-file/view-file.component';
            M18.0908665,15.5026846 C18.0908665,16.1957369 17.4396481,16.7575758
            16.6363423,16.7575758 C15.8330366,16.7575758 15.1818182,16.1957369
            15.1818182,15.5026846 L15.1818182,6.09090909 L18.0909091,6.09090909
-           L18.0909091,15.5026846 L18.0908665,15.5026846 Z" fill="#8C8C8C" fill-rule="nonzero"></path>
-      </g>
-  </svg>
-  <span class="cdk-visually-hidden">
-  Open PDF File
-</span>
-    </div>
-  </button>
-  `
+           L18.0909091,15.5026846 L18.0908665,15.5026846 Z"
+              fill="#8C8C8C"
+              fill-rule="nonzero"
+            ></path>
+          </g>
+        </svg>
+        <span class="cdk-visually-hidden"> Open PDF File </span>
+      </div>
+    </button>
+  `,
 })
 export class PhotoViewComponent extends CommonComponent {
   bsModalRef: BsModalRef;
 
   openFile() {
-    this.modalService.config.class = 'modal-lg modal-dialog-centered';
+    this.modalService.config.class = "modal-lg modal-dialog-centered";
     const initialState = {
       file: this.control.value,
       title: `${this.title()}`,
       isPdf: this.isPdf(),
-      language: this.language || 'en'
-        };
-    this.bsModalRef = this.modalService.show(ViewFileComponent, {initialState});
+      language: this.language || "en",
+    };
+    this.bsModalRef = this.modalService.show(ViewFileComponent, {
+      initialState,
+    });
+  }
 }
-}
-

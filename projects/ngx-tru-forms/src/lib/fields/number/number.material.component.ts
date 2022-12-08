@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { CommonComponent } from '../common/common.component';
+import { Component } from "@angular/core";
+import { CommonComponent } from "../common/common.component";
 
 @Component({
   template: `
@@ -15,6 +15,6 @@ import { CommonComponent } from '../common/common.component';
       />
       <mat-error jf-error [control]="control"></mat-error>
     </mat-form-field>
-  `
+  `,
 })
-export class NumberMaterialComponent extends CommonComponent { }
+export class NumberMaterialComponent extends CommonComponent {}

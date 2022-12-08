@@ -1,16 +1,15 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { TruUiArrayComponent } from './tru-ui-array.component';
+import { TruUiArrayComponent } from "./tru-ui-array.component";
 
-describe('TruUiArrayComponent', () => {
+describe("TruUiArrayComponent", () => {
   let component: TruUiArrayComponent;
   let fixture: ComponentFixture<TruUiArrayComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ TruUiArrayComponent ]
-    })
-    .compileComponents();
+      declarations: [TruUiArrayComponent],
+    }).compileComponents();
   }));
 
   beforeEach(() => {
@@ -19,7 +18,7 @@ describe('TruUiArrayComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });

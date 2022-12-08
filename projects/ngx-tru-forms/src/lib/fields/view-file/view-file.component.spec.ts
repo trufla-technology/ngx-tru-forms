@@ -1,16 +1,15 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { ViewFileComponent } from './view-file.component';
+import { ViewFileComponent } from "./view-file.component";
 
-describe('ViewFileComponent', () => {
+describe("ViewFileComponent", () => {
   let component: ViewFileComponent;
   let fixture: ComponentFixture<ViewFileComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ViewFileComponent ]
-    })
-    .compileComponents();
+      declarations: [ViewFileComponent],
+    }).compileComponents();
   }));
 
   beforeEach(() => {
@@ -19,7 +18,7 @@ describe('ViewFileComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });

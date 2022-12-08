@@ -1,50 +1,134 @@
-<button type="button" class="btn-circle" id="close-modal-button" aria-label="close" tabindex="0"
-    (click)="bsModalRef.hide()" tabindex="0">
-    <svg role="img" aria-labledby="close" width="15.5px" height="15.5px" viewBox="0 0 14 14" version="1.1"
-        xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-        <title>close</title>
-        <desc>close</desc>
-        <g id="Full-Admin" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-            <g id="Settings-/-Branches-Add-Map-have-data" transform="translate(-961.000000, -519.000000)"
-                fill="#FFFFFF">
-                <g id="Group-50" transform="translate(664.000000, 492.000000)">
-                    <g id="Group-35-Copy-2">
-                        <g id="Group-34">
-                            <g id="Group-33" transform="translate(288.000000, 18.000000)">
-                                <g id="Group-36">
-                                    <path
-                                        d="M23.5172415,17.2672414 C23.5172415,17.6228449 23.2262932,17.9137932 22.8706897,17.9137932 L17.9137932,17.9137932 L17.9137932,22.8706897 C17.9137932,23.2262932 17.6228449,23.5172415 17.2672414,23.5172415 L14.25,23.5172415 C13.8943966,23.5172415 13.6034483,23.2262932 13.6034483,22.8706897 L13.6034483,17.9137932 L8.64655173,17.9137932 C8.29094828,17.9137932 8,17.6228449 8,17.2672414 L8,14.25 C8,13.8943966 8.29094828,13.6034483 8.64655173,13.6034483 L13.6034483,13.6034483 L13.6034483,8.64655173 C13.6034483,8.29094828 13.8943966,8 14.25,8 L17.2672414,8 C17.6228449,8 17.9137932,8.29094828 17.9137932,8.64655173 L17.9137932,13.6034483 L22.8706897,13.6034483 C23.2262932,13.6034483 23.5172415,13.8943966 23.5172415,14.25"
-                                        id="Path"
-                                        transform="translate(15.758621, 15.758621) rotate(-315.000000) translate(-15.758621, -15.758621) ">
-                                    </path>
-                                </g>
-                            </g>
-                        </g>
-                    </g>
+<button
+  type="button"
+  class="btn-circle"
+  id="close-modal-button"
+  aria-label="close"
+  tabindex="0"
+  (click)="bsModalRef.hide()"
+  tabindex="0"
+>
+  <svg
+    role="img"
+    aria-labledby="close"
+    width="15.5px"
+    height="15.5px"
+    viewBox="0 0 14 14"
+    version="1.1"
+    xmlns="http://www.w3.org/2000/svg"
+    xmlns:xlink="http://www.w3.org/1999/xlink"
+  >
+    <title>close</title>
+    <desc>close</desc>
+    <g
+      id="Full-Admin"
+      stroke="none"
+      stroke-width="1"
+      fill="none"
+      fill-rule="evenodd"
+    >
+      <g
+        id="Settings-/-Branches-Add-Map-have-data"
+        transform="translate(-961.000000, -519.000000)"
+        fill="#FFFFFF"
+      >
+        <g id="Group-50" transform="translate(664.000000, 492.000000)">
+          <g id="Group-35-Copy-2">
+            <g id="Group-34">
+              <g id="Group-33" transform="translate(288.000000, 18.000000)">
+                <g id="Group-36">
+                  <path
+                    d="M23.5172415,17.2672414 C23.5172415,17.6228449 23.2262932,17.9137932 22.8706897,17.9137932 L17.9137932,17.9137932 L17.9137932,22.8706897 C17.9137932,23.2262932 17.6228449,23.5172415 17.2672414,23.5172415 L14.25,23.5172415 C13.8943966,23.5172415 13.6034483,23.2262932 13.6034483,22.8706897 L13.6034483,17.9137932 L8.64655173,17.9137932 C8.29094828,17.9137932 8,17.6228449 8,17.2672414 L8,14.25 C8,13.8943966 8.29094828,13.6034483 8.64655173,13.6034483 L13.6034483,13.6034483 L13.6034483,8.64655173 C13.6034483,8.29094828 13.8943966,8 14.25,8 L17.2672414,8 C17.6228449,8 17.9137932,8.29094828 17.9137932,8.64655173 L17.9137932,13.6034483 L22.8706897,13.6034483 C23.2262932,13.6034483 23.5172415,13.8943966 23.5172415,14.25"
+                    id="Path"
+                    transform="translate(15.758621, 15.758621) rotate(-315.000000) translate(-15.758621, -15.758621) "
+                  ></path>
                 </g>
+              </g>
             </g>
+          </g>
         </g>
-    </svg>
+      </g>
+    </g>
+  </svg>
 </button>
 
-<div *ngIf="!isPdf" class="modal-body"
-    style="height:480px !important;padding: 0;margin: 0;display: flex;justify-content: center;align-items: center;flex-direction: row;">
-
-    <div class="image-container-modal" tabindex="0">
-        <img [src]="makeTrustedImage(file)" id="image" [alt]="title">
-    </div>
-    <div class="controllers" *ngIf="!isPdf">
-        <button type="button" class="zoom-in" type="button" (click)="zoomin()" aria-label="zoom in" tabindex="0">+</button>
-        <button type="button" class="zoom-out" type="button" (click)="zoomout()" aria-label="zoom out" tabindex="0">-</button>
-    </div>
+<div
+  *ngIf="!isPdf"
+  class="modal-body"
+  style="
+    height: 480px !important;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+  "
+>
+  <div class="image-container-modal" tabindex="0">
+    <img [src]="makeTrustedImage(file)" id="image" [alt]="title" />
+  </div>
+  <div class="controllers" *ngIf="!isPdf">
+    <button
+      type="button"
+      class="zoom-in"
+      type="button"
+      (click)="zoomin()"
+      aria-label="zoom in"
+      tabindex="0"
+    >
+      +
+    </button>
+    <button
+      type="button"
+      class="zoom-out"
+      type="button"
+      (click)="zoomout()"
+      aria-label="zoom out"
+      tabindex="0"
+    >
+      -
+    </button>
+  </div>
 </div>
-<div *ngIf="isPdf" class="modal-body" style="max-height:90vh !important;padding: 0;margin: 0;overflow: auto;">
-    <pdf-viewer *ngIf="edocSrc" class="test__pdf-doc" [src]="edocSrc" [autoresize]="true" [original-size]="false"
-        [zoom]="zoom" [render-text]="false" [zoom-scale]="'page-fit'" (error)="onError($event)" (after-load-complete)="onLoad()">
-    </pdf-viewer>
-    <div class="controllers" *ngIf="isPdf">
-        <button type="button" class="zoom-in" tabindex="0" type="button" (click)="zoomPdfIn()" aria-label="zoom in">+</button>
-        <button type="button" class="zoom-out" tabindex="0" type="button" (click)="zoomPdfOut()" aria-label="zoom out">-</button>
-    </div>
-    <span *ngIf="error" tabindex="0">{{getTranslation('errorPdf')}} </span>
+<div
+  *ngIf="isPdf"
+  class="modal-body"
+  style="max-height: 90vh !important; padding: 0; margin: 0; overflow: auto"
+>
+  <pdf-viewer
+    *ngIf="edocSrc"
+    class="test__pdf-doc"
+    [src]="edocSrc"
+    [autoresize]="true"
+    [original-size]="false"
+    [zoom]="zoom"
+    [render-text]="false"
+    [zoom-scale]="'page-fit'"
+    (error)="onError($event)"
+    (after-load-complete)="onLoad()"
+  >
+  </pdf-viewer>
+  <div class="controllers" *ngIf="isPdf">
+    <button
+      type="button"
+      class="zoom-in"
+      tabindex="0"
+      type="button"
+      (click)="zoomPdfIn()"
+      aria-label="zoom in"
+    >
+      +
+    </button>
+    <button
+      type="button"
+      class="zoom-out"
+      tabindex="0"
+      type="button"
+      (click)="zoomPdfOut()"
+      aria-label="zoom out"
+    >
+      -
+    </button>
+  </div>
+  <span *ngIf="error" tabindex="0">{{ getTranslation("errorPdf") }} </span>
 </div>

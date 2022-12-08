@@ -146,6 +146,10 @@ label.tru-ui-label:focus {
   justify-content: center;
   align-items: center;
 }
+.image-preview-container.disabled:hover > .image-overlay, .image-preview-container.disabled:focus > .image-overlay {
+display: none !important;
+pointer-events: none !important;
+}
 .preview-img {
   display: block;
   margin: auto;

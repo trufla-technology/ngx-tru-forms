@@ -1,14 +1,32 @@
-import { Component } from '@angular/core';
-import { CommonComponent } from '../common/common.component';
+import { Component } from "@angular/core";
+import { CommonComponent } from "../common/common.component";
 
 @Component({
   template: `
-    <label [attr.class]="schema.key" [ngClass]="{'margin-bottom--half': true, required: isRequired()}">
-      <span [innerHTML]="title()"></span></label>
-    <button type="button" *ngIf="this.schema.description" [attr.class]="'info'" [attr.title]="this.schema.description">Info</button>
+    <label
+      [attr.class]="schema.key"
+      [ngClass]="{ 'margin-bottom--half': true, required: isRequired() }"
+      style="display: inline-flex"
+    >
+      <span [innerHTML]="title()"></span
+    ></label>
+    <div
+      role="tooltip"
+      *ngIf="this.schema.description"
+      [attr.class]="'info'"
+      [attr.title]="this.schema.description"
+      class="tru-ui-button"
+      [innerHTML]="showMoreIcon"
+      style="padding-left: 3px"
+    ></div>
     <div [class]="getClass('checkbox-group')">
-      <div *ngFor="let child of this.control['controls']; let i = index"
-           [ngClass]="{'checkbox-container': true, 'checked': child.value === schema.enum[i]}">
+      <div
+        *ngFor="let child of this.control['controls']; let i = index"
+        [ngClass]="{
+          'checkbox-container': true,
+          checked: child.value === schema.enum[i]
+        }"
+      >
         <input
           type="checkbox"
           [attr.id]="getId(schema.key, schema.enum[i])"
@@ -17,23 +35,24 @@ import { CommonComponent } from '../common/common.component';
           [name]="schema.key"
           [formControl]="child"
           (change)="setValue($event, i)"
-          [value]="schema.enum[i]" />
-        <label
-          [attr.for]="getId(i, schema.enum[i])"
-          [attr.class]="schema.key">
-          {{enumNames(i)}}
+          [value]="schema.enum[i]"
+        />
+        <label [attr.for]="getId(i, schema.enum[i])" [attr.class]="schema.key">
+          {{ enumNames(i) }}
         </label>
       </div>
     </div>
     <jf-error [control]="control"></jf-error>
-  `
+  `,
 })
 export class CheckboxgroupComponent extends CommonComponent {
   checkboxGroupValues = [];
 
   setValue(event, index) {
     if (this.checkboxGroupValues.length === 0) {
-      this.checkboxGroupValues = new Array(this.control['controls'].length).fill(null);
+      this.checkboxGroupValues = new Array(
+        this.control["controls"].length
+      ).fill(null);
     }
 
     if (this.checkboxGroupValues[index] === null) {

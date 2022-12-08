@@ -1,13 +1,13 @@
-import { Component } from '@angular/core';
-import { CommonComponent } from '../../common/common.component';
+import { Component } from "@angular/core";
+import { CommonComponent } from "../../common/common.component";
 
 @Component({
-  selector: 'jf-tru-ui-photo',
-  templateUrl: './tru-ui-photo.component.html',
-  styleUrls: ['./tru-ui-photo.component.css']
+  selector: "jf-tru-ui-photo",
+  templateUrl: "./tru-ui-photo.component.html",
+  styleUrls: ["./tru-ui-photo.component.css"],
 })
 export class TruUiPhotoComponent extends CommonComponent {
-  file: any ;
+  file: any;
   selectFile = false;
   photoData: string;
   busy = false;
@@ -15,12 +15,13 @@ export class TruUiPhotoComponent extends CommonComponent {
   onUploadLabelClick(evt): void {
     const keyCode = evt.which || evt.keyCode;
     if (keyCode === 13 || keyCode === 32) {
-        document.getElementById(this.schema.key + '_' + this.inputId).click();
-        evt.preventDefault();
+      document.getElementById(this.schema.key + "_" + this.inputId).click();
+      evt.preventDefault();
     }
   }
 
   resetUpload() {
+    if (this.disabled) return;
     this.file = {};
     this.selectFile = false;
     this.fileSize = null;
@@ -30,7 +31,8 @@ export class TruUiPhotoComponent extends CommonComponent {
   }
 
   async handleDrop(files) {
-   this.processFile(files);
+    if (this.disabled) return;
+    this.processFile(files);
   }
 
   shortenSize(data) {
@@ -38,6 +40,7 @@ export class TruUiPhotoComponent extends CommonComponent {
   }
 
   async dragAndDrop(files) {
+    if (this.disabled) return;
     if (!files) {
       return;
     }
@@ -46,65 +49,76 @@ export class TruUiPhotoComponent extends CommonComponent {
 
   toBase64(file): Promise<any> {
     return new Promise((resolve, reject) => {
-    const reader = new FileReader();
-    reader.readAsDataURL(file);
-    reader.onload = () => resolve(reader.result);
-    reader.onerror = error => reject(error);
-  });
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => resolve(reader.result);
+      reader.onerror = (error) => reject(error);
+    });
   }
 
- async processFile(files) {
-   if (!files) {
-     return;
-   }
+  async processFile(files) {
+    if (!files || this.disabled) {
+      return;
+    }
     const name = files[0].name;
     const file = await this.toBase64(files[0]);
-    const lastDot = name.lastIndexOf('.');
+    const lastDot = name.lastIndexOf(".");
     const ext = name.substring(lastDot + 1);
     this.fileType = ext;
-    if ((this.schema.maxSize && +this.schema.maxSize < +files[0].size / 1024 / 1024) ||
-        (this.schema.imageFormat && [...this.schema.imageFormat].indexOf(ext.toLowerCase()) === -1 )) {
+    if (
+      (this.schema.maxSize &&
+        +this.schema.maxSize < +files[0].size / 1024 / 1024) ||
+      (this.schema.imageFormat &&
+        [...this.schema.imageFormat].indexOf(ext.toLowerCase()) === -1)
+    ) {
       this.fileSize = null;
       this.busy = false;
-      (this.schema.maxSize && +this.schema.maxSize < +files[0].size / 1024 / 1024) ?
-       this.control.setErrors({maxSize: true}) : this.control.setErrors({invalidFormat: true});
+      this.schema.maxSize && +this.schema.maxSize < +files[0].size / 1024 / 1024
+        ? this.control.setErrors({ maxSize: true })
+        : this.control.setErrors({ invalidFormat: true });
       this.control.markAsTouched();
       return;
-     } else {
-       this.busy = true;
+    } else {
+      this.busy = true;
       this.file = files[0];
       this.fileSize = null;
       this.selectFile = true;
-      if ( ['png', 'jpeg', 'jpg', 'jpeg', 'gif'].indexOf(ext.toLowerCase()) !== -1 ) {
-        this.compressFile( file.toString(), +files[0].size / 1024 / 1024).then((res) => {
-        this.getImageFromUrl(res);
-        this.photoData = res;
+      if (
+        ["png", "jpeg", "jpg", "jpeg", "gif"].indexOf(ext.toLowerCase()) !== -1
+      ) {
+        this.compressFile(file.toString(), +files[0].size / 1024 / 1024)
+          .then(
+            (res) => {
+              this.getImageFromUrl(res);
+              this.photoData = res;
+              this.busy = false;
+              this.control.setValue(this.photoData);
+            },
+            (err) => {
+              this.fileSize = null;
+              this.busy = false;
+              this.control.setErrors({ invalid: true });
+              this.control.markAsTouched();
+              this.busy = false;
+            }
+          )
+          .catch((err) => {
+            this.fileSize = null;
+            this.busy = false;
+            this.control.setErrors({ invalid: true });
+            this.control.markAsTouched();
+            this.busy = false;
+          });
+      } else {
+        this.photoData = file.toString();
+        this.getImageFromUrl(file.toString());
         this.busy = false;
         this.control.setValue(this.photoData);
-    }, (err) => {
-      this.fileSize = null;
-      this.busy = false;
-      this.control.setErrors({invalid: true});
-      this.control.markAsTouched();
-      this.busy = false;
-    }).catch((err) => {
-      this.fileSize = null;
-      this.busy = false;
-      this.control.setErrors({invalid: true});
-      this.control.markAsTouched();
-      this.busy = false;
-    });
-    } else {
-      this.photoData = file.toString();
-      this.getImageFromUrl(file.toString());
-      this.busy = false;
-      this.control.setValue(this.photoData);
+      }
     }
-   }
   }
 
   triggerUpload() {
-    document.getElementById( `${this.schema.key}_${this.inputId}`).click();
+    document.getElementById(`${this.schema.key}_${this.inputId}`).click();
   }
 }
-

@@ -1,21 +1,22 @@
-import { Component } from '@angular/core';
-import { CommonComponent } from '../common/common.component';
+import { Component } from "@angular/core";
+import { CommonComponent } from "../common/common.component";
 
 @Component({
   template: `
     <mat-form-field class="example-full-width">
       <textarea
-          matInput
-          [name]="schema.key"
-          [formControl]="control"
-          [attr.maxLength]="schema.maxLength || null"
-          [attr.minLength]="schema.minLength || null"
-          [attr.placeholder]="placeholder()"
-          [disabled]="disabled"
-          [placeholder]="title(true)">
+        matInput
+        [name]="schema.key"
+        [formControl]="control"
+        [attr.maxLength]="schema.maxLength || null"
+        [attr.minLength]="schema.minLength || null"
+        [attr.placeholder]="placeholder()"
+        [disabled]="disabled"
+        [placeholder]="title(true)"
+      >
       </textarea>
       <mat-error jf-error [control]="control"></mat-error>
     </mat-form-field>
-  `
+  `,
 })
-export class TextareaMaterialComponent extends CommonComponent { }
+export class TextareaMaterialComponent extends CommonComponent {}

@@ -1,15 +1,39 @@
-<div class="tru-ui-input-container">
-    <label tabindex="0" class="tru-ui-label" [for]="schema.key + '_' + inputId" class="tru-ui-label"
-        [ngClass]="['jf-label', schema.key, (isRequired() ? 'required' : '')]">
-        <span [innerHTML]="title()"></span> 
-    </label>
-    <button type="button" *ngIf="this.schema.description" [attr.class]="'info'"
-        [attr.title]="this.schema.description">Info</button>
-    <textarea *ngIf="!disabled" class="tru-ui-input-control" [name]="schema.key" [formControl]="control" [attr.id]="schema.key + '_' + inputId"
-        [attr.aria-required]="isRequired()" [attr.maxLength]="schema.maxLength || null" [attr.disabled]="disabled" autocomplete="off"
-        [attr.minLength]="schema.minLength || null" [attr.disabled]="disabled" tabindex="0"
-        [ngClass]="{'empty': control.value === '' && !isRequired()}" [attr.placeholder]="placeholder()">
-    </textarea>
-    <div [innerHTML]="control.value" *ngIf="disabled" class="tru-ui-input-control" style="height: auto !important;"></div>
-    <jf-tru-ui-error [control]="control" [language]="language || 'en'"></jf-tru-ui-error>
+<div class="tru-ui-input-container" [ngClass]="{'disabled-container': disabled}">
+  <label
+    class="tru-ui-label"
+    [ngClass]="['jf-label', schema.key, isRequired() ? 'required' : '']"
+    *ngIf="type() !== 'hidden'"
+    tabindex="0"
+    [for]="schema.key + '_' + inputId"
+    style="display: inline-flex"
+  >
+    <span [innerHTML]="title()"></span>
+    <div
+      role="tooltip"
+      *ngIf="schema?.description?.length && this.tooltipEnabled"
+      [attr.class]="schema.key + '-tooltip'"
+      [innerHTML]="showMoreIcon"
+      [tooltip]="getTranslation(schema?.description) || schema?.description"
+      style="padding-left: 3px"
+    ></div>
+  </label>
+  <textarea
+    class="tru-ui-input-control"
+     autocomplete="false"
+    [name]="schema.key"
+    [formControl]="control"
+    [attr.id]="schema.key + '_' + inputId"
+    [attr.aria-required]="isRequired()"
+    [attr.maxLength]="schema.maxLength || null"
+    [attr.disabled]="disabled"
+    [attr.minLength]="schema.minLength || null"
+    tabindex="0"
+    [ngClass]="{ empty: control.value === '' && !isRequired() }"
+    [attr.placeholder]="placeholder()"
+  >
+  </textarea>
+  <jf-tru-ui-error
+    [control]="control"
+    [language]="language || 'en'"
+  ></jf-tru-ui-error>
 </div>

@@ -1,10 +1,10 @@
-import { Component } from '@angular/core';
-import { CommonComponent } from '../common/common.component';
+import { Component } from "@angular/core";
+import { CommonComponent } from "../common/common.component";
 
 @Component({
   template: `
-    <label [attr.class]="schema.key" [ngClass]="{required: isRequired()}">
-      <span [innerHTML]="title()"></span>  
+    <label [attr.class]="schema.key" [ngClass]="{ required: isRequired() }">
+      <span [innerHTML]="title()"></span>
     </label>
     <div *ngIf="previewSrcExists()" class="photo-preview">
       <img [attr.src]="photoData" />
@@ -24,7 +24,7 @@ import { CommonComponent } from '../common/common.component';
     <div>
       <jf-error [control]="control"></jf-error>
     </div>
-  `
+  `,
 })
 export class PhotoComponent extends CommonComponent {
   public photoData: string;
@@ -34,24 +34,23 @@ export class PhotoComponent extends CommonComponent {
     const reader = new FileReader();
 
     reader.onloadend = () => {
-      this.processFile(reader.result, file.type)
-        .then((data) => {
-          this.photoData = data.toString();
-          this.control.setValue(this.photoData);
-        });
+      this.processFile(reader.result, file.type).then((data) => {
+        this.photoData = data.toString();
+        this.control.setValue(this.photoData);
+      });
     };
 
     reader.onerror = function () {
-      console.log('There was an error reading the file!');
+      console.log("There was an error reading the file!");
     };
 
-    if (typeof(file) !== 'undefined') {
+    if (typeof file !== "undefined") {
       reader.readAsDataURL(file);
     }
   }
 
   previewSrcExists() {
-    return typeof (this.photoData) === 'string';
+    return typeof this.photoData === "string";
   }
 
   clearPhoto() {
@@ -70,7 +69,7 @@ export class PhotoComponent extends CommonComponent {
       image.onload = () => {
         const width = image.width;
         const height = image.height;
-        const shouldResize = (width > maxWidth) || (height > maxHeight);
+        const shouldResize = width > maxWidth || height > maxHeight;
 
         if (!shouldResize) {
           resolve(dataURL);
@@ -87,10 +86,10 @@ export class PhotoComponent extends CommonComponent {
           newHeight = maxHeight;
         }
 
-        const canvas = document.createElement('canvas');
+        const canvas = document.createElement("canvas");
         canvas.width = newWidth;
         canvas.height = newHeight;
-        const context = canvas.getContext('2d');
+        const context = canvas.getContext("2d");
         context.drawImage(image, 0, 0, newWidth, newHeight);
 
         resolve(canvas.toDataURL(fileType));
@@ -100,4 +99,3 @@ export class PhotoComponent extends CommonComponent {
     });
   }
 }
-

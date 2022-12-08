@@ -1,7 +1,7 @@
 {
   "name": "@trufla-technology/ngx-tru-forms",
   "author": "Boris Cosic <boris.c@trufla.com>",
-  "version": "1.1.10",
+  "version": "1.1.15-rc.4",
   "license": "MIT",
   "main": "./index.js",
   "typings": "./index.d.ts",
@@ -23,7 +23,7 @@
   "sideEffects": true,
   "peerDependencies": {
     "lodash": "^4.17.10",
-    "@angular/material-moment-adapter": "^8.2.3",
+    "@angular/material-moment-adapter": "^14.0.4",
     "ngx-image-compress": "^11.0.3",
     "ng2-pdf-viewer": "^6.4.0"
   }

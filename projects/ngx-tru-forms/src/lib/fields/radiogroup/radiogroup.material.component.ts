@@ -1,22 +1,29 @@
-import { Component } from '@angular/core';
-import { CommonComponent } from '../common/common.component';
+import { Component } from "@angular/core";
+import { CommonComponent } from "../common/common.component";
 
 @Component({
   template: `
     <div>
-      <label [attr.class]="schema.key" [ngClass]="{'margin-bottom--half': true, required: isRequired()}">
-        <span [innerHTML]="title(true)"></span>  </label>
+      <label
+        [attr.class]="schema.key"
+        [ngClass]="{ 'margin-bottom--half': true, required: isRequired() }"
+      >
+        <span [innerHTML]="title(true)"></span>
+      </label>
 
-      <mat-radio-group [formControl]="control" *ngFor="let en of this.schema.enum; let i = index">
+      <mat-radio-group
+        [formControl]="control"
+        *ngFor="let en of this.schema.enum; let i = index"
+      >
         <mat-radio-button
           [checked]="control.value === en.toString()"
           [value]="en.toString()"
           [disabled]="disabled"
         >
-          {{enumNames(i)}}
+          {{ enumNames(i) }}
         </mat-radio-button>
       </mat-radio-group>
     </div>
-  `
+  `,
 })
-export class RadiogroupMaterialComponent extends CommonComponent { }
+export class RadiogroupMaterialComponent extends CommonComponent {}

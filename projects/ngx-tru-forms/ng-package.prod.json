@@ -3,5 +3,6 @@
   "dest": "../../dist/ngx-tru-forms",
   "lib": {
     "entryFile": "src/public_api.ts"
-  }
+  },
+   "assets": ["./src/lib/assets/tru-ui.css"]
 }

@@ -1,9 +1,9 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
+import { Component, EventEmitter, Input, Output } from "@angular/core";
 
 @Component({
-  selector: 'jf-tru-ui-button',
-  templateUrl: './tru-ui-button.component.html',
-  styleUrls: ['./tru-ui-button.component.css']
+  selector: "jf-tru-ui-button",
+  templateUrl: "./tru-ui-button.component.html",
+  styleUrls: ["./tru-ui-button.component.css"],
 })
 export class TruUiButtonComponent {
   @Input() isVisible;
@@ -13,7 +13,7 @@ export class TruUiButtonComponent {
   @Input() disabled;
   @Input() submit;
   @Input() label;
-  @Input() color = '';
+  @Input() color = "";
   @Output() handleButtonClick = new EventEmitter();
 
   handleClick(event) {
