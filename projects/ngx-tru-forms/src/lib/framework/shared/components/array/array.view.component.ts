@@ -13,19 +13,14 @@ import { ArrayComponent } from "./array.component";
       >
         <div class="row">
           <div class="control">
-            <ng-container
-              *ngTemplateOutlet="
-                componentChooser;
-                context: { form: arrControl, language: language }
-              "
-            >
-            </ng-container>
+            <jf-component-chooser
+              [form]="arrControl"
+              [language]="language"
+            ></jf-component-chooser>
           </div>
         </div>
       </div>
     </div>
   `,
 })
-export class ArrayViewComponent extends ArrayComponent {
-  @ViewChild("componentChooser") componentChooser: ChooserComponent;
-}
+export class ArrayViewComponent extends ArrayComponent {}

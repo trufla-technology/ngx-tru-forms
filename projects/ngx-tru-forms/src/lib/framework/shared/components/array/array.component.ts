@@ -27,25 +27,11 @@ import { type ChooserComponent } from "../chooser/chooser.component";
       >
         <div class="row">
           <div class="control">
-            <!-- <jf-component-chooser
+            <jf-component-chooser
               [form]="arrControl"
               [language]="language"
-            ></jf-component-chooser> -->
-            <!-- <ng-container #arrControl> </ng-container>
-            <ng-template #componentChooser> ></ng-template> -->
-            <!-- <ng-template #componentChooser > </ng-template> -->
-
-            <ng-container
-              *ngTemplateOutlet="
-                componentChooser;
-                context: {
-                  form: arrControl,
-                  language: language,
-                  tooltipEnabled: tooltipEnabled
-                }
-              "
-            >
-            </ng-container>
+              [tooltipEnabled]="tooltipEnabled"
+            ></jf-component-chooser>
           </div>
           <div class="remove" *ngIf="control.controls.length > 1">
             <input
@@ -74,15 +60,8 @@ export class ArrayComponent implements AfterViewInit {
   @Input() control: SchemaFormArray;
   @Input() language;
   @Input() tooltipEnabled: boolean;
-  @ViewChild("componentChooser") componentChooser: ChooserComponent;
-  constructor() {
-    // this.componentChooser.language = this.language;
-    // this.componentChooser.tooltipEnabled = this.tooltipEnabled;
-  }
-  ngAfterViewInit() {
-    this.componentChooser.language = this.language;
-    this.componentChooser.tooltipEnabled = this.tooltipEnabled;
-  }
+  constructor() {}
+  ngAfterViewInit() {}
   getLegend(control) {
     return typeof control.schema.title === "undefined"
       ? control.schema.key

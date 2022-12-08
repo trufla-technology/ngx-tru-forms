@@ -1,3 +1,4 @@
+/* eslint-disable security/detect-object-injection */
 import {
   Component,
   DoCheck,
@@ -305,7 +306,9 @@ export class JsonFormComponent implements DoCheck, OnDestroy {
         if (control.isRequired) {
           this.requiredFields++;
         }
-
+        control.isDisabled =
+          schema.hasOwnProperty("disabled") &&
+          schema.disabled.indexOf(prop) > -1;
         group[prop] = control;
       }
     });

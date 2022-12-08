@@ -38,14 +38,17 @@ export class TruUiSelectComponent
     }, 100);
   }
 
-  @HostListener("document:keydown", ["$event"])
-  handleKeyboardEvent(event: KeyboardEvent) {
-    if (event.code === "Escape") {
-      this.isOpen = false;
-    }
-  }
+  // @HostListener("document:keydown", ["$event"])
+  // handleKeyboardEvent(event: KeyboardEvent) {
+  //   if (event.code === "Escape") {
+  //     this.isOpen = false;
+  //   }
+  // }
 
   ngAfterViewInit() {
+    this.disabled = this.control.isDisabled
+      ? this.control.isDisabled
+      : this.disabled;
     this._adapter.setLocale(this.language || "en");
     if (this.control.data) {
       this.cd.detectChanges();
@@ -68,5 +71,10 @@ export class TruUiSelectComponent
   }
   getValueFromController(i) {
     return i ? this.enumNames(this.schema.enum.indexOf(i)) : "";
+  }
+
+  toggleOpen() {
+    if (this.disabled || this.control?.isDisabled) return;
+    this.isOpen = !this.isOpen;
   }
 }

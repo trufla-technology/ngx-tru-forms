@@ -1,9 +1,10 @@
-<div class="tru-ui-input-container">
+<div class="tru-ui-input-container" [ngClass]="{'disabled-container': disabled}">
   <div [class]="getClass('checkbox-group')">
     <label
       class="container tru-ui-label"
       tabindex="0"
       [attr.for]="schema.key + '_' + inputId"
+      [ngClass]="{'disabled': disabled}"
       (keydown)="toggleValue($event)"
     >
       <span
@@ -22,6 +23,7 @@
       </span>
       <input
         [name]="schema.key"
+        autocomplete="false"
         type="checkbox"
         [formControl]="control"
         [attr.id]="schema.key + '_' + inputId"

@@ -1,4 +1,4 @@
-<div class="tru-ui-input-container">
+<div class="tru-ui-input-container" [ngClass]="{'disabled-container': disabled}">
   <label
     class="tru-ui-label"
     [ngClass]="['jf-label', schema.key, isRequired() ? 'required' : '']"
@@ -27,7 +27,7 @@
     tabindex="0"
     [formControl]="control"
     [attr.disabled]="disabled"
-    autocomplete="off"
+     autocomplete="false"
     [ngClass]="{ empty: control.value === '' && !isRequired() }"
     [attr.placeholder]="placeholder()"
   />

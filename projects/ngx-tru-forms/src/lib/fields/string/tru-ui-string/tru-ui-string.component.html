@@ -1,4 +1,4 @@
-<div class="tru-ui-input-container">
+<div class="tru-ui-input-container" [ngClass]="{'disabled-container': disabled}">
   <label
     class="tru-ui-label"
     [ngClass]="['jf-label', schema.key, isRequired() ? 'required' : '']"
@@ -28,7 +28,7 @@
     [attr.disabled]="disabled"
     [mask]="getMask()"
     [attr.aria-required]="isRequired()"
-    autocomplete="off"
+     autocomplete="false"
     [attr.id]="schema.key + '_' + inputId"
     [ngClass]="{ empty: control.value === '' && !isRequired() }"
     (change)="isMatch()"
@@ -49,7 +49,7 @@
       class="tru-ui-input-control"
       [attr.type]="type()"
       [attr.aria-required]="isRequired()"
-      autocomplete="off"
+       autocomplete="false"
       [attr.name]="schema.key + 'verify'"
       [formControl]="confirmInput"
       tabindex="0"

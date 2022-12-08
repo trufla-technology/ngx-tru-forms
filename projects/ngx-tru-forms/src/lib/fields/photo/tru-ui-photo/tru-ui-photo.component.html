@@ -1,4 +1,4 @@
-<div class="tru-ui-file-wrapper">
+<div class="tru-ui-file-wrapper" [ngClass]="{'disabled-container': disabled}">
   <label
     class="tru-ui-label"
     [ngClass]="['jf-label', schema.key, isRequired() ? 'required' : '']"
@@ -163,6 +163,7 @@
     </div>
     <div
       class="image-preview-container"
+      [ngClass]="{ 'disabled': disabled }"
       *ngIf="getControlValue().length && !isPdf()"
       tabindex="0"
     >

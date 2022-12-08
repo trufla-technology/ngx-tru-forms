@@ -21,6 +21,7 @@ export class TruUiPhotoComponent extends CommonComponent {
   }
 
   resetUpload() {
+    if (this.disabled) return;
     this.file = {};
     this.selectFile = false;
     this.fileSize = null;
@@ -30,6 +31,7 @@ export class TruUiPhotoComponent extends CommonComponent {
   }
 
   async handleDrop(files) {
+    if (this.disabled) return;
     this.processFile(files);
   }
 
@@ -38,6 +40,7 @@ export class TruUiPhotoComponent extends CommonComponent {
   }
 
   async dragAndDrop(files) {
+    if (this.disabled) return;
     if (!files) {
       return;
     }
@@ -54,7 +57,7 @@ export class TruUiPhotoComponent extends CommonComponent {
   }
 
   async processFile(files) {
-    if (!files) {
+    if (!files || this.disabled) {
       return;
     }
     const name = files[0].name;

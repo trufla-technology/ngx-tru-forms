@@ -1,4 +1,4 @@
-<div class="tru-ui-input-container">
+<div class="tru-ui-input-container" [ngClass]="{'disabled-container': disabled}">
   <label
     class="tru-ui-label"
     [ngClass]="['jf-label', schema.key, isRequired() ? 'required' : '']"
@@ -23,9 +23,9 @@
     tabindex="0"
     typeaheadOptionField="enumName"
     [attr.disabled]="disabled"
-    [attr.disabled]="disabled"
     [attr.id]="schema.key + '_' + inputId"
     [name]="title()"
+    autocomplete="false"
     *ngIf="!schema.compact"
     [attr.aria-required]="isRequired()"
     [attr.aria-label]="title()"

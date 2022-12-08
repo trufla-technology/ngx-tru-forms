@@ -51,7 +51,10 @@ import { DomSanitizer } from "@angular/platform-browser";
       ></div>
     </div>
     <div [ngClass]="['form-container']">
-      <div *ngFor="let control of keys(form.controls)">
+      <div
+        *ngFor="let control of keys(form.controls)"
+        [ngClass]="'jf-field-' + form.get(control)?.schema?.key"
+      >
         <jf-field
           [control]="form.get(control)"
           [language]="language"

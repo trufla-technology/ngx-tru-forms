@@ -1,4 +1,4 @@
-<div class="tru-ui-input-container">
+<div class="tru-ui-input-container" [ngClass]="{'disabled-container': disabled}">
   <label
     class="tru-ui-label"
     [ngClass]="['jf-label', schema.key, isRequired() ? 'required' : '']"
@@ -20,6 +20,7 @@
   <div class="calender-wrapper">
     <div style="position: relative" class="tru-ui-icon-container">
       <input
+         autocomplete="false"
         [attr.aria-label]="title()"
         type="text"
         class="tru-ui-input-control tru-ui-date desktop"
@@ -36,7 +37,7 @@
         (focus)="isOpen = false"
         [formControl]="control"
         [attr.disabled]="disabled"
-        [ngClass]="{ disabled: disabled }"
+        [ngClass]="{ 'disabled': disabled }"
         [attr.placeholder]="placeholder()"
       />
       <img

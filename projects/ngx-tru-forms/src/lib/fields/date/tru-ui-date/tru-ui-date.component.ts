@@ -1,9 +1,4 @@
-import {
-  Component,
-  ViewChild,
-  AfterViewInit,
-  HostListener,
-} from "@angular/core";
+import { Component, ViewChild, AfterViewInit } from "@angular/core";
 import { CommonComponent } from "../../common/common.component";
 import moment from "moment";
 import { MatCalendar } from "@angular/material/datepicker";
@@ -27,14 +22,10 @@ export class TruUiDateComponent
   @ViewChild(MatCalendar) calendar;
   @ViewChild(CdkOverlayOrigin) calendarOverlay;
 
-  @HostListener("document:keydown", ["$event"])
-  handleKeyboardEvent(event: KeyboardEvent) {
-    if (event.code === "Escape") {
-      this.isOpen = false;
-    }
-  }
-
   ngAfterViewInit() {
+    this.disabled = this.control.isDisabled
+      ? this.control.isDisabled
+      : this.disabled;
     this._adapter.setLocale(this.language || "en");
     if (this.control.data && this.calendar) {
       this.selectedMonth = new Date(this.control.data);
@@ -77,7 +68,8 @@ export class TruUiDateComponent
   }
 
   openCalendar(id) {
-    if (this.isOpen === false) {
+    if (this.disabled || this.control?.isDisabled) return;
+    if (this.isOpen === false && !this.disabled) {
       this.isOpen = true;
       setTimeout(() => {
         const select = document.getElementById(id);

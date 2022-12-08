@@ -9,4 +9,5 @@ export class SchemaFormControl extends UntypedFormControl {
   public isRequired: boolean;
   public language?: string;
   form?: any;
+  isDisabled?: boolean;
 }

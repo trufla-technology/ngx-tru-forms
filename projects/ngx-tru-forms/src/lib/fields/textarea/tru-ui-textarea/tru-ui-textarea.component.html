@@ -1,4 +1,4 @@
-<div class="tru-ui-input-container">
+<div class="tru-ui-input-container" [ngClass]="{'disabled-container': disabled}">
   <label
     class="tru-ui-label"
     [ngClass]="['jf-label', schema.key, isRequired() ? 'required' : '']"
@@ -18,28 +18,20 @@
     ></div>
   </label>
   <textarea
-    *ngIf="!disabled"
     class="tru-ui-input-control"
+     autocomplete="false"
     [name]="schema.key"
     [formControl]="control"
     [attr.id]="schema.key + '_' + inputId"
     [attr.aria-required]="isRequired()"
     [attr.maxLength]="schema.maxLength || null"
     [attr.disabled]="disabled"
-    autocomplete="off"
     [attr.minLength]="schema.minLength || null"
-    [attr.disabled]="disabled"
     tabindex="0"
     [ngClass]="{ empty: control.value === '' && !isRequired() }"
     [attr.placeholder]="placeholder()"
   >
   </textarea>
-  <div
-    [innerHTML]="control.value"
-    *ngIf="disabled"
-    class="tru-ui-input-control"
-    style="height: auto !important"
-  ></div>
   <jf-tru-ui-error
     [control]="control"
     [language]="language || 'en'"

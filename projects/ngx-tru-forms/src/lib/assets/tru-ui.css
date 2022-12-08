@@ -8,7 +8,10 @@ div.tru-ui-object-title {
   line-height: 12px;
 
 }
-
+.disabled {
+  pointer-events: none;
+  opacity: .4;
+}
 .tru-ui-label {
   font-size: 14px;
   color: #4d4d4d;
