@@ -24,9 +24,9 @@ This component utilizes [Reactive Forms](https://angular.io/guide/reactive-forms
 
 ### Installation
 For angular version below 6 run
-`npm install @trufla-technology/ngx-tru-forms@0.6.43 --save`
+`npm install @trufla/ngx-tru-forms@0.6.43 --save`
 For angular version above 6 run
-`npm install @trufla-technology/ngx-tru-forms@1.1.8 --save`
+`npm install @trufla-/ngx-tru-forms@1.1.8 --save`
 
 
 ### Usage
@@ -42,9 +42,9 @@ import {
   JsonFormModule,
   JsonFormMaterialModule,
   JsonFormMaterila
-} from '@trufla-technology/ngx-tru-forms';
+} from '@trufla/ngx-tru-forms';
 // for using tru ui
-// import { JsonFormModule, TruUiModule, JsonFormFieldsService, TruUi } from '@trufla-technology/ngx-tru-forms';
+// import { JsonFormModule, TruUiModule, JsonFormFieldsService, TruUi } from '@trufla/ngx-tru-forms';
 
 @NgModule({
   imports: [
@@ -252,7 +252,7 @@ Fields would be `first_name`, `last_name`, `last_name.prefix.custom`.
 Add new field type. Create a component that extends CommonComponent. Add the following as a starting 
 template (or copy from string field).
 ```ts
-import { CommonComponent } from '@trufla-technology/ngx-tru-forms';
+import { CommonComponent } from '@trufla/ngx-tru-forms';
 
 @Component({
   template: `

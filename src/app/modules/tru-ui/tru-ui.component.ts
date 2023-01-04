@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild, ChangeDetectorRef, AfterViewInit } from '@angular/core';
 import { DataListenerService } from 'src/app/services/data-listener.service';
 import { SchemaListenerService } from 'src/app/services/schema-listener.service';
-import { JsonFormComponent } from '@trufla-technology/ngx-tru-forms';
+import { JsonFormComponent } from '@trufla/ngx-tru-forms';
 import { JsonSchemaExamplesSamples } from '../../json-schema-examples/json-schema-examples.samples';
 import { InputColourComponent } from '../../json-schema-examples/input-colour/input-colour.component';
 @Component({

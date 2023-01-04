@@ -2,7 +2,7 @@ import { AfterViewInit, Component, ElementRef, OnInit, ViewChild, ViewContainerR
 import {JsonSchemaExamplesSamples} from './json-schema-examples.samples';
 import {AbstractControl, FormControl, FormGroup} from '@angular/forms';
 import {InputColourComponent} from './input-colour/input-colour.component';
-import { JsonFormComponent } from '@trufla-technology/ngx-tru-forms';
+import { JsonFormComponent } from '@trufla/ngx-tru-forms';
 
 @Component({
   selector: 'app-json-schema-examples',
@@ -168,9 +168,9 @@ export class JsonSchemaExamplesComponent implements OnInit, AfterViewInit {
 
   handleFrameworkUpdate(framework) {
     if (framework === 'material') {
-      window.location.href = 'https://trufla-technology.github.io/ngx-tru-forms/material/';
+      window.location.href = 'https://trufla.github.io/ngx-tru-forms/material/';
     } else if (framework === 'bootstrap') {
-      window.location.href = 'https://trufla-technology.github.io/ngx-tru-forms/bootstrap4/';
+      window.location.href = 'https://trufla.github.io/ngx-tru-forms/bootstrap4/';
     }
   }
 }

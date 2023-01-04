@@ -8,7 +8,7 @@ import {
   JsonFormMaterial,
   JsonFormMaterialModule,
   JsonFormModule
-} from '@trufla-technology/ngx-tru-forms';
+} from '@trufla/ngx-tru-forms';
 import { Routes, RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 

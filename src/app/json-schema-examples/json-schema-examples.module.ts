@@ -6,7 +6,7 @@ import { JsonFormModule,
   JsonFormBootstrap4Module,
   JsonFormMaterialModule,
   JsonFormMaterial,
-  JsonFormFieldsService } from '@trufla-technology/ngx-tru-forms';
+  JsonFormFieldsService } from '@trufla/ngx-tru-forms';
 import { JsonSchemaExamplesSamples } from './json-schema-examples.samples';
 import { InputColourComponent } from './input-colour/input-colour.component';
 import { ColorPickerModule } from 'ngx-color-picker';
