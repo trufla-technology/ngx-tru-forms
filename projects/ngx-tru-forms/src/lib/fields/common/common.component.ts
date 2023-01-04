@@ -206,17 +206,21 @@ export class CommonComponent implements AfterViewInit {
   }
 
   getTranslation(titleArray) {
-    if (Array.isArray(titleArray)) {
-      const translatedTitle = titleArray.filter(
-        (val) => val.language === this.language
-      );
-      const translatedValue = translatedTitle[0]
-        ? translatedTitle[0].value.replace(/[&\\#,+$~%.":?{}_-]/g, " ")
-        : false;
-      return DOMPurify.sanitize(translatedValue);
+    if (titleArray) {
+      if (Array.isArray(titleArray)) {
+        const translatedTitle = titleArray.filter(
+          (val) => val.language === this.language
+        );
+        const translatedValue = translatedTitle[0]
+          ? translatedTitle[0].value.replace(/[&\\#,+$~%.":?{}_-]/g, " ")
+          : false;
+        return DOMPurify.sanitize(translatedValue);
+      } else {
+        const translatedValue = titleArray.replace(/[&\\#,+$~%.":?{}_-]/g, " ");
+        return DOMPurify.sanitize(translatedValue);
+      }
     } else {
-      const translatedValue = titleArray.replace(/[&\\#,+$~%.":?{}_-]/g, " ");
-      return DOMPurify.sanitize(translatedValue);
+      return "";
     }
   }
 
